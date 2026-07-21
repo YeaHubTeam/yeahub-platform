@@ -35,7 +35,7 @@ export interface Task {
 	status: TaskStatus;
 	difficulty: TaskDifficulty;
 	supportedLanguages: ProgrammingLanguage[];
-	mainCategory: TaskCategoryCode;
+	categories: TaskCategoryCode[];
 	constraints: string[];
 	testCases: TestCase[];
 	taskStructures: TaskStructure[];
@@ -179,14 +179,14 @@ export type CreateOrEditTaskFormValues = Omit<
 	| 'supportedLanguages'
 	| 'status'
 	| 'solutionSignature'
-	| 'mainCategory'
+	| 'categories'
 	| 'testCases'
 	| 'canSolve'
 	| 'timeLimit'
 	| 'memoryLimit'
 	| 'companies'
 > & {
-	categoryCode: TaskCategoryCode;
+	categoryCodes: TaskCategoryCode[];
 };
 
 export type TaskTestCaseResultTestStatus = 'PASS' | 'FAIL';

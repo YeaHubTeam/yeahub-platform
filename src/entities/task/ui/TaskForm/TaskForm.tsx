@@ -55,8 +55,10 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 					</FormControl>
 				</FormField>
 				<FormField description={t(Tasks.CATEGORY_SUBTITLE)} label={t(Tasks.CATEGORY_TITLE)}>
-					<FormControl className={styles.select} name="categoryCode" control={control}>
-						{({ onChange, value }) => <TaskCategorySelect onChange={onChange} value={value} />}
+					<FormControl className={styles.select} name="categoryCodes" control={control}>
+						{({ onChange, value }) => (
+							<TaskCategorySelect onChange={onChange} value={value} hasMultiple />
+						)}
 					</FormControl>
 				</FormField>
 				<FormField

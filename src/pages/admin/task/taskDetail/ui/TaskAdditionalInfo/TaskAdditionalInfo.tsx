@@ -22,7 +22,7 @@ import styles from './TaskAdditionalInfo.module.css';
 export interface TaskAdditionalInfoProps {
 	languages: ProgrammingLanguage[];
 	difficulty: TaskDifficulty;
-	category: TaskCategoryCode;
+	categories: TaskCategoryCode[];
 	companies: Company[];
 	className?: string;
 	route: string;
@@ -31,7 +31,7 @@ export interface TaskAdditionalInfoProps {
 export const TaskAdditionalInfo = ({
 	languages,
 	difficulty,
-	category,
+	categories,
 	companies,
 	className = '',
 	route,
@@ -45,6 +45,9 @@ export const TaskAdditionalInfo = ({
 
 	const onMoveToTasksWithCompanies = (companyId: string) => {
 		navigate(`${route}?page=1&companyId=` + encodeURIComponent(companyId));
+	};
+	const onMoveToTasksWithCategories = (category: string) => {
+		navigate(`${route}?page=1&category=` + encodeURIComponent(category));
 	};
 
 	const serializedLanguages: BaseFilterItem<number>[] = languages.map((language) => ({
@@ -78,12 +81,12 @@ export const TaskAdditionalInfo = ({
 					</Flex>
 					<BaseFilterSection
 						title={t(Tasks.CATEGORY_TITLE)}
-						data={[
-							{
-								id: 'category',
-								title: t(taskCategories[category]),
-							},
-						]}
+						data={categories.map((category) => ({
+							id: category,
+							title: t(taskCategories[category]),
+						}))}
+						onClick={onMoveToTasksWithCategories}
+						isAllActive
 					/>
 				</Flex>
 			</Card>

@@ -1,18 +1,13 @@
-import { Skeleton } from '../Skeleton';
-import type { SkeletonBlockProps } from '../Skeleton/Skeleton';
+import classNames from 'classnames';
 
-type TextAreaSkeletonProps = Pick<
-	SkeletonBlockProps,
-	'width' | 'height' | 'className' | 'borderRadius'
->;
+import { Skeleton } from '@/shared/ui/Skeleton';
 
-export const TextAreaSkeleton = ({
-	width,
-	height,
-	className,
-	borderRadius,
-}: TextAreaSkeletonProps) => {
-	return (
-		<Skeleton className={className} width={width} height={height} borderRadius={borderRadius} />
-	);
+import styles from './TextArea.module.css';
+
+interface TextAreaSkeletonProps {
+	className?: string;
+}
+
+export const TextAreaSkeleton = ({ className }: TextAreaSkeletonProps) => {
+	return <Skeleton className={classNames(styles.wrapper, className)} borderRadius={24} />;
 };

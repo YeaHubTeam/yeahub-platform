@@ -4,7 +4,7 @@ import { Specialization } from '@/entities/specialization';
 
 import { useDeleteSpecializationMutation } from '../../api/deleteSpecializationApi';
 
-interface DeleteSpecializationButtonProps {
+export interface DeleteSpecializationButtonProps {
 	specializationId: Specialization['id'];
 	isDetailPage?: boolean;
 }

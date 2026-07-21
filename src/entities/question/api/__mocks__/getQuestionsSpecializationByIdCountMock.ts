@@ -23,7 +23,7 @@ export const getQuestionsSpecializationByIdCountMock = http.get<
 		return acc;
 	}, 0);
 
-	const relevantSkills = skillsMock.data.reduce(
+	const relevantSkills = skillsMock.reduce(
 		(acc, q) => {
 			if (q.specializations && q.specializations.some((r) => String(r.id) === specializationId)) {
 				acc.push({ title: q.title, id: q.id });
