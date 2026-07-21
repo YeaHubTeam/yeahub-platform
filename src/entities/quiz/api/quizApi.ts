@@ -1,8 +1,8 @@
 import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/shared/config';
-import { route, Response, setToLS } from '@/shared/libs';
+import { route, Response } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
-import { LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, quizApiUrls } from '../model/constants/quizConstants';
+import { quizApiUrls } from '../model/constants/quizConstants';
 import { getActiveQuizQuestions } from '../model/helpers/getActiveQuizQuestions';
 import { getValidActiveQuizzesFromLS } from '../model/helpers/getValidActiveQuizzesFromLS';
 import { clearActiveQuizState, setActiveQuizQuestions } from '../model/slices/activeQuizSlice';
@@ -71,31 +71,6 @@ const quizApi = baseApi.injectEndpoints({
 					const typedExtra = extra as ExtraArgument;
 					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
 					typedExtra.navigate(ROUTES.interview.new.page);
-					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
-				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
-					console.error(error);
-				}
-			},
-		}),
-		createNewMockPublicQuiz: build.query<
-			Response<CreateNewMockQuizResponse>,
-			CreateNewMockQuizParamsRequest
-		>({
-			query: ({ ...params }) => {
-				return {
-					url: route(quizApiUrls.createNewMockQuiz),
-					params,
-				};
-			},
-			providesTags: [ApiTags.NEW_QUIZ],
-			async onQueryStarted(_, { queryFulfilled, extra, dispatch }) {
-				try {
-					const { data: mockQuizResponse } = await queryFulfilled;
-					mockQuizResponse && setToLS(LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY, mockQuizResponse);
-					const typedExtra = extra as ExtraArgument;
-					toast.success(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_SUCCESS));
-					typedExtra.navigate(ROUTES.public.quiz.new.page);
 					dispatch(baseApi.util.invalidateTags([ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ]));
 				} catch (error) {
 					toast.error(i18n.t(Translation.TOAST_INTERVIEW_NEW_QUIZ_FAILED));
@@ -192,7 +167,6 @@ const quizApi = baseApi.injectEndpoints({
 
 export const {
 	useLazyCreateNewQuizQuery,
-	useLazyCreateNewMockPublicQuizQuery,
 	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
