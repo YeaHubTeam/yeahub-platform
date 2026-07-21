@@ -59,7 +59,7 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 					<Text variant="body3-accent">{task.name}</Text>
 				</Link>
 			),
-			category: t(taskCategories[task.mainCategory]),
+			category: task.categories.map((category) => t(taskCategories[category])).join(', '),
 			difficulty: task.difficulty,
 			languages: task.supportedLanguages.map((language) => language.name).join(', '),
 			companies: (

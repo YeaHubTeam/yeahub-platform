@@ -37,7 +37,7 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 							name={task.name}
 							difficulty={task.difficulty}
 							languages={task.supportedLanguages}
-							category={task.mainCategory}
+							categories={task.categories}
 							companies={task.companies}
 						/>
 						<TaskBody description={task.description} />
@@ -49,7 +49,7 @@ export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 						languages={task.supportedLanguages}
 						difficulty={task.difficulty}
 						route={ROUTES.admin.tasks.page}
-						category={task.mainCategory}
+						categories={task.categories}
 						companies={task.companies}
 					/>
 				)}

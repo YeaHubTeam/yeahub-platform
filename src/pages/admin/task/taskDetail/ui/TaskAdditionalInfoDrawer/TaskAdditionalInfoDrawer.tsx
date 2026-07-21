@@ -17,14 +17,14 @@ import styles from './TaskAdditionalInfoDrawer.module.css';
 interface TaskAdditionalInfoDrawerProps {
 	languages: ProgrammingLanguage[];
 	difficulty: TaskDifficulty;
-	category: TaskCategoryCode;
+	categories: TaskCategoryCode[];
 	companies: Company[];
 }
 
 export const TaskAdditionalInfoDrawer = ({
 	languages,
 	difficulty,
-	category,
+	categories,
 	companies,
 }: TaskAdditionalInfoDrawerProps) => {
 	const { isMobileS } = useScreenSize();
@@ -52,7 +52,7 @@ export const TaskAdditionalInfoDrawer = ({
 				<TaskAdditionalInfo
 					difficulty={difficulty}
 					languages={languages}
-					category={category}
+					categories={categories}
 					companies={companies}
 					route={ROUTES.admin.resources.page}
 				/>
