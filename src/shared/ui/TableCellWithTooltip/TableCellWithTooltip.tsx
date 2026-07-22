@@ -15,12 +15,10 @@ export const TableCellWithTooltip = ({ children, title }: TableCellWithTooltipPr
 	const isTruncated = useTruncation(ref, 'column');
 
 	return (
-		<td>
-			<Tooltip shouldShowTooltip={isTruncated} title={title}>
-				<Text variant="body3-accent" ref={ref} maxRows={2}>
-					{children}
-				</Text>
-			</Tooltip>
-		</td>
+		<Tooltip shouldShowTooltip={isTruncated} title={title}>
+			<Text variant="body3-accent" ref={ref} maxRows={2}>
+				{children}
+			</Text>
+		</Tooltip>
 	);
 };

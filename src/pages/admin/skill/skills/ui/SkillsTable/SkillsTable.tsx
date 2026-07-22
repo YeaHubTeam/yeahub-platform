@@ -86,9 +86,9 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 		return Object.entries(columns)?.map(([k, v]) => {
 			if (k === 'description') {
 				return (
-					<TableCellWithTooltip key={k} title={v}>
-						{v}
-					</TableCellWithTooltip>
+					<td key={k}>
+						<TableCellWithTooltip title={v}>{v}</TableCellWithTooltip>
+					</td>
 				);
 			}
 
