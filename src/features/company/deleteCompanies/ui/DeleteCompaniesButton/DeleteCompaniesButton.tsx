@@ -1,5 +1,5 @@
-import { useAppDispatch, SelectedAdminEntities } from '@/shared/libs';
-import { RemoveButton } from '@/shared/ui/RemoveButton';
+import { SelectedAdminEntities } from '@/shared/libs';
+import { DeleteMultiplyEntitiesButton } from '@/shared/ui/DeleteMultiplyEntitiesButton';
 
 import { deleteMultipleCompaniesThunk } from '../../model/thunks/deleteMultipleCompaniesThunk';
 
@@ -8,11 +8,10 @@ interface DeleteCompaniesButtonProps {
 }
 
 export const DeleteCompaniesButton = ({ companiesToRemove }: DeleteCompaniesButtonProps) => {
-	const dispatch = useAppDispatch();
-
-	const onRemoveCompanies = async () => {
-		await dispatch(deleteMultipleCompaniesThunk(companiesToRemove));
-	};
-
-	return <RemoveButton toRemove={companiesToRemove} removeElements={onRemoveCompanies} />;
+	return (
+		<DeleteMultiplyEntitiesButton
+			toRemove={companiesToRemove}
+			onDeleteElements={deleteMultipleCompaniesThunk}
+		/>
+	);
 };

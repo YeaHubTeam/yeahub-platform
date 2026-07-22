@@ -1,22 +1,33 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Translation } from '@/shared/config';
-import { SelectedAdminEntities, useModal } from '@/shared/libs';
+import { SelectedAdminEntities, useAppDispatch, useModal } from '@/shared/libs';
 
 import { BlockerDialog } from '../BlockerDialogModal';
 import { Button } from '../Button';
 
-interface RemoveButtonProps<T extends string | number> {
+interface DeleteMultiplyEntitiesButtonProps<T extends string | number> {
 	toRemove: SelectedAdminEntities<T>;
-	removeElements: () => Promise<void>;
+	onDeleteElements: ReturnType<typeof createAsyncThunk<void, SelectedAdminEntities<T>>>;
+	onSuccess?: () => void;
 }
 
-export const RemoveButton = <T extends string | number>({
+export const DeleteMultiplyEntitiesButton = <T extends string | number>({
 	toRemove,
-	removeElements,
-}: RemoveButtonProps<T>) => {
+	onDeleteElements,
+	onSuccess,
+}: DeleteMultiplyEntitiesButtonProps<T>) => {
 	const { t } = useTranslation(i18Namespace.translation);
+	const dispatch = useAppDispatch();
+
 	const { isOpen, onOpen, onClose } = useModal();
+
+	const onDelete = async () => {
+		await dispatch(onDeleteElements(toRemove)).unwrap();
+		onSuccess?.();
+	};
+
 	const modalMessage = t(Translation.MODAL_DELETE_CONFIRMATION, { count: toRemove.length });
 
 	return (
@@ -29,7 +40,7 @@ export const RemoveButton = <T extends string | number>({
 				<BlockerDialog
 					isOpen={isOpen}
 					onClose={onClose}
-					onOk={removeElements}
+					onOk={onDelete}
 					onCancel={onClose}
 					message={modalMessage}
 				/>
