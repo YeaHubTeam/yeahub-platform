@@ -5,7 +5,7 @@ import { Company } from '@/entities/company';
 
 import { useDeleteCompanyMutation } from '../../api/deleteCompanyApi';
 
-interface DeleteCompanyButtonProps {
+export interface DeleteCompanyButtonProps {
 	companyId: Company['id'];
 	isDetailPage?: boolean;
 	disabled?: boolean;

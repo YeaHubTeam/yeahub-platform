@@ -109,25 +109,25 @@ describe('SkillSelect', () => {
 		test('should display skill options after dropdown is opened', () => {
 			fireEvent.click(screen.getByText(Skills.SELECT_CHOOSE));
 
-			mockSkills.data.forEach((skill) => {
+			mockSkills.forEach((skill) => {
 				expect(screen.queryByText(skill.title)).toBeInTheDocument();
 			});
 		});
 
 		test('should add skill to selected list when handleChange is called', () => {
 			fireEvent.click(screen.getByText(Skills.SELECT_CHOOSE));
-			fireEvent.click(screen.getByText(mockSkills.data[0].title));
+			fireEvent.click(screen.getByText(mockSkills[0].title));
 
-			expect(onChange).toHaveBeenCalledWith([mockSkills.data[0].id]);
+			expect(onChange).toHaveBeenCalledWith([mockSkills[0].id]);
 		});
 
 		test('should delete chip and update onChange when delete button is clicked', () => {
 			fireEvent.click(screen.getByText(Skills.SELECT_CHOOSE));
-			fireEvent.click(screen.getByText(mockSkills.data[0].title));
+			fireEvent.click(screen.getByText(mockSkills[0].title));
 
-			expect(onChange).toHaveBeenCalledWith([mockSkills.data[0].id]);
+			expect(onChange).toHaveBeenCalledWith([mockSkills[0].id]);
 
-			const selectedSkill = screen.getByText(mockSkills.data[0].title);
+			const selectedSkill = screen.getByText(mockSkills[0].title);
 			const deleteButton = within(selectedSkill.parentElement!).getByLabelText('delete');
 			expect(deleteButton).toBeInTheDocument();
 
@@ -142,7 +142,7 @@ describe('SkillSelect', () => {
 		test('skills should be fetched according to the provided specialization', async () => {
 			render({ selectedSpecializations: [16] });
 
-			const filteredSkills = mockSkills.data.filter((skill) => {
+			const filteredSkills = mockSkills.filter((skill) => {
 				return skill.specializations?.some((specialization) => specialization.id === 16);
 			});
 

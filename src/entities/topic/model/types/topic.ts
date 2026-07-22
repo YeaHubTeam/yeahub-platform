@@ -1,4 +1,5 @@
 import { Response } from '@/shared/libs';
+import { Author } from '@/shared/ui/AuthorInfo';
 
 import type { Skill } from '@/entities/skill/@x/topic';
 
@@ -8,6 +9,7 @@ export interface Topic {
 	description: string;
 	imageSrc?: string | null;
 	skill: Skill;
+	createdBy?: Author;
 	createdAt: string;
 	updatedAt: string;
 	disabled?: boolean;
