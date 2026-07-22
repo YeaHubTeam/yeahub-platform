@@ -12,6 +12,7 @@ import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
+import { SkillCreatePageSkeleton } from '@/pages/admin/skill/skillCreate';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
 import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
@@ -82,6 +83,8 @@ const SkeletonGenerator = () => {
 			return <SpecializationsPageSkeleton />;
 		case ROUTES.admin.skills.page:
 			return <SkillsPageSkeleton />;
+		case ROUTES.admin.skills.create.page:
+			return <SkillCreatePageSkeleton />;
 		case ROUTES.admin.users.page:
 			return <UsersTablePageSkeleton />;
 		case ROUTES.admin.collections.page:
