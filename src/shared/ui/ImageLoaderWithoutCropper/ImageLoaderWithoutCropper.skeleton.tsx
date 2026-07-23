@@ -1,19 +1,14 @@
-import { FileLoaderSkeleton } from '@/shared/ui/FileLoader';
-import { Flex } from '@/shared/ui/Flex';
-import { ImageWithWrapperSkeleton } from '@/shared/ui/ImageWithWrapper';
+import { FileLoaderSkeleton } from '../FileLoader';
+import { Flex } from '../Flex';
+import { ImageWithWrapperSkeleton } from '../ImageWithWrapper';
 
 import styles from './ImageLoaderWithoutCropper.module.css';
 
 export const ImageLoaderWithoutCropperSkeleton = () => {
 	return (
-		<Flex className={styles['picture-wrapper']} gap="32">
-			<Flex className={styles['picture-block']} gap="8" direction="column">
-				<ImageWithWrapperSkeleton className={styles['img']} />
-			</Flex>
-
-			<div className={styles['file-loader-wrapper']}>
-				<FileLoaderSkeleton className={styles['file-loader']} />
-			</div>
+		<Flex gap="32" maxWidth={true}>
+			<ImageWithWrapperSkeleton height={114} width={170} borderRadius={20} />
+			<FileLoaderSkeleton isDragDropEnabled={true} className={styles['file-loader-skeleton']} />
 		</Flex>
 	);
 };
