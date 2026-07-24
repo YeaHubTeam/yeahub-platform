@@ -100,6 +100,7 @@ import { SettingsProfilePage } from '@/pages/profile/settings';
 import { UserProfilePage } from '@/pages/profile/userProfile';
 import { TaskPage } from '@/pages/tasks/task';
 import { TasksPage } from '@/pages/tasks/tasks';
+import { VacanciesPage } from '@/pages/vacancies';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -570,6 +571,10 @@ export const router = createBrowserRouter([
 						element: <ResumeAnalyzerPage />,
 					},
 				],
+			},
+			{
+				path: ROUTES.vacancies.route,
+				element: <VacanciesPage />,
 			},
 			{
 				path: ROUTES.analytics.route,

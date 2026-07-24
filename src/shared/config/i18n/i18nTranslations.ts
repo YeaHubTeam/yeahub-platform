@@ -1647,3 +1647,26 @@ export enum Tasks {
 
 	WARNING_INTRO = 'warning.intro',
 }
+
+export enum Vacancies {
+	LIST_PAGE_TITLE = 'list_page.title',
+	LIST_PAGE_DESCRIPTION = 'list_page.description',
+	LIST_PAGE_KEYWORDS = 'list_page.keywords',
+	LIST_PAGE_SALARY_FROM = 'list_page.salary.from',
+	LIST_PAGE_SALARY_TO = 'list_page.salary.to',
+	COUNT_SKILLS = 'count.skills',
+	COUNT_COLLECTIONS = 'count.collections',
+	COUNT_QUESTIONS = 'count.questions',
+	COUNT_TASKS = 'count.tasks',
+	VACANCIES_SEARCH_PLACEHOLDER = 'search.placeholder',
+	WORKING_FORMAT = 'workFormat.title',
+	WORKING_FORMAT_OFFICE = 'workFormat.office',
+	WORKING_FORMAT_REMOTE = 'workFormat.remote',
+	WORKING_FORMAT_HYBRID = 'workFormat.hybrid',
+	INDUSTRY = 'industry',
+	GRADE = 'grade',
+	COMPANY_TYPE = 'companyType',
+	EMPLOYMENT_TYPE = 'employmentType',
+	SALARY = 'salary',
+	ENGLISH_LEVEL = 'englishLevel',
+}
