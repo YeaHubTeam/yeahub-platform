@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { FeatureFlags, i18Namespace, ROUTES, Translation } from '@/shared/config';
 import { route } from '@/shared/libs';
@@ -29,6 +29,7 @@ export const FeatureFlagsTable = ({
 	onSelectItems,
 }: FeatureFlagsTableProps) => {
 	const { t } = useTranslation([i18Namespace.featureFlags]);
+	const navigate = useNavigate();
 
 	const renderTableColumnWidths = () => {
 		const columnWidths = {
@@ -86,14 +87,16 @@ export const FeatureFlagsTable = ({
 			{
 				icon: <Icon icon="eye" size={24} />,
 				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				disabled: featureFlag.enabled,
-				onClick: () => {},
+				onClick: () => {
+					navigate(route(ROUTES.admin.featureFlags.details.page, featureFlag.id));
+				},
 			},
 			{
 				icon: <Icon icon="pen" size={24} />,
 				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				disabled: featureFlag.enabled,
-				onClick: () => {},
+				onClick: () => {
+					navigate(route(ROUTES.admin.featureFlags.edit.page, featureFlag.id));
+				},
 			},
 			{
 				renderComponent: () => (

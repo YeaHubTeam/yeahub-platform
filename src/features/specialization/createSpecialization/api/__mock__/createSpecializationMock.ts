@@ -1,6 +1,8 @@
 import { http, HttpResponse } from 'msw';
 
-import { specializationsMock } from '@/entities/specialization';
+import { author, createSlug } from '@/shared/libs';
+
+import { Specialization, specializationsMock } from '@/entities/specialization';
 
 import { createSpecializationApiUrls } from '../../model/constants/createSpecializationConstants';
 import {
@@ -15,17 +17,18 @@ export const createSpecializationMock = http.post<
 >(process.env.API_URL + createSpecializationApiUrls.createSpecialization, async ({ request }) => {
 	const body = await request.json();
 
-	const newSpecialization: CreateSpecializationResponse = {
+	const newSpecialization: Specialization = {
 		id: Date.now() + Math.floor(Math.random() * 1000),
 		title: body.title,
+		slug: createSlug(body.title),
 		description: body.description,
-		imageSrc: body.imageSrc,
+		imageSrc: null,
 		createdAt: new Date().toISOString(),
-		updatedAt: new Date().toISOString(),
+		updatedAt: null,
+		createdBy: author,
 	};
 
-	specializationsMock.data.push(newSpecialization);
-	specializationsMock.total++;
+	specializationsMock.push(newSpecialization);
 
 	return HttpResponse.json<CreateSpecializationResponse>(newSpecialization, { status: 201 });
 });

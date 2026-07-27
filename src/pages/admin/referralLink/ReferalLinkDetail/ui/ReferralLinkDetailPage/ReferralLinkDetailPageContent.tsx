@@ -24,7 +24,7 @@ export const ReferralLinkDetailPageContent = ({
 	return (
 		<>
 			<BackHeader>
-				<DeleteReferralLinkButton id={referralLink.id} isDetailPage={true} />
+				<DeleteReferralLinkButton referralId={referralLink.id} isDetailPage={true} />
 				<NavLink
 					style={{ marginLeft: 'auto' }}
 					to={route(ROUTES.admin.referralLinks.edit.page, referralLink.id)}

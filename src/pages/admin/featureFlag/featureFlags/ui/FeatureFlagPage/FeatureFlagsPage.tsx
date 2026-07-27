@@ -11,7 +11,7 @@ import { useGetFeatureFlagsListQuery } from '@/entities/featureFlag';
 import {
 	FeatureFlagFilters,
 	useFeatureFlagFilters,
-} from '@/features/featureFlag/filterFeatureFlag';
+} from '@/features/featureFlag/filterFeatureFlags';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';

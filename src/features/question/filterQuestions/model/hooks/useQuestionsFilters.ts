@@ -13,6 +13,7 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 
 	const hasFilters =
 		(filters.page || 1) > 1 ||
+		Boolean(filters.authorId) ||
 		Boolean(filters.title) ||
 		Boolean(filters.specialization) ||
 		(filters.skills || []).length > 0 ||
@@ -23,6 +24,10 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		filters.isMy ||
 		Boolean(filters.orderBy) ||
 		Boolean(filters.order);
+
+	const onChangeAuthorId = (authorId: QuestionsFilterParams['authorId']) => {
+		onFilterChange({ authorId, page: 1 });
+	};
 
 	const onChangeTitle = (title: QuestionsFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -67,7 +72,7 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 	};
 
 	const onChangeIsMy = (isMy: QuestionsFilterParams['isMy']) => {
-		onFilterChange({ isMy, page: 1 });
+		onFilterChange({ isMy, page: 1, authorId: undefined });
 	};
 
 	const onChangeOrder = (order: QuestionsFilterParams['order']) => {
@@ -82,6 +87,7 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		filters,
 		hasFilters,
 		onResetFilters,
+		onChangeAuthorId,
 		onChangeTitle,
 		onChangeSpecialization,
 		onChangePage,

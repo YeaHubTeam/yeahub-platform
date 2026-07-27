@@ -22,6 +22,7 @@ export { LS_INIT_QUESTION_ID } from './model/constants/question';
 export { getQuestionRoute } from '@/entities/question/lib/getQuestionRoute';
 export { getQuestionImage } from '@/entities/question/lib/getQuestionImage';
 export { QuestionForm } from './ui/QuestionForm/QuestionForm';
+export { QuestionFormSkeleton } from './ui/QuestionForm/QuestionForm.skeleton';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
 export { ChooseQuestionComplexitySkeleton } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity.skeleton';
 export { ChooseQuestionCount } from './ui/ChooseQuestionCount/ChooseQuestionCount';
@@ -34,6 +35,7 @@ export { PreviewQuestionsItem } from './ui/PreviewQuestionsItem/PreviewQuestions
 export { PreviewQuestionsItemSkeleton } from './ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';
 export { QuestionAdditionalInfo } from './ui/QuestionAdditionalInfo/QuestionAdditionalInfo';
 export { QuestionAdditionalInfoSkeleton } from './ui/QuestionAdditionalInfo/QuestionAdditionalInfo.skeleton';
+export { ChooseQuestionsDrawerSkeleton } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer.skeleton';
 export { ProgressBlock } from './ui/ProgressBlock/ProgressBlock';
 export { ProgressBlockSkeleton } from './ui/ProgressBlock/ProgressBlock.skeleton';
 export { questionsMock } from './api/__mocks__/data';

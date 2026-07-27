@@ -11,7 +11,7 @@ import { useGetQuestionsSpecializationByIdCountQuery } from '@/entities/question
 import { CategoryProgressList } from '@/widgets/interview/CategoryProgressList';
 import { PassedQuestionsList } from '@/widgets/interview/PassedQuestionsList';
 import { PassedQuestionsStatistic } from '@/widgets/interview/QuestionsStatistic';
-import { QuizResultButton } from '@/widgets/Landing/QuizResultModal';
+import { QuizResultUpgradeButton } from '@/widgets/interview/QuizResultUpgradeButton';
 import { PageWrapper } from '@/widgets/PageWrapper';
 
 import { useCalculationQuizResult } from '../../model/hooks/useCalculationQuizResult';
@@ -41,7 +41,7 @@ const InterviewMockQuizResultPage = () => {
 					<Card
 						title={t(InterviewQuizResult.INTERVIEW_STATISTIC_TITLE)}
 						actionTitle={t(InterviewQuizResult.INTERVIEW_STATISTIC_LINK)}
-						headerAction={<QuizResultButton />}
+						headerAction={<QuizResultUpgradeButton />}
 					>
 						<Flex gap="20" direction={isTablet || isMobile ? 'column' : 'row'}>
 							<PassedQuestionsStatistic

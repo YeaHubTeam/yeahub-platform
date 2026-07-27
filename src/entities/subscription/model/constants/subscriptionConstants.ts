@@ -1,5 +1,5 @@
 export const subscriptionApiUrls = {
-	getUserSubscription: '/subscriptions/users/:userId',
+	getUserSubscription: 'subscriptions/users/:userId',
 	getSubscriptions: 'subscriptions',
 };
 

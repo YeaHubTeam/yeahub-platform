@@ -11,7 +11,8 @@ import { getSpecializationId } from '@/entities/profile';
 import { ChooseQuestionComplexity, QuestionsFilterParams } from '@/entities/question';
 import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
-import { TopicFilterField } from '@/entities/topic/ui/TopicFilterField/TopicFilterField';
+import { TopicFilterField } from '@/entities/topic';
+import { UserSelect } from '@/entities/user';
 
 import { QuestionRateFilter } from '../QuestionRateFilter/QuestionRateFilter';
 import { QuestionSortByFieldFilter } from '../QuestionSortByFieldFilter/QuestionSortByFieldFilter';
@@ -29,6 +30,7 @@ interface QuestionsFiltersProps {
 	onChangeOrder?: (order?: QuestionsFilterParams['order']) => void;
 	onChangeOrderBy?: (orderBy?: QuestionsFilterParams['orderBy']) => void;
 	onChangeTopics?: (topics?: QuestionsFilterParams['topics']) => void;
+	onChangeAuthorId?: (authorId?: QuestionsFilterParams['authorId']) => void;
 }
 export const QuestionsFilters = ({
 	filters,
@@ -42,9 +44,21 @@ export const QuestionsFilters = ({
 	onChangeOrder,
 	onChangeOrderBy,
 	onChangeTopics,
+	onChangeAuthorId,
 }: QuestionsFiltersProps) => {
-	const { skills, rate, complexity, status, title, specialization, isMy, order, orderBy, topics } =
-		filters;
+	const {
+		skills,
+		rate,
+		complexity,
+		status,
+		title,
+		specialization,
+		isMy,
+		order,
+		orderBy,
+		topics,
+		authorId,
+	} = filters;
 	const { t } = useTranslation(i18Namespace.questions);
 	const specializationId = useAppSelector(getSpecializationId);
 	const project = useCurrentProject();
@@ -65,6 +79,16 @@ export const QuestionsFilters = ({
 					label={t(Questions.SORT_AUTHOR_TITLE)}
 				/>
 			)}
+			{project === 'admin' && onChangeAuthorId && (
+				<UserSelect
+					onChange={onChangeAuthorId}
+					value={authorId}
+					disabled={!!isMy}
+					title="Автор вопроса"
+					placeholder="Выберите автора"
+				/>
+			)}
+
 			{project === 'admin' && onChangeSpecialization && (
 				<SpecializationsListField
 					selectedSpecialization={specialization}

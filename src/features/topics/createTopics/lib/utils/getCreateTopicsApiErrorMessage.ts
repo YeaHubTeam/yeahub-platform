@@ -7,6 +7,9 @@ export const getCreateTopicsApiErrorMessage = (error: ApiErrorData<TopicCreateEr
 		case 'auth.auth.unauthorized':
 			return i18n.t(Translation.TOAST_TOPIC_CREATE_AUTH_UNAUTHORIZED);
 
+		case 'auth.roles.admin_or_author_required':
+			return i18n.t(Translation.TOAST_TOPIC_CREATE_AUTH_UNAUTHORIZED);
+
 		case 'auth.user.verified':
 			return i18n.t(Translation.TOAST_TOPIC_CREATE_AUTH_USER_VERIFIED);
 

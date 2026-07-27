@@ -4,7 +4,7 @@ import { specializationsMock, type Specialization } from '@/entities/specializat
 
 import type { UserRating, UsersRatingBySpecialization } from '../../model/types/usersRating';
 
-const specializations: Specialization[] = specializationsMock.data;
+const specializations: Specialization[] = specializationsMock;
 
 const usersRating = (): UserRating[] => [
 	{

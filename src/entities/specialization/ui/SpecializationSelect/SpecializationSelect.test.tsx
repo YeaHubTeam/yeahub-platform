@@ -67,7 +67,7 @@ describe('SpecializationSelect component', () => {
 		expect(listbox).toBeVisible();
 
 		await Promise.all(
-			specializationsMock.data.map(async (specialization) => {
+			specializationsMock.map(async (specialization) => {
 				const option = await screen.findByRole('option', {
 					name: specialization.title,
 					hidden: false,
@@ -100,10 +100,10 @@ describe('SpecializationSelect component', () => {
 		expect(listbox).toBeVisible();
 
 		const options = await screen.findAllByRole('option');
-		expect(options).toHaveLength(specializationsMock.data.length);
+		expect(options).toHaveLength(specializationsMock.length);
 
 		await Promise.all(
-			specializationsMock.data.map(async (specialization) => {
+			specializationsMock.map(async (specialization) => {
 				const option = await waitFor(() =>
 					screen.findByRole('option', {
 						name: specialization.title,

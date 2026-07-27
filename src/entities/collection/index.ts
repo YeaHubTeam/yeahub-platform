@@ -8,7 +8,6 @@ export { LS_INIT_COLLECTION_ID } from './model/constants/collection';
 export { getCollectionRoute } from '@/entities/collection/lib/getCollectionRoute';
 export { collectionsMock } from './api/__mock__/data';
 export { collectionHandlers } from './api/__mock__/index';
-export { CollectionForm } from './ui/CollectionForm/CollectionForm';
 export * from './api/collectionApi';
 
 export { ChooseCollectionAccess } from './ui/ChooseCollectionAccess/ChooseCollectionAccess';
@@ -16,3 +15,5 @@ export { CollectionPreview } from './ui/CollectionPreview/CollectionPreview';
 export { PreviewCollectionsItemSkeleton } from './ui/PreviewCollectionItem/PreviewCollectionsItem.skeleton';
 export { CollectionsPreviewSkeleton } from './ui/CollectionPreview/CollectionPreview.sekeleton';
 export { CollectionSelect } from './ui/CollectionSelect/CollectionSelect';
+export { CollectionForm } from './ui/CollectionForm/CollectionForm';
+export { CollectionFormSkeleton } from './ui/CollectionForm/CollectionForm.skeleton';
