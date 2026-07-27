@@ -7,14 +7,12 @@ import {
 	useGetSpecializationsGeneralProgressQuery,
 } from '@/entities/specialization';
 
-import {
-	AnalyticPageTemplate,
-	AnalyticPageTemplateSkeleton,
-	useAnalyticFilters,
-} from '@/widgets/analytics/AnalyticPageTemplate';
+import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { ProgressSpecializationsList } from '../ProgressSpecializationsList/ProgressSpecializationsList';
+
+import { ProgressSpecializationsPageSkeleton } from './ProgressSpecializationsPage.skeleton';
 
 export const ProgressSpecializationsPage = () => {
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
@@ -43,7 +41,7 @@ export const ProgressSpecializationsPage = () => {
 
 	return (
 		<PageWrapper
-			skeleton={<AnalyticPageTemplateSkeleton columnCount={5} />}
+			skeleton={<ProgressSpecializationsPageSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

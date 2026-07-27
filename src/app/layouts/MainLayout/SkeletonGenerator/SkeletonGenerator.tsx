@@ -7,8 +7,6 @@ import { CollectionCreateFormSkeleton } from '@/features/collections/createColle
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
 
-import { AnalyticPageTemplateSkeleton } from '@/widgets/analytics/AnalyticPageTemplate';
-
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
@@ -21,6 +19,11 @@ import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
+import { DifficultQuestionsPageSkeleton } from '@/pages/analytics/difficultQuestions';
+import { PopularQuestionsPageSkeleton } from '@/pages/analytics/popularQuestions';
+import { PopularSkillsPageSkeleton } from '@/pages/analytics/popularSkills';
+import { ProgressSpecializationsPageSkeleton } from '@/pages/analytics/progressSpecializations';
+import { SkillsProficiencyPageSkeleton } from '@/pages/analytics/skillsProficiency';
 import { CreateQuizPageSkeleton } from '@/pages/interview/createQuiz';
 import { InterviewPageSkeleton } from '@/pages/interview/interview';
 import { InterviewHistoryPageSkeleton } from '@/pages/interview/interviewHistory';
@@ -102,15 +105,15 @@ const SkeletonGenerator = () => {
 		case ROUTES.admin.tasks.create.page:
 			return <TaskCreatePageSkeleton />;
 		case ROUTES.analytics['skills-proficiency'].page:
-			return <AnalyticPageTemplateSkeleton />;
+			return <SkillsProficiencyPageSkeleton />;
 		case ROUTES.analytics.progressSpecializations.page:
-			return <AnalyticPageTemplateSkeleton />;
+			return <ProgressSpecializationsPageSkeleton />;
 		case ROUTES.analytics['difficult-questions'].page:
-			return <AnalyticPageTemplateSkeleton />;
+			return <DifficultQuestionsPageSkeleton />;
 		case ROUTES.analytics['popular-questions'].page:
-			return <AnalyticPageTemplateSkeleton />;
+			return <PopularQuestionsPageSkeleton />;
 		case ROUTES.analytics['popular-skills'].page:
-			return <AnalyticPageTemplateSkeleton />;
+			return <PopularSkillsPageSkeleton />;
 		default:
 			return <Loader />;
 	}

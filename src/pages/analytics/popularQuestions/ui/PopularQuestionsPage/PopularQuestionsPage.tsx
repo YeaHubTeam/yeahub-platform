@@ -4,15 +4,13 @@ import { i18Namespace, Analytics } from '@/shared/config';
 
 import { PopularQuestionStat, useGetPopularQuestionsQuery } from '@/entities/question';
 
-import {
-	AnalyticPageTemplate,
-	AnalyticPageTemplateSkeleton,
-	useAnalyticFilters,
-} from '@/widgets/analytics/AnalyticPageTemplate';
+import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { PopularQuestionsList } from '../PopularQuestionsList/PopularQuestionsList';
 import { PopularQuestionsPageTable } from '../PopularQuestionsPageTable/PopularQuestionsPageTable';
+
+import { PopularQuestionsPageSkeleton } from './PopularQuestionsPage.skeleton';
 
 export const PopularQuestionsPage = () => {
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
@@ -47,7 +45,7 @@ export const PopularQuestionsPage = () => {
 
 	return (
 		<PageWrapper
-			skeleton={<AnalyticPageTemplateSkeleton withImage />}
+			skeleton={<PopularQuestionsPageSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

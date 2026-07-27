@@ -6,15 +6,13 @@ import { useAppSelector } from '@/shared/libs';
 import { getSpecializationId } from '@/entities/profile';
 import { useGetMostDifficultQuestionsBySpecializationIdQuery } from '@/entities/question';
 
-import {
-	AnalyticPageTemplate,
-	AnalyticPageTemplateSkeleton,
-	useAnalyticFilters,
-} from '@/widgets/analytics/AnalyticPageTemplate';
+import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { DifficultQuestionsList } from '../DifficultQuestionsList/DifficultQuestionsList';
 import { DifficultQuestionsTable } from '../DifficultQuestionsTable/DifficultQuestionsTable';
+
+import { DifficultQuestionsPageSkeleton } from './DifficultQuestionsPage.skeleton';
 
 export const DifficultQuestionsPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
@@ -45,7 +43,7 @@ export const DifficultQuestionsPage = () => {
 
 	return (
 		<PageWrapper
-			skeleton={<AnalyticPageTemplateSkeleton columnCount={4} />}
+			skeleton={<DifficultQuestionsPageSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

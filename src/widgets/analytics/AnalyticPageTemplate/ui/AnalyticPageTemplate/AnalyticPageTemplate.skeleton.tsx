@@ -1,7 +1,7 @@
 import { useScreenSize } from '@/shared/libs';
-import { Card } from '@/shared/ui/Card';
+import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { IconSkeleton } from '@/shared/ui/Icon';
 import { TableSkeleton } from '@/shared/ui/Table';
 import { TablePaginationSkeleton } from '@/shared/ui/TablePagination';
 import { TextSkeleton } from '@/shared/ui/Text';
@@ -23,6 +23,7 @@ interface AnalyticPageTemplateSkeletonProps {
 
 export const AnalyticPageTemplateSkeleton = ({
 	columnCount = 3,
+	rowsCount = 1,
 	withChips = false,
 	withImage = false,
 	withSkillFilter = false,
@@ -30,28 +31,31 @@ export const AnalyticPageTemplateSkeleton = ({
 	const { isMobile } = useScreenSize();
 
 	return (
-		<Card>
+		<CardSkeleton>
 			<Flex className={styles.header} justify="between">
-				<TextSkeleton variant="body6" width={400} />
-				<Skeleton width={20} height={20} borderRadius="50%" />
+				<TextSkeleton variant={isMobile ? 'body5-accent' : 'body6'} width={400} />
+				<IconSkeleton size={20} borderRadius="50%" />
 			</Flex>
-
-			<Flex gap="14" wrap="wrap" className={styles['dropdown-container']}>
+			<Flex
+				gap="14"
+				wrap="wrap"
+				className={styles['dropdown-container']}
+				direction={isMobile ? 'column' : 'row'}
+			>
 				<SpecializationSelectSkeleton />
 				{withSkillFilter && <SkillSelectSkeleton />}
 			</Flex>
-
 			{isMobile ? (
 				<AnalyticPageTemplateMobileListSkeleton
 					withChips={withChips}
 					withImage={withImage}
-					columnCount={columnCount}
+					rowsCount={rowsCount}
 				/>
 			) : (
 				<TableSkeleton hasAction={false} hasSelectors={false} columnCount={columnCount} />
 			)}
 
 			<TablePaginationSkeleton />
-		</Card>
+		</CardSkeleton>
 	);
 };

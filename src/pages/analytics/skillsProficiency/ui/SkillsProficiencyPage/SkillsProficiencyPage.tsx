@@ -4,15 +4,13 @@ import { i18Namespace, Analytics } from '@/shared/config';
 
 import { useGetLearnedQuestionsQuery } from '@/entities/question';
 
-import {
-	AnalyticPageTemplate,
-	AnalyticPageTemplateSkeleton,
-	useAnalyticFilters,
-} from '@/widgets/analytics/AnalyticPageTemplate';
+import { AnalyticPageTemplate, useAnalyticFilters } from '@/widgets/analytics/AnalyticPageTemplate';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { SkillsProficiencyList } from '../SkillsProficiencyList/SkillsProficiencyList';
 import { SkillsProficiencyPageTable } from '../SkillsProficiencyPageTable/SkillsProficiencyPageTable';
+
+import { SkillsProficiencyPageSkeleton } from './SkillsProficiencyPage.skeleton';
 
 export const SkillsProficiencyPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
@@ -48,7 +46,7 @@ export const SkillsProficiencyPage = () => {
 
 	return (
 		<PageWrapper
-			skeleton={<AnalyticPageTemplateSkeleton withChips withSkillFilter />}
+			skeleton={<SkillsProficiencyPageSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}
