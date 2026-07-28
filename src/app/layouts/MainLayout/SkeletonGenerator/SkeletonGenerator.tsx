@@ -19,6 +19,11 @@ import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
+import { DifficultQuestionsPageSkeleton } from '@/pages/analytics/difficultQuestions';
+import { PopularQuestionsPageSkeleton } from '@/pages/analytics/popularQuestions';
+import { PopularSkillsPageSkeleton } from '@/pages/analytics/popularSkills';
+import { ProgressSpecializationsPageSkeleton } from '@/pages/analytics/progressSpecializations';
+import { SkillsProficiencyPageSkeleton } from '@/pages/analytics/skillsProficiency';
 import { CreateQuizPageSkeleton } from '@/pages/interview/createQuiz';
 import { InterviewPageSkeleton } from '@/pages/interview/interview';
 import { InterviewHistoryPageSkeleton } from '@/pages/interview/interviewHistory';
@@ -99,6 +104,16 @@ const SkeletonGenerator = () => {
 			return <TopicCreatePageSkeleton />;
 		case ROUTES.admin.tasks.create.page:
 			return <TaskCreatePageSkeleton />;
+		case ROUTES.analytics['skills-proficiency'].page:
+			return <SkillsProficiencyPageSkeleton />;
+		case ROUTES.analytics.progressSpecializations.page:
+			return <ProgressSpecializationsPageSkeleton />;
+		case ROUTES.analytics['difficult-questions'].page:
+			return <DifficultQuestionsPageSkeleton />;
+		case ROUTES.analytics['popular-questions'].page:
+			return <PopularQuestionsPageSkeleton />;
+		case ROUTES.analytics['popular-skills'].page:
+			return <PopularSkillsPageSkeleton />;
 		default:
 			return <Loader />;
 	}
