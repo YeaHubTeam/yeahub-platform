@@ -30,6 +30,13 @@
 				"subtitle": "Please refresh the page or try the request again",
 				"submit": "Retry"
 			}
+		},
+		"edit": {
+			"topic": {
+				"title": "Network access for topic editing",
+				"subtitle": "You are not the creator of this topic, so editing is unavailable",
+				"submit": "Return to the topic list"
+			}
 		}
 	}
 }

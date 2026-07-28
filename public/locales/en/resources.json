@@ -110,6 +110,11 @@
 				"subtitle": "Try refreshing the page or retry the requests",
 				"submit": "Retry"
 			}
+		},
+		"edit": {
+			"title": "No access to edit the resource",
+			"subtitle": "You are not the creator of this resource, so editing is not available",
+			"submit": "Return to the resource table"
 		}
 	},
 	"sort": {

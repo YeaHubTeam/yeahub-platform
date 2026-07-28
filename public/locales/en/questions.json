@@ -142,6 +142,13 @@
 				"subtitle": "Please refresh the page or try the request again",
 				"submit": "Retry"
 			}
+		},
+		"edit": {
+			"question": {
+				"title": "No access to edit the question",
+				"subtitle": "You are not the creator of this question, so editing is not available",
+				"submit": "Return to the questions table"
+			}
 		}
 	},
 	"modal": {

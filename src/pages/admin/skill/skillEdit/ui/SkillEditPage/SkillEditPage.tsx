@@ -1,12 +1,17 @@
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+
+import { i18Namespace, ROUTES, Skills } from '@/shared/config';
 
 import { useGetSkillByIdQuery } from '@/entities/skill';
 
 import { SkillEditForm } from '@/features/skill/editSkill';
 
+import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const SkillEditPage = () => {
+	const { t } = useTranslation(i18Namespace.skill);
 	const { skillId } = useParams<{ skillId: string }>();
 
 	const { data: skill, isLoading, isError, refetch } = useGetSkillByIdQuery({ skillId: skillId! });
@@ -17,7 +22,17 @@ const SkillEditPage = () => {
 		},
 	};
 
-	const content = skill ? <SkillEditForm skill={skill} /> : null;
+	const content = skill ? (
+		<AuthorEditRestriction
+			authorId={skill.createdBy?.id}
+			redirectTo={ROUTES.admin.skills.page}
+			titleStub={t(Skills.STUB_EDIT_SKILL_TITLE)}
+			subtitleStub={t(Skills.STUB_EDIT_SKILL_SUBTITLE)}
+			buttonTextStub={t(Skills.STUB_EDIT_SKILL_SUBMIT)}
+		>
+			<SkillEditForm skill={skill} />
+		</AuthorEditRestriction>
+	) : null;
 
 	return (
 		<PageWrapper

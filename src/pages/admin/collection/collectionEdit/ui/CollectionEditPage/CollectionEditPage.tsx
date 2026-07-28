@@ -1,16 +1,17 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config';
-import { useAppSelector } from '@/shared/libs';
+import { Collections, i18Namespace, ROUTES } from '@/shared/config';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
-import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { CollectionEditForm } from '@/features/collections/editCollection';
 
+import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const CollectionEditPage = () => {
+	const { t } = useTranslation(i18Namespace.collection);
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const {
 		data: collection,
@@ -18,16 +19,22 @@ const CollectionEditPage = () => {
 		isError,
 		refetch,
 	} = useGetCollectionByIdQuery({ collectionId: collectionId! });
-	const isAuthor = useAppSelector(getIsAuthor);
-	const userId = useAppSelector(getUserId);
 
 	if (!collection) {
 		return null;
 	}
 
-	if (isAuthor && collection.createdBy?.id !== userId) {
-		return <Navigate to={ROUTES.admin.collections.page} />;
-	}
+	const content = collection ? (
+		<AuthorEditRestriction
+			authorId={collection.createdBy?.id}
+			redirectTo={ROUTES.admin.collections.page}
+			titleStub={t(Collections.STUB_EDIT_COLLECTION_TITLE)}
+			subtitleStub={t(Collections.STUB_EDIT_COLLECTION_SUBTITLE)}
+			buttonTextStub={t(Collections.STUB_EDIT_COLLECTION_SUBMIT)}
+		>
+			<CollectionEditForm collection={collection} />
+		</AuthorEditRestriction>
+	) : null;
 
 	const stubs: PageWrapperStubs = {
 		error: { onClick: refetch },
@@ -40,7 +47,7 @@ const CollectionEditPage = () => {
 			hasError={isError}
 			hasData={!!collection && Object.keys(collection).length > 0}
 			stubs={stubs}
-			content={collection ? <CollectionEditForm collection={collection} /> : null}
+			content={content}
 		>
 			{({ content }) => content}
 		</PageWrapper>

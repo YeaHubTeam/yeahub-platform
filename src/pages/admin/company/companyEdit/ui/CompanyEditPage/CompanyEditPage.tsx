@@ -1,27 +1,22 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config';
-import { route, useAppSelector } from '@/shared/libs';
+import { Companies, i18Namespace, ROUTES } from '@/shared/config';
 
 import { useGetCompanyByIdQuery } from '@/entities/company';
-import { getIsAuthor, getUserId } from '@/entities/profile';
 
 import { CompanyEditForm } from '@/features/company/editCompany';
 
+import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const CompanyEditPage = () => {
+	const { t } = useTranslation(i18Namespace.companies);
 	const { companyId = '' } = useParams<{ companyId: string }>();
-	const userId = useAppSelector(getUserId);
-	const isAuthor = useAppSelector(getIsAuthor);
 
 	const { data: company, isLoading, isError, refetch } = useGetCompanyByIdQuery({ companyId });
 
 	const hasCompany = company && Object.keys(company).length > 0;
-
-	if (hasCompany && isAuthor && company.createdBy?.id !== userId) {
-		return <Navigate to={route(ROUTES.admin.companies.page)} />;
-	}
 
 	const stubs: PageWrapperStubs = {
 		error: {
@@ -29,7 +24,17 @@ const CompanyEditPage = () => {
 		},
 	};
 
-	const content = hasCompany ? <CompanyEditForm company={company} /> : null;
+	const content = hasCompany ? (
+		<AuthorEditRestriction
+			authorId={company.createdBy?.id}
+			redirectTo={ROUTES.admin.companies.page}
+			titleStub={t(Companies.STUB_EDIT_COMPANY_TITLE)}
+			subtitleStub={t(Companies.STUB_EDIT_COMPANY_SUBTITLE)}
+			buttonTextStub={t(Companies.STUB_EDIT_COMPANY_SUBMIT)}
+		>
+			<CompanyEditForm company={company} />
+		</AuthorEditRestriction>
+	) : null;
 
 	return (
 		<PageWrapper
