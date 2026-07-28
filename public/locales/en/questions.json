@@ -1,4 +1,6 @@
 {
+	"create.page.title": "Creating question",
+	"edit.page.title": "Editing question",
 	"popover": {
 		"add": {
 			"single": "One question",
