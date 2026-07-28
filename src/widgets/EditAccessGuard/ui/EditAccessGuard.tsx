@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '@/shared/libs';
 import { Stub } from '@/shared/ui/Stub';
 
-import { getIsAuthor, getUserId } from '@/entities/profile';
+import { getIsAdmin, getIsAuthor, getUserId } from '@/entities/profile';
 
 interface EditAccessGuardProps {
 	authorId?: string | null;
@@ -15,7 +15,7 @@ interface EditAccessGuardProps {
 	redirectTo: string;
 }
 
-export const AuthorEditRestriction = ({
+export const EditAccessGuard = ({
 	authorId,
 	children,
 	titleStub,
@@ -24,9 +24,10 @@ export const AuthorEditRestriction = ({
 	redirectTo,
 }: EditAccessGuardProps): ReactNode => {
 	const navigate = useNavigate();
+	const isAdmin = useAppSelector(getIsAdmin);
 	const isAuthor = useAppSelector(getIsAuthor);
 	const userId = useAppSelector(getUserId);
-	const canEdit = isAuthor && userId === authorId;
+	const canEdit = isAdmin || (isAuthor && userId === authorId);
 
 	if (canEdit) return children;
 

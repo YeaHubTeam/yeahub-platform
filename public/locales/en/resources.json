@@ -111,7 +111,7 @@
 				"submit": "Retry"
 			}
 		},
-		"edit": {
+		"edit.access": {
 			"title": "No access to edit the resource",
 			"subtitle": "You are not the creator of this resource, so editing is not available",
 			"submit": "Return to the resource table"

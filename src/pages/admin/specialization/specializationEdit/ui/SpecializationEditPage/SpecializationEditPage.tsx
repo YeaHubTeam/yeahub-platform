@@ -7,7 +7,7 @@ import { useGetSpecializationByIdQuery } from '@/entities/specialization';
 
 import { SpecializationEditForm } from '@/features/specialization/editSpecialization';
 
-import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
+import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const SpecializationEditPage = () => {
@@ -30,15 +30,15 @@ const SpecializationEditPage = () => {
 	};
 
 	const content = hasData ? (
-		<AuthorEditRestriction
+		<EditAccessGuard
 			authorId={specialization.createdBy?.id}
 			redirectTo={ROUTES.admin.specializations.page}
-			titleStub={t(Specializations.STUB_EDIT_SPECIALIZATION_TITLE)}
-			subtitleStub={t(Specializations.STUB_EDIT_SPECIALIZATION_SUBTITLE)}
-			buttonTextStub={t(Specializations.STUB_EDIT_SPECIALIZATION_SUBMIT)}
+			titleStub={t(Specializations.STUB_EDIT_ACCESS_TITLE)}
+			subtitleStub={t(Specializations.STUB_EDIT_ACCESS_SUBTITLE)}
+			buttonTextStub={t(Specializations.STUB_EDIT_ACCESS_SUBMIT)}
 		>
 			<SpecializationEditForm specialization={specialization} />
-		</AuthorEditRestriction>
+		</EditAccessGuard>
 	) : null;
 
 	return (

@@ -7,7 +7,7 @@ import { useGetTopicByIdQuery } from '@/entities/topic';
 
 import { TopicEditForm } from '@/features/topics/editTopic';
 
-import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
+import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const TopicEditPage = () => {
@@ -19,15 +19,15 @@ const TopicEditPage = () => {
 	const hasTopic = topic && Object.keys(topic).length > 0;
 
 	const content = hasTopic ? (
-		<AuthorEditRestriction
+		<EditAccessGuard
 			authorId={topic.createdBy?.id}
 			redirectTo={ROUTES.admin.topics.page}
-			titleStub={t(Topics.STUB_EDIT_TOPIC_TITLE)}
-			subtitleStub={t(Topics.STUB_EDIT_TOPIC_SUBTITLE)}
-			buttonTextStub={t(Topics.STUB_EDIT_TOPIC_SUBMIT)}
+			titleStub={t(Topics.STUB_EDIT_ACCESS_TITLE)}
+			subtitleStub={t(Topics.STUB_EDIT_ACCESS_SUBTITLE)}
+			buttonTextStub={t(Topics.STUB_EDIT_ACCESS_SUBMIT)}
 		>
 			<TopicEditForm topic={topic} />
-		</AuthorEditRestriction>
+		</EditAccessGuard>
 	) : null;
 
 	const stubs: PageWrapperStubs = {

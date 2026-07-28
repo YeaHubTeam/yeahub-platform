@@ -7,7 +7,7 @@ import { useGetCompanyByIdQuery } from '@/entities/company';
 
 import { CompanyEditForm } from '@/features/company/editCompany';
 
-import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
+import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const CompanyEditPage = () => {
@@ -25,15 +25,15 @@ const CompanyEditPage = () => {
 	};
 
 	const content = hasCompany ? (
-		<AuthorEditRestriction
+		<EditAccessGuard
 			authorId={company.createdBy?.id}
 			redirectTo={ROUTES.admin.companies.page}
-			titleStub={t(Companies.STUB_EDIT_COMPANY_TITLE)}
-			subtitleStub={t(Companies.STUB_EDIT_COMPANY_SUBTITLE)}
-			buttonTextStub={t(Companies.STUB_EDIT_COMPANY_SUBMIT)}
+			titleStub={t(Companies.STUB_EDIT_ACCESS_TITLE)}
+			subtitleStub={t(Companies.STUB_EDIT_ACCESS_SUBTITLE)}
+			buttonTextStub={t(Companies.STUB_EDIT_ACCESS_SUBMIT)}
 		>
 			<CompanyEditForm company={company} />
-		</AuthorEditRestriction>
+		</EditAccessGuard>
 	) : null;
 
 	return (

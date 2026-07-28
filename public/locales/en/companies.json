@@ -35,12 +35,10 @@
 				"submit": "Retry"
 			}
 		},
-		"edit": {
-			"company": {
-				"title": "No access to edit the company",
-				"subtitle": "You are not the creator of this company, so editing is not available",
-				"submit": "Return to the company table"
-			}
+		"edit.access": {
+			"title": "No access to edit the company",
+			"subtitle": "You are not the creator of this company, so editing is not available",
+			"submit": "Return to the company table"
 		}
 	}
 }

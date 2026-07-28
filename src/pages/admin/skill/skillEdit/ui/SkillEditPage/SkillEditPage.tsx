@@ -7,7 +7,7 @@ import { useGetSkillByIdQuery } from '@/entities/skill';
 
 import { SkillEditForm } from '@/features/skill/editSkill';
 
-import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
+import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const SkillEditPage = () => {
@@ -23,15 +23,15 @@ const SkillEditPage = () => {
 	};
 
 	const content = skill ? (
-		<AuthorEditRestriction
+		<EditAccessGuard
 			authorId={skill.createdBy?.id}
 			redirectTo={ROUTES.admin.skills.page}
-			titleStub={t(Skills.STUB_EDIT_SKILL_TITLE)}
-			subtitleStub={t(Skills.STUB_EDIT_SKILL_SUBTITLE)}
-			buttonTextStub={t(Skills.STUB_EDIT_SKILL_SUBMIT)}
+			titleStub={t(Skills.STUB_EDIT_ACCESS_TITLE)}
+			subtitleStub={t(Skills.STUB_EDIT_ACCESS_SUBTITLE)}
+			buttonTextStub={t(Skills.STUB_EDIT_ACCESS_SUBMIT)}
 		>
 			<SkillEditForm skill={skill} />
-		</AuthorEditRestriction>
+		</EditAccessGuard>
 	) : null;
 
 	return (

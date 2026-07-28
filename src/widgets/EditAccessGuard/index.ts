@@ -1,1 +1,1 @@
-export { AuthorEditRestriction } from './ui/AuthorEditRestriction';
+export { EditAccessGuard } from './ui/EditAccessGuard';

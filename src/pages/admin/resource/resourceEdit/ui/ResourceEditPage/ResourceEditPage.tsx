@@ -7,7 +7,7 @@ import { useGetResourceByIdQuery } from '@/entities/resource';
 
 import { ResourceEditForm } from '@/features/resources/editResource';
 
-import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
+import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const ResourceEditPage = () => {
@@ -31,15 +31,15 @@ const ResourceEditPage = () => {
 	};
 
 	const content = hasResource ? (
-		<AuthorEditRestriction
+		<EditAccessGuard
 			authorId={resource.createdBy?.id}
 			redirectTo={ROUTES.admin.resources.page}
-			titleStub={t(Resources.STUB_EDIT_RESOURCE_TITLE)}
-			subtitleStub={t(Resources.STUB_EDIT_RESOURCE_SUBTITLE)}
-			buttonTextStub={t(Resources.STUB_EDIT_RESOURCE_SUBMIT)}
+			titleStub={t(Resources.STUB_EDIT_ACCESS_TITLE)}
+			subtitleStub={t(Resources.STUB_EDIT_ACCESS_SUBTITLE)}
+			buttonTextStub={t(Resources.STUB_EDIT_ACCESS_SUBMIT)}
 		>
 			<ResourceEditForm resource={resource} />
-		</AuthorEditRestriction>
+		</EditAccessGuard>
 	) : null;
 
 	return (

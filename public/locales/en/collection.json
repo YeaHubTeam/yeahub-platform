@@ -99,12 +99,10 @@
 				"submit": "Try again"
 			}
 		},
-		"edit": {
-			"collection": {
-				"title": "No access to edit the collection",
-				"subtitle": "You are not the creator of this collection, so editing is not available",
-				"submit": "Return to the collections table"
-			}
+		"edit.access": {
+			"title": "No access to edit the collection",
+			"subtitle": "You are not the creator of this collection, so editing is not available",
+			"submit": "Return to the collections table"
 		}
 	},
 	"sort": {

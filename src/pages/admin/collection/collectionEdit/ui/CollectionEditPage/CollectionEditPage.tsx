@@ -7,7 +7,7 @@ import { useGetCollectionByIdQuery } from '@/entities/collection';
 
 import { CollectionEditForm } from '@/features/collections/editCollection';
 
-import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
+import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const CollectionEditPage = () => {
@@ -25,15 +25,15 @@ const CollectionEditPage = () => {
 	}
 
 	const content = collection ? (
-		<AuthorEditRestriction
+		<EditAccessGuard
 			authorId={collection.createdBy?.id}
 			redirectTo={ROUTES.admin.collections.page}
-			titleStub={t(Collections.STUB_EDIT_COLLECTION_TITLE)}
-			subtitleStub={t(Collections.STUB_EDIT_COLLECTION_SUBTITLE)}
-			buttonTextStub={t(Collections.STUB_EDIT_COLLECTION_SUBMIT)}
+			titleStub={t(Collections.STUB_EDIT_ACCESS_TITLE)}
+			subtitleStub={t(Collections.STUB_EDIT_ACCESS_SUBTITLE)}
+			buttonTextStub={t(Collections.STUB_EDIT_ACCESS_SUBMIT)}
 		>
 			<CollectionEditForm collection={collection} />
-		</AuthorEditRestriction>
+		</EditAccessGuard>
 	) : null;
 
 	const stubs: PageWrapperStubs = {

@@ -585,9 +585,9 @@ export enum Specializations {
 	EMPTY_DETAIL_DESCRIPTION = 'empty.detail.description',
 	EMPTY_DETAIL_BUTTON = 'empty.detail.button',
 	EMPTY_DETAIL_TITLE = 'empty.detail.title',
-	STUB_EDIT_SPECIALIZATION_TITLE = 'stub.edit.specialization.title',
-	STUB_EDIT_SPECIALIZATION_SUBTITLE = 'stub.edit.specialization.subtitle',
-	STUB_EDIT_SPECIALIZATION_SUBMIT = 'stub.edit.specialization.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum FeatureFlags {
@@ -650,9 +650,9 @@ export enum Topics {
 	STUB_EMPTY_TOPIC_TITLE = 'stub.empty.topic.title',
 	STUB_EMPTY_TOPIC_SUBTITLE = 'stub.empty.topic.subtitle',
 	STUB_EMPTY_TOPIC_SUBMIT = 'stub.empty.topic.submit',
-	STUB_EDIT_TOPIC_TITLE = 'stub.edit.topic.title',
-	STUB_EDIT_TOPIC_SUBTITLE = 'stub.edit.topic.subtitle',
-	STUB_EDIT_TOPIC_SUBMIT = 'stub.edit.topic.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum Analytics {
@@ -843,9 +843,9 @@ export enum Resources {
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_TITLE = 'stub.empty.resource.request.detail.title',
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_SUBTITLE = 'stub.empty.resource.request.detail.subtitle',
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_SUBMIT = 'stub.empty.resource.request.detail.submit',
-	STUB_EDIT_RESOURCE_TITLE = 'stub.edit.resource.title',
-	STUB_EDIT_RESOURCE_SUBTITLE = 'stub.edit.resource.subtitle',
-	STUB_EDIT_RESOURCE_SUBMIT = 'stub.edit.resource.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 }
@@ -940,9 +940,9 @@ export enum Questions {
 	STUB_EMPTY_QUESTION_TITLE = 'stub.empty.question.title',
 	STUB_EMPTY_QUESTION_SUBTITLE = 'stub.empty.question.subtitle',
 	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
-	STUB_EDIT_QUESTION_TITLE = 'stub.edit.question.title',
-	STUB_EDIT_QUESTION_SUBTITLE = 'stub.edit.question.subtitle',
-	STUB_EDIT_QUESTION_SUBMIT = 'stub.edit.question.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 
 	GENERATED_QUESTIONS_TITLE = 'generated.questions.title',
 	GENERATED_QUESTIONS_CREATE_AGAIN = 'generated.questions.create.again',
@@ -1053,9 +1053,9 @@ export enum Skills {
 	STUB_EMPTY_SKILL_TITLE = 'stub.empty.skill.title',
 	STUB_EMPTY_SKILL_SUBTITLE = 'stub.empty.skill.subtitle',
 	STUB_EMPTY_SKILL_SUBMIT = 'stub.empty.skill.submit',
-	STUB_EDIT_SKILL_TITLE = 'stub.edit.skill.title',
-	STUB_EDIT_SKILL_SUBTITLE = 'stub.edit.skill.subtitle',
-	STUB_EDIT_SKILL_SUBMIT = 'stub.edit.skill.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum ReferralLinks {
@@ -1175,9 +1175,9 @@ export enum Collections {
 	STUB_EMPTY_COLLECTION_DESCRIPTION = 'stub.empty.collection.description',
 	STUB_EMPTY_COLLECTION_BUTTON = 'stub.empty.collection.button',
 	STUB_EMPTY_COLLECTION_SUBMIT = 'stub.empty.collection.submit',
-	STUB_EDIT_COLLECTION_TITLE = 'stub.edit.collection.title',
-	STUB_EDIT_COLLECTION_SUBTITLE = 'stub.edit.collection.subtitle',
-	STUB_EDIT_COLLECTION_SUBMIT = 'stub.edit.collection.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -1242,9 +1242,9 @@ export enum Companies {
 	STUB_EMPTY_COMPANY_TITLE = 'stub.empty.company.title',
 	STUB_EMPTY_COMPANY_SUBTITLE = 'stub.empty.company.subtitle',
 	STUB_EMPTY_COMPANY_SUBMIT = 'stub.empty.company.submit',
-	STUB_EDIT_COMPANY_TITLE = 'stub.edit.company.title',
-	STUB_EDIT_COMPANY_SUBTITLE = 'stub.edit.company.subtitle',
-	STUB_EDIT_COMPANY_SUBMIT = 'stub.edit.company.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum ResourceRequests {

@@ -9,7 +9,7 @@ import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import { QuestionEditForm } from '@/features/question/editQuestion';
 
-import { AuthorEditRestriction } from '@/widgets/EditAccessGuard';
+import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, type PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const QuestionEditPage = () => {
@@ -36,15 +36,15 @@ const QuestionEditPage = () => {
 	};
 
 	const content = hasQuestion ? (
-		<AuthorEditRestriction
+		<EditAccessGuard
 			authorId={question.createdBy?.id}
 			redirectTo={ROUTES.admin.questions.page}
-			titleStub={t(Questions.STUB_EDIT_QUESTION_TITLE)}
-			subtitleStub={t(Questions.STUB_EDIT_QUESTION_SUBTITLE)}
-			buttonTextStub={t(Questions.STUB_EDIT_QUESTION_SUBMIT)}
+			titleStub={t(Questions.STUB_EDIT_ACCESS_TITLE)}
+			subtitleStub={t(Questions.STUB_EDIT_ACCESS_SUBTITLE)}
+			buttonTextStub={t(Questions.STUB_EDIT_ACCESS_SUBMIT)}
 		>
 			<QuestionEditForm question={question} />
-		</AuthorEditRestriction>
+		</EditAccessGuard>
 	) : null;
 
 	return (
