@@ -15,7 +15,7 @@ export const registerSchema = yup.object().shape({
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	email: yup
 		.string()
-		.email(i18n.t(Translation.VALIDATION_EMAIL))
+		.matches(/^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, i18n.t(Translation.VALIDATION_EMAIL))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	password: yup
 		.string()
