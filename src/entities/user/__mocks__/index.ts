@@ -13,6 +13,7 @@ export const usersRatingHandlers = [
 ];
 
 export const userHandlers = [usersListMock, userRolesListMock];
+export { userRolesMock } from './data/userRolesMock';
 
 export {
 	adminUser,
