@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Marketplace, Translation, i18Namespace, ROUTES } from '@/shared/config';
 import { route } from '@/shared/libs';
@@ -9,7 +9,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
-import { Text } from '@/shared/ui/Text';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 
 import {
 	ResourceRequest,
@@ -89,11 +89,12 @@ export const ResourceRequestsTable = ({
 		return Object.entries(columns)?.map(([k, v]) => (
 			<td key={k}>
 				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.resources.requests.view.page, request.id)}>
-						<Text variant="body3" color="purple-700">
-							{v}
-						</Text>
-					</Link>
+					<TableCellLink
+						to={route(ROUTES.admin.resources.requests.view.page, request.id)}
+						text={request.requestPayload.name}
+						variant="body3"
+						color="purple-700"
+					/>
 				) : (
 					v
 				)}

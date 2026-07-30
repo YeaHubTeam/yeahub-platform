@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Skills, Translation, i18Namespace, ROUTES } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
@@ -8,6 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { Text } from '@/shared/ui/Text';
 
 import { Skill } from '@/entities/skill';
@@ -53,9 +54,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 		return Object.entries(columns)?.map(([k, v]) => (
 			<td key={k} className={k === 'description' ? styles.description : undefined}>
 				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.skills.detail.page, skill.id)}>
-						<Text variant="body3-accent">{v}</Text>
-					</Link>
+					<TableCellLink to={route(ROUTES.admin.skills.detail.page, skill.id)} text={skill.title} />
 				) : (
 					<Text variant="body3-accent">{v}</Text>
 				)}

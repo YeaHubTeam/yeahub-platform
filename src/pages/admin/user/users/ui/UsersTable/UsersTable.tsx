@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Translation, User as Users } from '@/shared/config';
 import { route } from '@/shared/libs';
@@ -8,6 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem, PopoverChildrenProps } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { Text } from '@/shared/ui/Text';
 
 import { User, UserRolesList } from '@/entities/user';
@@ -52,9 +53,7 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		return Object.entries(columns)?.map(([k, v]) => (
 			<td key={k}>
 				{k === 'username' ? (
-					<Link to={route(ROUTES.admin.users.detail.page, user.id)}>
-						<Text variant="body3-accent">{v}</Text>
-					</Link>
+					<TableCellLink to={route(ROUTES.admin.users.detail.page, user.id)} text={user.username} />
 				) : (
 					<Text variant="body3-accent">{v}</Text>
 				)}
