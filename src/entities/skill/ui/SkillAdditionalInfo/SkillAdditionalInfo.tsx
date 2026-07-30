@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Questions } from '@/shared/config';
-import { useCurrentProject, useScreenSize, formatDate, route } from '@/shared/libs';
+import { useCurrentProject, formatDate, route } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Card } from '@/shared/ui/Card';
@@ -35,7 +35,6 @@ export const SkillAdditionalInfo = ({
 	className,
 }: SkillAdditionalInfoProps) => {
 	const navigate = useNavigate();
-	const { isMobile, isTablet } = useScreenSize();
 
 	const { t } = useTranslation(i18Namespace.questions);
 	const onMoveToSpecializationPage = (specializationId: number) => {
@@ -79,10 +78,7 @@ export const SkillAdditionalInfo = ({
 
 				<Flex direction="column" gap="8">
 					<Text variant="body2" color="black-700">
-						Автор:{' '}
-						{showAuthor && createdBy && (isMobile || isTablet) && (
-							<AuthorInfo createdBy={createdBy || 'Не указан'} />
-						)}
+						{showAuthor && createdBy ? <AuthorInfo createdBy={createdBy} /> : <span>Автор: -</span>}
 					</Text>
 				</Flex>
 			</Flex>
