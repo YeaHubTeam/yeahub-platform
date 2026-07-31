@@ -55,5 +55,12 @@
 				"title": "My specializations"
 			}
 		}
+	},
+	"stub": {
+		"edit.access": {
+			"title": "No access to edit specialization",
+			"subtitle": "You are not the creator of this specialization, so editing is not available",
+			"submit": "Return to the specializations table"
+		}
 	}
 }

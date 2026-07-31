@@ -161,6 +161,11 @@
 			"title": "Failed to load task data",
 			"subtitle": "Try again or refresh the page",
 			"buttonText": "Try again"
+		},
+		"edit.access": {
+			"title": "Network access for editing tasks",
+			"subtitle": "You are not the creator of this task, so editing is not available",
+			"submit": "Return to the task table"
 		}
 	},
 	"table": {
