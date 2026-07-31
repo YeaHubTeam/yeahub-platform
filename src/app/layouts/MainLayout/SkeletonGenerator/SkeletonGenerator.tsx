@@ -45,6 +45,7 @@ const SkeletonGenerator = () => {
 		!matchPath(ROUTES.admin.questions.details.page, ROUTES.admin.questions.create.page);
 	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
 	const isCompanyDetailsPage = matchPath(ROUTES.admin.companies.details.page, location.pathname);
+	const isUserDetailPage = matchPath(ROUTES.admin.users.detail.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -60,6 +61,10 @@ const SkeletonGenerator = () => {
 
 	if (isCompanyDetailsPage) {
 		return <CompanyDetailPageSkeleton />;
+	}
+
+	if (isUserDetailPage) {
+		return <UserDetailPageSkeleton />;
 	}
 
 	switch (location.pathname) {
@@ -93,8 +98,6 @@ const SkeletonGenerator = () => {
 			return <SkillsPageSkeleton />;
 		case ROUTES.admin.users.page:
 			return <UsersTablePageSkeleton />;
-		case ROUTES.admin.users.detail.page:
-			return <UserDetailPageSkeleton />;
 		case ROUTES.admin.collections.page:
 			return <CollectionsPageSkeleton />;
 		case ROUTES.admin.companies.page:
