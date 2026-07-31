@@ -100,7 +100,7 @@ export const MainLayout = ({ sidebarItems, onlyAdmin }: MainLayoutProps) => {
 								<WithFeature featureId="nyBanner">
 									<NYBanner isOpenBanner={!isOpenNYBanner} lsKey={LS_BANNER_NY_DASHBOARD_KEY} />
 								</WithFeature>
-								<WithFeature featureId="nyModal">
+								<WithFeature featureId="dashboard.subscription.show-ny-modal">
 									<NYModal isOpenModal={!isOpenNYModal} />
 								</WithFeature>
 								<Breadcrumbs />
