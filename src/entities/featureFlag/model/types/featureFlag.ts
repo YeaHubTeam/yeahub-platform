@@ -4,11 +4,11 @@ import { RoleName } from '@/entities/auth/@x/featureFlag';
 
 export type FeatureFlagType =
 	| 'dashboard.subscription.show-ny-banner'
-	| 'nyModal'
-	| 'usersRating'
-	| 'changeLanguage'
-	| 'changeTheme';
-
+	| 'dashboard.subscription.show-ny-modal'
+	| 'dashboard.analytic.user-rating'
+	| 'common.app.change-language'
+	| 'common.app.change-theme'
+	| 'dashboard.subscription.show-tariffs';
 export interface FeatureFlag {
 	id: FeatureFlagType;
 	roles?: RoleName[];

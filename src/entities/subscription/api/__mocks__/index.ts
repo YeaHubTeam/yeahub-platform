@@ -1,3 +1,4 @@
 import { subscriptionsMock } from './subscriptionsMock';
+import { subscriptionByUserIdMock } from './subscriptionUserIdMock';
 
-export const subscriptionHandlers = [subscriptionsMock];
+export const subscriptionHandlers = [subscriptionsMock, subscriptionByUserIdMock];

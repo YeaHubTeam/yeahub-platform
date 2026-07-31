@@ -1,3 +1,3 @@
 export const createFeatureFlagApiUrls = {
-	createFeatureFlag: `/feature-flags`,
+	createFeatureFlag: `feature-flags`,
 };

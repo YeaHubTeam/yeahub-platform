@@ -21,7 +21,7 @@
 
 .title {
   margin: 0;
-  color: var(--text-color-black-landing);
+  color: var(--color-black-1000);
   line-height: 75px;
   text-transform: uppercase;
   font-weight: var(--font-weight-500);

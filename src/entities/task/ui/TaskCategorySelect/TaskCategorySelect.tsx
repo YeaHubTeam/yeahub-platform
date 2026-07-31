@@ -8,7 +8,7 @@ import { SelectWithChips } from '@/shared/ui/SelectWithChips';
 import { useGetTaskCategoriesQuery } from '../../api/taskApi';
 import { taskCategories } from '../../model/constants/task';
 
-type TaskCategorySelectProps = Omit<
+export type TaskCategorySelectProps = Omit<
 	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
 > & {
