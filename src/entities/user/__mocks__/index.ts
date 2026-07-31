@@ -1,5 +1,6 @@
 import { usersListMock } from './userListMock';
 import { userProfilePositionMock } from './userProfilePositionMock';
+import { userRolesListMock } from './userRolesListMock';
 import { usersRatingBySpecializationMock } from './usersRatingBySpecializationMock';
 import { usersRatingMock } from './usersRatingMock';
 import { usersRatingStatsMock } from './usersRatingStatsMock';
@@ -11,7 +12,7 @@ export const usersRatingHandlers = [
 	usersRatingStatsMock,
 ];
 
-export const userHandlers = [usersListMock];
+export const userHandlers = [usersListMock, userRolesListMock];
 export { userRolesMock } from './data/userRolesMock';
 
 export {
