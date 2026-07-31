@@ -5,14 +5,14 @@ import { FeatureFlagApiItem } from '../../../model/types/featureFlag';
 export const featureFlagsMock: Response<FeatureFlagApiItem[]> = {
 	data: [
 		{
-			id: 'nyBanner',
-			flag: 'Новогодний баннер',
+			id: '48f4a6dc-e39f-4ce9-b7c3-ab1c665a4f0b',
+			flag: 'dashboard.subscription.show-ny-banner',
 			enabled: false,
-			description: 'Скидки на подписку для всех новых пользователей',
-			roles: ['admin'],
+			description: 'Новогодний баннер со скидками на подписку',
 			clientType: 'WEB',
-			createdAt: '2025-12-01T00:00:00.000Z',
-			updatedAt: '2025-12-01T00:00:00.000Z',
+			createdAt: '2026-05-28T06:15:37.070Z',
+			updatedAt: '2026-07-15T10:37:02.924Z',
+			roles: [],
 		},
 		{
 			id: '95268ab0-3ea7-43a0-b67c-66a621794220',
@@ -27,7 +27,7 @@ export const featureFlagsMock: Response<FeatureFlagApiItem[]> = {
 		{
 			id: '67003559-016b-4444-a1c4-9287dcfdfa50',
 			flag: 'dashboard.analytic.user-rating',
-			enabled: false,
+			enabled: true,
 			description: 'Фича флаг для показа виджета рейтинга пользователей',
 			roles: ['admin'],
 			clientType: 'WEB',
