@@ -1,1 +1,0 @@
-export { AdvantagesList } from './AdvantagesList';

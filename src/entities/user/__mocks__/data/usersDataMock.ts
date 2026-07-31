@@ -2,8 +2,106 @@ import { Response } from '@/shared/libs';
 
 import type { User } from '../../model/types/user';
 
+import { userRolesMock } from './userRolesMock';
+
+export const adminUser: User = {
+	id: '7d0f8f58-987e-482a-913d-e1c429d2d842',
+	username: 'adminadminov4995',
+	telegramUsername: null,
+	country: '',
+	city: 'spppb',
+	email: 'admin@yeahub.ru',
+	birthday: null,
+	address: '',
+	avatarUrl:
+		'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/users_avatars/dae97d47-514a-46b1-b8ea-11c75327ebe9',
+	createdAt: '2025-02-20T08:04:24.006Z',
+	updatedAt: '2025-02-20T08:04:24.006Z',
+	isVerified: true,
+	userRoles: [
+		userRolesMock.find((role) => role.id === 4)!,
+		userRolesMock.find((role) => role.id === 6)!,
+	],
+};
+
+export const authorUser: User = {
+	id: 'b26dc4c3-4a7e-479e-a852-d39dd85bf08e',
+	username: 'author',
+	telegramUsername: null,
+	country: '',
+	city: '',
+	email: 'author@yeahub.ru',
+	birthday: null,
+	address: '',
+	avatarUrl: '',
+	createdAt: '2025-07-09T18:38:02.203Z',
+	updatedAt: '2025-07-09T18:38:02.203Z',
+	isVerified: true,
+	userRoles: [
+		userRolesMock.find((role) => role.id === 8)!,
+		userRolesMock.find((role) => role.id === 6)!,
+	],
+};
+
+export const userFreeUser: User = {
+	id: '3ee85b3d-0c09-4a55-bdf1-f6a55ab1c3ee',
+	username: 'yuzerbesplatnyj',
+	telegramUsername: null,
+	country: '',
+	city: '123456789012345678990123111123845678901234567890123111123456789012345678901231111234567890123456789012311112345678901234567890123111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111',
+	email: 'user-free@yeahub.ru',
+	birthday: null,
+	address: '',
+	avatarUrl:
+		'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/users_avatars/559d3df3-f179-4d43-8260-655fbf298ec2',
+	createdAt: '2025-02-20T08:03:36.468Z',
+	updatedAt: '2025-02-20T08:03:36.468Z',
+	isVerified: true,
+	userRoles: [userRolesMock.find((role) => role.id === 6)!],
+};
+
+export const userPremiumUser: User = {
+	id: '40b8f5bb-07d7-4fac-98ef-42ca16de4197',
+	username: 'yuzerpremium1',
+	telegramUsername: null,
+	country: '',
+	city: 'YeaHub1',
+	email: 'user-premium@yeahub.ru',
+	birthday: null,
+	address: '',
+	avatarUrl: '',
+	createdAt: '2025-02-20T08:02:57.032Z',
+	updatedAt: '2025-02-20T08:02:57.032Z',
+	isVerified: true,
+	userRoles: [
+		userRolesMock.find((role) => role.id === 3)!,
+		userRolesMock.find((role) => role.id === 7)!,
+	],
+};
+
+export const userUnverifiedUser: User = {
+	id: '74ea2763-c4ce-455a-8b2f-e2597722802a',
+	username: 'yuzernevirificirovannyrrw',
+	telegramUsername: null,
+	country: '',
+	city: '',
+	email: 'user-unverified@yeahub.ru',
+	birthday: null,
+	address: '',
+	avatarUrl: '',
+	createdAt: '2025-02-20T08:04:53.931Z',
+	updatedAt: '2025-02-20T08:04:53.931Z',
+	isVerified: false,
+	userRoles: [userRolesMock.find((role) => role.id === 6)!],
+};
+
 export const usersDataMock: Response<User[]> = {
 	data: [
+		adminUser,
+		authorUser,
+		userFreeUser,
+		userPremiumUser,
+		userUnverifiedUser,
 		{
 			id: '0090dc74-0086-45b2-9965-5b17544fe30e',
 			username: 'user_bzvkytmfob',
