@@ -89,7 +89,12 @@
 		},
 		"empty": {
 			"title": "It looks like there is no data here yet",
-			"subtitle": "Data is added periodically, you just have to wait a bit"
+			"subtitle": "Data is added periodically, you just have to wait a bit",
+			"collection": {
+				"title": "It looks like there are no collection data",
+				"subtitle": "Try refreshing the page or repeating the request",
+				"submit": "Try again"
+			}
 		},
 		"access.denied": {
 			"default": {

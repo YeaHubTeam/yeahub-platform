@@ -18,6 +18,7 @@ import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
 import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
+import { UserDetailPageSkeleton } from '@/pages/admin/user/userDetail';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
 import { DifficultQuestionsPageSkeleton } from '@/pages/analytics/difficultQuestions';
@@ -45,6 +46,7 @@ const SkeletonGenerator = () => {
 		!matchPath(ROUTES.admin.questions.details.page, ROUTES.admin.questions.create.page);
 	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
 	const isCompanyDetailsPage = matchPath(ROUTES.admin.companies.details.page, location.pathname);
+	const isUserDetailPage = matchPath(ROUTES.admin.users.detail.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -60,6 +62,10 @@ const SkeletonGenerator = () => {
 
 	if (isCompanyDetailsPage) {
 		return <CompanyDetailPageSkeleton />;
+	}
+
+	if (isUserDetailPage) {
+		return <UserDetailPageSkeleton />;
 	}
 
 	switch (location.pathname) {
