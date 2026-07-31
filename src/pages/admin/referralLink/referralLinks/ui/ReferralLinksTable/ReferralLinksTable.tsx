@@ -50,22 +50,14 @@ export const ReferralLinksTable = ({
 					text={ref.refCode}
 				/>
 			),
-			url: ref.url,
-			ownerUsername: ref.ownerUsername,
-			linkedCount: ref.linkedCount,
-			amountSum: ref.amountSum,
-			createdAt: new Date(ref.createdAt).toLocaleDateString(),
+			url: <TableCellLink to={ref.url} text={ref.url} />,
+			ownerUsername: <Text variant="body3-accent">{ref.ownerUsername}</Text>,
+			linkedCount: <Text variant="body3-accent">{ref.linkedCount}</Text>,
+			amountSum: <Text variant="body3-accent">{ref.amountSum}</Text>,
+			createdAt: <Text variant="body3-accent">{new Date(ref.createdAt).toLocaleDateString()}</Text>,
 		};
 
-		return Object.entries(columns).map(([k, v]) => (
-			<td key={k}>
-				{typeof v === 'string' || typeof v === 'number' ? (
-					<Text variant="body3-accent">{v}</Text>
-				) : (
-					v
-				)}
-			</td>
-		));
+		return Object.entries(columns).map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (ref: ReferralLink) => {

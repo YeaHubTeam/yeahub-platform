@@ -47,19 +47,17 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 
 	const renderTableBody = (skill: Skill) => {
 		const columns = {
-			title: skill.title,
-			description: skill.description,
+			title: (
+				<TableCellLink to={route(ROUTES.admin.skills.detail.page, skill.id)} text={skill.title} />
+			),
+			description: (
+				<Text className={styles.description} variant="body3-accent">
+					{skill.description}
+				</Text>
+			),
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k} className={k === 'description' ? styles.description : undefined}>
-				{k === 'title' ? (
-					<TableCellLink to={route(ROUTES.admin.skills.detail.page, skill.id)} text={skill.title} />
-				) : (
-					<Text variant="body3-accent">{v}</Text>
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (skill: Skill) => {

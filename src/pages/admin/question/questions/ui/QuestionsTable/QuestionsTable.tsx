@@ -64,7 +64,12 @@ export const QuestionsTable = ({
 
 	const renderTableBody = (question: Question) => {
 		const columns = {
-			title: question.title,
+			title: (
+				<TableCellLink
+					to={route(ROUTES.admin.questions.details.route, question.id)}
+					text={question.title}
+				/>
+			),
 			specialization: (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
@@ -92,18 +97,7 @@ export const QuestionsTable = ({
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => {
-			return (
-				<td key={k}>
-					{k === 'title' ? (
-						<TableCellLink
-							to={route(ROUTES.admin.questions.details.route, question.id)}
-							text={question.title}
-						/>
-					) : (
-						v
-					)}
-				</td>
-			);
+			return <td key={k}>{v}</td>;
 		});
 	};
 

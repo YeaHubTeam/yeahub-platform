@@ -45,20 +45,14 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 
 	const renderTableBody = (user: User) => {
 		const columns = {
-			username: `${user.username}`,
-			email: user.email,
+			username: (
+				<TableCellLink to={route(ROUTES.admin.users.detail.page, user.id)} text={user.username} />
+			),
+			email: <Text variant="body3-accent">{user.email}</Text>,
 			roles: <UserRolesList userRoles={user.userRoles?.map((role) => role.name) ?? []} />,
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'username' ? (
-					<TableCellLink to={route(ROUTES.admin.users.detail.page, user.id)} text={user.username} />
-				) : (
-					<Text variant="body3-accent">{v}</Text>
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (user: User) => {

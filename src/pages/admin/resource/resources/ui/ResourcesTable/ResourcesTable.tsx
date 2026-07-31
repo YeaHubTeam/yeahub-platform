@@ -58,8 +58,13 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 
 	const renderTableBody = (resource: Resource) => {
 		const columns = {
-			title: resource.name,
-			description: resource.description,
+			title: (
+				<TableCellLink
+					to={route(ROUTES.admin.resources.details.route, resource.id)}
+					text={resource.name}
+				/>
+			),
+			description: <Text variant="body3-accent">{resource.description}</Text>,
 			type: t(`resourceTypes.${resource.type.code}`, { ns: i18Namespace.marketplace }),
 			specialization: (
 				<TableCellEntityList
@@ -70,18 +75,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			),
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
-					<TableCellLink
-						to={route(ROUTES.admin.resources.details.route, resource.id)}
-						text={resource.name}
-					/>
-				) : (
-					<Text variant="body3-accent">{v}</Text>
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (resource: UIResource) => {

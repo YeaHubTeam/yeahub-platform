@@ -49,22 +49,16 @@ export const SpecializationsTable = ({
 
 	const renderTableBody = (specialization: Specialization) => {
 		const columns = {
-			title: specialization.title,
-			description: specialization.description,
+			title: (
+				<TableCellLink
+					to={route(ROUTES.admin.specializations.details.page, specialization.id)}
+					text={specialization.title}
+				/>
+			),
+			description: <Text variant="body3-accent">{specialization.description}</Text>,
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
-					<TableCellLink
-						to={route(ROUTES.admin.specializations.details.page, specialization.id)}
-						text={specialization.title}
-					/>
-				) : (
-					<Text variant="body3-accent">{v}</Text>
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (specialization: Specialization) => {

@@ -68,7 +68,12 @@ export const ResourceRequestsTable = ({
 	const renderTableBody = (request: ResourceRequest) => {
 		const resourceType = request.requestPayload.type || '';
 		const columns = {
-			title: request.requestPayload.name,
+			title: (
+				<TableCellLink
+					to={route(ROUTES.admin.resources.requests.view.page, request.id)}
+					text={request.requestPayload.name}
+				/>
+			),
 			status: (
 				<div className={styles['status-cell']}>
 					<ResourceRequestStatusChip status={request.status} />
@@ -86,20 +91,7 @@ export const ResourceRequestsTable = ({
 				defaultValue: resourceType,
 			}),
 		};
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
-					<TableCellLink
-						to={route(ROUTES.admin.resources.requests.view.page, request.id)}
-						text={request.requestPayload.name}
-						variant="body3"
-						color="purple-700"
-					/>
-				) : (
-					v
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (resource: UIResource) => {
