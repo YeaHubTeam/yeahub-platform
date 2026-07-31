@@ -1,12 +1,4 @@
-import { FeatureFlags, ClientType } from '../types/featureFlag';
-
-export const featureFlags: FeatureFlags = {
-	nyBanner: {
-		id: 'nyBanner',
-		enabled: false,
-		description: 'Новогодний баннер со скидками на подписку',
-	},
-};
+import { ClientType } from '../types/featureFlag';
 
 export const featureFlagApiUrls = {
 	getFeatureFlagsList: 'feature-flags',
