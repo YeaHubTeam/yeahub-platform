@@ -1,2 +1,2 @@
 export { CollectionPage } from './ui/CollectionPage/CollectionPage';
-export { CollectionPageContentSkeleton } from './ui/CollectionPageContent/CollectionPageContent.skeleton';
+export { CollectionPageSkeleton } from './ui/CollectionPage/CollectionPage.skeleton';

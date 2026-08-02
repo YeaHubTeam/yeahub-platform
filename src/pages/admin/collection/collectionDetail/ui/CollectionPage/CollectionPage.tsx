@@ -64,7 +64,7 @@ export const CollectionPage = () => {
 	};
 
 	const isDisabled = isAuthor && collection?.createdBy?.id !== userId;
-	const content = (
+	const content = collection ? (
 		<CollectionPageContent
 			collection={collection}
 			questions={questions}
@@ -72,13 +72,12 @@ export const CollectionPage = () => {
 			isDisabled={isDisabled}
 			isLoading={isLoading}
 		/>
-	);
+	) : null;
 
 	return (
 		<PageWrapper
 			roles={['admin', 'author']}
 			isLoading={isLoading || isFetching}
-			// isLoading={true}
 			hasError={isCollectionError || isQuestionsError}
 			hasData={hasData}
 			stubs={stubs}

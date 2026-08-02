@@ -22,12 +22,10 @@ import {
 } from '@/widgets/Collection';
 import { TasksController } from '@/widgets/task/TasksList';
 
-import { CollectionPageSkeleton } from '../CollectionPage/CollectionPage.skeleton';
-
 import styles from './CollectionPageContent.module.css';
 
 interface CollectionPageContentProps {
-	collection: Collection | undefined;
+	collection: Collection;
 	questions: Question[];
 	tasks?: Task[];
 	isDisabled: boolean;
@@ -39,14 +37,9 @@ export const CollectionPageContent = ({
 	questions,
 	tasks,
 	isDisabled,
-	isLoading,
 }: CollectionPageContentProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const { isSmallScreen } = useScreenSize();
-
-	if (isLoading || !collection) {
-		return <CollectionPageSkeleton />;
-	}
 
 	const {
 		createdBy,

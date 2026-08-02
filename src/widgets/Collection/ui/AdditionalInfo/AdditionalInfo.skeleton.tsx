@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { useScreenSize } from '@/shared/libs';
 import { AuthorInfoSkeleton } from '@/shared/ui/AuthorInfo';
 import { BaseFilterSectionSkeleton } from '@/shared/ui/BaseFilterSection';
-import { Card } from '@/shared/ui/Card';
+import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChipSkeleton } from '@/shared/ui/StatusChip';
 import { TextSkeleton } from '@/shared/ui/Text';
@@ -14,7 +14,7 @@ export const AdditionalInfoSkeleton = ({ className }: { className?: string }) =>
 	const { isLargeScreen, isSmallScreen } = useScreenSize();
 	return (
 		<>
-			<Card className={classNames(styles.wrapper, className)}>
+			<CardSkeleton className={classNames(styles.wrapper, className)}>
 				<Flex direction="column" gap="24">
 					<Flex direction="column" gap="8">
 						<TextSkeleton variant="body3" width={62} />
@@ -27,7 +27,7 @@ export const AdditionalInfoSkeleton = ({ className }: { className?: string }) =>
 					<BaseFilterSectionSkeleton length={1} />
 					{isSmallScreen && <AuthorInfoSkeleton />}
 				</Flex>
-			</Card>
+			</CardSkeleton>
 
 			{isLargeScreen && <AuthorInfoSkeleton isCenter />}
 		</>
