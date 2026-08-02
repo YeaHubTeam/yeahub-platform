@@ -3,7 +3,7 @@ import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Topics, Translation } from '@/shared/config';
 import { route } from '@/shared/libs';
-import { BackButton } from '@/shared/ui/BackButton';
+import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -25,8 +25,7 @@ const TopicDetailPage = () => {
 	const content = hasTopic ? (
 		<>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
-				<BackButton />
-				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+				<BackHeader>
 					<DeleteTopicButton topicId={topic.id} isDetailPage />
 					<NavLink
 						style={{ marginLeft: 'auto' }}
@@ -34,13 +33,14 @@ const TopicDetailPage = () => {
 					>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
-				</Flex>
+				</BackHeader>
 			</Flex>
 
 			<Flex gap="20" direction="row">
 				<TopicCard topic={topic} />
 				<TopicAdditionalInfo topic={topic} />
 			</Flex>
+			<TopicDetailPageSkeleton />
 		</>
 	) : null;
 

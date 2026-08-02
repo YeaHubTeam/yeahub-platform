@@ -4,7 +4,6 @@ import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapperSkeleton } from '@/shared/ui/ImageWithWrapper';
 import { Skeleton } from '@/shared/ui/Skeleton';
-import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './SpecializationCard.module.css';
 
@@ -24,7 +23,7 @@ export const SpecializationCardSkeleton = () => {
 				</CardSkeleton>
 				<CardSkeleton withOutsideShadow>
 					<Flex direction="column" gap="20">
-						<TextSkeleton variant="body2" width={250} />
+						<Skeleton width={250} />
 						<Skeleton height={44} />
 					</Flex>
 				</CardSkeleton>
