@@ -6,6 +6,7 @@ import { Loader } from '@/shared/ui/Loader';
 import { CollectionCreateFormSkeleton } from '@/features/collections/createCollection';
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
+import { SpecializationCreateFormSkeleton } from '@/features/specialization/createSpecialization';
 
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
@@ -90,6 +91,8 @@ const SkeletonGenerator = () => {
 			return <QuestionCreateFormSkeleton />;
 		case ROUTES.admin.collections.create.page:
 			return <CollectionCreateFormSkeleton />;
+		case ROUTES.admin.specializations.create.page:
+			return <SpecializationCreateFormSkeleton />;
 		case ROUTES.admin.questions.page:
 			return <QuestionsTablePageSkeleton />;
 		case ROUTES.admin.specializations.page:
