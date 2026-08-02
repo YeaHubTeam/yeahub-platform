@@ -23,7 +23,7 @@ export const SpecializationForm = ({ isEdit }: SpecializationFormProps) => {
 
 	return (
 		<Flex direction="column" className={styles.wrapper}>
-			<Text variant="body3-strong">
+			<Text variant="body6" className={styles['title-form']}>
 				{isEdit ? t(Specializations.EDIT_PAGE_TITLE) : t(Specializations.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="40">
