@@ -5,10 +5,10 @@ import { SkillsBlockListSkeleton } from '../SkillsBlockList/SkillsBlockList.skel
 
 import styles from './SkillsBlock.module.css';
 
-export const SkillsBlockSkeleton = () => {
+export const SkillsBlockSkeleton = ({ isEdit }: { isEdit?: boolean }) => {
 	return (
 		<Card className={styles['card-skeleton']}>
-			<SkillsBlockHeaderSkeleton />
+			<SkillsBlockHeaderSkeleton isEdit={isEdit} />
 			<SkillsBlockListSkeleton />
 		</Card>
 	);

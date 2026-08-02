@@ -1,4 +1,4 @@
-import { Card } from '@/shared/ui/Card';
+import { CardSkeleton } from '@/shared/ui/Card';
 
 import { UserEditButtonSkeleton } from '@/entities/user';
 
@@ -7,14 +7,16 @@ import { UserInfoBlockSkeleton } from '../UserInfoBlock';
 
 import styles from './UserBlock.module.css';
 
-export const UserBlockSkeleton = () => {
+export const UserBlockSkeleton = ({ isEdit }: { isEdit?: boolean }) => {
 	return (
-		<Card className={styles['profile-card-skeleton']}>
-			<div className={styles['flex-profile-skeleton']}>
-				<UserImageBlockSkeleton />
-				<UserInfoBlockSkeleton />
-				<UserEditButtonSkeleton />
+		<CardSkeleton withOutsideShadow>
+			<div className={styles.card}>
+				<div className={styles['user-data']}>
+					<UserImageBlockSkeleton />
+					<UserInfoBlockSkeleton />
+				</div>
+				{isEdit && <UserEditButtonSkeleton />}
 			</div>
-		</Card>
+		</CardSkeleton>
 	);
 };

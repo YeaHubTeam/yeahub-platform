@@ -11,6 +11,8 @@ import { InfoBlock } from '@/widgets/Profile/InfoBlock';
 import { SkillsBlock } from '@/widgets/Profile/SkillsBlock';
 import { UserBlock } from '@/widgets/Profile/UserBlock';
 
+import { UserProfilePageSkeleton } from '@/pages/profile/userProfile';
+
 import styles from './UserProfilePage.module.css';
 
 export const UserProfilePage = () => {
@@ -29,14 +31,14 @@ export const UserProfilePage = () => {
 
 	return (
 		profile && (
-			<div className={styles['content']}>
+			<>
 				<div className={styles['main-content']}>
 					<UserBlock profile={profile} profileSpecialization={profileSpecialization} />
 					<InfoBlock description={description} />
 					<SkillsBlock skillsList={profileSkills} />
 				</div>
-				<div className={styles['side-content-tmp']}></div>
-			</div>
+				<UserProfilePageSkeleton />
+			</>
 		)
 	);
 };

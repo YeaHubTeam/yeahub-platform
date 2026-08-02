@@ -12,17 +12,6 @@
   width: 100%;
 }
 
-.profile-card-skeleton {
-  gap: 0;
-  padding: 16px;
-  height: auto;
-}
-
-.flex-profile-skeleton {
-  display: flex;
-  gap: 16px;
-}
-
 @media (width <= 768px) {
   .card {
     flex-direction: column;
@@ -38,11 +27,5 @@
     flex-direction: column;
     order: 2;
     width: 100%;
-  }
-}
-
-@media (width <=720px) {
-  .flex-profile-skeleton {
-    flex-direction: column;
   }
 }

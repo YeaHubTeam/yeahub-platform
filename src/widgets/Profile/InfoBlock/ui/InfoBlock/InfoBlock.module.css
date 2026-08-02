@@ -8,9 +8,3 @@
 .container {
   height: auto;
 }
-
-.card-skeleton {
-  gap: 0;
-  padding: 24px;
-  height: auto;
-}

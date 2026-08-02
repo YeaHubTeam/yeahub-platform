@@ -1,13 +1,9 @@
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { ButtonSkeleton } from '@/shared/ui/Button';
 
 import styles from './UserEditButton.module.css';
 
 export const UserEditButtonSkeleton = () => {
 	return (
-		<div style={{ flex: '1 0' }} className={styles['skeleton-link-profile']}>
-			<div className={styles['skeleton-link']}>
-				<Skeleton width="100%" height="100%" />
-			</div>
-		</div>
+		<ButtonSkeleton variant="link" fullWidth={true} className={styles['card-edit']} width={20} />
 	);
 };

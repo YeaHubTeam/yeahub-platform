@@ -6,12 +6,10 @@ import styles from './ProfilePage.module.css';
 
 export const ProfilePageSkeleton = () => {
 	return (
-		<div className={styles.content}>
-			<div className={styles.container}>
-				<UserBlockSkeleton />
-				<InfoBlockSkeleton />
-				<SkillsBlockSkeleton />
-			</div>
+		<div className={styles['main-content']}>
+			<UserBlockSkeleton isEdit />
+			<InfoBlockSkeleton isEdit />
+			<SkillsBlockSkeleton isEdit />
 		</div>
 	);
 };
