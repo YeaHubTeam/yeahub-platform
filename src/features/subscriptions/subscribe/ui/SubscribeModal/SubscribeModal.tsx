@@ -43,12 +43,18 @@ export const SubscribeModal = ({ isOpen, onClose, subscriptionId }: SubscribeMod
 		mode: 'onTouched',
 		defaultValues: {
 			email: profile.email ?? '',
+			isOfferAgreed: false,
+			isConsentAgreed: false,
 		},
 	});
 
 	const { control, trigger, watch } = methods;
 
 	const email = watch('email');
+	const isOfferAgreed = watch('isOfferAgreed');
+	const isConsentAgreed = watch('isConsentAgreed');
+
+	const isSubsribeDisabled = !isOfferAgreed || !isConsentAgreed;
 
 	const offerAgreementParts = parseI18nText(
 		t(Subscription.SUBSCRIBE_MODAL_PRIVACY_OFFER_AGREEMENT),
@@ -148,7 +154,7 @@ export const SubscribeModal = ({ isOpen, onClose, subscriptionId }: SubscribeMod
 							</FormControl>
 						</Flex>
 					</Flex>
-					<Button size="large" fullWidth onClick={handleSubmit}>
+					<Button size="large" fullWidth onClick={handleSubmit} disabled={isSubsribeDisabled}>
 						{t(Subscription.SUBSCRIBE_MODAL_BUTTON)}
 					</Button>
 				</Flex>

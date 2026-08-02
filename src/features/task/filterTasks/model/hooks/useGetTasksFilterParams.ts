@@ -1,4 +1,4 @@
-import type { TaskDifficulty, TasksFilterParams } from '@/entities/task';
+import type { TaskCategoryCode, TaskDifficulty, TasksFilterParams } from '@/entities/task';
 
 export const useGetTasksFilterParams = (initialParams: TasksFilterParams) => {
 	const params = new URLSearchParams(location.search);
@@ -14,6 +14,7 @@ export const useGetTasksFilterParams = (initialParams: TasksFilterParams) => {
 			? parsedParams.langIds.split(',').map(Number)
 			: initialParams.langIds,
 		companyId: parsedParams.companyId || initialParams.companyId,
+		category: (parsedParams.category as TaskCategoryCode) || initialParams.category,
 	};
 
 	return currentParams;

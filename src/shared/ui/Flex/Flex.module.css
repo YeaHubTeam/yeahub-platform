@@ -62,6 +62,10 @@
   flex-wrap: nowrap;
 }
 
+.gap2 {
+  gap: 2px;
+}
+
 .gap4 {
   gap: 4px;
 }
@@ -124,6 +128,10 @@
 
 .gap52 {
   gap: 52px;
+}
+
+.gap56 {
+  gap: 56px;
 }
 
 .gap60 {

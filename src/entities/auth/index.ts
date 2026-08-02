@@ -24,8 +24,6 @@ export {
 } from './api/authApi';
 
 export { authHandlers } from './api/__mocks__';
-export { authMockProfilesByAccessToken } from './api/__mocks__/data';
-export { getMockAuthProfile } from './api/__mocks__/helpers/getMockAuthProfile';
 
 export { refreshMiddleware } from './api/refreshMiddleware';
 export { RegistrationLabel } from './ui/RegistrationLabel/RegistrationLabel';
