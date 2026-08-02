@@ -5,7 +5,7 @@ import { i18Namespace, Analytics } from '@/shared/config';
 import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getSpecializationId, getProfileId } from '@/entities/profile';
+import { getSpecializationId, getProfileId, getHasPremiumAccess } from '@/entities/profile';
 import {
 	useGetUserProfilePositionQuery,
 	useGetUsersRatingQuery,
@@ -26,6 +26,7 @@ export const UsersRatingPage = () => {
 	const { isMobile } = useScreenSize();
 
 	const profileId = useAppSelector(getProfileId);
+	const hasPremiumAccess = useAppSelector(getHasPremiumAccess);
 	const specializationId = useAppSelector(getSpecializationId);
 	const { filters, onChangePage, onResetFilters, onChangeSpecialization } = useAnalyticFilters({
 		specialization: specializationId,
@@ -59,7 +60,7 @@ export const UsersRatingPage = () => {
 		isError: isCurrentUserRatingError,
 		isLoading: isCurrentUserRatingLoading,
 		refetch: currentUserRatingRefetch,
-	} = useGetUserProfilePositionQuery(profileId);
+	} = useGetUserProfilePositionQuery(profileId, { skip: !hasPremiumAccess });
 
 	const usersOnPage = ratingData?.data ?? [];
 	const maxRating = statsData?.allQuestions ?? 0;

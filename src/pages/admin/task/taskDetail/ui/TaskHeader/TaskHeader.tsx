@@ -12,7 +12,7 @@ interface TaskHeaderProps {
 	name: string;
 	languages: ProgrammingLanguage[];
 	difficulty: TaskDifficulty;
-	category: TaskCategoryCode;
+	categories: TaskCategoryCode[];
 	companies: Company[];
 }
 
@@ -20,7 +20,7 @@ export const TaskHeader = ({
 	name,
 	languages,
 	difficulty,
-	category,
+	categories,
 	companies,
 }: TaskHeaderProps) => {
 	const { isMobile, isTablet } = useScreenSize();
@@ -35,7 +35,7 @@ export const TaskHeader = ({
 					<TaskAdditionalInfoDrawer
 						languages={languages}
 						difficulty={difficulty}
-						category={category}
+						categories={categories}
 						companies={companies}
 					/>
 				)}

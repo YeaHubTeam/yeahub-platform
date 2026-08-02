@@ -25,7 +25,7 @@ type TaskCardProps = {
 };
 
 export const TaskCard = ({ task, className }: TaskCardProps) => {
-	const { id, name, difficulty, mainCategory, status, supportedLanguages, canSolve, companies } =
+	const { id, name, difficulty, categories, status, supportedLanguages, canSolve, companies } =
 		task;
 	const { t } = useTranslation(i18Namespace.task);
 	const project = useCurrentProject();
@@ -69,7 +69,9 @@ export const TaskCard = ({ task, className }: TaskCardProps) => {
 							{project === 'platform' && <TaskStatusChip status={status} size="medium" />}
 							<TaskDifficultyChip difficulty={difficulty} />
 							<ProgrammingLanguageList languages={supportedLanguages} />
-							<TaskCategoryChip category={mainCategory} />
+							{categories.map((category) => (
+								<TaskCategoryChip key={category} category={category} />
+							))}
 							<CompanyCompactList companies={companies} />
 						</Flex>
 					</Flex>
