@@ -15,6 +15,7 @@ export {
 	useGetUserRolesListQuery,
 } from './api/userApi';
 export { UserCard } from './ui/UserCard/UserCard';
+export { UserCardSkeleton } from './ui/UserCard/UserCard.skeleton';
 export { RoleSelect } from './ui/RoleSelect/RoleSelect';
 export { UserEditButton } from './ui/UserEditButton/UserEditButton';
 export { UserRolesList } from './ui/UserRolesList/UserRolesList';

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Specializations, Translation, i18Namespace, ROUTES } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
@@ -8,6 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { Text } from '@/shared/ui/Text';
 
 import { Specialization } from '@/entities/specialization';
@@ -48,21 +49,16 @@ export const SpecializationsTable = ({
 
 	const renderTableBody = (specialization: Specialization) => {
 		const columns = {
-			title: specialization.title,
-			description: specialization.description,
+			title: (
+				<TableCellLink
+					to={route(ROUTES.admin.specializations.details.page, specialization.id)}
+					text={specialization.title}
+				/>
+			),
+			description: <Text variant="body3-accent">{specialization.description}</Text>,
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.specializations.details.page, specialization.id)}>
-						<Text variant="body3-accent">{v}</Text>
-					</Link>
-				) : (
-					<Text variant="body3-accent">{v}</Text>
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (specialization: Specialization) => {

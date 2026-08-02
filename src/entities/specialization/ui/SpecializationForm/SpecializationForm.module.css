@@ -11,17 +11,12 @@
   height: 180px;
 }
 
+.title-form{
+  margin-bottom: 32px;
+}
+
 .input-form {
   width: 100%;
-}
-
-.text-wrapper {
-  width: 100%;
-  max-width: 246px;
-}
-
-.specialization-input {
-  align-items: center;
 }
 
 .input-form input::placeholder {
@@ -32,12 +27,4 @@
 .input-form textarea::placeholder {
   color: var(--text-color-more-lightest);
   font-weight: var(--font-weight-500);
-}
-
-@media (width < 768px) { 
-  .specialization-input {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
 }
