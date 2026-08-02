@@ -9,5 +9,12 @@ interface TextAreaSkeletonProps {
 }
 
 export const TextAreaSkeleton = ({ className }: TextAreaSkeletonProps) => {
-	return <Skeleton className={classNames(styles.wrapper, className)} borderRadius={24} />;
+	return (
+		<Skeleton
+			className={classNames(styles.wrapper, className)}
+			borderRadius={24}
+			width="100%"
+			height={180}
+		/>
+	);
 };

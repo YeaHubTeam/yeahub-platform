@@ -10,6 +10,8 @@ import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { PopularSkillsList } from '../PopularSkillsList/PopularSkillsList';
 import { PopularSkillsPageTable } from '../PopularSkillsPageTable/PopularSkillsPageTable';
 
+import { PopularSkillsPageSkeleton } from './PopularSkillsPage.skeleton';
+
 export const PopularSkillsPage = () => {
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
@@ -39,6 +41,7 @@ export const PopularSkillsPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<PopularSkillsPageSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasData={hasData}
