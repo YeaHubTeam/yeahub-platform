@@ -30,6 +30,12 @@
   content: ''
 }
 
+.title-skeleton{
+  display: block;
+  width: 100%;
+  max-width: 380px;
+}
+
 .title-skeleton::before {
   display: none;
 }
