@@ -77,7 +77,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			description: (
 				<TableCellWithTooltip title={skill.description}>{skill.description}</TableCellWithTooltip>
 			),
-			author: skill.createdBy?.username,
+			author: skill.createdBy?.username || '-',
 			createdAt: skill.createdAt ? formatDate(new Date(skill.createdAt), 'dd.MM.yyyy') : '',
 		};
 
