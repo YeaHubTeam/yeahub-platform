@@ -87,7 +87,7 @@ export const UserCard = ({ user, disabledEditRole = true }: UserCardProps) => {
 							<Input disabled type="text" placeholder={user.email} />
 						</FormField>
 						<FormField label={t(Users.ADDRESS)}>
-							<Flex direction="column" gap="20">
+							<Flex direction="column" gap="20" maxWidth>
 								<Input disabled type="text" placeholder={user.country} />
 								<Input disabled type="text" placeholder={user.city} />
 								<Input disabled type="text" placeholder={user.address} />

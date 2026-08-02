@@ -9,7 +9,9 @@ export {
 	useGetSpecializationsGeneralProgressQuery,
 } from './api/specializationApi';
 export { SpecializationCard } from './ui/SpecializationCard/SpecializationCard';
+export { SpecializationCardSkeleton } from './ui/SpecializationCard/SpecializationCard.skeleton';
 export { SpecializationForm } from './ui/SpecializationForm/SpecializationForm';
+export { SpecializationFormSkeleton } from './ui/SpecializationForm/SpecializationForm.skeleton';
 export { SpecializationSelect } from './ui/SpecializationSelect/SpecializationSelect';
 export { SpecializationSelectSkeleton } from './ui/SpecializationSelect/SpecializationSelect.skeleton';
 export { SpecializationsListField } from './ui/SpecializationsListField/SpecializationsListField';

@@ -89,7 +89,12 @@
 		},
 		"empty": {
 			"title": "It looks like there is no data here yet",
-			"subtitle": "Data is added periodically, you just have to wait a bit"
+			"subtitle": "Data is added periodically, you just have to wait a bit",
+			"collection": {
+				"title": "It looks like there are no collection data",
+				"subtitle": "Try refreshing the page or repeating the request",
+				"submit": "Try again"
+			}
 		},
 		"access.denied": {
 			"default": {
@@ -120,7 +125,9 @@
 			"description": "You have unsaved data. Do you want to continue?"
 		},
 		"delete": {
-			"title": "Do you really want to delete elements?"
+			"title": "Do you really want to delete elements?",
+			"confirmation_one": "Do you really want to delete {{count}} element",
+			"confirmation_other": "Do you really want to delete {{count}} elements"
 		},
 		"actions": {
 			"ok": "Yes",
@@ -532,6 +539,9 @@
 					"user": {
 						"verified": "Route is available for verified users!"
 					}
+				},
+				"rightsAcsses": {
+					"conflict": "Admin or author required"
 				},
 				"topic": {
 					"skill": {
