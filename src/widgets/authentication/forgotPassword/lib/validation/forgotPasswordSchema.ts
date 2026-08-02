@@ -1,10 +1,11 @@
 import * as yup from 'yup';
 
 import { i18n, Translation } from '@/shared/config';
+import { emailRule } from '@/shared/libs';
 
 export const forgotPasswordSchema = yup.object().shape({
 	username: yup
 		.string()
-		.matches(/^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, i18n.t(Translation.VALIDATION_EMAIL))
+		.matches(emailRule, i18n.t(Translation.VALIDATION_EMAIL))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 });
