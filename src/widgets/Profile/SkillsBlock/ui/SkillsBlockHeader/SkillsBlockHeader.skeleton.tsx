@@ -3,15 +3,11 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 
 import { UserEditButtonSkeleton } from '@/entities/user';
 
-import styles from './SkillsBlockHeader.module.css';
-
 export const SkillsBlockHeaderSkeleton = ({ isEdit }: { isEdit?: boolean }) => {
 	return (
-		<div className={styles['header-card-skeleton']}>
-			<Flex gap="16" justify="between">
-				<Skeleton width={81} height={27} />
-				{isEdit && <UserEditButtonSkeleton />}
-			</Flex>
-		</div>
+		<Flex gap="16" justify="between">
+			<Skeleton width={81} height={27} />
+			{isEdit && <UserEditButtonSkeleton />}
+		</Flex>
 	);
 };

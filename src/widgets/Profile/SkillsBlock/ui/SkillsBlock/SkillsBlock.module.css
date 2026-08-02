@@ -4,9 +4,3 @@
   gap: 20px;
   width: 100%;
 }
-
-.card-skeleton {
-  gap: 0;
-  padding: 24px;
-  height: auto;
-}
