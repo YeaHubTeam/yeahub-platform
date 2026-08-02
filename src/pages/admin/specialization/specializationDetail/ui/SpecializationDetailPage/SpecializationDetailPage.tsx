@@ -3,16 +3,17 @@ import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Specializations, Translation } from '@/shared/config';
 import { route } from '@/shared/libs';
-import { BackButton } from '@/shared/ui/BackButton';
+import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
-import { Loader } from '@/shared/ui/Loader';
 
 import { useGetSpecializationByIdQuery, SpecializationCard } from '@/entities/specialization';
 
 import { DeleteSpecializationButton } from '@/features/specialization/deleteSpecialization';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
+import { SpecializationDetailPageSkeleton } from './SpecializationDetailPage.skeleton';
 
 const SpecializationDetailPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
@@ -31,8 +32,7 @@ const SpecializationDetailPage = () => {
 		return (
 			<>
 				<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
-					<BackButton />
-					<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+					<BackHeader>
 						<DeleteSpecializationButton specializationId={specialization.id} isDetailPage />
 						<NavLink
 							style={{ marginLeft: 'auto' }}
@@ -40,7 +40,7 @@ const SpecializationDetailPage = () => {
 						>
 							<Button>{t(Translation.EDIT)}</Button>
 						</NavLink>
-					</Flex>
+					</BackHeader>
 				</Flex>
 				<SpecializationCard specialization={specialization} />
 			</>
@@ -63,7 +63,7 @@ const SpecializationDetailPage = () => {
 		<>
 			<PageWrapper
 				isLoading={isLoading}
-				skeleton={<Loader />}
+				skeleton={<SpecializationDetailPageSkeleton />}
 				hasError={isError}
 				hasData={hasData}
 				stubs={stubs}

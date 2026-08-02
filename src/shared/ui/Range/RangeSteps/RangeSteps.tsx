@@ -14,7 +14,7 @@ export const RangeSteps = () => {
 	for (let i = min; i <= max; i += step) {
 		steps.push(
 			<div key={i} className={styles['step']}>
-				<span>{i}</span>
+				<span className={styles['number']}>{i}</span>
 				<div className={styles['dot']}></div>
 			</div>,
 		);

@@ -4,7 +4,6 @@ export { ResponseButtons } from './ui/ResponseButtons/ResponseButtons';
 
 export {
 	useLazyCreateNewQuizQuery,
-	useLazyCreateNewMockPublicQuizQuery,
 	useLazyCreateNewMockQuizQuery,
 	useGetActiveQuizQuery,
 	useGetHistoryQuizQuery,
@@ -41,11 +40,7 @@ export {
 	clearActiveMockQuizState,
 } from './model/slices/activeQuizSlice';
 
-export {
-	LS_ACTIVE_QUIZZES_KEY,
-	LS_ACTIVE_MOCK_QUIZ_KEY,
-	LS_ACTIVE_MOCK_PUBLIC_QUIZ_KEY,
-} from './model/constants/quizConstants';
+export { LS_ACTIVE_QUIZZES_KEY, LS_ACTIVE_MOCK_QUIZ_KEY } from './model/constants/quizConstants';
 
 export { getValidActiveMockQuizFromLS } from './model/helpers/getValidActiveMockQuizFromLS';
 

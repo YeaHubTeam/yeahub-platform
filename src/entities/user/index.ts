@@ -15,6 +15,7 @@ export {
 	useGetUserRolesListQuery,
 } from './api/userApi';
 export { UserCard } from './ui/UserCard/UserCard';
+export { UserCardSkeleton } from './ui/UserCard/UserCard.skeleton';
 export { RoleSelect } from './ui/RoleSelect/RoleSelect';
 export { UserEditButton } from './ui/UserEditButton/UserEditButton';
 export { UserEditButtonSkeleton } from './ui/UserEditButton/UserEditButton.skeleton';
@@ -24,7 +25,6 @@ export { UserSelect } from './ui/UserSelect/UserSelect';
 export { UserSelectSkeleton } from './ui/UserSelect/UserSelect.skeleton';
 export { convertRoleNameToEnumKey } from './model/utils/convertRoleNameToEnumKey/convertRoleNameToEnumKey';
 export {
-	useGetUsersRatingBySpecializationQuery,
 	useGetUsersRatingQuery,
 	useGetUserProfilePositionQuery,
 	useGetUsersRatingStatsQuery,
@@ -36,4 +36,7 @@ export type {
 	GetUsersRatingResponse,
 	GetUsersRatingStatsResponse,
 } from './model/types/usersRating';
-export { usersRatingHandlers } from './__mocks__';
+
+export { usersRatingHandlers, userHandlers, userRolesMock } from './__mocks__';
+export { UserRolesListField } from './ui/UserRolesListField/UserRolesListField';
+export { UserRolesListFieldSkeleton } from './ui/UserRolesListField/UserRolesListField.skeleton';

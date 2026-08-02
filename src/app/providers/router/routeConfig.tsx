@@ -25,7 +25,6 @@ import { i18n, ROUTES, Translation } from '@/shared/config';
 
 import { listAdminRoles, RoleName } from '@/entities/auth';
 
-import { CollectionBlock } from '@/widgets/Landing/CollectionBlock';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate';
@@ -36,6 +35,8 @@ import { CompaniesTablePage } from '@/pages/admin/company/companies';
 import { CompanyCreatePage } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPage } from '@/pages/admin/company/companyDetail';
 import { CompanyEditPage } from '@/pages/admin/company/companyEdit';
+import { FeatureFlagCreatePage } from '@/pages/admin/featureFlag/featureFlagCreate';
+import { FeatureFlagDetailsPage } from '@/pages/admin/featureFlag/featureFlagDetail';
 import { FeatureFlagsPage } from '@/pages/admin/featureFlag/featureFlags';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
@@ -93,20 +94,6 @@ import { InterviewQuizPage } from '@/pages/interview/interviewQuiz';
 import { InterviewQuizResultPage } from '@/pages/interview/interviewQuizResult';
 import { InterviewStatisticsPage } from '@/pages/interview/interviewStatistics';
 import { MainPage } from '@/pages/interview/main';
-import { AvosPage } from '@/pages/landing/avos';
-import { CreatePublicQuizPage } from '@/pages/landing/createPublicQuiz';
-import { DocsPage } from '@/pages/landing/docs';
-import { HhAnalyticsPage } from '@/pages/landing/hhAnalytics';
-import { LandingPage } from '@/pages/landing/landing';
-import { LearningPage } from '@/pages/landing/learning';
-import { MediaPage } from '@/pages/landing/media';
-import { PublicCollectionPage } from '@/pages/landing/publicCollection';
-import { PublicCollectionsPage } from '@/pages/landing/publicCollections';
-import { PublicQuestionPage } from '@/pages/landing/publicQuestion';
-import { PublicQuestionsPage } from '@/pages/landing/publicQuestions';
-import { PublicQuizPage } from '@/pages/landing/publicQuiz';
-import { PublicQuizResultPage } from '@/pages/landing/publicQuizResult';
-import { PublicResourcesPage } from '@/pages/landing/publicResources';
 import { EditProfilePage } from '@/pages/profile/editProfile';
 import { ProfilePage } from '@/pages/profile/profileInfo';
 import { SettingsProfilePage } from '@/pages/profile/settings';
@@ -124,7 +111,6 @@ import { RequestInfoPage } from '@/pages/wiki/resource/resourceRequestDetail';
 import { ResourcesPage } from '@/pages/wiki/resource/resources';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
-import { LandingLayout } from '@/app/layouts/LandingLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from './AuthRoute';
@@ -320,94 +306,6 @@ const adminLayoutMenuItems: MenuItem[] = [
 ];
 
 export const router = createBrowserRouter([
-	{
-		path: process.env.LANDING_URL,
-		element: <LandingLayout />,
-		children: [
-			{
-				index: true,
-				element: <LandingPage />,
-			},
-			{
-				path: ROUTES.public.learning.page,
-				element: <LearningPage />,
-			},
-			{
-				path: '*',
-				element: <Error404Page />,
-			},
-			{
-				path: 'test',
-				element: <CollectionBlock />,
-			},
-			{
-				path: ROUTES.public.resources.page,
-				element: <PublicResourcesPage />,
-			},
-			{
-				path: ROUTES.public.docs.page,
-				element: <DocsPage />,
-			},
-			{
-				path: ROUTES.public.media.page,
-				element: <MediaPage />,
-			},
-			{
-				path: ROUTES.public.questions.page,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <PublicQuestionsPage />,
-					},
-					{
-						path: ROUTES.public.questions.detail.page,
-						element: <PublicQuestionPage />,
-					},
-				],
-			},
-			{
-				path: ROUTES.public.quiz.page,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <CreatePublicQuizPage />,
-					},
-					{
-						path: ROUTES.public.quiz.new.page,
-						element: <PublicQuizPage />,
-					},
-					{
-						path: ROUTES.public.quiz.result.page,
-						element: <PublicQuizResultPage />,
-					},
-				],
-			},
-			{
-				path: ROUTES.public.collections.page,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <PublicCollectionsPage />,
-					},
-					{
-						path: ROUTES.public.collections.detail.page,
-						element: <PublicCollectionPage />,
-					},
-				],
-			},
-			{
-				path: ROUTES.public.avos.page,
-				element: <AvosPage />,
-			},
-			{
-				path: ROUTES.public.hhAnalytics.page,
-				element: <HhAnalyticsPage />,
-			},
-		],
-	},
 	{
 		path: ROUTES.adminRoute,
 		element: (
@@ -616,6 +514,11 @@ export const router = createBrowserRouter([
 						index: true,
 						element: <FeatureFlagsPage />,
 					},
+					{
+						path: ROUTES.admin.featureFlags.create.route,
+						element: <FeatureFlagCreatePage />,
+					},
+					{ path: ROUTES.admin.featureFlags.details.route, element: <FeatureFlagDetailsPage /> },
 				],
 			},
 			{

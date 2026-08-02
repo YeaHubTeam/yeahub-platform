@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, ReferralLinks, ROUTES, Translation } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
@@ -8,6 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverChildrenProps, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { Text } from '@/shared/ui/Text';
 
 import { ReferralLink } from '@/entities/referralLink';
@@ -44,26 +45,19 @@ export const ReferralLinksTable = ({
 	const renderTableBody = (ref: ReferralLink) => {
 		const columns = {
 			refCode: (
-				<Link to={route(ROUTES.admin.referralLinks.details.page, ref.id)}>
-					<Text variant="body3-accent">{ref.refCode}</Text>
-				</Link>
+				<TableCellLink
+					to={route(ROUTES.admin.referralLinks.details.page, ref.id)}
+					text={ref.refCode}
+				/>
 			),
-			url: ref.url,
-			ownerUsername: ref.ownerUsername,
-			linkedCount: ref.linkedCount,
-			amountSum: ref.amountSum,
-			createdAt: new Date(ref.createdAt).toLocaleDateString(),
+			url: <TableCellLink to={ref.url} text={ref.url} />,
+			ownerUsername: <Text variant="body3-accent">{ref.ownerUsername}</Text>,
+			linkedCount: <Text variant="body3-accent">{ref.linkedCount}</Text>,
+			amountSum: <Text variant="body3-accent">{ref.amountSum}</Text>,
+			createdAt: <Text variant="body3-accent">{new Date(ref.createdAt).toLocaleDateString()}</Text>,
 		};
 
-		return Object.entries(columns).map(([k, v]) => (
-			<td key={k}>
-				{typeof v === 'string' || typeof v === 'number' ? (
-					<Text variant="body3-accent">{v}</Text>
-				) : (
-					v
-				)}
-			</td>
-		));
+		return Object.entries(columns).map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (ref: ReferralLink) => {
@@ -79,7 +73,7 @@ export const ReferralLinksTable = ({
 				onClick: () => navigate(route(ROUTES.admin.referralLinks.edit.page, ref.id)),
 			},
 			{
-				renderComponent: () => <DeleteReferralLinkButton id={ref.id} />,
+				renderComponent: () => <DeleteReferralLinkButton referralId={ref.id} />,
 			},
 		];
 

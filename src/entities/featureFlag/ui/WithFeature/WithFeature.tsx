@@ -4,7 +4,7 @@ import { useAppSelector } from '@/shared/libs';
 
 import { getUserRoles } from '@/entities/profile/@x/featureFlag';
 
-import { featureFlags } from '../../model/constants/featureFlags';
+import { getFeatureFlag } from '../../model/selectors/featureFlagSelectors';
 import { FeatureFlagType } from '../../model/types/featureFlag';
 
 interface WithFeatureProps {
@@ -16,12 +16,16 @@ interface WithFeatureProps {
 
 export const WithFeature = ({ featureId, fallback = null, children }: WithFeatureProps) => {
 	const userRoles = useAppSelector(getUserRoles);
-	const hasRole = featureFlags[featureId].roles
-		? userRoles.some((role) => featureFlags[featureId].roles?.includes(role))
-		: true;
-	const isEnabled = featureFlags[featureId].enabled;
+	const featureFlag = useAppSelector(getFeatureFlag(featureId));
 
-	if (!isEnabled || !hasRole) return <>{fallback}</>;
+	if (!featureFlag) return <>{fallback}</>;
+
+	const hasRole = featureFlag.roles?.length
+		? userRoles.some((role) => featureFlag.roles.includes(role))
+		: true;
+	const isEnabled = featureFlag.enabled;
+
+	if (!hasRole || !isEnabled) return <>{fallback}</>;
 
 	return <>{children}</>;
 };

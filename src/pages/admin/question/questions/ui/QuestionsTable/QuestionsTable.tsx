@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Questions, Translation, i18Namespace, ROUTES } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
@@ -9,7 +9,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
-import { Text } from '@/shared/ui/Text';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 
 import { Question } from '@/entities/question';
 
@@ -64,7 +64,12 @@ export const QuestionsTable = ({
 
 	const renderTableBody = (question: Question) => {
 		const columns = {
-			title: question.title,
+			title: (
+				<TableCellLink
+					to={route(ROUTES.admin.questions.details.route, question.id)}
+					text={question.title}
+				/>
+			),
 			specialization: (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
@@ -92,17 +97,7 @@ export const QuestionsTable = ({
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => {
-			return (
-				<td key={k}>
-					{k === 'title' ? (
-						<Link to={route(ROUTES.admin.questions.details.route, question.id)}>
-							<Text variant="body3-accent">{v}</Text>
-						</Link>
-					) : (
-						v
-					)}
-				</td>
-			);
+			return <td key={k}>{v}</td>;
 		});
 	};
 

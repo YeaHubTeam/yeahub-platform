@@ -28,10 +28,10 @@ export const Header = ({ onOpenSidebarDrawer }: HeaderProps) => {
 				<AppLogo isOpen />
 			</NavLink>
 			<Flex gap="16" align="center">
-				<WithFeature featureId="changeTheme">
+				<WithFeature featureId="common.app.change-theme">
 					<ThemeSwitcher />
 				</WithFeature>
-				<WithFeature featureId="changeLanguage">
+				<WithFeature featureId="common.app.change-language">
 					<LanguageSwitcher />
 				</WithFeature>
 				<UserPreferences />

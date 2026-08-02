@@ -6,16 +6,16 @@ import { AppLogo } from '@/shared/ui/AppLogo';
 import { AutoScrollToTop } from '@/shared/ui/AutoScrollToTop';
 import { ErrorBoundary } from '@/shared/ui/ErrorBoundary';
 import { ErrorElement } from '@/shared/ui/ErrorElement';
-import { Loader } from '@/shared/ui/Loader';
 
 import { AuthAside } from '../AuthAside/AuthAside';
+import { AuthLayoutSkeleton } from '../AuthLayout/AuthLayout.skeleton';
 
 import styles from './AuthLayout.module.css';
 
 export const AuthLayout = () => {
 	return (
 		<div className={styles.container}>
-			<Suspense fallback={<Loader />}>
+			<Suspense fallback={<AuthLayoutSkeleton />}>
 				<AuthAside />
 				<ErrorBoundary fallback={<ErrorElement path={ROUTES.appRoute} />}>
 					<div className={styles['logo-wrapper']}>

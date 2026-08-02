@@ -3,7 +3,7 @@ import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Topics, Translation } from '@/shared/config';
 import { route } from '@/shared/libs';
-import { BackButton } from '@/shared/ui/BackButton';
+import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -12,6 +12,8 @@ import { useGetTopicByIdQuery, TopicAdditionalInfo, TopicCard } from '@/entities
 import { DeleteTopicButton } from '@/features/topics/deleteTopic';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+
+import { TopicDetailPageSkeleton } from './TopicDetailPage.skeleton';
 
 const TopicDetailPage = () => {
 	const { topicId = '' } = useParams<{ topicId: string }>();
@@ -23,8 +25,7 @@ const TopicDetailPage = () => {
 	const content = hasTopic ? (
 		<>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
-				<BackButton />
-				<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+				<BackHeader>
 					<DeleteTopicButton topicId={topic.id} isDetailPage />
 					<NavLink
 						style={{ marginLeft: 'auto' }}
@@ -32,7 +33,7 @@ const TopicDetailPage = () => {
 					>
 						<Button>{t(Translation.EDIT)}</Button>
 					</NavLink>
-				</Flex>
+				</BackHeader>
 			</Flex>
 
 			<Flex gap="20" direction="row">
@@ -62,6 +63,7 @@ const TopicDetailPage = () => {
 			stubs={stubs}
 			content={content}
 			roles={['admin', 'author']}
+			skeleton={<TopicDetailPageSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>

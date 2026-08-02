@@ -1,3 +1,5 @@
+import { author } from '@/shared/libs';
+
 import { GetLearnedQuestionsResponse } from '../../../model/types/learnedQuestion';
 
 export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
@@ -13,6 +15,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/python_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-01-18T19:39:52.495Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 29,
@@ -22,6 +26,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2024-12-13T15:37:18.095Z',
 				updatedAt: '2024-12-13T15:37:18.095Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 92,
@@ -39,6 +45,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/3ded3210-32fa-4063-9b8f-a5e8f353a1c4',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-03-10T17:16:46.190Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 11,
@@ -48,6 +56,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2024-10-03T09:08:10.605Z',
 				updatedAt: '2024-12-13T15:29:16.935Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 72,
@@ -65,6 +75,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/java_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-02-20T11:25:10.120Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 40,
@@ -74,6 +86,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2025-02-06T18:42:12.680Z',
 				updatedAt: '2025-02-06T18:42:12.680Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 62,
@@ -91,6 +105,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/cpp_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-03-01T09:00:00.000Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 39,
@@ -100,6 +116,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2025-02-06T18:41:59.722Z',
 				updatedAt: '2025-02-06T18:41:59.722Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 32,
@@ -117,6 +135,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/ruby_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-01-15T18:45:30.500Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 25,
@@ -126,6 +146,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2024-12-13T15:32:58.103Z',
 				updatedAt: '2024-12-13T15:32:58.103Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 72,
@@ -143,6 +165,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/kotlin_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-04-10T12:00:00.000Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 27,
@@ -152,6 +176,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 				imageSrc: null,
 				createdAt: '2024-12-13T15:34:12.455Z',
 				updatedAt: '2024-12-13T15:34:12.455Z',
+				slug: 'slug',
+				createdBy: author,
 			},
 			total: 100,
 			learnedPercentage: 92,

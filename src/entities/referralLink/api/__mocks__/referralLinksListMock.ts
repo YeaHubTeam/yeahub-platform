@@ -26,3 +26,17 @@ export const referralLinksListMock = http.get<
 		limit: referralLinksMock.limit,
 	});
 });
+
+export const referralLinkByIdMock = http.get(
+	process.env.API_URL + referralLinksApiUrls.getReferralLinkById,
+	({ params }) => {
+		const { id } = params;
+		const link = referralLinksMock.data.find((link) => link.id === id);
+
+		if (!link) {
+			return HttpResponse.json({ message: 'Not found' }, { status: 404 });
+		}
+
+		return HttpResponse.json(link);
+	},
+);

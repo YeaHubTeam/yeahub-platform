@@ -18,7 +18,11 @@ export const taskCreateSchema: yup.ObjectSchema<CreateTaskFormValues> = yup.obje
 		.number<TaskDifficulty>()
 		.transform((value) => (Number.isNaN(value) ? null : value))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	categoryCode: yup.string<TaskCategoryCode>().required(i18n.t(Translation.VALIDATION_REQUIRED)),
+	categoryCodes: yup
+		.array()
+		.of(yup.mixed<TaskCategoryCode>().required())
+		.min(1)
+		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	subscriptionLevel: yup
 		.string<TaskSubscriptionLevel>()
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),

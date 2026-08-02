@@ -14,6 +14,7 @@ export const BackButtonSkeleton = () => {
 			aria-label={t(Translation.BACK_BUTTON)}
 			form="round"
 			className={styles.button}
+			style={{ borderRadius: '50%' }}
 		/>
 	);
 };
