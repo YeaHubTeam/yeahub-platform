@@ -23,7 +23,6 @@ export { UserSelect } from './ui/UserSelect/UserSelect';
 export { UserSelectSkeleton } from './ui/UserSelect/UserSelect.skeleton';
 export { convertRoleNameToEnumKey } from './model/utils/convertRoleNameToEnumKey/convertRoleNameToEnumKey';
 export {
-	useGetUsersRatingBySpecializationQuery,
 	useGetUsersRatingQuery,
 	useGetUserProfilePositionQuery,
 	useGetUsersRatingStatsQuery,
