@@ -40,7 +40,6 @@ const TopicDetailPage = () => {
 				<TopicCard topic={topic} />
 				<TopicAdditionalInfo topic={topic} />
 			</Flex>
-			<TopicDetailPageSkeleton />
 		</>
 	) : null;
 
