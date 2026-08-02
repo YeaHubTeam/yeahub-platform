@@ -87,6 +87,7 @@ export enum Translation {
 	MODAL_BLOCK_TITLE = 'modal.block.title',
 	MODAL_BLOCK_DESCRIPTION = 'modal.block.description',
 	MODAL_DELETE_TITLE = 'modal.delete.title',
+	MODAL_DELETE_CONFIRMATION = 'modal.delete.confirmation',
 	MODAL_ACTIONS_OK = 'modal.actions.ok',
 	MODAL_ACTIONS_CANCEL = 'modal.actions.cancel',
 	MODAL_CANCEL_CHANGES = 'modal.cancel.changes',
