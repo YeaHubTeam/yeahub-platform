@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Skills, Translation, i18Namespace, ROUTES } from '@/shared/config';
 import { formatDate, route, SelectedAdminEntities } from '@/shared/libs';
@@ -10,8 +10,8 @@ import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { TableCellWithTooltip } from '@/shared/ui/TableCellWithTooltip';
-import { Text } from '@/shared/ui/Text';
 
 import { Skill } from '@/entities/skill';
 
@@ -52,13 +52,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			createdAt: t(Skills.CREATED_AT),
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				<Text variant="body2-accent" color="white-900">
-					{v}
-				</Text>
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderTableBody = (skill: Skill) => {
@@ -70,7 +64,9 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 					className={styles['card-image']}
 				/>
 			),
-			title: skill.title,
+			title: (
+				<TableCellLink to={route(ROUTES.admin.skills.detail.page, skill.id)} text={skill.title} />
+			),
 			specializations: (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
@@ -78,32 +74,14 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 					showCount={1}
 				/>
 			),
-			description: skill.description,
+			description: (
+				<TableCellWithTooltip title={skill.description}>{skill.description}</TableCellWithTooltip>
+			),
 			author: skill.createdBy?.username,
 			createdAt: skill.createdAt ? formatDate(new Date(skill.createdAt), 'dd.MM.yyyy') : '',
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => {
-			if (k === 'description') {
-				return (
-					<td key={k}>
-						<TableCellWithTooltip title={v}>{v}</TableCellWithTooltip>
-					</td>
-				);
-			}
-
-			return (
-				<td key={k}>
-					{k === 'title' ? (
-						<Link to={route(ROUTES.admin.skills.detail.page, skill.id)}>
-							<Text variant="body3-accent">{v}</Text>
-						</Link>
-					) : (
-						<Text variant="body3-accent">{v}</Text>
-					)}
-				</td>
-			);
-		});
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (skill: Skill) => {

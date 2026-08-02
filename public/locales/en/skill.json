@@ -41,6 +41,13 @@
 				"subtitle": "Try refreshing the page or repeating the request",
 				"submit": "Try again"
 			}
+		},
+		"edit": {
+			"skill": {
+				"title": "No access to edit the skill",
+				"subtitle": "You are not the creator of this skill, so editing is not available",
+				"submit": "Return to the skills table"
+			}
 		}
 	}
 }

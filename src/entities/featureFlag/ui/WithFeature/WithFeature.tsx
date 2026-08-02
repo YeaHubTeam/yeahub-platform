@@ -4,7 +4,6 @@ import { useAppSelector } from '@/shared/libs';
 
 import { getUserRoles } from '@/entities/profile/@x/featureFlag';
 
-import { featureFlags } from '../../model/constants/featureFlags';
 import { getFeatureFlag } from '../../model/selectors/featureFlagSelectors';
 import { FeatureFlagType } from '../../model/types/featureFlag';
 
@@ -17,8 +16,7 @@ interface WithFeatureProps {
 
 export const WithFeature = ({ featureId, fallback = null, children }: WithFeatureProps) => {
 	const userRoles = useAppSelector(getUserRoles);
-	const featureFlagFromStore = useAppSelector(getFeatureFlag(featureId));
-	const featureFlag = featureFlagFromStore || featureFlags[featureId];
+	const featureFlag = useAppSelector(getFeatureFlag(featureId));
 
 	if (!featureFlag) return <>{fallback}</>;
 

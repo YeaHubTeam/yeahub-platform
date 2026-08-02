@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 
 import { i18n, Translation } from '@/shared/config';
+import { emailRule } from '@/shared/libs';
 
 import { SubscriptionAgreeFormValues } from '../types/subscriptionAgreeTypes';
 
@@ -9,7 +10,7 @@ export const subscriptionAgreeSchema: yup.ObjectSchema<SubscriptionAgreeFormValu
 	.shape({
 		email: yup
 			.string()
-			.email(() => i18n.t(Translation.VALIDATION_EMAIL))
+			.matches(emailRule, i18n.t(Translation.VALIDATION_EMAIL))
 			.required(() => i18n.t(Translation.VALIDATION_REQUIRED)),
 		isOfferAgreed: yup
 			.boolean()
