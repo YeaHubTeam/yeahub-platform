@@ -7,7 +7,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { getSpecializationId } from '@/entities/profile';
-import { useGetUsersRatingBySpecializationQuery } from '@/entities/user';
+import { useGetUsersRatingStatsQuery, useGetUsersRatingQuery } from '@/entities/user';
 
 import { getRankedUsers } from '../../lib/getRankedUsers/getRankedUsers';
 import { PRIZE_PLACES_COUNT } from '../../model/constants';
@@ -20,13 +20,20 @@ import { UsersRatingWidgetSkeleton } from './UsersRatingWidget.skeleton';
 export const UsersRatingWidget = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = useAppSelector(getSpecializationId);
-	const { data, isLoading } = useGetUsersRatingBySpecializationQuery(specializationId);
-	const rankedUsers = getRankedUsers({ data, limit: PRIZE_PLACES_COUNT });
-	const rankedUsersIsEmpty = rankedUsers.length === 0;
-	const specialization = data?.specialization;
-	const questionsCount = data?.questionsCount ?? 0;
+	const { data: ratingStats, isLoading: isLoadingStats } =
+		useGetUsersRatingStatsQuery(specializationId);
+	const { data: ratingData, isLoading: isLoadingRating } = useGetUsersRatingQuery({
+		specializationId,
+		page: 1,
+		limit: 10,
+	});
 
-	if (isLoading) return <UsersRatingWidgetSkeleton />;
+	const rankedUsers = getRankedUsers({ data: ratingData, limit: PRIZE_PLACES_COUNT });
+	const rankedUsersIsEmpty = rankedUsers.length === 0;
+	const specialization = ratingStats?.specialization;
+	const questionsCount = ratingStats?.allQuestions ?? 0;
+
+	if (isLoadingStats || isLoadingRating) return <UsersRatingWidgetSkeleton />;
 
 	return (
 		<Card

@@ -11,6 +11,10 @@
   height: 180px;
 }
 
+.title-form{
+  margin-bottom: 32px;
+}
+
 .input-form {
   width: 100%;
 }
