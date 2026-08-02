@@ -12,6 +12,7 @@
 	},
 	"icon": {
 		"title": "Skill icon",
+		"title-short": "Icon",
 		"label": "Add skill icon"
 	},
 	"select": {
@@ -19,6 +20,11 @@
 		"empty": "No options available",
 		"selected": "Selected skill"
 	},
+	"specializations": {
+		"title": "Specializations"
+	},
+	"author": "Author",
+	"created-at": "Creation date",
 	"empty": "No skills",
 	"image.src": "Image url",
 	"create.page.title": "Creating new skill",
@@ -34,6 +40,13 @@
 				"title": "It seems the skill data is missing",
 				"subtitle": "Try refreshing the page or repeating the request",
 				"submit": "Try again"
+			}
+		},
+		"edit": {
+			"skill": {
+				"title": "No access to edit the skill",
+				"subtitle": "You are not the creator of this skill, so editing is not available",
+				"submit": "Return to the skills table"
 			}
 		}
 	}

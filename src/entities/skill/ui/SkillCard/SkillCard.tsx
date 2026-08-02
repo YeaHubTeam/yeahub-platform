@@ -4,6 +4,7 @@ import { Translation } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
+import { Text } from '@/shared/ui/Text';
 
 import { Skill } from '../../model/types/skill';
 
@@ -27,14 +28,16 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 							className={styles['card-image']}
 						/>
 					</div>
-					<h2>{skill.title}</h2>
+					<Text isMainTitle variant="body6">
+						{skill.title}
+					</Text>
 				</Flex>
 			</Card>
 
 			<Card withOutsideShadow expandable>
 				<Flex direction="column" gap="20">
-					<h3>{skill.title}</h3>
-					<p>{skill.description}</p>
+					<Text variant="body5-accent">{skill.title}</Text>
+					<Text variant="body3-accent">{skill.description}</Text>
 				</Flex>
 			</Card>
 		</Flex>

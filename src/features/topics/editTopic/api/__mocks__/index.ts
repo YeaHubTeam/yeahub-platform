@@ -1,3 +1,3 @@
-import { editQuestionMock } from './editTopicMock';
+import { editTopicMock } from './editTopicMock';
 
-export const topicEditHandlers = [editQuestionMock];
+export const topicEditHandlers = [editTopicMock];
