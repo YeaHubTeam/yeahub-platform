@@ -28,14 +28,16 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 							className={styles['card-image']}
 						/>
 					</div>
-					<Text variant="head2">{skill.title}</Text>
+					<Text isMainTitle variant="body6">
+						{skill.title}
+					</Text>
 				</Flex>
 			</Card>
 
 			<Card withOutsideShadow expandable>
 				<Flex direction="column" gap="20">
-					<Text variant="head3">{skill.title}</Text>
-					<Text variant="body1">{skill.description}</Text>
+					<Text variant="body5-accent">{skill.title}</Text>
+					<Text variant="body3-accent">{skill.description}</Text>
 				</Flex>
 			</Card>
 		</Flex>
