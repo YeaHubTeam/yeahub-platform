@@ -10,6 +10,8 @@ import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { PopularQuestionsList } from '../PopularQuestionsList/PopularQuestionsList';
 import { PopularQuestionsPageTable } from '../PopularQuestionsPageTable/PopularQuestionsPageTable';
 
+import { PopularQuestionsPageSkeleton } from './PopularQuestionsPage.skeleton';
+
 export const PopularQuestionsPage = () => {
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
@@ -43,6 +45,7 @@ export const PopularQuestionsPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<PopularQuestionsPageSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

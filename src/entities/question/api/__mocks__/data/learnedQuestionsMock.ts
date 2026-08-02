@@ -15,6 +15,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/python_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-01-18T19:39:52.495Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 29,
@@ -43,6 +45,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/3ded3210-32fa-4063-9b8f-a5e8f353a1c4',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-03-10T17:16:46.190Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 11,
@@ -71,6 +75,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/java_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-02-20T11:25:10.120Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 40,
@@ -99,6 +105,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/cpp_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-03-01T09:00:00.000Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 39,
@@ -127,6 +135,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/ruby_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-01-15T18:45:30.500Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 25,
@@ -155,6 +165,8 @@ export const learnedQuestionsMock: GetLearnedQuestionsResponse = {
 					'https://e5e684b1-4a6a-4be5-b7ee-b2b678239d61.selstorage.ru/skill/kotlin_mock_image.png',
 				createdAt: '2024-06-04T13:40:16.610Z',
 				updatedAt: '2025-04-10T12:00:00.000Z',
+				specializations: [],
+				createdBy: author,
 			},
 			specialization: {
 				id: 27,

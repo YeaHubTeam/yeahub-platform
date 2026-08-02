@@ -20,7 +20,9 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
 				<TaskStatusChip status={task.status} size="medium" />
 				<TaskDifficultyChip difficulty={task.difficulty} />
 				<ProgrammingLanguageList languages={task.supportedLanguages} />
-				<TaskCategoryChip category={task.mainCategory} />
+				{task.categories.map((category) => (
+					<TaskCategoryChip key={category} category={category} />
+				))}
 				<CompanyCompactList companies={task.companies} />
 			</Flex>
 			<TextHtml html={task.description} />

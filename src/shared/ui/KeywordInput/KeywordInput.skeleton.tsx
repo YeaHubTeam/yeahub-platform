@@ -8,7 +8,7 @@ export const KeywordInputSkeleton = () => {
 	return (
 		<Flex gap="24" direction="column" align="start">
 			<Flex gap="8">
-				<InputSkeleton size="L" />
+				<InputSkeleton size="L" className={styles.input} />
 				<ButtonSkeleton className={styles.button} />
 			</Flex>
 		</Flex>
