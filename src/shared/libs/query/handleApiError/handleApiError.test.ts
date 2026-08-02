@@ -1,8 +1,6 @@
-import { handleApiError } from './handleApiError';
+import { Translation } from '@/shared/config';
 
-jest.mock('@/shared/config/i18n/i18n', () => ({
-	t: jest.fn().mockReturnValue('default error for i18n'),
-}));
+import { handleApiError } from './handleApiError';
 
 describe('handleApiError', () => {
 	const mockHandler = jest.fn().mockReturnValue('Handled result string');
@@ -20,7 +18,7 @@ describe('handleApiError', () => {
 		expect(mockHandler).toHaveBeenCalledTimes(1);
 	});
 	test('should return default i18n translation when error is null', () => {
-		expect(handleApiError(null, mockHandler)).toBe('default error for i18n');
+		expect(handleApiError(null, mockHandler)).toBe(Translation.ERROR);
 		expect(mockHandler).not.toHaveBeenCalled();
 	});
 });
