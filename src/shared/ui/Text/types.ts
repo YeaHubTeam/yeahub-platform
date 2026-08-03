@@ -17,4 +17,5 @@ export type TextVariant =
 	| 'body5-accent'
 	| 'body5-strong'
 	| 'body5-capitalize'
-	| 'body6';
+	| 'body6'
+	| 'body6-strong';
