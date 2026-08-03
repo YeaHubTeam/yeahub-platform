@@ -35,6 +35,4 @@ export type GetUsersRatingStatsResponse = {
 	specialization: Specialization;
 };
 
-export type GetUsersRatingBySpecializationResponse = UsersRatingBySpecialization;
-
 export type UserProfilePositionResponse = UserRating;

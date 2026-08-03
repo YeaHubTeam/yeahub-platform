@@ -1,36 +1,22 @@
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { Collections, i18Namespace, ROUTES, Translation } from '@/shared/config';
-import { route, useAppSelector, useScreenSize } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
-import { Tooltip } from '@/shared/ui/Tooltip';
+import { Collections, i18Namespace } from '@/shared/config';
+import { useAppSelector } from '@/shared/libs';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
 import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 import { useGetTasksListQuery } from '@/entities/task';
 
-import { DeleteCollectionButton } from '@/features/collections/deleteCollection';
-
-import {
-	AdditionalInfo,
-	CollectionAdditionalInfoDrawer,
-	CollectionBody,
-	CollectionHeader,
-} from '@/widgets/Collection';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
-import { TasksController } from '@/widgets/task/TasksList';
 
-import styles from './CollectionPage.module.css';
-import { CollectionPageSkeleton } from './CollectionPage.skeleton';
+import { CollectionPageContent } from '../CollectionPageContent/CollectionPageContent';
+import { CollectionPageContentSkeleton } from '../CollectionPageContent/CollectionPageContent.skeleton';
 
 export const CollectionPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
-	const { isSmallScreen } = useScreenSize();
 	const { collectionId } = useParams<{ collectionId: string }>();
 	const {
 		data: collection,
@@ -66,7 +52,7 @@ export const CollectionPage = () => {
 	);
 
 	const questions = response?.data ?? [];
-	const hasData = questions.length > 0;
+	const hasData = questions.length > 0 || isLoading;
 	const stubs: PageWrapperStubs = {
 		empty: {
 			title: t(Collections.STUB_EMPTY_COLLECTION_TITLE),
@@ -77,44 +63,16 @@ export const CollectionPage = () => {
 		error: { onClick: () => refetch() },
 	};
 
-	if (!collection) {
-		return null;
-	}
-
-	const {
-		createdBy,
-		questionsCount,
-		tasksCount,
-		isFree,
-		company,
-		specializations,
-		keywords,
-		title,
-		description,
-		imageSrc: collectionImageSrc,
-	} = collection;
-
-	const isDisabled = isAuthor && createdBy?.id !== userId;
-	const imageSrc = collectionImageSrc ?? company?.imageSrc;
-	const renderMobileOrTablet = isSmallScreen && (
-		<>
-			<section
-				className={classNames(styles.wrapper, {
-					[styles.mobile]: isSmallScreen,
-				})}
-			>
-				<CollectionHeader
-					renderDrawer={() => <CollectionAdditionalInfoDrawer collection={collection} />}
-					title={title}
-					description={description}
-					imageSrc={imageSrc}
-					company={company}
-				/>{' '}
-				<CollectionBody isFree={isFree} isAdmin questions={questions} />
-				{tasks?.length ? <TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} /> : null}
-			</section>
-		</>
-	);
+	const isDisabled = isAuthor && collection?.createdBy?.id !== userId;
+	const content = collection ? (
+		<CollectionPageContent
+			collection={collection}
+			questions={questions}
+			tasks={tasks}
+			isDisabled={isDisabled}
+			isLoading={isLoading}
+		/>
+	) : null;
 
 	return (
 		<PageWrapper
@@ -123,62 +81,8 @@ export const CollectionPage = () => {
 			hasError={isCollectionError || isQuestionsError}
 			hasData={hasData}
 			stubs={stubs}
-			skeleton={<CollectionPageSkeleton />}
-			content={
-				<>
-					<BackHeader>
-						<DeleteCollectionButton
-							collectionId={collection.id}
-							isDetailPage
-							disabled={isDisabled}
-						/>
-
-						<Tooltip
-							title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-							placement="bottom-start"
-							color="red"
-							offsetTooltip={10}
-							shouldShowTooltip={isDisabled}
-						>
-							<NavLink
-								style={{ marginLeft: 'auto' }}
-								to={route(ROUTES.admin.collections.edit.page, collection.id)}
-							>
-								<Button disabled={isDisabled}>{t(Translation.EDIT)}</Button>
-							</NavLink>
-						</Tooltip>
-					</BackHeader>
-
-					{renderMobileOrTablet || (
-						<section className={styles.wrapper}>
-							<div className={styles.main}>
-								<CollectionHeader
-									renderDrawer={() => <CollectionAdditionalInfoDrawer collection={collection} />}
-									title={title}
-									description={description}
-									imageSrc={imageSrc}
-									company={company}
-								/>{' '}
-								<CollectionBody isFree={isFree} isAdmin questions={questions} />
-								{tasks?.length ? (
-									<TasksController isFree={Boolean(isFree)} isAdmin tasks={tasks} />
-								) : null}
-							</div>
-							<div className={styles.additional}>
-								<AdditionalInfo
-									createdBy={createdBy}
-									questionsCount={questionsCount}
-									tasksCount={tasksCount}
-									isFree={isFree}
-									company={company}
-									specializations={specializations}
-									keywords={keywords}
-								/>
-							</div>
-						</section>
-					)}
-				</>
-			}
+			skeleton={<CollectionPageContentSkeleton />}
+			content={content}
 		>
 			{({ content }) => content}
 		</PageWrapper>
