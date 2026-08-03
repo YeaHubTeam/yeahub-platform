@@ -103,6 +103,19 @@ describe('WithFeature Component', () => {
 		expect(screen.queryByText(fallbackText)).not.toBeInTheDocument();
 	});
 
+	it('should render children when feature roles array is empty', () => {
+		renderComponent(<WithFeature {...defaultProps} />, {
+			reducers,
+			initialState: createMockState({
+				enabled: true,
+				roles: [],
+			}),
+		});
+
+		expect(screen.getByText(childrenText)).toBeInTheDocument();
+		expect(screen.queryByText(fallbackText)).not.toBeInTheDocument();
+	});
+
 	it('should render children when feature is enabled and user has the required role', () => {
 		renderComponent(<WithFeature {...defaultProps} />, {
 			reducers,
