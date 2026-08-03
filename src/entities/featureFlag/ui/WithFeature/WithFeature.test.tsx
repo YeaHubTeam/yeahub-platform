@@ -1,9 +1,9 @@
 import { screen } from '@testing-library/react';
 
-import { State } from '@/shared/config';
+import { type RootReducer, type State } from '@/shared/config';
 import { renderComponent } from '@/shared/libs';
 
-import { FeatureFlag, FeatureFlagType } from '@/entities/featureFlag';
+import { type FeatureFlag, type FeatureFlagType } from '@/entities/featureFlag';
 
 import { WithFeature } from './WithFeature';
 
@@ -18,7 +18,7 @@ describe('WithFeature Component', () => {
 		children: <div>{childrenText}</div>,
 	};
 
-	const reducers = {
+	const reducers: Pick<DeepPartial<RootReducer>, 'featureFlag' | 'profile'> = {
 		featureFlag: (state = {}) => state,
 		profile: (state = {}) => state,
 	};
@@ -32,7 +32,7 @@ describe('WithFeature Component', () => {
 	const createMockState = (
 		featureConfig?: Partial<FeatureFlag>,
 		roles: AppRoleName[] = [userRole],
-	): DeepPartial<State> => ({
+	): Pick<DeepPartial<State>, 'featureFlag' | 'profile'> => ({
 		featureFlag: featureConfig ? { [featureId]: featureConfig } : {},
 		profile: {
 			fullProfile: {
