@@ -87,6 +87,7 @@ export enum Translation {
 	MODAL_BLOCK_TITLE = 'modal.block.title',
 	MODAL_BLOCK_DESCRIPTION = 'modal.block.description',
 	MODAL_DELETE_TITLE = 'modal.delete.title',
+	MODAL_DELETE_CONFIRMATION = 'modal.delete.confirmation',
 	MODAL_ACTIONS_OK = 'modal.actions.ok',
 	MODAL_ACTIONS_CANCEL = 'modal.actions.cancel',
 	MODAL_CANCEL_CHANGES = 'modal.cancel.changes',
@@ -585,6 +586,9 @@ export enum Specializations {
 	EMPTY_DETAIL_DESCRIPTION = 'empty.detail.description',
 	EMPTY_DETAIL_BUTTON = 'empty.detail.button',
 	EMPTY_DETAIL_TITLE = 'empty.detail.title',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum FeatureFlags {
@@ -647,6 +651,9 @@ export enum Topics {
 	STUB_EMPTY_TOPIC_TITLE = 'stub.empty.topic.title',
 	STUB_EMPTY_TOPIC_SUBTITLE = 'stub.empty.topic.subtitle',
 	STUB_EMPTY_TOPIC_SUBMIT = 'stub.empty.topic.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum Analytics {
@@ -837,6 +844,9 @@ export enum Resources {
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_TITLE = 'stub.empty.resource.request.detail.title',
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_SUBTITLE = 'stub.empty.resource.request.detail.subtitle',
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_SUBMIT = 'stub.empty.resource.request.detail.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 }
@@ -856,6 +866,8 @@ export enum Questions {
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
 	DESCRIPTION_TITLE = 'description.title',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
@@ -931,6 +943,9 @@ export enum Questions {
 	STUB_EMPTY_QUESTION_TITLE = 'stub.empty.question.title',
 	STUB_EMPTY_QUESTION_SUBTITLE = 'stub.empty.question.subtitle',
 	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 
 	GENERATED_QUESTIONS_TITLE = 'generated.questions.title',
 	GENERATED_QUESTIONS_CREATE_AGAIN = 'generated.questions.create.again',
@@ -1022,15 +1037,19 @@ export enum Skills {
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
+	CREATED_AT = 'created-at',
 	DESCRIPTION_FULL = 'description.full',
 	DESCRIPTION_SHORT = 'description.short',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
 	ICON_TITLE = 'icon.title',
+	ICON_TITLE_SHORT = 'icon.title-short',
 	ICON_LABEL = 'icon.label',
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	SPECIALIZATIONS_TITLE = 'specializations.title',
+	AUTHOR = 'author',
 	EMPTY = 'empty',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
@@ -1041,6 +1060,9 @@ export enum Skills {
 	STUB_EMPTY_SKILL_TITLE = 'stub.empty.skill.title',
 	STUB_EMPTY_SKILL_SUBTITLE = 'stub.empty.skill.subtitle',
 	STUB_EMPTY_SKILL_SUBMIT = 'stub.empty.skill.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum ReferralLinks {
@@ -1160,6 +1182,9 @@ export enum Collections {
 	STUB_EMPTY_COLLECTION_DESCRIPTION = 'stub.empty.collection.description',
 	STUB_EMPTY_COLLECTION_BUTTON = 'stub.empty.collection.button',
 	STUB_EMPTY_COLLECTION_SUBMIT = 'stub.empty.collection.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -1224,6 +1249,9 @@ export enum Companies {
 	STUB_EMPTY_COMPANY_TITLE = 'stub.empty.company.title',
 	STUB_EMPTY_COMPANY_SUBTITLE = 'stub.empty.company.subtitle',
 	STUB_EMPTY_COMPANY_SUBMIT = 'stub.empty.company.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum ResourceRequests {
@@ -1538,6 +1566,9 @@ export enum Tasks {
 	STUB_EMPTY_TASK_TITLE = 'stub.empty.task.title',
 	STUB_EMPTY_TASK_SUBTITLE = 'stub.empty.task.subtitle',
 	STUB_EMPTY_TASK_SUBMIT = 'stub.empty.task.submit',
+	STUB_EDIT_TASK_TITLE = 'stub.edit.task.title',
+	STUB_EDIT_TASK_SUBTITLE = 'stub.edit.task.subtitle',
+	STUB_EDIT_TASK_SUBMIT = 'stub.edit.task.submit',
 	DESCRIPTION_TAB_TITLE = 'description.tab.title',
 	DESCRIPTION_CONSTRAINTS_TITLE = 'description.constraints.title',
 	DESCRIPTION_TAB_SUBTITLE = 'description.tab.subtitle',

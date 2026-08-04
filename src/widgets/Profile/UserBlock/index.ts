@@ -1,1 +1,1 @@
-export { UserBlock } from './ui/UserBlock';
+export { UserBlock, UserBlockSkeleton } from './ui/UserBlock';
