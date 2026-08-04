@@ -350,4 +350,8 @@ export const ROUTES = {
 			page: `${process.env.LANDING_URL}mentor`,
 		},
 	},
+	hhAnalytics: {
+		route: 'hh-analytics',
+		page: '/hh-analytics',
+	},
 } as const;
