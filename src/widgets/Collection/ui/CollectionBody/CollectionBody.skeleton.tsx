@@ -1,31 +1,37 @@
-import { useScreenSize } from '@/shared/libs';
-import { Card } from '@/shared/ui/Card';
+// import { Flex } from '@/shared/ui/Flex';
+// import { Skeleton } from '@/shared/ui/Skeleton';
+
+// import { getFromLS, LS_ACCESS_TOKEN_KEY } from '@/shared/libs';
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace, Questions } from '@/shared/config';
+import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { WarningPopoverSkeleton } from '@/shared/ui/WarningPopover';
+
+// import { Collection } from '@/entities/collection';
+import { PreviewQuestionsItemSkeleton } from '@/entities/question';
 
 import styles from './CollectionBody.module.css';
 
+const GUEST_QUESTIONS_COUNT = 5;
+
 export const CollectionBodySkeleton = () => {
-	const { isMobile, isMobileS } = useScreenSize();
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.collection]);
+	const items = Array.from({ length: GUEST_QUESTIONS_COUNT });
+
 	return (
-		<Card className={styles.wrapper} withOutsideShadow>
-			<div className={styles.title}>
-				<Skeleton width={190} height={isMobileS ? 24 : 29} />
-			</div>
+		<CardSkeleton
+			className={styles.wrapper}
+			withOutsideShadow
+			title={t(Questions.PREVIEW_TITLE)}
+			headerAction={<WarningPopoverSkeleton />}
+		>
 			<Flex componentType="ul" direction="column" gap="12">
-				{[...Array(4)].map((_, index) => (
-					<Flex key={index} gap="8" className={styles.question}>
-						{!isMobileS && <Skeleton width={70} height={50} />}
-						<Flex direction="column" gap="8">
-							<Skeleton width={isMobileS ? 200 : 250} height={21} />
-							<Flex gap={isMobile ? '12' : '24'}>
-								<Skeleton width={100} height={32} />
-								<Skeleton width={100} height={32} />
-							</Flex>
-						</Flex>
-					</Flex>
+				{items.map((_, index) => (
+					<PreviewQuestionsItemSkeleton key={index} />
 				))}
 			</Flex>
-		</Card>
+		</CardSkeleton>
 	);
 };

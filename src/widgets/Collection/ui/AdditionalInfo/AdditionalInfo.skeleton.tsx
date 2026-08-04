@@ -1,22 +1,35 @@
 import classNames from 'classnames';
 
-import { Card } from '@/shared/ui/Card';
+import { useScreenSize } from '@/shared/libs';
+import { AuthorInfoSkeleton } from '@/shared/ui/AuthorInfo';
+import { BaseFilterSectionSkeleton } from '@/shared/ui/BaseFilterSection';
+import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { StatusChipSkeleton } from '@/shared/ui/StatusChip';
+import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './AdditionalInfo.module.css';
 
 export const AdditionalInfoSkeleton = ({ className }: { className?: string }) => {
+	const { isLargeScreen, isSmallScreen } = useScreenSize();
 	return (
-		<Card className={classNames(styles.wrapper, className)}>
-			<Flex direction="column" gap="24">
-				{[...Array(5)].map((_, index) => (
-					<Flex key={index} direction="column" gap="8">
-						<Skeleton width={70} height={19} />
-						<Skeleton width={200} height={42} borderRadius={12} />
+		<>
+			<CardSkeleton className={classNames(styles.wrapper, className)}>
+				<Flex direction="column" gap="24">
+					<Flex direction="column" gap="8">
+						<TextSkeleton variant="body3" width={62} />
+						<StatusChipSkeleton />
 					</Flex>
-				))}
-			</Flex>
-		</Card>
+					<BaseFilterSectionSkeleton length={2} />
+					<BaseFilterSectionSkeleton length={1} />
+					<BaseFilterSectionSkeleton length={1} />
+					<BaseFilterSectionSkeleton length={1} />
+					<BaseFilterSectionSkeleton length={1} />
+					{isSmallScreen && <AuthorInfoSkeleton />}
+				</Flex>
+			</CardSkeleton>
+
+			{isLargeScreen && <AuthorInfoSkeleton isCenter />}
+		</>
 	);
 };

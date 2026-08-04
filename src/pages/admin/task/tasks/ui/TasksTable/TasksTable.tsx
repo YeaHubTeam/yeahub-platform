@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Tasks, Translation } from '@/shared/config';
 import { route, type SelectedAdminEntities } from '@/shared/libs';
@@ -9,7 +9,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
-import { Text } from '@/shared/ui/Text';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 
 import { Task, taskCategories } from '@/entities/task';
 
@@ -55,11 +55,9 @@ export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTablePr
 	const renderTableBody = (task: Task) => {
 		const columns = {
 			title: (
-				<Link to={route(ROUTES.admin.tasks.details.route, task.id)}>
-					<Text variant="body3-accent">{task.name}</Text>
-				</Link>
+				<TableCellLink to={route(ROUTES.admin.tasks.details.route, task.id)} text={task.name} />
 			),
-			category: t(taskCategories[task.mainCategory]),
+			category: task.categories.map((category) => t(taskCategories[category])).join(', '),
 			difficulty: task.difficulty,
 			languages: task.supportedLanguages.map((language) => language.name).join(', '),
 			companies: (

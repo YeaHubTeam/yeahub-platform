@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Specializations } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
@@ -22,15 +23,14 @@ export const SpecializationForm = ({ isEdit }: SpecializationFormProps) => {
 
 	return (
 		<Flex direction="column" className={styles.wrapper}>
-			<Text variant="body3-strong">
+			<Text variant="body6" className={styles['title-form']}>
 				{isEdit ? t(Specializations.EDIT_PAGE_TITLE) : t(Specializations.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="40">
-				<Flex className={styles['specialization-input']}>
-					<Flex className={styles['text-wrapper']} direction="column" gap="8">
-						<Text variant="body4">{t(Specializations.TITLE_FULL)}</Text>
-						<Text variant="body2">{t(Specializations.TITLE_LABEL)}</Text>
-					</Flex>
+				<FormField
+					label={t(Specializations.TITLE_FULL)}
+					description={t(Specializations.TITLE_LABEL)}
+				>
 					<FormControl name="title" control={control} className={styles['input-form']}>
 						{(register, hasError) => (
 							<Input
@@ -42,12 +42,12 @@ export const SpecializationForm = ({ isEdit }: SpecializationFormProps) => {
 							/>
 						)}
 					</FormControl>
-				</Flex>
-				<Flex direction="column" gap="20">
-					<Flex direction="column" gap="8">
-						<Text variant="body4">{t(Specializations.DESCRIPTION_FULL)}</Text>
-						<Text variant="body2">{t(Specializations.DESCRIPTION_LABEL)}</Text>
-					</Flex>
+				</FormField>
+				<FormField
+					label={t(Specializations.DESCRIPTION_FULL)}
+					description={t(Specializations.DESCRIPTION_LABEL)}
+					direction="column"
+				>
 					<FormControl name="description" control={control} className={styles['input-form']}>
 						{(register, hasError) => (
 							<TextArea
@@ -58,7 +58,7 @@ export const SpecializationForm = ({ isEdit }: SpecializationFormProps) => {
 							/>
 						)}
 					</FormControl>
-				</Flex>
+				</FormField>
 			</Flex>
 		</Flex>
 	);
