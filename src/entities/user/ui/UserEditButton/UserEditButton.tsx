@@ -18,15 +18,13 @@ export const UserEditButton = ({ tab }: UserEditButtonProps) => {
 	};
 
 	return (
-		<div className={styles['card-edit-block']}>
-			<Button
-				variant="link"
-				fullWidth={true}
-				className={styles['card-edit']}
-				onClick={handleNavigate}
-			>
-				<Icon icon="pen" size={20} color="purple-700" />
-			</Button>
-		</div>
+		<Button
+			variant="link"
+			fullWidth={true}
+			className={styles['card-edit']}
+			onClick={handleNavigate}
+		>
+			<Icon icon="pen" size={20} color="purple-700" />
+		</Button>
 	);
 };

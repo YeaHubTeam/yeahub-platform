@@ -6,17 +6,21 @@ import { Loader } from '@/shared/ui/Loader';
 import { CollectionCreateFormSkeleton } from '@/features/collections/createCollection';
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
+import { SpecializationCreateFormSkeleton } from '@/features/specialization/createSpecialization';
 
+import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
+import { SkillCreatePageSkeleton } from '@/pages/admin/skill/skillCreate';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
 import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
+import { UserDetailPageSkeleton } from '@/pages/admin/user/userDetail';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
 import { DifficultQuestionsPageSkeleton } from '@/pages/analytics/difficultQuestions';
@@ -32,6 +36,7 @@ import { InterviewQuizResultPageSkeleton } from '@/pages/interview/interviewQuiz
 import { InterviewStatisticsPageSkeleton } from '@/pages/interview/interviewStatistics';
 import { MainPageSkeleton } from '@/pages/interview/main';
 import { ProfilePageSkeleton } from '@/pages/profile/profileInfo';
+import { UserProfilePageSkeleton } from '@/pages/profile/userProfile';
 import { TaskPageContentSkeleton } from '@/pages/tasks/task';
 import { QuestionsPageSkeleton } from '@/pages/wiki/question/questions';
 
@@ -44,6 +49,12 @@ const SkeletonGenerator = () => {
 		!matchPath(ROUTES.admin.questions.details.page, ROUTES.admin.questions.create.page);
 	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
 	const isCompanyDetailsPage = matchPath(ROUTES.admin.companies.details.page, location.pathname);
+	const isUserDetailPage = matchPath(ROUTES.admin.users.detail.page, location.pathname);
+	const isCollectionDetailPage = matchPath(
+		ROUTES.admin.collections.details.page,
+		location.pathname,
+	);
+	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -57,8 +68,20 @@ const SkeletonGenerator = () => {
 		return <TaskPageContentSkeleton />;
 	}
 
+	if (isCollectionDetailPage) {
+		return <CollectionPageSkeleton />;
+	}
+
 	if (isCompanyDetailsPage) {
 		return <CompanyDetailPageSkeleton />;
+	}
+
+	if (isUserDetailPage) {
+		return <UserDetailPageSkeleton />;
+	}
+
+	if (isUserProfilePage) {
+		return <UserProfilePageSkeleton />;
 	}
 
 	switch (location.pathname) {
@@ -84,12 +107,16 @@ const SkeletonGenerator = () => {
 			return <QuestionCreateFormSkeleton />;
 		case ROUTES.admin.collections.create.page:
 			return <CollectionCreateFormSkeleton />;
+		case ROUTES.admin.specializations.create.page:
+			return <SpecializationCreateFormSkeleton />;
 		case ROUTES.admin.questions.page:
 			return <QuestionsTablePageSkeleton />;
 		case ROUTES.admin.specializations.page:
 			return <SpecializationsPageSkeleton />;
 		case ROUTES.admin.skills.page:
 			return <SkillsPageSkeleton />;
+		case ROUTES.admin.skills.create.page:
+			return <SkillCreatePageSkeleton />;
 		case ROUTES.admin.users.page:
 			return <UsersTablePageSkeleton />;
 		case ROUTES.admin.collections.page:
