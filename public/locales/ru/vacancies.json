@@ -1,0 +1,108 @@
+{
+	"list_page": {
+		"title": "Вакансии {specialization}",
+		"description": "Все актуальные вакансии в одном месте",
+		"keywords": "вакансии IT, работа разработчиком, удалённая работа IT, вакансии junior, вакансии middle, вакансии senior, найм IT, работа программистом, технические вакансии, карьера в IT, поиск работы IT, вакансии в IT компаниях, открытые позиции, трудоустройство разработчиков, работа разработчиком",
+		"salary": {
+			"from": "от",
+			"to": "до"
+		}
+	},
+	"detail_page": {
+		"title": "Вакансия",
+		"description": "Подробная информация о вакансии",
+		"keywords": "вакансия, работа, IT, разработчик, программист, трудоустройство, карьера, поиск работы, вакансия разработчика, работа в IT, описание вакансии, требования к кандидату, условия работы, зарплата, навыки, опыт работы, удалённая работа, офис, гибридный формат"
+	},
+	"count": {
+		"skills": "+{count, plural, one {# навык} few {# навыка} many {# навыков} other {# навыков}}",
+		"collections": "{count, plural, one {# собеседование} few {# собеседования} many {# собеседований} other {# собеседований}}",
+		"questions": "{count, plural, one {# вопрос} few {# вопроса} many {# вопросов} other {# вопросов}}",
+		"tasks": "{count, plural, one {# задача} few {# задачи} many {# задач} other {# задач}}"
+	},
+	"search": {
+		"placeholder": "Название вакансии..."
+	},
+	"workFormat": {
+		"title": "Формат работы",
+		"office": "Офис",
+		"remote": "Удалённо",
+		"hybrid": "Гибрид"
+	},
+	"industry": "Сфера",
+	"grade": "Грейд",
+	"companyType": "Тип компании",
+	"employmentType": "Тип занятости",
+	"englishLevel": "Уровень английского",
+	"salary": {
+		"title": "Зарплата",
+		"from": "от",
+		"to": "до"
+	},
+	"buttons": {
+		"respond": "Откликнуться"
+	},
+	"tags": {
+		"area": "Город",
+		"grade": "Уровень",
+		"employment": "Занятость",
+		"industry": "Сфера",
+		"company_type": "Тип"
+	},
+	"stats": {
+		"title": "Есть база подготовки",
+		"interviews_one": "собеседование",
+		"interviews_few": "собеседования",
+		"interviews_many": "собеседований",
+		"interviews_other": "собеседования",
+
+		"tasks_one": "задача",
+		"tasks_few": "задачи",
+		"tasks_many": "задач",
+		"tasks_other": "задачи",
+
+		"questions_one": "вопрос",
+		"questions_few": "вопроса",
+		"questions_many": "вопросов",
+		"questions_other": "вопроса"
+	},
+	"source": {
+		"title": "Источник",
+		"date": {
+			"added": "Дата добавления"
+		},
+		"format": "Формат",
+		"internship": {
+			"title": "Стажировка",
+			"yes": "Есть",
+			"no": "Нет"
+		}
+	},
+	"description": {
+		"title": "Описание вакансии"
+	},
+	"neuro_fields": {
+		"title": "Нейрополя YeaHub"
+	},
+	"tasks": {
+		"title": "Задачи",
+		"section": {
+			"title": "Алгоритмы и задачи в {{company}}",
+			"link": "Смотреть все задачи"
+		}
+	},
+	"skills": {
+		"title": "Ключевые навыки"
+	},
+	"keywords": {
+		"title": "Ключевые слова"
+	},
+	"priority": {
+		"title": "Приоритет"
+	},
+	"collections": {
+		"section": {
+			"title": "Собеседования в {{company}}",
+			"link": "Смотреть все собеседования"
+		}
+	}
+}

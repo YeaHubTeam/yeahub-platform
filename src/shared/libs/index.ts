@@ -8,3 +8,4 @@ export * from './textEditor';
 export * from './jest';
 export * from './math';
 export * from './visual';
+export * from './salary';

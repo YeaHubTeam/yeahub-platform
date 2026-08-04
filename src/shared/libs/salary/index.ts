@@ -1,0 +1,1 @@
+export { getFormatSalary } from './getFormatSalary';

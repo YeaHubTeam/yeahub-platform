@@ -1,0 +1,99 @@
+{
+	"list_page": {
+		"title": "Vacancies {specialization}",
+		"description": "All current vacancies in one place",
+		"keywords": "IT vacancies, developer jobs, remote IT jobs, junior vacancies, middle vacancies, senior vacancies, IT hiring, software engineer jobs, tech jobs, IT career, developer career, programming jobs, IT recruitment, open positions, job search IT, IT company vacancies, developer jobs",
+		"salary": {
+			"from": "from",
+			"to": "to"
+		}
+	},
+	"detail_page": {
+		"title": "Вакансия",
+		"description": "Подробная информация о вакансии",
+		"keywords": "вакансия, работа, IT, разработчик, программист, трудоустройство, карьера, поиск работы, вакансия разработчика, работа в IT, описание вакансии, требования к кандидату, условия работы, зарплата, навыки, опыт работы, удалённая работа, офис, гибридный формат"
+	},
+	"count": {
+		"skills": "+{count, plural, one {# навык} few {# навыка} many {# навыков} other {# навыков}}",
+		"collections": "{count, plural, one {# собеседование} few {# собеседования} many {# собеседований} other {# собеседований}}",
+		"questions": "{count, plural, one {# вопрос} few {# вопроса} many {# вопросов} other {# вопросов}}",
+		"tasks": "{count, plural, one {# задача} few {# задачи} many {# задач} other {# задач}}"
+	},
+	"search": {
+		"placeholder": "Job title..."
+	},
+	"workFormat": {
+		"title": "Working format",
+		"office": "Office",
+		"remote": "Remote",
+		"hybrid": "Hybrid"
+	},
+	"industry": "Industry",
+	"grade": "Grade",
+	"companyType": "Company Type",
+	"employmentType": "Employment type",
+	"englishLevel": "English proficiency level",
+	"salary": {
+		"title": "Salary",
+		"from": "from",
+		"to": "to"
+	},
+	"buttons": {
+		"respond": "Respond"
+	},
+	"tags": {
+		"area": "Area",
+		"grade": "Level",
+		"employment": "Employment",
+		"industry": "Industry",
+		"company_type": "Type"
+	},
+	"stats": {
+		"title": "Preparation materials available",
+		"interviews_one": "interview",
+		"interviews_other": "interviews",
+		"tasks_one": "task",
+		"tasks_other": "tasks",
+		"questions_one": "question",
+		"questions_other": "questions"
+	},
+	"source": {
+		"title": "Source",
+		"date": {
+			"added": "Date added"
+		},
+		"format": "Format",
+		"internship": {
+			"title": "Internship",
+			"yes": "Yes",
+			"no": "No"
+		}
+	},
+	"description": {
+		"title": "Preparation materials"
+	},
+	"neuro_fields": {
+		"title": "YeaHub Neuro Fields"
+	},
+	"tasks": {
+		"title": "Tasks",
+		"section": {
+			"title": "Algorithms and tasks in {company}"
+		}
+	},
+	"skills": {
+		"title": "Key Skills"
+	},
+	"keywords": {
+		"title": "Keywords"
+	},
+	"priority": {
+		"title": "Priority"
+	},
+	"collections": {
+		"section": {
+			"title": "Interviews at {{company}}",
+			"link": "View all interviews"
+		}
+	}
+}

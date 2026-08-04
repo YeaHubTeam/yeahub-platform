@@ -1,0 +1,30 @@
+.stats-block {
+  padding: 16px 24px;
+  box-shadow: 0 4px 10px 0 #6a63761a;
+  border-radius: 16px;
+  transition: box-shadow 0.2s ease;
+}
+
+@media screen and (width < 768px) {
+  .stats-block {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .stats-list {
+    justify-content: space-around;
+    width: 100%;
+  }
+}
+
+@media screen and (width <= 480px) {
+  .stats-block {
+    padding: 8px 12px;
+  }
+}

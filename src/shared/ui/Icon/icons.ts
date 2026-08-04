@@ -75,6 +75,16 @@ import {
 	youtubeWithBackground,
 	arrowShortDown,
 	refresh,
+	starFall,
+	pin,
+	compass,
+	bar,
+	globe,
+	packageBox,
+	target,
+	wifi,
+	bagSimple,
+	arrowUpRight,
 } from '../../assets';
 
 import { IconComponent, IconName } from './types';
@@ -156,4 +166,14 @@ export const icons: Record<IconName, IconComponent> = {
 	copy,
 	watch,
 	refresh,
+	starFall,
+	pin,
+	compass,
+	bar,
+	globe,
+	packageBox,
+	target,
+	wifi,
+	bagSimple,
+	arrowUpRight,
 };

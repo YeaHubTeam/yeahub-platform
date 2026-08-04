@@ -1,0 +1,37 @@
+.content {
+  width: 100%;
+}
+
+.main {
+  flex-grow: 1;
+  width: 100%;
+}
+
+div.card {
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.additional {
+  flex-shrink: 0;
+  width: 392px;
+  height: auto;
+}
+
+.ai {
+  display: none;
+}
+
+@media screen and (width < 1024px) {
+  .additional {
+    display: none;
+  }
+	
+  .ai {
+    display: block;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+}

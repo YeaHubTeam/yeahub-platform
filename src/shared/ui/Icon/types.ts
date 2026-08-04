@@ -76,6 +76,16 @@ export type IconName =
 	| 'tickWithBackground'
 	| 'copy'
 	| 'watch'
-	| 'refresh';
+	| 'refresh'
+	| 'starFall'
+	| 'pin'
+	| 'compass'
+	| 'bar'
+	| 'globe'
+	| 'packageBox'
+	| 'target'
+	| 'wifi'
+	| 'bagSimple'
+	| 'arrowUpRight';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;
