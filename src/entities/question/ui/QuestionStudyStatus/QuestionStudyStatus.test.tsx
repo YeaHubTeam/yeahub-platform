@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import { Questions, i18nForJest } from '@/shared/config';
 import { renderComponent } from '@/shared/libs';
 import type { StatusChipVariant } from '@/shared/ui/StatusChip';
-import { statusChipTestIds } from '@/shared/ui/StatusChip/constants';
+import { statusChipTestIds } from '@/shared/ui/StatusChip';
 
 import { StudyStatus } from '../../lib/getStudyStatus';
 
