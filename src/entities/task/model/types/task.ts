@@ -115,7 +115,7 @@ export interface GetTasksListParams {
 export type GetTasksListResponse = Response<Task[]>;
 
 export type GetTaskByIdParamsRequest = {
-	taskId?: string;
+	taskId: string;
 };
 
 export type GetTaskByIdResponse = Task;

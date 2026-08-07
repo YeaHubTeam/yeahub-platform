@@ -8,11 +8,15 @@ import { tasksMock } from './data';
 export const taskByIdMock = http.get<
 	Record<keyof GetTaskByIdParamsRequest, string>,
 	DefaultBodyType,
-	GetTaskByIdResponse
+	GetTaskByIdResponse | { error: string }
 >(`${process.env.API_URL}${taskApiUrls.getTaskById}`, ({ params }) => {
 	const { taskId } = params;
 
 	const task = tasksMock.find((t) => String(t.id) === taskId);
+
+	if (!task) {
+		return HttpResponse.json({ error: 'Task not found' }, { status: 404 });
+	}
 
 	return HttpResponse.json(task);
 });
