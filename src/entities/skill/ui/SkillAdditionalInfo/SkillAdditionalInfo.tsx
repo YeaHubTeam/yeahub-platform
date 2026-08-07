@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Questions } from '@/shared/config';
+import { i18Namespace, Questions, Skills } from '@/shared/config';
 import { useCurrentProject, formatDate, route } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
@@ -37,6 +37,8 @@ export const SkillAdditionalInfo = ({
 	const navigate = useNavigate();
 
 	const { t } = useTranslation(i18Namespace.questions);
+	const { t: tSkills } = useTranslation(i18Namespace.skill);
+
 	const onMoveToSpecializationPage = (specializationId: number) => {
 		navigate(route(baseRoute, specializationId));
 	};
@@ -48,14 +50,14 @@ export const SkillAdditionalInfo = ({
 			<Flex direction="column" gap="24">
 				{project === 'admin' && (
 					<BaseFilterSection
-						title={t(Questions.SPECIALIZATION_TITLE)}
+						title={`${t(Questions.SPECIALIZATION_TITLE)}:`}
 						data={skillSpecializations}
 						onClick={onMoveToSpecializationPage}
 					/>
 				)}
 				{updatedAt && (
 					<BaseFilterSection
-						title="Дата изменения:"
+						title={`${tSkills(Skills.UPDATED_AT)}:`}
 						data={[
 							{
 								id: 'createdAt',
@@ -66,7 +68,7 @@ export const SkillAdditionalInfo = ({
 					/>
 				)}
 				<BaseFilterSection
-					title="Дата создания:"
+					title={`${tSkills(Skills.CREATED_AT)}:`}
 					data={[
 						{
 							id: 'createdAt',
@@ -78,7 +80,11 @@ export const SkillAdditionalInfo = ({
 
 				<Flex direction="column" gap="8">
 					<Text variant="body2" color="black-700">
-						{showAuthor && createdBy ? <AuthorInfo createdBy={createdBy} /> : <span>Автор: -</span>}
+						{showAuthor && createdBy ? (
+							<AuthorInfo createdBy={createdBy} />
+						) : (
+							<span>{`${tSkills(Skills.AUTHOR)}:`} -</span>
+						)}
 					</Text>
 				</Flex>
 			</Flex>
