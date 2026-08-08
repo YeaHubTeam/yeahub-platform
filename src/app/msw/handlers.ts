@@ -43,6 +43,7 @@ import { specializationDeleteHandlers } from '@/features/specialization/deleteSp
 import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
 import { paymentsIdHandlers } from '@/features/subscriptions/subscribe';
 import { taskCreateHandlers } from '@/features/task/createTask';
+import { deleteTaskHandlers } from '@/features/task/deleteTask';
 import { createTopicHandlers } from '@/features/topics/createTopics';
 import { topicDeleteHandlers } from '@/features/topics/deleteTopic';
 import { topicEditHandlers } from '@/features/topics/editTopic';
@@ -95,4 +96,5 @@ export const handlers = [
 	...referralLinkEditHandlers,
 	...taskHandlers,
 	...taskCreateHandlers,
+	...deleteTaskHandlers,
 ];
