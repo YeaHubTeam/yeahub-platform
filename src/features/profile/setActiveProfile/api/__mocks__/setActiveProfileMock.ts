@@ -7,12 +7,19 @@ import { setActiveProfileApiUrls } from '../../model/constants/setActiveProfileC
 export const setActiveProfileMock = http.patch<
 	{ profileId: string },
 	DefaultBodyType,
-	{ message: string } | null
+	ApiErrorData<string>
 >(`${process.env.API_URL}${setActiveProfileApiUrls.setActiveProfile}`, ({ params, request }) => {
 	const profileMockResponse = getMockAuthProfile(request);
 
 	if (!profileMockResponse) {
-		return new HttpResponse(null, { status: 401 });
+		return HttpResponse.json(
+			{
+				message: 'auth.auth.unauthorized',
+				statusCode: 401,
+				description: 'Authentication failed',
+			},
+			{ status: 401 },
+		);
 	}
 
 	const targetProfile = profileMockResponse.profiles.find(
@@ -20,7 +27,14 @@ export const setActiveProfileMock = http.patch<
 	);
 
 	if (!targetProfile) {
-		return HttpResponse.json({ message: 'Profile not found' }, { status: 404 });
+		return HttpResponse.json(
+			{
+				message: 'profile.profile.not_found',
+				statusCode: 404,
+				description: 'Profile not found',
+			},
+			{ status: 404 },
+		);
 	}
 
 	profileMockResponse.profiles.forEach((profile) => {
