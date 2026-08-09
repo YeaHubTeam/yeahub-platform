@@ -75,6 +75,7 @@ import {
 	youtubeWithBackground,
 	arrowShortDown,
 	refresh,
+	referralsIcon,
 } from '../../assets';
 
 import { IconComponent, IconName } from './types';
@@ -156,4 +157,5 @@ export const icons: Record<IconName, IconComponent> = {
 	copy,
 	watch,
 	refresh,
+	referralsIcon,
 };
