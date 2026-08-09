@@ -31,7 +31,8 @@
 		"selected": "Выбранная тема"
 	},
 
-	"create.page.title": "Тема",
+	"create.page.title": "Создание темы",
+	"edit.page.title": "Редактирование темы",
 
 	"additional.info.skill": "Навык",
 
