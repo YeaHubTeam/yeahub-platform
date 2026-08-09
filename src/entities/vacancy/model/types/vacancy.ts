@@ -1,7 +1,7 @@
 import type { Response } from '@/shared/libs';
 
-import { Skill } from '@/entities/skill/@x/vacancy';
-import { Specialization } from '@/entities/specialization/@x/vacancy';
+import type { Skill } from '@/entities/skill/@x/vacancy';
+import type { Specialization } from '@/entities/specialization/@x/vacancy';
 
 export type VacancySource = 'hh' | 'habr' | 'telegram' | 'company_site' | 'hr' | 'anonymous';
 export type VacancyEmploymentForm = 'Fulltime' | 'Parttime' | 'Project' | 'Shift';
@@ -28,7 +28,6 @@ export type VacancyIndustry =
 export type VacancyCompanyType = 'Product' | 'Outsource' | 'Startup' | 'Other';
 export type VacancySkill = Pick<Skill, 'id' | 'title'>;
 export type VacancySpecialization = Pick<Specialization, 'id' | 'title'>;
-
 export interface VacancyCompany {
 	id: string | null;
 	title: string;
@@ -49,15 +48,15 @@ export interface VacancySalary {
 
 export interface Vacancy {
 	id: string;
-	source: VacancySource | null;
+	source: VacancySource;
 	title: string;
 	area: string;
 	publishedAt: string;
-	employmentForm: VacancyEmploymentForm | null;
+	employmentForm: VacancyEmploymentForm;
 	internship: boolean;
-	grade: VacancyGrade | null;
-	englishLevel: VacancyEnglishLevel | null;
-	workFormat: VacancyWorkFormat[] | null;
+	grade: VacancyGrade;
+	englishLevel: VacancyEnglishLevel;
+	workFormat: VacancyWorkFormat[];
 	company: VacancyCompany;
 	salary: VacancySalary;
 	specialization: VacancySpecialization;

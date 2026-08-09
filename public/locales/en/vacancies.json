@@ -1,6 +1,6 @@
 {
 	"list_page": {
-		"title": "Vacancies {{specialization}}",
+		"title": "All vacancies",
 		"description": "All current vacancies in one place",
 		"keywords": "IT vacancies, developer jobs, remote IT jobs, junior vacancies, middle vacancies, senior vacancies, IT hiring, software engineer jobs, tech jobs, IT career, developer career, programming jobs, IT recruitment, open positions, job search IT, IT company vacancies, developer jobs",
 		"salary": {
@@ -25,4 +25,26 @@
 	"employmentType": "Employment type",
 	"salary": "Salary",
 	"englishLevel": "English proficiency level"
+	"count": {
+		"skills": {
+			"one": "+{{count}} skill",
+			"few": "+{{count}} skills",
+			"many": "+{{count}} skills"
+		},
+		"collections": {
+			"one": "{{count}} interview",
+			"few": "{{count}} interviews",
+			"many": "{{count}} interviews"
+		},
+		"questions": {
+			"one": "{{count}} question",
+			"few": "{{count}} questions",
+			"many": "{{count}} questions"
+		},
+		"tasks": {
+			"one": "{{count}} task",
+			"few": "{{count}} tasks",
+			"many": "{{count}} tasks"
+		}
+	}
 }

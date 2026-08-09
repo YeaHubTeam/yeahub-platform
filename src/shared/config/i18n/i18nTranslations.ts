@@ -423,6 +423,9 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+
+	DATE_TODAY = 'date.today',
+	DATE_YESTERDAY = 'date.yesterday',
 }
 
 export enum Profile {
@@ -1494,6 +1497,8 @@ export enum Topics {
 	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
 	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
 	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
+	TOPIC_CREATE_PAGE_TITLE = 'create.page.title',
+	TOPIC_EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum ProgrammingLanguages {

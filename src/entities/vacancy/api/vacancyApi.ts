@@ -1,21 +1,18 @@
-import { baseApi } from '@/shared/config';
+import { ApiTags, baseApi } from '@/shared/config';
 
-import { vacanciesApiUrls } from '../model/constants/vacancyConstants';
-import type {
-	GetVacanciesListParamsRequest,
-	GetVacanciesListResponse,
-} from '../model/types/vacancy';
+import { vacancyApiUrls } from '../model/constants/vacancy';
+import { GetVacanciesListParamsRequest, GetVacanciesListResponse } from '../model/types/vacancy';
 
-export const vacancyApi = baseApi.injectEndpoints({
+const vacancyApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getVacancies: build.query<GetVacanciesListResponse, GetVacanciesListParamsRequest>({
+		getVacanciesList: build.query<GetVacanciesListResponse, GetVacanciesListParamsRequest>({
 			query: (params) => ({
-				url: vacanciesApiUrls.getVacancies,
-				method: 'GET',
-				params,
+				url: vacancyApiUrls.getVacanciesList,
+				params: { page: 1, limit: 10, ...params },
 			}),
+			providesTags: [ApiTags.VACANCIES],
 		}),
 	}),
 });
 
-export const { useGetVacanciesQuery } = vacancyApi;
+export const { useGetVacanciesListQuery } = vacancyApi;

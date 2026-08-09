@@ -1,0 +1,8 @@
+div.skills {
+  padding: 4px 10px;
+  border-radius: 68px;
+}
+
+.skill {
+  font-size: var(--font-size-p-s);
+}
