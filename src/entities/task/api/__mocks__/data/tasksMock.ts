@@ -15,7 +15,16 @@ export const tasksMock: Task[] = [
 		categories: ['algorithms'],
 		constraints: ['O(1) memory', 'No third-party libraries (lodash, etc.)'],
 		testCases: [],
-		taskStructures: [],
+		taskStructures: [
+			{
+				languageId: 60,
+				solutionStub: '1',
+				testFixture: '1',
+				preloadedCode:
+					'package main\n\nimport (\n    "encoding/json" // taskMock_1\n    "fmt"           // Для вывода в консоль\n)\n',
+				isActive: true,
+			},
+		],
 		solutionSignature: 'function debounce(fn, ms) {\n\n}',
 		timeLimit: 1000,
 		memoryLimit: 256,
@@ -34,7 +43,16 @@ export const tasksMock: Task[] = [
 		categories: ['algorithms'],
 		constraints: ['CSS Grid only', 'No media queries'],
 		testCases: [],
-		taskStructures: [],
+		taskStructures: [
+			{
+				languageId: 60,
+				solutionStub: '2',
+				testFixture: '2',
+				preloadedCode:
+					'package main\n\nimport (\n    "encoding/json" // taskMock_2\n    "fmt"           // Для вывода в консоль\n)\n',
+				isActive: true,
+			},
+		],
 		solutionSignature: '.grid-container {\n\n}',
 		timeLimit: 500,
 		memoryLimit: 128,

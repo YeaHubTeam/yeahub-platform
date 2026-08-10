@@ -423,6 +423,9 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+
+	DATE_TODAY = 'date.today',
+	DATE_YESTERDAY = 'date.yesterday',
 }
 
 export enum Profile {
@@ -1494,6 +1497,8 @@ export enum Topics {
 	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
 	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
 	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
+	TOPIC_CREATE_PAGE_TITLE = 'create.page.title',
+	TOPIC_EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum ProgrammingLanguages {
@@ -1646,4 +1651,27 @@ export enum Tasks {
 	OUTPUT_RESULT_MEMORY_USAGE = 'output.result.memory.usage',
 
 	WARNING_INTRO = 'warning.intro',
+}
+export enum Vacancies {
+	LIST_PAGE_TITLE = 'list_page.title',
+	LIST_PAGE_DESCRIPTION = 'list_page.description',
+	LIST_PAGE_KEYWORDS = 'list_page.keywords',
+	LIST_PAGE_SALARY_FROM = 'list_page.salary.from',
+	LIST_PAGE_SALARY_TO = 'list_page.salary.to',
+
+	COUNT_SKILLS_ONE = 'count.skills.one',
+	COUNT_SKILLS_FEW = 'count.skills.few',
+	COUNT_SKILLS_MANY = 'count.skills.many',
+
+	COUNT_COLLECTIONS_ONE = 'count.collections.one',
+	COUNT_COLLECTIONS_FEW = 'count.collections.few',
+	COUNT_COLLECTIONS_MANY = 'count.collections.many',
+
+	COUNT_QUESTIONS_ONE = 'count.questions.one',
+	COUNT_QUESTIONS_FEW = 'count.questions.few',
+	COUNT_QUESTIONS_MANY = 'count.questions.many',
+
+	COUNT_TASKS_ONE = 'count.tasks.one',
+	COUNT_TASKS_FEW = 'count.tasks.few',
+	COUNT_TASKS_MANY = 'count.tasks.many',
 }

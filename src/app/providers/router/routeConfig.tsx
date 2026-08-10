@@ -85,6 +85,7 @@ import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
 import { RegistrationPage } from '@/pages/auth/registration';
 import { ResumeAnalyzerPage } from '@/pages/career/resumeAnalyzer';
+import { VacanciesPage } from '@/pages/career/vacancy/vacancies';
 import { Error404Page } from '@/pages/error404';
 import { CreateQuizPage } from '@/pages/interview/createQuiz';
 import { InterviewPage } from '@/pages/interview/interview';
@@ -378,6 +379,7 @@ export const router = createBrowserRouter([
 				path: ROUTES.admin.specializations.details.page,
 				element: <SpecializationDetailPage />,
 			},
+
 			{
 				path: ROUTES.admin.skills.route,
 				element: <Outlet />,
@@ -831,6 +833,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.users.route,
 				element: <UserProfilePage />,
+			},
+			{
+				path: '/vacancies',
+				element: <VacanciesPage />,
 			},
 			{
 				path: '*',

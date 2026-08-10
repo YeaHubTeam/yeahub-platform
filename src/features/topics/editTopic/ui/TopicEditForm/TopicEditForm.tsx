@@ -46,7 +46,7 @@ export const TopicEditForm = ({ topic }: TopicEditFormProps) => {
 				<Flex componentType="main" direction="column" gap="24">
 					<TopicEditFormHeader onSubmit={onEditTopic} />
 					<Card className={styles.content}>
-						<TopicForm />
+						<TopicForm isEdit />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>
