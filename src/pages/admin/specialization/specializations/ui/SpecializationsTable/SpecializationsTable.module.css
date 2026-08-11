@@ -1,0 +1,7 @@
+.table-header {
+  white-space: nowrap;
+}
+
+.date-cell {
+  font-variant-numeric: tabular-nums;
+}
