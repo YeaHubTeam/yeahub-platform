@@ -2,8 +2,8 @@ import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Questions, Skills } from '@/shared/config';
-import { useCurrentProject, formatDate, route } from '@/shared/libs';
+import { i18Namespace, Skills } from '@/shared/config';
+import { formatDate, route } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Card } from '@/shared/ui/Card';
@@ -21,7 +21,6 @@ export interface SkillAdditionalInfoProps {
 	createdAt: string;
 	route: string;
 	createdBy: Author;
-	showAuthor?: boolean;
 	className?: string;
 }
 
@@ -31,36 +30,31 @@ export const SkillAdditionalInfo = ({
 	createdAt,
 	route: baseRoute,
 	createdBy,
-	showAuthor = true,
 	className,
 }: SkillAdditionalInfoProps) => {
 	const navigate = useNavigate();
 
-	const { t } = useTranslation(i18Namespace.questions);
-	const { t: tSkills } = useTranslation(i18Namespace.skill);
+	const { t } = useTranslation(i18Namespace.skill);
 
 	const onMoveToSpecializationPage = (specializationId: number) => {
 		navigate(route(baseRoute, specializationId));
 	};
 
-	const project = useCurrentProject();
-
 	return (
 		<Card className={classnames(styles['normal-height'], className)}>
 			<Flex direction="column" gap="24">
-				{project === 'admin' && (
-					<BaseFilterSection
-						title={`${t(Questions.SPECIALIZATION_TITLE)}:`}
-						data={skillSpecializations}
-						onClick={onMoveToSpecializationPage}
-					/>
-				)}
+				<BaseFilterSection
+					title={`${t(Skills.SPECIALIZATIONS_TITLE)}:`}
+					data={skillSpecializations}
+					onClick={onMoveToSpecializationPage}
+				/>
+
 				{updatedAt && (
 					<BaseFilterSection
-						title={`${tSkills(Skills.UPDATED_AT)}:`}
+						title={`${t(Skills.UPDATED_AT)}:`}
 						data={[
 							{
-								id: 'createdAt',
+								id: 'updatedAt',
 								title: formatDate(new Date(updatedAt), 'dd.MM.yyyy'),
 							},
 						]}
@@ -68,7 +62,7 @@ export const SkillAdditionalInfo = ({
 					/>
 				)}
 				<BaseFilterSection
-					title={`${tSkills(Skills.CREATED_AT)}:`}
+					title={`${t(Skills.CREATED_AT)}:`}
 					data={[
 						{
 							id: 'createdAt',
@@ -80,10 +74,10 @@ export const SkillAdditionalInfo = ({
 
 				<Flex direction="column" gap="8">
 					<Text variant="body2" color="black-700">
-						{showAuthor && createdBy ? (
+						{createdBy ? (
 							<AuthorInfo createdBy={createdBy} />
 						) : (
-							<span>{`${tSkills(Skills.AUTHOR)}:`} -</span>
+							<span>{`${t(Skills.AUTHOR)}:`} -</span>
 						)}
 					</Text>
 				</Flex>

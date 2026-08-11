@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
 import { ROUTES, Translation } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
@@ -18,7 +17,6 @@ interface SkillCardProps {
 
 export const SkillCard = ({ skill }: SkillCardProps) => {
 	const { t } = useTranslation();
-	const { isMobile, isTablet } = useScreenSize();
 
 	const { createdAt, updatedAt, specializations, createdBy } = skill;
 
@@ -47,17 +45,16 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
 					</Flex>
 				</Card>
 			</Flex>
-			{!isMobile && !isTablet && (
-				<Flex direction="column" gap="20" className={styles.additional}>
-					<SkillAdditionalInfo
-						skillSpecializations={specializations}
-						updatedAt={updatedAt}
-						createdAt={createdAt}
-						createdBy={createdBy}
-						route={ROUTES.admin.specializations.details.page}
-					/>
-				</Flex>
-			)}
+
+			<Flex direction="column" gap="20" className={styles.additional}>
+				<SkillAdditionalInfo
+					skillSpecializations={specializations}
+					updatedAt={updatedAt}
+					createdAt={createdAt}
+					createdBy={createdBy}
+					route={ROUTES.admin.specializations.details.page}
+				/>
+			</Flex>
 		</Flex>
 	);
 };
