@@ -10,7 +10,13 @@ import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './AdditionalInfo.module.css';
 
-export const AdditionalInfoSkeleton = ({ className }: { className?: string }) => {
+export const AdditionalInfoSkeleton = ({
+	className,
+	showAuthorInfo = true,
+}: {
+	className?: string;
+	showAuthorInfo?: boolean;
+}) => {
 	const { isLargeScreen, isSmallScreen } = useScreenSize();
 	return (
 		<>
@@ -29,7 +35,7 @@ export const AdditionalInfoSkeleton = ({ className }: { className?: string }) =>
 				</Flex>
 			</CardSkeleton>
 
-			{isLargeScreen && <AuthorInfoSkeleton isCenter />}
+			{showAuthorInfo && isLargeScreen && <AuthorInfoSkeleton isCenter />}
 		</>
 	);
 };
