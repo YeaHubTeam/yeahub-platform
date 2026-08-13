@@ -14,4 +14,5 @@ const vacancyApi = baseApi.injectEndpoints({
 		}),
 	}),
 });
+
 export const { useGetVacanciesListQuery } = vacancyApi;
