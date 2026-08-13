@@ -1,9 +1,19 @@
-export { useGetVacanciesQuery } from './api/vacancyApi';
+export { useGetVacanciesListQuery } from './api/vacancyApi';
 export type {
 	GetVacanciesListResponse,
 	Vacancy,
 	GetVacanciesListParamsRequest,
+	VacancyCompanyType,
+	VacancyEmploymentForm,
+	VacancyEnglishLevel,
+	VacancyGrade,
+	VacancyIndustry,
+	VacancySalary,
+	VacancySource,
+	VacancyWorkFormat,
+	VacancySalaryBucket,
 } from './model/types/vacancy';
+export type { VacanciesFilterParams } from './model/types/filters';
 export { VacancyCard } from './ui/VacancyCard/VacancyCard';
 export { VacancyCardSkeleton } from './ui/VacancyCard/VacancyCard.skeleton';
 
@@ -23,8 +33,8 @@ export { ChooseGradeSkeleton } from '@/entities/vacancy/ui/ChooseGrade/ChooseGra
 export { ChooseCompanyType } from '@/entities/vacancy/ui/ChooseCompanyType/ChooseCompanyType';
 export { ChooseCompanyTypeSkeleton } from '@/entities/vacancy/ui/ChooseCompanyType/ChooseCompanyType.skeleton';
 
-export { ChooseEmploymentType } from '@/entities/vacancy/ui/ChooseEmploymentType/ChooseEmploymentType';
-export { ChooseEmploymentTypeSkeleton } from '@/entities/vacancy/ui/ChooseEmploymentType/ChooseEmploymentType.skeleton';
+export { ChooseEmploymentForm } from '@/entities/vacancy/ui/ChooseEmploymentForm/ChooseEmploymentForm';
+export { ChooseEmploymentFormSkeleton } from '@/entities/vacancy/ui/ChooseEmploymentForm/ChooseEmploymentForm.skeleton';
 
 export { ChooseEnglishLevel } from '@/entities/vacancy/ui/ChooseEnglishLevel/ChooseEnglishLevel';
 export { ChooseEnglishLevelSkeleton } from '@/entities/vacancy/ui/ChooseEnglishLevel/ChooseEnglishLevel.skeleton';

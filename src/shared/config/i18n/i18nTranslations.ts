@@ -1655,8 +1655,6 @@ export enum Tasks {
 
 export enum Vacancies {
 	LIST_PAGE_TITLE = 'list_page.title',
-	LIST_PAGE_DESCRIPTION = 'list_page.description',
-	LIST_PAGE_KEYWORDS = 'list_page.keywords',
 	LIST_PAGE_SALARY_FROM = 'list_page.salary.from',
 	LIST_PAGE_SALARY_TO = 'list_page.salary.to',
 	COUNT_SKILLS = 'count.skills',
@@ -1664,6 +1662,8 @@ export enum Vacancies {
 	COUNT_QUESTIONS = 'count.questions',
 	COUNT_TASKS = 'count.tasks',
 	VACANCIES_SEARCH_PLACEHOLDER = 'search.placeholder',
+	STUB_EMPTY_VACANCIES_TITLE = 'stub.empty.vacancies.title',
+	STUB_EMPTY_VACANCIES_SUBTITLE = 'stub.empty.vacancies.subtitle',
 	WORKING_FORMAT = 'workFormat.title',
 	WORKING_FORMAT_OFFICE = 'workFormat.office',
 	WORKING_FORMAT_REMOTE = 'workFormat.remote',

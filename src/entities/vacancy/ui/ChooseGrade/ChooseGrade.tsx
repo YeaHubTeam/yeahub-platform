@@ -3,22 +3,32 @@ import { useTranslation } from 'react-i18next';
 import { Vacancies, i18Namespace } from '@/shared/config';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
-import { getUpdatedSingleFilter } from '../../libs/updateFilterValue';
-import { GRADE } from '../../model/constants';
-import { ChoiseFilterProps } from '../../model/types';
+import { VacancyGrade } from '@/entities/vacancy';
 
-export const ChooseGrade = ({ selectedFilter, onChangeFilter }: ChoiseFilterProps) => {
+import { GRADE } from '../../model/constants';
+
+interface ChooseGradeProps {
+	selectedGrades?: VacancyGrade[];
+	onChangeGrade: (grade?: VacancyGrade[]) => void;
+}
+
+export const ChooseGrade = ({ selectedGrades, onChangeGrade }: ChooseGradeProps) => {
 	const { t } = useTranslation(i18Namespace.vacancies);
 
 	const onGrade = (id: number) => {
-		const newValue = GRADE.find((el) => el.id === id)?.value || '';
-		const updates = getUpdatedSingleFilter(newValue, selectedFilter);
-		onChangeFilter(updates);
+		const newValue = GRADE.find((grade) => grade.id === id)?.value;
+		if (newValue) {
+			const isDataExist = selectedGrades?.some((grade) => newValue === grade);
+			const updates = isDataExist
+				? (selectedGrades || []).filter((grade) => newValue !== grade)
+				: [...(selectedGrades || []), newValue];
+			onChangeGrade(updates.length === 0 ? undefined : updates);
+		}
 	};
 
-	const preparedData = GRADE.map((item) => ({
-		...item,
-		active: selectedFilter?.some((selectedItem) => item.title === selectedItem),
+	const preparedData = GRADE.map((grade) => ({
+		...grade,
+		active: selectedGrades?.some((selectedGrade) => grade.title === selectedGrade),
 	}));
 
 	return <BaseFilterSection data={preparedData} title={t(Vacancies.GRADE)} onClick={onGrade} />;

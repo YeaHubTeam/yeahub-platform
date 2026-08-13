@@ -1,8 +1,6 @@
 {
 	"list_page": {
 		"title": "Все вакансии",
-		"description": "Все актуальные вакансии в одном месте",
-		"keywords": "вакансии IT, работа разработчиком, удалённая работа IT, вакансии junior, вакансии middle, вакансии senior, найм IT, работа программистом, технические вакансии, карьера в IT, поиск работы IT, вакансии в IT компаниях, открытые позиции, трудоустройство разработчиков, работа разработчиком",
 		"salary": {
 			"from": "от",
 			"to": "до"
@@ -23,27 +21,27 @@
 	"companyType": "Тип компании",
 	"employmentType": "Тип занятости",
 	"salary": "Зарплата",
-	"englishLevel": "Уровень английского"
+	"englishLevel": "Уровень английского",
 	"count": {
-		"skills": {
-			"one": "+{{count}} навык",
-			"few": "+{{count}} навыка",
-			"many": "+{{count}} навыков"
-		},
-		"collections": {
-			"one": "{{count}} собеседование",
-			"few": "{{count}} собеседования",
-			"many": "{{count}} собеседований"
-		},
-		"questions": {
-			"one": "{{count}} вопрос",
-			"few": "{{count}} вопроса",
-			"many": "{{count}} вопросов"
-		},
-		"tasks": {
-			"one": "{{count}} задача",
-			"few": "{{count}} задачи",
-			"many": "{{count}} задач"
+		"skills_one": "+{{count}} навык",
+		"skills_few": "+{{count}} навыка",
+		"skills_many": "+{{count}} навыков",
+		"collections_one": "{{count}} собеседование",
+		"collections_few": "{{count}} собеседования",
+		"collections_many": "{{count}} собеседований",
+		"questions_one": "{{count}} вопрос",
+		"questions_few": "{{count}} вопроса",
+		"questions_many": "{{count}} вопросов",
+		"tasks_one": "{{count}} задача",
+		"tasks_few": "{{count}} задачи",
+		"tasks_many": "{{count}} задач"
+	},
+	"stub": {
+		"empty": {
+			"vacancies": {
+				"title": "Похоже здесь пока нет вакансий",
+				"subtitle": "Вакансии периодически обновляются, стоит только немного подождать"
+			}
 		}
 	}
 }

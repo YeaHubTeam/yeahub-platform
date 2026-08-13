@@ -26,6 +26,7 @@ export type VacancyIndustry =
 	| 'Telecom'
 	| 'Other';
 export type VacancyCompanyType = 'Product' | 'Outsource' | 'Startup' | 'Other';
+export type VacancySalaryBucket = 'under_80' | 'from_80_to_150' | 'from_150_to_250' | 'over_250';
 export type VacancySkill = Pick<Skill, 'id' | 'title'>;
 export type VacancySpecialization = Pick<Specialization, 'id' | 'title'>;
 export interface VacancyCompany {
@@ -70,16 +71,16 @@ export interface GetVacanciesListParamsRequest {
 	search?: string;
 	source?: string;
 	specializationId?: number;
-	skillId?: string;
-	companyId?: string;
 	area?: string;
-	employmentForm?: string;
-	grade?: string;
-	englishLevel?: string;
-	industry?: string;
-	companyType?: string;
-	workFormat?: string;
-	salaryBucket?: string;
+	skillId?: number[];
+	companyId?: string[];
+	employmentForm?: VacancyEmploymentForm[];
+	grade?: VacancyGrade[];
+	englishLevel?: VacancyEnglishLevel[];
+	industry?: VacancyIndustry[];
+	companyType?: VacancyCompanyType[];
+	workFormat?: VacancyWorkFormat[];
+	salaryBucket?: VacancySalaryBucket[];
 }
 
 export type GetVacanciesListResponse = Response<Vacancy[]>;

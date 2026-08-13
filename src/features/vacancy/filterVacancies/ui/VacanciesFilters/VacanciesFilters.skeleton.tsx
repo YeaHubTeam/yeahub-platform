@@ -5,7 +5,7 @@ import { SkillsListFieldSkeleton } from '@/entities/skill';
 import { SpecializationsListFieldSkeleton } from '@/entities/specialization';
 import {
 	ChooseCompanyTypeSkeleton,
-	ChooseEmploymentTypeSkeleton,
+	ChooseEmploymentFormSkeleton,
 	ChooseEnglishLevelSkeleton,
 	ChooseGradeSkeleton,
 	ChooseIndustrySkeleton,
@@ -13,7 +13,7 @@ import {
 	ChooseWorkFormatSkeleton,
 } from '@/entities/vacancy';
 
-export const VacanciesFilterPanelSkeleton = () => {
+export const VacanciesFiltersSkeleton = () => {
 	return (
 		<Flex direction="column" gap="24">
 			<SearchInputSkeleton />
@@ -23,7 +23,7 @@ export const VacanciesFilterPanelSkeleton = () => {
 			<ChooseIndustrySkeleton />
 			<ChooseGradeSkeleton />
 			<ChooseCompanyTypeSkeleton />
-			<ChooseEmploymentTypeSkeleton />
+			<ChooseEmploymentFormSkeleton />
 			<ChooseSalarySkeleton />
 			<ChooseEnglishLevelSkeleton />
 		</Flex>

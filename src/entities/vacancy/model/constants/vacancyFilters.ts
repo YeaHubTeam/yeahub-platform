@@ -6,6 +6,7 @@ import {
 	VacancyEnglishLevel,
 	VacancyGrade,
 	VacancyIndustry,
+	VacancySalaryBucket,
 	VacancyWorkFormat,
 } from '@/entities/vacancy/model/types/vacancy';
 
@@ -62,14 +63,14 @@ export const COMPANY_TYPE: FilterItem<VacancyCompanyType>[] = [
 	{ id: 5, title: 'Other', value: 'Other' },
 ];
 
-export const EMPLOYMENT_TYPE: FilterItem<VacancyEmploymentForm>[] = [
+export const EMPLOYMENT_FORM: FilterItem<VacancyEmploymentForm>[] = [
 	{ id: 1, title: 'Fulltime', value: 'Fulltime' },
 	{ id: 2, title: 'Parttime', value: 'Parttime' },
 	{ id: 3, title: 'Project', value: 'Project' },
 	{ id: 4, title: 'Shift', value: 'Shift' },
 ];
 
-export const SALARY_BUCKET: FilterItem<string>[] = [
+export const SALARY_BUCKET: FilterItem<VacancySalaryBucket>[] = [
 	{ id: 1, title: 'до 80К', value: 'under_80' },
 	{ id: 2, title: '81-150К', value: 'from_80_to_150' },
 	{ id: 3, title: '151-250К', value: 'from_150_to_250' },

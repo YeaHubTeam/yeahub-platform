@@ -6,11 +6,16 @@ import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getUpdatedSingleFilter } from '../../libs/updateFilterValue';
-import { INDUSTRY, MAX_SHOW_LIMIT_INDUSTRY } from '../../model/constants';
-import { ChoiseFilterProps } from '../../model/types';
+import { VacancyIndustry } from '@/entities/vacancy';
 
-export const ChooseIndustry = ({ selectedFilter, onChangeFilter }: ChoiseFilterProps) => {
+import { INDUSTRY, MAX_SHOW_LIMIT_INDUSTRY } from '../../model/constants';
+
+interface ChooseIndustryProps {
+	selectedIndustries?: VacancyIndustry[];
+	onChangeIndustry: (grade?: VacancyIndustry[]) => void;
+}
+
+export const ChooseIndustry = ({ selectedIndustries, onChangeIndustry }: ChooseIndustryProps) => {
 	const { t } = useTranslation(i18Namespace.vacancies);
 	const { t: tCommon } = useTranslation(i18Namespace.translation);
 
@@ -21,14 +26,19 @@ export const ChooseIndustry = ({ selectedFilter, onChangeFilter }: ChoiseFilterP
 	};
 
 	const onIndustry = (id: number) => {
-		const newValue = INDUSTRY.find((el) => el.id === id)?.title || '';
-		const updates = getUpdatedSingleFilter(newValue, selectedFilter);
-		onChangeFilter(updates);
+		const newValue = INDUSTRY.find((industry) => industry.id === id)?.value;
+		if (newValue) {
+			const isDataExist = selectedIndustries?.some((industry) => newValue === industry);
+			const updates = isDataExist
+				? (selectedIndustries || []).filter((industry) => newValue !== industry)
+				: [...(selectedIndustries || []), newValue];
+			onChangeIndustry(updates.length === 0 ? undefined : updates);
+		}
 	};
 
 	const preparedData = INDUSTRY.map((item) => ({
 		...item,
-		active: selectedFilter?.some((selectedItem) => item.title === selectedItem),
+		active: selectedIndustries?.some((selectedItem) => item.title === selectedItem),
 	})).slice(0, showAll ? INDUSTRY.length : MAX_SHOW_LIMIT_INDUSTRY);
 
 	return (

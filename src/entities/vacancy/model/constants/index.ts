@@ -4,7 +4,7 @@ export {
 	INDUSTRY,
 	GRADE,
 	COMPANY_TYPE,
-	EMPLOYMENT_TYPE,
+	EMPLOYMENT_FORM,
 	SALARY_BUCKET,
 	ENGLISH_LEVEL,
 } from './vacancyFilters';
