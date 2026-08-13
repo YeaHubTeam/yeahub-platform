@@ -423,6 +423,9 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+
+	DATE_TODAY = 'date.today',
+	DATE_YESTERDAY = 'date.yesterday',
 }
 
 export enum Profile {
@@ -1494,6 +1497,8 @@ export enum Topics {
 	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
 	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
 	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
+	TOPIC_CREATE_PAGE_TITLE = 'create.page.title',
+	TOPIC_EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum ProgrammingLanguages {
@@ -1646,4 +1651,27 @@ export enum Tasks {
 	OUTPUT_RESULT_MEMORY_USAGE = 'output.result.memory.usage',
 
 	WARNING_INTRO = 'warning.intro',
+}
+
+export enum Vacancies {
+	LIST_PAGE_TITLE = 'list_page.title',
+	LIST_PAGE_SALARY_FROM = 'list_page.salary.from',
+	LIST_PAGE_SALARY_TO = 'list_page.salary.to',
+	COUNT_SKILLS = 'count.skills',
+	COUNT_COLLECTIONS = 'count.collections',
+	COUNT_QUESTIONS = 'count.questions',
+	COUNT_TASKS = 'count.tasks',
+	VACANCIES_SEARCH_PLACEHOLDER = 'search.placeholder',
+	STUB_EMPTY_VACANCIES_TITLE = 'stub.empty.vacancies.title',
+	STUB_EMPTY_VACANCIES_SUBTITLE = 'stub.empty.vacancies.subtitle',
+	WORKING_FORMAT = 'workFormat.title',
+	WORKING_FORMAT_OFFICE = 'workFormat.office',
+	WORKING_FORMAT_REMOTE = 'workFormat.remote',
+	WORKING_FORMAT_HYBRID = 'workFormat.hybrid',
+	INDUSTRY = 'industry',
+	GRADE = 'grade',
+	COMPANY_TYPE = 'companyType',
+	EMPLOYMENT_TYPE = 'employmentType',
+	SALARY = 'salary',
+	ENGLISH_LEVEL = 'englishLevel',
 }

@@ -1,0 +1,47 @@
+{
+	"list_page": {
+		"title": "Все вакансии",
+		"salary": {
+			"from": "от",
+			"to": "до"
+		}
+	},
+	"detail_page": {},
+	"search": {
+		"placeholder": "Название вакансии..."
+	},
+	"workFormat": {
+		"title": "Формат работы",
+		"office": "Офис",
+		"remote": "Удалённо",
+		"hybrid": "Гибрид"
+	},
+	"industry": "Сфера",
+	"grade": "Грейд",
+	"companyType": "Тип компании",
+	"employmentType": "Тип занятости",
+	"salary": "Зарплата",
+	"englishLevel": "Уровень английского",
+	"count": {
+		"skills_one": "+{{count}} навык",
+		"skills_few": "+{{count}} навыка",
+		"skills_many": "+{{count}} навыков",
+		"collections_one": "{{count}} собеседование",
+		"collections_few": "{{count}} собеседования",
+		"collections_many": "{{count}} собеседований",
+		"questions_one": "{{count}} вопрос",
+		"questions_few": "{{count}} вопроса",
+		"questions_many": "{{count}} вопросов",
+		"tasks_one": "{{count}} задача",
+		"tasks_few": "{{count}} задачи",
+		"tasks_many": "{{count}} задач"
+	},
+	"stub": {
+		"empty": {
+			"vacancies": {
+				"title": "Похоже здесь пока нет вакансий",
+				"subtitle": "Вакансии периодически обновляются, стоит только немного подождать"
+			}
+		}
+	}
+}

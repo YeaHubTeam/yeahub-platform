@@ -1,0 +1,19 @@
+.format {
+  display: flex;
+  align-items: center;
+}
+
+.format::after {
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  margin-left: 6px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--color-black-500);
+}
+
+.format:last-child::after {
+  display: none;
+}
