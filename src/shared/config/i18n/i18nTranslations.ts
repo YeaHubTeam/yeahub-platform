@@ -1652,26 +1652,26 @@ export enum Tasks {
 
 	WARNING_INTRO = 'warning.intro',
 }
+
 export enum Vacancies {
 	LIST_PAGE_TITLE = 'list_page.title',
-	LIST_PAGE_DESCRIPTION = 'list_page.description',
-	LIST_PAGE_KEYWORDS = 'list_page.keywords',
 	LIST_PAGE_SALARY_FROM = 'list_page.salary.from',
 	LIST_PAGE_SALARY_TO = 'list_page.salary.to',
-
-	COUNT_SKILLS_ONE = 'count.skills.one',
-	COUNT_SKILLS_FEW = 'count.skills.few',
-	COUNT_SKILLS_MANY = 'count.skills.many',
-
-	COUNT_COLLECTIONS_ONE = 'count.collections.one',
-	COUNT_COLLECTIONS_FEW = 'count.collections.few',
-	COUNT_COLLECTIONS_MANY = 'count.collections.many',
-
-	COUNT_QUESTIONS_ONE = 'count.questions.one',
-	COUNT_QUESTIONS_FEW = 'count.questions.few',
-	COUNT_QUESTIONS_MANY = 'count.questions.many',
-
-	COUNT_TASKS_ONE = 'count.tasks.one',
-	COUNT_TASKS_FEW = 'count.tasks.few',
-	COUNT_TASKS_MANY = 'count.tasks.many',
+	COUNT_SKILLS = 'count.skills',
+	COUNT_COLLECTIONS = 'count.collections',
+	COUNT_QUESTIONS = 'count.questions',
+	COUNT_TASKS = 'count.tasks',
+	VACANCIES_SEARCH_PLACEHOLDER = 'search.placeholder',
+	STUB_EMPTY_VACANCIES_TITLE = 'stub.empty.vacancies.title',
+	STUB_EMPTY_VACANCIES_SUBTITLE = 'stub.empty.vacancies.subtitle',
+	WORKING_FORMAT = 'workFormat.title',
+	WORKING_FORMAT_OFFICE = 'workFormat.office',
+	WORKING_FORMAT_REMOTE = 'workFormat.remote',
+	WORKING_FORMAT_HYBRID = 'workFormat.hybrid',
+	INDUSTRY = 'industry',
+	GRADE = 'grade',
+	COMPANY_TYPE = 'companyType',
+	EMPLOYMENT_TYPE = 'employmentType',
+	SALARY = 'salary',
+	ENGLISH_LEVEL = 'englishLevel',
 }
