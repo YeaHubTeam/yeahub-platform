@@ -574,6 +574,10 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
+				path: ROUTES.vacancies.route,
+				element: <VacanciesPage />,
+			},
+			{
 				path: ROUTES.analytics.route,
 				element: <Outlet />,
 				handle: {
@@ -833,10 +837,6 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.users.route,
 				element: <UserProfilePage />,
-			},
-			{
-				path: '/vacancies',
-				element: <VacanciesPage />,
 			},
 			{
 				path: '*',

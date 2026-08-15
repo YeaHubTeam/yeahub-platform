@@ -20,14 +20,9 @@ export const VacancyCardSkills = ({ skills }: VacancyCardCompanyProps) => {
 
 	const visibleSkills = skills.slice(0, MAX_SHOW_LIMIT_SKILLS);
 	const hiddenSkillsCount = skills.length - MAX_SHOW_LIMIT_SKILLS;
-	const getSkillKey = (count: number) => {
-		if (count === 1) return Vacancies.COUNT_SKILLS_ONE;
-		if (count >= 2 && count <= 4) return Vacancies.COUNT_SKILLS_FEW;
-		return Vacancies.COUNT_SKILLS_ONE;
-	};
 
 	return (
-		<Flex gap="10" align="center">
+		<Flex gap="10" align="center" wrap="wrap">
 			{visibleSkills.map(({ id, title }) => (
 				<Card withOutsideShadow className={styles.skills} key={id}>
 					<Text variant="body1-accent" className={styles.skill}>
@@ -43,7 +38,7 @@ export const VacancyCardSkills = ({ skills }: VacancyCardCompanyProps) => {
 						.join(', ')}
 				>
 					<Text variant="body3" color="black-400">
-						{t(getSkillKey(hiddenSkillsCount), { count: hiddenSkillsCount })}
+						{t(Vacancies.COUNT_SKILLS, { count: hiddenSkillsCount })}
 					</Text>
 				</Tooltip>
 			)}

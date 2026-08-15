@@ -20,6 +20,7 @@ import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
 import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
+import { TopicEditPageSkeleton } from '@/pages/admin/topic/topicEdit';
 import { UserDetailPageSkeleton } from '@/pages/admin/user/userDetail';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
@@ -55,6 +56,7 @@ const SkeletonGenerator = () => {
 		location.pathname,
 	);
 	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
+	const isAdminTopicsEditPage = matchPath(ROUTES.admin.topics.edit.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -82,6 +84,10 @@ const SkeletonGenerator = () => {
 
 	if (isUserProfilePage) {
 		return <UserProfilePageSkeleton />;
+	}
+
+	if (isAdminTopicsEditPage) {
+		return <TopicEditPageSkeleton />;
 	}
 
 	switch (location.pathname) {
