@@ -1,0 +1,21 @@
+.container {
+  padding: 10px;
+  width: max-content;
+  height: max-content;
+  border-radius: 20px;
+  background: #FFF;
+}
+
+.tab {
+  padding: 10px;
+  height: 41px;
+  border: none ;
+  border-radius: 8px; 
+  background: transparent ;
+  font-size: var(--font-size-p-m);
+}
+
+.tab.active {
+  background: var(--color-black-30) ;
+  color: var(--color-purple-700);
+}
