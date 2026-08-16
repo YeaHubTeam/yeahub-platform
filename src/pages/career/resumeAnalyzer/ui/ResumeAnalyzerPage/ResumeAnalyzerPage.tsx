@@ -1,7 +1,5 @@
 import { Button } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
-import { Text } from '@/shared/ui/Text';
 
 import { PageWrapper } from '@/widgets/PageWrapper';
 
@@ -13,12 +11,9 @@ const ResumeAnalyzerPage = () => {
 	const [uploadResume, { data, isLoading, reset }] = useResumeAnalyzeMutation();
 
 	const content = (
-		<Card withOutsideShadow>
+		<>
 			<Flex direction="column" gap="30">
 				<Flex gap="20" align="center" justify="between">
-					<Text variant="head3" isMainTitle>
-						Рекомендации по резюме
-					</Text>
 					{data ? (
 						<Button variant="primary" onClick={reset}>
 							Проверить ещё
@@ -31,7 +26,7 @@ const ResumeAnalyzerPage = () => {
 					<UploadResumeForm onSubmit={uploadResume} isLoading={isLoading} />
 				)}
 			</Flex>
-		</Card>
+		</>
 	);
 
 	return (

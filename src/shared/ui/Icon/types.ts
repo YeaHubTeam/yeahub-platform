@@ -1,4 +1,4 @@
-export type IconSize = 14 | 18 | 20 | 24 | 26 | 28 | 32 | 34 | 36 | 40;
+export type IconSize = 14 | 18 | 20 | 24 | 26 | 28 | 32 | 34 | 36 | 40 | 46;
 
 export type IconName =
 	| 'arrowRight'
@@ -8,6 +8,7 @@ export type IconName =
 	| 'arrowDownSquare'
 	| 'clock'
 	| 'calendar'
+	| 'downloadFile'
 	| 'check'
 	| 'questions'
 	| 'checkList'
@@ -35,6 +36,7 @@ export type IconName =
 	| 'info'
 	| 'instagram'
 	| 'linkedin'
+	| 'lock'
 	| 'twitter'
 	| 'facebook'
 	| 'github'
