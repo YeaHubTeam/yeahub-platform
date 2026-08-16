@@ -150,6 +150,12 @@
 		},
 		"limit": "no more than {{maxFileMBSize}}mb"
 	},
+	"file.loader_resume": {
+		"link": "Click to change",
+		"text": "or drag here",
+		"limit": "Max. {{maxFileMBSize}} MB",
+		"description": "We don't store your files and only use them for analysis"
+	},
 	"validation": {
 		"required": "This field is required to be completed",
 		"parameter": "This section cannot be empty",
