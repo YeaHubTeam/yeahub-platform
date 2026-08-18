@@ -1,0 +1,22 @@
+.uploaded-file-wrapper {
+  width: 100%;
+  max-width: 700px;
+}
+
+
+.file-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.delete-button {
+  color: var(--color-black-600);
+}
+
+.upload-button {
+  line-height: 130%;
+  font-weight: var(--font-weight-500);
+}

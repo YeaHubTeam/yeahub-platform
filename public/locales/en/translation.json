@@ -156,6 +156,13 @@
 		"limit": "Max. {{maxFileMBSize}} MB",
 		"description": "We don't store your files and only use them for analysis"
 	},
+	"file.uploaded_resume": {
+		"title": "Uploaded resume",
+		"uploadedAt": "Uploaded {{uploadedAt}}",
+		"upload_success": "Resume uploaded successfully",
+		"upload_failed": "Failed to upload the resume",
+		"analysis_failed": "Failed to analyze your resume"
+	},
 	"validation": {
 		"required": "This field is required to be completed",
 		"parameter": "This section cannot be empty",

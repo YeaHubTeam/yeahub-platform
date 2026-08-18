@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
-import { Button } from '@/shared/ui/Button';
+import { i18Namespace, Translation } from '@/shared/config';
 import { FileLoader, Accept, Extension } from '@/shared/ui/FileLoader';
-import { Flex } from '@/shared/ui/Flex';
 import { toast } from '@/shared/ui/Toast';
+
+import { getSpecializationId } from '@/entities/profile';
+
+import { useGetUploadedFileDate } from '../../model/hooks/useGetUploadedFileDate';
+import { UploadedResume } from '../UploadedResume/UploadedResume';
 
 import styles from './UploadResumeForm.module.css';
 
@@ -14,25 +20,40 @@ interface UploadResumeFormProps {
 
 export const UploadResumeForm = ({ onSubmit, isLoading }: UploadResumeFormProps) => {
 	const [file, setFile] = useState<FormData | null>(null);
+	const [fileName, setFileName] = useState<string>('');
+
+	const [uploadedAt, setUploadedAt] = useState<string | null>(null);
+	const formattedDate = useGetUploadedFileDate(uploadedAt);
+
+	const { t } = useTranslation(i18Namespace.translation);
+	const specializationId = useSelector(getSpecializationId);
 
 	const handleUpload = ([file]: File[]) => {
 		const formData = new FormData();
 		formData.append('file', file);
 		setFile(formData);
+		setFileName(file.name);
 		if (formData.get('file')) {
-			toast.success('Резюме успешно загружено');
+			setUploadedAt(new Date().toISOString());
+			toast.success(t(Translation.FILE_UPLOADED_RESUME_UPLOAD_SUCCESS));
 		} else {
-			toast.error('Не удалось загрузить резюме');
+			toast.error(t(Translation.FILE_UPLOADED_RESUME_UPLOAD_FAILED));
 		}
 	};
 
 	const onUploadResume = () => {
-		if (file) onSubmit({ specializationId: 1, file: file });
+		if (file) onSubmit({ specializationId, file: file });
+	};
+
+	const resetResume = () => {
+		setFile(null);
+		setFileName('');
+		setUploadedAt(null);
 	};
 
 	return (
 		<>
-			<Flex direction="column" gap="20">
+			{!file ? (
 				<FileLoader
 					className={styles['file-loader-wrapper']}
 					accept={Accept.MS_WORD}
@@ -42,10 +63,15 @@ export const UploadResumeForm = ({ onSubmit, isLoading }: UploadResumeFormProps)
 					contentVariant="resume"
 					maxFileMBSize={10}
 				/>
-				<Button variant="primary" disabled={!file || isLoading} onClick={onUploadResume}>
-					Проверить резюме
-				</Button>
-			</Flex>
+			) : (
+				<UploadedResume
+					fileName={fileName}
+					isLoading={isLoading}
+					onUploadResume={onUploadResume}
+					uploadedAt={formattedDate}
+					onDeleteResume={resetResume}
+				/>
+			)}
 		</>
 	);
 };

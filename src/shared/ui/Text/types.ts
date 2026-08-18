@@ -12,6 +12,7 @@ export type TextVariant =
 	| 'body3'
 	| 'body3-accent'
 	| 'body3-strong'
+	| 'body3-strong-compact'
 	| 'body4'
 	| 'body5'
 	| 'body5-accent'

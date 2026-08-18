@@ -159,6 +159,13 @@
 		"limit": "Макс. {{maxFileMBSize}} МБ",
 		"description": "Мы не храним ваши файлы и используем их только для анализа"
 	},
+	"file.uploaded_resume": {
+		"title": "Загруженное резюме",
+		"uploadedAt": "Загружено {{uploadedAt}}",
+		"upload_success": "Резюме успешно загружено",
+		"upload_failed": "Не удалось загрузить резюме",
+		"analyses_failed": "Не удалось проанализировать ваше резюме"
+	},
 	"validation": {
 		"required": "Это поле обязательно для заполнения",
 		"parameter": "Это раздел не может быть пустым",
