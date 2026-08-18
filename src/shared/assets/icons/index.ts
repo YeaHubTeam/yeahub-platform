@@ -127,6 +127,7 @@ export { default as tiktok } from './tiktok.svg';
 export { default as time } from './time.svg';
 export { default as toggleSidebar } from './toggleSidebar.svg';
 export { default as trash } from './trash.svg';
+export { default as trashOutline } from './trashOutline.svg';
 export { default as trendUp } from './trendUp.svg';
 export { default as twitter } from './twitter.svg';
 export { default as user } from './user.svg';

@@ -10,7 +10,7 @@ import {
 } from '@/shared/ui/FileLoader/FileLoaderContent';
 import { Flex } from '@/shared/ui/Flex';
 
-import style from './FileLoader.module.css';
+import styles from './FileLoader.module.css';
 import { Accept, Extension } from './types';
 
 export interface FileLoaderProps {
@@ -39,7 +39,6 @@ export const FileLoader = ({
 	contentVariant = 'default',
 }: FileLoaderProps) => {
 	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
-
 	const [files, setFiles] = useState<globalThis.File[]>([]);
 	const { isDragActive, onDragLeave, handleUploader, onDragOverAndEnter, handleIsDragActive } =
 		useDragAndDrop(uploaderRef);
@@ -109,11 +108,11 @@ export const FileLoader = ({
 			onDragOver={onDragOverAndEnter}
 			onDragEnter={onDragOverAndEnter}
 			className={classNames(
-				style['file-upload-container'],
+				styles['file-upload-container'],
 				{
-					[style.active]: isDragActive,
-					[style.disabled]: disabled,
-					[style['content-resume']]: contentVariant === 'resume',
+					[styles.active]: isDragActive,
+					[styles.disabled]: disabled,
+					[styles['content-resume']]: contentVariant === 'resume',
 				},
 				className,
 			)}
@@ -142,7 +141,7 @@ export const FileLoader = ({
 				ref={uploaderRef}
 				onChange={handleChange}
 				multiple={multiply}
-				className={style['file-input']}
+				className={styles['file-input']}
 				disabled={disabled}
 			/>
 		</Flex>

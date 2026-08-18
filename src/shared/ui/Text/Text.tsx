@@ -35,6 +35,7 @@ export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElement
 	body3: 'p',
 	'body3-accent': 'p',
 	'body3-strong': 'p',
+	'body3-strong-compact': 'p',
 	body4: 'p',
 	body5: 'p',
 	'body5-accent': 'p',
