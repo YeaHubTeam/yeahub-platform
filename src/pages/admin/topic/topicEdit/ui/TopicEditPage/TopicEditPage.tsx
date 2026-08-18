@@ -10,6 +10,8 @@ import { TopicEditForm } from '@/features/topics/editTopic';
 import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { TopicEditPageSkeleton } from './TopicEditPage.skeleton';
+
 const TopicEditPage = () => {
 	const { t } = useTranslation(i18Namespace.topic);
 	const { topicId } = useParams<{ topicId: string }>();
@@ -44,6 +46,7 @@ const TopicEditPage = () => {
 			stubs={stubs}
 			content={content}
 			roles={['admin', 'author']}
+			skeleton={<TopicEditPageSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>
