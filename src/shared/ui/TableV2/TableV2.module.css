@@ -1,0 +1,33 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--color-black-900);
+}
+
+.head {
+  height: 48px;
+  background-color: var(--color-purple-700);
+  color: var(--color-white-900);
+  line-height: 130%;
+}
+
+.cell {
+  padding: 13px 14px;
+  width: auto;
+  min-height: 48px;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  word-break: keep-all;
+}
+
+.row {
+  width: auto;
+  height: 48px;
+  background-color: var(--color-black-30);
+}
+
+.row:hover {
+  background-color: var(--color-purple-100);
+}
