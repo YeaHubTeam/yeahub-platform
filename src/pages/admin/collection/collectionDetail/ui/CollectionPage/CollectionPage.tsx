@@ -52,7 +52,12 @@ export const CollectionPage = () => {
 	);
 
 	const questions = response?.data ?? [];
-	const hasData = questions.length > 0 || isLoading;
+
+	const hasCollection = !!collection && Object.keys(collection).length > 0;
+	const isCollectionLoading = isLoading || isFetching;
+
+	const hasData = hasCollection;
+
 	const stubs: PageWrapperStubs = {
 		empty: {
 			title: t(Collections.STUB_EMPTY_COLLECTION_TITLE),
@@ -64,20 +69,21 @@ export const CollectionPage = () => {
 	};
 
 	const isDisabled = isAuthor && collection?.createdBy?.id !== userId;
-	const content = collection ? (
+
+	const content = hasCollection ? (
 		<CollectionPageContent
 			collection={collection}
 			questions={questions}
 			tasks={tasks}
 			isDisabled={isDisabled}
-			isLoading={isLoading}
+			isLoading={isCollectionLoading}
 		/>
 	) : null;
 
 	return (
 		<PageWrapper
 			roles={['admin', 'author']}
-			isLoading={isLoading || isFetching}
+			isLoading={isCollectionLoading}
 			hasError={isCollectionError || isQuestionsError}
 			hasData={hasData}
 			stubs={stubs}
