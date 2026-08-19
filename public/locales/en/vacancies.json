@@ -1,34 +1,44 @@
 {
 	"list_page": {
 		"title": "All vacancies",
-		"description": "All current vacancies in one place",
-		"keywords": "IT vacancies, developer jobs, remote IT jobs, junior vacancies, middle vacancies, senior vacancies, IT hiring, software engineer jobs, tech jobs, IT career, developer career, programming jobs, IT recruitment, open positions, job search IT, IT company vacancies, developer jobs",
 		"salary": {
 			"from": "from",
 			"to": "to"
 		}
 	},
 	"detail_page": {},
+	"search": {
+		"placeholder": "Job title..."
+	},
+
+	"workFormat": {
+		"title": "Working format",
+		"office": "Office",
+		"remote": "Remote",
+		"hybrid": "Hybrid"
+	},
+	"industry": "Industry",
+	"grade": "Grade",
+	"companyType": "Company Type",
+	"employmentType": "Employment type",
+	"salary": "Salary",
+	"englishLevel": "English proficiency level",
 	"count": {
-		"skills": {
-			"one": "+{{count}} skill",
-			"few": "+{{count}} skills",
-			"many": "+{{count}} skills"
-		},
-		"collections": {
-			"one": "{{count}} interview",
-			"few": "{{count}} interviews",
-			"many": "{{count}} interviews"
-		},
-		"questions": {
-			"one": "{{count}} question",
-			"few": "{{count}} questions",
-			"many": "{{count}} questions"
-		},
-		"tasks": {
-			"one": "{{count}} task",
-			"few": "{{count}} tasks",
-			"many": "{{count}} tasks"
+		"skills_one": "+{{count}} skill",
+		"skills_other": "+{{count}} skills",
+		"collections_one": "{{count}} interview",
+		"collections_other": "{{count}} interviews",
+		"questions_one": "{{count}} question",
+		"questions_other": "{{count}} questions",
+		"tasks_one": "{{count}} task",
+		"tasks_other": "{{count}} tasks"
+	},
+	"stub": {
+		"empty": {
+			"vacancies": {
+				"title": "No vacancies found yet",
+				"subtitle": "Vacancies are added periodically, just wait a bit"
+			}
 		}
 	}
 }

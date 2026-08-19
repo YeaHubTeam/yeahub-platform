@@ -3,7 +3,9 @@ import { FiltersDrawerSkeleton } from '@/shared/ui/FiltersDrawer';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import { VacanciesListSkeleton } from '@/widgets/vacancy';
+import { VacanciesFiltersSkeleton } from '@/features/vacancy/filterVacancies';
+
+import { VacanciesListSkeleton } from '@/widgets/vacancy/VacanciesList';
 
 import styles from './VacanciesPage.module.css';
 
@@ -19,7 +21,9 @@ export const VacanciesPageSkeleton = () => {
 					<VacanciesListSkeleton />
 				</CardSkeleton>
 			</div>
-			<CardSkeleton className={styles.filters}></CardSkeleton>
+			<CardSkeleton className={styles.filters}>
+				<VacanciesFiltersSkeleton />
+			</CardSkeleton>
 		</Flex>
 	);
 };
