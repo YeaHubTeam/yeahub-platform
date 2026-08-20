@@ -27,6 +27,7 @@ td {
   min-height: 48px;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: keep-all;
   vertical-align: middle;
 }
 
