@@ -51,7 +51,7 @@ const ResourceEditPage = () => {
 			roles={['admin', 'author']}
 			content={content}
 		>
-			{({ content }) => <>{content}</>}
+			{({ content: resolvedContent }) => <>{resolvedContent}</>}
 		</PageWrapper>
 	);
 };
