@@ -1,0 +1,107 @@
+import { useTranslation } from 'react-i18next';
+
+import { Questions, i18Namespace, ROUTES } from '@/shared/config';
+import { route } from '@/shared/libs';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
+import { TableV2, type TableColumn } from '@/shared/ui/TableV2';
+
+import { Question } from '@/entities/question';
+
+const SKILL_SHOW_COUNT = 4;
+const SPECIALIZATION_SHOW_COUNT = 2;
+const TOPIC_SHOW_COUNT = 4;
+
+interface QuestionTableRow {
+	id: number;
+	title: string;
+	specializations: Question['questionSpecializations'];
+	skills: Question['questionSkills'];
+	topics: NonNullable<Question['questionTopics']>;
+	rate: number;
+	complexity: number;
+	author: string;
+}
+
+interface QuestionsTableV2Props {
+	questions?: Question[];
+}
+
+export const QuestionsTableV2 = ({ questions }: QuestionsTableV2Props) => {
+	const { t } = useTranslation(i18Namespace.questions);
+
+	if (!questions) {
+		return null;
+	}
+
+	const tableData: QuestionTableRow[] = questions.map((question) => ({
+		id: question.id,
+		title: question.title,
+		specializations: question.questionSpecializations,
+		skills: question.questionSkills,
+		topics: question.questionTopics ?? [],
+		rate: question.rate,
+		complexity: question.complexity,
+		author: question.createdBy?.username ?? '',
+	}));
+
+	const columns: TableColumn<QuestionTableRow>[] = [
+		{
+			id: 'title',
+			header: t(Questions.TITLE_SHORT),
+			cell: ({ row, value }) => (
+				<TableCellLink
+					to={route(ROUTES.admin.questions.details.route, row.id)}
+					text={String(value)}
+				/>
+			),
+		},
+		{
+			id: 'specializations',
+			header: t(Questions.SPECIALIZATION_TITLE),
+			cell: ({ row }) => (
+				<TableCellEntityList
+					url={ROUTES.admin.specializations.details.page}
+					items={row.specializations}
+					showCount={SPECIALIZATION_SHOW_COUNT}
+				/>
+			),
+		},
+		{
+			id: 'skills',
+			header: t(Questions.SKILLS_TITLE),
+			cell: ({ row }) => (
+				<TableCellEntityList
+					url={ROUTES.admin.skills.detail.page}
+					items={row.skills}
+					showCount={SKILL_SHOW_COUNT}
+				/>
+			),
+		},
+		{
+			id: 'topics',
+			header: t(Questions.TOPIC_TITLE),
+			cell: ({ row }) => (
+				<TableCellEntityList
+					url={ROUTES.admin.topics.details.page}
+					items={row.topics}
+					showCount={TOPIC_SHOW_COUNT}
+				/>
+			),
+		},
+		{
+			id: 'rate',
+			header: t(Questions.RATE_TITLE_SHORT),
+		},
+		{
+			id: 'complexity',
+			header: t(Questions.COMPLEXITY_TITLE_SHORT),
+		},
+		{
+			id: 'author',
+			header: t(Questions.AUTHOR),
+		},
+	];
+
+	return <TableV2 data={tableData} columns={columns} />;
+};

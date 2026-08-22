@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import PlusSvg from '@/shared/assets/icons/plus1.svg';
 import { i18Namespace, Questions, ROUTES, Translation } from '@/shared/config';
-import { route, SelectedAdminEntities, useAppDispatch, useAppSelector } from '@/shared/libs';
+import { route, useAppDispatch, useAppSelector } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -23,7 +23,7 @@ import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 
 import { getSelectedQuestions } from '../../model/selectors/questionsTablePageSelectors';
 import { questionsTablePageActions } from '../../model/slices/questionsTablePageSlice';
-import { QuestionsTable } from '../QuestionsTable/QuestionsTable';
+import { QuestionsTableV2 } from '../QuestionsTable/QuestionsTableV2';
 
 import styles from './QuestionsTablePage.module.css';
 
@@ -72,9 +72,9 @@ const QuestionsPage = () => {
 		topics: filters.topics,
 	});
 
-	const onSelectQuestions = (ids: SelectedAdminEntities) => {
-		dispatch(questionsTablePageActions.setSelectedQuestions(ids));
-	};
+	// const onSelectQuestions = (ids: SelectedAdminEntities) => {
+	// 	dispatch(questionsTablePageActions.setSelectedQuestions(ids));
+	// };
 
 	const resetAll = () => {
 		dispatch(questionsTablePageActions.resetFilters());
@@ -151,13 +151,7 @@ const QuestionsPage = () => {
 			hasData={questionsList.length > 0}
 			stubs={stubs}
 			roles={['admin', 'author']}
-			content={
-				<QuestionsTable
-					questions={questionsList}
-					selectedQuestions={selectedQuestions}
-					onSelectQuestions={onSelectQuestions}
-				/>
-			}
+			content={<QuestionsTableV2 questions={questionsList} />}
 			paginationOptions={{
 				page: filters.page || 1,
 				onChangePage,
