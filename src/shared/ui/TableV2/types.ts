@@ -9,14 +9,19 @@ export interface TableCellContext<T> {
 }
 
 export interface TableColumn<T> {
-	id: string;
+	id: Extract<keyof T, string>;
 	header: ReactNode;
-	accessor: (row: T) => unknown;
+	accessor?: (row: T) => unknown;
 	cell?: (context: TableCellContext<T>) => ReactNode;
 }
 
-export interface TableV2Props<T> {
+interface TableV2BaseProps<T> {
 	data: T[];
 	columns: TableColumn<T>[];
-	getRowId: (row: T) => TableRowId;
 }
+
+type TableV2RowIdProps<T> = T extends { id: TableRowId }
+	? { getRowId?: (row: T) => TableRowId }
+	: { getRowId: (row: T) => TableRowId };
+
+export type TableV2Props<T> = TableV2BaseProps<T> & TableV2RowIdProps<T>;

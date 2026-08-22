@@ -36,37 +36,30 @@ export const SpecializationProgressTable = ({
 		}),
 	);
 
+	const numberColumn: TableColumn<SpecializationProgressTableRow> = {
+		id: 'number',
+		header: t(Analytics.SPECIALIZATION_PROGRESS_TABLE_NUMBER),
+	};
+
 	const columns: TableColumn<SpecializationProgressTableRow>[] = [
-		...(!isWidget
-			? [
-					{
-						id: 'number',
-						header: t(Analytics.SPECIALIZATION_PROGRESS_TABLE_NUMBER),
-						accessor: (row: SpecializationProgressTableRow) => row.number,
-					},
-				]
-			: []),
+		...(!isWidget ? [numberColumn] : []),
 		{
 			id: 'specialization',
 			header: t(Analytics.SPECIALIZATION_PROGRESS_TABLE_SPECIALIZATION),
-			accessor: (row) => row.specialization,
 		},
 		{
 			id: 'skillCount',
 			header: t(Analytics.SPECIALIZATION_PROGRESS_TABLE_SKILLS),
-			accessor: (row) => row.skillCount,
 		},
 		{
 			id: 'questionCount',
 			header: t(Analytics.SPECIALIZATION_PROGRESS_TABLE_QUESTIONS),
-			accessor: (row) => row.questionCount,
 		},
 		{
 			id: 'averageProgress',
 			header: t(Analytics.SPECIALIZATION_PROGRESS_TABLE_PROGRESS),
-			accessor: (row) => row.averageProgress,
 		},
 	];
 
-	return <TableV2 data={tableData} columns={columns} getRowId={(row) => row.id} />;
+	return <TableV2 data={tableData} columns={columns} />;
 };

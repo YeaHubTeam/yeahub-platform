@@ -1,7 +1,11 @@
 import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
 import styles from './TableV2.module.css';
-import type { TableV2Props } from './types';
+import type { TableRowId, TableV2Props } from './types';
+
+const getDefaultRowId = <T,>(row: T): TableRowId => {
+	return (row as unknown as { id: TableRowId }).id;
+};
 
 export const TableV2 = <T,>({ data, columns, getRowId }: TableV2Props<T>) => {
 	return (
@@ -10,7 +14,7 @@ export const TableV2 = <T,>({ data, columns, getRowId }: TableV2Props<T>) => {
 			<TableBody
 				data={data}
 				columns={columns}
-				getRowId={getRowId}
+				getRowId={getRowId ?? getDefaultRowId}
 				rowClassName={styles.row}
 				cellClassName={styles.cell}
 			/>

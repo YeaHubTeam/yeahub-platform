@@ -22,7 +22,7 @@ const renderCellValue = (value: unknown): ReactNode => {
 };
 
 export const TableCell = <T,>({ column, row, rowIndex, className }: TableCellProps<T>) => {
-	const value = column.accessor(row);
+	const value = column.accessor ? column.accessor(row) : row[column.id];
 	const content = column.cell ? column.cell({ row, value, rowIndex }) : renderCellValue(value);
 
 	return <td className={className}>{content}</td>;
