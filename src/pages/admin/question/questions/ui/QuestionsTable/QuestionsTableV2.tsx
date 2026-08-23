@@ -30,20 +30,17 @@ interface QuestionsTableV2Props {
 export const QuestionsTableV2 = ({ questions }: QuestionsTableV2Props) => {
 	const { t } = useTranslation(i18Namespace.questions);
 
-	if (!questions) {
-		return null;
-	}
-
-	const tableData: QuestionTableRow[] = questions.map((question) => ({
-		id: question.id,
-		title: question.title,
-		specializations: question.questionSpecializations,
-		skills: question.questionSkills,
-		topics: question.questionTopics ?? [],
-		rate: question.rate,
-		complexity: question.complexity,
-		author: question.createdBy?.username ?? '',
-	}));
+	const tableData: QuestionTableRow[] =
+		questions?.map((question) => ({
+			id: question.id,
+			title: question.title,
+			specializations: question.questionSpecializations,
+			skills: question.questionSkills,
+			topics: question.questionTopics ?? [],
+			rate: question.rate,
+			complexity: question.complexity,
+			author: question.createdBy?.username ?? '',
+		})) ?? [];
 
 	const columns: TableColumn<QuestionTableRow>[] = [
 		{
