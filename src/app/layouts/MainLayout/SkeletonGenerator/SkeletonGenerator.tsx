@@ -22,6 +22,7 @@ import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
 import { TopicEditPageSkeleton } from '@/pages/admin/topic/topicEdit';
 import { UserDetailPageSkeleton } from '@/pages/admin/user/userDetail';
+import { UserEditPageSkeleton } from '@/pages/admin/user/userEdit';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
 import { DifficultQuestionsPageSkeleton } from '@/pages/analytics/difficultQuestions';
@@ -57,6 +58,7 @@ const SkeletonGenerator = () => {
 	);
 	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
 	const isAdminTopicsEditPage = matchPath(ROUTES.admin.topics.edit.page, location.pathname);
+	const isUserEditPage = matchPath(ROUTES.admin.users.edit.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -76,6 +78,9 @@ const SkeletonGenerator = () => {
 
 	if (isCompanyDetailsPage) {
 		return <CompanyDetailPageSkeleton />;
+	}
+	if (isUserEditPage) {
+		return <UserEditPageSkeleton />;
 	}
 
 	if (isUserDetailPage) {
