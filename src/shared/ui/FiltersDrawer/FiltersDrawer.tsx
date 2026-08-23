@@ -49,6 +49,7 @@ export const FiltersDrawer = ({ children, hasFilters }: FiltersDrawerProps) => {
 			/>
 
 			{isOpen && (
+				// TODO посмотреть ленивую загрузку контента Drawer
 				<Suspense fallback={null}>
 					<Drawer {...drawerProps} isOpen={isOpen} onClose={onClose} position="right">
 						<section className={styles['filter']}>{children}</section>
