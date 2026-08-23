@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 import { useCurrentProject, useScreenSize, useModal, Project } from '@/shared/libs';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -49,9 +49,11 @@ export const FiltersDrawer = ({ children, hasFilters }: FiltersDrawerProps) => {
 			/>
 
 			{isOpen && (
-				<Drawer {...drawerProps} isOpen={isOpen} onClose={onClose} position="right">
-					<section className={styles['filter']}>{children}</section>
-				</Drawer>
+				<Suspense fallback={null}>
+					<Drawer {...drawerProps} isOpen={isOpen} onClose={onClose} position="right">
+						<section className={styles['filter']}>{children}</section>
+					</Drawer>
+				</Suspense>
 			)}
 		</>
 	);
