@@ -17,6 +17,8 @@ const ResourceRequestEditPage = () => {
 		refetch,
 	} = useGetResourceRequestByIdQuery(resourceId || '');
 
+	const hasData = !!myResourceRequest && Object.keys(myResourceRequest).length > 0;
+
 	const stubs: PageWrapperStubs = {
 		error: {
 			onClick: refetch,
@@ -26,12 +28,12 @@ const ResourceRequestEditPage = () => {
 		<PageWrapper
 			isLoading={isLoading || isFetching}
 			hasError={isError}
-			hasData={Boolean(myResourceRequest)}
+			hasData={hasData}
 			stubs={stubs}
 			roles={['admin', 'author']}
 			content={myResourceRequest ? <ResourceRequestEditForm request={myResourceRequest} /> : null}
 		>
-			{({ content: resolvedContent }) => <>{resolvedContent}</>}
+			{({ content }) => <>{content}</>}
 		</PageWrapper>
 	);
 };
