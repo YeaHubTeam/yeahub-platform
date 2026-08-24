@@ -27,7 +27,7 @@ export interface QuestionFormProps {
 }
 
 export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
-	const { t } = useTranslation(i18Namespace.questions);
+	const { t } = useTranslation([i18Namespace.questions, i18Namespace.skill, i18Namespace.topic]);
 
 	const { control, watch } = useFormContext();
 	const selectedSpecializations = watch('specializations');
