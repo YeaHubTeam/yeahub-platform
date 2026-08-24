@@ -124,5 +124,7 @@
 		"author": {
 			"title": "Мои ресурсы"
 		}
-	}
+	},
+	"add.resource.title": "Создание ресурса",
+	"edit.resource.title": "Редактирование ресурса"
 }
