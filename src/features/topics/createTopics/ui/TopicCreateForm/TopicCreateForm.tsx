@@ -17,6 +17,10 @@ export const TopicCreateForm = () => {
 	const methods = useForm<CreateTopicFormValues>({
 		resolver: yupResolver(topicCreateSchema),
 		mode: 'onTouched',
+		defaultValues: {
+			title: '',
+			description: '',
+		},
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
