@@ -5,13 +5,3 @@
 .additional-card {
   min-width: 360px;
 }
-
-.header-skeleton {
-  margin-bottom: 24px;
-  width: 100%;
-}
-
-.additional-info-card-skeleton {
-  width: 100%;
-  max-width: 360px;
-}
