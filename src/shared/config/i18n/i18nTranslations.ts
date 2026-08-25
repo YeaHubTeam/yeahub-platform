@@ -21,6 +21,7 @@ export enum Translation {
 	PROFILE = 'profile',
 	SAVE = 'save',
 	CANCEL = 'cancel',
+	RESET = 'reset',
 	LOGO = 'logo',
 	AVATAR = 'avatar',
 	LOGOUT = 'logout',

@@ -48,7 +48,10 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 							return (
 								<div>
 									<SkillSelect
-										onChange={onChange}
+										onChange={(skillIds) => {
+											const skillId = Array.isArray(skillIds) ? skillIds[0] : skillIds;
+											onChange(skillId);
+										}}
 										value={value}
 										hasMultiple={false}
 										withSpecialization={false}
