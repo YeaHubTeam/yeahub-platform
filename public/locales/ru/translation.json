@@ -22,6 +22,7 @@
 	"profile": "Мой профиль",
 	"save": "Сохранить",
 	"cancel": "Отменить",
+	"reset": "Сбросить",
 	"expand": "Развернуть",
 	"collapse": "Свернуть",
 	"logo": "Логотип",
@@ -989,5 +990,10 @@
 	"editor.redo": "Повторить",
 	"editor.bullet.list": "Маркированный список",
 	"editor.ordered.list": "Нумерованный список",
-	"tooltip.premiumonly": "Доступно для участников"
+	"tooltip.premiumonly": "Доступно для участников",
+
+	"date": {
+		"today": "Сегодня",
+		"yesterday": "Вчера"
+	}
 }

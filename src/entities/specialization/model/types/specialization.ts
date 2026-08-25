@@ -9,7 +9,7 @@ export interface Specialization {
 	imageSrc: string | null;
 	createdAt: string;
 	updatedAt: string | null;
-	createdBy: Author;
+	createdBy: Author | null;
 }
 
 export type GetSpecializationsListParamsRequest = {

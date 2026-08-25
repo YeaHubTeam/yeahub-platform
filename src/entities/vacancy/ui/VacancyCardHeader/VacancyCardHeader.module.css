@@ -1,0 +1,9 @@
+.image-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.title {
+  flex-basis: 100%;
+}

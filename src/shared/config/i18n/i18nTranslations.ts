@@ -21,6 +21,7 @@ export enum Translation {
 	PROFILE = 'profile',
 	SAVE = 'save',
 	CANCEL = 'cancel',
+	RESET = 'reset',
 	LOGO = 'logo',
 	AVATAR = 'avatar',
 	LOGOUT = 'logout',
@@ -423,6 +424,9 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+
+	DATE_TODAY = 'date.today',
+	DATE_YESTERDAY = 'date.yesterday',
 }
 
 export enum Profile {
@@ -563,6 +567,8 @@ export enum Specializations {
 	DESCRIPTION_SHORT = 'description.short',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
+	AUTHOR = 'author',
+	CREATED_AT = 'created-at',
 	IMAGE_SRC = 'image.src',
 	IMAGE_ALT = 'image.alt',
 	CREATE_PAGE_TITLE = 'create.page.title',
@@ -816,6 +822,8 @@ export enum Resources {
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	ADDITIONAL_INFO_KEYWORDS = 'keywords.additional',
 	ADDITIONAL_INFO_SKILLS = 'skills.additional',
+	ADD_RESOURCE_TITLE = 'add.resource.title',
+	EDIT_RESOURCE_TITLE = 'edit.resource.title',
 	AUTHOR = 'author',
 	DATE = 'date',
 	DESCRIPTION = 'description.title',
@@ -1449,10 +1457,8 @@ export enum Marketplace {
 	STATUS_APPROVED = 'status.approved',
 	STATUS_REJECTED = 'status.rejected',
 	STATUS_PENDING = 'status.pending',
-	ADD_RESOURCE_TITLE = 'add.resource.title',
 	ADD_RESOURCE_SUBMIT = 'add.resource.submit',
 	ADD_REF_CODE__REQUEST_LINK = 'add.ref.code.request.link',
-	EDIT_RESOURCE_TITLE = 'edit.resource.title',
 	NAME_SHORT = 'name.short',
 	NAME_LABEL = 'name.label',
 	DESCRIPTION_SHORT = 'description.short',
@@ -1495,6 +1501,8 @@ export enum Topics {
 	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
 	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
 	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
+	TOPIC_CREATE_PAGE_TITLE = 'create.page.title',
+	TOPIC_EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum ProgrammingLanguages {
@@ -1647,4 +1655,27 @@ export enum Tasks {
 	OUTPUT_RESULT_MEMORY_USAGE = 'output.result.memory.usage',
 
 	WARNING_INTRO = 'warning.intro',
+}
+
+export enum Vacancies {
+	LIST_PAGE_TITLE = 'list_page.title',
+	LIST_PAGE_SALARY_FROM = 'list_page.salary.from',
+	LIST_PAGE_SALARY_TO = 'list_page.salary.to',
+	COUNT_SKILLS = 'count.skills',
+	COUNT_COLLECTIONS = 'count.collections',
+	COUNT_QUESTIONS = 'count.questions',
+	COUNT_TASKS = 'count.tasks',
+	VACANCIES_SEARCH_PLACEHOLDER = 'search.placeholder',
+	STUB_EMPTY_VACANCIES_TITLE = 'stub.empty.vacancies.title',
+	STUB_EMPTY_VACANCIES_SUBTITLE = 'stub.empty.vacancies.subtitle',
+	WORKING_FORMAT = 'workFormat.title',
+	WORKING_FORMAT_OFFICE = 'workFormat.office',
+	WORKING_FORMAT_REMOTE = 'workFormat.remote',
+	WORKING_FORMAT_HYBRID = 'workFormat.hybrid',
+	INDUSTRY = 'industry',
+	GRADE = 'grade',
+	COMPANY_TYPE = 'companyType',
+	EMPLOYMENT_TYPE = 'employmentType',
+	SALARY = 'salary',
+	ENGLISH_LEVEL = 'englishLevel',
 }

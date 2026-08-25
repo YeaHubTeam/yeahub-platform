@@ -11,6 +11,7 @@ import { SpecializationCreateFormSkeleton } from '@/features/specialization/crea
 import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
+import { CompanyCreatePageSkeleton } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
@@ -20,6 +21,7 @@ import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
 import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
 import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
+import { TopicEditPageSkeleton } from '@/pages/admin/topic/topicEdit';
 import { UserDetailPageSkeleton } from '@/pages/admin/user/userDetail';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
@@ -48,13 +50,16 @@ const SkeletonGenerator = () => {
 		matchPath(ROUTES.admin.questions.details.page, location.pathname) &&
 		!matchPath(ROUTES.admin.questions.details.page, ROUTES.admin.questions.create.page);
 	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
-	const isCompanyDetailsPage = matchPath(ROUTES.admin.companies.details.page, location.pathname);
+	const isCompanyDetailsPage =
+		location.pathname !== ROUTES.admin.companies.create.page &&
+		matchPath(ROUTES.admin.companies.details.page, location.pathname);
 	const isUserDetailPage = matchPath(ROUTES.admin.users.detail.page, location.pathname);
 	const isCollectionDetailPage = matchPath(
 		ROUTES.admin.collections.details.page,
 		location.pathname,
 	);
 	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
+	const isAdminTopicsEditPage = matchPath(ROUTES.admin.topics.edit.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -82,6 +87,10 @@ const SkeletonGenerator = () => {
 
 	if (isUserProfilePage) {
 		return <UserProfilePageSkeleton />;
+	}
+
+	if (isAdminTopicsEditPage) {
+		return <TopicEditPageSkeleton />;
 	}
 
 	switch (location.pathname) {
@@ -121,6 +130,8 @@ const SkeletonGenerator = () => {
 			return <UsersTablePageSkeleton />;
 		case ROUTES.admin.collections.page:
 			return <CollectionsPageSkeleton />;
+		case ROUTES.admin.companies.create.page:
+			return <CompanyCreatePageSkeleton />;
 		case ROUTES.admin.companies.page:
 			return <CompaniesTablePageSkeleton />;
 		case ROUTES.admin.referralLinks.create.page:
