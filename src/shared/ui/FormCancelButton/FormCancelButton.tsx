@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import type { ComponentProps } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -7,9 +8,15 @@ import { useModal } from '@/shared/libs';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
 
+import styles from './FormCancelButton.module.css';
+
 type FormCancelButtonProps = Pick<ComponentProps<typeof Button>, 'className' | 'disabled' | 'size'>;
 
-export const FormCancelButton = ({ className, disabled, size }: FormCancelButtonProps) => {
+export const FormCancelButton = ({
+	className,
+	disabled,
+	size = 'large',
+}: FormCancelButtonProps) => {
 	const { isOpen, onOpen, onClose } = useModal();
 	const {
 		reset,
@@ -17,7 +24,7 @@ export const FormCancelButton = ({ className, disabled, size }: FormCancelButton
 	} = useFormContext();
 	const { t } = useTranslation(i18Namespace.translation);
 
-	const handleConfirmCancel = () => {
+	const handleConfirmReset = () => {
 		reset();
 		onClose();
 	};
@@ -27,13 +34,13 @@ export const FormCancelButton = ({ className, disabled, size }: FormCancelButton
 			{isDirty && (
 				<Button
 					type="button"
-					className={className}
+					className={classNames(styles.button, className)}
 					disabled={disabled || isSubmitting}
 					size={size}
 					variant="destructive-secondary"
 					onClick={onOpen}
 				>
-					{t(Translation.CANCEL)}
+					{t(Translation.RESET)}
 				</Button>
 			)}
 
@@ -41,7 +48,7 @@ export const FormCancelButton = ({ className, disabled, size }: FormCancelButton
 				<BlockerDialog
 					isOpen={isOpen}
 					onClose={onClose}
-					onOk={handleConfirmCancel}
+					onOk={handleConfirmReset}
 					onCancel={onClose}
 					message={Translation.MODAL_CANCEL_CHANGES}
 				/>

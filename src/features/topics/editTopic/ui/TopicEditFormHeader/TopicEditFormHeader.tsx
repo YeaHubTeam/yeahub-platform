@@ -25,7 +25,7 @@ export const TopicEditFormHeader = <T extends CreateOrEditTopicFormValues>({
 
 	return (
 		<BackHeader className={className}>
-			<FormCancelButton className={styles.btn} />
+			<FormCancelButton />
 			<Button
 				disabled={formState.isSubmitting}
 				onClick={handleSubmit(onSubmit)}
