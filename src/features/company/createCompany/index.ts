@@ -4,3 +4,4 @@ export { getCreateCompanyApiErrorMessage } from './lib/utils/getCreateCompanyApi
 import { createCompanyMock } from './api/__mock__/createCompany';
 export type { CreateCompanyBodyRequest } from './model/types/companyCreateTypes';
 export const createCompanyHandlers = [createCompanyMock];
+export { CompanyCreateFormSkeleton } from './ui/CompanyCreateForm/CompanyCreateForm.skeleton';
