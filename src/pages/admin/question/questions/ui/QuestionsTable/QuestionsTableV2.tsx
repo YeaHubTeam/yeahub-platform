@@ -1,11 +1,14 @@
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import { Questions, i18Namespace, ROUTES } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { route, SelectedAdminEntities } from '@/shared/libs';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
-import { TableV2, type TableColumn } from '@/shared/ui/TableV2';
+import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
 
+import { getIsAuthor, getUserId } from '@/entities/profile';
 import { Question } from '@/entities/question';
 
 const SKILL_SHOW_COUNT = 4;
@@ -14,6 +17,7 @@ const TOPIC_SHOW_COUNT = 4;
 
 interface QuestionTableRow {
 	id: number;
+	disabled?: boolean;
 	title: string;
 	specializations: Question['questionSpecializations'];
 	skills: Question['questionSkills'];
@@ -24,11 +28,19 @@ interface QuestionTableRow {
 }
 
 interface QuestionsTableV2Props {
-	questions?: Question[];
+	questions: Question[] | [];
+	selectedQuestions: SelectedAdminEntities | [];
+	onSelectQuestions: (ids: SelectedAdminEntities) => void;
 }
 
-export const QuestionsTableV2 = ({ questions }: QuestionsTableV2Props) => {
+export const QuestionsTableV2 = ({
+	questions,
+	selectedQuestions,
+	onSelectQuestions,
+}: QuestionsTableV2Props) => {
 	const { t } = useTranslation(i18Namespace.questions);
+	const isAuthor = useSelector(getIsAuthor);
+	const userId = useSelector(getUserId);
 
 	const tableData: QuestionTableRow[] =
 		questions?.map((question) => ({
@@ -40,6 +52,7 @@ export const QuestionsTableV2 = ({ questions }: QuestionsTableV2Props) => {
 			rate: question.rate,
 			complexity: question.complexity,
 			author: question.createdBy?.username ?? '',
+			disabled: isAuthor && question.createdBy?.id !== userId,
 		})) ?? [];
 
 	const columns: TableColumn<QuestionTableRow>[] = [
@@ -100,5 +113,32 @@ export const QuestionsTableV2 = ({ questions }: QuestionsTableV2Props) => {
 		},
 	];
 
-	return <TableV2 data={tableData} columns={columns} />;
+	const selectedRowIds = selectedQuestions?.map((question) => question.id);
+
+	const selectedById = useMemo(() => {
+		const byId = new Map<number, { id: number; title?: string }>();
+
+		selectedQuestions.forEach((question) => byId.set(question.id, question));
+		questions.forEach((question) => {
+			byId.set(question.id, { id: question.id, title: question.title });
+		});
+
+		return byId;
+	}, [questions, selectedQuestions]);
+
+	const onSelectedRowIdsChange = useCallback(
+		(ids: TableRowId[]) => {
+			onSelectQuestions(ids.map((id) => selectedById.get(id as number) ?? { id: id as number }));
+		},
+		[onSelectQuestions, selectedById],
+	);
+
+	return (
+		<TableV2
+			data={tableData}
+			columns={columns}
+			selectedRowIds={selectedRowIds}
+			onSelectedRowIdsChange={onSelectedRowIdsChange}
+		/>
+	);
 };

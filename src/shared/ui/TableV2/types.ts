@@ -18,6 +18,9 @@ export interface TableColumn<T> {
 interface TableV2BaseProps<T> {
 	data: T[];
 	columns: TableColumn<T>[];
+	selectedRowIds?: readonly TableRowId[];
+	onSelectedRowIdsChange?: (ids: TableRowId[]) => void;
+	isRowSelectionDisabled?: (row: T) => boolean;
 }
 
 type TableV2RowIdProps<T> = T extends { id: TableRowId }
