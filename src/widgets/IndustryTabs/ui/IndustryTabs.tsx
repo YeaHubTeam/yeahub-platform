@@ -1,9 +1,8 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-import { Chip } from '@/shared/ui/Chip';
-import { Flex } from '@/shared/ui/Flex';
-
-import styles from './IndustryTabs.module.css';
+import { Tabs } from '@/shared/ui/Tabs';
+import type { Tab } from '@/shared/ui/Tabs';
 
 interface IndustryTabsProps {
 	availableIndustries?: string[];
@@ -11,37 +10,29 @@ interface IndustryTabsProps {
 
 export const IndustryTabs = ({ availableIndustries = [] }: IndustryTabsProps) => {
 	const location = useLocation();
-	const navigate = useNavigate();
 
-	if (!availableIndustries || availableIndustries.length === 0) {
-		return null;
-	}
+	const tabs: Tab<string>[] = [
+		{ id: 'all', label: 'Все', Component: () => <div /> },
+		...availableIndustries.map((industry) => ({
+			id: industry,
+			label: industry,
+			Component: () => <div />,
+		})),
+	];
 
 	const currentHash = location.hash ? location.hash.replace('#', '') : 'all';
 
-	const handleTabClick = (tabValue: string) => {
-		if (tabValue === 'all') {
-			navigate({ hash: '' });
-		} else {
-			navigate({ hash: tabValue });
-		}
-	};
+	const currentTab = tabs.find((tab) => tab.id === currentHash) ?? tabs[0];
 
-	return (
-		<Flex direction="row" align="center" gap="10" className={styles.container}>
-			<Chip
-				label="Все"
-				className={`${styles.tab} ${currentHash === 'all' ? styles.active : ''}`}
-				onClick={() => handleTabClick('all')}
-			/>
-			{availableIndustries.map((industry) => (
-				<Chip
-					key={industry}
-					label={industry}
-					className={`${styles.tab} ${currentHash === industry ? styles.active : ''}`}
-					onClick={() => handleTabClick(industry)}
-				/>
-			))}
-		</Flex>
-	);
+	const [activeTab, setActiveTab] = useState(currentTab);
+
+	useEffect(() => {
+		setActiveTab(currentTab);
+	}, [currentTab]);
+
+	if (!availableIndustries.length) {
+		return null;
+	}
+
+	return <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />;
 };
