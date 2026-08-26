@@ -7,18 +7,18 @@ import { TaskDifficultyChipSkeleton } from '@/entities/task';
 
 export const TaskAdditionalInfoSkeleton = () => {
 	return (
-		<CardSkeleton withOutsideShadow>
-			<Flex direction="column" gap="24">
-				<Flex direction="column" gap="16">
+		<Flex direction="column" gap="20">
+			<CardSkeleton withOutsideShadow>
+				<Flex direction="column" gap="24">
 					<BaseFilterSectionSkeleton length={3} />
+					<BaseFilterSectionSkeleton length={3} />
+					<Flex direction="column" gap="8">
+						<TextSkeleton variant="body2" width={150} />
+						<TaskDifficultyChipSkeleton />
+					</Flex>
+					<BaseFilterSectionSkeleton length={2} />
 				</Flex>
-				<BaseFilterSectionSkeleton length={3} />
-				<Flex direction="column" gap="16">
-					<TextSkeleton variant="body3" width={150} />
-					<TaskDifficultyChipSkeleton />
-				</Flex>
-				<BaseFilterSectionSkeleton length={2} />
-			</Flex>
-		</CardSkeleton>
+			</CardSkeleton>
+		</Flex>
 	);
 };
