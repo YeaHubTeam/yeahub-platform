@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useState } from 'react';
+import { ComponentProps, useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Skills } from '@/shared/config';
@@ -9,7 +9,6 @@ import { useGetSkillsListQuery } from '../../api/skillApi';
 import { Skill } from '../../model/types/skill';
 
 import { SkillSelectSkeleton } from './SkillSelect.skeleton';
-
 export type SkillSelectProps = Omit<
 	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
@@ -45,9 +44,25 @@ export const SkillSelect = ({
 		},
 	);
 
+	const filterValue = (value: number[]): number[] => {
+		const filteredValue = value.filter((skill) => {
+			if (skills?.data.find((el) => el.id === skill)) return true;
+			else return false;
+		});
+		return filteredValue;
+	};
+
 	const [selectedSkills, setSelectedSkills] = useState<number[]>(
 		Array.isArray(value) ? value : value !== undefined ? [value] : [],
 	);
+
+	useEffect(() => {
+		if (Array.isArray(value) && skills) {
+			const filterdValue = filterValue(value);
+			setSelectedSkills(filterValue(filterdValue));
+			onChange(filterValue(filterdValue));
+		}
+	}, [skills]);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue) return;
