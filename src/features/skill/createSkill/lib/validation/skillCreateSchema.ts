@@ -7,7 +7,7 @@ import { CreateSkillFormValues } from '../../model/types/skillCreateTypes';
 export const skillCreateSchema: yup.ObjectSchema<CreateSkillFormValues> = yup.object().shape({
 	title: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
-	imageSrc: yup.string().required().nullable(),
+	imageSrc: yup.string().nullable().defined().default(null),
 	skillImage: yup.string(),
 	specializations: yup.array().of(yup.number().required()).optional(),
 });
