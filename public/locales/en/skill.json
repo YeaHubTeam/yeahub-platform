@@ -25,6 +25,7 @@
 	},
 	"author": "Author",
 	"created-at": "Creation date",
+	"updated-at": "Modifying date",
 	"empty": "No skills",
 	"image.src": "Image url",
 	"create.page.title": "Creating new skill",

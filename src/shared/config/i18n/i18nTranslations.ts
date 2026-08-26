@@ -1046,6 +1046,7 @@ export enum Skills {
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	CREATED_AT = 'created-at',
+	UPDATED_AT = 'updated-at',
 	DESCRIPTION_FULL = 'description.full',
 	DESCRIPTION_SHORT = 'description.short',
 	DESCRIPTION_LABEL = 'description.label',
