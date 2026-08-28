@@ -14,7 +14,9 @@ const UserMainFieldsSkeleton = () => {
 			<FormFieldSkeleton countTextFields={0}>
 				<InputSkeleton disabled type="text" size="L" />
 			</FormFieldSkeleton>
-			<UserAvatarFieldSkeleton />
+			<FormFieldSkeleton countTextFields={0}>
+				<AvatarSkeleton size={160} borderRadius={20} />
+			</FormFieldSkeleton>
 			<UserRolesFieldSkeleton />
 			<UserEmailConfirmationFieldSkeleton />
 			<FormFieldSkeleton countTextFields={0}>
@@ -24,12 +26,6 @@ const UserMainFieldsSkeleton = () => {
 		</Flex>
 	);
 };
-
-const UserAvatarFieldSkeleton = () => (
-	<FormFieldSkeleton countTextFields={0}>
-		<AvatarSkeleton size={160} borderRadius={20} />
-	</FormFieldSkeleton>
-);
 
 const UserRolesFieldSkeleton = () => (
 	<FormFieldSkeleton>

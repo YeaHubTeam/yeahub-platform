@@ -1,13 +1,5 @@
-import { ChipSkeleton } from '@/shared/ui/Chip';
-import { DropdownSkeleton } from '@/shared/ui/Dropdown';
-
-import styles from './SelectWithChips.module.css';
+import { SelectSkeleton } from '../Dropdown/Select/Select.skeleton';
 
 export const SelectWithChipsSkeleton = () => {
-	return (
-		<div className={styles.wrapper}>
-			<DropdownSkeleton />
-			<ChipSkeleton disabled variant="big" label="..." withText={90} />
-		</div>
-	);
+	return <SelectSkeleton size="L" />;
 };
