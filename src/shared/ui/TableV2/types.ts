@@ -21,6 +21,7 @@ interface TableV2BaseProps<T> {
 	selectedRowIds?: readonly TableRowId[];
 	onSelectedRowIdsChange?: (ids: TableRowId[]) => void;
 	isRowSelectionDisabled?: (row: T) => boolean;
+	renderRowActions?: (row: T) => ReactNode;
 }
 
 type TableV2RowIdProps<T> = T extends { id: TableRowId }

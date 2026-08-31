@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import { Checkbox } from '@/shared/ui/Checkbox';
 
 import { TableCell } from './TableCell';
@@ -14,6 +16,8 @@ interface TableBodyProps<T> {
 	selectionCellClassName?: string;
 	isRowDisabled?: (row: T) => boolean;
 	onToggleRow?: (row: T) => void;
+	renderRowActions?: (row: T) => ReactNode;
+	actionsCellClassName?: string;
 }
 
 export const TableBody = <T,>({
@@ -27,12 +31,15 @@ export const TableBody = <T,>({
 	selectionCellClassName,
 	isRowDisabled,
 	onToggleRow,
+	renderRowActions,
+	actionsCellClassName,
 }: TableBodyProps<T>) => {
 	return (
 		<tbody>
 			{data.map((row, rowIndex) => {
 				const rowId = getRowId(row);
 				const disabled = isRowDisabled?.(row) ?? false;
+
 				return (
 					<tr key={rowId} className={rowClassName}>
 						{selectionEnabled && (
@@ -53,6 +60,11 @@ export const TableBody = <T,>({
 								className={cellClassName}
 							/>
 						))}
+						{renderRowActions && (
+							<td className={actionsCellClassName} onClick={(event) => event.stopPropagation()}>
+								{renderRowActions(row)}
+							</td>
+						)}
 					</tr>
 				);
 			})}

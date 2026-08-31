@@ -15,8 +15,10 @@ export const TableV2 = <T,>({
 	selectedRowIds,
 	onSelectedRowIdsChange,
 	isRowSelectionDisabled,
+	renderRowActions,
 }: TableV2Props<T>) => {
 	const resolveRowId = getRowId ?? getDefaultRowId;
+	const hasRowActions = Boolean(renderRowActions);
 
 	const {
 		selectionEnabled,
@@ -37,9 +39,13 @@ export const TableV2 = <T,>({
 
 	return (
 		<table className={styles.table}>
-			{selectionEnabled && (
+			{(selectionEnabled || hasRowActions) && (
 				<colgroup>
-					<col className={styles['selection-column']} />
+					{selectionEnabled && <col className={styles['selection-column']} />}
+					{columns.map((column) => (
+						<col key={column.id} />
+					))}
+					{hasRowActions && <col className={styles['actions-column']} />}
 				</colgroup>
 			)}
 			<TableHeader
@@ -52,6 +58,8 @@ export const TableV2 = <T,>({
 				selectionDisabled={selectionDisabled}
 				selectionCellClassName={styles['selection-column']}
 				onToggleAllRows={toggleAllRows}
+				hasRowActions={hasRowActions}
+				actionsCellClassName={styles['actions-column']}
 			/>
 			<TableBody
 				data={data}
@@ -64,6 +72,8 @@ export const TableV2 = <T,>({
 				selectionCellClassName={styles['selection-column']}
 				isRowDisabled={isRowDisabled}
 				onToggleRow={toggleRow}
+				renderRowActions={renderRowActions}
+				actionsCellClassName={styles['actions-column']}
 			/>
 		</table>
 	);

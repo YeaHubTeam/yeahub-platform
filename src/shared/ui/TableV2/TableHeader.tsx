@@ -12,6 +12,8 @@ interface TableHeaderProps<T> {
 	selectionDisabled?: boolean;
 	selectionCellClassName?: string;
 	onToggleAllRows?: () => void;
+	hasRowActions?: boolean;
+	actionsCellClassName?: string;
 }
 
 export const TableHeader = <T,>({
@@ -24,6 +26,8 @@ export const TableHeader = <T,>({
 	selectionDisabled,
 	selectionCellClassName,
 	onToggleAllRows,
+	hasRowActions,
+	actionsCellClassName,
 }: TableHeaderProps<T>) => {
 	return (
 		<thead className={headClassName}>
@@ -43,6 +47,7 @@ export const TableHeader = <T,>({
 						{header}
 					</th>
 				))}
+				{hasRowActions && <th scope="col" className={actionsCellClassName} aria-label="Действия" />}
 			</tr>
 		</thead>
 	);
