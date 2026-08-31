@@ -4,12 +4,15 @@ import { useSelector } from 'react-redux';
 
 import { Questions, i18Namespace, ROUTES } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
+import { TableActions } from '@/shared/ui/TableActions';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
 import { Question } from '@/entities/question';
+
+import { useDeleteQuestionMutation } from '@/features/question/deleteQuestion';
 
 const SKILL_SHOW_COUNT = 4;
 const SPECIALIZATION_SHOW_COUNT = 2;
@@ -41,6 +44,7 @@ export const QuestionsTableV2 = ({
 	const { t } = useTranslation(i18Namespace.questions);
 	const isAuthor = useSelector(getIsAuthor);
 	const userId = useSelector(getUserId);
+	const [deleteQuestion] = useDeleteQuestionMutation();
 
 	const tableData: QuestionTableRow[] =
 		questions?.map((question) => ({
@@ -139,6 +143,15 @@ export const QuestionsTableV2 = ({
 			columns={columns}
 			selectedRowIds={selectedRowIds}
 			onSelectedRowIdsChange={onSelectedRowIdsChange}
+			renderRowActions={(row) => (
+				<TableActions
+					actions={['detail', 'edit', 'delete', 'copy']}
+					entity="questions"
+					id={row.id}
+					disabled={row.disabled}
+					onDelete={() => deleteQuestion(row.id)}
+				/>
+			)}
 		/>
 	);
 };
