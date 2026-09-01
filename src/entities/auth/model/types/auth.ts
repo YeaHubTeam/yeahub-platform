@@ -38,6 +38,11 @@ export interface Profile {
 	isActive: boolean;
 }
 
+export interface Author {
+	id: string;
+	username: string;
+}
+
 interface Permission {
 	id: string;
 	name: string;
@@ -133,6 +138,7 @@ export type SignUpResponse = AuthResponse;
 
 export type RefreshResponse = AuthResponse;
 export type ProfileResponse = FullProfile;
+export type AuthorResponse = Author;
 
 export type TelegramLoginBodyRequest = TelegramUser;
 export type TelegramLoginResponse = AuthResponse;
