@@ -1,4 +1,4 @@
-import { i18n, Translation, baseApi, ROUTES, ExtraArgument, ApiTags } from '@/shared/config';
+import { i18n, Translation, baseApi, ApiTags } from '@/shared/config';
 import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
@@ -25,9 +25,7 @@ const updateFeatureFlagApi = baseApi.injectEndpoints({
 				},
 			}),
 
-			async onQueryStarted({ enabled }, { queryFulfilled, extra }) {
-				const typedExtra = extra as ExtraArgument;
-
+			async onQueryStarted({ enabled }, { queryFulfilled }) {
 				try {
 					await queryFulfilled;
 					if (!enabled) {
@@ -35,7 +33,6 @@ const updateFeatureFlagApi = baseApi.injectEndpoints({
 					} else {
 						toast.success(i18n.t(Translation.TOAST_FEATURE_FLAG_UPDATE_SINGLE_ENABLED_SUCCESS));
 					}
-					typedExtra.navigate(ROUTES.admin.featureFlags.page);
 				} catch (error) {
 					toast.error(
 						i18n.t(
@@ -47,7 +44,7 @@ const updateFeatureFlagApi = baseApi.injectEndpoints({
 				}
 			},
 
-			invalidatesTags: [ApiTags.FEATURE_FLAGS],
+			invalidatesTags: [ApiTags.FEATURE_FLAGS, ApiTags.FEATURE_FLAG_DETAIL],
 		}),
 	}),
 });
