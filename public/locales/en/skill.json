@@ -43,12 +43,10 @@
 				"submit": "Try again"
 			}
 		},
-		"edit": {
-			"skill": {
-				"title": "No access to edit the skill",
-				"subtitle": "You are not the creator of this skill, so editing is not available",
-				"submit": "Return to the skills table"
-			}
+		"edit.access": {
+			"title": "No access to edit the skill",
+			"subtitle": "You are not the creator of this skill, so editing is not available",
+			"submit": "Return to the skills table"
 		}
 	}
 }
