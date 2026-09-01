@@ -44,7 +44,7 @@ const updateFeatureFlagApi = baseApi.injectEndpoints({
 				}
 			},
 
-			invalidatesTags: [ApiTags.FEATURE_FLAGS],
+			invalidatesTags: [ApiTags.FEATURE_FLAGS, ApiTags.FEATURE_FLAG_DETAIL],
 		}),
 	}),
 });
