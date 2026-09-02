@@ -2,11 +2,12 @@
   display: flex;
   flex-basis: 58%;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   overflow-x: hidden;
 }
 
-.content{
+.content {
+  width: 100%;
   margin-top: 70px;
   margin-bottom: 70px;
   box-sizing: border-box;
@@ -14,7 +15,7 @@
   color: var(--text-color-primary);
 }
 
-@media (width <= 1024px) {
+@media (width <=1024px) {
   .content {
     margin-bottom: 30px;
   }
@@ -27,16 +28,8 @@
   }
 }
 
-@media ( width >= 768px){
-  .content{
-    margin-right: 10px;
-    margin-left: 10px;
-    max-width: none;
-  }
-}
-
-@media ( width >= 270px){
-  .content{
+@media (width <=270px) {
+  .content {
     margin-right: 10px;
     margin-left: 10px;
     max-width: none;
