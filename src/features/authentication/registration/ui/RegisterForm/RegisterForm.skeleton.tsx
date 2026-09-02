@@ -2,6 +2,7 @@ import { ButtonSkeleton } from '@/shared/ui/Button';
 import { CheckboxSkeleton } from '@/shared/ui/Checkbox';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { InputSkeleton } from '@/shared/ui/Input';
+import { PasswordInputSkeleton } from '@/shared/ui/PasswordInput';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './RegisterForm.module.css';
@@ -24,17 +25,11 @@ export const RegisterFormSkeleton = () => {
 				</FormControlSkeleton>
 			</div>
 			<div className={styles['input-wrapper']}>
-				<FormControlSkeleton label="label">
-					<InputSkeleton size="L" className={styles.input} />
-				</FormControlSkeleton>
+				<PasswordInputSkeleton />
 			</div>
 			<div className={styles['input-wrapper']}>
-				<FormControlSkeleton label="label">
-					<InputSkeleton size="L" className={styles.input} />
-				</FormControlSkeleton>
+				<PasswordInputSkeleton />
 			</div>
-
-			{/* Второй InputSkeleton и два PasswordInputSkeleton */}
 
 			<ButtonSkeleton variant="primary" size="medium" className={styles['submit-button']} />
 
