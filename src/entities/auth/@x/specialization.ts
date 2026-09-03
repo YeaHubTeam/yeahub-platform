@@ -1,5 +1,1 @@
-export {
-	authMockAuthorsByAccessToken,
-	adminAuthMockResponse,
-	authorAuthMockResponse,
-} from '../api/__mocks__/data';
+export { mockAdminRoleAuthor, mockAuthorRoleAuthor } from '../api/__mocks__/data';

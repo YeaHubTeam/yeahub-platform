@@ -6,6 +6,8 @@ export {
 	authMockResponse,
 	authMockResponsesByEmail,
 	authMockAuthorsByAccessToken,
+	mockAuthorRoleAuthor,
+	mockAdminRoleAuthor,
 } from './authMockResponse';
 export { userFreeAuthMockResponse, userFreeProfileMockResponse } from './userFreeMockResponse';
 export {

@@ -1,4 +1,6 @@
-import { AuthResponse, ProfileResponse, AuthorResponse } from '../../../model/types/auth';
+import { Author } from '@/shared/ui/AuthorInfo';
+
+import { AuthResponse, ProfileResponse } from '../../../model/types/auth';
 
 import { adminAuthMockResponse, adminProfileMockResponse } from './adminMockResponse';
 import { authorAuthMockResponse, authorProfileMockResponse } from './authorMockResponse';
@@ -38,13 +40,17 @@ export const authMockProfilesByAccessToken: Record<string, ProfileResponse> = {
 	[userUnverifiedAuthMockResponse.access_token]: userUnverifiedProfileMockResponse,
 };
 
-export const authMockAuthorsByAccessToken: Record<string, AuthorResponse> = {
-	[adminAuthMockResponse.access_token]: {
-		id: adminProfileMockResponse.id,
-		username: adminProfileMockResponse.username,
-	},
-	[authorAuthMockResponse.access_token]: {
-		id: authorProfileMockResponse.id,
-		username: authorProfileMockResponse.username,
-	},
+export const mockAdminRoleAuthor: Author = {
+	id: adminProfileMockResponse.id,
+	username: adminProfileMockResponse.username,
+};
+
+export const mockAuthorRoleAuthor: Author = {
+	id: authorProfileMockResponse.id,
+	username: authorProfileMockResponse.username,
+};
+
+export const authMockAuthorsByAccessToken: Record<string, Author> = {
+	[adminAuthMockResponse.access_token]: mockAdminRoleAuthor,
+	[authorAuthMockResponse.access_token]: mockAuthorRoleAuthor,
 };
