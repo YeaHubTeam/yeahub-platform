@@ -19,12 +19,11 @@ export const CreateQuizPageSkeleton = () => {
 					<Flex direction="column" gap="8" style={{ flex: '1 1 60%' }}>
 						<Skeleton width={137} height={19} />
 						<Flex gap="8" style={{ flexWrap: 'wrap' }}>
-							{[...Array(4)].map(() =>
-								[...Array(5)].map((_, j) => (
-									<Skeleton key={j} width="100%" height={40} style={{ flex: '0 1 130px' }} />
-								)),
-							)}
+							{[...Array(5)].map((_, j) => (
+								<Skeleton key={j} width={120} height={40} style={{ flex: '0 1 130px' }} />
+							))}
 						</Flex>
+						<Skeleton width={110} height={20} />
 					</Flex>
 					<Flex direction="column" gap="24" style={{ flex: '1 1 40%' }}>
 						<Flex gap="8" direction="column">
@@ -44,14 +43,14 @@ export const CreateQuizPageSkeleton = () => {
 							</Flex>
 						</Flex>
 						<Flex gap="8" direction="column">
-							<Skeleton width={120} height={19} />
+							<Skeleton width={145} height={19} />
 							<Flex gap="8">
 								<Skeleton width={115} height={40} />
 							</Flex>
 						</Flex>
 					</Flex>
 				</Flex>
-				<Skeleton width={170} height={48} borderRadius={40} className={styles.button} />
+				<Skeleton width={152} height={40} borderRadius={12} className={styles.button} />
 			</Card>
 		</section>
 	);
