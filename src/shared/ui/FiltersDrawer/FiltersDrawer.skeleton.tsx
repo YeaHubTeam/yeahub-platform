@@ -1,11 +1,18 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config';
-import { Translation } from '@/shared/config';
-import { IconButtonSkeleton } from '@/shared/ui/IconButton';
+import { i18Namespace, Translation } from '@/shared/config';
+import { Project, useCurrentProject } from '@/shared/libs';
+import { IconButtonSize, IconButtonSkeleton } from '@/shared/ui/IconButton';
 
 export const FiltersDrawerSkeleton = () => {
 	const { t } = useTranslation(i18Namespace.translation);
+
+	const project = useCurrentProject();
+
+	const filterIconSize: Record<Project, IconButtonSize> = {
+		platform: 'medium',
+		admin: 'large',
+	};
 
 	return (
 		<div>
@@ -13,7 +20,7 @@ export const FiltersDrawerSkeleton = () => {
 				aria-label={t(Translation.LOADING)}
 				role="status"
 				form="square"
-				size="small"
+				size={filterIconSize[project]}
 				variant="tertiary"
 			/>
 		</div>
