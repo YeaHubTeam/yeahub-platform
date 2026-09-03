@@ -1,4 +1,5 @@
 import { Flex } from '@/shared/ui/Flex';
+import { FlexGap } from '@/shared/ui/Flex/types';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { TextSkeleton } from '@/shared/ui/Text';
 
@@ -7,9 +8,10 @@ import { BaseFilterSectionProps } from './BaseFilterSection';
 export const BaseFilterSectionSkeleton = <T,>({
 	length,
 	width,
-}: Partial<BaseFilterSectionProps<T>> & { width?: number; length: number }) => {
+	gap = '8',
+}: Partial<BaseFilterSectionProps<T>> & { width?: number; length: number; gap?: FlexGap }) => {
 	return (
-		<Flex direction="column" gap="8">
+		<Flex direction="column" gap={gap}>
 			<TextSkeleton variant="body2" width={100} />
 			<Flex wrap="wrap" gap="8">
 				{[...Array(length)].map((_, index) => (
