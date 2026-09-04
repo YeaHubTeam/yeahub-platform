@@ -12,6 +12,8 @@ import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { ProgressSpecializationsList } from '../ProgressSpecializationsList/ProgressSpecializationsList';
 
+import { ProgressSpecializationsPageSkeleton } from './ProgressSpecializationsPage.skeleton';
+
 export const ProgressSpecializationsPage = () => {
 	const { filters, hasFilters, onChangePage, onResetFilters, onChangeSpecialization } =
 		useAnalyticFilters({
@@ -39,6 +41,7 @@ export const ProgressSpecializationsPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<ProgressSpecializationsPageSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

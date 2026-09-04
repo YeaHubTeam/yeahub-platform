@@ -1,18 +1,21 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Specializations, Translation, i18Namespace, ROUTES } from '@/shared/config';
-import { route, SelectedAdminEntities } from '@/shared/libs';
+import { formatDate, route, SelectedAdminEntities } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
-import { Text } from '@/shared/ui/Text';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
+import { TableCellWithTooltip } from '@/shared/ui/TableCellWithTooltip';
 
 import { Specialization } from '@/entities/specialization';
 
 import { DeleteSpecializationButton } from '@/features/specialization/deleteSpecialization';
+
+import styles from './SpecializationsTable.module.css';
 
 interface SpecializationsTableProps {
 	specializations?: Specialization[];
@@ -32,6 +35,8 @@ export const SpecializationsTable = ({
 		const columnWidths = {
 			title: '25%',
 			description: 'auto',
+			autor: 'auto',
+			createdAt: 'auto',
 		};
 
 		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
@@ -41,28 +46,37 @@ export const SpecializationsTable = ({
 		const columns = {
 			title: t(Specializations.TITLE_SHORT),
 			description: t(Specializations.DESCRIPTION_SHORT),
+			autor: t(Specializations.AUTHOR),
+			createdAt: t(Specializations.CREATED_AT),
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
+		return Object.entries(columns)?.map(([k, v]) => (
+			<td key={k} className={styles['table-header']}>
+				{v}
+			</td>
+		));
 	};
 
 	const renderTableBody = (specialization: Specialization) => {
 		const columns = {
-			title: specialization.title,
-			description: specialization.description,
+			title: (
+				<TableCellLink
+					to={route(ROUTES.admin.specializations.details.page, specialization.id)}
+					text={specialization.title}
+				/>
+			),
+			description: (
+				<TableCellWithTooltip title={specialization.description}>
+					{specialization.description}
+				</TableCellWithTooltip>
+			),
+			author: specialization.createdBy?.username || '-',
+			createdAt: specialization.createdAt
+				? formatDate(new Date(specialization.createdAt), 'dd.MM.yyyy')
+				: '-',
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.specializations.details.page, specialization.id)}>
-						<Text variant="body3-accent">{v}</Text>
-					</Link>
-				) : (
-					<Text variant="body3-accent">{v}</Text>
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (specialization: Specialization) => {

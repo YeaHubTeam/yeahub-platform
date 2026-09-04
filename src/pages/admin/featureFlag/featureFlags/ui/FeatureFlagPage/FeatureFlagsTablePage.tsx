@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { FeatureFlags, i18Namespace, ROUTES, Translation } from '@/shared/config';
 import { route } from '@/shared/libs';
@@ -9,6 +9,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { Text } from '@/shared/ui/Text';
 
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
@@ -62,9 +63,10 @@ export const FeatureFlagsTable = ({
 	const renderTableBody = (featureFlag: FeatureFlagApiItem) => {
 		const columns = {
 			flag: (
-				<Link to={route(ROUTES.admin.featureFlags.details.page, featureFlag.id)}>
-					{featureFlag.flag}
-				</Link>
+				<TableCellLink
+					to={route(ROUTES.admin.featureFlags.details.page, featureFlag.id)}
+					text={featureFlag.flag}
+				/>
 			),
 			description: featureFlag.description,
 			roles: featureFlag.roles?.length ? (

@@ -11,6 +11,8 @@
 		"label": "Add specialization description",
 		"placeholder": "Specialization description"
 	},
+	"author": "Author",
+	"created-at": "Creation date",
 	"stub.empty": {
 		"title": "Specialty not yet selected.",
 		"description": "You have not selected the major you want to study, go to your profile and fill it out to start preparing for interviews"
@@ -54,6 +56,13 @@
 			"my": {
 				"title": "My specializations"
 			}
+		}
+	},
+	"stub": {
+		"edit.access": {
+			"title": "No access to edit specialization",
+			"subtitle": "You are not the creator of this specialization, so editing is not available",
+			"submit": "Return to the specializations table"
 		}
 	}
 }

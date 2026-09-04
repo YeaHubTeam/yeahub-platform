@@ -3,7 +3,7 @@ import { NavLink, useParams } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Specializations, Translation } from '@/shared/config';
 import { route } from '@/shared/libs';
-import { BackButton } from '@/shared/ui/BackButton';
+import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
@@ -32,8 +32,7 @@ const SpecializationDetailPage = () => {
 		return (
 			<>
 				<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
-					<BackButton />
-					<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
+					<BackHeader>
 						<DeleteSpecializationButton specializationId={specialization.id} isDetailPage />
 						<NavLink
 							style={{ marginLeft: 'auto' }}
@@ -41,7 +40,7 @@ const SpecializationDetailPage = () => {
 						>
 							<Button>{t(Translation.EDIT)}</Button>
 						</NavLink>
-					</Flex>
+					</BackHeader>
 				</Flex>
 				<SpecializationCard specialization={specialization} />
 			</>
