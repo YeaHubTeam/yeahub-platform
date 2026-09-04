@@ -16,6 +16,7 @@ import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
+import { ResourceCreatePageSkeleton } from '@/pages/admin/resource/resourceCreate';
 import { SkillCreatePageSkeleton } from '@/pages/admin/skill/skillCreate';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
@@ -152,6 +153,8 @@ const SkeletonGenerator = () => {
 			return <PopularQuestionsPageSkeleton />;
 		case ROUTES.analytics['popular-skills'].page:
 			return <PopularSkillsPageSkeleton />;
+		case ROUTES.admin.resources.create.page:
+			return <ResourceCreatePageSkeleton />;
 		default:
 			return <Loader />;
 	}
