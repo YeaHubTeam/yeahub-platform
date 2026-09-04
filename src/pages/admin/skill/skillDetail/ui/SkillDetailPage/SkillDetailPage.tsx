@@ -13,6 +13,8 @@ import { DeleteSkillButton } from '@/features/skill/deleteSkill';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { SkillDetailPageSkeleton } from './SkillDetailPage.skeleton';
+
 const SkillDetailPage = () => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const { t: tSkill } = useTranslation(i18Namespace.skill);
@@ -58,6 +60,7 @@ const SkillDetailPage = () => {
 			roles={['admin', 'author']}
 			stubs={stubs}
 			content={content}
+			skeleton={<SkillDetailPageSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>

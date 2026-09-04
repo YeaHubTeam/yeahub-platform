@@ -4,7 +4,7 @@ import { Skill } from '@/entities/skill';
 
 import { useDeleteSkillMutation } from '../../api/deleteSkillApi';
 
-interface DeleteSkillButtonProps {
+export interface DeleteSkillButtonProps {
 	skillId: Skill['id'];
 	isDetailPage?: boolean;
 }
