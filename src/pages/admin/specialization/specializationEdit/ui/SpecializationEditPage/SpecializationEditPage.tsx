@@ -10,6 +10,8 @@ import { SpecializationEditForm } from '@/features/specialization/editSpecializa
 import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { SpecializationEditPageSkeleton } from './SpecializationEditPage.skeleton';
+
 const SpecializationEditPage = () => {
 	const { t } = useTranslation(i18Namespace.specialization);
 	const { specializationId } = useParams<{ specializationId: string }>();
@@ -48,6 +50,7 @@ const SpecializationEditPage = () => {
 			hasData={hasData}
 			stubs={stubs}
 			roles={['admin', 'author']}
+			skeleton={<SpecializationEditPageSkeleton />}
 			content={content}
 		>
 			{({ content }) => content}
