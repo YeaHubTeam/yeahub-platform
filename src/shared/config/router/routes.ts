@@ -221,6 +221,10 @@ export const ROUTES = {
 	career: {
 		route: 'career',
 		page: '/career',
+		'vacancies-market': {
+			route: 'vacancies-market',
+			page: '/career/vacancies-market',
+		},
 		'resume-analyzer': {
 			route: 'resume-analyzer',
 			page: '/career/resume-analyzer',
