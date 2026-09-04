@@ -16,6 +16,7 @@ export { default as books } from './books.svg';
 export { default as burger } from './burger.svg';
 export { default as burgerAndCross } from './burgerAndCross.svg';
 export { default as calendar } from './calendar.svg';
+export { default as calendarNoDots } from './calendarNoDots.svg';
 export { default as chat } from './chat.svg';
 export { default as check } from './check.svg';
 export { default as checkCircle } from './checkCircle.svg';

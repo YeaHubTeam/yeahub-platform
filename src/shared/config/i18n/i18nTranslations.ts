@@ -1688,3 +1688,19 @@ export enum Vacancies {
 	SALARY = 'salary',
 	ENGLISH_LEVEL = 'englishLevel',
 }
+
+export enum VacanciesMarket {
+	TITLE = 'title',
+	DESCRIPTION = 'description',
+	UPDATED_AT = 'updatedAt',
+	UPDATED_AT_UNAVAILABLE = 'updatedAtUnavailable',
+	TOTAL_ANALYZED = 'summary.totalAnalyzed',
+	UPDATED_DAILY = 'summary.updatedDaily',
+	TOP_SKILLS = 'card.topSkills',
+	KEYWORDS = 'card.keywords',
+	VACANCIES = 'card.vacancies',
+	DETAILS = 'card.details',
+	UNKNOWN_SPECIALIZATION = 'card.unknownSpecialization',
+	EMPTY_TITLE = 'stub.empty.title',
+	EMPTY_SUBTITLE = 'stub.empty.subtitle',
+}

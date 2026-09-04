@@ -85,6 +85,7 @@ import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
 import { RegistrationPage } from '@/pages/auth/registration';
 import { ResumeAnalyzerPage } from '@/pages/career/resumeAnalyzer';
+import { VacanciesMarketPage } from '@/pages/career/vacanciesMarket';
 import { VacanciesPage } from '@/pages/career/vacancy/vacancies';
 import { Error404Page } from '@/pages/error404';
 import { CreateQuizPage } from '@/pages/interview/createQuiz';
@@ -567,6 +568,10 @@ export const router = createBrowserRouter([
 				path: ROUTES.career.route,
 				element: <Outlet />,
 				children: [
+					{
+						path: ROUTES.career['vacancies-market'].route,
+						element: <VacanciesMarketPage />,
+					},
 					{
 						path: ROUTES.career['resume-analyzer'].route,
 						element: <ResumeAnalyzerPage />,
