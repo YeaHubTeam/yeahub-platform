@@ -1347,6 +1347,8 @@ export enum Subscription {
 	SUBSCRIBE_MODAL_TITLE = 'subscribe.modal.title',
 	SUBSCRIBE_MODAL_EMAIL_DESCRIPTION = 'subscribe.modal.email.description',
 	SUBSCRIBE_MODAL_EMAIL_INPUT_VALUE = 'subscribe.modal.email.input.value',
+	SUBSCRIBE_MODAL_INFO_CONTINUE = 'subscribe.modal.info.continue',
+	SUBSCRIBE_MODAL_INFO_CANCEL = 'subscribe.modal.info.cancel',
 	SUBSCRIBE_MODAL_PRIVACY_TITLE = 'subscribe.modal.privacy.title',
 	SUBSCRIBE_MODAL_PRIVACY_OFFER_AGREEMENT = 'subscribe.modal.privacy.offer.agreement',
 	SUBSCRIBE_MODAL_PRIVACY_CONSENT = 'subscribe.modal.privacy.consent',
