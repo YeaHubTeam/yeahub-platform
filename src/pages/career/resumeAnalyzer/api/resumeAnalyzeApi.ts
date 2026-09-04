@@ -9,7 +9,7 @@ export const resumeAnalyzeApi = baseApi.injectEndpoints({
 		resumeAnalyze: build.mutation<ResumeAnalyzeResponse, ResumeAnalyzeBodyRequest>({
 			query: ({ specializationId, file }) => {
 				return {
-					url: route(resumeAnalyzeApiUrls.resumeAnalyze, specializationId),
+					url: route(resumeAnalyzeApiUrls.resumeAnalyzeByPortrait, specializationId),
 					method: 'POST',
 					body: file,
 				};

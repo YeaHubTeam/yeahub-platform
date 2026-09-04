@@ -1,3 +1,4 @@
+export { CheckFilled } from './CheckFilled';
 export { ChevronUp } from './ChevronUp';
 export { CSSIcon } from './CSSIcon';
 export { DecorationItemIcon } from './DecorationItemIcon';

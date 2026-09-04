@@ -23,6 +23,7 @@ export const TextSkeleton = ({
 		body3: 16 * 1.2,
 		'body3-accent': 16 * 1.3,
 		'body3-strong': 16 * 1.3,
+		'body3-strong-compact': 16 * 1.3,
 		body4: 18 * 1.2,
 		body5: 20 * 1.2,
 		'body5-accent': 20 * 1.2,
