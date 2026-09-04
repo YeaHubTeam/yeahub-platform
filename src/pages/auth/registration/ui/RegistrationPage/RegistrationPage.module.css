@@ -2,14 +2,15 @@
   display: flex;
   flex-basis: 58%;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   overflow-x: hidden;
 }
 
-.content{
+.content {
   margin-top: 70px;
   margin-bottom: 70px;
   box-sizing: border-box;
+  width: 100%;
   max-width: 408px;
   color: var(--text-color-primary);
 }
@@ -27,16 +28,8 @@
   }
 }
 
-@media ( width >= 768px){
-  .content{
-    margin-right: 10px;
-    margin-left: 10px;
-    max-width: none;
-  }
-}
-
-@media ( width >= 270px){
-  .content{
+@media (width <= 270px) {
+  .content {
     margin-right: 10px;
     margin-left: 10px;
     max-width: none;
