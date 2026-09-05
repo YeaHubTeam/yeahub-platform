@@ -1,24 +1,18 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Tasks } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
-import { Card } from '@/shared/ui/Card';
-import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
-import { Flex } from '@/shared/ui/Flex';
-import { Text } from '@/shared/ui/Text';
 
 import { useGetTasksListQuery } from '@/entities/task';
 
 import { TasksFilters, useTasksFilters } from '@/features/task/filterTasks';
 
+import { ListLayoutPage } from '@/widgets/ListLayoutPage';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { TasksList } from '@/widgets/task/TasksList';
 
-import styles from './TasksPage.module.css';
 import { TasksPageSkeleton } from './TasksPage.skeleton';
 
 const TasksPage = () => {
-	const { isMobileS, isSmallScreen } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.task);
 
 	const {
@@ -98,22 +92,13 @@ const TasksPage = () => {
 			}}
 		>
 			{({ content, pagination }) => (
-				<Flex gap="20" align="start">
-					<Card className={styles.main}>
-						<div className={styles['tasks-list-header']}>
-							<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
-								{t(Tasks.TITLE_SHORT)}
-							</Text>
-							{isSmallScreen && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
-						</div>
-						<hr className={styles.divider} />
-						<>
-							{content}
-							{pagination}
-						</>
-					</Card>
-					<Card className={styles.filters}>{renderFilters()}</Card>
-				</Flex>
+				<ListLayoutPage
+					title={t(Tasks.TITLE_SHORT)}
+					filters={renderFilters()}
+					pagination={pagination}
+				>
+					{content}
+				</ListLayoutPage>
 			)}
 		</PageWrapper>
 	);

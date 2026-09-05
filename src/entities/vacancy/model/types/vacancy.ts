@@ -52,7 +52,8 @@ export interface Vacancy {
 	source: VacancySource;
 	title: string;
 	area: string;
-	publishedAt: string;
+	publishedAt?: string;
+	sourcePublishedAt: string;
 	employmentForm: VacancyEmploymentForm;
 	internship: boolean;
 	grade: VacancyGrade;
