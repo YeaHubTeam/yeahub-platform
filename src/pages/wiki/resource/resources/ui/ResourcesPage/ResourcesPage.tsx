@@ -3,13 +3,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Marketplace, Resources, ROUTES } from '@/shared/config';
-import { useAppSelector, useScreenSize } from '@/shared/libs';
-import { Button } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card';
-import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
-import { Flex } from '@/shared/ui/Flex';
+import { useAppSelector } from '@/shared/libs';
 import { Icon } from '@/shared/ui/Icon';
-import { Text } from '@/shared/ui/Text';
 
 import { getIsVerified, getSpecializationId } from '@/entities/profile';
 import {
@@ -19,14 +14,13 @@ import {
 
 import { ResourcesFilters, useResourcesFilters } from '@/features/resources/filterResources';
 
+import { ListLayoutPage } from '@/widgets/ListLayoutPage';
 import { ResourcesList } from '@/widgets/Marketplace';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
-import styles from './ResourcesPage.module.css';
 import { ResourcesPageSkeleton } from './ResourcesPage.skeleton';
 
 const ResourcesPage = () => {
-	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
 	const specializationId = useSelector(getSpecializationId);
 	const isEmailVerified = useAppSelector(getIsVerified);
@@ -110,44 +104,24 @@ const ResourcesPage = () => {
 			content={<ResourcesList resources={resources} />}
 		>
 			{({ content, pagination }) => (
-				<Flex gap="20" align="start" style={{ position: 'relative' }}>
-					<Card className={styles.main}>
-						<Flex className={styles.header}>
-							<Text variant="body6" isMainTitle>
-								{t(Marketplace.HEADER_TITLE)}
-							</Text>
-							<Flex gap="12" align="center">
-								{(isMobile || isTablet) && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
-								{isEmailVerified && (
-									<Button
-										variant="link-purple"
-										suffix={<Icon icon="plus" />}
-										onClick={() => navigate(ROUTES.wiki.resources.my.create.page)}
-									>
-										{t(Marketplace.LINK_LABEL)}
-									</Button>
-								)}
-							</Flex>
-						</Flex>
-						<>
-							{content}
-							{pagination}
-						</>
-					</Card>
-					{isEmailVerified && (
-						<Button
-							className={styles['absolute-button']}
-							variant="outline"
-							size="large"
-							onClick={handleNavigateToMyResources}
-						>
-							{t(Marketplace.MY_RESOURCES)}{' '}
-							{myResourceRequestsReviewCount > 0 ? `(${myResourceRequestsReviewCount})` : ''}
-						</Button>
-					)}
-
-					<Card className={styles.filters}>{renderFilters()}</Card>
-				</Flex>
+				<ListLayoutPage
+					title={t(Marketplace.HEADER_TITLE)}
+					filters={renderFilters()}
+					isEmailVerified={isEmailVerified}
+					actionButton={{
+						suffix: <Icon icon="plus" />,
+						onClick: () => navigate(ROUTES.wiki.resources.my.create.page),
+						label: t(Marketplace.LINK_LABEL),
+					}}
+					pagination={pagination}
+					secondaryAction={{
+						count: myResourceRequestsReviewCount,
+						onClick: handleNavigateToMyResources,
+						label: t(Marketplace.MY_RESOURCES),
+					}}
+				>
+					{content}
+				</ListLayoutPage>
 			)}
 		</PageWrapper>
 	);

@@ -1,11 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Questions } from '@/shared/config';
-import { useAppSelector, useScreenSize } from '@/shared/libs';
-import { Card } from '@/shared/ui/Card';
-import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
-import { Flex } from '@/shared/ui/Flex';
-import { Text } from '@/shared/ui/Text';
+import { useAppSelector } from '@/shared/libs';
 
 import { getProfileId, getSpecializationId } from '@/entities/profile';
 import { useGetQuestionsForLearnQuery, useGetQuestionsListQuery } from '@/entities/question';
@@ -14,15 +10,14 @@ import { MAX_SHOW_LIMIT_SKILLS, useGetSkillsListQuery } from '@/entities/skill';
 import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
 import { useQuestionQueryNavigate } from '@/features/question/navigateQuestion';
 
+import { ListLayoutPage } from '@/widgets/ListLayoutPage';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { FullQuestionsList } from '@/widgets/question/QuestionsList';
 
-import styles from './QuestionsPage.module.css';
 import { QuestionsPageSkeleton } from './QuestionsPage.skeleton';
 
 const QuestionsPage = () => {
 	const { t } = useTranslation(i18Namespace.questions);
-	const { isSmallScreen, isMobileS } = useScreenSize();
 
 	const {
 		filters,
@@ -133,22 +128,13 @@ const QuestionsPage = () => {
 			}}
 		>
 			{({ content, pagination }) => (
-				<Flex gap="20" align="start">
-					<Card className={styles.main}>
-						<div className={styles['questions-list-header']}>
-							<Text variant={isMobileS ? 'body5-accent' : 'body6'} isMainTitle maxRows={1}>
-								{t(Questions.TITLE_SHORT)}
-							</Text>
-							{isSmallScreen && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
-						</div>
-						<hr className={styles.divider} />
-						<>
-							{content}
-							{pagination}
-						</>
-					</Card>
-					<Card className={styles.filters}>{renderFilters()}</Card>
-				</Flex>
+				<ListLayoutPage
+					title={t(Questions.TITLE_SHORT)}
+					filters={renderFilters()}
+					pagination={pagination}
+				>
+					{content}
+				</ListLayoutPage>
 			)}
 		</PageWrapper>
 	);
