@@ -680,7 +680,30 @@
 			},
 			"edit": {
 				"success": "Коллекция успешно изменена",
-				"failed": "Не удалось изменить коллекцию"
+				"failed": "Не удалось изменить коллекцию",
+				"auth": {
+					"unauthorized": "Пользователь не авторизован",
+					"user": {
+						"verified": "Доступ только для проверенных пользователей"
+					},
+					"roles": {
+						"author.can.change.only.own": "Автор может изменять только свои данные"
+					}
+				},
+				"collection": {
+					"collection.not_found": "Коллекция не найдена",
+					"collection.update_conflict": "Произошёл конфликт при обновлении коллекции"
+				},
+				"storage": {
+					"image": {
+						"invalid_format": "Изображение должно быть в формате PNG, JPEG, WEBP или GIF, закодированном в base64",
+						"too_large": "Размер изображения превышает <maxSizeMb> МБ"
+					}
+				},
+				"tinify": {
+					"compress.failed": "Не удалось сжать изображение с помощью TinyPNG",
+					"resize.failed": "Не удалось изменить размер изображения"
+				}
 			}
 		},
 		"resources": {

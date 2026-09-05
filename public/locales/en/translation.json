@@ -672,7 +672,30 @@
 			},
 			"edit": {
 				"success": "Collection successfully changed",
-				"failed": "Collection could not be changed"
+				"failed": "Failed to edit collection",
+				"auth": {
+					"unauthorized": "User is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"collection": {
+					"collection.not_found": "Collection not found",
+					"collection.update_conflict": "Conflict occurred while updating collection"
+				},
+				"storage": {
+					"image": {
+						"invalid_format": "Image must be in PNG, JPEG, WEBP or GIF format, encoded in base64",
+						"too_large": "Image size exceeds <maxSizeMb> MB"
+					}
+				},
+				"tinify": {
+					"compress.failed": "Failed to compress image using TinyPNG",
+					"resize.failed": "Failed to resize image"
+				}
 			}
 		},
 		"resources": {
