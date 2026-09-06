@@ -563,7 +563,30 @@
 			},
 			"edit": {
 				"success": "Topic successfully changed",
-				"failed": "Topic could not be changed"
+				"failed": "Topic could not be changed",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users only"
+					},
+					"roles": {
+						"author_can_change_only_own": "Author can change only own data"
+					}
+				},
+				"topic": {
+					"not_found": "Topic not found",
+					"title": {
+						"conflict": "A topic with the same title already exists for this skill"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
 			},
 			"delete": {
 				"single": {

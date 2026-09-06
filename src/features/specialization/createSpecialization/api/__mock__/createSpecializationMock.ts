@@ -1,7 +1,8 @@
 import { http, HttpResponse } from 'msw';
 
-import { author, createSlug } from '@/shared/libs';
+import { createSlug } from '@/shared/libs';
 
+import { getMockAuthAuthor } from '@/entities/auth';
 import { Specialization, specializationsMock } from '@/entities/specialization';
 
 import { createSpecializationApiUrls } from '../../model/constants/createSpecializationConstants';
@@ -16,6 +17,7 @@ export const createSpecializationMock = http.post<
 	CreateSpecializationResponse
 >(process.env.API_URL + createSpecializationApiUrls.createSpecialization, async ({ request }) => {
 	const body = await request.json();
+	const authorMockResponse = getMockAuthAuthor(request);
 
 	const newSpecialization: Specialization = {
 		id: Date.now() + Math.floor(Math.random() * 1000),
@@ -25,7 +27,7 @@ export const createSpecializationMock = http.post<
 		imageSrc: null,
 		createdAt: new Date().toISOString(),
 		updatedAt: null,
-		createdBy: author,
+		createdBy: authorMockResponse,
 	};
 
 	specializationsMock.push(newSpecialization);
