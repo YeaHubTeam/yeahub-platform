@@ -703,7 +703,25 @@
 			},
 			"edit": {
 				"success": "Resource successfully changed",
-				"failed": "Resource could not be changed"
+				"failed": "Resource could not be changed",
+				"unauthorized": "You must be authorized to edit the resource",
+				"unverified": "You must be a verified user to edit the resource",
+				"catalog": {
+					"not.found": "Catalog not found"
+				},
+				"skill": {
+					"not.found": "One or more skills not found"
+				},
+				"specialization": {
+					"not.found": "One or more specializations not found"
+				},
+				"type": {
+					"not.found": "One or more resource types not found"
+				},
+				"image": {
+					"compress.failed": "Failed to compress the image",
+					"resize.failed": "Failed to resize the image"
+				}
 			},
 			"approve": {
 				"success": "Заявка на ресурс успешно одобрена",
