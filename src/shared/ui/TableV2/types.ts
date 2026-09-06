@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import { TableAction, TableActionsEntity } from '@/shared/ui/TableActions';
+
 export type TableRowId = string | number;
 
 export interface TableCellContext<T> {
@@ -22,6 +24,9 @@ interface TableV2BaseProps<T> {
 	onSelectedRowIdsChange?: (ids: TableRowId[]) => void;
 	isRowSelectionDisabled?: (row: T) => boolean;
 	renderRowActions?: (row: T) => ReactNode;
+	actions?: TableAction[];
+	entity?: TableActionsEntity;
+	onDelete?: (id: TableRowId) => void;
 }
 
 type TableV2RowIdProps<T> = T extends { id: TableRowId }

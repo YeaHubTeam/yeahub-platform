@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react';
-
 import { Checkbox } from '@/shared/ui/Checkbox';
+import { TableAction, TableActions, TableActionsEntity } from '@/shared/ui/TableActions';
 
 import { TableCell } from './TableCell';
 import type { TableColumn, TableRowId } from './types';
@@ -16,8 +15,10 @@ interface TableBodyProps<T> {
 	selectionCellClassName?: string;
 	isRowDisabled?: (row: T) => boolean;
 	onToggleRow?: (row: T) => void;
-	renderRowActions?: (row: T) => ReactNode;
 	actionsCellClassName?: string;
+	actions?: TableAction[];
+	entity?: TableActionsEntity;
+	onDelete?: (id: TableRowId) => void;
 }
 
 export const TableBody = <T,>({
@@ -31,9 +32,13 @@ export const TableBody = <T,>({
 	selectionCellClassName,
 	isRowDisabled,
 	onToggleRow,
-	renderRowActions,
 	actionsCellClassName,
+	entity,
+	actions = [],
+	onDelete,
 }: TableBodyProps<T>) => {
+	const hasAction = actions.length > 0 && entity;
+
 	return (
 		<tbody>
 			{data.map((row, rowIndex) => {
@@ -60,9 +65,15 @@ export const TableBody = <T,>({
 								className={cellClassName}
 							/>
 						))}
-						{renderRowActions && (
+						{hasAction && (
 							<td className={actionsCellClassName} onClick={(event) => event.stopPropagation()}>
-								{renderRowActions(row)}
+								<TableActions
+									entity={entity}
+									actions={actions}
+									onDelete={() => onDelete?.(rowId)}
+									id={rowId}
+									disabled={disabled}
+								/>
 							</td>
 						)}
 					</tr>

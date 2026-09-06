@@ -15,10 +15,12 @@ export const TableV2 = <T,>({
 	selectedRowIds,
 	onSelectedRowIdsChange,
 	isRowSelectionDisabled,
-	renderRowActions,
+	entity,
+	actions = [],
+	onDelete,
 }: TableV2Props<T>) => {
 	const resolveRowId = getRowId ?? getDefaultRowId;
-	const hasRowActions = Boolean(renderRowActions);
+	const hasRowActions = Boolean(actions.length);
 
 	const {
 		selectionEnabled,
@@ -72,8 +74,10 @@ export const TableV2 = <T,>({
 				selectionCellClassName={styles['selection-column']}
 				isRowDisabled={isRowDisabled}
 				onToggleRow={toggleRow}
-				renderRowActions={renderRowActions}
 				actionsCellClassName={styles['actions-column']}
+				entity={entity}
+				actions={actions}
+				onDelete={onDelete}
 			/>
 		</table>
 	);
