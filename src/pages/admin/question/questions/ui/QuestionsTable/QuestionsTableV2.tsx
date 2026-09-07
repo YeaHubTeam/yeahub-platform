@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 import { Questions, i18Namespace, ROUTES } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
-import { TableActions } from '@/shared/ui/TableActions';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
@@ -31,7 +30,7 @@ interface QuestionTableRow {
 }
 
 interface QuestionsTableV2Props {
-	questions: Question[] | [];
+	questions: Question[];
 	selectedQuestions: SelectedAdminEntities | [];
 	onSelectQuestions: (ids: SelectedAdminEntities) => void;
 }
@@ -143,15 +142,9 @@ export const QuestionsTableV2 = ({
 			columns={columns}
 			selectedRowIds={selectedRowIds}
 			onSelectedRowIdsChange={onSelectedRowIdsChange}
-			renderRowActions={(row) => (
-				<TableActions
-					actions={['detail', 'edit', 'delete', 'copy']}
-					entity="questions"
-					id={row.id}
-					disabled={row.disabled}
-					onDelete={() => deleteQuestion(row.id)}
-				/>
-			)}
+			actions={['detail', 'edit', 'delete', 'copy']}
+			entity="questions"
+			onDelete={(id) => deleteQuestion(Number(id))}
 		/>
 	);
 };
