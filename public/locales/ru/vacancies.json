@@ -43,5 +43,12 @@
 				"subtitle": "Вакансии периодически обновляются, стоит только немного подождать"
 			}
 		}
+	},
+	"resume_analysis": {
+		"skills": {
+			"matched": "{{totalMatched}}/{{totalSkills}} совпало",
+			"in_resume": "Есть в резюме ({{totalMatched}})",
+			"missing": "Не хватает ({{missingCount}})"
+		}
 	}
 }

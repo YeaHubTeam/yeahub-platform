@@ -1,0 +1,23 @@
+.icon {
+  transform: rotate(180deg);
+}
+
+.button {
+  align-self: flex-start;
+}
+
+.progress-bar {
+  & > progress {
+    border-radius: 21px;
+
+    &::-webkit-progress-value {
+      border-radius: 21px;
+      background-color: var(--text-color-link-active);
+    }
+
+    &::-webkit-progress-bar {
+      border-radius: 21px;
+      background-color: var(--background-progress-bar);
+    }
+  }
+}

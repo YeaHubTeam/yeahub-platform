@@ -98,6 +98,17 @@ export enum Translation {
 	FILE_LOADER_TYPES_PHOTO = 'file.loader.types.photo',
 	FILE_LOADER_LIMIT = 'file.loader.limit',
 
+	FILE_LOADER_RESUME_LINK = 'file.loader_resume.link',
+	FILE_LOADER_RESUME_TEXT = 'file.loader_resume.text',
+	FILE_LOADER_RESUME_LIMIT = 'file.loader_resume.limit',
+	FILE_LOADER_RESUME_DESCRIPTION = 'file.loader_resume.description',
+
+	FILE_UPLOADED_RESUME_TITLE = 'file.uploaded_resume.title',
+	FILE_UPLOADED_RESUME_UPLOADED_AT = 'file.uploaded_resume.uploadedAt',
+	FILE_UPLOADED_RESUME_UPLOAD_SUCCESS = 'file.uploaded_resume.upload_success',
+	FILE_UPLOADED_RESUME_UPLOAD_FAILED = 'file.uploaded_resume.upload_failed',
+	FILE_UPLOADED_RESUME_ANALYSIS_FAILED = 'file.uploaded_resume.failed',
+
 	SETTINGS = 'settings',
 	CRUMBS_PROFILE = 'crumbs.profile',
 	CRUMBS_PROFILE_EDITING = 'crumbs.profile.editing',
@@ -1687,4 +1698,7 @@ export enum Vacancies {
 	EMPLOYMENT_TYPE = 'employmentType',
 	SALARY = 'salary',
 	ENGLISH_LEVEL = 'englishLevel',
+	RESUME_ANALYSIS_SKILLS_MATCHED_COUNT = 'resume_analysis.skills.matched',
+	RESUME_ANALYSIS_SKILLS_IN_RESUME = 'resume_analysis.skills.in_resume',
+	RESUME_ANALYSIS_SKILLS_MISSING = 'resume_analysis.skills.missing',
 }

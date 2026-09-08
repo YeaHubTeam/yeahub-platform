@@ -1,12 +1,17 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
-import { Button } from '@/shared/ui/Button';
+import { i18Namespace, Translation } from '@/shared/config';
 import { FileLoader, Accept, Extension } from '@/shared/ui/FileLoader';
-import { Flex } from '@/shared/ui/Flex';
-import { FormField } from '@/shared/ui/FormField';
 import { toast } from '@/shared/ui/Toast';
 
-import { SpecializationSelect } from '@/entities/specialization';
+import { getSpecializationId } from '@/entities/profile';
+
+import { useGetUploadedFileDate } from '../../model/hooks/useGetUploadedFileDate';
+import { UploadedResume } from '../UploadedResume/UploadedResume';
+
+import styles from './UploadResumeForm.module.css';
 
 interface UploadResumeFormProps {
 	onSubmit: (data: { specializationId: number; file: FormData }) => void;
@@ -14,50 +19,59 @@ interface UploadResumeFormProps {
 }
 
 export const UploadResumeForm = ({ onSubmit, isLoading }: UploadResumeFormProps) => {
-	const [specialization, setSpecialization] = useState<number | null>(null);
 	const [file, setFile] = useState<FormData | null>(null);
+	const [fileName, setFileName] = useState<string>('');
+
+	const [uploadedAt, setUploadedAt] = useState<string | null>(null);
+	const formattedDate = useGetUploadedFileDate(uploadedAt);
+
+	const { t } = useTranslation(i18Namespace.translation);
+	const specializationId = useSelector(getSpecializationId);
 
 	const handleUpload = ([file]: File[]) => {
 		const formData = new FormData();
 		formData.append('file', file);
 		setFile(formData);
+		setFileName(file.name);
 		if (formData.get('file')) {
-			toast.success('Резюме успешно загружено');
+			setUploadedAt(new Date().toISOString());
+			toast.success(t(Translation.FILE_UPLOADED_RESUME_UPLOAD_SUCCESS));
 		} else {
-			toast.error('Не удалось загрузить резюме');
+			toast.error(t(Translation.FILE_UPLOADED_RESUME_UPLOAD_FAILED));
 		}
 	};
 
-	const onChangeSpecialization = (id: number | number[]) => {
-		const specializationId = Array.isArray(id) ? id[0] : id;
-		setSpecialization(specializationId);
+	const onUploadResume = () => {
+		if (file) onSubmit({ specializationId, file: file });
 	};
 
-	const onUploadResume = () => {
-		if (specialization && file) onSubmit({ specializationId: specialization, file: file });
+	const resetResume = () => {
+		setFile(null);
+		setFileName('');
+		setUploadedAt(null);
 	};
 
 	return (
-		<Flex direction="column" gap="20">
-			<FormField label="Выберите специализацию">
-				<SpecializationSelect value={specialization || 0} onChange={onChangeSpecialization} />
-			</FormField>
-			<FormField label="Загрузите резюме">
+		<>
+			{!file ? (
 				<FileLoader
-					disabled={!specialization || isLoading}
+					className={styles['file-loader-wrapper']}
 					accept={Accept.MS_WORD}
-					fileTypeText="своё резюме"
+					fileTypeText="резюме"
 					extensionsText={Extension.MS_WORD}
 					onChange={handleUpload}
+					contentVariant="resume"
+					maxFileMBSize={10}
 				/>
-			</FormField>
-			<Button
-				variant="primary"
-				disabled={!specialization || !file || isLoading}
-				onClick={onUploadResume}
-			>
-				Проверить резюме
-			</Button>
-		</Flex>
+			) : (
+				<UploadedResume
+					fileName={fileName}
+					isLoading={isLoading}
+					onUploadResume={onUploadResume}
+					uploadedAt={formattedDate}
+					onDeleteResume={resetResume}
+				/>
+			)}
+		</>
 	);
 };
