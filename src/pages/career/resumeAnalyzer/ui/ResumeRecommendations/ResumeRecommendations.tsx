@@ -3,7 +3,7 @@ import { FormField } from '@/shared/ui/FormField';
 import { StatusChip } from '@/shared/ui/StatusChip';
 import { Text } from '@/shared/ui/Text';
 
-import { Resume } from '../../model/types/resumeAnalyze';
+import { Resume } from '../../model/types/resumeAnalyzer';
 
 interface ResumeRecommendationsProps {
 	resumeInfo: Resume;
