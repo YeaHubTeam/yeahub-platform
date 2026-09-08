@@ -38,3 +38,18 @@
 .row:hover {
   background-color: var(--color-purple-100);
 }
+
+.selection-column {
+  padding: 0 6px;
+  width: 32px;
+
+  span {
+    position: relative;
+    top: 3px;
+  }
+}
+
+.actions-column {
+  padding: 0;
+  width: auto;
+}
