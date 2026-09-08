@@ -20,5 +20,15 @@
 			},
 			"check": "Check resume"
 		}
+	},
+	"analysis": {
+		"keywords": {
+			"title": "Keywords",
+			"matched_total": "{{matched}}/{{total}} matched",
+			"matched": "Found",
+			"missing": "Missing",
+			"optional": "Additional",
+			"critical": "Critical"
+		}
 	}
 }

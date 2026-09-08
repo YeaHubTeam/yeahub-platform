@@ -20,5 +20,15 @@
 			},
 			"check": "Проверить резюме"
 		}
+	},
+	"analysis": {
+		"keywords": {
+			"title": "Ключевые слова",
+			"matched_total": "{{matched}}/{{total}} совпало",
+			"matched": "Найденные",
+			"missing": "Пропущенные",
+			"optional": "Дополнительные",
+			"critical": "Критичные"
+		}
 	}
 }

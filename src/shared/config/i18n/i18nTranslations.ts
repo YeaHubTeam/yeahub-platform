@@ -1532,6 +1532,13 @@ export enum Resume {
 	FILE_UPLOADED_RESUME_UPLOAD_SUCCESS = 'file.uploaded_resume.upload.success',
 	FILE_UPLOADED_RESUME_UPLOAD_FAILED = 'file.uploaded_resume.upload.failed',
 	FILE_UPLOADED_RESUME_CHECK = 'file.uploaded_resume.check',
+
+	ANALYSIS_KEYWORDS_TITLE = 'analysis.keywords.title',
+	ANALYSIS_KEYWORDS_MATCHED_TOTAL = 'analysis.keywords.matched_total',
+	ANALYSIS_KEYWORDS_MATCHED = 'analysis.keywords.matched',
+	ANALYSIS_KEYWORDS_MISSING = 'analysis.keywords.missing',
+	ANALYSIS_KEYWORDS_OPTIONAL = 'analysis.keywords.optional',
+	ANALYSIS_KEYWORDS_CRITICAL = 'analysis.keywords.critical',
 }
 
 export enum Tasks {

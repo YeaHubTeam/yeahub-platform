@@ -38,12 +38,12 @@ interface Overall {
 	label: string;
 }
 
-interface Keyword {
+export interface Keyword {
 	title: string;
 	percent: number;
 }
 
-interface Keywords {
+export interface Keywords {
 	coveragePercent: number;
 	matchedKeywords: Keyword[];
 	missingKeywords: Keyword[];
@@ -121,4 +121,9 @@ export interface ResumeAnalyzeByPortraitResponse {
 	skills: Skills;
 	tasks: Tasks;
 	profile: Profile;
+}
+
+export interface StoredResumeAnalysis {
+	response: ResumeAnalyzeByPortraitResponse;
+	analyzedAt: string;
 }

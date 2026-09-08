@@ -14,7 +14,7 @@ import { SkillsPageState } from '@/pages/admin/skill/skills';
 import { SpecializationsPageState } from '@/pages/admin/specialization/specializations';
 import { TasksTablePageState } from '@/pages/admin/task/tasks';
 import { TopicsPageState } from '@/pages/admin/topic/topics';
-import { ResumeAnalyzerPageState } from '@/pages/career/resumeAnalyzer';
+import type { ResumeAnalyzerPageState } from '@/pages/career/resumeAnalyzer';
 import { InterviewHistoryState } from '@/pages/interview/interviewHistory';
 
 export interface State {
