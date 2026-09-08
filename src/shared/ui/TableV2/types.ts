@@ -15,6 +15,7 @@ export interface TableColumn<T> {
 	header: ReactNode;
 	accessor?: (row: T) => unknown;
 	cell?: (context: TableCellContext<T>) => ReactNode;
+	width?: string;
 }
 
 interface TableV2BaseProps<T> {

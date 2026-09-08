@@ -23,7 +23,7 @@ import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 
 import { getSelectedQuestions } from '../../model/selectors/questionsTablePageSelectors';
 import { questionsTablePageActions } from '../../model/slices/questionsTablePageSlice';
-import { QuestionsTableV2 } from '../QuestionsTable/QuestionsTableV2';
+import { QuestionsTable } from '../QuestionsTable/QuestionsTable';
 
 import styles from './QuestionsTablePage.module.css';
 
@@ -152,7 +152,7 @@ const QuestionsPage = () => {
 			stubs={stubs}
 			roles={['admin', 'author']}
 			content={
-				<QuestionsTableV2
+				<QuestionsTable
 					questions={questionsList}
 					selectedQuestions={selectedQuestions}
 					onSelectQuestions={onSelectQuestions}

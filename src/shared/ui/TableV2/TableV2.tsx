@@ -45,7 +45,7 @@ export const TableV2 = <T,>({
 				<colgroup>
 					{selectionEnabled && <col className={styles['selection-column']} />}
 					{columns.map((column) => (
-						<col key={column.id} />
+						<col key={column.id} style={column.width ? { width: column.width } : undefined} />
 					))}
 					{hasRowActions && <col className={styles['actions-column']} />}
 				</colgroup>
