@@ -12,5 +12,11 @@ export const authHandlers = [
 	authSignupMutationMock(),
 ];
 
-export { authMockProfilesByAccessToken } from './data';
+export {
+	authMockProfilesByAccessToken,
+	authMockAuthorsByAccessToken,
+	mockAdminRoleAuthor,
+	mockAuthorRoleAuthor,
+} from './data';
 export { getMockAuthProfile } from './helpers/getMockAuthProfile';
+export { getMockAuthAuthor } from './helpers/getMockAuthAuthor';

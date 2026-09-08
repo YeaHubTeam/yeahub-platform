@@ -5,6 +5,7 @@ import { i18Namespace, Translation } from '@/shared/config';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 
 import { useCreateMultipleQuestionsMutation } from '../../api/createMultipleQuestionsApi';
 import {
@@ -36,9 +37,12 @@ export const QuestionCreateMultipleFormHeader = ({
 	return (
 		<Flex align="center" gap="8" justify="between">
 			<BackButton />
-			<Button disabled={isLoading} onClick={handleSubmit(onCreateMultipleQuestions)}>
-				{t(Translation.SAVE, { ns: 'translation' })}
-			</Button>
+			<Flex gap="10" justify="between">
+				<FormCancelButton disabled={isLoading} />
+				<Button disabled={isLoading} onClick={handleSubmit(onCreateMultipleQuestions)}>
+					{t(Translation.SAVE, { ns: 'translation' })}
+				</Button>
+			</Flex>
 		</Flex>
 	);
 };

@@ -17,6 +17,10 @@ export const SpecializationCreateForm = () => {
 	const methods = useForm<CreateSpecializationFormValues>({
 		resolver: yupResolver(specializationCreateSchema),
 		mode: 'onTouched',
+		defaultValues: {
+			title: '',
+			description: '',
+		},
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;

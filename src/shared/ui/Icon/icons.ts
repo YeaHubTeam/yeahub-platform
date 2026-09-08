@@ -79,6 +79,8 @@ import {
 	arrowShortDown,
 	refresh,
 	referralsIcon,
+	x,
+	arrowsCounterClockwise,
 } from '../../assets';
 
 import { IconComponent, IconName } from './types';
@@ -88,6 +90,7 @@ export const icons: Record<IconName, IconComponent> = {
 	arrowRight,
 	arrowUpSquare,
 	arrowDownSquare,
+	arrowsCounterClockwise,
 	clock,
 	calendar,
 	altArrowLeft,
@@ -164,4 +167,5 @@ export const icons: Record<IconName, IconComponent> = {
 	watch,
 	refresh,
 	referralsIcon,
+	x,
 };

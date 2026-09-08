@@ -40,6 +40,7 @@ export const CollectionPage = () => {
 	const userId = useAppSelector(getUserId);
 	const {
 		data: response,
+		isLoading: isLoadingList,
 		isError: isQuestionsError,
 		refetch,
 	} = useGetQuestionsListQuery(
@@ -52,7 +53,7 @@ export const CollectionPage = () => {
 	);
 
 	const questions = response?.data ?? [];
-	const hasData = questions.length > 0 || isLoading;
+	const hasData = questions.length > 0 || isLoading || isFetching;
 	const stubs: PageWrapperStubs = {
 		empty: {
 			title: t(Collections.STUB_EMPTY_COLLECTION_TITLE),
@@ -77,7 +78,7 @@ export const CollectionPage = () => {
 	return (
 		<PageWrapper
 			roles={['admin', 'author']}
-			isLoading={isLoading || isFetching}
+			isLoading={isLoading || isFetching || isLoadingList}
 			hasError={isCollectionError || isQuestionsError}
 			hasData={hasData}
 			stubs={stubs}
