@@ -1698,4 +1698,7 @@ export enum Vacancies {
 	EMPLOYMENT_TYPE = 'employmentType',
 	SALARY = 'salary',
 	ENGLISH_LEVEL = 'englishLevel',
+	RESUME_ANALYSIS_SKILLS_MATCHED_COUNT = 'resume_analysis.skills.matched',
+	RESUME_ANALYSIS_SKILLS_IN_RESUME = 'resume_analysis.skills.in_resume',
+	RESUME_ANALYSIS_SKILLS_MISSING = 'resume_analysis.skills.missing',
 }
