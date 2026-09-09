@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Marketplace, Translation } from '@/shared/config';
+import { i18Namespace, Resources, Translation } from '@/shared/config';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -20,7 +20,7 @@ export const ResourceCreateFormWithHeader = () => {
 	const [createResourceMutation, { isLoading }] = useCreateResourceMutation();
 
 	const { handleSubmit } = useFormContext<CreateResourceFormValues>();
-	const { t } = useTranslation(i18Namespace.marketplace);
+	const { t } = useTranslation([i18Namespace.resources, i18Namespace.marketplace]);
 
 	const { data: profile } = useProfileQuery();
 	const isAdminRole = profile?.userRoles?.some((role) =>
@@ -47,9 +47,9 @@ export const ResourceCreateFormWithHeader = () => {
 				</Button>
 			</Flex>
 			<Card className={styles.content}>
-				<Flex direction="column" gap="28">
-					<Text variant="body5-strong" color="black-900">
-						{t(Marketplace.ADD_RESOURCE_TITLE)}
+				<Flex direction="column" gap="32">
+					<Text variant="body6" color="black-900">
+						{t(Resources.ADD_RESOURCE_TITLE)}
 					</Text>
 					<ResourceForm />
 				</Flex>

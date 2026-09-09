@@ -20,30 +20,36 @@ export const CollectionPageSkeleton = () => {
 
 	if (isSmallScreen) {
 		return (
-			<section className={classNames(styles.wrapper, styles.mobile)}>
+			<>
 				<BackHeaderSkeleton>
 					<DeleteQuestionButtonSkeleton isDetailPage />
 					<ButtonSkeleton width={180} />
 				</BackHeaderSkeleton>
-				<CollectionHeaderSkeleton />
-				<CollectionBodySkeleton />
-				<TasksControllerSkeleton />
-			</section>
+				<section className={classNames(styles.wrapper, styles.mobile)}>
+					<CollectionHeaderSkeleton />
+					<CollectionBodySkeleton />
+					<TasksControllerSkeleton />
+				</section>
+			</>
 		);
 	}
 
 	return (
-		<section className={styles.wrapper}>
-			<div className={styles.main}>
-				<BackHeaderSkeleton>
-					<DeleteQuestionButtonSkeleton isDetailPage />
-					<ButtonSkeleton width={180} />
-				</BackHeaderSkeleton>
-				<CollectionHeaderSkeleton />
-				<CollectionBodySkeleton />
-				<TasksControllerSkeleton />
-			</div>
-			<AdditionalInfoSkeleton />
-		</section>
+		<>
+			<BackHeaderSkeleton>
+				<DeleteQuestionButtonSkeleton isDetailPage />
+				<ButtonSkeleton width={180} />
+			</BackHeaderSkeleton>
+			<section className={styles.wrapper}>
+				<div className={styles.main}>
+					<CollectionHeaderSkeleton />
+					<CollectionBodySkeleton />
+					<TasksControllerSkeleton />
+				</div>
+				<div className={styles.additional}>
+					<AdditionalInfoSkeleton />
+				</div>
+			</section>
+		</>
 	);
 };
