@@ -1,25 +1,20 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Vacancies } from '@/shared/config';
-import { useAppSelector, useScreenSize } from '@/shared/libs';
-import { Card } from '@/shared/ui/Card';
-import { FiltersDrawer } from '@/shared/ui/FiltersDrawer';
-import { Flex } from '@/shared/ui/Flex';
-import { Text } from '@/shared/ui/Text';
+import { useAppSelector } from '@/shared/libs';
 
 import { getSpecializationId } from '@/entities/profile';
 import { useGetVacanciesListQuery } from '@/entities/vacancy';
 
 import { useVacanciesFilters, VacanciesFilters } from '@/features/vacancy/filterVacancies';
 
+import { ListLayoutPage } from '@/widgets/ListLayoutPage';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { VacanciesList } from '@/widgets/vacancy/VacanciesList';
 
-import styles from './VacanciesPage.module.css';
 import { VacanciesPageSkeleton } from './VacanciesPage.skeleton';
 
 const VacanciesPage = () => {
-	const { isSmallScreen, isLargeScreen } = useScreenSize();
 	const { t } = useTranslation(i18Namespace.vacancies);
 	const specializationId = useAppSelector(getSpecializationId);
 
@@ -92,25 +87,13 @@ const VacanciesPage = () => {
 			}}
 		>
 			{({ content, pagination }) => (
-				<section className={styles.wrapper}>
-					<div className={styles['main-info-wrapper']}>
-						<Card className={styles.content}>
-							<Flex className={styles.header} direction="row" justify="between">
-								<Text variant="body6" isMainTitle maxRows={1}>
-									{t(Vacancies.LIST_PAGE_TITLE)}
-								</Text>
-								{isSmallScreen && <FiltersDrawer>{renderFilters()}</FiltersDrawer>}
-							</Flex>
-							<>
-								{content}
-								{pagination}
-							</>
-						</Card>
-					</div>
-					<Flex direction="column" gap="20">
-						{isLargeScreen && <Card className={styles.filters}>{renderFilters()}</Card>}
-					</Flex>
-				</section>
+				<ListLayoutPage
+					title={t(Vacancies.LIST_PAGE_TITLE)}
+					filters={renderFilters()}
+					pagination={pagination}
+				>
+					{content}
+				</ListLayoutPage>
 			)}
 		</PageWrapper>
 	);

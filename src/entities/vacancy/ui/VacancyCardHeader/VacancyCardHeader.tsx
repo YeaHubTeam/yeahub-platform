@@ -10,14 +10,18 @@ import styles from './VacancyCardHeader.module.css';
 
 interface VacancyCardHeaderProps {
 	company: VacancyCompany;
-	publishedAt: string;
+	sourcePublishedAt: string;
 	title: string;
 }
 
-export const VacancyCardHeader = ({ company, publishedAt, title }: VacancyCardHeaderProps) => {
+export const VacancyCardHeader = ({
+	company,
+	sourcePublishedAt,
+	title,
+}: VacancyCardHeaderProps) => {
 	const { imageSrc, title: companyTitle } = company;
 
-	const publishedDate = useGetCurrentDay(publishedAt);
+	const publishedDate = useGetCurrentDay(sourcePublishedAt);
 
 	return (
 		<Flex gap="12" wrap="wrap" justify="between">
