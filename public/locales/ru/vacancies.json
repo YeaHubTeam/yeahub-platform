@@ -7,6 +7,30 @@
 		}
 	},
 	"detail_page": {},
+	"resume_analyzer_page": {
+		"analysis_info": {
+			"title": "Загруженное резюме",
+			"uploaded": "Загружено {{date}}",
+			"analyzed": "Проанализировано",
+			"count": "{{count}} вакансий",
+			"updated": "Обновлено вчера"
+		},
+		"metric_title": {
+			"skills": "Навыки",
+			"tasks": "Задачи",
+			"keywords": "Ключевые слова",
+			"priority": "Приоритет"
+		},
+		"metric_label": {
+			"coverage": "Покрытие требований",
+			"matched": "Совпало {{matched}} из {{total}}"
+		},
+		"vacancy_coverage": {
+			"title": "Общее покрытие вакансии",
+			"description": "Насколько ваше резюме соответствует с требованиями рынка",
+			"result": "Ваше резюме соответствует {{percent}}% требований рынка"
+		}
+	},
 	"search": {
 		"placeholder": "Название вакансии..."
 	},

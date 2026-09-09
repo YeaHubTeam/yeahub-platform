@@ -1,0 +1,9 @@
+.content {
+  gap: 20px;
+}
+
+@media screen and (width < 768px) {
+  .content {
+    gap: 10px;
+  }
+}

@@ -1,0 +1,24 @@
+.progress {
+  width: 100%;
+}
+
+.track {
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 21px;
+  background: var(--color-purple-200);
+}
+
+.fill {
+  width: var(--progress);
+  height: 100%;
+  border-radius: 21px;
+  background: linear-gradient(
+    90deg,
+    var(--color-purple-700) 0%,
+    var(--color-purple-700) 70%,
+    var(--color-purple-600) 80%,
+    #b484ff 100%
+  );
+}

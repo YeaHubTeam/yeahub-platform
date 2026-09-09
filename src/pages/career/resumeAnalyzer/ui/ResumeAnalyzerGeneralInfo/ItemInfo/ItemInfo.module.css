@@ -1,0 +1,25 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  background-color: var(--color-purple-100);
+}
+
+.value {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (width < 768px) {
+  .item {
+    gap: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 10px 0 #6a63761a;
+    border-radius: 20px;
+    background-color: var(--background-block);
+  }
+}

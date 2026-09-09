@@ -7,6 +7,30 @@
 		}
 	},
 	"detail_page": {},
+	"resume_analyzer_page": {
+		"analysis_info": {
+			"title": "Uploaded resume",
+			"uploaded": "Uploaded {{date}}",
+			"analyzed": "Analyzed",
+			"count": "{{count}} vacancies",
+			"updated": "Updated yesterday"
+		},
+		"metric_title": {
+			"skills": "Skills",
+			"tasks": "Tasks",
+			"keywords": "Keywords",
+			"priority": "Priority"
+		},
+		"metric_label": {
+			"coverage": "Coverage of requirements",
+			"matched": "Matched {{matched}} of {{total}}"
+		},
+		"vacancy_coverage": {
+			"title": "Overall vacancy coverage",
+			"description": "How well your resume matches market requirements",
+			"result": "Your resume matches {{percent}}% of market requirements"
+		}
+	},
 	"search": {
 		"placeholder": "Job title..."
 	},

@@ -14,7 +14,7 @@ import { UploadedResume } from '../UploadedResume/UploadedResume';
 import styles from './UploadResumeForm.module.css';
 
 interface UploadResumeFormProps {
-	onSubmit: (data: { specializationId: number; file: FormData }) => void;
+	onSubmit: (data: { specializationId: number; file: FormData; fileName: string }) => void;
 	isLoading: boolean;
 }
 
@@ -42,7 +42,7 @@ export const UploadResumeForm = ({ onSubmit, isLoading }: UploadResumeFormProps)
 	};
 
 	const onUploadResume = () => {
-		if (file) onSubmit({ specializationId, file: file });
+		if (file) onSubmit({ specializationId, file: file, fileName });
 	};
 
 	const resetResume = () => {
