@@ -1,0 +1,34 @@
+{
+	"file": {
+		"loader_resume": {
+			"link": "Click to change",
+			"text": "or drag here",
+			"limit": "Max. {{maxFileMBSize}} MB",
+			"description": "We don't store your files and only use them for analysis"
+		},
+		"uploaded_resume": {
+			"title": "Uploaded resume",
+			"uploaded": {
+				"at": "Uploaded {{uploadedAt}}"
+			},
+			"upload": {
+				"success": "Resume uploaded successfully",
+				"failed": "Failed to upload the resume"
+			},
+			"analyses": {
+				"failed": "Failed to analyze your resume"
+			},
+			"check": "Check resume"
+		}
+	},
+	"analysis": {
+		"keywords": {
+			"title": "Keywords",
+			"matched_total": "{{matched}}/{{total}} matched",
+			"matched": "Found",
+			"missing": "Missing",
+			"optional": "Additional",
+			"critical": "Critical"
+		}
+	}
+}

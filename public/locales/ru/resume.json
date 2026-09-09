@@ -1,0 +1,34 @@
+{
+	"file": {
+		"loader_resume": {
+			"link": "Кликни",
+			"text": "или перетащи сюда",
+			"limit": "Макс. {{maxFileMBSize}} МБ",
+			"description": "Мы не храним ваши файлы и используем их только для анализа"
+		},
+		"uploaded_resume": {
+			"title": "Загруженное резюме",
+			"uploaded": {
+				"at": "Загружено {{uploadedAt}}"
+			},
+			"upload": {
+				"success": "Резюме успешно загружено",
+				"failed": "Не удалось загрузить резюме"
+			},
+			"analyses": {
+				"failed": "Не удалось проанализировать ваше резюме"
+			},
+			"check": "Проверить резюме"
+		}
+	},
+	"analysis": {
+		"keywords": {
+			"title": "Ключевые слова",
+			"matched_total": "{{matched}}/{{total}} совпало",
+			"matched": "Найденные",
+			"missing": "Пропущенные",
+			"optional": "Дополнительные",
+			"critical": "Критичные"
+		}
+	}
+}

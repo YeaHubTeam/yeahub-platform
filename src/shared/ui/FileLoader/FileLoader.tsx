@@ -2,16 +2,15 @@
 
 import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
-import Gallery from '@/shared/assets/images/gallery.avif';
-import { i18Namespace } from '@/shared/config';
-import { Translation } from '@/shared/config';
 import { useDragAndDrop } from '@/shared/libs';
+import {
+	FileLoaderDefaultContent,
+	FileLoaderResumeContent,
+} from '@/shared/ui/FileLoader/FileLoaderContent';
 import { Flex } from '@/shared/ui/Flex';
-import { Text } from '@/shared/ui/Text';
 
-import style from './FileLoader.module.css';
+import styles from './FileLoader.module.css';
 import { Accept, Extension } from './types';
 
 export interface FileLoaderProps {
@@ -24,6 +23,7 @@ export interface FileLoaderProps {
 	onChange: (files: globalThis.File[]) => void;
 	isDragDropEnabled?: boolean;
 	disabled?: boolean;
+	contentVariant?: 'default' | 'resume';
 }
 
 export const FileLoader = ({
@@ -36,13 +36,10 @@ export const FileLoader = ({
 	onChange,
 	isDragDropEnabled = true,
 	disabled,
+	contentVariant = 'default',
 }: FileLoaderProps) => {
 	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
-
 	const [files, setFiles] = useState<globalThis.File[]>([]);
-
-	const { t } = useTranslation(i18Namespace.translation);
-
 	const { isDragActive, onDragLeave, handleUploader, onDragOverAndEnter, handleIsDragActive } =
 		useDragAndDrop(uploaderRef);
 
@@ -111,31 +108,31 @@ export const FileLoader = ({
 			onDragOver={onDragOverAndEnter}
 			onDragEnter={onDragOverAndEnter}
 			className={classNames(
-				style['file-upload-container'],
+				styles['file-upload-container'],
 				{
-					[style.active]: isDragActive,
-					[style.disabled]: disabled,
+					[styles.active]: isDragActive,
+					[styles.disabled]: disabled,
+					[styles['content-resume']]: contentVariant === 'resume',
 				},
 				className,
 			)}
 		>
 			{isDragDropEnabled && (
 				<>
-					<div>
-						<img src={Gallery} alt={t(Translation.FILE_LOADER_TYPES_PHOTO)} loading="lazy" />
-					</div>
-					<Flex align="center" gap="4" justify="center" wrap="wrap">
-						<Text variant="body2" color="purple-700" isNoWrap>
-							{t(Translation.FILE_LOADER_LINK)}
-						</Text>
-						<Text variant="body2" color="black-500" isNoWrap>
-							{t(Translation.FILE_LOADER_TEXT)} {fileTypeText}
-						</Text>
-					</Flex>
-					<Text variant="body1" color="black-300">
-						{extensionsText}
-						{maxFileMBSize && ` (${t(Translation.FILE_LOADER_LIMIT, { maxFileMBSize })})`}
-					</Text>
+					{contentVariant === 'default' && (
+						<FileLoaderDefaultContent
+							fileTypeText={fileTypeText}
+							maxFileMBSize={maxFileMBSize}
+							extensionsText={extensionsText}
+						/>
+					)}
+					{contentVariant === 'resume' && (
+						<FileLoaderResumeContent
+							fileTypeText={fileTypeText}
+							maxFileMBSize={maxFileMBSize}
+							extensionsText={extensionsText}
+						/>
+					)}
 				</>
 			)}
 			<input
@@ -144,7 +141,7 @@ export const FileLoader = ({
 				ref={uploaderRef}
 				onChange={handleChange}
 				multiple={multiply}
-				className={style['file-input']}
+				className={styles['file-input']}
 				disabled={disabled}
 			/>
 		</Flex>
