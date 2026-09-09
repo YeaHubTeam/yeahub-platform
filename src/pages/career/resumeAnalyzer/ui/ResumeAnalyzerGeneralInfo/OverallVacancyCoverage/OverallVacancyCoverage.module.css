@@ -1,0 +1,25 @@
+div.container {
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 4px 10px 0 #6A63761A;
+  border-radius: 20px;
+  background: #FDF4FF;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 50px;
+}
+
+@media screen and (width < 768px) {
+  div.container {
+    padding: 10px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
