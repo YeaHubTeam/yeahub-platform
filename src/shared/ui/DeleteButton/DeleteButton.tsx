@@ -42,7 +42,7 @@ export const DeleteButton = ({
 			>
 				<Button
 					disabled={disabled}
-					aria-label="Large"
+					aria-label={t(buttonText)}
 					style={{
 						width: isDetailPage ? 'auto' : '100%',
 						padding: isDetailPage ? '0 32px' : '6px 10px',
