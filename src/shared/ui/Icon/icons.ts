@@ -79,6 +79,8 @@ import {
 	arrowShortDown,
 	refresh,
 	referralsIcon,
+	successCircle,
+	errorCircle,
 } from '../../assets';
 
 import { IconComponent, IconName } from './types';
@@ -164,4 +166,6 @@ export const icons: Record<IconName, IconComponent> = {
 	watch,
 	refresh,
 	referralsIcon,
+	errorCircle,
+	successCircle,
 };
