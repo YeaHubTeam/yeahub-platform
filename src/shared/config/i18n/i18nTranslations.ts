@@ -1522,6 +1522,9 @@ export enum ProgrammingLanguages {
 }
 
 export enum Resume {
+	GENERAL_RECOMMENDATIONS_TITLE = 'general_recommendations.title',
+	GENERAL_RECOMMENDATIONS_DESCRIPTION = 'general_recommendations.description',
+
 	FILE_LOADER_RESUME_LINK = 'file.loader_resume.link',
 	FILE_LOADER_RESUME_TEXT = 'file.loader_resume.text',
 	FILE_LOADER_RESUME_LIMIT = 'file.loader_resume.limit',
