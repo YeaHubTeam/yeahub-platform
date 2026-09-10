@@ -10,7 +10,6 @@ import { PageWrapper } from '@/widgets/PageWrapper';
 
 import { useResumeAnalyzeMutation } from '../../api/resumeAnalyzeApi';
 import { ResumeRecommendations } from '../ResumeRecommendations/ResumeRecommendations';
-import { ResumeRecommendationsCard } from '../ResumeRecommendations/ResumeRecommendationsCard/ResumeRecommendationsCard';
 import { UploadResumeForm } from '../UploadResumeForm/UploadResumeForm';
 
 const ResumeAnalyzerPage = () => {
@@ -25,11 +24,6 @@ const ResumeAnalyzerPage = () => {
 		}
 	};
 
-	const resumeAnalysis = localStorage.getItem('resume-analysis');
-
-	const response = resumeAnalysis ? JSON.parse(resumeAnalysis).response : null;
-	console.log(response);
-	console.log(data);
 	const content = (
 		<Flex direction="column" gap="30">
 			<Flex gap="20" align="center" justify="between">
@@ -39,14 +33,8 @@ const ResumeAnalyzerPage = () => {
 					</Button>
 				) : null}
 			</Flex>
-			{response ? (
-				<>
-					{resumeAnalysis !== null ? (
-						<ResumeRecommendationsCard resumeAnalysis={resumeAnalysis} />
-					) : (
-						<></>
-					)}
-				</>
+			{data ? (
+				<ResumeRecommendations resumeInfo={data} />
 			) : (
 				<UploadResumeForm onSubmit={handleUploadResume} isLoading={isLoading} />
 			)}
