@@ -40,9 +40,9 @@ export const webpackConfig = (options: WebpackOptions): Configuration => {
 		output: webpackOutput(options),
 		plugins: webpackPlugins(options),
 		devServer: isDev ? webpackDevServer(options) : undefined,
-		devtool: isDev ? 'inline-source-map' : 'source-map',
+		devtool: isDev ? 'eval-cheap-module-source-map' : 'source-map',
 		optimization: {
-			minimize: true,
+			minimize: !isDev,
 			minimizer: ['...', new CssMinimizerPlugin()],
 			chunkIds: 'deterministic',
 			splitChunks: {
