@@ -15,7 +15,6 @@ interface ResumeRecommendationsCardProps {
 
 export const ResumeRecommendationsCard = ({ resumeAnalysis }: ResumeRecommendationsCardProps) => {
 	const response = JSON.parse(resumeAnalysis).response;
-	console.log(response);
 	const [isExpanded, setIsExpanded] = useState<boolean>(false);
 	const { t } = useTranslation(i18Namespace.vacancies);
 	return (
