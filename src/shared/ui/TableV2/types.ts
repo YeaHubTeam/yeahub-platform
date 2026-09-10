@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import type { TableAction, TableActionsEntity } from '@/shared/ui/TableActions';
+
 export type TableRowId = string | number;
 
 export interface TableCellContext<T> {
@@ -13,11 +15,18 @@ export interface TableColumn<T> {
 	header: ReactNode;
 	accessor?: (row: T) => unknown;
 	cell?: (context: TableCellContext<T>) => ReactNode;
+	width?: string;
 }
 
 interface TableV2BaseProps<T> {
 	data: T[];
 	columns: TableColumn<T>[];
+	selectedRowIds?: readonly TableRowId[];
+	onSelectedRowIdsChange?: (ids: TableRowId[]) => void;
+	isRowSelectionDisabled?: (row: T) => boolean;
+	actions?: TableAction[];
+	entity?: TableActionsEntity;
+	onDelete?: (id: TableRowId) => void;
 }
 
 type TableV2RowIdProps<T> = T extends { id: TableRowId }
