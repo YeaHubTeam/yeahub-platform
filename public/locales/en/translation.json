@@ -147,7 +147,8 @@
 		"link": "Click to change",
 		"text": "or drag here",
 		"types": {
-			"photo": "photo"
+			"photo": "photo",
+			"resume": "resume"
 		},
 		"limit": "no more than {{maxFileMBSize}}mb"
 	},

@@ -20,6 +20,7 @@ import { skillsPageReducer } from '@/pages/admin/skill/skills';
 import { specializationsPageReducer } from '@/pages/admin/specialization/specializations';
 import { tasksTablePageReducer } from '@/pages/admin/task/tasks';
 import { topicsPageReducer } from '@/pages/admin/topic/topics';
+import { resumeAnalyzerPageReducer } from '@/pages/career/resumeAnalyzer';
 import { interviewHistoryPageReducer } from '@/pages/interview/interviewHistory';
 
 import { router } from '../router';
@@ -40,6 +41,7 @@ export const reducers = {
 	topicsPage: topicsPageReducer,
 	tasksTablePage: tasksTablePageReducer,
 	referralLinksPage: referralLinksPageReducer,
+	resumeAnalyzerPage: resumeAnalyzerPageReducer,
 	featureFlag: featureFlagReducer,
 };
 

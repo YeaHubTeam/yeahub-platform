@@ -1,0 +1,28 @@
+{
+	"general_recommendations": {
+		"title": "General AI recommendations",
+		"description": "Based on your resume analysis and comparison with market requirements, we have prepared recommendations to help you better match job vacancies."
+	},
+	"file": {
+		"loader_resume": {
+			"link": "Click to change",
+			"text": "or drag here",
+			"limit": "Max. {{maxFileMBSize}} MB",
+			"description": "We don't store your files and only use them for analysis"
+		},
+		"uploaded_resume": {
+			"title": "Uploaded resume",
+			"uploaded": {
+				"at": "Uploaded {{uploadedAt}}"
+			},
+			"upload": {
+				"success": "Resume uploaded successfully",
+				"failed": "Failed to upload the resume"
+			},
+			"analyses": {
+				"failed": "Failed to analyze your resume"
+			},
+			"check": "Check resume"
+		}
+	}
+}

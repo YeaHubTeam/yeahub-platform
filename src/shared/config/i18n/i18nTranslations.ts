@@ -96,6 +96,7 @@ export enum Translation {
 	FILE_LOADER_LINK = 'file.loader.link',
 	FILE_LOADER_TEXT = 'file.loader.text',
 	FILE_LOADER_TYPES_PHOTO = 'file.loader.types.photo',
+	FILE_LOADER_TYPES_RESUME = 'file.loader.types.resume',
 	FILE_LOADER_LIMIT = 'file.loader.limit',
 
 	SETTINGS = 'settings',
@@ -1518,6 +1519,22 @@ export enum ProgrammingLanguages {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+}
+
+export enum Resume {
+	GENERAL_RECOMMENDATIONS_TITLE = 'general_recommendations.title',
+	GENERAL_RECOMMENDATIONS_DESCRIPTION = 'general_recommendations.description',
+
+	FILE_LOADER_RESUME_LINK = 'file.loader_resume.link',
+	FILE_LOADER_RESUME_TEXT = 'file.loader_resume.text',
+	FILE_LOADER_RESUME_LIMIT = 'file.loader_resume.limit',
+	FILE_LOADER_RESUME_DESCRIPTION = 'file.loader_resume.description',
+
+	FILE_UPLOADED_RESUME_TITLE = 'file.uploaded_resume.title',
+	FILE_UPLOADED_RESUME_UPLOADED_AT = 'file.uploaded_resume.uploaded.at',
+	FILE_UPLOADED_RESUME_UPLOAD_SUCCESS = 'file.uploaded_resume.upload.success',
+	FILE_UPLOADED_RESUME_UPLOAD_FAILED = 'file.uploaded_resume.upload.failed',
+	FILE_UPLOADED_RESUME_CHECK = 'file.uploaded_resume.check',
 }
 
 export enum Tasks {
