@@ -1,4 +1,4 @@
-import { author } from '@/shared/libs';
+import { mockAdminRoleAuthor, mockAuthorRoleAuthor } from '@/entities/auth/@x/specialization';
 
 import { Specialization } from '../../../model/types/specialization';
 
@@ -12,7 +12,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-07T18:52:21.327Z',
 		updatedAt: '2024-12-07T18:52:21.327Z',
-		createdBy: author,
+		createdBy: mockAdminRoleAuthor,
 	},
 	{
 		id: 20,
@@ -23,7 +23,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-07T18:53:51.891Z',
 		updatedAt: '2024-12-07T18:53:51.891Z',
-		createdBy: author,
+		createdBy: mockAuthorRoleAuthor,
 	},
 	{
 		id: 21,
@@ -34,7 +34,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-07T19:06:16.704Z',
 		updatedAt: '2024-12-07T19:06:16.704Z',
-		createdBy: author,
+		createdBy: mockAdminRoleAuthor,
 	},
 	{
 		id: 23,
@@ -45,7 +45,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-12T08:19:06.225Z',
 		updatedAt: '2024-12-12T08:19:06.225Z',
-		createdBy: author,
+		createdBy: mockAuthorRoleAuthor,
 	},
 	{
 		id: 11,
@@ -56,7 +56,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-10-03T09:08:10.605Z',
 		updatedAt: '2024-12-13T15:29:16.935Z',
-		createdBy: author,
+		createdBy: mockAdminRoleAuthor,
 	},
 	{
 		id: 24,
@@ -67,7 +67,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-13T15:31:35.357Z',
 		updatedAt: '2024-12-13T15:31:35.357Z',
-		createdBy: author,
+		createdBy: mockAuthorRoleAuthor,
 	},
 	{
 		id: 25,
@@ -78,7 +78,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-13T15:32:58.103Z',
 		updatedAt: '2024-12-13T15:32:58.103Z',
-		createdBy: author,
+		createdBy: mockAdminRoleAuthor,
 	},
 	{
 		id: 26,
@@ -89,7 +89,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-13T15:33:33.443Z',
 		updatedAt: '2024-12-13T15:33:33.443Z',
-		createdBy: author,
+		createdBy: mockAuthorRoleAuthor,
 	},
 	{
 		id: 27,
@@ -100,7 +100,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-13T15:34:12.455Z',
 		updatedAt: '2024-12-13T15:34:12.455Z',
-		createdBy: author,
+		createdBy: mockAdminRoleAuthor,
 	},
 	{
 		id: 28,
@@ -111,7 +111,7 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-13T15:35:50.181Z',
 		updatedAt: '2024-12-13T15:35:50.181Z',
-		createdBy: author,
+		createdBy: mockAuthorRoleAuthor,
 	},
 	{
 		id: 29,
@@ -122,6 +122,6 @@ export const specializationsMock: Specialization[] = [
 		imageSrc: null,
 		createdAt: '2024-12-13T15:37:18.095Z',
 		updatedAt: '2024-12-13T15:37:18.095Z',
-		createdBy: author,
+		createdBy: mockAdminRoleAuthor,
 	},
 ];

@@ -40,7 +40,7 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 
 	return (
 		<>
-			<Text variant="body5-strong" className={styles['main-title']}>
+			<Text variant="body6" className={styles['main-title']}>
 				{isEdit ? t(Companies.EDIT_PAGE_TITLE) : t(Companies.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60" className={`${styles['form-container']}`}>
