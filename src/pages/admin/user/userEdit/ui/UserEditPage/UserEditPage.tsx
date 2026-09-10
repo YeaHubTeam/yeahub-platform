@@ -8,6 +8,7 @@ import { route } from '@/shared/libs';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 
 import {
 	useAddUserRolesMutation,
@@ -58,10 +59,6 @@ const UserEditPage = () => {
 		}
 	};
 
-	const handleCancel = () => {
-		methods.reset();
-	};
-
 	const content = user ? (
 		<>
 			<FormProvider {...methods}>
@@ -69,9 +66,7 @@ const UserEditPage = () => {
 					<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
 						<BackButton />
 						<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
-							<Button variant="secondary" type="button" onClick={handleCancel}>
-								{t(Translation.CANCEL)}
-							</Button>
+							<FormCancelButton />
 							<Button type="submit">{t(Translation.SAVE)}</Button>
 						</Flex>
 					</Flex>

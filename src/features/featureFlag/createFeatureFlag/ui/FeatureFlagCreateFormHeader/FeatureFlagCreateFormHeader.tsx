@@ -7,6 +7,7 @@ import { useModal } from '@/shared/libs';
 import { BlockerDialog } from '@/shared/ui/BlockerDialogModal';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
 
@@ -18,11 +19,9 @@ export const FeatureFlagCreateFormHeader = () => {
 	const navigate = useNavigate();
 
 	const backModal = useModal();
-	const cancelModal = useModal();
 
 	const {
 		handleSubmit,
-		reset,
 		formState: { isDirty },
 	} = useFormContext<CreateFeatureFlagFormValues>();
 	const { t } = useTranslation(i18Namespace.translation);
@@ -45,15 +44,6 @@ export const FeatureFlagCreateFormHeader = () => {
 		await createFeatureFlagMutation(data);
 	};
 
-	const handleOpenCancelModal = () => {
-		cancelModal.onOpen();
-	};
-
-	const handleConfirmCancel = () => {
-		reset();
-		cancelModal.onClose();
-	};
-
 	return (
 		<Flex align="center" gap="8" justify="between">
 			<IconButton
@@ -66,28 +56,10 @@ export const FeatureFlagCreateFormHeader = () => {
 			/>
 
 			<Flex gap="10" justify="between">
-				{isDirty && (
-					<Button
-						disabled={isLoading}
-						variant="destructive-secondary"
-						onClick={handleOpenCancelModal}
-					>
-						{t(Translation.CANCEL)}
-					</Button>
-				)}
+				<FormCancelButton disabled={isLoading} />
 				<Button disabled={isLoading} onClick={handleSubmit(onCreateFeatureFlag)}>
 					{t(Translation.SAVE)}
 				</Button>
-
-				{cancelModal.isOpen && (
-					<BlockerDialog
-						isOpen={cancelModal.isOpen}
-						onClose={cancelModal.onClose}
-						onOk={handleConfirmCancel}
-						onCancel={cancelModal.onClose}
-						message={Translation.MODAL_CANCEL_CHANGES}
-					/>
-				)}
 
 				{backModal.isOpen && (
 					<BlockerDialog

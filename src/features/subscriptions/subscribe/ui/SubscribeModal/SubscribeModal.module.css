@@ -20,3 +20,7 @@
     color: var(--color-black-900)
   }
 }
+
+.icon {
+  flex-shrink: 0;
+}

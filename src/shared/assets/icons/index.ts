@@ -148,3 +148,5 @@ export { default as refresh } from './refresh.svg';
 export { default as referralsIcon } from './referralsIcon.svg';
 export { default as successCircle } from './successCircle.svg';
 export { default as errorCircle } from './errorCircle.svg';
+export { default as x } from './x.svg';
+export { default as arrowsCounterClockwise } from './arrowsCounterClockwise.svg';

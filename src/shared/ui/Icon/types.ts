@@ -3,6 +3,7 @@ export type IconSize = 12 | 14 | 18 | 20 | 24 | 26 | 28 | 30 | 32 | 34 | 36 | 40
 export type IconName =
 	| 'arrowRight'
 	| 'arrowLeft'
+	| 'arrowsCounterClockwise'
 	| 'arrowUpSquare'
 	| 'arrowDownSquare'
 	| 'clock'
@@ -83,5 +84,7 @@ export type IconName =
 	| 'referralsIcon'
 	| 'successCircle'
 	| 'errorCircle';
+	| 'x'
+	| 'referralsIcon';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Marketplace } from '@/shared/config';
+import { i18Namespace, Marketplace, Resources } from '@/shared/config';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -23,7 +23,7 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 		formState: { isDirty },
 	} = useFormContext<CreateResourceRequestFormValues>();
 
-	const { t } = useTranslation(i18Namespace.marketplace);
+	const { t } = useTranslation([i18Namespace.marketplace, i18Namespace.resources]);
 
 	return (
 		<Flex componentType="main" className={styles.wrapper}>
@@ -41,7 +41,7 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 			<Card className={styles.content}>
 				<Flex direction="column" gap="28">
 					<Text variant="body5-strong" color="black-900">
-						{t(Marketplace.ADD_RESOURCE_TITLE)}
+						{t(Resources.ADD_RESOURCE_TITLE)}
 					</Text>
 					<ResourceForm />
 				</Flex>
