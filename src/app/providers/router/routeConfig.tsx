@@ -419,7 +419,7 @@ export const router = createBrowserRouter([
 						element: <SkillEditPage />,
 					},
 					{
-						path: ROUTES.admin.skills.detail.route,
+						path: ROUTES.admin.skills.details.route,
 						element: <SkillDetailPage />,
 					},
 				],
