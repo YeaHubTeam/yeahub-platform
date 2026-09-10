@@ -49,7 +49,7 @@ export const ROUTES = {
 				route: ':skillId/edit',
 				page: '/admin/skills/:skillId/edit',
 			},
-			detail: {
+			details: {
 				route: ':skillId',
 				page: '/admin/skills/:skillId',
 			},
