@@ -1687,4 +1687,11 @@ export enum Vacancies {
 	EMPLOYMENT_TYPE = 'employmentType',
 	SALARY = 'salary',
 	ENGLISH_LEVEL = 'englishLevel',
+
+	RESUME_ANALYZER_PRIORITIES_TITLE = 'resume_analyzer_page.priorities.title',
+	RESUME_ANALYZER_PRIORITIES_COVERAGE_PERCENT = 'resume_analyzer_page.priorities.coverage_percent',
+	RESUME_ANALYZER_PRIORITIES_COVERAGE = 'resume_analyzer_page.priorities.coverage',
+	RESUME_ANALYZER_PRIORITIES_MATCHED = 'resume_analyzer_page.priorities.matched',
+	RESUME_ANALYZER_PRIORITIES_MISSING = 'resume_analyzer_page.priorities.missing',
+	RESUME_ANALYZER_PRIORITIES_WEAKLY = 'resume_analyzer_page.priorities.weakly',
 }

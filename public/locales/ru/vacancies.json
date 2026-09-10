@@ -6,6 +6,16 @@
 			"to": "до"
 		}
 	},
+	"resume_analyzer_page": {
+		"priorities": {
+			"title": "Приоритеты",
+			"coverage_percent": "{{percent}}% покрытие",
+			"coverage": "{{covered}}/{{total}} покрыто",
+			"matched": "Покрыто",
+			"missing": "Не покрыто",
+			"weakly": "Слабый сигнал"
+		}
+	},
 	"detail_page": {},
 	"search": {
 		"placeholder": "Название вакансии..."
