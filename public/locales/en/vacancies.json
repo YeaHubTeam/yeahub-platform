@@ -6,6 +6,16 @@
 			"to": "to"
 		}
 	},
+	"resume_analyzer_page": {
+		"priorities": {
+			"title": "Priorities",
+			"coverage_percent": "{{percent}}% coverage",
+			"coverage": "{{covered}}/{{total}} covered",
+			"matched": "Matched",
+			"missing": "Missing",
+			"weakly": "Weak signal"
+		}
+	},
 	"detail_page": {},
 	"search": {
 		"placeholder": "Job title..."

@@ -1,0 +1,12 @@
+.icon {
+	flex-shrink: 0;
+	transition: transform 0.2s ease-in-out;
+}
+
+.icon path {
+	stroke: currentcolor;
+}
+
+.expanded {
+	transform: rotate(180deg);
+}

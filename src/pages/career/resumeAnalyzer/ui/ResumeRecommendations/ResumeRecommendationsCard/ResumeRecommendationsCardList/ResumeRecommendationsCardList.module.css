@@ -1,0 +1,22 @@
+.icon {
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+.icon-matched path {
+	stroke: var(--color-white-900);
+	stroke-width: 1px;
+}
+
+.icon-missing circle {
+	fill: var(--color-red-100);
+}
+
+.icon-missing path {
+	stroke-width: 1px;
+}
+
+.icon-weakly path {
+	stroke: var(--color-white-900);
+	stroke-width: 1px;
+}

@@ -26,6 +26,7 @@ export const i18Namespace = {
 	editor: 'editor',
 	guru: 'guru',
 	media: 'media',
+	resume: 'resume',
 	topic: 'topic',
 	task: 'task',
 	programmingLanguage: 'programmingLanguage',

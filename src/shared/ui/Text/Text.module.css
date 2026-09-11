@@ -73,6 +73,12 @@
   font-weight: var(--font-weight-600);
   font-size: var(--font-size-p-m);
 }
+
+.body3-strong-compact {
+  line-height:110%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-p-m);
+}
 	
 .body4 {
   line-height:120%;
