@@ -225,6 +225,14 @@ export const ROUTES = {
 			route: 'vacancies-market',
 			page: '/career/vacancies-market',
 		},
+		vacancyMarket: {
+			route: 'vacancy-market',
+			page: '/career/vacancy-market',
+		},
+		vacancies: {
+			route: 'vacancies',
+			page: '/career/vacancies',
+		},
 		'resume-analyzer': {
 			route: 'resume-analyzer',
 			page: '/career/resume-analyzer',
@@ -353,9 +361,5 @@ export const ROUTES = {
 		mentor: {
 			page: `${process.env.LANDING_URL}mentor`,
 		},
-	},
-	vacancies: {
-		route: 'vacancies',
-		page: '/vacancies',
 	},
 } as const;
