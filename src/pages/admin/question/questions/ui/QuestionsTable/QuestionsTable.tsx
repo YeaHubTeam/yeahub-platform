@@ -1,28 +1,36 @@
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
-import { Questions, Translation, i18Namespace, ROUTES } from '@/shared/config';
+import { Questions, i18Namespace, ROUTES } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
-import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
-import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
+import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
 
 import { Question } from '@/entities/question';
 
-import { DeleteQuestionButton } from '@/features/question/deleteQuestion';
+import { useDeleteQuestionMutation } from '@/features/question/deleteQuestion';
 
 const SKILL_SHOW_COUNT = 4;
 const SPECIALIZATION_SHOW_COUNT = 2;
 const TOPIC_SHOW_COUNT = 4;
 
+interface QuestionTableRow {
+	id: number;
+	disabled?: boolean;
+	title: string;
+	specializations: Question['questionSpecializations'];
+	skills: Question['questionSkills'];
+	topics: NonNullable<Question['questionTopics']>;
+	rate: number;
+	complexity: number;
+	author: string;
+}
+
 interface QuestionsTableProps {
-	questions?: Question[];
-	selectedQuestions?: SelectedAdminEntities;
-	onSelectQuestions?: (ids: SelectedAdminEntities) => void;
+	questions: Question[];
+	selectedQuestions: SelectedAdminEntities | [];
+	onSelectQuestions: (ids: SelectedAdminEntities) => void;
 }
 
 export const QuestionsTable = ({
@@ -30,137 +38,116 @@ export const QuestionsTable = ({
 	selectedQuestions,
 	onSelectQuestions,
 }: QuestionsTableProps) => {
-	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.questions);
+	const [deleteQuestion] = useDeleteQuestionMutation();
 
-	const { t } = useTranslation([i18Namespace.questions, i18Namespace.translation]);
+	const tableData: QuestionTableRow[] =
+		questions?.map((question) => ({
+			id: question.id,
+			title: question.title,
+			specializations: question.questionSpecializations,
+			skills: question.questionSkills,
+			topics: question.questionTopics ?? [],
+			rate: question.rate,
+			complexity: question.complexity,
+			author: question.createdBy?.username ?? '',
+			disabled: question.disabled,
+		})) ?? [];
 
-	const renderTableColumnWidths = () => {
-		const columnWidths = {
-			title: 'auto',
-			specialization: '20%',
-			skills: '15%',
-			topic: '15%',
-			rate: '5%',
-			complexity: '5%',
-			author: '10%',
-		};
-
-		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
-	};
-
-	const renderTableHeader = () => {
-		const columns = {
-			title: t(Questions.TITLE_SHORT),
-			specialization: t(Questions.SPECIALIZATION_TITLE),
-			skills: t(Questions.SKILLS_TITLE),
-			topic: t(Questions.TOPIC_TITLE),
-			rate: t(Questions.RATE_TITLE_SHORT),
-			complexity: t(Questions.COMPLEXITY_TITLE_SHORT),
-			author: t(Questions.AUTHOR),
-		};
-
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
-
-	const renderTableBody = (question: Question) => {
-		const columns = {
-			title: (
+	const columns: TableColumn<QuestionTableRow>[] = [
+		{
+			id: 'title',
+			header: t(Questions.TITLE_SHORT),
+			width: 'auto',
+			cell: ({ row, value }) => (
 				<TableCellLink
-					to={route(ROUTES.admin.questions.details.route, question.id)}
-					text={question.title}
+					to={route(ROUTES.admin.questions.details.route, row.id)}
+					text={String(value)}
 				/>
 			),
-			specialization: (
+		},
+		{
+			id: 'specializations',
+			header: t(Questions.SPECIALIZATION_TITLE),
+			width: '20%',
+			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
-					items={question.questionSpecializations}
+					items={row.specializations}
 					showCount={SPECIALIZATION_SHOW_COUNT}
 				/>
 			),
-			skills: (
+		},
+		{
+			id: 'skills',
+			header: t(Questions.SKILLS_TITLE),
+			width: '15%',
+			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.skills.detail.page}
-					items={question.questionSkills}
+					items={row.skills}
 					showCount={SKILL_SHOW_COUNT}
 				/>
 			),
-			topic: (
+		},
+		{
+			id: 'topics',
+			header: t(Questions.TOPIC_TITLE),
+			width: '15%',
+			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.topics.details.page}
-					items={question.questionTopics || []}
+					items={row.topics}
 					showCount={TOPIC_SHOW_COUNT}
 				/>
 			),
-			rate: question.rate,
-			complexity: question.complexity,
-			author: question.createdBy?.username,
-		};
+		},
+		{
+			id: 'rate',
+			header: t(Questions.RATE_TITLE_SHORT),
+			width: '5%',
+		},
+		{
+			id: 'complexity',
+			header: t(Questions.COMPLEXITY_TITLE_SHORT),
+			width: '5%',
+		},
+		{
+			id: 'author',
+			header: t(Questions.AUTHOR),
+			width: '10%',
+		},
+	];
 
-		return Object.entries(columns)?.map(([k, v]) => {
-			return <td key={k}>{v}</td>;
+	const selectedRowIds = selectedQuestions?.map((question) => question.id);
+
+	const selectedById = useMemo(() => {
+		const byId = new Map<number, { id: number; title?: string }>();
+
+		selectedQuestions.forEach((question) => byId.set(question.id, question));
+		questions.forEach((question) => {
+			byId.set(question.id, { id: question.id, title: question.title });
 		});
-	};
 
-	const renderActions = (question: Question) => {
-		const menuItems: PopoverMenuItem[] = [
-			{
-				icon: <Icon icon="eye" size={24} />,
-				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.questions.details.route, question.id));
-				},
-			},
-			{
-				icon: <Icon icon="pen" size={24} />,
-				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.questions.edit.route, question.id));
-				},
-				tooltip: {
-					color: 'red',
-					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
-				},
-				disabled: question.disabled,
-			},
-			{
-				renderComponent: () => (
-					<DeleteQuestionButton questionId={question.id} disabled={question.disabled} />
-				),
-			},
-		];
+		return byId;
+	}, [questions, selectedQuestions]);
 
-		return (
-			<Flex gap="4">
-				<Popover menuItems={menuItems}>
-					{({ onToggle }) => (
-						<IconButton
-							aria-label="go to details"
-							form="square"
-							icon={<Icon icon="dotsThreeVertical" size={20} />}
-							size="medium"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					)}
-				</Popover>
-			</Flex>
-		);
-	};
-
-	if (!questions) {
-		return null;
-	}
+	const onSelectedRowIdsChange = useCallback(
+		(ids: TableRowId[]) => {
+			onSelectQuestions(ids.map((id) => selectedById.get(id as number) ?? { id: id as number }));
+		},
+		[onSelectQuestions, selectedById],
+	);
 
 	return (
-		<Table
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			renderActions={renderActions}
-			items={questions}
-			selectedItems={selectedQuestions}
-			onSelectItems={onSelectQuestions}
-			renderTableColumnWidths={renderTableColumnWidths}
-			hasCopyButton
+		<TableV2
+			data={tableData}
+			columns={columns}
+			selectedRowIds={selectedRowIds}
+			onSelectedRowIdsChange={onSelectedRowIdsChange}
+			actions={['detail', 'edit', 'delete', 'copy']}
+			entity="questions"
+			onDelete={(id) => deleteQuestion(Number(id))}
 		/>
 	);
 };
