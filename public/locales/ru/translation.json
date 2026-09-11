@@ -63,11 +63,16 @@
 				"title": "База знаний",
 				"resources": "Ресурсы"
 			},
+			"career": {
+				"title": "Карьера",
+				"vacancyMarket": "Аналитика рынка"
+			},
 			"questions": "Вопросы",
 			"featureFlags": "Фича флаги",
 			"resources": "Ресурсы",
 			"skills": "Навыки",
 			"companies": "Компании",
+			"vacancies": "Вакансии",
 			"analytics": "Аналитика",
 			"topics": "Темы",
 			"referrals": "Реферальная система"
@@ -215,6 +220,9 @@
 		"resources.my.requests": "Мои заявки",
 		"edit.request": "Редактирование заявки",
 		"create.request": "Создание заявки",
+		"career": "Карьера",
+		"vacancies": "Вакансии",
+		"vacancyMarket": "Аналитика рынка",
 		"analytics": "Аналитика",
 		"progress.specializations": "Прогресс по специальности",
 		"popular.skills": "Популярные навыки",

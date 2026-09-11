@@ -63,10 +63,15 @@
 				"title": "Knowledge base",
 				"resources": "Resources"
 			},
+			"career": {
+				"title": "Career",
+				"vacancyMarket": "Market analytics"
+			},
 			"questions": "Questions",
 			"featureFlags": "Feature flags",
 			"skills": "Skills",
 			"companies": "Companies",
+			"vacancies": "Vacancies",
 			"analytics": "Analytics",
 			"topics": "Topics"
 		}
@@ -212,6 +217,9 @@
 		"resources.my.requests": "My requests",
 		"edit.request": "Editing a request",
 		"create.request": "Creating a request",
+		"career": "Career",
+		"vacancies": "Vacancies",
+		"vacancyMarket": "Market analytics",
 		"analytics": "Analytics",
 		"progress.specializations": "Progress in the specialty",
 		"popular.skills": "Popular skills",

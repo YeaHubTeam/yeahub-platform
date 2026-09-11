@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import Books from '@/shared/assets/icons/books.svg';
 import Cards from '@/shared/assets/icons/cards.svg';
+import CareerIcon from '@/shared/assets/icons/career.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
 import Companies from '@/shared/assets/icons/companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
@@ -19,6 +20,8 @@ import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
 import User from '@/shared/assets/icons/user.svg';
+import VacanciesIcon from '@/shared/assets/icons/vacancies.svg';
+import VacancyMarketIcon from '@/shared/assets/icons/vacancyMarket.svg';
 import WikiIcon from '@/shared/assets/icons/wiki.svg';
 import ResourcesIcon from '@/shared/assets/icons/wikiResources.svg';
 import { i18n, ROUTES, Translation } from '@/shared/config';
@@ -86,6 +89,7 @@ import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
 import { RegistrationPage } from '@/pages/auth/registration';
 import { ResumeAnalyzerPage } from '@/pages/career/resumeAnalyzer';
 import { VacanciesPage } from '@/pages/career/vacancy/vacancies';
+import { VacancyMarketPage } from '@/pages/career/vacancyMarket';
 import { Error404Page } from '@/pages/error404';
 import { CreateQuizPage } from '@/pages/interview/createQuiz';
 import { InterviewPage } from '@/pages/interview/interview';
@@ -198,6 +202,24 @@ const mainLayoutMenuItems: MenuItem[] = [
 				route: `${ROUTES.wiki.route}/${ROUTES.wiki.collections.route}`,
 				title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
 				icon: Collection,
+			},
+		],
+		roles: allRoles,
+	},
+	{
+		type: 'category',
+		title: i18n.t(Translation.SIDEBAR_MENU_CAREER_TITLE),
+		icon: CareerIcon,
+		elements: [
+			{
+				route: `${ROUTES.career.route}/${ROUTES.career.vacancyMarket.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_VACANCY_MARKET),
+				icon: VacancyMarketIcon,
+			},
+			{
+				route: `${ROUTES.career.route}/${ROUTES.career.vacancies.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_VACANCIES),
+				icon: VacanciesIcon,
 			},
 		],
 		roles: allRoles,
@@ -566,16 +588,29 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.career.route,
 				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_CAREER,
+				},
 				children: [
+					{
+						path: ROUTES.career.vacancyMarket.route,
+						handle: {
+							crumb: Translation.CRUMBS_VACANCY_MARKET,
+						},
+						element: <VacancyMarketPage />,
+					},
+					{
+						path: ROUTES.career.vacancies.route,
+						handle: {
+							crumb: Translation.CRUMBS_VACANCIES,
+						},
+						element: <VacanciesPage />,
+					},
 					{
 						path: ROUTES.career['resume-analyzer'].route,
 						element: <ResumeAnalyzerPage />,
 					},
 				],
-			},
-			{
-				path: ROUTES.vacancies.route,
-				element: <VacanciesPage />,
 			},
 			{
 				path: ROUTES.analytics.route,

@@ -26,6 +26,7 @@ export { QuestionFormSkeleton } from './ui/QuestionForm/QuestionForm.skeleton';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
 export { ChooseQuestionComplexitySkeleton } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity.skeleton';
 export { ChooseQuestionCount } from './ui/ChooseQuestionCount/ChooseQuestionCount';
+export { ChooseQuestionCountSkeleton } from './ui/ChooseQuestionCount/ChooseQuestionCount.skeleton';
 export { ChooseQuestionsDrawer } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer';
 export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
