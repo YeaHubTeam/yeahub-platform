@@ -1,21 +1,24 @@
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
-import { Specializations, Translation, i18Namespace, ROUTES } from '@/shared/config';
+import { Specializations, i18Namespace, ROUTES } from '@/shared/config';
 import { formatDate, route, SelectedAdminEntities } from '@/shared/libs';
-import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
-import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { Table } from '@/shared/ui/Table';
+import { Author } from '@/shared/ui/AuthorInfo';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { TableCellWithTooltip } from '@/shared/ui/TableCellWithTooltip';
+import { TableColumn, TableRowId, TableV2 } from '@/shared/ui/TableV2';
 
 import { Specialization } from '@/entities/specialization';
 
-import { DeleteSpecializationButton } from '@/features/specialization/deleteSpecialization';
+import { useDeleteSpecializationMutation } from '@/features/specialization/deleteSpecialization';
 
-import styles from './SpecializationsTable.module.css';
+interface SpecializationTableRow {
+	id: number;
+	title: string;
+	description: string;
+	createdBy: Author | null;
+	createdAt: string;
+}
 
 interface SpecializationsTableProps {
 	specializations?: Specialization[];
@@ -28,110 +31,82 @@ export const SpecializationsTable = ({
 	selectedSpecializations,
 	onSelectSpecializations,
 }: SpecializationsTableProps) => {
-	const { t } = useTranslation('specialization');
-	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.specialization);
+	const [deleteSpecialization] = useDeleteSpecializationMutation();
 
-	const renderTableColumnWidths = () => {
-		const columnWidths = {
-			title: '25%',
-			description: 'auto',
-			autor: 'auto',
-			createdAt: 'auto',
-		};
+	const tableData: SpecializationTableRow[] =
+		specializations?.map((specialization) => ({
+			id: specialization.id,
+			title: specialization.title,
+			description: specialization.description,
+			createdBy: specialization.createdBy,
+			createdAt: specialization.createdAt,
+		})) ?? [];
 
-		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
-	};
-
-	const renderTableHeader = () => {
-		const columns = {
-			title: t(Specializations.TITLE_SHORT),
-			description: t(Specializations.DESCRIPTION_SHORT),
-			autor: t(Specializations.AUTHOR),
-			createdAt: t(Specializations.CREATED_AT),
-		};
-
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k} className={styles['table-header']}>
-				{v}
-			</td>
-		));
-	};
-
-	const renderTableBody = (specialization: Specialization) => {
-		const columns = {
-			title: (
+	const columns: TableColumn<SpecializationTableRow>[] = [
+		{
+			id: 'title',
+			header: t(Specializations.TITLE_SHORT),
+			width: '25%',
+			cell: ({ row, value }) => (
 				<TableCellLink
-					to={route(ROUTES.admin.specializations.details.page, specialization.id)}
-					text={specialization.title}
+					to={route(ROUTES.admin.specializations.details.page, row.id)}
+					text={String(value)}
 				/>
 			),
-			description: (
-				<TableCellWithTooltip title={specialization.description}>
-					{specialization.description}
-				</TableCellWithTooltip>
+		},
+		{
+			id: 'description',
+			header: t(Specializations.DESCRIPTION_SHORT),
+			cell: ({ row, value }) => (
+				<TableCellWithTooltip title={row.title}>{String(value)}</TableCellWithTooltip>
 			),
-			author: specialization.createdBy?.username || '-',
-			createdAt: specialization.createdAt
-				? formatDate(new Date(specialization.createdAt), 'dd.MM.yyyy')
-				: '-',
-		};
+		},
+		{
+			id: 'createdBy',
+			header: t(Specializations.AUTHOR),
+			cell: ({ row }) => row.createdBy?.username || '-',
+		},
+		{
+			id: 'createdAt',
+			header: t(Specializations.CREATED_AT),
+			cell: ({ row }) => (row.createdAt ? formatDate(new Date(row.createdAt), 'dd.MM.yyyy') : '-'),
+		},
+	];
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
+	const selectedRowIds = selectedSpecializations?.map((specialization) => specialization.id);
 
-	const renderActions = (specialization: Specialization) => {
-		const menuItems: PopoverMenuItem[] = [
-			{
-				icon: <Icon icon="eye" size={24} />,
-				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.specializations.details.page, specialization.id));
-				},
-			},
-			{
-				icon: <Icon icon="pen" size={24} />,
-				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.specializations.edit.page, specialization.id));
-				},
-			},
-			{
-				renderComponent: () => <DeleteSpecializationButton specializationId={specialization.id} />,
-			},
-		];
+	const selectedById = useMemo(() => {
+		const byId = new Map<number, { id: number; title?: string }>();
 
-		return (
-			<Flex gap="4">
-				<Popover menuItems={menuItems}>
-					{({ onToggle }) => (
-						<IconButton
-							aria-label="go to details"
-							form="square"
-							icon={<Icon icon="dotsThreeVertical" size={20} />}
-							size="medium"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					)}
-				</Popover>
-			</Flex>
+		selectedSpecializations?.forEach((specialization) =>
+			byId.set(specialization.id, specialization),
 		);
-	};
+		specializations?.forEach((specialization) => {
+			byId.set(specialization.id, { id: specialization.id, title: specialization.title });
+		});
 
-	if (!specializations) {
-		return null;
-	}
+		return byId;
+	}, [specializations, selectedSpecializations]);
+
+	const onSelectedRowIdsChange = useCallback(
+		(ids: TableRowId[]) => {
+			onSelectSpecializations?.(
+				ids.map((id) => selectedById.get(id as number) ?? { id: id as number }),
+			);
+		},
+		[onSelectSpecializations, selectedById],
+	);
 
 	return (
-		<Table
-			items={specializations}
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			renderActions={renderActions}
-			selectedItems={selectedSpecializations}
-			onSelectItems={onSelectSpecializations}
-			renderTableColumnWidths={renderTableColumnWidths}
-			hasCopyButton
+		<TableV2
+			data={tableData}
+			columns={columns}
+			selectedRowIds={selectedRowIds}
+			onSelectedRowIdsChange={onSelectedRowIdsChange}
+			actions={['detail', 'edit', 'delete', 'copy']}
+			entity="specializations"
+			onDelete={(id) => deleteSpecialization(Number(id))}
 		/>
 	);
 };
