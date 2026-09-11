@@ -9,6 +9,7 @@ import { StatusChip } from '@/shared/ui/StatusChip';
 
 import { ResumeRecommendationsCardHeader } from './ResumeRecommendationsCardHeader/ResumeRecommendationsCardHeader';
 import { ResumeRecommendationsCardList } from './ResumeRecommendationsCardList/ResumeRecommendationsCardList';
+
 interface ResumeRecommendationsCardProps {
 	resumeAnalysis: string;
 }
