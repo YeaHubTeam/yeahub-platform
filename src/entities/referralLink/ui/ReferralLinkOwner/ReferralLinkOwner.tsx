@@ -15,7 +15,7 @@ interface ReferralLinkSumProps {
 
 export const ReferralLinkOwner = ({ ownerUsername, ownerId }: ReferralLinkSumProps) => {
 	const { t } = useTranslation(i18Namespace.referralLink);
-	const path = ROUTES.admin.users.detail.page;
+	const path = ROUTES.admin.users.details.page;
 
 	return (
 		<Flex gap="8">

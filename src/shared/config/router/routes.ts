@@ -61,7 +61,7 @@ export const ROUTES = {
 				route: ':userId/edit',
 				page: '/admin/users/:userId/edit',
 			},
-			detail: {
+			details: {
 				route: ':userId',
 				page: '/admin/users/:userId',
 			},
