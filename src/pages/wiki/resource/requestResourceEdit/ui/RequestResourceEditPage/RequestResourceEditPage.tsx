@@ -9,6 +9,10 @@ import { useGetResourceRequestByIdQuery } from '@/entities/resource';
 
 import { ResourceRequestEditForm } from '@/features/resources/editResourceRequest';
 
+import { PageWrapper } from '@/widgets/PageWrapper';
+
+import { RequestResourceEditPageSkeleton } from './RequestResourceEditPage.skeleton';
+
 const RequestResourceEditPage = () => {
 	const { requestId } = useParams<{ requestId: string }>();
 	const navigate = useNavigate();
@@ -21,11 +25,22 @@ const RequestResourceEditPage = () => {
 		}
 	}, [isEmailVerified, navigate]);
 
-	const { data: myResourceRequest } = useGetResourceRequestByIdQuery(requestId || '');
+	const { data: myResourceRequest, isLoading } = useGetResourceRequestByIdQuery(requestId || '');
 
-	if (!myResourceRequest) return null;
+	const content = myResourceRequest && <ResourceRequestEditForm request={myResourceRequest} />;
+	const hasData = Boolean(myResourceRequest);
 
-	return <ResourceRequestEditForm request={myResourceRequest} />;
+	return (
+		<PageWrapper
+			isLoading={isLoading}
+			hasData={hasData}
+			skeleton={<RequestResourceEditPageSkeleton />}
+			content={content}
+			stubs={{}}
+		>
+			{({ content }) => content}
+		</PageWrapper>
+	);
 };
 
 export default RequestResourceEditPage;

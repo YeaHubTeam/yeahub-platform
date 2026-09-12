@@ -41,6 +41,7 @@ import { ProfilePageSkeleton } from '@/pages/profile/profileInfo';
 import { UserProfilePageSkeleton } from '@/pages/profile/userProfile';
 import { TaskPageContentSkeleton } from '@/pages/tasks/task';
 import { QuestionsPageSkeleton } from '@/pages/wiki/question/questions';
+import { RequestResourceEditPageSkeleton } from '@/pages/wiki/resource/requestResourceEdit';
 
 const SkeletonGenerator = () => {
 	const location = useLocation();
@@ -60,6 +61,10 @@ const SkeletonGenerator = () => {
 	);
 	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
 	const isAdminTopicsEditPage = matchPath(ROUTES.admin.topics.edit.page, location.pathname);
+	const isRequestResourceEditPage = matchPath(
+		ROUTES.wiki.resources.my.edit.page,
+		location.pathname,
+	);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -91,6 +96,10 @@ const SkeletonGenerator = () => {
 
 	if (isAdminTopicsEditPage) {
 		return <TopicEditPageSkeleton />;
+	}
+
+	if (isRequestResourceEditPage) {
+		return <RequestResourceEditPageSkeleton />;
 	}
 
 	switch (location.pathname) {
