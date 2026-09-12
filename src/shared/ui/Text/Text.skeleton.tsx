@@ -29,6 +29,7 @@ export const TextSkeleton = ({
 		'body5-strong': 20 * 1.2,
 		'body5-capitalize': 20 * 1.2,
 		body6: 24 * 1.2,
+		'body6-strong': 24 * 1.2,
 	};
 
 	return (

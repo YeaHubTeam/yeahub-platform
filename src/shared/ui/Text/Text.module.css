@@ -111,6 +111,12 @@
   font-size: var(--font-size-h-s);
 }
 
+.body6-strong {
+  line-height:120%;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-h-s);
+}
+
 .text-purple-50 {
   color: var(--color-purple-50);
 }

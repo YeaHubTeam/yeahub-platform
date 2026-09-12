@@ -41,6 +41,7 @@ export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElement
 	'body5-strong': 'p',
 	'body5-capitalize': 'p',
 	body6: 'p',
+	'body6-strong': 'p',
 };
 
 /**
