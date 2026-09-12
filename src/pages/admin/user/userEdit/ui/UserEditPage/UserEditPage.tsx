@@ -53,7 +53,7 @@ const UserEditPage = () => {
 
 			toast.success(t(User.EDIT_SUCCESS, { ns: i18Namespace.user }));
 			methods.reset();
-			navigate(route(ROUTES.admin.users.detail.page, user.id));
+			navigate(route(ROUTES.admin.users.details.page, user.id));
 		} catch (_) {
 			toast.error(t(User.EDIT_ERROR, { ns: i18Namespace.user }));
 		}

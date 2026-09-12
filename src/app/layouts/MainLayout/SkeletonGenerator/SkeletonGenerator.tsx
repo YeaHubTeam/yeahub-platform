@@ -53,7 +53,7 @@ const SkeletonGenerator = () => {
 	const isCompanyDetailsPage =
 		location.pathname !== ROUTES.admin.companies.create.page &&
 		matchPath(ROUTES.admin.companies.details.page, location.pathname);
-	const isUserDetailPage = matchPath(ROUTES.admin.users.detail.page, location.pathname);
+	const isUserDetailPage = matchPath(ROUTES.admin.users.details.page, location.pathname);
 	const isCollectionDetailPage = matchPath(
 		ROUTES.admin.collections.details.page,
 		location.pathname,

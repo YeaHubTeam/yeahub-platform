@@ -18,6 +18,7 @@ export const TableV2 = <T,>({
 	entity,
 	actions = [],
 	onDelete,
+	renderDeleteAction,
 }: TableV2Props<T>) => {
 	const resolveRowId = getRowId ?? getDefaultRowId;
 	const hasRowActions = actions.length > 0 && Boolean(entity);
@@ -79,6 +80,7 @@ export const TableV2 = <T,>({
 				entity={entity}
 				actions={actions}
 				onDelete={onDelete}
+				renderDeleteAction={renderDeleteAction}
 			/>
 		</table>
 	);
