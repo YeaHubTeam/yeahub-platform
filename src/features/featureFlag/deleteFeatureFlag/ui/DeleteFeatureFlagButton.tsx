@@ -3,7 +3,7 @@ import { DeleteButton } from '@/shared/ui/DeleteButton';
 
 import { useDeleteFeatureFlagMutation } from '../api/deleteFeatureFlagApi';
 
-interface DeleteFeatureFlagButtonProps {
+export interface DeleteFeatureFlagButtonProps {
 	featureFlagId: string;
 	isDetailPage?: boolean;
 	disabled?: boolean;
