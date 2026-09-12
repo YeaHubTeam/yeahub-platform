@@ -38,6 +38,7 @@ export const EditAccessGuard = ({
 			subtitle={subtitleStub}
 			buttonText={buttonTextStub}
 			onClick={() => navigate(redirectTo)}
+			dataTestId="Stub"
 		/>
 	);
 };

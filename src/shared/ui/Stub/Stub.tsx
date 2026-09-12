@@ -20,9 +20,18 @@ type StubProps = {
 	buttonText?: string;
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 	className?: string;
+	dataTestId?: string;
 };
 
-export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: StubProps) => {
+export const Stub = ({
+	type,
+	title,
+	subtitle,
+	buttonText,
+	onClick,
+	className,
+	dataTestId = 'Stub',
+}: StubProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const { isMobile } = useScreenSize();
 	const titleVariant = isMobile ? 'body3-strong' : 'body4';
@@ -33,7 +42,11 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 	const resolvedButtonType = type === 'filter-empty' ? 'outline' : 'primary';
 
 	return (
-		<Card withOutsideShadow className={classNames(styles.wrapper, className)}>
+		<Card
+			dataTestId={dataTestId}
+			withOutsideShadow
+			className={classNames(styles.wrapper, className)}
+		>
 			<Flex gap="20" justify="between" align="center" direction="column">
 				<img src={imgByType[type]} alt="" loading="lazy" className={styles.img} />
 
