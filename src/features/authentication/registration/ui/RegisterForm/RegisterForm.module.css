@@ -3,6 +3,14 @@
   text-align: center;
 }
 
+.header-skeleton-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
 .submit-button {
   margin-top: 24px;
   width: 100%;
@@ -13,7 +21,7 @@
 }
 
 /* LABEL */
-.input-wrapper label span { 
+.input-wrapper label span {
   display: inline-block;
   color: var(--text-color-primary);
   line-height: 21px;
@@ -69,7 +77,7 @@
   left: 0;
   height: 16px;
   line-height: 1.36;
-  user-select: none; 
+  user-select: none;
 }
 
 .form-wrapper .input-wrapper div:has(+ div) {
@@ -85,7 +93,7 @@
   background-color: var(--background-block);
 }
 
-.form-wrapper .consent-wrapper > div > div > p {
+.form-wrapper .consent-wrapper>div>div>p {
   color: var(--error-color-red);
   line-height: 1.36;
   font-weight: var(--font-weight-400);
