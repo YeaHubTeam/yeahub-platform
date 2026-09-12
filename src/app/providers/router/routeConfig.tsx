@@ -378,11 +378,11 @@ export const router = createBrowserRouter([
 				element: <ResourceEditPage />,
 			},
 			{
-				path: ROUTES.admin.resources.requests.view.page,
+				path: ROUTES.admin.resourceRequests.details.page,
 				element: <ResourceRequestViewPage />,
 			},
 			{
-				path: ROUTES.admin.resources.requests.edit.page,
+				path: ROUTES.admin.resourceRequests.edit.page,
 				element: <ResourceRequestEditPage />,
 			},
 			{

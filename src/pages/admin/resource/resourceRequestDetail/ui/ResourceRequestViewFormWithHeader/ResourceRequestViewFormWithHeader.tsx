@@ -25,7 +25,7 @@ export const ResourceRequestViewFormWithHeader = () => {
 	const { watch } = useFormContext();
 
 	const handleClickNavigation = () => {
-		navigate(route(ROUTES.admin.resources.requests.edit.page, resourceId || ''));
+		navigate(route(ROUTES.admin.resourceRequests.edit.page, resourceId || ''));
 	};
 	const status = watch('status');
 	return (
