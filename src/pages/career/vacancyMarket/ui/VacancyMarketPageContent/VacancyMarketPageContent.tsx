@@ -3,10 +3,9 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { VacancyMarketOverview } from '@/entities/vacancy';
 
-import { VacancyMarketNote } from '@/pages/career/vacancyMarket/ui/VacancyMarketNote/VacancyMarketNote';
-import { VacancyMarketSpecializationList } from '@/pages/career/vacancyMarket/ui/VacancyMarketSpecializationList/VacancyMarketSpecializationList';
-
+import { VacancyMarketNote } from '../VacancyMarketNote/VacancyMarketNote';
 import { VacancyMarketPageContentHeader } from '../VacancyMarketPageContentHeader/VacancyMarketPageContentHeader';
+import { VacancyMarketSpecializationList } from '../VacancyMarketSpecializationList/VacancyMarketSpecializationList';
 
 interface VacancyMarketPageContentProps {
 	vacancyMarket: VacancyMarketOverview;

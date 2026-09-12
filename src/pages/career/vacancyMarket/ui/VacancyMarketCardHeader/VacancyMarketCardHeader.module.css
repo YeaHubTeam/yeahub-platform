@@ -1,5 +1,0 @@
-@media screen and (width < 768px) {
-  p.title {
-    font-size: var(--font-size-h-xs);
-  }
-}
