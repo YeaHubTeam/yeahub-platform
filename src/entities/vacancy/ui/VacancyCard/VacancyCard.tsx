@@ -23,7 +23,7 @@ export const VacancyCard = ({ vacancy }: VacancyCardProps) => {
 		workFormat,
 		area,
 		skills,
-		publishedAt,
+		sourcePublishedAt,
 		preparation,
 		salary,
 	} = vacancy;
@@ -37,7 +37,7 @@ export const VacancyCard = ({ vacancy }: VacancyCardProps) => {
 	return (
 		<Card withOutsideShadow className={styles.card} classNameContent={styles.content}>
 			<Flex gap="40" direction="column" justify="between" flex={1}>
-				<VacancyCardHeader company={company} publishedAt={publishedAt} title={title} />
+				<VacancyCardHeader company={company} sourcePublishedAt={sourcePublishedAt} title={title} />
 				<Flex gap="20" direction="column">
 					<VacancyCardWorkFormat
 						employmentForm={employmentForm}

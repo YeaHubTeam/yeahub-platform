@@ -49,4 +49,5 @@ export enum ApiTags {
 	FEATURE_FLAG_DETAIL = 'feature_flag_detail',
 	RESUME_ATS = 'resume_ats',
 	VACANCIES = 'vacancies',
+	VACANCIES_MARKET = 'vacancies_market',
 }
