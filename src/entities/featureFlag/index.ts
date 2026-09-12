@@ -14,6 +14,7 @@ export { useGetFeatureFlagsListQuery, useGetFeatureFlagByIdQuery } from './api/f
 export { featureFlagHandlers } from './api/__mocks__';
 export { featureFlagsMock } from './api/__mocks__';
 export { FeatureFlagForm } from './ui/FeatureFlagForm/FeatureFlagForm';
+export { FeatureFlagFormSkeleton } from './ui/FeatureFlagForm/FeatureFlagForm.skeleton';
 export { clientTypes } from './model/constants/featureFlags';
 export { featureFlagReducer } from './model/slices/featureFlagSlice';
 export type { FeatureFlagState } from './model/slices/featureFlagSlice';
