@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 import { Specializations, i18Namespace, ROUTES } from '@/shared/config';
 import { formatDate, route, SelectedAdminEntities } from '@/shared/libs';
-import { Author } from '@/shared/ui/AuthorInfo';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { TableCellWithTooltip } from '@/shared/ui/TableCellWithTooltip';
 import { TableColumn, TableRowId, TableV2 } from '@/shared/ui/TableV2';
@@ -16,7 +15,7 @@ interface SpecializationTableRow {
 	id: number;
 	title: string;
 	description: string;
-	createdBy: Author | null;
+	createdBy: string;
 	createdAt: string;
 }
 
@@ -39,8 +38,10 @@ export const SpecializationsTable = ({
 			id: specialization.id,
 			title: specialization.title,
 			description: specialization.description,
-			createdBy: specialization.createdBy,
-			createdAt: specialization.createdAt,
+			createdBy: specialization.createdBy?.username || '-',
+			createdAt: specialization.createdAt
+				? formatDate(new Date(specialization.createdAt), 'dd.MM.yyyy')
+				: '-',
 		})) ?? [];
 
 	const columns: TableColumn<SpecializationTableRow>[] = [
@@ -65,12 +66,10 @@ export const SpecializationsTable = ({
 		{
 			id: 'createdBy',
 			header: t(Specializations.AUTHOR),
-			cell: ({ row }) => row.createdBy?.username || '-',
 		},
 		{
 			id: 'createdAt',
 			header: t(Specializations.CREATED_AT),
-			cell: ({ row }) => (row.createdAt ? formatDate(new Date(row.createdAt), 'dd.MM.yyyy') : '-'),
 		},
 	];
 
