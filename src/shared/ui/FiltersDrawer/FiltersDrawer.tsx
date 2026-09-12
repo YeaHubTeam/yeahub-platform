@@ -7,9 +7,10 @@ import { DrawerProps } from '@/shared/ui/Drawer/Drawer';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton, IconButtonSize } from '@/shared/ui/IconButton';
 
+import { filtersDrawerTestIds } from './constants';
 import styles from './FiltersDrawer.module.css';
 
-interface FiltersDrawerProps {
+export interface FiltersDrawerProps {
 	children: ReactNode;
 	hasFilters?: boolean;
 }
@@ -46,6 +47,7 @@ export const FiltersDrawer = ({ children, hasFilters }: FiltersDrawerProps) => {
 				onClick={onToggle}
 				isActive={hasFilters}
 				className={styles['filter-button']}
+				dataTestId={filtersDrawerTestIds.filtersDrawerChildren}
 			/>
 
 			{isOpen && (

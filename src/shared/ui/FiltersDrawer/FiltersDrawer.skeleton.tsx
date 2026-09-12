@@ -4,11 +4,13 @@ import { i18Namespace } from '@/shared/config';
 import { Translation } from '@/shared/config';
 import { IconButtonSkeleton } from '@/shared/ui/IconButton';
 
+import { filtersDrawerTestIds } from './constants';
+
 export const FiltersDrawerSkeleton = () => {
 	const { t } = useTranslation(i18Namespace.translation);
 
 	return (
-		<div>
+		<div data-testid={filtersDrawerTestIds.filtersDrawerSkeletonChildren}>
 			<IconButtonSkeleton
 				aria-label={t(Translation.LOADING)}
 				role="status"
