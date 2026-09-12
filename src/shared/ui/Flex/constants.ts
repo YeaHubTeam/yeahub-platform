@@ -29,6 +29,7 @@ export const wrapClasses: Record<FlexWrap, string> = {
 };
 
 export const gapClasses: Record<FlexGap, string> = {
+	'2': styles.gap2,
 	'4': styles.gap4,
 	'6': styles.gap6,
 	'8': styles.gap8,
@@ -45,6 +46,7 @@ export const gapClasses: Record<FlexGap, string> = {
 	'40': styles.gap40,
 	'48': styles.gap48,
 	'52': styles.gap52,
+	'56': styles.gap56,
 	'60': styles.gap60,
 	'100': styles.gap100,
 	'120': styles.gap120,

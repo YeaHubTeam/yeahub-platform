@@ -3,6 +3,7 @@ export type IconSize = 14 | 18 | 20 | 24 | 26 | 28 | 32 | 34 | 36 | 40;
 export type IconName =
 	| 'arrowRight'
 	| 'arrowLeft'
+	| 'arrowsCounterClockwise'
 	| 'arrowUpSquare'
 	| 'arrowDownSquare'
 	| 'clock'
@@ -76,6 +77,8 @@ export type IconName =
 	| 'tickWithBackground'
 	| 'copy'
 	| 'watch'
-	| 'refresh';
+	| 'refresh'
+	| 'x'
+	| 'referralsIcon';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

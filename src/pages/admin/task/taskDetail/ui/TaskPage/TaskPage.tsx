@@ -10,6 +10,8 @@ import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { TaskPageContent } from '../TaskPageContent/TaskPageContent';
 
+import { TaskPageSkeleton } from './TaskPage.skeleton';
+
 const TaskPage = () => {
 	const { t } = useTranslation(i18Namespace.task);
 	const { taskId = '' } = useParams<{ taskId: string }>();
@@ -37,6 +39,7 @@ const TaskPage = () => {
 			hasData={hasTask}
 			roles={['admin', 'author']}
 			content={task ? <TaskPageContent task={task} /> : null}
+			skeleton={<TaskPageSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>

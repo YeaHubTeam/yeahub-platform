@@ -114,6 +114,10 @@ export interface GetTasksListParams {
 
 export type GetTasksListResponse = Response<Task[]>;
 
+export type GetTaskByIdParamsRequest = {
+	taskId: string;
+};
+
 export type GetTaskByIdResponse = Task;
 
 export type GetTasksProfileSolutionsParamRequest = {

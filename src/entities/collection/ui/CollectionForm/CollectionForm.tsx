@@ -57,7 +57,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 			</Text>
 			<Flex direction="column" gap="60">
 				<FormField label={t(Collections.TITLE_FULL)} description={t(Collections.TITLE_LABEL)}>
-					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
+					<FormControl name="title" control={control}>
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</FormField>

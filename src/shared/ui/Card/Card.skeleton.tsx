@@ -17,6 +17,7 @@ export const CardSkeleton = ({
 	isActionPositionBottom = false,
 	isTitleCenter = false,
 	size = 'medium',
+	headerAction,
 }: CardProps) => {
 	return (
 		<Flex
@@ -43,6 +44,7 @@ export const CardSkeleton = ({
 							})}
 						/>
 					) : null}
+					{headerAction}
 				</div>
 			)}
 			<div

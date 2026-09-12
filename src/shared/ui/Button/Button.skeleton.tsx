@@ -14,7 +14,7 @@ export const ButtonSkeleton = ({
 	size = 'medium',
 	destructive,
 	width,
-}: ButtonProps & { width?: number }) => {
+}: ButtonProps & { width?: string | number }) => {
 	const tagName = getTagName(variant);
 
 	return (

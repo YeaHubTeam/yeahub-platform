@@ -22,6 +22,7 @@
 	"profile": "My profile",
 	"save": "Save",
 	"cancel": "Cancel",
+	"reset": "Reset",
 	"expand": "expand",
 	"collapse": "collapse",
 	"logo": "Logo",
@@ -89,7 +90,12 @@
 		},
 		"empty": {
 			"title": "It looks like there is no data here yet",
-			"subtitle": "Data is added periodically, you just have to wait a bit"
+			"subtitle": "Data is added periodically, you just have to wait a bit",
+			"collection": {
+				"title": "It looks like there are no collection data",
+				"subtitle": "Try refreshing the page or repeating the request",
+				"submit": "Try again"
+			}
 		},
 		"access.denied": {
 			"default": {
@@ -120,7 +126,9 @@
 			"description": "You have unsaved data. Do you want to continue?"
 		},
 		"delete": {
-			"title": "Do you really want to delete elements?"
+			"title": "Do you really want to delete elements?",
+			"confirmation_one": "Do you really want to delete {{count}} element",
+			"confirmation_other": "Do you really want to delete {{count}} elements"
 		},
 		"actions": {
 			"ok": "Yes",
@@ -555,7 +563,30 @@
 			},
 			"edit": {
 				"success": "Topic successfully changed",
-				"failed": "Topic could not be changed"
+				"failed": "Topic could not be changed",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users only"
+					},
+					"roles": {
+						"author_can_change_only_own": "Author can change only own data"
+					}
+				},
+				"topic": {
+					"not_found": "Topic not found",
+					"title": {
+						"conflict": "A topic with the same title already exists for this skill"
+					}
+				},
+				"tinify": {
+					"compress": {
+						"failed": "Failed to compress image with TinyPNG"
+					},
+					"resize": {
+						"failed": "Failed to resize image"
+					}
+				}
 			},
 			"delete": {
 				"single": {

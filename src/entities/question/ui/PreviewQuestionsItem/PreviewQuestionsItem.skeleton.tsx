@@ -15,17 +15,17 @@ export const PreviewQuestionsItemSkeleton = () => {
 	return (
 		<li>
 			<Card withOutsideShadow size="small">
-				<Flex gap="8">
+				<div className={styles.link}>
 					{!isMobileS && <ImageWithWrapperSkeleton className={styles.image} />}
 					<Flex direction="column" gap="8">
 						<TextSkeleton
 							variant="body3-accent"
-							width={isMobileM ? 280 : 380}
+							width={isMobileM ? '100%' : 320}
 							className={classNames(styles.title, styles['title-skeleton'])}
 						/>
 						<QuestionGradeListSkeleton className={styles.params} size="small" />
 					</Flex>
-				</Flex>
+				</div>
 			</Card>
 		</li>
 	);

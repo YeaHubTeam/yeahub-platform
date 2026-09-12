@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ChangeEvent, useEffect, useState } from 'react';
 
 import { useDebounce } from '@/shared/libs';
@@ -10,12 +11,14 @@ interface SearchInputProps {
 	onSearch: (query: string) => void;
 	placeholder?: string;
 	currentValue?: string;
+	className?: string;
 }
 
 export const SearchInput = ({
 	onSearch,
 	placeholder = 'Найти...',
 	currentValue,
+	className,
 }: SearchInputProps) => {
 	const [query, setQuery] = useState(currentValue || '');
 
@@ -33,7 +36,7 @@ export const SearchInput = ({
 
 	return (
 		<Input
-			className={styles.input}
+			className={classNames(styles.input, className)}
 			placeholder={placeholder}
 			value={query}
 			onChange={handleChange}

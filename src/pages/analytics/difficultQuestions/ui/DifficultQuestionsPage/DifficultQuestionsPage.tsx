@@ -12,6 +12,8 @@ import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { DifficultQuestionsList } from '../DifficultQuestionsList/DifficultQuestionsList';
 import { DifficultQuestionsTable } from '../DifficultQuestionsTable/DifficultQuestionsTable';
 
+import { DifficultQuestionsPageSkeleton } from './DifficultQuestionsPage.skeleton';
+
 export const DifficultQuestionsPage = () => {
 	const { t } = useTranslation(i18Namespace.analytics);
 	const specializationId = useAppSelector(getSpecializationId);
@@ -41,6 +43,7 @@ export const DifficultQuestionsPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<DifficultQuestionsPageSkeleton />}
 			isLoading={isLoading}
 			hasError={isError}
 			hasFilters={hasFilters}

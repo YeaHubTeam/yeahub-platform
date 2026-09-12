@@ -25,8 +25,8 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 
 	return (
 		<Flex direction="column" className={styles.wrapper}>
-			<Text variant="body5-strong">
-				{isEdit ? t(Topics.EDIT_PAGE_TITLE) : t(Topics.CREATE_PAGE_TITLE)}
+			<Text variant="body6">
+				{isEdit ? t(Topics.TOPIC_EDIT_PAGE_TITLE) : t(Topics.TOPIC_CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
 				<FormField label={t(Topics.TITLE_FULL)} description={t(Topics.TITLE_LABEL)}>
@@ -48,7 +48,10 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 							return (
 								<div>
 									<SkillSelect
-										onChange={onChange}
+										onChange={(skillIds) => {
+											const skillId = Array.isArray(skillIds) ? skillIds[0] : skillIds;
+											onChange(skillId);
+										}}
 										value={value}
 										hasMultiple={false}
 										withSpecialization={false}

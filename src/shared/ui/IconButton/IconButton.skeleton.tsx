@@ -13,6 +13,7 @@ export const IconButtonSkeleton = ({
 	form = 'square',
 	destructive = false,
 	className,
+	style,
 	...otherProps
 }: Omit<ButtonProps, 'icon'>) => {
 	return (
@@ -26,7 +27,7 @@ export const IconButtonSkeleton = ({
 				className,
 			)}
 			{...otherProps}
-			style={{ border: 'none' }}
+			style={{ border: 'none', ...style }}
 		/>
 	);
 };

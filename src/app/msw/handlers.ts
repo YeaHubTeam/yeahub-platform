@@ -28,6 +28,7 @@ import { createCompanyHandlers } from '@/features/company/createCompany';
 import { deleteCompanyHandlers } from '@/features/company/deleteCompany';
 import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureFlag';
 import { featureFlagDeleteHandlers } from '@/features/featureFlag/deleteFeatureFlag';
+import { setActiveProfileHandlers } from '@/features/profile/setActiveProfile';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
@@ -43,6 +44,7 @@ import { specializationDeleteHandlers } from '@/features/specialization/deleteSp
 import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
 import { paymentsIdHandlers } from '@/features/subscriptions/subscribe';
 import { taskCreateHandlers } from '@/features/task/createTask';
+import { deleteTaskHandlers } from '@/features/task/deleteTask';
 import { createTopicHandlers } from '@/features/topics/createTopics';
 import { topicDeleteHandlers } from '@/features/topics/deleteTopic';
 import { topicEditHandlers } from '@/features/topics/editTopic';
@@ -95,4 +97,6 @@ export const handlers = [
 	...referralLinkEditHandlers,
 	...taskHandlers,
 	...taskCreateHandlers,
+	...deleteTaskHandlers,
+	...setActiveProfileHandlers,
 ];

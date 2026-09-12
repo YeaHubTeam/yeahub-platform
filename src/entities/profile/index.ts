@@ -21,6 +21,7 @@ export {
 	getHasSubscriptions,
 	isAvailableTrial,
 	getActiveProfile,
+	getIsAdmin,
 	getIsAuthor,
 } from './model/selectors/profileSelectors';
 

@@ -1,14 +1,17 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Skills, Translation, i18Namespace, ROUTES } from '@/shared/config';
-import { route, SelectedAdminEntities } from '@/shared/libs';
+import { formatDate, route, SelectedAdminEntities } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
+import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
-import { Text } from '@/shared/ui/Text';
+import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
+import { TableCellWithTooltip } from '@/shared/ui/TableCellWithTooltip';
 
 import { Skill } from '@/entities/skill';
 
@@ -28,8 +31,12 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 
 	const renderTableColumnWidths = () => {
 		const columnWidths = {
-			title: '20%',
+			imageSrc: '10%',
+			title: '10%',
+			specializations: '15%',
 			description: 'auto',
+			author: '10%',
+			createdAt: '15%',
 		};
 
 		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
@@ -37,8 +44,12 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 
 	const renderTableHeader = () => {
 		const columns = {
+			imageSrc: t(Skills.ICON_TITLE_SHORT),
 			title: t(Skills.TITLE_SHORT),
+			specializations: t(Skills.SPECIALIZATIONS_TITLE),
 			description: t(Skills.DESCRIPTION_SHORT),
+			author: t(Skills.AUTHOR),
+			createdAt: t(Skills.CREATED_AT),
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
@@ -46,21 +57,31 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 
 	const renderTableBody = (skill: Skill) => {
 		const columns = {
-			title: skill.title,
-			description: skill.description,
+			imageSrc: (
+				<ImageWithWrapper
+					src={skill.imageSrc || ''}
+					alt={`${t(Translation.LOGO)} ${skill.title}`}
+					className={styles['card-image']}
+				/>
+			),
+			title: (
+				<TableCellLink to={route(ROUTES.admin.skills.detail.page, skill.id)} text={skill.title} />
+			),
+			specializations: (
+				<TableCellEntityList
+					url={ROUTES.admin.specializations.details.page}
+					items={skill.specializations}
+					showCount={1}
+				/>
+			),
+			description: (
+				<TableCellWithTooltip title={skill.description}>{skill.description}</TableCellWithTooltip>
+			),
+			author: skill.createdBy?.username || '-',
+			createdAt: skill.createdAt ? formatDate(new Date(skill.createdAt), 'dd.MM.yyyy') : '',
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k} className={k === 'description' ? styles.description : undefined}>
-				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.skills.detail.page, skill.id)}>
-						<Text variant="body3-accent">{v}</Text>
-					</Link>
-				) : (
-					<Text variant="body3-accent">{v}</Text>
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (skill: Skill) => {

@@ -29,13 +29,10 @@ export const UserProfilePage = () => {
 
 	return (
 		profile && (
-			<div className={styles['content']}>
-				<div className={styles['main-content']}>
-					<UserBlock profile={profile} profileSpecialization={profileSpecialization} />
-					<InfoBlock description={description} />
-					<SkillsBlock skillsList={profileSkills} />
-				</div>
-				<div className={styles['side-content-tmp']}></div>
+			<div className={styles['main-content']}>
+				<UserBlock profile={profile} profileSpecialization={profileSpecialization} />
+				<InfoBlock description={description} />
+				<SkillsBlock skillsList={profileSkills} />
 			</div>
 		)
 	);

@@ -42,7 +42,7 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 
 	return (
 		<>
-			<Text variant="body5-strong" className={styles['main-title']}>
+			<Text variant="body6" className={styles['main-title']}>
 				{isEdit ? t(Skills.EDIT_PAGE_TITLE) : t(Skills.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">

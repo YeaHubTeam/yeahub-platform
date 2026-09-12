@@ -3,7 +3,6 @@ import { route } from '@/shared/libs';
 
 import { usersRatingApiUrls } from '../model/constants/usersRatingConstants';
 import type {
-	GetUsersRatingBySpecializationResponse,
 	GetUsersRatingRequest,
 	GetUsersRatingResponse,
 	UserProfilePositionResponse,
@@ -12,12 +11,6 @@ import type {
 
 const usersRatingApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		getUsersRatingBySpecialization: build.query<GetUsersRatingBySpecializationResponse, number>({
-			query: (specializationId) => ({
-				url: route(usersRatingApiUrls.getUsersRatingBySpecialization, specializationId),
-			}),
-			providesTags: [ApiTags.USERS_RATING],
-		}),
 		getUsersRating: build.query<GetUsersRatingResponse, GetUsersRatingRequest>({
 			query: (params) => ({
 				url: route(usersRatingApiUrls.getUsersRating),
@@ -42,7 +35,6 @@ const usersRatingApi = baseApi.injectEndpoints({
 });
 
 export const {
-	useGetUsersRatingBySpecializationQuery,
 	useGetUsersRatingQuery,
 	useGetUserProfilePositionQuery,
 	useGetUsersRatingStatsQuery,

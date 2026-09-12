@@ -55,6 +55,13 @@
   transform: translate(-50%, -50%);
 }
 
+.file-loader-skeleton {
+  flex: 1 1 458px;
+  min-width: 0;
+  max-width: 458px;
+  min-height: 114px;
+}
+
 @media (width <= 768px) {
   .picture-wrapper {
     flex-wrap: wrap;

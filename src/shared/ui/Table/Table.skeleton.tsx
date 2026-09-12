@@ -6,6 +6,7 @@ import styles from './Table.module.css';
 
 interface TableSkeletonProps {
 	hasSelectors?: boolean;
+	hasAction?: boolean;
 	rowCount?: number;
 	columnCount?: number;
 	hasCopyButton?: boolean;
@@ -13,6 +14,7 @@ interface TableSkeletonProps {
 
 export const TableSkeleton = ({
 	hasSelectors = true,
+	hasAction = true,
 	rowCount = 10,
 	columnCount = 3,
 	hasCopyButton = false,
@@ -32,7 +34,7 @@ export const TableSkeleton = ({
 							<TextSkeleton variant="body3" width="10vw" />
 						</th>
 					))}
-					<th className={styles['actions-column']}></th>
+					{hasAction && <th className={styles['actions-column']}></th>}
 					{hasCopyButton && <th className={styles['actions-column']}></th>}
 				</tr>
 			</thead>
@@ -49,14 +51,16 @@ export const TableSkeleton = ({
 								<TextSkeleton variant="body3" width="80%" />
 							</td>
 						))}
-						<td className={styles.cell}>
-							<IconButtonSkeleton
-								aria-label="icon skeleton"
-								form="square"
-								size="small"
-								variant="tertiary"
-							/>
-						</td>
+						{hasAction && (
+							<td className={styles.cell}>
+								<IconButtonSkeleton
+									aria-label="icon skeleton"
+									form="square"
+									size="small"
+									variant="tertiary"
+								/>
+							</td>
+						)}
 						{hasCopyButton && (
 							<td className={styles.cell}>
 								<IconButtonSkeleton

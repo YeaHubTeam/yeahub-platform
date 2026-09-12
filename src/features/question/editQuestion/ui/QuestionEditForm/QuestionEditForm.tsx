@@ -46,7 +46,7 @@ export const QuestionEditForm = ({ question }: QuestionEditFormProps) => {
 				<Flex componentType="main" direction="column" gap="24">
 					<QuestionEditFormHeader />
 					<Card className={styles.content}>
-						<QuestionForm />
+						<QuestionForm isEdit />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>

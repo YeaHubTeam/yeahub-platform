@@ -1,3 +1,3 @@
 export const setActiveProfileApiUrls = {
-	setActiveProfile: '/profiles/:profileId/active',
+	setActiveProfile: 'profiles/:profileId/active',
 };

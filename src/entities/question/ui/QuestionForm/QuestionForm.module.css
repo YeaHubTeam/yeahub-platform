@@ -43,3 +43,7 @@
   resize: vertical;
   border-radius: 16px;
 }
+
+.main-title {
+  margin-bottom: 32px;
+}

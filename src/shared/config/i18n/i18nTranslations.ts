@@ -21,6 +21,7 @@ export enum Translation {
 	PROFILE = 'profile',
 	SAVE = 'save',
 	CANCEL = 'cancel',
+	RESET = 'reset',
 	LOGO = 'logo',
 	AVATAR = 'avatar',
 	LOGOUT = 'logout',
@@ -87,6 +88,7 @@ export enum Translation {
 	MODAL_BLOCK_TITLE = 'modal.block.title',
 	MODAL_BLOCK_DESCRIPTION = 'modal.block.description',
 	MODAL_DELETE_TITLE = 'modal.delete.title',
+	MODAL_DELETE_CONFIRMATION = 'modal.delete.confirmation',
 	MODAL_ACTIONS_OK = 'modal.actions.ok',
 	MODAL_ACTIONS_CANCEL = 'modal.actions.cancel',
 	MODAL_CANCEL_CHANGES = 'modal.cancel.changes',
@@ -378,6 +380,13 @@ export enum Translation {
 	TOAST_TOPIC_DELETE_MULTIPLE_FAILED = 'toast.topics.delete.multiple.failed',
 	TOAST_TOPIC_EDIT_SUCCESS = 'toast.topics.edit.success',
 	TOAST_TOPIC_EDIT_FAILED = 'toast.topics.edit.failed',
+	TOAST_TOPIC_EDIT_AUTH_UNAUTHORIZED = 'toast.topics.edit.auth.unauthorized',
+	TOAST_TOPIC_EDIT_AUTH_USER_VERIFIED = 'toast.topics.edit.auth.user.verified',
+	TOAST_TOPIC_EDIT_AUTH_AUTHOR_CAN_CHANGE_ONLY_OWN = 'toast.topics.edit.auth.roles.author_can_change_only_own',
+	TOAST_TOPIC_EDIT_TOPIC_NOT_FOUND = 'toast.topics.edit.topic.not_found',
+	TOAST_TOPIC_EDIT_TOPIC_TITLE_CONFLICT = 'toast.topics.edit.topic.title.conflict',
+	TOAST_TOPIC_EDIT_TINIFY_COMPRESS_FAILED = 'toast.topics.edit.tinify.compress.failed',
+	TOAST_TOPIC_EDIT_TINIFY_RESIZE_FAILED = 'toast.topics.edit.tinify.resize.failed',
 	TOAST_TOPIC_DELETE_SINGLE_IMAGE_URL_INVALID = 'toast.topics.delete.single.image.url_invalid',
 	TOAST_TOPIC_DELETE_AUTH_UNAUTHORIZED = 'toast.topics.delete.auth.unauthorized',
 	TOAST_TOPIC_DELETE_AUTH_USER_VERIFIED = 'toast.topics.delete.auth.user.verified',
@@ -422,6 +431,9 @@ export enum Translation {
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
 	TASKS_RUN = 'tasks.run',
+
+	DATE_TODAY = 'date.today',
+	DATE_YESTERDAY = 'date.yesterday',
 }
 
 export enum Profile {
@@ -562,6 +574,8 @@ export enum Specializations {
 	DESCRIPTION_SHORT = 'description.short',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
+	AUTHOR = 'author',
+	CREATED_AT = 'created-at',
 	IMAGE_SRC = 'image.src',
 	IMAGE_ALT = 'image.alt',
 	CREATE_PAGE_TITLE = 'create.page.title',
@@ -585,6 +599,9 @@ export enum Specializations {
 	EMPTY_DETAIL_DESCRIPTION = 'empty.detail.description',
 	EMPTY_DETAIL_BUTTON = 'empty.detail.button',
 	EMPTY_DETAIL_TITLE = 'empty.detail.title',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum FeatureFlags {
@@ -647,6 +664,9 @@ export enum Topics {
 	STUB_EMPTY_TOPIC_TITLE = 'stub.empty.topic.title',
 	STUB_EMPTY_TOPIC_SUBTITLE = 'stub.empty.topic.subtitle',
 	STUB_EMPTY_TOPIC_SUBMIT = 'stub.empty.topic.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum Analytics {
@@ -809,6 +829,8 @@ export enum Resources {
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	ADDITIONAL_INFO_KEYWORDS = 'keywords.additional',
 	ADDITIONAL_INFO_SKILLS = 'skills.additional',
+	ADD_RESOURCE_TITLE = 'add.resource.title',
+	EDIT_RESOURCE_TITLE = 'edit.resource.title',
 	AUTHOR = 'author',
 	DATE = 'date',
 	DESCRIPTION = 'description.title',
@@ -837,6 +859,9 @@ export enum Resources {
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_TITLE = 'stub.empty.resource.request.detail.title',
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_SUBTITLE = 'stub.empty.resource.request.detail.subtitle',
 	STUB_EMPTY_RESOURCE_REQUEST_DETAIL_SUBMIT = 'stub.empty.resource.request.detail.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
 }
@@ -856,6 +881,8 @@ export enum Questions {
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_PLACEHOLDER = 'title.placeholder',
+	CREATE_PAGE_TITLE = 'create.page.title',
+	EDIT_PAGE_TITLE = 'edit.page.title',
 	DESCRIPTION_TITLE = 'description.title',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
@@ -931,6 +958,9 @@ export enum Questions {
 	STUB_EMPTY_QUESTION_TITLE = 'stub.empty.question.title',
 	STUB_EMPTY_QUESTION_SUBTITLE = 'stub.empty.question.subtitle',
 	STUB_EMPTY_QUESTION_SUBMIT = 'stub.empty.question.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 
 	GENERATED_QUESTIONS_TITLE = 'generated.questions.title',
 	GENERATED_QUESTIONS_CREATE_AGAIN = 'generated.questions.create.again',
@@ -1022,15 +1052,20 @@ export enum Skills {
 	TITLE_FULL = 'title.full',
 	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
+	CREATED_AT = 'created-at',
+	UPDATED_AT = 'updated-at',
 	DESCRIPTION_FULL = 'description.full',
 	DESCRIPTION_SHORT = 'description.short',
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
 	ICON_TITLE = 'icon.title',
+	ICON_TITLE_SHORT = 'icon.title-short',
 	ICON_LABEL = 'icon.label',
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	SPECIALIZATIONS_TITLE = 'specializations.title',
+	AUTHOR = 'author',
 	EMPTY = 'empty',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
@@ -1041,6 +1076,9 @@ export enum Skills {
 	STUB_EMPTY_SKILL_TITLE = 'stub.empty.skill.title',
 	STUB_EMPTY_SKILL_SUBTITLE = 'stub.empty.skill.subtitle',
 	STUB_EMPTY_SKILL_SUBMIT = 'stub.empty.skill.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum ReferralLinks {
@@ -1160,6 +1198,9 @@ export enum Collections {
 	STUB_EMPTY_COLLECTION_DESCRIPTION = 'stub.empty.collection.description',
 	STUB_EMPTY_COLLECTION_BUTTON = 'stub.empty.collection.button',
 	STUB_EMPTY_COLLECTION_SUBMIT = 'stub.empty.collection.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 	IMAGE_SRC = 'image.src',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	EDIT_PAGE_TITLE = 'edit.page.title',
@@ -1224,6 +1265,9 @@ export enum Companies {
 	STUB_EMPTY_COMPANY_TITLE = 'stub.empty.company.title',
 	STUB_EMPTY_COMPANY_SUBTITLE = 'stub.empty.company.subtitle',
 	STUB_EMPTY_COMPANY_SUBMIT = 'stub.empty.company.submit',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum ResourceRequests {
@@ -1303,6 +1347,8 @@ export enum Subscription {
 	SUBSCRIBE_MODAL_TITLE = 'subscribe.modal.title',
 	SUBSCRIBE_MODAL_EMAIL_DESCRIPTION = 'subscribe.modal.email.description',
 	SUBSCRIBE_MODAL_EMAIL_INPUT_VALUE = 'subscribe.modal.email.input.value',
+	SUBSCRIBE_MODAL_INFO_CONTINUE = 'subscribe.modal.info.continue',
+	SUBSCRIBE_MODAL_INFO_CANCEL = 'subscribe.modal.info.cancel',
 	SUBSCRIBE_MODAL_PRIVACY_TITLE = 'subscribe.modal.privacy.title',
 	SUBSCRIBE_MODAL_PRIVACY_OFFER_AGREEMENT = 'subscribe.modal.privacy.offer.agreement',
 	SUBSCRIBE_MODAL_PRIVACY_CONSENT = 'subscribe.modal.privacy.consent',
@@ -1420,10 +1466,8 @@ export enum Marketplace {
 	STATUS_APPROVED = 'status.approved',
 	STATUS_REJECTED = 'status.rejected',
 	STATUS_PENDING = 'status.pending',
-	ADD_RESOURCE_TITLE = 'add.resource.title',
 	ADD_RESOURCE_SUBMIT = 'add.resource.submit',
 	ADD_REF_CODE__REQUEST_LINK = 'add.ref.code.request.link',
-	EDIT_RESOURCE_TITLE = 'edit.resource.title',
 	NAME_SHORT = 'name.short',
 	NAME_LABEL = 'name.label',
 	DESCRIPTION_SHORT = 'description.short',
@@ -1466,6 +1510,8 @@ export enum Topics {
 	ADDITIONAL_INFO_SKILL = 'additional.info.skill',
 	ADDITIONAL_INFO_CREATED_AT = 'additional.info.created.at',
 	ADDITIONAL_INFO_UPDATED_AT = 'additional.info.updated.at',
+	TOPIC_CREATE_PAGE_TITLE = 'create.page.title',
+	TOPIC_EDIT_PAGE_TITLE = 'edit.page.title',
 }
 
 export enum ProgrammingLanguages {
@@ -1538,6 +1584,9 @@ export enum Tasks {
 	STUB_EMPTY_TASK_TITLE = 'stub.empty.task.title',
 	STUB_EMPTY_TASK_SUBTITLE = 'stub.empty.task.subtitle',
 	STUB_EMPTY_TASK_SUBMIT = 'stub.empty.task.submit',
+	STUB_EDIT_TASK_TITLE = 'stub.edit.task.title',
+	STUB_EDIT_TASK_SUBTITLE = 'stub.edit.task.subtitle',
+	STUB_EDIT_TASK_SUBMIT = 'stub.edit.task.submit',
 	DESCRIPTION_TAB_TITLE = 'description.tab.title',
 	DESCRIPTION_CONSTRAINTS_TITLE = 'description.constraints.title',
 	DESCRIPTION_TAB_SUBTITLE = 'description.tab.subtitle',
@@ -1615,4 +1664,27 @@ export enum Tasks {
 	OUTPUT_RESULT_MEMORY_USAGE = 'output.result.memory.usage',
 
 	WARNING_INTRO = 'warning.intro',
+}
+
+export enum Vacancies {
+	LIST_PAGE_TITLE = 'list_page.title',
+	LIST_PAGE_SALARY_FROM = 'list_page.salary.from',
+	LIST_PAGE_SALARY_TO = 'list_page.salary.to',
+	COUNT_SKILLS = 'count.skills',
+	COUNT_COLLECTIONS = 'count.collections',
+	COUNT_QUESTIONS = 'count.questions',
+	COUNT_TASKS = 'count.tasks',
+	VACANCIES_SEARCH_PLACEHOLDER = 'search.placeholder',
+	STUB_EMPTY_VACANCIES_TITLE = 'stub.empty.vacancies.title',
+	STUB_EMPTY_VACANCIES_SUBTITLE = 'stub.empty.vacancies.subtitle',
+	WORKING_FORMAT = 'workFormat.title',
+	WORKING_FORMAT_OFFICE = 'workFormat.office',
+	WORKING_FORMAT_REMOTE = 'workFormat.remote',
+	WORKING_FORMAT_HYBRID = 'workFormat.hybrid',
+	INDUSTRY = 'industry',
+	GRADE = 'grade',
+	COMPANY_TYPE = 'companyType',
+	EMPLOYMENT_TYPE = 'employmentType',
+	SALARY = 'salary',
+	ENGLISH_LEVEL = 'englishLevel',
 }

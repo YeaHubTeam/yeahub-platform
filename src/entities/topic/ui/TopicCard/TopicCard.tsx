@@ -26,7 +26,6 @@ export const TopicCard = ({ topic }: TopicCardProps) => {
 			<Card withOutsideShadow expandable className={styles.card}>
 				<Flex direction="column" gap="20">
 					<Text variant="body5-accent">{t(Topics.DESCRIPTION_FULL)}</Text>
-
 					<Text variant="body3">{topic.description}</Text>
 				</Flex>
 			</Card>

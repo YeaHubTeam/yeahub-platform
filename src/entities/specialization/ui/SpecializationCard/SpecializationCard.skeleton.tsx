@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapperSkeleton } from '@/shared/ui/ImageWithWrapper';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './SpecializationCard.module.css';
 
@@ -17,13 +17,15 @@ export const SpecializationCardSkeleton = () => {
 							<ImageWithWrapperSkeleton className={classNames(styles['title-img-block-image'])} />
 						</div>
 						<Flex maxWidth direction="column">
-							<Skeleton width="100%" height={32} />
+							<TextSkeleton variant="body6" width="100%" />
 						</Flex>
 					</Flex>
 				</CardSkeleton>
 				<CardSkeleton withOutsideShadow>
-					<Skeleton height={32} style={{ marginBottom: '8px' }} />
-					<Skeleton height={44} />
+					<Flex direction="column" gap="20">
+						<TextSkeleton variant="body5-accent" width="100%" />
+						<TextSkeleton variant="body3-accent" width="100%" />
+					</Flex>
 				</CardSkeleton>
 			</Flex>
 		</Flex>

@@ -5,7 +5,7 @@ import styles from './Skeleton.module.css';
 
 type SkeletonVariant = 'default' | 'blur';
 
-interface SkeletonBlockProps {
+export interface SkeletonBlockProps {
 	width?: string | number;
 	height?: string | number;
 	borderRadius?: string | number;

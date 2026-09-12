@@ -4,12 +4,14 @@ export const useTruncation = (ref: RefObject<HTMLElement>, variant: 'row' | 'col
 	const [isTruncated, setIsTruncated] = useState(false);
 
 	const checkTruncation = (): void => {
-		if (ref.current)
-			setIsTruncated(
+		if (ref.current) {
+			const diff =
 				variant === 'row'
-					? ref.current.scrollWidth > ref.current.clientWidth
-					: ref.current.scrollHeight > ref.current.clientHeight,
-			);
+					? ref.current.scrollWidth - ref.current.clientWidth
+					: ref.current.scrollHeight - ref.current.clientHeight;
+
+			setIsTruncated(diff > 1);
+		}
 	};
 
 	const debounce = (func: () => void, delay: number): (() => void) => {

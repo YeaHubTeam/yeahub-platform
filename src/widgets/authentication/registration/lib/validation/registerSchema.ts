@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import YupPassword from 'yup-password';
 
 import { i18n, Translation } from '@/shared/config';
-import { passwordRules } from '@/shared/libs';
+import { emailRule, passwordRules } from '@/shared/libs';
 
 YupPassword(yup);
 
@@ -15,7 +15,7 @@ export const registerSchema = yup.object().shape({
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	email: yup
 		.string()
-		.email(i18n.t(Translation.VALIDATION_EMAIL))
+		.matches(emailRule, i18n.t(Translation.VALIDATION_EMAIL))
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	password: yup
 		.string()

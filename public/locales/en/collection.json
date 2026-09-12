@@ -98,6 +98,11 @@
 				"button": "Add a collection",
 				"submit": "Try again"
 			}
+		},
+		"edit.access": {
+			"title": "No access to edit the collection",
+			"subtitle": "You are not the creator of this collection, so editing is not available",
+			"submit": "Return to the collections table"
 		}
 	},
 	"sort": {

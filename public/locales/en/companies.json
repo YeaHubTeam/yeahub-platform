@@ -34,6 +34,11 @@
 				"subtitle": "Try refreshing the page or try the request again",
 				"submit": "Retry"
 			}
+		},
+		"edit.access": {
+			"title": "No access to edit the company",
+			"subtitle": "You are not the creator of this company, so editing is not available",
+			"submit": "Return to the company table"
 		}
 	}
 }

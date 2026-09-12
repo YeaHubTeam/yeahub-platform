@@ -17,7 +17,8 @@
 		"empty": "No available options",
 		"selected": "Selected topic"
 	},
-	"create.page.title": "Topic",
+	"create.page.title": "Creating new topic",
+	"edit.page.title": "Edit topic",
 	"stub": {
 		"empty": {
 			"topics": {
@@ -30,6 +31,11 @@
 				"subtitle": "Please refresh the page or try the request again",
 				"submit": "Retry"
 			}
+		},
+		"edit.access": {
+			"title": "Network access for topic editing",
+			"subtitle": "You are not the creator of this topic, so editing is unavailable",
+			"submit": "Return to the topic list"
 		}
 	}
 }

@@ -87,6 +87,10 @@ export const getHasPremiumAccess = createSelector(
 	},
 );
 
+export const getIsAdmin = createSelector(getFullProfile, (fullProfile) => {
+	return fullProfile?.userRoles?.some((role) => role.name === 'admin');
+});
+
 export const getIsAuthor = createSelector(getFullProfile, (fullProfile) => {
 	return fullProfile?.userRoles?.some((role) => role.name === 'author');
 });

@@ -25,12 +25,13 @@ export const UserRatingItem = ({ userRating, place, questionsCount }: UserRating
 	const itemWidth = isMobileS ? AVATAR_RADII[1] * 1.5 : AVATAR_RADII[1] * 2;
 	const nameRef = useRef(null);
 	const isTruncated = useTruncation(nameRef, 'row');
+	const score = userRating.ratingPoints * 10;
 	return (
 		<Flex direction="column" align="center" gap="8" justify="center" style={{ width: itemWidth }}>
 			<Flex justify="center" align="center" style={{ width: itemWidth, height: itemWidth }}>
 				<AvatarWithRating
 					avatarUrl={userRating.avatarUrl}
-					score={userRating.ratingPoints}
+					score={score}
 					radius={isMobileS ? AVATAR_RADII[place] / 1.5 : AVATAR_RADII[place]}
 					maxRating={questionsCount}
 				/>
@@ -52,7 +53,7 @@ export const UserRatingItem = ({ userRating, place, questionsCount }: UserRating
 						</Tooltip>
 					</Flex>
 					<Text variant={isMobileS ? `body2-accent` : `body3-accent`}>
-						{userRating.ratingPoints}/{questionsCount}
+						{score}/{questionsCount}
 					</Text>
 				</Flex>
 			</Card>

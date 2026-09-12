@@ -16,6 +16,7 @@ import { DeleteAccountButton } from '@/features/profile/deleteAccount';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import styles from './UserDetailPage.module.css';
+import { UserDetailPageSkeleton } from './UserDetailPage.skeleton';
 
 const UserDetailPage = () => {
 	const { userId = '' } = useParams<{ userId: string }>();
@@ -78,6 +79,7 @@ const UserDetailPage = () => {
 		<PageWrapper
 			hasData={hasUser}
 			isLoading={isLoading}
+			skeleton={<UserDetailPageSkeleton />}
 			hasError={isError}
 			stubs={stubs}
 			content={content}

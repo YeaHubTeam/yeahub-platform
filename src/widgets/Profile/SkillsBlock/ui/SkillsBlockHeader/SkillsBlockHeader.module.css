@@ -8,8 +8,3 @@
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-xs);
 }
-
-.skills-edit {
-  cursor: pointer;
-  font-size: var(--font-size-p-s);
-}

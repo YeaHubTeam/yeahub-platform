@@ -35,6 +35,7 @@ export { PreviewQuestionsItem } from './ui/PreviewQuestionsItem/PreviewQuestions
 export { PreviewQuestionsItemSkeleton } from './ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';
 export { QuestionAdditionalInfo } from './ui/QuestionAdditionalInfo/QuestionAdditionalInfo';
 export { QuestionAdditionalInfoSkeleton } from './ui/QuestionAdditionalInfo/QuestionAdditionalInfo.skeleton';
+export { ChooseQuestionsDrawerSkeleton } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer.skeleton';
 export { ProgressBlock } from './ui/ProgressBlock/ProgressBlock';
 export { ProgressBlockSkeleton } from './ui/ProgressBlock/ProgressBlock.skeleton';
 export { questionsMock } from './api/__mocks__/data';

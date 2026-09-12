@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Resources, Translation, i18Namespace, ROUTES } from '@/shared/config';
 import { route } from '@/shared/libs';
@@ -9,6 +9,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
 import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { Text } from '@/shared/ui/Text';
 
 import { Resource } from '@/entities/resource';
@@ -57,8 +58,13 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 
 	const renderTableBody = (resource: Resource) => {
 		const columns = {
-			title: resource.name,
-			description: resource.description,
+			title: (
+				<TableCellLink
+					to={route(ROUTES.admin.resources.details.route, resource.id)}
+					text={resource.name}
+				/>
+			),
+			description: <Text variant="body3-accent">{resource.description}</Text>,
 			type: t(`resourceTypes.${resource.type.code}`, { ns: i18Namespace.marketplace }),
 			specialization: (
 				<TableCellEntityList
@@ -69,17 +75,7 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 			),
 		};
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.resources.details.route, resource.id)}>
-						<Text variant="body3-accent">{v}</Text>
-					</Link>
-				) : (
-					<Text variant="body3-accent">{v}</Text>
-				)}
-			</td>
-		));
+		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
 	};
 
 	const renderActions = (resource: UIResource) => {

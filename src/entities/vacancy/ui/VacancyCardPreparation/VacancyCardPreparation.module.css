@@ -1,0 +1,27 @@
+div.preparation-block {
+  padding: 4px 10px;
+  border-radius: 68px;
+}
+
+.preparation {
+  display: flex;
+  align-items: center;
+}
+
+.preparation::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--color-black-900);
+  vertical-align: middle;
+}
+
+.preparation:last-child::after {
+  display: none;
+}
+
+.preparation-text {
+  font-size: var(--font-size-p-s);
+}
