@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import { ROUTES } from '@/shared/config';
 
 type AdminRoutes = typeof ROUTES.admin;
@@ -19,4 +21,5 @@ export interface TableActionsProps {
 	id: string | number;
 	disabled?: boolean;
 	onDelete?: () => void;
+	renderDeleteAction?: () => ReactNode;
 }

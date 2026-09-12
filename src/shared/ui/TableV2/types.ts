@@ -27,6 +27,7 @@ interface TableV2BaseProps<T> {
 	actions?: TableAction[];
 	entity?: TableActionsEntity;
 	onDelete?: (id: TableRowId) => void;
+	renderDeleteAction?: (row: T) => ReactNode;
 }
 
 type TableV2RowIdProps<T> = T extends { id: TableRowId }

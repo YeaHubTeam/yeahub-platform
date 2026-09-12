@@ -22,6 +22,7 @@ export const TableActions = ({
 	id,
 	disabled = false,
 	onDelete,
+	renderDeleteAction,
 }: TableActionsProps) => {
 	const navigate = useNavigate();
 	const { t } = useTranslation(i18Namespace.translation);
@@ -34,11 +35,25 @@ export const TableActions = ({
 	const detailPath = route(entityRoutes.details.route, id);
 	const editPath = route(entityRoutes.edit.route, id);
 	const hasCopy = actions.includes('copy');
-	const menuActions = getMenuActions(actions).filter((action) => action !== 'delete' || onDelete);
+	const menuActions = getMenuActions(actions).filter(
+		(action) => action !== 'delete' || onDelete || renderDeleteAction,
+	);
 
 	const disabledTooltip = {
 		color: 'red' as const,
 		text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO),
+	};
+
+	const renderDelete = () => {
+		if (renderDeleteAction) {
+			return renderDeleteAction();
+		}
+
+		if (onDelete) {
+			return <DeleteButton onDelete={onDelete} disabled={disabled} />;
+		}
+
+		return null;
 	};
 
 	const menuItems = menuActions.flatMap((action): PopoverMenuItem[] => {
@@ -64,10 +79,10 @@ export const TableActions = ({
 			];
 		}
 
-		if (action === 'delete' && onDelete) {
+		if (action === 'delete') {
 			return [
 				{
-					renderComponent: () => <DeleteButton onDelete={onDelete} disabled={disabled} />,
+					renderComponent: renderDelete,
 				},
 			];
 		}
@@ -103,11 +118,7 @@ export const TableActions = ({
 			);
 		}
 
-		if (!onDelete) {
-			return null;
-		}
-
-		return <DeleteButton onDelete={onDelete} disabled={disabled} />;
+		return renderDelete();
 	};
 
 	const renderMenu = () => {

@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { TableActions, type TableAction, type TableActionsEntity } from '@/shared/ui/TableActions';
 
@@ -20,6 +22,7 @@ interface TableBodyProps<T> {
 	actions?: TableAction[];
 	entity?: TableActionsEntity;
 	onDelete?: (id: TableRowId) => void;
+	renderDeleteAction?: (row: T) => ReactNode;
 }
 
 export const TableBody = <T,>({
@@ -38,6 +41,7 @@ export const TableBody = <T,>({
 	entity,
 	actions = [],
 	onDelete,
+	renderDeleteAction,
 }: TableBodyProps<T>) => {
 	return (
 		<tbody>
@@ -71,9 +75,12 @@ export const TableBody = <T,>({
 									<TableActions
 										entity={entity}
 										actions={actions}
-										onDelete={() => onDelete?.(rowId)}
+										onDelete={onDelete ? () => onDelete(rowId) : undefined}
 										id={rowId}
 										disabled={disabled}
+										renderDeleteAction={
+											renderDeleteAction ? () => renderDeleteAction(row) : undefined
+										}
 									/>
 								)}
 							</td>

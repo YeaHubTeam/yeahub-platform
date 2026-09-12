@@ -433,7 +433,7 @@ export const router = createBrowserRouter([
 						element: <UsersTablePage />,
 					},
 					{
-						path: ROUTES.admin.users.detail.route,
+						path: ROUTES.admin.users.details.route,
 						element: <UserDetailPage />,
 					},
 					{

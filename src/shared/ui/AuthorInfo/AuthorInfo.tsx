@@ -22,7 +22,7 @@ export interface AuthorInfoProps {
 export const AuthorInfo = ({ createdBy, isCenter }: AuthorInfoProps) => {
 	const { t } = useTranslation(i18Namespace.translation);
 	const project = useCurrentProject();
-	const path = project === 'admin' ? ROUTES.admin.users.detail.page : ROUTES.users.page;
+	const path = project === 'admin' ? ROUTES.admin.users.details.page : ROUTES.users.page;
 
 	return (
 		<Flex justify={isCenter ? 'center' : 'start'} gap="4">
