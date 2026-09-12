@@ -2,6 +2,7 @@ import { i18n, Translation, ApiTags, baseApi, ROUTES, ExtraArgument } from '@/sh
 import { route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getEditCompanyApiErrorMessages } from '../lib/utils/getEditCompanyApiErrorMessages';
 import { editCompanyApiUrls } from '../model/constants/editCompanyConstants';
 import { CompanyEditBodyRequest, CompanyEditResponse } from '../model/types/companyEditPageTypes';
 
@@ -15,12 +16,13 @@ const editCompanyApi = baseApi.injectEndpoints({
 			}),
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {
-					const result = await queryFulfilled;
+					const { data } = await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(route(ROUTES.admin.companies.details.page, result.data.id));
+
+					typedExtra.navigate(route(ROUTES.admin.companies.details.page, data.id));
 					toast.success(i18n.t(Translation.TOAST_COMPANIES_EDIT_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_COMPANIES_EDIT_FAILED));
+					getEditCompanyApiErrorMessages(error).forEach((message) => toast.error(i18n.t(message)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}

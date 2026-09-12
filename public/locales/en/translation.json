@@ -248,7 +248,8 @@
 				},
 				"password": {
 					"wrong": "User with this email has another password."
-				}
+				},
+				"verified": "Access is available to verified users only"
 			},
 			"telegram": {
 				"verification": {
@@ -863,7 +864,15 @@
 			},
 			"edit": {
 				"success": "Company successfully changed",
-				"failed": "Company could not be changed"
+				"failed": "Company could not be changed",
+				"image_invalid_format": "Invalid image format. Use PNG, JPEG, WEBP, or GIF",
+				"unauthorized": "Please sign in",
+				"verification_required": "Verify your account to edit the company",
+				"only_own": "You can only edit your own company",
+				"not_found": "Company not found",
+				"compress_failed": "Failed to compress the image",
+				"image_too_large": "The image exceeds the allowed size",
+				"resize_failed": "Failed to resize the image"
 			},
 			"delete": {
 				"single": {
