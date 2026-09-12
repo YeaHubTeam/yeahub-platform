@@ -1,20 +1,22 @@
 {
 	"title": "ИИ анализ рынка вакансий",
 	"description": "Мы собираем требования из реальных вакансий и превращаем их в понятный профиль — чтобы вы знали, какие навыки прокачивать и чего ждать от рынка.",
-	"updatedAt": "Обновлено {{date}}",
-	"updatedAtUnavailable": "Дата обновления недоступна",
+	"updated.at": {
+		"title": "Обновлено {{date}}",
+		"unavailable": "Дата обновления недоступна"
+	},
 	"summary": {
-		"totalAnalyzed": "Всего проанализировано вакансий",
-		"updatedDaily": "Данные обновляются каждый день"
+		"total.analyzed": "Всего проанализировано вакансий",
+		"updated.daily": "Данные обновляются каждый день"
 	},
 	"card": {
-		"topSkills": "Топ 5 навыков",
+		"top.skills": "Топ 5 навыков",
 		"keywords": "Ключевые слова",
-		"vacancies_one": "{{formattedCount}} вакансия",
-		"vacancies_few": "{{formattedCount}} вакансии",
-		"vacancies_many": "{{formattedCount}} вакансий",
+		"vacancies_one": "{{count}} вакансия",
+		"vacancies_few": "{{count}} вакансии",
+		"vacancies_many": "{{count}} вакансий",
 		"details": "Подробный профиль",
-		"unknownSpecialization": "Специализация"
+		"unknown.specialization": "Специализация"
 	},
 	"stub": {
 		"empty": {

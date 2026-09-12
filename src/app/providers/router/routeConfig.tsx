@@ -88,7 +88,6 @@ import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
 import { RegistrationPage } from '@/pages/auth/registration';
 import { ResumeAnalyzerPage } from '@/pages/career/resumeAnalyzer';
-import { VacanciesMarketPage } from '@/pages/career/vacanciesMarket';
 import { VacanciesPage } from '@/pages/career/vacancy/vacancies';
 import { VacancyMarketPage } from '@/pages/career/vacancyMarket';
 import { Error404Page } from '@/pages/error404';
@@ -606,10 +605,6 @@ export const router = createBrowserRouter([
 							crumb: Translation.CRUMBS_VACANCIES,
 						},
 						element: <VacanciesPage />,
-					},
-					{
-						path: ROUTES.career['vacancies-market'].route,
-						element: <VacanciesMarketPage />,
 					},
 					{
 						path: ROUTES.career['resume-analyzer'].route,
