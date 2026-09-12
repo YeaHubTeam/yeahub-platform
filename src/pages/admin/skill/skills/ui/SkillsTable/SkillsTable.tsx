@@ -44,7 +44,7 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			specializations: skill.specializations,
 			description: skill.description,
 			author: skill.createdBy?.username ?? '-',
-			createdAt: skill.createdAt,
+			createdAt: skill.createdAt ? formatDate(new Date(skill.createdAt), 'dd.MM.yyyy') : '',
 		})) ?? [];
 
 	const columns: Array<TableColumn<SkillTableRow>> = [
@@ -99,9 +99,6 @@ export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTa
 			id: 'createdAt',
 			header: t(Skills.CREATED_AT),
 			width: '15%',
-			cell: ({ row }) => (
-				<>{row.createdAt ? formatDate(new Date(row.createdAt), 'dd.MM.yyyy') : ''}</>
-			),
 		},
 	];
 
