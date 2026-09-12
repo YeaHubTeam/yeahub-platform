@@ -21,6 +21,7 @@ export const TableActions = ({
 	entity,
 	id,
 	disabled = false,
+	disabledTooltipTitle = Translation.TOOLTIP_COLLECTION_DISABLED_INFO,
 	onDelete,
 }: TableActionsProps) => {
 	const navigate = useNavigate();
@@ -38,7 +39,7 @@ export const TableActions = ({
 
 	const disabledTooltip = {
 		color: 'red' as const,
-		text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO),
+		text: t(disabledTooltipTitle),
 	};
 
 	const menuItems = menuActions.flatMap((action): PopoverMenuItem[] => {
@@ -67,7 +68,13 @@ export const TableActions = ({
 		if (action === 'delete' && onDelete) {
 			return [
 				{
-					renderComponent: () => <DeleteButton onDelete={onDelete} disabled={disabled} />,
+					renderComponent: () => (
+						<DeleteButton
+							onDelete={onDelete}
+							disabled={disabled}
+							tooltipTitle={disabledTooltipTitle}
+						/>
+					),
 				},
 			];
 		}
@@ -107,7 +114,9 @@ export const TableActions = ({
 			return null;
 		}
 
-		return <DeleteButton onDelete={onDelete} disabled={disabled} />;
+		return (
+			<DeleteButton onDelete={onDelete} disabled={disabled} tooltipTitle={disabledTooltipTitle} />
+		);
 	};
 
 	const renderMenu = () => {

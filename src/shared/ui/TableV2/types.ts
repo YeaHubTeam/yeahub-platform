@@ -26,6 +26,7 @@ interface TableV2BaseProps<T> {
 	isRowSelectionDisabled?: (row: T) => boolean;
 	actions?: TableAction[];
 	entity?: TableActionsEntity;
+	disabledActionsTooltipTitle?: string;
 	onDelete?: (id: TableRowId) => void;
 }
 

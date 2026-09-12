@@ -1,19 +1,15 @@
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Companies, Translation, ROUTES } from '@/shared/config';
+import { Companies, i18Namespace, ROUTES, Translation } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
-import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
-import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { Table } from '@/shared/ui/Table';
-import { Text } from '@/shared/ui/Text';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
+import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
 
 import { Company } from '@/entities/company';
 
-import { DeleteCompanyButton } from '@/features/company/deleteCompany';
+import { useDeleteCompanyMutation } from '@/features/company/deleteCompany';
 
 import styles from './CompaniesTable.module.css';
 
@@ -32,111 +28,69 @@ export const CompaniesTable = ({
 	selectedCompanies,
 	onSelectCompanies,
 }: CompaniesTableProps) => {
-	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.companies, i18Namespace.translation]);
+	const [deleteCompany] = useDeleteCompanyMutation();
 
-	const renderTableColumnWidths = () => {
-		const columnWidths = {
-			imageSrc: '100px',
-			title: 'auto',
-		};
-
-		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
-	};
-
-	const renderTableHeader = () => {
-		const columns = {
-			imageSrc: t(Companies.ICON_SHORT),
-			title: t(Companies.TITLE_SHORT),
-		};
-		return Object.entries(columns)?.map(([key, value]) => <td key={key}>{value}</td>);
-	};
-
-	const renderTableBody = (company: UICompany) => {
-		const columns = {
-			imageSrc: (
+	const columns: TableColumn<UICompany>[] = [
+		{
+			id: 'imageSrc',
+			header: t(Companies.ICON_SHORT),
+			width: '100px',
+			cell: ({ row }) => (
 				<ImageWithWrapper
-					src={company.imageSrc}
-					alt={`${t(Translation.LOGO)} ${company.title}`}
+					src={row.imageSrc}
+					alt={`${t(Translation.LOGO)} ${row.title}`}
 					className={styles['card-image']}
 				/>
 			),
-			title: company.title,
-		};
+		},
+		{
+			id: 'title',
+			header: t(Companies.TITLE_SHORT),
+			width: '100%',
+			cell: ({ row, value }) => (
+				<TableCellLink
+					to={route(ROUTES.admin.companies.details.route, row.id)}
+					text={String(value)}
+				/>
+			),
+		},
+	];
 
-		return Object.entries(columns)?.map(([k, v]) => (
-			<td key={k}>
-				{k === 'title' ? (
-					<Link to={route(ROUTES.admin.companies.details.route, company.id)}>
-						<Text variant="body3-accent">{v}</Text>
-					</Link>
-				) : (
-					v
-				)}
-			</td>
-		));
-	};
+	const selectedRowIds = selectedCompanies?.map((company) => company.id);
 
-	const renderActions = (company: UICompany) => {
-		const menuItems: PopoverMenuItem[] = [
-			{
-				icon: <Icon icon="eye" size={24} />,
-				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.companies.details.route, company.id));
-				},
-			},
-			{
-				icon: <Icon icon="pen" size={24} />,
-				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				tooltip: {
-					color: 'red',
-					text: t(Translation.TOOLTIP_COMPANY_DISABLED_INFO, { ns: i18Namespace.translation }),
-				},
-				disabled: company.disabled,
-				onClick: () => {
-					navigate(route(ROUTES.admin.companies.edit.route, company.id));
-				},
-			},
-			{
-				renderComponent: () => (
-					<DeleteCompanyButton companyId={company.id} disabled={company.disabled} />
-				),
-			},
-		];
+	const selectedById = useMemo(() => {
+		const byId = new Map<string, { id: string; title?: string }>();
 
-		return (
-			<Flex gap="4">
-				<Popover menuItems={menuItems}>
-					{({ onToggle }) => (
-						<IconButton
-							aria-label="go to details"
-							form="square"
-							icon={<Icon icon="dotsThreeVertical" size={20} />}
-							size="medium"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					)}
-				</Popover>
-			</Flex>
-		);
-	};
+		selectedCompanies?.forEach((company) => byId.set(company.id, company));
+		companies?.forEach((company) => {
+			byId.set(company.id, { id: company.id, title: company.title });
+		});
+
+		return byId;
+	}, [companies, selectedCompanies]);
+
+	const onSelectedRowIdsChange = useCallback(
+		(ids: TableRowId[]) => {
+			onSelectCompanies?.(ids.map((id) => selectedById.get(String(id)) ?? { id: String(id) }));
+		},
+		[onSelectCompanies, selectedById],
+	);
 
 	if (!companies) {
 		return null;
 	}
 
 	return (
-		<Table
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			renderActions={renderActions}
-			items={companies}
-			selectedItems={selectedCompanies}
-			onSelectItems={onSelectCompanies}
-			renderTableColumnWidths={renderTableColumnWidths}
-			hasCopyButton
+		<TableV2
+			data={companies}
+			columns={columns}
+			selectedRowIds={selectedRowIds}
+			onSelectedRowIdsChange={onSelectedRowIdsChange}
+			actions={['detail', 'edit', 'delete', 'copy']}
+			entity="companies"
+			disabledActionsTooltipTitle={Translation.TOOLTIP_COMPANY_DISABLED_INFO}
+			onDelete={(id) => void deleteCompany(String(id))}
 		/>
 	);
 };

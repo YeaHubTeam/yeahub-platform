@@ -17,6 +17,7 @@ export const TableV2 = <T,>({
 	isRowSelectionDisabled,
 	entity,
 	actions = [],
+	disabledActionsTooltipTitle,
 	onDelete,
 }: TableV2Props<T>) => {
 	const resolveRowId = getRowId ?? getDefaultRowId;
@@ -78,6 +79,7 @@ export const TableV2 = <T,>({
 				actionsCellClassName={styles['actions-column']}
 				entity={entity}
 				actions={actions}
+				disabledActionsTooltipTitle={disabledActionsTooltipTitle}
 				onDelete={onDelete}
 			/>
 		</table>
