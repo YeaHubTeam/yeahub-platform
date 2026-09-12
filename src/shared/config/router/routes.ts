@@ -224,6 +224,10 @@ export const ROUTES = {
 		vacancyMarket: {
 			route: 'vacancy-market',
 			page: '/career/vacancy-market',
+			detail: {
+				route: ':specializationId',
+				page: '/career/vacancy-market/:specializationId',
+			},
 		},
 		vacancies: {
 			route: 'vacancies',
