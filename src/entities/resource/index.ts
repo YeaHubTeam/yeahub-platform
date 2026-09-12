@@ -19,6 +19,7 @@ export { ResourcesStatusBlock } from './ui/ResourcesStatusBlock/ResourcesStatusB
 export { ResourceEditFormHeader } from './ui/ResourceEditFormHeader/ResourceEditFormHeader';
 export { ResourceAdditionalInfo } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo';
 export { ResourceAdditionalInfoSkeleton } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo.skeleton';
+export { ResourceFormSkeleton } from './ui/ResourceForm/ResourceForm.skeleton';
 
 export type {
 	ResourceRequest,
