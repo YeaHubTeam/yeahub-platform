@@ -5,7 +5,7 @@ import { Text } from '@/shared/ui/Text';
 import styles from './ProgressBar.module.css';
 
 export type ProgressBarVariant = 'small' | 'large' | 'medium';
-export type ProgressBarColor = 'green' | 'yellow' | 'red';
+export type ProgressBarColor = 'green' | 'yellow' | 'red' | 'purple';
 
 export interface ProgressBarProps {
 	currentCount: number;

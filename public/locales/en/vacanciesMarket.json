@@ -1,0 +1,26 @@
+{
+	"title": "AI vacancy market analysis",
+	"description": "We collect requirements from real vacancies and turn them into a clear profile so you know which skills to develop and what to expect from the market.",
+	"updated.at": {
+		"title": "Updated {{date}}",
+		"unavailable": "Update date is unavailable"
+	},
+	"summary": {
+		"total.analyzed": "Total vacancies analyzed",
+		"updated.daily": "Data is updated daily"
+	},
+	"card": {
+		"top.skills": "Top 5 skills",
+		"keywords": "Keywords",
+		"vacancies_one": "{{formattedCount}} vacancy",
+		"vacancies_other": "{{formattedCount}} vacancies",
+		"details": "Detailed profile",
+		"unknown.specialization": "Specialization"
+	},
+	"stub": {
+		"empty": {
+			"title": "Market data is not available yet",
+			"subtitle": "The analytics is updated daily. Please try again later."
+		}
+	}
+}
