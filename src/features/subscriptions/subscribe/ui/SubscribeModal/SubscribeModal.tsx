@@ -10,6 +10,7 @@ import { Button } from '@/shared/ui/Button';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
+import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
 import { Modal } from '@/shared/ui/Modal';
 import { Text } from '@/shared/ui/Text';
@@ -101,6 +102,25 @@ export const SubscribeModal = ({ isOpen, onClose, subscriptionId }: SubscribeMod
 						<Text variant="body1" color="black-600">
 							{t(Subscription.SUBSCRIBE_MODAL_EMAIL_DESCRIPTION)}
 						</Text>
+					</Flex>
+					<Flex direction="column" gap="12">
+						<Flex align="start" gap="8">
+							<Icon
+								className={styles.icon}
+								icon="arrowsCounterClockwise"
+								size={20}
+								color="purple-700"
+							/>
+							<Text variant="body2" color="black-700">
+								{t(Subscription.SUBSCRIBE_MODAL_INFO_CONTINUE)}
+							</Text>
+						</Flex>
+						<Flex align="start" gap="8">
+							<Icon className={styles.icon} icon="x" size={20} color="purple-700" />
+							<Text variant="body2" color="black-700">
+								{t(Subscription.SUBSCRIBE_MODAL_INFO_CANCEL)}
+							</Text>
+						</Flex>
 					</Flex>
 					<Flex direction="column" gap="16">
 						<Text variant="body1" color="black-600">

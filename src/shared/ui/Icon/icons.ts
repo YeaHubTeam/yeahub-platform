@@ -9,6 +9,7 @@ import {
 	burger,
 	burgerAndCross,
 	calendar,
+	calendarNoDots,
 	check,
 	checkCircle,
 	checkList,
@@ -76,6 +77,8 @@ import {
 	arrowShortDown,
 	refresh,
 	referralsIcon,
+	x,
+	arrowsCounterClockwise,
 } from '../../assets';
 
 import { IconComponent, IconName } from './types';
@@ -85,8 +88,10 @@ export const icons: Record<IconName, IconComponent> = {
 	arrowRight,
 	arrowUpSquare,
 	arrowDownSquare,
+	arrowsCounterClockwise,
 	clock,
 	calendar,
+	calendarNoDots,
 	altArrowLeft,
 	altArrowRight,
 	dotsThree,
@@ -158,4 +163,5 @@ export const icons: Record<IconName, IconComponent> = {
 	watch,
 	refresh,
 	referralsIcon,
+	x,
 };

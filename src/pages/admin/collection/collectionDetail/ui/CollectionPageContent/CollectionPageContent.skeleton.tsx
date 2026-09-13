@@ -18,38 +18,38 @@ import styles from './CollectionPageContent.module.css';
 export const CollectionPageContentSkeleton = () => {
 	const { isSmallScreen } = useScreenSize();
 
-	const renderMobileOrTablet = isSmallScreen && (
-		<>
-			<section
-				className={classNames(styles.wrapper, {
-					[styles.mobile]: isSmallScreen,
-				})}
-			>
-				<CollectionHeaderSkeleton />
-				<CollectionBodySkeleton />
-				<TasksControllerSkeleton />
-			</section>
-		</>
-	);
+	if (isSmallScreen) {
+		return (
+			<>
+				<BackHeaderSkeleton>
+					<DeleteQuestionButtonSkeleton isDetailPage />
+					<ButtonSkeleton width={180} />
+				</BackHeaderSkeleton>
+				<section className={classNames(styles.wrapper, styles.mobile)}>
+					<CollectionHeaderSkeleton />
+					<CollectionBodySkeleton />
+					<TasksControllerSkeleton />
+				</section>
+			</>
+		);
+	}
+
 	return (
 		<>
 			<BackHeaderSkeleton>
 				<DeleteQuestionButtonSkeleton isDetailPage />
 				<ButtonSkeleton width={180} />
 			</BackHeaderSkeleton>
-
-			{renderMobileOrTablet || (
-				<section className={styles.wrapper}>
-					<div className={styles.main}>
-						<CollectionHeaderSkeleton />
-						<CollectionBodySkeleton />
-						<TasksControllerSkeleton />
-					</div>
-					<div className={styles.additional}>
-						<AdditionalInfoSkeleton />
-					</div>
-				</section>
-			)}
+			<section className={styles.wrapper}>
+				<div className={styles.main}>
+					<CollectionHeaderSkeleton />
+					<CollectionBodySkeleton />
+					<TasksControllerSkeleton />
+				</div>
+				<div className={styles.additional}>
+					<AdditionalInfoSkeleton />
+				</div>
+			</section>
 		</>
 	);
 };

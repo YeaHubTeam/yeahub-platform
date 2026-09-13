@@ -1,23 +1,30 @@
+import { useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { Skills, Translation, i18Namespace, ROUTES } from '@/shared/config';
 import { formatDate, route, SelectedAdminEntities } from '@/shared/libs';
-import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
-import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { TableCellWithTooltip } from '@/shared/ui/TableCellWithTooltip';
+import { TableV2 } from '@/shared/ui/TableV2';
+import { type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
 
 import { Skill } from '@/entities/skill';
 
-import { DeleteSkillButton } from '@/features/skill/deleteSkill';
+import { useDeleteSkillMutation } from '@/features/skill/deleteSkill';
 
 import styles from './SkillsTable.module.css';
+interface SkillTableRow {
+	id: number;
+	imageSrc: string;
+	disabled?: boolean;
+	title: string;
+	specializations: Skill['specializations'];
+	description: string;
+	author: string;
+	createdAt: string;
+}
 
 interface SkillsTableProps {
 	skills?: Skill[];
@@ -26,117 +33,109 @@ interface SkillsTableProps {
 }
 
 export const SkillsTable = ({ skills, selectedSkills, onSelectSkills }: SkillsTableProps) => {
-	const navigate = useNavigate();
 	const { t } = useTranslation([i18Namespace.skill, i18Namespace.translation]);
+	const [deleteSkill] = useDeleteSkillMutation();
 
-	const renderTableColumnWidths = () => {
-		const columnWidths = {
-			imageSrc: '10%',
-			title: '10%',
-			specializations: '15%',
-			description: 'auto',
-			author: '10%',
-			createdAt: '15%',
-		};
+	const tableData: SkillTableRow[] =
+		skills?.map((skill) => ({
+			id: skill.id,
+			imageSrc: skill.imageSrc ?? '',
+			title: skill.title,
+			specializations: skill.specializations,
+			description: skill.description,
+			author: skill.createdBy?.username ?? '-',
+			createdAt: skill.createdAt ? formatDate(new Date(skill.createdAt), 'dd.MM.yyyy') : '',
+		})) ?? [];
 
-		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
-	};
-
-	const renderTableHeader = () => {
-		const columns = {
-			imageSrc: t(Skills.ICON_TITLE_SHORT),
-			title: t(Skills.TITLE_SHORT),
-			specializations: t(Skills.SPECIALIZATIONS_TITLE),
-			description: t(Skills.DESCRIPTION_SHORT),
-			author: t(Skills.AUTHOR),
-			createdAt: t(Skills.CREATED_AT),
-		};
-
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
-
-	const renderTableBody = (skill: Skill) => {
-		const columns = {
-			imageSrc: (
+	const columns: Array<TableColumn<SkillTableRow>> = [
+		{
+			id: 'imageSrc',
+			header: t(Skills.ICON_TITLE_SHORT),
+			width: '10%',
+			cell: ({ row }) => (
 				<ImageWithWrapper
-					src={skill.imageSrc || ''}
-					alt={`${t(Translation.LOGO)} ${skill.title}`}
+					src={row.imageSrc || ''}
+					alt={`${t(Translation.LOGO)} ${row.title}`}
 					className={styles['card-image']}
 				/>
 			),
-			title: (
-				<TableCellLink to={route(ROUTES.admin.skills.detail.page, skill.id)} text={skill.title} />
+		},
+		{
+			id: 'title',
+			header: t(Skills.TITLE_SHORT),
+			width: '10%',
+			cell: ({ row, value }) => (
+				<TableCellLink to={route(ROUTES.admin.skills.details.page, row.id)} text={String(value)} />
 			),
-			specializations: (
+		},
+		{
+			id: 'specializations',
+			header: t(Skills.SPECIALIZATIONS_TITLE),
+			width: '15%',
+			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
-					items={skill.specializations}
+					items={row.specializations}
 					showCount={1}
 				/>
 			),
-			description: (
-				<TableCellWithTooltip title={skill.description}>{skill.description}</TableCellWithTooltip>
+		},
+		{
+			id: 'description',
+			header: t(Skills.DESCRIPTION_SHORT),
+			width: 'auto',
+			cell: ({ row }) => (
+				<TableCellWithTooltip title={String(row.description)}>
+					{row.description}
+				</TableCellWithTooltip>
 			),
-			author: skill.createdBy?.username || '-',
-			createdAt: skill.createdAt ? formatDate(new Date(skill.createdAt), 'dd.MM.yyyy') : '',
-		};
+		},
+		{
+			id: 'author',
+			header: t(Skills.AUTHOR),
+			width: '10%',
+		},
+		{
+			id: 'createdAt',
+			header: t(Skills.CREATED_AT),
+			width: '15%',
+		},
+	];
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
+	const selectedRowIds = selectedSkills?.map((skill) => skill.id);
 
-	const renderActions = (skill: Skill) => {
-		const menuItems: PopoverMenuItem[] = [
-			{
-				icon: <Icon icon="eye" size={24} />,
-				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.skills.detail.page, skill.id));
-				},
-			},
-			{
-				icon: <Icon icon="pen" size={24} />,
-				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.skills.edit.page, skill.id));
-				},
-			},
-			{
-				renderComponent: () => <DeleteSkillButton skillId={skill.id} />,
-			},
-		];
+	const selectedById = useMemo(() => {
+		const byId = new Map<number, { id: number; title?: string }>();
 
-		return (
-			<Flex gap="4">
-				<Popover menuItems={menuItems}>
-					{({ onToggle }) => (
-						<IconButton
-							aria-label="go to details"
-							form="square"
-							icon={<Icon icon="dotsThreeVertical" />}
-							size="medium"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					)}
-				</Popover>
-			</Flex>
-		);
-	};
+		selectedSkills?.forEach((skill) => byId.set(skill.id, skill));
+
+		skills?.forEach((skill) => {
+			byId.set(skill.id, { id: skill.id, title: skill.title });
+		});
+
+		return byId;
+	}, [skills, selectedSkills]);
+
+	const onSelectedRowIdsChange = useCallback(
+		(ids: TableRowId[]) => {
+			onSelectSkills?.(ids.map((id) => selectedById.get(id as number) ?? { id: id as number }));
+		},
+		[onSelectSkills, selectedById],
+	);
 
 	if (!skills) {
 		return null;
 	}
 
 	return (
-		<Table
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			renderActions={renderActions}
-			items={skills}
-			selectedItems={selectedSkills}
-			onSelectItems={onSelectSkills}
-			renderTableColumnWidths={renderTableColumnWidths}
-			hasCopyButton
+		<TableV2
+			data={tableData}
+			columns={columns}
+			selectedRowIds={selectedRowIds}
+			onSelectedRowIdsChange={onSelectedRowIdsChange}
+			actions={['detail', 'edit', 'delete', 'copy']}
+			entity="skills"
+			onDelete={(id) => deleteSkill(Number(id))}
 		/>
 	);
 };
