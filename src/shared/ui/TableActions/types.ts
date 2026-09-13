@@ -18,5 +18,6 @@ export interface TableActionsProps {
 	entity: TableActionsEntity;
 	id: string | number;
 	disabled?: boolean;
+	disabledTooltipTitle?: string;
 	onDelete?: () => void;
 }
