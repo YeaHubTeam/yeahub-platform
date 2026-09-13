@@ -55,10 +55,7 @@ describe('PayHistoryList', () => {
 			).toBeInTheDocument();
 
 			const expectedDates = getPaymentDates(0, paymentsMock.limit);
-
-			for (const date of expectedDates) {
-				expect(await screen.findByText(date)).toBeInTheDocument();
-			}
+			await expectPaymentDates(expectedDates);
 		});
 	});
 
