@@ -8,17 +8,23 @@ const getDefaultRowId = <T,>(row: T): TableRowId => {
 	return (row as unknown as { id: TableRowId }).id;
 };
 
-export const TableV2 = <T,>({
+export const TableV2 = <
+	T,
+	TSortingColumnId extends Extract<keyof T, string> = Extract<keyof T, string>,
+>({
 	data,
 	columns,
 	getRowId,
+	sorting,
+	onSortingChange,
+	tableState,
 	selectedRowIds,
 	onSelectedRowIdsChange,
 	isRowSelectionDisabled,
 	entity,
 	actions = [],
 	onDelete,
-}: TableV2Props<T>) => {
+}: TableV2Props<T, TSortingColumnId>) => {
 	const resolveRowId = getRowId ?? getDefaultRowId;
 	const hasRowActions = actions.length > 0 && Boolean(entity);
 
@@ -62,6 +68,10 @@ export const TableV2 = <T,>({
 				onToggleAllRows={toggleAllRows}
 				hasRowActions={hasRowActions}
 				actionsCellClassName={styles['actions-column']}
+				sorting={sorting}
+				onSortingChange={onSortingChange}
+				isFetching={tableState?.isFetching}
+				sortButtonClassName={styles['sort-button']}
 			/>
 			<TableBody
 				data={data}
