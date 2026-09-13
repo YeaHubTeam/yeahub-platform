@@ -123,3 +123,13 @@ export type ResourceCreateError =
 	| 'externalproducts.resource_type.not_found'
 	| 'tinify.tinify.compress_failed'
 	| 'tinify.tinify.resize_failed';
+
+export type ResourceEditError =
+	| 'auth.auth.unauthorized'
+	| 'auth.user.verified'
+	| 'externalproducts.catalog.not_found'
+	| 'externalproducts.resource_type.not_found'
+	| 'externalproducts.skill.not_found'
+	| 'externalproducts.specialization.not_found'
+	| 'tinify.tinify.compress_failed'
+	| 'tinify.tinify.resize_failed';
