@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { Pallete } from '@/shared/libs';
-import { capitalizeFirstLetter } from '@/shared/libs/fp/capitalizeFirstLetter';
+import { capitalizeFirstLetter } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon, IconName } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
