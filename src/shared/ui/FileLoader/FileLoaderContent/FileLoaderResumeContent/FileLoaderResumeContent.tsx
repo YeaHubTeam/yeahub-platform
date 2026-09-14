@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { Translation } from '@/shared/config';
+import { Resume } from '@/shared/config';
 import { i18Namespace } from '@/shared/config';
 import { Extension } from '@/shared/ui/FileLoader';
 import { Flex } from '@/shared/ui/Flex';
@@ -21,7 +21,7 @@ export const FileLoaderResumeContent = ({
 	extensionsText,
 	fileTypeText,
 }: FileLoaderResumeContentProps) => {
-	const { t } = useTranslation(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.resume);
 	return (
 		<Flex direction="column" justify="center" align="center" className={styles.wrapper}>
 			<FileLoaderResumeContentBorder className={styles['border-svg']} />
@@ -34,20 +34,20 @@ export const FileLoaderResumeContent = ({
 				className={styles['text-action-container']}
 			>
 				<Text variant="body3-accent" color="purple-700" isNoWrap>
-					{t(Translation.FILE_LOADER_RESUME_LINK)}
+					{t(Resume.FILE_LOADER_RESUME_LINK)}
 				</Text>
 				<Text variant="body3-accent" color="black-500" isNoWrap>
-					{t(Translation.FILE_LOADER_RESUME_TEXT)} {fileTypeText}
+					{t(Resume.FILE_LOADER_RESUME_TEXT)} {fileTypeText}
 				</Text>
 			</Flex>
 			<Text variant="body2-accent" color="black-400" className={styles['text-extension-container']}>
 				{extensionsText}
-				{maxFileMBSize && ` • ${t(Translation.FILE_LOADER_RESUME_LIMIT, { maxFileMBSize })}`}
+				{maxFileMBSize && ` • ${t(Resume.FILE_LOADER_RESUME_LIMIT, { maxFileMBSize })}`}
 			</Text>
 			<Flex align="center" gap="8" justify="center">
 				<Icon icon="lock" color="black-500" className={styles['icon-description']} />
 				<Text variant="body3-accent" color="black-500" className={styles['text-description']}>
-					{t(Translation.FILE_LOADER_RESUME_DESCRIPTION)}
+					{t(Resume.FILE_LOADER_RESUME_DESCRIPTION)}
 				</Text>
 			</Flex>
 		</Flex>

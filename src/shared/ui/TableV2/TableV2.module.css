@@ -1,0 +1,40 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--color-black-900);
+}
+
+.head {
+  height: 48px;
+  clip-path: inset(0 round 16px 16px 0 0);
+  background-color: var(--color-purple-700);
+  color: var(--color-white-900);
+  line-height: 130%;
+  font-weight: inherit;
+}
+
+.cell {
+  padding: 13px 14px;
+  width: auto;
+  min-height: 48px;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  word-break: keep-all;
+  font-weight: inherit;
+}
+
+.row {
+  width: auto;
+  height: 48px;
+  background-color: var(--color-black-30);
+}
+
+.row:last-child {
+  clip-path: inset(0 round 0 0 16px 16px);
+}
+
+.row:hover {
+  background-color: var(--color-purple-100);
+}

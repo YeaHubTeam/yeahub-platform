@@ -62,7 +62,6 @@ export const CompaniesTable = ({
 				/>
 			),
 			title: company.title,
-			createdBy: company.createdBy?.username,
 		};
 
 		return Object.entries(columns)?.map(([k, v]) => (

@@ -31,3 +31,5 @@ export { RegistrationLabelSkeleton } from './ui/RegistrationLabel/RegistrationLa
 export { TelegramWidget } from './ui/TelegramWidget/TelegramWidget';
 export { authMockProfilesByAccessToken } from './api/__mocks__';
 export { getMockAuthProfile } from './api/__mocks__';
+export { authMockAuthorsByAccessToken } from './api/__mocks__';
+export { getMockAuthAuthor } from './api/__mocks__';

@@ -16,7 +16,7 @@ export const FreeSubscriptionTab = () => {
 			id: 1,
 			question: t(Subscription.SUBSCRIPTION_FAQ_FIRST_QUESTION),
 			answer: t(Subscription.SUBSCRIPTION_FAQ_FIRST_ANSWER, {
-				price: subscriptionPrices.discountPrice,
+				price: subscriptionPrices.price,
 			}),
 		},
 		{

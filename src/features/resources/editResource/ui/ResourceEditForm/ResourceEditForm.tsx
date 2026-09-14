@@ -1,9 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
+import { i18Namespace, Resources } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
+import { Text } from '@/shared/ui/Text';
 
 import { Resource, ResourceEditFormHeader, ResourceForm } from '@/entities/resource';
 import { Skill } from '@/entities/skill';
@@ -24,6 +27,8 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 };
 
 export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
+	const { t } = useTranslation([i18Namespace.resources]);
+
 	const { skills, specializations, type, imageSrc, ...formattedResources } = resource;
 
 	const methods = useForm<EditResourceFormValues>({
@@ -51,6 +56,9 @@ export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
 				<Flex componentType="main" direction="column" gap="24">
 					<ResourceEditFormHeader onSubmit={onEditResource} />
 					<Card className={styles.content}>
+						<Text variant="body6" color="black-900" className={styles['main-title']}>
+							{t(Resources.EDIT_RESOURCE_TITLE)}
+						</Text>
 						<ResourceForm />
 					</Card>
 				</Flex>
