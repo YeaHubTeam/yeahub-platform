@@ -33,6 +33,7 @@
 		"__IS_DEV__": true
 	},
 	"rules": {
+		"linebreak-style": ["error", "unix"],
 		"prettier/prettier": ["error"],
 		"react/function-component-definition": [
 			2,

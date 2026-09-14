@@ -12,3 +12,4 @@ export { DATE_FORMATS } from './dateFormats';
 export { calculatePagination } from './calculatePagination';
 export { createSlug } from './createSlug';
 export { parseNumberArray, parseStringArray } from './parseArray';
+export { capitalizeFirstLetter } from './capitalizeFirstLetter';

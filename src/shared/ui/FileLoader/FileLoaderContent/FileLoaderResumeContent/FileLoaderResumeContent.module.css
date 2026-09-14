@@ -1,0 +1,35 @@
+.wrapper {
+  position: relative;
+  padding: 40px 0;
+  width: 100%;
+  height: 100%;
+}
+
+.border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.icon-loader {
+  margin-bottom: 14px;
+}
+
+.text-action-container {
+  margin-bottom: 20px;
+}
+
+.text-extension-container {
+  margin-bottom: 32px;
+}
+
+.icon-description {
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.text-description {
+  text-align: start;
+}
