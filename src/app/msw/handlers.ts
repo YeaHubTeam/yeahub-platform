@@ -21,6 +21,7 @@ import { taskHandlers } from '@/entities/task';
 import { topicHandlers } from '@/entities/topic';
 import { userHandlers } from '@/entities/user';
 import { usersRatingHandlers } from '@/entities/user';
+import { vacancyHandlers } from '@/entities/vacancy';
 
 import { createCollectionHandlers } from '@/features/collections/createCollection';
 import { collectionDeleteHandlers } from '@/features/collections/deleteCollection';
@@ -99,4 +100,5 @@ export const handlers = [
 	...taskCreateHandlers,
 	...deleteTaskHandlers,
 	...setActiveProfileHandlers,
+	...vacancyHandlers,
 ];
