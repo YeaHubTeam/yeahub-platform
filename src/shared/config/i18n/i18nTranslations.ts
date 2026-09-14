@@ -1715,3 +1715,19 @@ export enum Vacancies {
 	RESUME_ANALYZER_PRIORITIES_MISSING = 'resume_analyzer_page.priorities.missing',
 	RESUME_ANALYZER_PRIORITIES_WEAKLY = 'resume_analyzer_page.priorities.weakly',
 }
+
+export enum VacanciesMarket {
+	TITLE = 'title',
+	DESCRIPTION = 'description',
+	UPDATED_AT_TITLE = 'updated.at.title',
+	UPDATED_AT_UNAVAILABLE = 'updated.at.unavailable',
+	SUMMARY_TOTAL_ANALYZED = 'summary.total.analyzed',
+	SUMMARY_UPDATED_DAILY = 'summary.updated.daily',
+	CARD_TOP_SKILLS = 'card.top.skills',
+	CARD_KEYWORDS = 'card.keywords',
+	CARD_VACANCIES = 'card.vacancies',
+	CARD_DETAILS = 'card.details',
+	CARD_UNKNOWN_SPECIALIZATION = 'card.unknown.specialization',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+}

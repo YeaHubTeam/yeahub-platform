@@ -1,0 +1,39 @@
+.summary {
+  min-height: 74px;
+  border-radius: 20px;
+  background-color: var(--background-light-hover);
+}
+
+.summary-total {
+  padding: 10px 18px;
+  min-width: 350px;
+  border-radius: 16px 0 0 16px;
+  background-color: var(--background-block);
+}
+
+.growth-chart {
+  display: block;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.summary-note {
+  padding: 10px 24px;
+}
+
+@media (width < 768px) {
+  .summary {
+    background-color: var(--background-block);
+  }
+	
+  .summary-total {
+    min-width: 0;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .summary-note {
+    margin-left: 0;
+    padding: 12px 18px;
+  }
+}

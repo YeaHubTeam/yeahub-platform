@@ -18,7 +18,7 @@ export const createSkillApi = baseApi.injectEndpoints({
 				try {
 					const result = await queryFulfilled;
 					const typedExtra = extra as ExtraArgument;
-					typedExtra.navigate(route(ROUTES.admin.skills.detail.page, result.data.id));
+					typedExtra.navigate(route(ROUTES.admin.skills.details.page, result.data.id));
 					toast.success(i18n.t(Translation.TOAST_SKILL_CREATE_SUCCESS));
 				} catch (error) {
 					toast.error(i18n.t(handleApiError(error, getCreateSkillApiErrorMessage)));
