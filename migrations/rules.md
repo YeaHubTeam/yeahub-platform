@@ -585,7 +585,7 @@ npm run storybook:build       # пока Storybook 7 не обновлён — �
 |---|---|---|---|
 | 0. Подготовка окружения и чистка | [x] | `feature/YH-2415` (не закоммичено) | Docker-сборка локально не проверена (docker отсутствует); `npm ci` без флагов проходит. Prettier-плагин сортировки импортов удалён (вариант A). |
 | 1. Minor/patch | [x] | `feature/YH-2415` (не закоммичено) | Отклонения от плана: (1) `skipLibCheck: true` в `tsconfig.json` — иначе `tsc --noEmit` красный из-за `.d.ts` в `node_modules` при `target: es5`; (2) `stylelint-declaration-strict-value` запинен `~1.10.11`; (3) правка `config/jest/jest.config.ts` (`transform` для `.mjs`, явный `transformIgnorePatterns: []`). Prettier 3.9 переформатировал 12 файлов в `src/` — отдельным коммитом. Ручная проверка в браузере — за владельцем. |
-| 2. Webpack-тулчейн | [ ] | | |
+| 2. Webpack-тулчейн | [x] | `feature/YH-2415` (не закоммичено) | Отклонения: (1) `react-refresh-typescript` удалён (не использовался); (2) диф собранного CSS — `postcss-nesting` 14 (edition `2024-02`) оборачивает сложные родительские селекторы в `:is()`, специфичность и порядок правил не изменились, принято как есть (откат: `features: { 'nesting-rules': { edition: '2021' } }` в `postcss.config.ts`); (3) полный `npm ls` показывает `invalid` для `webpack-dev-server@6` из-за вложенного `@pmmmwh/react-refresh-webpack-plugin@0.5.17` в Storybook 7 (optional peer, на установку не влияет) — уйдёт на этапе 7; (4) удалён `@types/dotenv-webpack` — dotenv-webpack 9 поставляет собственные типы. Размеры чанков идентичны этапу 1, набор падающих тестов = baseline. HMR в браузере — за владельцем. |
 | 3. Тестовая инфраструктура | [ ] | | |
 | 4. React 19 | [ ] | | |
 | 5a. react-router 7 | [ ] | | |

@@ -14,6 +14,8 @@ export const webpackLoaders = ({ isDev }: WebpackOptions): ModuleOptions['rules'
 					modules: {
 						auto: (resourcePath: string) => resourcePath.endsWith('.module.css'),
 						localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:5]',
+						namedExport: false,
+						exportLocalsConvention: 'as-is',
 					},
 				},
 			},
