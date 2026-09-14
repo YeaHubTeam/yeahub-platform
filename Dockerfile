@@ -1,12 +1,12 @@
 #syntax=docker/dockerfile:1
 
 # Стадия сборки
-FROM --platform=linux/amd64 node:20-alpine as builder
+FROM --platform=linux/amd64 node:22-alpine as builder
 WORKDIR /app
 
 # Копируем зависимости
 COPY package.json package-lock.json ./
-RUN npm ci --legacy-peer-deps
+RUN npm ci
 
 # Копируем исходники
 COPY . .

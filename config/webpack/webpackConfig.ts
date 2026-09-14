@@ -70,7 +70,7 @@ export const webpackConfig = (options: WebpackOptions): Configuration => {
 						priority: 80,
 					},
 					ui: {
-						test: /[\\/]node_modules[\\/](react-slick|slick-carousel|react-calendar|react-cropper|react-responsive|react-device-detect|@floating-ui)[\\/]/,
+						test: /[\\/]node_modules[\\/](react-slick|slick-carousel|react-calendar|react-cropper|react-responsive|@floating-ui)[\\/]/,
 						name: 'ui',
 						priority: 70,
 					},

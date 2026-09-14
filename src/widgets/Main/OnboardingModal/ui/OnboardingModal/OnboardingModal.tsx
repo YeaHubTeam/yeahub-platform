@@ -20,11 +20,7 @@ import { SubscriptionBenefitsStep } from '../SubscriptionBenefitsStep/Subscripti
 import styles from './OnboardingModal.module.css';
 
 export type OnboardingStep =
-	| 'greeting'
-	| 'choose-specialization'
-	| 'service-overview'
-	| 'subscription'
-	| 'final';
+	'greeting' | 'choose-specialization' | 'service-overview' | 'subscription' | 'final';
 
 const getSteps = (t: (arg: string) => string): Step<OnboardingStep>[] => [
 	{

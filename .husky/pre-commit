@@ -17,7 +17,7 @@ npx lint-staged ||
   false;
 )
 	
-npx npx steiger ./src || 
+npx steiger ./src || 
 (
   echo '💀❌ Ooops! Check FSD rules. There are errors now!  ';
   false;

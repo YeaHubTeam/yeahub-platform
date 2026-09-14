@@ -6,8 +6,10 @@ import { SkeletonBlockProps } from '../Skeleton/Skeleton';
 
 import styles from './ImageWithWrapper.module.css';
 
-interface ImageWithWrapperSkeletonProps
-	extends Pick<SkeletonBlockProps, 'className' | 'width' | 'height' | 'borderRadius'> {}
+interface ImageWithWrapperSkeletonProps extends Pick<
+	SkeletonBlockProps,
+	'className' | 'width' | 'height' | 'borderRadius'
+> {}
 
 export const ImageWithWrapperSkeleton = ({
 	className,

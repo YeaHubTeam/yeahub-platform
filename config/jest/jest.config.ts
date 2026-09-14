@@ -47,12 +47,16 @@ const config: Config = {
 		'^@/(.*)$': '<rootDir>/src/$1',
 	},
 
-	// An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-	transformIgnorePatterns: [
-		// '\\\\node_modules\\\\',
-		// "\\.pnp\\.[^\\\\]+$"
-		'node_modules/(?!hast-util-to-html)/',
-	],
+	// A map from regular expressions to paths to transformers.
+	// Default pattern doesn't cover `.mjs`, which ESM-only dependencies (e.g. `rettime` from msw) ship
+	transform: {
+		'\\.m?[jt]sx?$': 'babel-jest',
+	},
+
+	// An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation.
+	// Intentionally empty: node_modules are transformed too, because many dependencies are ESM-only
+	// (lowlight, hast-util-to-html and its deps, rettime from msw, ...)
+	transformIgnorePatterns: [],
 
 	// All imported modules in your tests should be mocked automatically
 	// automock: false,
