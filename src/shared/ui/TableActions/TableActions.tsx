@@ -22,7 +22,7 @@ export const TableActions = ({
 	id,
 	disabled = false,
 	onDelete,
-	renderDeleteAction,
+	renderAdditionalActions,
 }: TableActionsProps) => {
 	const navigate = useNavigate();
 	const { t } = useTranslation(i18Namespace.translation);
@@ -35,9 +35,7 @@ export const TableActions = ({
 	const detailPath = route(entityRoutes.details.route, id);
 	const editPath = route(entityRoutes.edit.route, id);
 	const hasCopy = actions.includes('copy');
-	const menuActions = getMenuActions(actions).filter(
-		(action) => action !== 'delete' || onDelete || renderDeleteAction,
-	);
+	const menuActions = getMenuActions(actions).filter((action) => action !== 'delete' || onDelete);
 
 	const disabledTooltip = {
 		color: 'red' as const,
@@ -45,15 +43,23 @@ export const TableActions = ({
 	};
 
 	const renderDelete = () => {
-		if (renderDeleteAction) {
-			return renderDeleteAction();
-		}
-
 		if (onDelete) {
 			return <DeleteButton onDelete={onDelete} disabled={disabled} />;
 		}
 
 		return null;
+	};
+
+	const getAdditionalMenuItems = (): PopoverMenuItem[] => {
+		if (renderAdditionalActions) {
+			return [
+				{
+					renderComponent: renderAdditionalActions,
+				},
+			];
+		}
+
+		return [];
 	};
 
 	const menuItems = menuActions.flatMap((action): PopoverMenuItem[] => {
@@ -122,16 +128,16 @@ export const TableActions = ({
 	};
 
 	const renderMenu = () => {
-		if (menuItems.length === 0) {
+		if (menuItems.length === 0 && !renderAdditionalActions) {
 			return null;
 		}
 
-		if (menuItems.length === 1) {
+		if (menuItems.length === 1 && !renderAdditionalActions) {
 			return renderSingleMenuAction(menuActions[0]);
 		}
 
 		return (
-			<Popover menuItems={menuItems}>
+			<Popover menuItems={[...menuItems, ...getAdditionalMenuItems()]}>
 				{({ onToggle }) => (
 					<IconButton
 						aria-label={t(Translation.MORE)}

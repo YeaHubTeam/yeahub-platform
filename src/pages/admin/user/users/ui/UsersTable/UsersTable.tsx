@@ -11,7 +11,7 @@ import { User, UserRolesList } from '@/entities/user';
 import { DeleteAccountButton } from '@/features/profile/deleteAccount';
 
 interface UsersTableProps {
-	users?: User[];
+	users: User[];
 }
 
 export const UsersTable = ({ users }: UsersTableProps) => {
@@ -42,17 +42,13 @@ export const UsersTable = ({ users }: UsersTableProps) => {
 		},
 	];
 
-	if (!users) {
-		return null;
-	}
-
 	return (
 		<TableV2
 			data={users}
 			columns={columns}
-			actions={['detail', 'edit', 'delete', 'copy']}
+			actions={['detail', 'edit', 'copy']}
 			entity="users"
-			renderDeleteAction={(user) => <DeleteAccountButton user={user} isAdmin isDetailPage />}
+			renderAdditionalActions={(user) => <DeleteAccountButton user={user} isAdmin isDetailPage />}
 		/>
 	);
 };

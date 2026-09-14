@@ -22,7 +22,7 @@ interface TableBodyProps<T> {
 	actions?: TableAction[];
 	entity?: TableActionsEntity;
 	onDelete?: (id: TableRowId) => void;
-	renderDeleteAction?: (row: T) => ReactNode;
+	renderAdditionalActions?: (row: T) => ReactNode;
 }
 
 export const TableBody = <T,>({
@@ -41,7 +41,7 @@ export const TableBody = <T,>({
 	entity,
 	actions = [],
 	onDelete,
-	renderDeleteAction,
+	renderAdditionalActions,
 }: TableBodyProps<T>) => {
 	return (
 		<tbody>
@@ -78,8 +78,8 @@ export const TableBody = <T,>({
 										onDelete={onDelete ? () => onDelete(rowId) : undefined}
 										id={rowId}
 										disabled={disabled}
-										renderDeleteAction={
-											renderDeleteAction ? () => renderDeleteAction(row) : undefined
+										renderAdditionalActions={
+											renderAdditionalActions ? () => renderAdditionalActions(row) : undefined
 										}
 									/>
 								)}

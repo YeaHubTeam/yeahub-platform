@@ -21,5 +21,5 @@ export interface TableActionsProps {
 	id: string | number;
 	disabled?: boolean;
 	onDelete?: () => void;
-	renderDeleteAction?: () => ReactNode;
+	renderAdditionalActions?: () => ReactNode;
 }
