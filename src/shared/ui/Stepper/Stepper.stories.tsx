@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { useState } from 'react';
 
 import { Stepper } from './Stepper';
@@ -97,7 +97,7 @@ const meta: Meta<typeof Stepper> = {
 			control: { type: 'object' },
 			table: {
 				type: { summary: 'Step' },
-				defaultValue: { summary: steps[0] },
+				defaultValue: { summary: 'steps[0]' },
 			},
 		},
 		setActiveStep: {
@@ -109,7 +109,7 @@ const meta: Meta<typeof Stepper> = {
 			control: false,
 			table: {
 				type: { summary: 'boolean' },
-				defaultValue: { summary: false },
+				defaultValue: { summary: 'false' },
 			},
 		},
 	},

@@ -89,8 +89,5 @@ jobs:
       - name: FSD (steiger)
         run: npx steiger ./src
 
-      # - name: Visual tests
-      #   run: npm run test:ui
-
       - name: Unit tests
         run: npm run test:unit

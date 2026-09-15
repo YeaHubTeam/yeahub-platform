@@ -4,6 +4,7 @@ import importX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import storybook from 'eslint-plugin-storybook';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import { defineConfig } from 'eslint/config';
@@ -143,4 +144,5 @@ export default defineConfig(
 			'react-hooks/use-memo': 'warn',
 		},
 	},
+	...storybook.configs['flat/recommended'],
 );
