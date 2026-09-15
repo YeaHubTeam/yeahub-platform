@@ -1,5 +1,9 @@
 export { useGetVacanciesListQuery } from './api/vacancyApi';
-export { useGetVacancyMarketOverviewQuery } from './api/vacancyMarketApi';
+export {
+	useGetVacancyMarketOverviewQuery,
+	useGetVacancyMarketSpecializationsQuery,
+} from './api/vacancyMarketApi';
+
 export type {
 	GetVacanciesListResponse,
 	Vacancy,
@@ -17,6 +21,7 @@ export type {
 export type {
 	VacancyMarketOverview,
 	VacancyMarketSpecialization,
+	VacancyMarketSpecializationItem,
 	VacancyMarketTopItem,
 } from './model/types/vacancyMarket';
 export type { VacanciesFilterParams } from './model/types/filters';
@@ -46,3 +51,7 @@ export { ChooseEnglishLevel } from './ui/ChooseEnglishLevel/ChooseEnglishLevel';
 export { ChooseEnglishLevelSkeleton } from './ui/ChooseEnglishLevel/ChooseEnglishLevel.skeleton';
 
 export { VacancyKeywordsList } from './ui/VacancyKeywordsList/VacancyKeywordsList';
+
+export { getUniqueIndustries } from './lib/getUniqueIndustries';
+export { getSpecializationIdsByIndustry } from './lib/getSpecializationIdsByIndustry';
+export { filterSpecializationsOverviewByIds } from './lib/filterSpecializationsOverviewByIds';

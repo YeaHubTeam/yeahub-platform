@@ -20,3 +20,9 @@ export interface VacancyMarketOverview {
 	availableIndustries: string[];
 	totalAnalyzedVacancyCount: number;
 }
+
+export interface VacancyMarketSpecializationItem {
+	specializationId: number;
+	name: string;
+	availableIndustries: string[];
+}

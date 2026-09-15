@@ -2,7 +2,10 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, VacanciesMarket } from '@/shared/config';
 
-import { useGetVacancyMarketOverviewQuery } from '@/entities/vacancy';
+import {
+	useGetVacancyMarketOverviewQuery,
+	useGetVacancyMarketSpecializationsQuery,
+} from '@/entities/vacancy';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
@@ -11,8 +14,17 @@ import { VacancyMarketPageContent } from '../VacancyMarketPageContent/VacancyMar
 const VacancyMarketPage = () => {
 	const { t } = useTranslation(i18Namespace.vacanciesMarket);
 	const { data, isLoading, isError, refetch } = useGetVacancyMarketOverviewQuery();
+	const {
+		data: specializations,
+		isLoading: isSpecializationsLoading,
+		isError: isSpecializationsError,
+		refetch: refetchSpecializations,
+	} = useGetVacancyMarketSpecializationsQuery();
 
-	const hasData = (data?.specializations.length ?? 0) > 0;
+	const hasData = (data?.specializations.length ?? 0) > 0 && (specializations?.length ?? 0) > 0;
+
+	const isPageLoading = isLoading || isSpecializationsLoading;
+	const isPageError = isError || isSpecializationsError;
 
 	const stubs: PageWrapperStubs = {
 		empty: {
@@ -20,18 +32,25 @@ const VacancyMarketPage = () => {
 			subtitle: t(VacanciesMarket.STUB_EMPTY_SUBTITLE),
 		},
 		error: {
-			onClick: refetch,
+			onClick: () => {
+				refetch();
+				refetchSpecializations();
+			},
 		},
 	};
 
 	return (
 		<PageWrapper
-			isLoading={isLoading}
-			hasError={isError}
+			isLoading={isPageLoading}
+			hasError={isPageError}
 			hasData={hasData}
 			shouldVerify
 			stubs={stubs}
-			content={data ? <VacancyMarketPageContent vacancyMarket={data} /> : null}
+			content={
+				data && specializations ? (
+					<VacancyMarketPageContent specializations={specializations} vacancyMarket={data} />
+				) : null
+			}
 		>
 			{({ content }) => content}
 		</PageWrapper>
