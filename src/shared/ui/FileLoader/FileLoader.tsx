@@ -37,7 +37,7 @@ export const FileLoader = ({
 	isDragDropEnabled = true,
 	disabled,
 }: FileLoaderProps) => {
-	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
+	const uploaderRef: RefObject<HTMLInputElement | null> = useRef(null);
 
 	const [files, setFiles] = useState<globalThis.File[]>([]);
 
