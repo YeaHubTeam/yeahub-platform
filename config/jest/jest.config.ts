@@ -48,7 +48,8 @@ const config: Config = {
 	},
 
 	// A map from regular expressions to paths to transformers.
-	// Default pattern doesn't cover `.mjs`, which ESM-only dependencies (e.g. `rettime` from msw) ship
+	// Default pattern (`\.[jt]sx?$`, still true for Jest 30) doesn't cover `.mjs`,
+	// which ESM-only dependencies (e.g. `rettime` from msw) ship
 	transform: {
 		'\\.m?[jt]sx?$': 'babel-jest',
 	},

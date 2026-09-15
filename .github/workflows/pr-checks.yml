@@ -92,5 +92,5 @@ jobs:
       # - name: Visual tests
       #   run: npm run test:ui
 
-      # - name: Unit tests
-      #   run: npm run test:unit
+      - name: Unit tests
+        run: npm run test:unit
