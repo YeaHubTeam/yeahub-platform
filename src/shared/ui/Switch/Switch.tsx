@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { forwardRef } from 'react';
+import { forwardRef, type JSX } from 'react';
 
 import { Flex } from '@/shared/ui/Flex';
 
