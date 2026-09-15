@@ -32,4 +32,5 @@ export const i18Namespace = {
 	programmingLanguage: 'programmingLanguage',
 	featureFlags: 'featureFlags',
 	vacancies: 'vacancies',
+	vacanciesMarket: 'vacanciesMarket',
 };

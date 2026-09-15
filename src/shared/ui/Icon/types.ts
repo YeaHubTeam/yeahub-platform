@@ -9,6 +9,7 @@ export type IconName =
 	| 'clock'
 	| 'calendar'
 	| 'downloadFile'
+	| 'calendarNoDots'
 	| 'check'
 	| 'questions'
 	| 'checkList'
