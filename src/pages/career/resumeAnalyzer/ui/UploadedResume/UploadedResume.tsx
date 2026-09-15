@@ -8,19 +8,13 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { IconButton } from '@/shared/ui/IconButton';
-import { Text } from '@/shared/ui/Text';
 
 import { getSpecializationId } from '@/entities/profile';
 
 import { useResumeAnalyzeByPortraitMutation } from '../../api/resumeAnalyzeApi';
-import { useGetUploadedFileDate } from '../../model/hooks/useGetUploadedFileDate';
-import {
-	getResumeFileName,
-	getResumeUploadedAt,
-} from '../../model/selectors/resumeAnalyzerPageSelectors';
 import { resumeAnalyzerPageActions } from '../../model/slices/resumeAnalyzerPageSlice';
+import { ResumeFileInfo } from '../ResumeFileInfo';
 
-import { UploadedFileIcon } from './UploadedFileIcon/UploadedFileIcon';
 import styles from './UploadedResume.module.css';
 
 export interface UploadedResumeProps {
@@ -30,9 +24,6 @@ export interface UploadedResumeProps {
 
 export const UploadedResume = ({ file, setFile }: UploadedResumeProps) => {
 	const dispatch = useAppDispatch();
-	const fileName = useSelector(getResumeFileName);
-	const uploadedAt = useSelector(getResumeUploadedAt);
-	const formattedDate = useGetUploadedFileDate(uploadedAt);
 	const { t } = useTranslation(i18Namespace.resume);
 	const specializationId = useSelector(getSpecializationId);
 	const [uploadResume, { isLoading }] = useResumeAnalyzeByPortraitMutation({
@@ -53,24 +44,14 @@ export const UploadedResume = ({ file, setFile }: UploadedResumeProps) => {
 		<Flex direction="column" gap="20" className={styles['uploaded-file-wrapper']}>
 			<Card withOutsideShadow>
 				<Flex justify="between">
-					<Flex gap="12">
-						<UploadedFileIcon />
-						<Flex gap="8" direction="column" align="start">
-							<Text variant="body2-accent">{t(Resume.FILE_UPLOADED_RESUME_TITLE)}</Text>
-							<Text variant="body3-strong" className={styles['file-name']}>
-								{fileName}
-							</Text>
-							<Text variant="body3-accent" color="black-500">
-								{t(Resume.FILE_UPLOADED_RESUME_UPLOADED_AT, { uploadedAt: formattedDate })}
-							</Text>
-						</Flex>
-					</Flex>
+					<ResumeFileInfo />
 					<IconButton
 						icon={<Icon icon="trashOutline" size={20} />}
 						variant="tertiary"
 						size="small"
 						className={styles['delete-button']}
 						onClick={onResetAnalyzerState}
+						disabled={isLoading}
 					/>
 				</Flex>
 			</Card>

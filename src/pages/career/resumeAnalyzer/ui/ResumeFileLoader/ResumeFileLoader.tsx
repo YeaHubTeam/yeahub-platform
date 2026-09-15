@@ -34,8 +34,8 @@ export const ResumeFileLoader = ({ setFile }: { setFile: (file: FormData | null)
 			fileTypeText={tTranslation(Translation.FILE_LOADER_TYPES_RESUME)}
 			extensionsText={Extension.MS_WORD}
 			onChange={onUploadResume}
-			contentVariant="resume"
 			maxFileMBSize={10}
+			isResume={true}
 		/>
 	);
 };

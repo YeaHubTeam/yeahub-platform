@@ -5,7 +5,7 @@ import {
 	ResumeAnalyzerPageState,
 } from '../../model/types/resumeAnalyzer';
 
-const initialState: ResumeAnalyzerPageState = {
+export const initialState: ResumeAnalyzerPageState = {
 	data: null,
 	fileName: '',
 	uploadedAt: null,

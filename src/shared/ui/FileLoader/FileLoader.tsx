@@ -2,15 +2,18 @@
 
 import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useDragAndDrop } from '@/shared/libs';
-import {
-	FileLoaderDefaultContent,
-	FileLoaderResumeContent,
-} from '@/shared/ui/FileLoader/FileLoaderContent';
+import Gallery from '@/shared/assets/images/gallery.avif';
+import { i18Namespace, Resume } from '@/shared/config';
+import { Translation } from '@/shared/config';
+import { useDragAndDrop, useScreenSize } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { Icon } from '@/shared/ui/Icon';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './FileLoader.module.css';
+import { FileLoaderResumeBorder } from './FileLoaderResumeBorder/FileLoaderResumeBorder';
 import { Accept, Extension } from './types';
 
 export interface FileLoaderProps {
@@ -23,7 +26,7 @@ export interface FileLoaderProps {
 	onChange: (files: globalThis.File[]) => void;
 	isDragDropEnabled?: boolean;
 	disabled?: boolean;
-	contentVariant?: 'default' | 'resume';
+	isResume?: boolean;
 }
 
 export const FileLoader = ({
@@ -36,10 +39,13 @@ export const FileLoader = ({
 	onChange,
 	isDragDropEnabled = true,
 	disabled,
-	contentVariant = 'default',
+	isResume = false,
 }: FileLoaderProps) => {
+	const { isMobileS } = useScreenSize();
 	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
 	const [files, setFiles] = useState<globalThis.File[]>([]);
+	const { t: tTranslation } = useTranslation(i18Namespace.translation);
+	const { t: tResume } = useTranslation(i18Namespace.resume);
 	const { isDragActive, onDragLeave, handleUploader, onDragOverAndEnter, handleIsDragActive } =
 		useDragAndDrop(uploaderRef);
 
@@ -112,26 +118,76 @@ export const FileLoader = ({
 				{
 					[styles.active]: isDragActive,
 					[styles.disabled]: disabled,
-					[styles['content-resume']]: contentVariant === 'resume',
+					[styles['resume']]: isResume,
 				},
 				className,
 			)}
 		>
 			{isDragDropEnabled && (
 				<>
-					{contentVariant === 'default' && (
-						<FileLoaderDefaultContent
-							fileTypeText={fileTypeText}
-							maxFileMBSize={maxFileMBSize}
-							extensionsText={extensionsText}
+					{isResume && <FileLoaderResumeBorder />}
+					{isResume ? (
+						<Icon
+							className={styles['resume-icon-loader']}
+							icon="downloadFile"
+							color="purple-700"
+							size={46}
 						/>
+					) : (
+						<div>
+							<img
+								src={Gallery}
+								alt={tTranslation(Translation.FILE_LOADER_TYPES_PHOTO)}
+								loading="lazy"
+							/>
+						</div>
 					)}
-					{contentVariant === 'resume' && (
-						<FileLoaderResumeContent
-							fileTypeText={fileTypeText}
-							maxFileMBSize={maxFileMBSize}
-							extensionsText={extensionsText}
-						/>
+					<Flex
+						align="center"
+						gap="4"
+						justify="center"
+						wrap="wrap"
+						className={classNames({ [styles['text-action-container']]: isResume })}
+					>
+						<Text variant={isResume ? 'body3-accent' : 'body2'} color="purple-700" isNoWrap>
+							{isResume
+								? tResume(Resume.FILE_LOADER_RESUME_LINK)
+								: tTranslation(Translation.FILE_LOADER_LINK)}
+						</Text>
+						<Text variant={isResume ? 'body3-accent' : 'body2'} color="black-500" isNoWrap>
+							{`${
+								isResume
+									? tResume(Resume.FILE_LOADER_RESUME_TEXT)
+									: tTranslation(Translation.FILE_LOADER_TEXT)
+							} 
+							${fileTypeText}`}
+						</Text>
+					</Flex>
+					<Text
+						variant={isResume ? 'body2-accent' : 'body1'}
+						color={isResume ? 'black-400' : 'black-300'}
+						className={classNames({
+							[styles['resume-text-extension-container']]: isResume,
+							[styles['resume-text-extension-container-mobile']]: isMobileS,
+						})}
+					>
+						{extensionsText}
+						{maxFileMBSize &&
+							(isResume
+								? ` • ${tResume(Resume.FILE_LOADER_RESUME_LIMIT, { maxFileMBSize })}`
+								: ` (${tTranslation(Translation.FILE_LOADER_LIMIT, { maxFileMBSize })})`)}
+					</Text>
+					{isResume && (
+						<Flex align="center" gap="8" justify="center">
+							<Icon icon="lock" color="black-500" className={styles['resume-icon-description']} />
+							<Text
+								variant="body3-accent"
+								color="black-500"
+								className={styles['resume-text-description']}
+							>
+								{tResume(Resume.FILE_LOADER_RESUME_DESCRIPTION)}
+							</Text>
+						</Flex>
 					)}
 				</>
 			)}
