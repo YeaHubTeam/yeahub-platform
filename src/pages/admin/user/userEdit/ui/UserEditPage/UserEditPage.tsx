@@ -3,12 +3,10 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { i18Namespace, User, ROUTES, Translation } from '@/shared/config';
+import { i18Namespace, User, ROUTES } from '@/shared/config';
 import { route } from '@/shared/libs';
-import { BackButton } from '@/shared/ui/BackButton';
-import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
-import { FormCancelButton } from '@/shared/ui/FormCancelButton';
+import { FormHeader } from '@/shared/ui/FormHeader';
 
 import {
 	useAddUserRolesMutation,
@@ -36,8 +34,10 @@ const UserEditPage = () => {
 		mode: 'onTouched',
 	});
 
-	const [addUserRole] = useAddUserRolesMutation();
-	const [removeUserRole] = useRemoveUserRolesMutation();
+	const [addUserRole, { isLoading: isAddingRole }] = useAddUserRolesMutation();
+	const [removeUserRole, { isLoading: isRemovingRole }] = useRemoveUserRolesMutation();
+
+	const isSaving = isAddingRole || isRemovingRole;
 
 	const handleSave = async (values: UserFormValues) => {
 		const initialRoles = user?.userRoles.map((role) => role.id) || [];
@@ -60,20 +60,14 @@ const UserEditPage = () => {
 	};
 
 	const content = user ? (
-		<>
-			<FormProvider {...methods}>
-				<form onSubmit={methods.handleSubmit(handleSave)}>
-					<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
-						<BackButton />
-						<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
-							<FormCancelButton />
-							<Button type="submit">{t(Translation.SAVE)}</Button>
-						</Flex>
-					</Flex>
+		<FormProvider {...methods}>
+			<form onSubmit={methods.handleSubmit(handleSave)}>
+				<Flex direction="column" gap="24">
+					<FormHeader<UserFormValues> onSubmit={handleSave} isLoading={isSaving} />
 					<UserCard user={user} disabledEditRole={false} />
-				</form>
-			</FormProvider>
-		</>
+				</Flex>
+			</form>
+		</FormProvider>
 	) : null;
 
 	const stubs: PageWrapperStubs = {
