@@ -58,14 +58,14 @@ export const webpackConfig = (options: WebpackOptions): Configuration => {
 						enforce: true,
 					},
 					text_editor: {
-						test: /[\\/]node_modules[\\/](@tiptap|prosemirror|lowlight|highlight.js)[\\/]/,
+						test: /[\\/]node_modules[\\/](@tiptap|prosemirror-[^\\/]+|lowlight|highlight\.js)[\\/]/,
 						name: 'text-editor',
 						chunks: 'all',
 						priority: 90,
 						enforce: true,
 					},
 					core: {
-						test: /[\\/]node_modules[\\/](@reduxjs|react-redux|@sentry|react-hook-form|i18next|date-fns|yup|yup-password|react-router-dom|react-hot-toast)[\\/]/,
+						test: /[\\/]node_modules[\\/](@reduxjs|react-redux|@sentry|react-hook-form|i18next|date-fns|yup|yup-password|react-router-dom|react-router|react-hot-toast)[\\/]/,
 						name: 'core',
 						priority: 80,
 					},

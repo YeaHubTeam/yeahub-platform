@@ -13,7 +13,8 @@
 		"esModuleInterop": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"@tiptap/react/menus": ["./node_modules/@tiptap/react/dist/menus/index.d.ts"]
 		},
 		"plugins": [{ "name": "typescript-plugin-css-modules" }],
 		"types": ["node", "jest", "@testing-library/jest-dom"]

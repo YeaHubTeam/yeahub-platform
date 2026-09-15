@@ -6,6 +6,8 @@ declare module '*.module.css' {
 	export = classNames;
 }
 
+declare module '*.css';
+
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
