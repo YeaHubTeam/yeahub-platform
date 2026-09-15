@@ -11,10 +11,11 @@ import {
 } from '@/entities/referralLink';
 
 import styles from './ReferralLinkAdditionalInfo.module.css';
-interface ReferralLinkAdditionalInfoProps extends Pick<
+
+type ReferralLinkAdditionalInfoProps = Pick<
 	ReferralLink,
 	'amountSum' | 'linkedCount' | 'createdAt' | 'updatedAt' | 'ownerUsername' | 'ownerId'
-> {}
+>;
 
 export const ReferralLinkAdditionalInfo = ({
 	amountSum,

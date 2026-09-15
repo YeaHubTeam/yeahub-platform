@@ -3,26 +3,26 @@
 		"outDir": "./build/",
 		"noImplicitAny": true,
 		"module": "ESNext",
-		"target": "es5",
+		"target": "ES2020",
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
 		"jsx": "react-jsx",
 		"strict": true,
 		"skipLibCheck": true,
 		"allowJs": true,
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
-		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"],
-			"@tiptap/react/menus": ["./node_modules/@tiptap/react/dist/menus/index.d.ts"]
+			"@/*": ["./src/*"]
 		},
 		"plugins": [{ "name": "typescript-plugin-css-modules" }],
 		"types": ["node", "jest", "@testing-library/jest-dom"]
 	},
 	"ts-node": {
 		"compilerOptions": {
-			"module": "CommonJS"
+			"module": "CommonJS",
+			"moduleResolution": "node"
 		}
 	},
-	"include": ["./config/jest/setupTests.ts", "./src/**/*.ts", "./src/**/*.tsx"]
+	"include": ["./config/jest/jestSetup.ts", "./src/**/*.ts", "./src/**/*.tsx"]
 }

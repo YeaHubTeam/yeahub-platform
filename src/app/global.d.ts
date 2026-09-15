@@ -19,6 +19,8 @@ declare module '*.svg' {
 }
 declare module '*.avif';
 
+declare module '@testing-library/user-event';
+
 type DeepPartial<T> = T extends object
 	? {
 			[P in keyof T]?: DeepPartial<T[P]>;

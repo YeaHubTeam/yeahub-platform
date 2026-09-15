@@ -1,7 +1,7 @@
 import { DOMSerializer } from '@tiptap/pm/model';
 import { Editor } from '@tiptap/react';
 import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react/menus';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { TextEditor } from '@/shared/config';
