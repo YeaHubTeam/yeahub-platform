@@ -1,0 +1,17 @@
+.uploaded-file-icon-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  background: var(--color-purple-100);
+}
+
+.check-icon {
+  position: absolute;
+  top: -7px;
+  right: -5px;
+  width: 16px;
+  height: 16px;
+  color: var(--color-purple-700);
+}

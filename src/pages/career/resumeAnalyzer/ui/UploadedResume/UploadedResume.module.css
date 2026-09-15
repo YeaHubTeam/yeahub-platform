@@ -1,0 +1,13 @@
+.uploaded-file-wrapper {
+  width: 100%;
+  max-width: 700px;
+}
+
+.delete-button {
+  color: var(--color-black-600);
+}
+
+.upload-button {
+  line-height: 130%;
+  font-weight: var(--font-weight-500);
+}

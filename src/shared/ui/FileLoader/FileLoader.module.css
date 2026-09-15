@@ -8,8 +8,40 @@
   cursor: pointer;
 }
 
+.file-upload-container.resume {
+  position: relative;
+  gap: 0;
+  padding: 40px 0;
+  border: none;
+}
+
 .file-upload-container.active {
   background-color: var(--background-progress-bar);
+}
+
+.resume-icon-loader {
+  margin-bottom: 14px;
+}
+
+.text-action-container {
+  margin-bottom: 20px;
+}
+
+.resume-text-extension-container {
+  margin-bottom: 32px;
+}
+
+.resume-text-extension-container-mobile {
+  margin-bottom: 20px;
+}
+
+.resume-icon-description {
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.resume-text-description {
+  text-align: start;
 }
 
 .file-input {
