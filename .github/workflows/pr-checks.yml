@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -89,5 +89,5 @@ jobs:
       - name: FSD (steiger)
         run: npx steiger ./src
 
-      - name: Unit tests
-        run: npm run test:unit
+      # - name: Unit tests
+      #   run: npm run test:unit

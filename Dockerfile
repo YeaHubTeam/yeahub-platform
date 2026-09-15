@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile:1
 
 # Стадия сборки
-FROM --platform=linux/amd64 node:22-alpine as builder
+FROM --platform=linux/amd64 node:24-alpine as builder
 WORKDIR /app
 
 # Копируем зависимости

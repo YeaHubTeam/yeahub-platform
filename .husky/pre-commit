@@ -17,7 +17,7 @@ npx lint-staged ||
   false;
 )
 	
-npx steiger ./src || 
+npx --no-install steiger ./src || 
 (
   echo '💀❌ Ooops! Check FSD rules. There are errors now!  ';
   false;
