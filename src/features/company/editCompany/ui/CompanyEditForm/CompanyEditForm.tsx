@@ -3,13 +3,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { Company, CompanyForm } from '@/entities/company';
 
+import { useEditCompanyMutation } from '../../api/editCompanyApi';
 import { companyEditSchema } from '../../lib/validation/companyEditSchema';
 import { CompanyEditFormValues } from '../../model/types/companyEditPageTypes';
-import { CompanyEditFormHeader } from '../CompanyEditFormHeader/CompanyEditFormHeader';
 
 import styles from './CompanyEditForm.module.css';
 
@@ -26,11 +27,17 @@ export const CompanyEditForm = ({ company }: CompanyEditFormProps) => {
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
+	const [editCompanyMutation, { isLoading }] = useEditCompanyMutation();
+
+	const onEditCompany = async (data: CompanyEditFormValues) => {
+		await editCompanyMutation(data);
+	};
+
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<CompanyEditFormHeader />
+					<FormHeader<CompanyEditFormValues> onSubmit={onEditCompany} isLoading={isLoading} />
 					<Card className={styles.content}>
 						<CompanyForm isEdit imageSrc={company.imageSrc} />
 					</Card>
