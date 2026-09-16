@@ -49,7 +49,7 @@ export const ROUTES = {
 				route: ':skillId/edit',
 				page: '/admin/skills/:skillId/edit',
 			},
-			detail: {
+			details: {
 				route: ':skillId',
 				page: '/admin/skills/:skillId',
 			},
@@ -221,6 +221,18 @@ export const ROUTES = {
 	career: {
 		route: 'career',
 		page: '/career',
+		vacancyMarket: {
+			route: 'vacancy-market',
+			page: '/career/vacancy-market',
+			detail: {
+				route: ':specializationId',
+				page: '/career/vacancy-market/:specializationId',
+			},
+		},
+		vacancies: {
+			route: 'vacancies',
+			page: '/career/vacancies',
+		},
 		'resume-analyzer': {
 			route: 'resume-analyzer',
 			page: '/career/resume-analyzer',
@@ -349,9 +361,5 @@ export const ROUTES = {
 		mentor: {
 			page: `${process.env.LANDING_URL}mentor`,
 		},
-	},
-	vacancies: {
-		route: 'vacancies',
-		page: '/vacancies',
 	},
 } as const;
