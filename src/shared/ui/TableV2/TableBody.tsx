@@ -19,7 +19,6 @@ interface TableBodyProps<T> {
 	actionsCellClassName?: string;
 	actions?: TableAction[];
 	entity?: TableActionsEntity;
-	disabledActionsTooltipTitle?: string;
 	onDelete?: (id: TableRowId) => void;
 }
 
@@ -38,7 +37,6 @@ export const TableBody = <T,>({
 	actionsCellClassName,
 	entity,
 	actions = [],
-	disabledActionsTooltipTitle,
 	onDelete,
 }: TableBodyProps<T>) => {
 	return (
@@ -76,7 +74,6 @@ export const TableBody = <T,>({
 										onDelete={onDelete ? () => onDelete(rowId) : undefined}
 										id={rowId}
 										disabled={disabled}
-										disabledTooltipTitle={disabledActionsTooltipTitle}
 									/>
 								)}
 							</td>

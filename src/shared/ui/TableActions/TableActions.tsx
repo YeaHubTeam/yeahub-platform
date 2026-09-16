@@ -21,7 +21,6 @@ export const TableActions = ({
 	entity,
 	id,
 	disabled = false,
-	disabledTooltipTitle = Translation.TOOLTIP_COLLECTION_DISABLED_INFO,
 	onDelete,
 }: TableActionsProps) => {
 	const navigate = useNavigate();
@@ -36,6 +35,10 @@ export const TableActions = ({
 	const editPath = route(entityRoutes.edit.route, id);
 	const hasCopy = actions.includes('copy');
 	const menuActions = getMenuActions(actions).filter((action) => action !== 'delete' || onDelete);
+	const disabledTooltipTitle =
+		entity === 'companies'
+			? Translation.TOOLTIP_COMPANY_DISABLED_INFO
+			: Translation.TOOLTIP_COLLECTION_DISABLED_INFO;
 
 	const disabledTooltip = {
 		color: 'red' as const,

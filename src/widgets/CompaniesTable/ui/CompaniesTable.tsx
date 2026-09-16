@@ -89,7 +89,6 @@ export const CompaniesTable = ({
 			onSelectedRowIdsChange={onSelectedRowIdsChange}
 			actions={['detail', 'edit', 'delete', 'copy']}
 			entity="companies"
-			disabledActionsTooltipTitle={Translation.TOOLTIP_COMPANY_DISABLED_INFO}
 			onDelete={(id) => void deleteCompany(String(id))}
 		/>
 	);
