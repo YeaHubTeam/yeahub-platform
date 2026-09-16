@@ -1,19 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
-import { FeatureFlags, i18Namespace, ROUTES, Translation } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
+import { FeatureFlags, i18Namespace } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Chip } from '@/shared/ui/Chip';
 import { Flex } from '@/shared/ui/Flex';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 import { Text } from '@/shared/ui/Text';
 
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
 
-import { DeleteFeatureFlagButton } from '@/features/featureFlag/deleteFeatureFlag';
+import { useDeleteFeatureFlagMutation } from '@/features/featureFlag/deleteFeatureFlag';
 import { ToggleActiveFeatureFlagSwitch } from '@/features/featureFlag/toggleActiveFeatureFlag';
 
 import styles from './FeatureFlagDetailsPageContent.module.css';
@@ -26,16 +23,21 @@ export const FeatureFlagDetailsPageContent = ({
 	featureFlag,
 }: FeatureFlagDetailsPageContentProps) => {
 	const { t } = useTranslation([i18Namespace.featureFlags]);
-	const { t: tTranslate } = useTranslation([i18Namespace.translation]);
+	const [deleteFeatureFlag] = useDeleteFeatureFlagMutation();
+
+	const handleDeleteFeatureFlag = () => {
+		void deleteFeatureFlag(featureFlag.id);
+	};
 
 	return (
 		<>
-			<BackHeader>
-				<DeleteFeatureFlagButton isDetailPage featureFlagId={featureFlag.id} />
-				<NavLink to={route(ROUTES.admin.featureFlags.edit.page, featureFlag.id)}>
-					<Button>{tTranslate(Translation.EDIT)}</Button>
-				</NavLink>
-			</BackHeader>
+			<HeaderAdminPageDetailCard
+				onDelete={handleDeleteFeatureFlag}
+				deleteButtonProps={{
+					tooltipTitle: FeatureFlags.TOOLTIP_FEATURE_FLAGS_DISABLED_INFO,
+					modalMessage: FeatureFlags.MODAL_FEATURE_FLAG_DELETE_DESCRIPTION,
+				}}
+			/>
 
 			<Flex gap="20" align="start" justify="between">
 				<Card withOutsideShadow className={styles['main-card']}>

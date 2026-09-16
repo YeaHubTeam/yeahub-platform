@@ -1,15 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
-import { i18Namespace, ROUTES, Translation } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
+import { i18Namespace, ReferralLinks } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
 import { type ReferralLink, ReferralLinkCard } from '@/entities/referralLink';
 
-import { DeleteReferralLinkButton } from '@/features/referralLinks/deleteReferralLink';
+import { useDeleteReferralLinkMutation } from '@/features/referralLinks/deleteReferralLink';
 
 import { ReferralLinkAdditionalInfo } from '@/widgets/referralLink/ReferralLinkAdditionalInfo';
 
@@ -20,18 +17,19 @@ interface ReferralLinkDetailPageContentProps {
 export const ReferralLinkDetailPageContent = ({
 	referralLink,
 }: ReferralLinkDetailPageContentProps) => {
-	const { t } = useTranslation(i18Namespace.translation);
+	const { t } = useTranslation(i18Namespace.referralLink);
+	const [deleteReferralLink] = useDeleteReferralLinkMutation();
+
+	const handleDeleteReferralLink = () => {
+		void deleteReferralLink(referralLink.id);
+	};
+
 	return (
 		<>
-			<BackHeader>
-				<DeleteReferralLinkButton referralId={referralLink.id} isDetailPage={true} />
-				<NavLink
-					style={{ marginLeft: 'auto' }}
-					to={route(ROUTES.admin.referralLinks.edit.page, referralLink.id)}
-				>
-					<Button>{t(Translation.EDIT)}</Button>
-				</NavLink>
-			</BackHeader>
+			<HeaderAdminPageDetailCard
+				onDelete={handleDeleteReferralLink}
+				deleteButtonProps={{ modalMessage: t(ReferralLinks.DELETE_MODAL_TEXT) }}
+			/>
 			<Flex gap="20" align="start">
 				<ReferralLinkCard code={referralLink.refCode} link={referralLink.url} />
 				<ReferralLinkAdditionalInfo

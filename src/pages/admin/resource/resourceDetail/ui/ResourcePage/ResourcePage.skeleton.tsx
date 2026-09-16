@@ -1,7 +1,7 @@
 import { useScreenSize } from '@/shared/libs';
-import { BackHeaderSkeleton } from '@/shared/ui/BackHeader';
 import { CardSkeleton } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { HeaderAdminPageDetailCardSkeleton } from '@/shared/ui/HeaderAdminPageDetailCard';
 
 import { ResourceAdditionalInfoSkeleton } from '@/entities/resource';
 
@@ -15,7 +15,7 @@ export const ResourcePageSkeleton = () => {
 
 	return (
 		<>
-			<BackHeaderSkeleton />
+			<HeaderAdminPageDetailCardSkeleton />
 			<Flex gap="20" align="start">
 				<CardSkeleton withOutsideShadow className={styles.main}>
 					<Flex direction="column" gap="20" justify="start">

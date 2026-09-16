@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { i18Namespace, Questions } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 
-import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
+import { getProfileId, useCanManageAdminEntity } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
 import { PageWrapper, type PageWrapperStubs } from '@/widgets/PageWrapper';
@@ -18,8 +18,6 @@ export const QuestionPage = () => {
 	const { questionId } = useParams<{ questionId: string }>();
 
 	const profileId = useAppSelector(getProfileId);
-	const userId = useAppSelector(getUserId);
-	const isAuthor = useAppSelector(getIsAuthor);
 
 	const {
 		data: question,
@@ -32,7 +30,8 @@ export const QuestionPage = () => {
 	});
 
 	const hasQuestion = question && Object.keys(question).length > 0;
-	const isDisabled = Boolean(hasQuestion && isAuthor && question.createdBy?.id !== userId);
+	const canManage = useCanManageAdminEntity({ ownerId: question?.createdBy?.id });
+	const isDisabled = Boolean(hasQuestion && !canManage);
 
 	const stubs: PageWrapperStubs = {
 		empty: {

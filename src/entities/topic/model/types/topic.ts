@@ -9,7 +9,7 @@ export interface Topic {
 	description: string;
 	imageSrc?: string | null;
 	skill: Skill;
-	createdBy?: Author;
+	createdBy?: Author | null;
 	createdAt: string;
 	updatedAt: string;
 	disabled?: boolean;

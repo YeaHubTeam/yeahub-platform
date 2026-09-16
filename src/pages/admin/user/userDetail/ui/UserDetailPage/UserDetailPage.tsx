@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { i18Namespace, Translation, ROUTES, User } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { BackButton } from '@/shared/ui/BackButton';
-import { Button } from '@/shared/ui/Button';
+import { i18Namespace, User } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
 import { useGetUserByIdQuery, UserCard, UserFormValues } from '@/entities/user';
 
@@ -15,13 +13,11 @@ import { DeleteAccountButton } from '@/features/profile/deleteAccount';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
-import styles from './UserDetailPage.module.css';
 import { UserDetailPageSkeleton } from './UserDetailPage.skeleton';
 
 const UserDetailPage = () => {
 	const { userId = '' } = useParams<{ userId: string }>();
 	const { data: user, isLoading, isError, refetch } = useGetUserByIdQuery(String(userId));
-	const { t } = useTranslation(i18Namespace.translation);
 	const { t: tUser } = useTranslation(i18Namespace.user);
 
 	const methods = useForm<UserFormValues>({
@@ -45,18 +41,11 @@ const UserDetailPage = () => {
 		<>
 			<Flex direction="column" gap="24">
 				<FormProvider {...methods}>
-					<Flex align="center" justify="between" gap="8" className={styles.actions}>
-						<BackButton />
-						<Flex gap="16">
-							<DeleteAccountButton isAdmin user={user} />
-							<NavLink
-								aria-label={t(Translation.EDIT)}
-								to={route(ROUTES.admin.users.edit.page, user.id)}
-							>
-								<Button>{t(Translation.EDIT)}</Button>
-							</NavLink>
-						</Flex>
-					</Flex>
+					<HeaderAdminPageDetailCard
+						entity="users"
+						canDelete={false}
+						renderActions={() => <DeleteAccountButton isAdmin user={user} />}
+					/>
 					<UserCard user={user} />
 				</FormProvider>
 			</Flex>

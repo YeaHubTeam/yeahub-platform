@@ -4,6 +4,8 @@ export { profileSlice } from './model/slices/profileSlice';
 
 export { profileReducer, profileActions } from './model/slices/profileSlice';
 
+export { useCanManageAdminEntity } from './model/hooks/useCanManageAdminEntity';
+
 export {
 	getProfileIsEmailSent,
 	getUserRoles,

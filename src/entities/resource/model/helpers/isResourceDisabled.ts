@@ -4,8 +4,8 @@ export const isResourceDisabled = ({
 	userId,
 }: {
 	isAuthor: boolean;
-	createdById: string;
+	createdById?: string | null;
 	userId: string;
 }) => {
-	return isAuthor && createdById !== userId;
+	return isAuthor && Boolean(createdById) && createdById !== userId;
 };

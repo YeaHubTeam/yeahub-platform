@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { i18Namespace, ROUTES, Topics, Translation } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
+import { i18Namespace, Topics } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
+import { useCanManageAdminEntity } from '@/entities/profile';
 import { useGetTopicByIdQuery, TopicAdditionalInfo, TopicCard } from '@/entities/topic';
 
-import { DeleteTopicButton } from '@/features/topics/deleteTopic';
+import { useDeleteTopicMutation } from '@/features/topics/deleteTopic';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
@@ -19,22 +18,20 @@ const TopicDetailPage = () => {
 	const { topicId = '' } = useParams<{ topicId: string }>();
 	const { t } = useTranslation(i18Namespace.translation);
 	const { data: topic, isLoading, isError, refetch } = useGetTopicByIdQuery(topicId);
+	const [deleteTopic] = useDeleteTopicMutation();
+	const canManage = useCanManageAdminEntity({ ownerId: topic?.createdBy?.id });
+
+	const handleDeleteTopic = () => {
+		if (topic) {
+			void deleteTopic(topic.id);
+		}
+	};
 
 	const hasTopic = topic && Object.keys(topic).length > 0;
 
 	const content = hasTopic ? (
 		<>
-			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
-				<BackHeader>
-					<DeleteTopicButton topicId={topic.id} isDetailPage />
-					<NavLink
-						style={{ marginLeft: 'auto' }}
-						to={route(ROUTES.admin.topics.edit.page, topic.id)}
-					>
-						<Button>{t(Translation.EDIT)}</Button>
-					</NavLink>
-				</BackHeader>
-			</Flex>
+			<HeaderAdminPageDetailCard onDelete={handleDeleteTopic} isDisabled={!canManage} />
 
 			<Flex gap="20" direction="row">
 				<TopicCard topic={topic} />

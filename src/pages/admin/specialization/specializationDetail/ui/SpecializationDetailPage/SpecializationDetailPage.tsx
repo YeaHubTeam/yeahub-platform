@@ -1,15 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { i18Namespace, ROUTES, Specializations, Translation } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
-import { Flex } from '@/shared/ui/Flex';
+import { i18Namespace, Specializations } from '@/shared/config';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
+import { useCanManageAdminEntity } from '@/entities/profile';
 import { useGetSpecializationByIdQuery, SpecializationCard } from '@/entities/specialization';
 
-import { DeleteSpecializationButton } from '@/features/specialization/deleteSpecialization';
+import { useDeleteSpecializationMutation } from '@/features/specialization/deleteSpecialization';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
@@ -24,6 +22,14 @@ const SpecializationDetailPage = () => {
 		isError,
 		refetch,
 	} = useGetSpecializationByIdQuery(String(specializationId));
+	const [deleteSpecialization] = useDeleteSpecializationMutation();
+	const canManage = useCanManageAdminEntity({ ownerId: specialization?.createdBy?.id });
+
+	const handleDeleteSpecialization = () => {
+		if (specialization) {
+			void deleteSpecialization(specialization.id);
+		}
+	};
 
 	const renderContent = () => {
 		if (!specialization) {
@@ -31,17 +37,7 @@ const SpecializationDetailPage = () => {
 		}
 		return (
 			<>
-				<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
-					<BackHeader>
-						<DeleteSpecializationButton specializationId={specialization.id} isDetailPage />
-						<NavLink
-							style={{ marginLeft: 'auto' }}
-							to={route(ROUTES.admin.specializations.edit.page, specialization.id)}
-						>
-							<Button>{t(Translation.EDIT)}</Button>
-						</NavLink>
-					</BackHeader>
-				</Flex>
+				<HeaderAdminPageDetailCard onDelete={handleDeleteSpecialization} isDisabled={!canManage} />
 				<SpecializationCard specialization={specialization} />
 			</>
 		);

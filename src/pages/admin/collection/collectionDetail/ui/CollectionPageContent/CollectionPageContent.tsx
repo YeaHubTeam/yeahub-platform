@@ -1,18 +1,13 @@
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
-import { i18Namespace, ROUTES, Translation } from '@/shared/config';
-import { route, useScreenSize } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
-import { Tooltip } from '@/shared/ui/Tooltip';
+import { useScreenSize } from '@/shared/libs';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
 import { Collection } from '@/entities/collection';
 import { Question } from '@/entities/question';
 import { Task } from '@/entities/task';
 
-import { DeleteCollectionButton } from '@/features/collections/deleteCollection';
+import { useDeleteCollectionMutation } from '@/features/collections/deleteCollection';
 
 import {
 	AdditionalInfo,
@@ -38,8 +33,8 @@ export const CollectionPageContent = ({
 	tasks,
 	isDisabled,
 }: CollectionPageContentProps) => {
-	const { t } = useTranslation(i18Namespace.translation);
 	const { isSmallScreen } = useScreenSize();
+	const [deleteCollection] = useDeleteCollectionMutation();
 
 	const {
 		createdBy,
@@ -55,6 +50,9 @@ export const CollectionPageContent = ({
 	} = collection;
 
 	const imageSrc = collectionImageSrc ?? company?.imageSrc;
+	const handleDeleteCollection = () => {
+		void deleteCollection(collection.id);
+	};
 
 	const renderMobileOrTablet = isSmallScreen && (
 		<>
@@ -77,24 +75,7 @@ export const CollectionPageContent = ({
 	);
 	return (
 		<>
-			<BackHeader>
-				<DeleteCollectionButton collectionId={collection.id} isDetailPage disabled={isDisabled} />
-
-				<Tooltip
-					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-					placement="bottom-start"
-					color="red"
-					offsetTooltip={10}
-					shouldShowTooltip={isDisabled}
-				>
-					<NavLink
-						style={{ marginLeft: 'auto' }}
-						to={route(ROUTES.admin.collections.edit.page, collection.id)}
-					>
-						<Button disabled={isDisabled}>{t(Translation.EDIT)}</Button>
-					</NavLink>
-				</Tooltip>
-			</BackHeader>
+			<HeaderAdminPageDetailCard onDelete={handleDeleteCollection} isDisabled={isDisabled} />
 
 			{renderMobileOrTablet || (
 				<section className={styles.wrapper}>

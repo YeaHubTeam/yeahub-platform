@@ -2,10 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { i18Namespace, Companies } from '@/shared/config';
-import { useAppSelector } from '@/shared/libs';
 
 import { useGetCompanyByIdQuery } from '@/entities/company';
-import { getIsAuthor, getUserId } from '@/entities/profile';
+import { useCanManageAdminEntity } from '@/entities/profile';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
@@ -17,10 +16,9 @@ const CompanyDetailPage = () => {
 
 	const { companyId = '' } = useParams();
 	const { data: company, isLoading, isError, refetch } = useGetCompanyByIdQuery({ companyId });
-	const userId = useAppSelector(getUserId);
-	const isAuthor = useAppSelector(getIsAuthor);
 
-	const isDisabled = isAuthor && company?.createdBy?.id !== userId;
+	const canManage = useCanManageAdminEntity({ ownerId: company?.createdBy?.id });
+	const isDisabled = !canManage;
 	const hasData = !!company && Object.keys(company).length > 0;
 
 	const stubs: PageWrapperStubs = {

@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Resources, ROUTES } from '@/shared/config';
-import { useAppSelector, useScreenSize } from '@/shared/libs';
+import { useScreenSize } from '@/shared/libs';
 
-import { getIsAuthor, getUserId } from '@/entities/profile';
-import { useGetResourceByIdQuery, isResourceDisabled } from '@/entities/resource';
+import { useCanManageAdminEntity } from '@/entities/profile';
+import { useGetResourceByIdQuery } from '@/entities/resource';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
@@ -20,9 +19,6 @@ export const ResourcePage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation(i18Namespace.resources);
 
-	const isAuthor = useSelector(getIsAuthor);
-	const userId = useAppSelector(getUserId);
-
 	const {
 		data: resource,
 		isLoading,
@@ -32,10 +28,8 @@ export const ResourcePage = () => {
 	} = useGetResourceByIdQuery({ resourceId });
 
 	const hasData = !!resource && Object.keys(resource).length > 0;
-
-	const isDisabled = resource
-		? isResourceDisabled({ isAuthor, userId, createdById: resource.createdBy.id })
-		: true;
+	const canManage = useCanManageAdminEntity({ ownerId: resource?.createdBy?.id });
+	const isDisabled = !canManage;
 
 	const stubs: PageWrapperStubs = {
 		empty: {

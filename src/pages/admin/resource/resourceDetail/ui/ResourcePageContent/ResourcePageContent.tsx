@@ -1,13 +1,12 @@
 import { ROUTES } from '@/shared/config';
-import { BackHeader } from '@/shared/ui/BackHeader';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
 import { type Resource } from '@/entities/resource';
 import { ResourceAdditionalInfo } from '@/entities/resource';
 
-import { DeleteResourceButton } from '@/features/resources/deleteResource';
-import { ResourceEditButton } from '@/features/resources/editResource';
+import { useDeleteResourceMutation } from '@/features/resources/deleteResource';
 
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
@@ -27,17 +26,18 @@ export const ResourcePageContent = ({
 	isTablet,
 	isDisabled,
 }: ResourcePageContentProps) => {
+	const [deleteResource] = useDeleteResourceMutation();
 	const { createdBy, keywords, skills, specializations, name, description, type, url, createdAt } =
 		resource;
+	const handleDeleteResource = () => {
+		void deleteResource(resource.id);
+	};
 
 	return (
 		<Flex gap="20" align="start">
 			<Card withOutsideShadow className={styles.main}>
 				<Flex direction="column" gap="20">
-					<BackHeader>
-						<DeleteResourceButton resourceId={resource.id} isDetailPage disabled={isDisabled} />
-						<ResourceEditButton resourceId={resource.id} isDisabled={isDisabled} />
-					</BackHeader>
+					<HeaderAdminPageDetailCard onDelete={handleDeleteResource} isDisabled={isDisabled} />
 					<ResourceHeader
 						name={name}
 						description={description}

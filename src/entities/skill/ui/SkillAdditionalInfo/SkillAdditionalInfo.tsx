@@ -20,7 +20,7 @@ export interface SkillAdditionalInfoProps {
 	updatedAt: string | null;
 	createdAt: string;
 	route: string;
-	createdBy: Author;
+	createdBy?: Author | null;
 	className?: string;
 }
 

@@ -13,7 +13,7 @@ import styles from './ResourceHeader.module.css';
 interface ResourceHeaderProps {
 	name: string;
 	description: string;
-	createdBy?: Author;
+	createdBy?: Author | null;
 	keywords: string[];
 	skills: Skill[];
 	specializations: Specialization[];

@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { Collections, i18Namespace } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 
 import { useGetCollectionByIdQuery } from '@/entities/collection';
-import { getIsAuthor, getProfileId, getUserId } from '@/entities/profile';
+import { getProfileId, useCanManageAdminEntity } from '@/entities/profile';
 import { useGetQuestionsListQuery } from '@/entities/question';
 import { useGetTasksListQuery } from '@/entities/task';
 
@@ -35,9 +34,8 @@ export const CollectionPage = () => {
 		},
 	);
 	const tasks = tasksResponse?.data ?? [];
-	const isAuthor = useSelector(getIsAuthor);
 	const profileId = useAppSelector(getProfileId);
-	const userId = useAppSelector(getUserId);
+	const canManage = useCanManageAdminEntity({ ownerId: collection?.createdBy?.id });
 	const {
 		data: response,
 		isLoading: isLoadingList,
@@ -64,7 +62,7 @@ export const CollectionPage = () => {
 		error: { onClick: () => refetch() },
 	};
 
-	const isDisabled = isAuthor && collection?.createdBy?.id !== userId;
+	const isDisabled = !canManage;
 	const content = collection ? (
 		<CollectionPageContent
 			collection={collection}

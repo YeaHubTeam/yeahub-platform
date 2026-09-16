@@ -1,24 +1,29 @@
 import { useTranslation } from 'react-i18next';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { i18Namespace, Translation, ROUTES, Skills } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { BackButton } from '@/shared/ui/BackButton';
-import { Button } from '@/shared/ui/Button';
-import { Flex } from '@/shared/ui/Flex';
+import { i18Namespace, Skills } from '@/shared/config';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
+import { useCanManageAdminEntity } from '@/entities/profile';
 import { SkillCard, useGetSkillByIdQuery } from '@/entities/skill';
 
-import { DeleteSkillButton } from '@/features/skill/deleteSkill';
+import { useDeleteSkillMutation } from '@/features/skill/deleteSkill';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 const SkillDetailPage = () => {
-	const { t } = useTranslation(i18Namespace.translation);
 	const { t: tSkill } = useTranslation(i18Namespace.skill);
 	const { skillId } = useParams<{ skillId: string }>();
 
 	const { data: skill, isLoading, isError, refetch } = useGetSkillByIdQuery({ skillId: skillId! });
+	const [deleteSkill] = useDeleteSkillMutation();
+	const canManage = useCanManageAdminEntity({ ownerId: skill?.createdBy?.id });
+
+	const handleDeleteSkill = () => {
+		if (skill) {
+			void deleteSkill(skill.id);
+		}
+	};
 
 	const isSkillEmpty = !skill || Object.keys(skill).length === 0;
 
@@ -36,16 +41,7 @@ const SkillDetailPage = () => {
 
 	const content = !isSkillEmpty ? (
 		<>
-			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
-				<BackButton />
-
-				<Flex gap="16">
-					<DeleteSkillButton skillId={skill.id} isDetailPage />
-					<NavLink to={route(ROUTES.admin.skills.edit.page, skill.id)}>
-						<Button>{t(Translation.EDIT)}</Button>
-					</NavLink>
-				</Flex>
-			</Flex>
+			<HeaderAdminPageDetailCard onDelete={handleDeleteSkill} isDisabled={!canManage} />
 			<SkillCard skill={skill} />
 		</>
 	) : null;

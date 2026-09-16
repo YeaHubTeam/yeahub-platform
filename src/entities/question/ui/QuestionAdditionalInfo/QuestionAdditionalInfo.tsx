@@ -27,7 +27,7 @@ export interface QuestionAdditionalInfoProps {
 	questionSkills: Skill[];
 	questionSpecializations: Specialization[];
 	questionTopics?: Topic[];
-	createdBy: Author;
+	createdBy?: Author | null;
 	className?: string;
 	route?: string;
 	showAuthor?: boolean;

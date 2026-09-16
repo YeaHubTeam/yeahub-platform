@@ -21,7 +21,7 @@ export interface Question {
 	complexity: number;
 	createdAt: string;
 	updatedAt: string;
-	createdBy: Author;
+	createdBy?: Author | null;
 	updatedBy: Author | null;
 	questionSpecializations: Specialization[];
 	questionSkills: Skill[];
