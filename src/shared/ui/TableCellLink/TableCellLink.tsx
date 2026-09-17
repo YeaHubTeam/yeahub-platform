@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { Text } from '@/shared/ui/Text';
 
-interface TableCellLinkProps {
+export interface TableCellLinkProps {
 	to: string;
 	text: string;
 }
