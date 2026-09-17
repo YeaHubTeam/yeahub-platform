@@ -1,0 +1,32 @@
+.header {
+  flex-direction: row;
+}
+
+.container {
+  width: 50%;
+}
+
+.skills {
+  padding: 30px 20px;
+  width: 48%;
+  box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
+  border-radius: 20px;
+  background-color: var(--color-white-900);
+}
+
+.button {
+  margin-right: auto;
+  line-height: 130%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+}
+
+@media screen and (width < 768px) {
+  .skills {
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+}

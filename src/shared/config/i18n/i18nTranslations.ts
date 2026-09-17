@@ -1693,6 +1693,20 @@ export enum Vacancies {
 	EMPLOYMENT_TYPE = 'employmentType',
 	SALARY = 'salary',
 	ENGLISH_LEVEL = 'englishLevel',
+	KEYWORDS_TITLE = 'keywords.title',
+	VACANCY_PROFILE_TITLE = 'vacancy_profile.title',
+	VACANCY_PROFILE_DESCRIPTION = 'vacancy_profile.description',
+	VACANCY_PROFILE_UPDATED_AT = 'vacancy_profile.updated_at',
+	VACANCY_PROFILE_ALL_INDUSTRIES = 'vacancy_profile.all_industries',
+	VACANCY_PROFILE_DAILY_UPDATE = 'vacancy_profile.daily_update',
+	VACANCY_PROFILE_ANALYZED_VACANCIES = 'vacancy_profile.analyzed_vacancies',
+	VACANCY_PROFILE_TOP_SKILLS = 'vacancy_profile.top_skills',
+	VACANCY_PROFILE_FREQUENT_TASKS = 'vacancy_profile.frequent_tasks',
+	VACANCY_PROFILE_KEYWORDS = 'vacancy_profile.keywords',
+	VACANCY_PROFILE_PRIORITY = 'vacancy_profile.priority',
+	VACANCY_PROFILE_SHOW_ALL = 'vacancy_profile.show_all',
+	VACANCY_PROFILE_HIDE = 'vacancy_profile.hide',
+	VACANCY_PROFILE_ALL_VACANCIES = 'vacancy_profile.all_vacancies',
 }
 
 export enum VacanciesMarket {
