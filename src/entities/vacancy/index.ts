@@ -1,5 +1,8 @@
 export { useGetVacanciesListQuery } from './api/vacancyApi';
-export { useGetVacancyMarketOverviewQuery } from './api/vacancyMarketApi';
+export {
+	useGetVacancyMarketOverviewQuery,
+	useGetVacancyMarketByIdQuery,
+} from './api/vacancyMarketApi';
 export type {
 	GetVacanciesListResponse,
 	Vacancy,
@@ -46,3 +49,6 @@ export { ChooseEnglishLevel } from './ui/ChooseEnglishLevel/ChooseEnglishLevel';
 export { ChooseEnglishLevelSkeleton } from './ui/ChooseEnglishLevel/ChooseEnglishLevel.skeleton';
 
 export { VacancyKeywordsList } from './ui/VacancyKeywordsList/VacancyKeywordsList';
+
+export { VacancyMarketProgressCard } from './ui/VacancyMarketProgressCard/VacancyMarketProgressCard';
+export { VacancyMarketProgressGauge } from './ui/VacancyMarketProgressGauge/VacancyMarketProgressGauge';
