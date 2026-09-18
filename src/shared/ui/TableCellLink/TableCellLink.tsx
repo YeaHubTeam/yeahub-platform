@@ -10,7 +10,7 @@ export interface TableCellLinkProps {
 export const TableCellLink = ({ to, text }: TableCellLinkProps) => {
 	return (
 		<Link to={to}>
-			<Text variant="body3-accent" color="purple-700">
+			<Text dataTestId="table-cell-link-text" variant="body3-accent" color="purple-700">
 				{text}
 			</Text>
 		</Link>
