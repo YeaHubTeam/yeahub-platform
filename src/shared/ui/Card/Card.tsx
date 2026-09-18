@@ -33,6 +33,7 @@ export interface CardProps {
 	dataTestId?: string;
 	size?: CardSize;
 	headerAction?: ReactNode;
+	titleComponent?: ReactNode;
 }
 
 interface ExpandIconProps {
@@ -91,6 +92,7 @@ export const Card = ({
 	dataTestId = 'Card',
 	size = 'medium',
 	headerAction,
+	titleComponent,
 }: CardProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	const [isExpand, setIsExpand] = useState(false);
@@ -144,7 +146,7 @@ export const Card = ({
 				height: isExpand ? `${contentHeight + 120}px` : '',
 			}}
 		>
-			{(title || actionRoute) && (
+			{(title || actionRoute || titleComponent) && (
 				<div
 					className={classNames(styles['card-header'], {
 						[styles['card-header-title-center']]: isTitleCenter,
@@ -152,6 +154,7 @@ export const Card = ({
 					data-testid="Card_Header"
 				>
 					{title && <Text variant="body5-accent">{title}</Text>}
+					{titleComponent ? titleComponent : null}
 					{actionRoute ? (
 						<Link
 							to={actionRoute}

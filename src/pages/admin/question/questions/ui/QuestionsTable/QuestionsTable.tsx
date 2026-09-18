@@ -84,7 +84,7 @@ export const QuestionsTable = ({
 			width: '15%',
 			cell: ({ row }) => (
 				<TableCellEntityList
-					url={ROUTES.admin.skills.detail.page}
+					url={ROUTES.admin.skills.details.page}
 					items={row.skills}
 					showCount={SKILL_SHOW_COUNT}
 				/>
