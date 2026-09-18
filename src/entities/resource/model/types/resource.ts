@@ -14,7 +14,7 @@ export interface Resource {
 	imageSrc: string;
 	specializations: Specialization[];
 	skills: Skill[];
-	createdBy: Author;
+	createdBy?: Author | null;
 	createdAt: string;
 	updatedAt: string;
 	iconBase64?: string | null;

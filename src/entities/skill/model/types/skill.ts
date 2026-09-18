@@ -11,7 +11,7 @@ export interface Skill {
 	createdAt: string;
 	updatedAt: string | null;
 	specializations: Specialization[];
-	createdBy: Author;
+	createdBy?: Author | null;
 }
 
 export type GetSkillsListParamsRequest = {

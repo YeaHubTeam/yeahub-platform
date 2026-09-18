@@ -1,15 +1,9 @@
-import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
-
-import { i18Namespace, ROUTES, Translation } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
-import { Button } from '@/shared/ui/Button';
-import { Tooltip } from '@/shared/ui/Tooltip';
+import { Translation } from '@/shared/config';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
 import { type Company, CompanyCard } from '@/entities/company';
 
-import { DeleteCompanyButton } from '@/features/company/deleteCompany';
+import { useDeleteCompanyMutation } from '@/features/company/deleteCompany';
 
 interface CompanyDetailPageContentProps {
 	company: Company;
@@ -17,23 +11,19 @@ interface CompanyDetailPageContentProps {
 }
 
 const CompanyDetailPageContent = ({ company, isDisabled }: CompanyDetailPageContentProps) => {
-	const { t } = useTranslation(i18Namespace.translation);
+	const [deleteCompany] = useDeleteCompanyMutation();
+
+	const handleDeleteCompany = () => {
+		void deleteCompany(company.id);
+	};
 
 	return (
 		<>
-			<BackHeader>
-				<DeleteCompanyButton companyId={company.id} isDetailPage disabled={isDisabled} />
-				<Tooltip
-					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
-					color="red"
-					placement="bottom-start"
-					shouldShowTooltip={isDisabled}
-				>
-					<NavLink to={route(ROUTES.admin.companies.edit.page, company.id)}>
-						<Button disabled={isDisabled}>{t(Translation.EDIT)}</Button>
-					</NavLink>
-				</Tooltip>
-			</BackHeader>
+			<HeaderAdminPageDetailCard
+				onDelete={handleDeleteCompany}
+				isDisabled={isDisabled}
+				deleteButtonProps={{ tooltipTitle: Translation.TOOLTIP_COMPANY_DISABLED_INFO }}
+			/>
 			<CompanyCard company={company} />
 		</>
 	);

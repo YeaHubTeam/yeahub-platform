@@ -59,7 +59,7 @@ export const ResourcesAllTab = () => {
 		if (!resources?.data) return [];
 		return resources.data.map((resource) => ({
 			...resource,
-			disabled: isResourceDisabled({ isAuthor, userId, createdById: resource?.createdBy.id }),
+			disabled: isResourceDisabled({ isAuthor, userId, createdById: resource.createdBy?.id }),
 		}));
 	}, [resources, userId, isAuthor]);
 

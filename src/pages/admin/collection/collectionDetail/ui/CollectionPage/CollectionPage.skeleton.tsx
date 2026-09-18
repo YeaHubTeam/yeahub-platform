@@ -1,10 +1,7 @@
 import classNames from 'classnames';
 
 import { useScreenSize } from '@/shared/libs';
-import { BackHeaderSkeleton } from '@/shared/ui/BackHeader';
-import { ButtonSkeleton } from '@/shared/ui/Button';
-
-import { DeleteQuestionButtonSkeleton } from '@/features/question/deleteQuestion';
+import { HeaderAdminPageDetailCardSkeleton } from '@/shared/ui/HeaderAdminPageDetailCard';
 
 import {
 	AdditionalInfoSkeleton,
@@ -21,10 +18,7 @@ export const CollectionPageSkeleton = () => {
 	if (isSmallScreen) {
 		return (
 			<>
-				<BackHeaderSkeleton>
-					<DeleteQuestionButtonSkeleton isDetailPage />
-					<ButtonSkeleton width={180} />
-				</BackHeaderSkeleton>
+				<HeaderAdminPageDetailCardSkeleton />
 				<section className={classNames(styles.wrapper, styles.mobile)}>
 					<CollectionHeaderSkeleton />
 					<CollectionBodySkeleton />
@@ -36,10 +30,7 @@ export const CollectionPageSkeleton = () => {
 
 	return (
 		<>
-			<BackHeaderSkeleton>
-				<DeleteQuestionButtonSkeleton isDetailPage />
-				<ButtonSkeleton width={180} />
-			</BackHeaderSkeleton>
+			<HeaderAdminPageDetailCardSkeleton />
 			<section className={styles.wrapper}>
 				<div className={styles.main}>
 					<CollectionHeaderSkeleton />

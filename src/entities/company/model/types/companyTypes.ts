@@ -11,7 +11,7 @@ export interface Company {
 	kpp?: string;
 	createdAt: string;
 	updatedAt: string;
-	createdBy: Author;
+	createdBy?: Author | null;
 }
 
 export type GetCompanyByIdResponse = Company;

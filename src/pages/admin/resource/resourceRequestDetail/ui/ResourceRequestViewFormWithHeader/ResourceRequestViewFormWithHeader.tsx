@@ -1,13 +1,11 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { Resources, Translation, i18Namespace, ROUTES } from '@/shared/config';
-import { route } from '@/shared/libs';
-import { BackButton } from '@/shared/ui/BackButton';
-import { Button } from '@/shared/ui/Button';
+import { Resources, i18Namespace, ROUTES } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 import { Text } from '@/shared/ui/Text';
 
 import { ResourceForm, ResourceRequestStatusChip } from '@/entities/resource';
@@ -20,24 +18,17 @@ import styles from './ResourceRequestViewFormWithHeader.module.css';
 export const ResourceRequestViewFormWithHeader = () => {
 	const { t } = useTranslation([i18Namespace.resources, i18Namespace.translation]);
 	const { resourceId } = useParams<{ resourceId: string }>();
-	const navigate = useNavigate();
 
 	const { watch } = useFormContext();
 
-	const handleClickNavigation = () => {
-		navigate(route(ROUTES.admin.resources.requests.edit.page, resourceId || ''));
-	};
 	const status = watch('status');
 	return (
 		<Flex componentType="main" gap="24" className={styles.wrapper}>
-			<Flex className={styles.back} justify="between">
-				<BackButton />
-				{status === 'pending' && (
-					<Button size="large" className={styles['edit-button']} onClick={handleClickNavigation}>
-						{t(Translation.EDIT, { ns: 'translation' })}
-					</Button>
-				)}
-			</Flex>
+			<HeaderAdminPageDetailCard
+				entity={ROUTES.admin.resources.requests}
+				canDelete={false}
+				canEdit={status === 'pending'}
+			/>
 			<Card className={styles.content}>
 				<Flex direction="column" gap="28">
 					<Flex justify="between">

@@ -26,7 +26,7 @@ export interface Collection {
 	company: Company;
 	companyId?: string;
 	createdById?: string;
-	createdBy: Author;
+	createdBy?: Author | null;
 	disabled?: boolean;
 }
 

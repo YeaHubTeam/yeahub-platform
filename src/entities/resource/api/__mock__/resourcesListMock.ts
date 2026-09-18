@@ -37,7 +37,7 @@ export const resourcesListMock = http.get<
 
 	const filteredData = resourcesMock.data.filter((resource) => {
 		const hasName = name ? resource.name.toLowerCase().includes(name.toLowerCase()) : true;
-		const hasAuthor = authorId ? resource.createdBy.id === authorId : true;
+		const hasAuthor = authorId ? resource.createdBy?.id === authorId : true;
 		const hasTypes = types.length ? types.includes(resource.type.code) : true;
 		const hasSpecialization = specializations.length
 			? specializations.some((id) => resource.specializations?.some((s) => s.id === id))

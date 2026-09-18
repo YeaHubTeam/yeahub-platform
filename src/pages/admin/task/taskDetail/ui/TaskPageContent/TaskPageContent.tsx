@@ -2,14 +2,13 @@ import React from 'react';
 
 import { ROUTES } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
-import { BackHeader } from '@/shared/ui/BackHeader';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { HeaderAdminPageDetailCard } from '@/shared/ui/HeaderAdminPageDetailCard';
 
 import { Task } from '@/entities/task';
 
-import { DeleteTaskButton } from '@/features/task/deleteTask';
-import { TaskEditButton } from '@/features/task/editTask';
+import { useDeleteTaskMutation } from '@/features/task/deleteTask';
 
 import { TaskAdditionalInfo } from '../TaskAdditionalInfo/TaskAdditionalInfo';
 import { TaskBody } from '../TaskBody/TaskBody';
@@ -23,13 +22,15 @@ interface TaskPageContentProps {
 
 export const TaskPageContent = ({ task }: TaskPageContentProps) => {
 	const { isMobile, isTablet } = useScreenSize();
+	const [deleteTask] = useDeleteTaskMutation();
+
+	const handleDeleteTask = () => {
+		void deleteTask(task.id);
+	};
 
 	return (
 		<>
-			<BackHeader>
-				<DeleteTaskButton taskId={task.id} isDetailPage />
-				<TaskEditButton taskId={task.id} />
-			</BackHeader>
+			<HeaderAdminPageDetailCard onDelete={handleDeleteTask} />
 			<Flex gap="20" align="start">
 				<Card withOutsideShadow className={styles.main}>
 					<Flex direction="column" gap="20" maxWidth>

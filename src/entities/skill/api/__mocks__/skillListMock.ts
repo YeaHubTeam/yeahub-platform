@@ -30,7 +30,7 @@ export const skillListMock = http.get<
 					)
 			: true;
 
-		const authorMatch = authorId ? skill.createdBy.id === authorId : true;
+		const authorMatch = authorId ? skill.createdBy?.id === authorId : true;
 
 		const titleMatch = title ? skill.title.toLowerCase().includes(title.toLowerCase()) : true;
 

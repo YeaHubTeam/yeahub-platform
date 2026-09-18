@@ -1,10 +1,9 @@
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useAppSelector } from '@/shared/libs';
 import { Stub } from '@/shared/ui/Stub';
 
-import { getIsAdmin, getIsAuthor, getUserId } from '@/entities/profile';
+import { useCanManageAdminEntity } from '@/entities/profile';
 
 interface EditAccessGuardProps {
 	authorId?: string | null;
@@ -24,10 +23,7 @@ export const EditAccessGuard = ({
 	redirectTo,
 }: EditAccessGuardProps): ReactNode => {
 	const navigate = useNavigate();
-	const isAdmin = useAppSelector(getIsAdmin);
-	const isAuthor = useAppSelector(getIsAuthor);
-	const userId = useAppSelector(getUserId);
-	const canEdit = isAdmin || (isAuthor && userId === authorId);
+	const canEdit = useCanManageAdminEntity({ ownerId: authorId });
 
 	if (canEdit) return children;
 

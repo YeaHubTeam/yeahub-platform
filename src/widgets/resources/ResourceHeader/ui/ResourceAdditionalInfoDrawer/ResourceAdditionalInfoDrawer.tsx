@@ -15,7 +15,7 @@ import { Specialization } from '@/entities/specialization';
 import styles from './ResourceAdditionalInfoDrawer.module.css';
 
 interface ResourceAdditionalInfoDrawerProps {
-	createdBy?: Author;
+	createdBy?: Author | null;
 	keywords: string[];
 	skills: Skill[];
 	specializations: Specialization[];
