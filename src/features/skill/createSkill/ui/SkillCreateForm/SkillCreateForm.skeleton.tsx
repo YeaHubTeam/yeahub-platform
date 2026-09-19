@@ -16,7 +16,7 @@ export const SkillCreateFormSkeleton = () => {
 			</Flex>
 
 			<CardSkeleton className={styles.content}>
-				<SkillFormSkeleton />
+				<SkillFormSkeleton mode="create" />
 			</CardSkeleton>
 		</Flex>
 	);
