@@ -61,6 +61,7 @@ const SkeletonGenerator = () => {
 	);
 	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
 	const isAdminTopicsEditPage = matchPath(ROUTES.admin.topics.edit.page, location.pathname);
+	const isAdminSkillEditPage = matchPath(ROUTES.admin.skills.edit.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -92,6 +93,10 @@ const SkeletonGenerator = () => {
 
 	if (isAdminTopicsEditPage) {
 		return <TopicEditPageSkeleton />;
+	}
+
+	if (isAdminSkillEditPage) {
+		return <SkillEditPageSkeleton />;
 	}
 
 	switch (location.pathname) {
@@ -127,8 +132,6 @@ const SkeletonGenerator = () => {
 			return <SkillsPageSkeleton />;
 		case ROUTES.admin.skills.create.page:
 			return <SkillCreatePageSkeleton />;
-		case ROUTES.admin.skills.edit.page:
-			return <SkillEditPageSkeleton />;
 		case ROUTES.admin.users.page:
 			return <UsersTablePageSkeleton />;
 		case ROUTES.admin.collections.page:
