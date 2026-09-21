@@ -51,7 +51,8 @@
 
 .actions-column {
   padding: 0;
-  width: auto;
+  width: fit-content;
+  white-space: nowrap;
 }
 
 .sort-button {
