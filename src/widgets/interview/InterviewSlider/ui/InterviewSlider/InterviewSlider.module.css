@@ -77,7 +77,7 @@
 
   .image {
     width: 100%;
-    min-width: none;
+    min-width: unset;
     max-width: none;
   }
 

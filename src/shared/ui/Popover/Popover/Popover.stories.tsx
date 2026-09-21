@@ -1,5 +1,5 @@
-import { StoryFn, Meta } from '@storybook/react';
-import React, { useState, useEffect } from 'react';
+import { StoryFn, Meta } from '@storybook/react-webpack5';
+import { useState, useEffect } from 'react';
 
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
@@ -59,7 +59,6 @@ export default {
 			description: 'Placement of the popover',
 		},
 		onClickOutside: {
-			action: 'onClickOutside',
 			description: 'Callback for click outside the popover',
 		},
 		isMobile: {

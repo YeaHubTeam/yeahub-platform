@@ -1,6 +1,9 @@
 import { RefObject, useEffect, useState } from 'react';
 
-export const useTruncation = (ref: RefObject<HTMLElement>, variant: 'row' | 'column'): boolean => {
+export const useTruncation = (
+	ref: RefObject<HTMLElement | null>,
+	variant: 'row' | 'column',
+): boolean => {
 	const [isTruncated, setIsTruncated] = useState(false);
 
 	const checkTruncation = (): void => {
