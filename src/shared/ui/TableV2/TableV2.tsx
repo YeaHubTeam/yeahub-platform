@@ -1,7 +1,10 @@
+import classNames from 'classnames';
+
 import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
 import styles from './TableV2.module.css';
 import type { TableRowId, TableV2Props } from './types';
+import { useHorizontalScrollEdges } from './useHorizontalScrollEdges';
 import { useTableSelection } from './useTableSelection';
 
 const getDefaultRowId = <T,>(row: T): TableRowId => {
@@ -45,7 +48,21 @@ export const TableV2 = <
 		isRowSelectionDisabled,
 	});
 
-	return (
+	const hasPinnedColumns = selectionEnabled || hasRowActions;
+	const { scrollRef, leftSentinelRef, rightSentinelRef, leftShadowRef, rightShadowRef } =
+		useHorizontalScrollEdges(hasPinnedColumns);
+	const selectionCellClassName = classNames(
+		styles['selection-column'],
+		styles.pinned,
+		styles['pinned-left'],
+	);
+	const actionsCellClassName = classNames(
+		styles['actions-column'],
+		styles.pinned,
+		styles['pinned-right'],
+	);
+
+	const table = (
 		<table className={styles.table}>
 			{(selectionEnabled || hasRowActions) && (
 				<colgroup>
@@ -64,10 +81,10 @@ export const TableV2 = <
 				allRowsSelected={allRowsSelected}
 				selectionIntermediate={selectionIntermediate}
 				selectionDisabled={selectionDisabled}
-				selectionCellClassName={styles['selection-column']}
+				selectionCellClassName={selectionCellClassName}
 				onToggleAllRows={toggleAllRows}
 				hasRowActions={hasRowActions}
-				actionsCellClassName={styles['actions-column']}
+				actionsCellClassName={actionsCellClassName}
 				sorting={sorting}
 				onSortingChange={onSortingChange}
 				isFetching={tableState?.isFetching}
@@ -81,15 +98,39 @@ export const TableV2 = <
 				cellClassName={styles.cell}
 				selectionEnabled={selectionEnabled}
 				selectedIds={selectedIds}
-				selectionCellClassName={styles['selection-column']}
+				selectionCellClassName={selectionCellClassName}
 				isRowDisabled={isRowDisabled}
 				onToggleRow={toggleRow}
 				hasRowActions={hasRowActions}
-				actionsCellClassName={styles['actions-column']}
+				actionsCellClassName={actionsCellClassName}
 				entity={entity}
 				actions={actions}
 				onDelete={onDelete}
 			/>
 		</table>
+	);
+
+	return (
+		<div ref={scrollRef} className={styles.scroll}>
+			{hasPinnedColumns ? (
+				<div className={styles.canvas}>
+					{selectionEnabled && (
+						<>
+							<div ref={leftSentinelRef} className={styles['sentinel-left']} aria-hidden />
+							<div ref={leftShadowRef} className={styles['shadow-left']} aria-hidden />
+						</>
+					)}
+					{table}
+					{hasRowActions && (
+						<>
+							<div ref={rightShadowRef} className={styles['shadow-right']} aria-hidden />
+							<div ref={rightSentinelRef} className={styles['sentinel-right']} aria-hidden />
+						</>
+					)}
+				</div>
+			) : (
+				table
+			)}
+		</div>
 	);
 };

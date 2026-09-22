@@ -70,7 +70,7 @@ export const QuestionsTable = ({
 		{
 			id: 'title',
 			header: t(Questions.TITLE_SHORT),
-			width: 'auto',
+			width: '500px',
 			enableSorting: true,
 			cell: ({ row, value }) => (
 				<TableCellLink
@@ -82,7 +82,7 @@ export const QuestionsTable = ({
 		{
 			id: 'specializations',
 			header: t(Questions.SPECIALIZATION_TITLE),
-			width: '20%',
+			width: '300px',
 			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
@@ -94,7 +94,7 @@ export const QuestionsTable = ({
 		{
 			id: 'skills',
 			header: t(Questions.SKILLS_TITLE),
-			width: '15%',
+			width: '200px',
 			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.skills.details.page}
@@ -106,7 +106,7 @@ export const QuestionsTable = ({
 		{
 			id: 'topics',
 			header: t(Questions.TOPIC_TITLE),
-			width: '15%',
+			width: '200px',
 			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.topics.details.page}
@@ -118,19 +118,19 @@ export const QuestionsTable = ({
 		{
 			id: 'rate',
 			header: t(Questions.RATE_TITLE_SHORT),
-			width: '5%',
+			width: '150px',
 			enableSorting: true,
 		},
 		{
 			id: 'complexity',
 			header: t(Questions.COMPLEXITY_TITLE_SHORT),
-			width: '5%',
+			width: '150px',
 			enableSorting: true,
 		},
 		{
 			id: 'author',
 			header: t(Questions.AUTHOR),
-			width: '10%',
+			width: '200px',
 		},
 	];
 

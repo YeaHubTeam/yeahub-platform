@@ -67,7 +67,7 @@ export const TableHeader = <T, TSortingColumnId extends Extract<keyof T, string>
 		<thead className={headClassName}>
 			<tr>
 				{selectionEnabled && (
-					<th scope="col" className={selectionCellClassName}>
+					<th scope="col" data-pinned="left" className={selectionCellClassName}>
 						<Checkbox
 							checked={allRowsSelected}
 							isIntermediate={selectionIntermediate}
@@ -103,7 +103,14 @@ export const TableHeader = <T, TSortingColumnId extends Extract<keyof T, string>
 						</th>
 					);
 				})}
-				{hasRowActions && <th scope="col" className={actionsCellClassName} aria-label="Действия" />}
+				{hasRowActions && (
+					<th
+						scope="col"
+						data-pinned="right"
+						className={actionsCellClassName}
+						aria-label="Действия"
+					/>
+				)}
 			</tr>
 		</thead>
 	);
