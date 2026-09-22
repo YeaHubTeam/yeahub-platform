@@ -20,6 +20,7 @@ export interface TextProps {
 	isLimitSize?: boolean;
 	isNoWrap?: boolean;
 	dataTestId?: string;
+	isBreakLongWord?: boolean;
 }
 export const variantToTagMapping: Record<TextVariant, keyof JSX.IntrinsicElements> = {
 	head1: 'h1',
@@ -67,6 +68,7 @@ export const Text = forwardRef(
 			isLimitSize,
 			isNoWrap,
 			dataTestId,
+			isBreakLongWord,
 		}: TextProps,
 		ref,
 	) => {
@@ -82,7 +84,11 @@ export const Text = forwardRef(
 					styles[`text-${color}`],
 					maxRows && styles[`text-rows-${maxRows}`],
 					className,
-					{ [styles.limited]: isLimitSize, [styles['no-wrap']]: isNoWrap },
+					{
+						[styles.limited]: isLimitSize,
+						[styles['no-wrap']]: isNoWrap,
+						[styles['break-long-word']]: isBreakLongWord,
+					},
 				)}
 				style={{ width }}
 			>

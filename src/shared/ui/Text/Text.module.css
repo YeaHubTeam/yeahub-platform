@@ -333,3 +333,7 @@
 .no-wrap {
   text-wrap: nowrap;
 }
+
+.break-long-word {
+	overflow-wrap: anywhere;
+}

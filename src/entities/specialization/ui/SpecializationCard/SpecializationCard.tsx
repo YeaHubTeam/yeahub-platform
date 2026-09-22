@@ -41,7 +41,7 @@ export const SpecializationCard = ({ specialization }: SpecializationCardProps) 
 						<Text variant="body5-accent" color="black-800">
 							{t(Specializations.DESCRIPTION_FULL)}
 						</Text>
-						<Text variant="body3-accent" color="black-800">
+						<Text variant="body3-accent" color="black-800" isBreakLongWord>
 							{specialization.description}
 						</Text>
 					</Flex>
