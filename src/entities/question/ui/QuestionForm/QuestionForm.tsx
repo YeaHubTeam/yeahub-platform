@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Questions } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputRange } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { KeywordSelect } from '@/shared/ui/KeywordSelect';
-import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 import { TextEditor } from '@/shared/ui/TextEditor';
@@ -86,20 +86,22 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 					</FormControl>
 				</FormField>
 
-				<FormField label={t(Questions.RATE_TITLE)} description={t(Questions.RATE_LABEL)}>
-					<FormControl name="rate" control={control} className={styles.rate}>
-						{(field) => <Range min={1} max={5} step={1} hasScale {...field} />}
-					</FormControl>
-				</FormField>
+				<FormInputRange
+					name="rate"
+					control={control}
+					label={t(Questions.RATE_TITLE)}
+					description={t(Questions.RATE_LABEL)}
+					hasScale
+				/>
 
-				<FormField
+				<FormInputRange
+					name="complexity"
+					control={control}
 					label={t(Questions.COMPLEXITY_TITLE)}
 					description={t(Questions.COMPLEXITY_LABEL)}
-				>
-					<FormControl name="complexity" control={control} className={styles.rate}>
-						{(field) => <Range min={1} max={10} step={1} hasScale {...field} />}
-					</FormControl>
-				</FormField>
+					max={10}
+					hasScale
+				/>
 
 				<FormField label={t(Questions.STATUS_TITLE)} description={t(Questions.STATUS_LABEL)}>
 					<FormControl name="status" control={control}>

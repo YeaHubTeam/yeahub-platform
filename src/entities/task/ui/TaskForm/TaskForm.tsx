@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Tasks } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputRange } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { Radio } from '@/shared/ui/Radio';
-import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextEditor } from '@/shared/ui/TextEditor';
 
@@ -82,14 +82,13 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 						)}
 					</FormControl>
 				</FormField>
-				<FormField
+				<FormInputRange
+					name="difficulty"
+					control={control}
 					description={t(Tasks.DESCRIPTION_SUBTITLE)}
 					label={t(Tasks.DIFFICULTY_TITLE_SHORT)}
-				>
-					<FormControl name="difficulty" control={control} className={styles.difficulty}>
-						{(field) => <Range min={1} max={5} step={1} hasScale {...field} />}
-					</FormControl>
-				</FormField>
+					hasScale
+				/>
 				<FormField
 					description={t(Tasks.TASK_STRUCTURES_SUBTITLE)}
 					label={t(Tasks.TASK_STRUCTURES_TITLE)}
