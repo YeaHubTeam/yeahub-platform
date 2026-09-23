@@ -76,7 +76,7 @@ export const UsersTablePage = () => {
 				limit: users?.limit || 0,
 				total: users?.total || 0,
 			}}
-			content={<UsersTable users={users?.data} />}
+			content={<UsersTable users={userData} />}
 		>
 			{({ content, pagination }) => (
 				<Flex componentType="main" direction="column" gap="24">
