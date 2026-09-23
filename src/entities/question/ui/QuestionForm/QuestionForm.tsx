@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Questions } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescription } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
@@ -67,24 +68,13 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 					</FormControl>
 				</FormField>
 
-				<FormField
+				<FormInputDescription
+					name="description"
+					control={control}
 					label={t(Questions.DESCRIPTION_TITLE)}
 					description={t(Questions.DESCRIPTION_LABEL)}
-					direction="column"
-				>
-					<FormControl name="description" control={control}>
-						{(field, hasError) => (
-							<TextArea
-								id="description"
-								className={styles.description}
-								state={hasError ? 'error' : 'default'}
-								placeholder={t(Questions.DESCRIPTION_PLACEHOLDER)}
-								limit={1000}
-								{...field}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+					placeholder={t(Questions.DESCRIPTION_PLACEHOLDER)}
+				/>
 
 				<FormField label={t(Questions.RATE_TITLE)} description={t(Questions.RATE_LABEL)}>
 					<FormControl name="rate" control={control} className={styles.rate}>
