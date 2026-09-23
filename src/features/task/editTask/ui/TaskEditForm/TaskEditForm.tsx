@@ -3,6 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { Task, TaskForm } from '@/entities/task';
@@ -10,7 +11,6 @@ import { Task, TaskForm } from '@/entities/task';
 import { useEditTaskMutation } from '../../api/editTaskApi';
 import { taskEditSchema } from '../../lib/validation/taskEditSchema';
 import { EditTaskFormValues } from '../../model/types/taskEditTypes';
-import { TaskEditFormHeader } from '../TaskEditFormHeader/TaskEditFormHeader';
 
 import styles from './TaskEditForm.module.css';
 
@@ -46,17 +46,17 @@ export const TaskEditForm = ({ task }: TaskEditFormProps) => {
 	});
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
-	const [editTopicMutation] = useEditTaskMutation();
+	const [editTaskMutation, { isLoading }] = useEditTaskMutation();
 
-	const onEditTopic = async (data: EditTaskFormValues) => {
-		await editTopicMutation(data);
+	const onEditTask = async (data: EditTaskFormValues) => {
+		await editTaskMutation(data);
 	};
 
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<TaskEditFormHeader onSubmit={onEditTopic} />
+					<FormHeader<EditTaskFormValues> onSubmit={onEditTask} isLoading={isLoading} />
 					<Card className={styles.content}>
 						<TaskForm isEdit />
 					</Card>

@@ -3,6 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { Topic, TopicForm } from '@/entities/topic';
@@ -10,7 +11,6 @@ import { Topic, TopicForm } from '@/entities/topic';
 import { useEditTopicMutation } from '../../api/editTopicApi';
 import { topicEditSchema } from '../../lib/validation/topicEditSchema';
 import { EditTopicFormValues } from '../../model/types/topicEditTypes';
-import { TopicEditFormHeader } from '../TopicEditFormHeader/TopicEditFormHeader';
 
 import styles from './TopicEditForm.module.css';
 
@@ -34,17 +34,17 @@ export const TopicEditForm = ({ topic }: TopicEditFormProps) => {
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
-	const [editTopicMutation] = useEditTopicMutation();
+	const [editTopicMutation, { isLoading }] = useEditTopicMutation();
 
 	const onEditTopic = async (data: EditTopicFormValues) => {
-		editTopicMutation(data);
+		await editTopicMutation(data);
 	};
 
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<TopicEditFormHeader onSubmit={onEditTopic} />
+					<FormHeader<EditTopicFormValues> onSubmit={onEditTopic} isLoading={isLoading} />
 					<Card className={styles.content}>
 						<TopicForm isEdit />
 					</Card>
