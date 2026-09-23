@@ -3,7 +3,7 @@
   width: 246px;
 }
 
-.selected-questions {
+.selected-items {
   flex: 1;
 }
 
@@ -28,17 +28,8 @@
   min-width: 708px;
 }
 
-.drawer-content{
+.drawer-content {
   display: flex;
-}
-
-.question-card {
-  cursor: pointer;
-  padding: 16px;
-}
-
-.question-card-active{
-  background-color: var(--color-purple-300);
 }
 
 .column {
@@ -47,18 +38,9 @@
 }
 
 .column .add-button {
-  align-self: flex-end ;
+  align-self: flex-end;
 }
 
 .row {
   justify-content: space-between;
-}
-
-.question-button {
-  border: none;
-  background-color: inherit;
-}
-
-.input {
-  width: 100%;
 }

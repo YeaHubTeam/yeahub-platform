@@ -1,6 +1,7 @@
 import { Flex } from '@/shared/ui/Flex';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
+import { FormInputElementsSkeleton } from '@/shared/ui/FormInputElements';
 import { ImageLoaderWithoutCropperSkeleton } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { InputSkeleton } from '@/shared/ui/Input';
 import { KeywordInputSkeleton } from '@/shared/ui/KeywordInput';
@@ -10,9 +11,7 @@ import { TextSkeleton } from '@/shared/ui/Text';
 import { TextAreaSkeleton } from '@/shared/ui/TextArea';
 
 import { CompanySelectSkeleton } from '@/entities/company/@x/collection';
-import { ChooseQuestionsDrawerSkeleton } from '@/entities/question/@x/collection';
 import { SpecializationSelectSkeleton } from '@/entities/specialization/@x/collection';
-import { ChooseTasksDrawerSkeleton } from '@/entities/task/@x/collection';
 
 export const CollectionFormSkeleton = () => {
 	return (
@@ -64,11 +63,11 @@ export const CollectionFormSkeleton = () => {
 				</FormFieldSkeleton>
 
 				<FormControlSkeleton>
-					<ChooseQuestionsDrawerSkeleton />
+					<FormInputElementsSkeleton />
 				</FormControlSkeleton>
 
 				<FormControlSkeleton>
-					<ChooseTasksDrawerSkeleton />
+					<FormInputElementsSkeleton />
 				</FormControlSkeleton>
 			</Flex>
 		</>
