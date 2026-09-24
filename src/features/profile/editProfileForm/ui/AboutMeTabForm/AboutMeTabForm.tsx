@@ -3,9 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Profile } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
-import { FormControl } from '@/shared/ui/FormControl';
-import { FormField } from '@/shared/ui/FormField';
-import { TextEditor } from '@/shared/ui/TextEditor';
+import { FormInputEditor } from '@/shared/ui/Form';
 
 import { ProfileSchema } from '../../model/types/editProfileTypes';
 
@@ -17,21 +15,24 @@ export const AboutMeTabForm = () => {
 
 	return (
 		<Flex className={styles.container} gap="20">
-			<FormField description={t(Profile.ABOUT_ME_DESCRIPTION)} label={t(Profile.ABOUT_ME_TITLE)}>
-				<div className={styles['textarea-container']}>
-					<FormControl name="aboutMe" control={control}>
-						{(field) => (
-							<TextEditor
-								id="aboutMe"
-								isInline
-								data={field.value}
-								onChange={(value) => field.onChange(value)}
-								onBlur={field.onBlur}
-							/>
-						)}
-					</FormControl>
-				</div>
-			</FormField>
+			<FormInputEditor
+				fieldProps={{
+					label: t(Profile.ABOUT_ME_TITLE),
+					description: t(Profile.ABOUT_ME_DESCRIPTION),
+					direction: 'row',
+				}}
+				controlProps={{
+					name: 'aboutMe',
+					control,
+				}}
+				textEditorProps={{
+					id: 'aboutMe',
+					isInline: true,
+				}}
+				wrapperDivClassName={styles['textarea-container']}
+				onChange
+				onBlur
+			/>
 		</Flex>
 	);
 };
