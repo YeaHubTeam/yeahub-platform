@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 
+import { getColumnWidthStyle, getTableMinWidth } from './columnWidth';
 import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
 import styles from './TableV2.module.css';
@@ -49,6 +50,10 @@ export const TableV2 = <
 	});
 
 	const hasPinnedColumns = selectionEnabled || hasRowActions;
+	const tableMinWidth = getTableMinWidth(
+		columns.map((column) => column.width),
+		selectionEnabled,
+	);
 	const { scrollRef, leftSentinelRef, rightSentinelRef, leftShadowRef, rightShadowRef } =
 		useHorizontalScrollEdges(hasPinnedColumns);
 	const selectionCellClassName = classNames(
@@ -63,16 +68,14 @@ export const TableV2 = <
 	);
 
 	const table = (
-		<table className={styles.table}>
-			{(selectionEnabled || hasRowActions) && (
-				<colgroup>
-					{selectionEnabled && <col className={styles['selection-column']} />}
-					{columns.map((column) => (
-						<col key={column.id} style={column.width ? { width: column.width } : undefined} />
-					))}
-					{hasRowActions && <col className={styles['actions-column']} />}
-				</colgroup>
-			)}
+		<table className={styles.table} style={tableMinWidth ? { minWidth: tableMinWidth } : undefined}>
+			<colgroup>
+				{selectionEnabled && <col className={styles['selection-column']} />}
+				{columns.map((column) => (
+					<col key={column.id} style={getColumnWidthStyle(column.width)} />
+				))}
+				{hasRowActions && <col />}
+			</colgroup>
 			<TableHeader
 				columns={columns}
 				headClassName={styles.head}

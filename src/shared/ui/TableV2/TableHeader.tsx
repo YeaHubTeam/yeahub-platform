@@ -1,6 +1,7 @@
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Icon, type IconName } from '@/shared/ui/Icon';
 
+import { getCellWidthStyle } from './columnWidth';
 import { getNextSorting } from './getNextSorting';
 import type { SortingState, TableColumn } from './types';
 
@@ -84,6 +85,7 @@ export const TableHeader = <T, TSortingColumnId extends Extract<keyof T, string>
 						<th
 							key={column.id}
 							className={cellClassName}
+							style={getCellWidthStyle(column.width)}
 							scope="col"
 							aria-sort={getAriaSort(sortingAvailable, isSorted, sorting)}
 						>
