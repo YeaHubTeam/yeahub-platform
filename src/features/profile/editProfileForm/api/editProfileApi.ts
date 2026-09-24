@@ -72,17 +72,21 @@ export const editProfileApi = baseApi.injectEndpoints({
 				try {
 					await queryFulfilled;
 					if (oldImage) {
-						image
-							? toast.success(i18n.t(Translation.TOAST_AVATAR_UPDATE_SUCCESS))
-							: toast.success(i18n.t(Translation.TOAST_AVATAR_DELETE_SUCCESS));
+						if (image) {
+							toast.success(i18n.t(Translation.TOAST_AVATAR_UPDATE_SUCCESS));
+						} else {
+							toast.success(i18n.t(Translation.TOAST_AVATAR_DELETE_SUCCESS));
+						}
 					} else {
 						toast.success(i18n.t(Translation.TOAST_AVATAR_CREATE_SUCCESS));
 					}
 				} catch (err) {
 					if (oldImage) {
-						image
-							? toast.error(i18n.t(Translation.TOAST_AVATAR_UPDATE_FAILED))
-							: toast.error(i18n.t(Translation.TOAST_AVATAR_DELETE_FAILED));
+						if (image) {
+							toast.error(i18n.t(Translation.TOAST_AVATAR_UPDATE_FAILED));
+						} else {
+							toast.error(i18n.t(Translation.TOAST_AVATAR_DELETE_FAILED));
+						}
 					} else {
 						toast.error(i18n.t(Translation.TOAST_AVATAR_CREATE_FAILED));
 					}

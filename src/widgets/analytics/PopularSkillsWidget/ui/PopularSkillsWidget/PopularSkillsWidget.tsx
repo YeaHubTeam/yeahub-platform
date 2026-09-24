@@ -36,16 +36,14 @@ const PopularSkillsWidget = () => {
 			isActionPositionBottom
 		>
 			<Flex direction="column" gap="12">
-				{data?.data
-					.slice(0, 3)
-					.map((item) => (
-						<PopularSkillItem
-							key={item.id}
-							currentCount={item.frequencyStat}
-							totalCount={100}
-							title={item.skill.title}
-						/>
-					))}
+				{data?.data.slice(0, 3).map((item) => (
+					<PopularSkillItem
+						key={item.id}
+						currentCount={item.frequencyStat}
+						totalCount={100}
+						title={item.skill.title}
+					/>
+				))}
 			</Flex>
 		</Card>
 	);

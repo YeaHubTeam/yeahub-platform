@@ -1,6 +1,6 @@
 import { DragEvent, RefObject, useCallback, useState } from 'react';
 
-export function useDragAndDrop(uploaderRef: RefObject<HTMLInputElement>) {
+export function useDragAndDrop(uploaderRef: RefObject<HTMLInputElement | null>) {
 	const [isDragActive, setIsDragActive] = useState<boolean>(false);
 
 	const onDragLeave = useCallback((e: DragEvent<HTMLDivElement>) => {

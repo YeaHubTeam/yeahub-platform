@@ -10,7 +10,6 @@ import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Specialization } from '@/entities/specialization/@x/skill';
 
 import styles from './SkillAdditionalInfo.module.css';

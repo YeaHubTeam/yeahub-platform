@@ -39,7 +39,7 @@
 .consent-wrapper {
   margin-top: 16px;
   max-width: 100%;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .consent-wrapper .form-control {

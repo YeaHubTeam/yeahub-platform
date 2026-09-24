@@ -11,8 +11,8 @@ export const resourcesListMock = http.get<
 	GetResourcesListResponse
 >(process.env.API_URL + resourceApiUrls.getResourcesList, ({ request }) => {
 	const url = new URL(request.url);
-	const page = Number(url.searchParams.get('page')) ?? 1;
-	const limit = Number(url.searchParams.get('limit')) ?? 10;
+	const page = Number(url.searchParams.get('page')) || 1;
+	const limit = Number(url.searchParams.get('limit')) || 10;
 	const name = url.searchParams.get('name');
 	const authorId = url.searchParams.get('authorId');
 	const orderBy = url.searchParams.get('orderBy') ?? 'createdAt';

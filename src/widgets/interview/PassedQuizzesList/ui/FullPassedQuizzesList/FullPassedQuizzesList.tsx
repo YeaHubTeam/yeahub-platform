@@ -1,4 +1,4 @@
-import { MutableRefObject, useRef } from 'react';
+import { useRef } from 'react';
 
 import { useInfiniteScroll } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
@@ -13,7 +13,7 @@ interface FullPassedQuizzesListProps {
 }
 
 export const FullPassedQuizzesList = ({ data, onLoadNext }: FullPassedQuizzesListProps) => {
-	const lastItemRef = useRef() as MutableRefObject<HTMLElement>;
+	const lastItemRef = useRef<HTMLLIElement>(null);
 	useInfiniteScroll({ callback: onLoadNext, lastItemRef });
 
 	return (
