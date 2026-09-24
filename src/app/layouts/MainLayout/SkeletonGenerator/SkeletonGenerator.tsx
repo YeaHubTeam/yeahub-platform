@@ -16,6 +16,7 @@ import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
+import { ReferralLinkEditPageSkeleton } from '@/pages/admin/referralLink/referralLinkEdit';
 import { SkillCreatePageSkeleton } from '@/pages/admin/skill/skillCreate';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
@@ -53,6 +54,10 @@ const SkeletonGenerator = () => {
 	const isCompanyDetailsPage =
 		location.pathname !== ROUTES.admin.companies.create.page &&
 		matchPath(ROUTES.admin.companies.details.page, location.pathname);
+	const isAdminReferralLinkEditPage = matchPath(
+		ROUTES.admin.referralLinks.edit.page,
+		location.pathname,
+	);
 	const isUserDetailPage = matchPath(ROUTES.admin.users.detail.page, location.pathname);
 	const isCollectionDetailPage = matchPath(
 		ROUTES.admin.collections.details.page,
@@ -79,6 +84,10 @@ const SkeletonGenerator = () => {
 
 	if (isCompanyDetailsPage) {
 		return <CompanyDetailPageSkeleton />;
+	}
+
+	if (isAdminReferralLinkEditPage) {
+		return <ReferralLinkEditPageSkeleton />;
 	}
 
 	if (isUserDetailPage) {
