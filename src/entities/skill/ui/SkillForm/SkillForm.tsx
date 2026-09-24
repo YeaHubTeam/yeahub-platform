@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Questions, Skills } from '@/shared/config';
-import { removeBase64Data } from '@/shared/libs';
+import { addBase64Data, removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
@@ -24,19 +23,19 @@ interface SkillFormProps {
 export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 	const { t } = useTranslation([i18Namespace.skill, i18Namespace.questions]);
 
-	const { control, setValue } = useFormContext();
+	const { control, setValue, watch } = useFormContext();
+	const skillImage = watch('skillImage');
 
-	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
+	const previewImg = addBase64Data(skillImage) || imageSrc || null;
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
-		setPreviewImg(imageBase64);
 		setValue('skillImage', image);
 	};
 
 	const removeImage = () => {
-		setPreviewImg(null);
+		setValue('skillImage', undefined);
 		setValue('imageSrc', null);
 	};
 

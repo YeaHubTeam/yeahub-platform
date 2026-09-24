@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useState } from 'react';
+import { ComponentProps, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Marketplace, Tasks } from '@/shared/config';
@@ -38,8 +38,9 @@ export const TaskCategorySelect = ({
 		title: t(taskCategories[category.code]),
 	}));
 
-	const [selectedCategories, setSelectedCategories] = useState<string[]>(
-		Array.isArray(value) ? value : value !== undefined ? [value] : [],
+	const selectedCategories = useMemo(
+		() => (Array.isArray(value) ? value : value !== undefined ? [value] : []),
+		[value],
 	);
 
 	const handleChangeCategory = (newValue: string | undefined) => {
@@ -48,10 +49,8 @@ export const TaskCategorySelect = ({
 
 		if (hasMultiple) {
 			const updates = [...selectedCategories, strValue];
-			setSelectedCategories(updates);
 			onChange(updates);
 		} else {
-			setSelectedCategories([strValue]);
 			onChange(strValue);
 		}
 	};
@@ -59,7 +58,6 @@ export const TaskCategorySelect = ({
 	const handleDeleteCategory = (id: string) => () => {
 		if (disabled) return;
 		const updates = selectedCategories.filter((categoryId) => categoryId !== id);
-		setSelectedCategories(updates);
 		onChange(updates);
 	};
 
@@ -79,7 +77,7 @@ export const TaskCategorySelect = ({
 				limit: 100,
 			}));
 		}
-	}, [selectedCategories, categories]);
+	}, [categories, hasMultiple, selectedCategories]);
 
 	const categoriesDictionary = useMemo(() => {
 		const emptyCategory: TaskCategoryType = {
@@ -93,7 +91,7 @@ export const TaskCategorySelect = ({
 			},
 			{ '0': emptyCategory } as Record<string, TaskCategoryType>,
 		);
-	}, [categories]);
+	}, [categories, t]);
 
 	if (!hasMultiple) {
 		return (

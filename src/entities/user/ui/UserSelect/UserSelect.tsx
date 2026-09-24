@@ -1,4 +1,4 @@
-import { ComponentProps, useEffect, useMemo, useState } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, User as UserI18n } from '@/shared/config';
@@ -7,7 +7,7 @@ import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
-import { useGetUsersListQuery } from '../../api/userApi';
+import { useGetUserByIdQuery, useGetUsersListQuery } from '../../api/userApi';
 
 export type UserSelectProps = Omit<
 	ComponentProps<typeof Dropdown>,
@@ -33,8 +33,12 @@ export const UserSelect = ({
 }: UserSelectProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
-	const [searchValue, setSearchValue] = useState('');
+	const [searchState, setSearchState] = useState<{ ownerId?: string; value: string }>({
+		ownerId: value,
+		value: '',
+	});
 	const [debouncedValue, setDebouncedValue] = useState('');
+	const searchValue = searchState.ownerId === value ? searchState.value : '';
 
 	const debouncedSetValue = useDebounce((value: string) => {
 		setDebouncedValue(value);
@@ -45,12 +49,10 @@ export const UserSelect = ({
 		page: 1,
 		limit: 10,
 	});
-
-	useEffect(() => {
-		if (!value && disabled) {
-			setSearchValue('');
-		}
-	}, [value, disabled]);
+	const selectedUserIsInList = users?.data.some((user) => user.id === value) ?? false;
+	const { data: selectedUser } = useGetUserByIdQuery(value ?? '', {
+		skip: !value || isFetching || selectedUserIsInList,
+	});
 
 	const handleChange = (newValue?: string) => {
 		if (disabled) return;
@@ -59,17 +61,20 @@ export const UserSelect = ({
 
 	const handleClear = () => {
 		handleChange(undefined);
-		setSearchValue('');
+		setSearchState({ ownerId: undefined, value: '' });
 		setDebouncedValue('');
 	};
 
-	const emptyUser = {
-		value: 'all',
-		label: placeholder || t(UserI18n.SELECT_CHOOSE),
-	};
+	const emptyUser = useMemo(
+		() => ({
+			value: 'all',
+			label: placeholder || t(UserI18n.SELECT_CHOOSE),
+		}),
+		[placeholder, t],
+	);
 
 	const handleSearchChange = (val: string) => {
-		setSearchValue(val);
+		setSearchState({ ownerId: value, value: val });
 		debouncedSetValue(val);
 	};
 	const options = useMemo(() => {
@@ -84,19 +89,16 @@ export const UserSelect = ({
 
 		const foundInOptions = options.find((option) => option.value === value);
 		if (foundInOptions) return foundInOptions;
+		if (selectedUser?.id === value) {
+			return { value: selectedUser.id, label: selectedUser.username };
+		}
 
 		return emptyUser;
-	}, [options, value]);
+	}, [emptyUser, options, selectedUser, value]);
 
 	const showNotFoundMessage = !isFetching && debouncedValue && options.length === 0;
 	const notFoundText = t(USER_ID_NOT_FOUND_KEY, { ns: i18Namespace.translation });
 	const displayValue = showNotFoundMessage ? notFoundText : searchValue || selectUser.label;
-
-	useEffect(() => {
-		if (!value) {
-			setSearchValue('');
-		}
-	}, [value]);
 
 	return (
 		<Flex direction="column" align="start" gap="8">
@@ -116,8 +118,9 @@ export const UserSelect = ({
 				onChangeFilterValue={handleClear}
 				onSelect={(val) => {
 					const selected = options.find((opt) => opt.value === val);
-					handleChange(val !== 'all' ? String(val) : undefined);
-					setSearchValue(selected?.label ?? '');
+					const selectedId = val !== 'all' ? String(val) : undefined;
+					handleChange(selectedId);
+					setSearchState({ ownerId: selectedId, value: selected?.label ?? '' });
 				}}
 			>
 				{showNotFoundMessage ? (

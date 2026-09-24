@@ -10,13 +10,24 @@ import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 import { useCreateSpecializationMutation } from '../../api/createSpecializationApi';
 import { CreateSpecializationFormValues } from '../../model/types/specializationCreateTypes';
 
-export const SpecializationCreateFormHeader = () => {
+interface SpecializationCreateFormHeaderProps {
+	onSuccess: () => void;
+}
+
+export const SpecializationCreateFormHeader = ({
+	onSuccess,
+}: SpecializationCreateFormHeaderProps) => {
 	const [createSpecializationMutation, { isLoading }] = useCreateSpecializationMutation();
 	const { handleSubmit } = useFormContext<CreateSpecializationFormValues>();
 	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.translation]);
 
 	const onCreateSpecialization = async (data: CreateSpecializationFormValues) => {
-		await createSpecializationMutation(data);
+		try {
+			await createSpecializationMutation(data).unwrap();
+			onSuccess();
+		} catch {
+			return;
+		}
 	};
 
 	return (

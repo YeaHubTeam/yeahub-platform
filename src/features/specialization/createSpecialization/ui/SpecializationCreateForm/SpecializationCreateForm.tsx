@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider, useForm } from 'react-hook-form';
+import { type DefaultValues, FormProvider, useForm } from 'react-hook-form';
 
+import { useFormPersist } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -13,14 +14,22 @@ import { SpecializationCreateFormHeader } from '../SpecializationCreateFormHeade
 
 import styles from './SpecializationCreateForm.module.css';
 
+const defaultValues = {
+	title: '',
+	description: '',
+} satisfies DefaultValues<CreateSpecializationFormValues>;
+
 export const SpecializationCreateForm = () => {
 	const methods = useForm<CreateSpecializationFormValues>({
 		resolver: yupResolver(specializationCreateSchema),
 		mode: 'onTouched',
-		defaultValues: {
-			title: '',
-			description: '',
-		},
+		defaultValues,
+	});
+
+	const { clearFormDraft } = useFormPersist<CreateSpecializationFormValues>({
+		watch: methods.watch,
+		reset: methods.reset,
+		defaultValues,
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
@@ -29,7 +38,8 @@ export const SpecializationCreateForm = () => {
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<SpecializationCreateFormHeader />
+					<SpecializationCreateFormHeader onSuccess={clearFormDraft} />
+
 					<Card className={styles.content}>
 						<SpecializationForm />
 					</Card>

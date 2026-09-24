@@ -16,7 +16,11 @@ import { CreateResourceFormValues } from '../../model/types/resourceCreateTypes'
 
 import styles from './ResourceCreateFormWithHeader.module.css';
 
-export const ResourceCreateFormWithHeader = () => {
+interface ResourceCreateFormWithHeaderProps {
+	onSuccess: () => void;
+}
+
+export const ResourceCreateFormWithHeader = ({ onSuccess }: ResourceCreateFormWithHeaderProps) => {
 	const [createResourceMutation, { isLoading }] = useCreateResourceMutation();
 
 	const { handleSubmit } = useFormContext<CreateResourceFormValues>();
@@ -28,7 +32,12 @@ export const ResourceCreateFormWithHeader = () => {
 	);
 
 	const onCreateResource = async (data: CreateResourceFormValues) => {
-		await createResourceMutation({ resource: data, isAdmin: isAdminRole }).unwrap();
+		try {
+			await createResourceMutation({ resource: data, isAdmin: isAdminRole }).unwrap();
+			onSuccess();
+		} catch {
+			return;
+		}
 	};
 
 	return (

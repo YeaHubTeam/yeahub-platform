@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider, useForm } from 'react-hook-form';
+import { type DefaultValues, FormProvider, useForm } from 'react-hook-form';
 
+import { useFormPersist } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -13,18 +14,26 @@ import { TaskCreateFormHeader } from '../TaskCreateFormHeader/TaskCreateFormHead
 
 import styles from './TaskCreateForm.module.css';
 
+const defaultValues = {
+	constraints: [],
+	taskStructures: [
+		{ languageId: 0, solutionStub: '', testFixture: '', preloadedCode: '', isActive: true },
+	],
+	difficulty: 3,
+	subscriptionLevel: 'free',
+} satisfies DefaultValues<CreateTaskFormValues>;
+
 export const TaskCreateForm = () => {
 	const taskMethods = useForm<CreateTaskFormValues>({
 		resolver: yupResolver(taskCreateSchema),
 		mode: 'onTouched',
-		defaultValues: {
-			constraints: [],
-			taskStructures: [
-				{ languageId: 0, solutionStub: '', testFixture: '', preloadedCode: '', isActive: true },
-			],
-			difficulty: 3,
-			subscriptionLevel: 'free',
-		},
+		defaultValues,
+	});
+
+	const { clearFormDraft } = useFormPersist<CreateTaskFormValues>({
+		watch: taskMethods.watch,
+		reset: taskMethods.reset,
+		defaultValues,
 	});
 
 	const { isDirty, isSubmitting, isSubmitted } = taskMethods.formState;
@@ -34,7 +43,7 @@ export const TaskCreateForm = () => {
 			<FormProvider {...taskMethods}>
 				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 					<Flex componentType="main" direction="column" gap="24">
-						<TaskCreateFormHeader />
+						<TaskCreateFormHeader onSuccess={clearFormDraft} />
 						<Card className={styles.content}>
 							<TaskForm />
 						</Card>

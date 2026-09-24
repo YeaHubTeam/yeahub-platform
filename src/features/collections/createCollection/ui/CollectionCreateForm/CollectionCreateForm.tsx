@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider, useForm } from 'react-hook-form';
+import { type DefaultValues, FormProvider, useForm } from 'react-hook-form';
 
+import { useFormPersist } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -13,15 +14,23 @@ import CollectionCreateFormHeader from '../CollectionCreateFormHeader/Collection
 
 import styles from './CollectionCreateForm.module.css';
 
+const defaultValues = {
+	title: '',
+	description: '',
+	isFree: false,
+} satisfies DefaultValues<CollectionCreateFormValues>;
+
 export const CollectionCreateForm = () => {
 	const methods = useForm<CollectionCreateFormValues>({
 		resolver: yupResolver(collectionCreateSchema),
 		mode: 'onTouched',
-		defaultValues: {
-			title: '',
-			description: '',
-			isFree: false,
-		},
+		defaultValues,
+	});
+
+	const { clearFormDraft } = useFormPersist<CollectionCreateFormValues>({
+		watch: methods.watch,
+		reset: methods.reset,
+		defaultValues,
 	});
 
 	const { isDirty, isSubmitting, isSubmitted } = methods.formState;
@@ -29,7 +38,7 @@ export const CollectionCreateForm = () => {
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<CollectionCreateFormHeader />
+					<CollectionCreateFormHeader onSuccess={clearFormDraft} />
 					<Card className={styles.content}>
 						<CollectionForm />
 					</Card>

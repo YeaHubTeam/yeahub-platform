@@ -104,7 +104,7 @@ describe('TaskCategorySelect', () => {
 			render();
 
 			await waitFor(() => {
-				expect(screen.getByTestId(dropdownTestIds.dropdown)).toBeInTheDocument();
+				expect(screen.getByText(Tasks.SELECT_CHOOSE)).toBeInTheDocument();
 			});
 		});
 
@@ -207,7 +207,7 @@ describe('TaskCategorySelect', () => {
 			render({ hasMultiple: true, value: [mockTaskCategories[0].code], disabled: true });
 
 			await waitFor(() => {
-				expect(screen.getByText(Tasks.SELECT_SELECTED)).toBeInTheDocument();
+				expect(screen.getByText(taskCategories[mockTaskCategories[0].code])).toBeInTheDocument();
 			});
 
 			const deleteButton = within(

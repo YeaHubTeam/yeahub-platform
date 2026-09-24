@@ -119,6 +119,7 @@ const questionApi = baseApi.injectEndpoints({
 export const {
 	useGetQuestionsListQuery,
 	useGetQuestionByIdQuery,
+	useLazyGetQuestionByIdQuery,
 	useGetQuestionsForLearnQuery,
 	useGetPublicQuestionsListQuery,
 	useGetPublicQuestionByIdQuery,

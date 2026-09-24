@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useState, useEffect } from 'react';
+import { ComponentProps, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Skills } from '@/shared/config';
@@ -44,41 +44,35 @@ export const SkillSelect = ({
 		},
 	);
 
-	const filterValue = (value: number[]): number[] => {
-		const filteredValue = value.filter((skill) => {
-			if (skills?.data.find((el) => el.id === skill)) return true;
-			else return false;
-		});
-		return filteredValue;
-	};
-
-	const [selectedSkills, setSelectedSkills] = useState<number[]>(
-		Array.isArray(value) ? value : value !== undefined ? [value] : [],
+	const selectedSkills = useMemo(
+		() => (Array.isArray(value) ? value : value !== undefined ? [value] : []),
+		[value],
 	);
 
 	useEffect(() => {
-		if (Array.isArray(value) && skills) {
-			const filterdValue = filterValue(value);
-			setSelectedSkills(filterValue(filterdValue));
-			onChange(filterValue(filterdValue));
+		if (!Array.isArray(value) || !skills) return;
+
+		const filteredValue = value.filter((skillId) =>
+			skills.data.some((skill) => skill.id === skillId),
+		);
+
+		if (filteredValue.length !== value.length) {
+			onChange(filteredValue);
 		}
-	}, [skills]);
+	}, [onChange, skills, value]);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue) return;
 		if (hasMultiple) {
 			const updates = [...(selectedSkills || []), +newValue];
-			setSelectedSkills(updates);
 			onChange(updates);
 		} else {
-			setSelectedSkills([+newValue]);
 			onChange([+newValue]);
 		}
 	};
 
 	const handleDeleteSkill = (id: number) => () => {
 		const updates = selectedSkills.filter((skillId) => skillId !== id);
-		setSelectedSkills(updates);
 		onChange(updates);
 	};
 
@@ -96,7 +90,7 @@ export const SkillSelect = ({
 				value: skill.id.toString(),
 			}));
 		}
-	}, [skills?.data, selectedSkills]);
+	}, [hasMultiple, skills?.data, selectedSkills]);
 
 	const skillsDictionary = useMemo(() => {
 		return skills?.data?.reduce(
