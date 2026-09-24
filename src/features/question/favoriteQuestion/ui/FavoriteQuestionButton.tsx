@@ -46,17 +46,19 @@ export const FavoriteQuestionButton = ({
 
 	const { t } = useTranslation(i18Namespace.questions);
 	const onToggleFavoriteQuestion = () => {
-		isFavorite
-			? resetFavoriteQuestion({
-					profileId: String(profileId),
-					questionId: Number(questionId),
-					quiz: isQuiz,
-				})
-			: favoriteQuestion({
-					profileId: String(profileId),
-					questionId: Number(questionId),
-					quiz: isQuiz,
-				});
+		if (isFavorite) {
+			resetFavoriteQuestion({
+				profileId: String(profileId),
+				questionId: Number(questionId),
+				quiz: isQuiz,
+			});
+		} else {
+			favoriteQuestion({
+				profileId: String(profileId),
+				questionId: Number(questionId),
+				quiz: isQuiz,
+			});
+		}
 	};
 
 	const iconSize = isPopover ? 20 : 24;

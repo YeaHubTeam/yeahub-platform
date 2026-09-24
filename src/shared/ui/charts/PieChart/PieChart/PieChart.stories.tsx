@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { PieChart } from './PieChart';
 import { PieChartSkeleton } from './PieChart.skeleton';

@@ -1,23 +1,24 @@
-const { TextDecoder, TextEncoder } = require('node:util');
+/**
+ * Runs before the test environment (happy-dom) exposes its globals.
+ *
+ * On Node 22 `fetch`, `Blob`, `File`, `FormData`, `Headers`, `Request`, `Response`,
+ * `ReadableStream`, `TextEncoder`/`TextDecoder`, `setImmediate`, `matchMedia` are provided
+ * natively either by Node or by happy-dom, so no polyfills are needed for them.
+ */
 
-const { ReadableStream } = require('web-streams-polyfill');
+// `msw` creates a `BroadcastChannel` at module load (`msw/src/core/ws.ts`), but happy-dom
+// doesn't expose it on `window`. Reuse Node's native implementation: msw calls `unref()` on it,
+// so the channel doesn't keep the Jest worker alive.
+const { BroadcastChannel: NodeBroadcastChannel } = require('node:worker_threads');
 
-Object.defineProperties(globalThis, {
-	ReadableStream: { value: ReadableStream },
-	TextDecoder: { value: TextDecoder },
-	TextEncoder: { value: TextEncoder },
+Object.defineProperty(globalThis, 'BroadcastChannel', {
+	value: NodeBroadcastChannel,
+	writable: true,
+	configurable: true,
 });
 
-const { Blob, File } = require('node:buffer');
-
-const { fetch, Headers, FormData, Request, Response } = require('undici');
-
-Object.defineProperties(globalThis, {
-	fetch: { value: fetch, writable: true },
-	Blob: { value: Blob },
-	File: { value: File },
-	Headers: { value: Headers },
-	FormData: { value: FormData },
-	Request: { value: Request },
-	Response: { value: Response },
+Object.defineProperty(globalThis, 'BroadcastChannel', {
+	value: BroadcastChannel,
+	writable: true,
+	configurable: true,
 });

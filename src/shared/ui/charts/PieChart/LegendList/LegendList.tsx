@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Flex } from '@/shared/ui/Flex';
 
 import { LegendItem } from '../LegendItem/LegendItem';

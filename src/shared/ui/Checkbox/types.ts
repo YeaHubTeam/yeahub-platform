@@ -8,7 +8,7 @@ import { HTMLAttributes, ReactNode } from 'react';
  * @property {string} [label] - The label text for the checkbox.
  * @property {boolean} [checked] - Indicates whether the checkbox is checked.
  */
-export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends Omit<HTMLAttributes<HTMLInputElement>, 'onToggle'> {
 	disabled?: boolean;
 	onToggle?: (isChecked: boolean) => void;
 	className?: string;

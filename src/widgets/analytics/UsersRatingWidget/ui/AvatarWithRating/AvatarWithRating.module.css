@@ -23,5 +23,5 @@
   stroke: var(--color-purple-700);
   stroke-linecap: round;
   fill: transparent;
-  transition: 'stroke-dashoffset 0.3s'
+  transition: stroke-dashoffset 0.3s
 }

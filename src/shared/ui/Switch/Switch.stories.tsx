@@ -1,5 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-webpack5';
 import { useEffect, useState } from 'react';
+import { fn } from 'storybook/test';
 
 import { Switch } from './Switch';
 import { SwitchProps } from './types';
@@ -8,6 +9,9 @@ const meta = {
 	title: 'Components/Toggles/Switch',
 	component: Switch,
 	tags: ['autodocs'],
+	args: {
+		onChange: fn(),
+	},
 	argTypes: {},
 } satisfies Meta<typeof Switch>;
 
