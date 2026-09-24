@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Analytics } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
-import { Table } from '@/shared/ui/Table';
+import { TableV2, type TableColumn } from '@/shared/ui/TableV2';
 import { Text } from '@/shared/ui/Text';
 
 import { PopularQuestionStat } from '@/entities/question';
@@ -16,63 +16,31 @@ type PopularQuestionsPageTableProps = {
 
 export const PopularQuestionsPageTable = ({ popularQuestions }: PopularQuestionsPageTableProps) => {
 	const { t } = useTranslation(i18Namespace.analytics);
+	const columns: TableColumn<PopularQuestionStat>[] = [
+		{
+			id: 'id',
+			header: t(Analytics.POPULAR_QUESTIONS_TABLE_INDEX),
+			width: '50px',
+			cell: ({ rowIndex }) => <Text variant="body3-accent">{rowIndex + 1}</Text>,
+		},
+		{
+			id: 'title',
+			header: t(Analytics.POPULAR_QUESTIONS_TABLE_QUESTIONS),
+			width: 'auto',
+			cell: ({ row }) => (
+				<Flex gap="4" align="center">
+					<ImageWithWrapper src={row.imageSrc} className={styles.icon} />
+					<Text variant="body3-accent">{row.title}</Text>
+				</Flex>
+			),
+		},
+		{
+			id: 'frequencyStat',
+			header: t(Analytics.POPULAR_QUESTIONS_TABLE_ANSWER),
+			width: '120px',
+			cell: ({ row }) => <Text variant="body3-accent">{row.frequencyStat}%</Text>,
+		},
+	];
 
-	const renderTableHeader = () => {
-		const columns = {
-			index: t(Analytics.POPULAR_QUESTIONS_TABLE_INDEX),
-			question: t(Analytics.POPULAR_QUESTIONS_TABLE_QUESTIONS),
-			answer: t(Analytics.POPULAR_QUESTIONS_TABLE_ANSWER),
-		};
-
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
-
-	const renderTableBody = (popularQuestion: PopularQuestionStat, index: number | undefined) => {
-		const columns = {
-			index: (index as number) + 1,
-			question: {
-				img: popularQuestion.imageSrc,
-				title: popularQuestion.title,
-			},
-			answer: `${popularQuestion.frequencyStat}%`,
-		};
-		return Object.entries(columns)?.map(([k, v]) => {
-			if (k === 'question') {
-				const questionData = v as { img: string; title: string };
-				return (
-					<td key={k}>
-						<Flex gap="4" align="center">
-							<ImageWithWrapper src={questionData.img} className={styles.icon} />
-							<Text variant="body3-accent">{questionData.title}</Text>
-						</Flex>
-					</td>
-				);
-			}
-
-			return (
-				<td key={k}>
-					<Text variant="body3-accent">{String(v)}</Text>
-				</td>
-			);
-		});
-	};
-
-	const renderTableColumnWidths = () => {
-		const columnWidths = {
-			index: '50px',
-			questions: 'auto',
-			learnedPercentage: '120px',
-		};
-
-		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
-	};
-
-	return (
-		<Table
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			items={popularQuestions}
-			renderTableColumnWidths={renderTableColumnWidths}
-		/>
-	);
+	return <TableV2 data={popularQuestions} columns={columns} />;
 };
