@@ -89,7 +89,9 @@ import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
 import { RegistrationPage } from '@/pages/auth/registration';
 import { ResumeAnalyzerPage } from '@/pages/career/resumeAnalyzer';
 import { VacanciesPage } from '@/pages/career/vacancy/vacancies';
+//import { VacancyMarketDetails } from '@/pages/career/vacancyMarket';
 import { VacancyMarketPage } from '@/pages/career/vacancyMarket';
+import { VacancyMarketDetailsPage } from '@/pages/career/VacancyMarketDetails';
 import { Error404Page } from '@/pages/error404';
 import { CreateQuizPage } from '@/pages/interview/createQuiz';
 import { InterviewPage } from '@/pages/interview/interview';
@@ -594,10 +596,20 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						path: ROUTES.career.vacancyMarket.route,
+						element: <Outlet />,
 						handle: {
 							crumb: Translation.CRUMBS_VACANCY_MARKET,
 						},
-						element: <VacancyMarketPage />,
+						children: [
+							{
+								index: true,
+								element: <VacancyMarketPage />,
+							},
+							{
+								path: ROUTES.career.vacancyMarket.detail.route,
+								element: <VacancyMarketDetailsPage />,
+							},
+						],
 					},
 					{
 						path: ROUTES.career.vacancies.route,

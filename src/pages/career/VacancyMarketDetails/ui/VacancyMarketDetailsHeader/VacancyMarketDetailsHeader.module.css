@@ -1,0 +1,24 @@
+.header {
+  max-width: 720px;
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+p.description {
+  width: 442px;
+  max-width: 100%;
+  color: var(--color-black-1000);
+  font-feature-settings:
+    'ss01' on,
+    'cv01' on,
+    'cv11' on;
+  letter-spacing: 0;
+}
+
+@media screen and (width < 768px) {
+  h1.title {
+    font-size: var(--font-size-h-xs);
+  }
+}

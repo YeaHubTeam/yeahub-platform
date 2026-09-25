@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace } from '@/shared/config';
-import { InterviewStatistics } from '@/shared/config';
-import { useScreenSize } from '@/shared/libs';
+import { i18Namespace, InterviewStatistics } from '@/shared/config';
+import { Pallete } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
+
+import { TextVariant } from '../../Text/types';
 
 import styles from './GaugeChart.module.css';
 
@@ -12,47 +13,59 @@ interface GaugeChartProps {
 	total?: number;
 	learned?: number;
 	percent?: number;
+	text?: boolean;
+	sizeCircle?: number;
+	widthCircle?: number;
+	color?: string;
+	backColor?: string;
+	fillColor?: string;
+	textColor?: Pallete;
+	textVariant?: TextVariant;
+	textClassName?: string;
 }
 
-export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
+export const GaugeChart = ({
+	total,
+	learned,
+	percent,
+	text = true,
+	sizeCircle = 241,
+	widthCircle = 24,
+	color = '#008616',
+	backColor = '#FFE7AE',
+	fillColor = '#fffaec',
+	textColor = 'black-700',
+	textVariant = 'body4',
+	textClassName,
+}: GaugeChartProps) => {
 	const { t } = useTranslation(i18Namespace.interviewStatistics);
+
 	const passedQuestionsPercent =
 		percent !== undefined ? percent : Math.round((learned! / total!) * 100);
 
-	const { isMobile, isMobileS } = useScreenSize();
-
-	let size = 241;
-
-	if (isMobile) {
-		size = 241;
-	} else if (isMobileS) {
-		size = 241;
-	}
-
-	const radius = size / 2;
-	const strokeWidth = 24;
-	const circleRadius = radius - strokeWidth / 2;
+	const radius = sizeCircle / 2;
+	const circleRadius = radius - widthCircle / 2;
 	const circumference = 2 * Math.PI * circleRadius;
 	const progressOffset = circumference - (passedQuestionsPercent / 100) * circumference;
 
 	return (
 		<Flex className={styles['gauge-chart-container']} justify="center" align="center">
-			<svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+			<svg width={sizeCircle} height={sizeCircle} viewBox={`0 0 ${sizeCircle} ${sizeCircle}`}>
 				<circle
 					cx={radius}
 					cy={radius}
 					r={circleRadius}
-					stroke="#FFE7AE"
-					strokeWidth={strokeWidth}
-					fill="#fffaec"
+					stroke={backColor}
+					strokeWidth={widthCircle}
+					fill={fillColor}
 				/>
 				<circle
 					className={styles['gauge-progress']}
 					cx={radius}
 					cy={radius}
 					r={circleRadius}
-					stroke="#008616"
-					strokeWidth={strokeWidth}
+					stroke={color}
+					strokeWidth={widthCircle}
 					fill="none"
 					strokeLinecap="round"
 					style={{
@@ -62,10 +75,14 @@ export const GaugeChart = ({ total, learned, percent }: GaugeChartProps) => {
 					}}
 				/>
 			</svg>
-			<Text color="black-700" variant="body4" className={styles['gauge-text']}>
+			<Text
+				color={textColor}
+				variant={textVariant}
+				className={textClassName || styles['gauge-text']}
+			>
 				{!isNaN(passedQuestionsPercent) && <span>{passedQuestionsPercent}%</span>}
 				{!isNaN(passedQuestionsPercent) && <br />}
-				{total ? t(InterviewStatistics.PASSED) : t(InterviewStatistics.SOON)}
+				{text && (total ? t(InterviewStatistics.PASSED) : t(InterviewStatistics.SOON))}
 			</Text>
 		</Flex>
 	);

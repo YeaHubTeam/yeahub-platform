@@ -1,0 +1,17 @@
+{
+	"vacancy_profile": {
+		"title": "Vacancy profile:",
+		"description": "Up-to-date data on skills, tasks, and requirements based on the analysis of real job vacancies on the market.",
+		"updated_at": "Updated {{date}}",
+		"all_industries": "All",
+		"daily_update": "Data is updated every day",
+		"analyzed_vacancies": "Total vacancies analyzed",
+		"top_skills": "Top skills",
+		"frequent_tasks": "Frequent tasks",
+		"keywords": "Keywords",
+		"priority": "Special requirements and soft skills",
+		"show_all": "Show all",
+		"hide": "Hide",
+		"all_vacancies": "All vacancies"
+	}
+}

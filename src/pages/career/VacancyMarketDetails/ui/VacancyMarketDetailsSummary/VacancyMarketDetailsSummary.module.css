@@ -1,0 +1,172 @@
+div.summary {
+  padding: 0;
+  width: 100%;
+  height: 74px;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: var(--color-black-25);
+}
+
+div.content {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  min-width: 0;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+  background-color: var(--color-white-900);
+}
+
+.icon-slot {
+  display: flex;
+  flex: 0 0 44px;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+}
+
+.growth-chart {
+  display: block;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.value {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.title,
+.count,
+.note-text {
+  overflow-wrap: anywhere;
+}
+
+.note {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  min-width: 0;
+  height: 100%;
+  background-color: var(--color-black-25);
+}
+
+.note svg {
+  flex-shrink: 0;
+}
+
+@media screen and (width < 1024px) and (width >= 768px) {
+  div.summary {
+    align-self: center;
+    width: min(var(--container-width-md), 100%);
+  }
+
+  .main {
+    flex: 1 1 50%;
+  }
+
+  .note {
+    flex: 1 1 50%;
+  }
+}
+
+@media screen and (width < 768px) {
+  div.summary {
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    background-color: var(--background-block);
+  }
+
+  div.content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    height: auto;
+    overflow: visible;
+    border-radius: 12px;
+    background-color: var(--background-block);
+  }
+
+  .main {
+    flex: 0 1 auto;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    width: 100%;
+    height: 70px;
+    border-radius: 0;
+    background-color: var(--background-block);
+  }
+
+  .icon-slot {
+    flex-basis: 48px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .icon-slot svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .title {
+    line-height: 130%;
+    font-size: var(--font-size-p-l);
+  }
+
+  .count {
+    line-height: 120%;
+    font-size: var(--font-size-h-xs);
+  }
+
+  .note {
+    flex: 0 1 auto;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    background-color: var(--background-block);
+  }
+
+  .note svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .note-text {
+    line-height: 130%;
+    font-size: var(--font-size-p-m);
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .main {
+    flex: 0 0 392px;
+  }
+
+  .note {
+    flex: 1 1 auto;
+  }
+}
