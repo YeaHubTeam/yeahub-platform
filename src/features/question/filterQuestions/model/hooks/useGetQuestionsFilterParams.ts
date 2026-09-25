@@ -1,4 +1,18 @@
-import { QuestionFilterStatus, QuestionsFilterParams } from '@/entities/question';
+import { SortOrder } from '@/shared/libs';
+
+import {
+	QuestionFilterOrderBy,
+	QuestionFilterStatus,
+	QuestionsFilterParams,
+} from '@/entities/question';
+
+const isQuestionFilterOrderBy = (value?: string): value is QuestionFilterOrderBy => {
+	return value === 'title' || value === 'complexity' || value === 'rate';
+};
+
+const isSortOrder = (value?: string): value is SortOrder => {
+	return value === 'ASC' || value === 'DESC';
+};
 
 export const useGetQuestionsFilterParams = (initialParams: QuestionsFilterParams) => {
 	const params = new URLSearchParams(location.search);
@@ -17,6 +31,10 @@ export const useGetQuestionsFilterParams = (initialParams: QuestionsFilterParams
 		complexity: parsedParams.complexity
 			? parsedParams.complexity.split(',').map(Number)
 			: initialParams.complexity,
+		orderBy: isQuestionFilterOrderBy(parsedParams.orderBy)
+			? parsedParams.orderBy
+			: initialParams.orderBy,
+		order: isSortOrder(parsedParams.order) ? parsedParams.order : initialParams.order,
 	};
 
 	return currentParams;
