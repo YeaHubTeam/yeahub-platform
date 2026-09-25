@@ -1,0 +1,17 @@
+.input {
+  width: 100%;
+}
+
+.question-button {
+  border: none;
+  background-color: inherit;
+}
+
+.question-card {
+  cursor: pointer;
+  padding: 16px;
+}
+
+.question-card-active {
+  background-color: var(--color-purple-300);
+}

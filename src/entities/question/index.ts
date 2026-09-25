@@ -27,7 +27,6 @@ export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQu
 export { ChooseQuestionComplexitySkeleton } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity.skeleton';
 export { ChooseQuestionCount } from './ui/ChooseQuestionCount/ChooseQuestionCount';
 export { ChooseQuestionCountSkeleton } from './ui/ChooseQuestionCount/ChooseQuestionCount.skeleton';
-export { ChooseQuestionsDrawer } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer';
 export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
 export { QuestionGradeList } from './ui/QuestionGradeList/QuestionGradeList';
@@ -36,7 +35,6 @@ export { PreviewQuestionsItem } from './ui/PreviewQuestionsItem/PreviewQuestions
 export { PreviewQuestionsItemSkeleton } from './ui/PreviewQuestionsItem/PreviewQuestionsItem.skeleton';
 export { QuestionAdditionalInfo } from './ui/QuestionAdditionalInfo/QuestionAdditionalInfo';
 export { QuestionAdditionalInfoSkeleton } from './ui/QuestionAdditionalInfo/QuestionAdditionalInfo.skeleton';
-export { ChooseQuestionsDrawerSkeleton } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer.skeleton';
 export { ProgressBlock } from './ui/ProgressBlock/ProgressBlock';
 export { ProgressBlockSkeleton } from './ui/ProgressBlock/ProgressBlock.skeleton';
 export { questionsMock } from './api/__mocks__/data';
@@ -49,7 +47,11 @@ export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/quest
 export { learnedQuestionHandlers } from './api/__mocks__';
 export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
 
-export type { MostDifficultQuestion, GetQuestionsListParamsRequest } from './model/types/question';
+export type {
+	MostDifficultQuestion,
+	GetQuestionsListParamsRequest,
+	QuestionData,
+} from './model/types/question';
 export type {
 	QuestionsFilterParams,
 	QuestionFilterStatus,
