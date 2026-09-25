@@ -59,8 +59,9 @@ export const InterviewPreparation = ({ className }: InterviewPreparationProps) =
 	useEffect(() => {
 		if (!hasPremium) {
 			const { profileActiveQuiz } = getValidActiveMockQuizFromLS(profileId);
-			profileActiveQuiz &&
+			if (profileActiveQuiz) {
 				dispatch(setActiveQuizQuestions({ questions: profileActiveQuiz, shouldSaveToLS: false }));
+			}
 		}
 	}, []);
 

@@ -81,13 +81,13 @@ export const ImageLoader = ({
 	const uploaderRef = useRef<HTMLDivElement>(null);
 
 	const onSubmitImage = () => {
-		setValue && setValue(croppedArea);
+		setValue?.(croppedArea);
 		setDeleted(false);
 		setFile(null);
 	};
 
 	const onRemoveImage = () => {
-		setValue && setValue(null);
+		setValue?.(null);
 		setDeleted(true);
 		setCroppedArea(null);
 		setFile(null);
@@ -100,7 +100,7 @@ export const ImageLoader = ({
 	const onCloseModal = () => {
 		setFile(null);
 		setCroppedArea(null);
-		onClose && onClose();
+		onClose?.();
 	};
 
 	const handleUpload = ([file]: File[]) => {
@@ -136,7 +136,7 @@ export const ImageLoader = ({
 					setFile(reader.result);
 				} else {
 					setCroppedArea(String(reader.result).replace('data:image/png;base64,', ''));
-					setValue && setValue(String(reader.result).replace('data:image/png;base64,', ''));
+					setValue?.(String(reader.result).replace('data:image/png;base64,', ''));
 				}
 			};
 		};
