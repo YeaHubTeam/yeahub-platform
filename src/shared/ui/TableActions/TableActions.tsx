@@ -35,10 +35,14 @@ export const TableActions = ({
 	const editPath = route(entityRoutes.edit.route, id);
 	const hasCopy = actions.includes('copy');
 	const menuActions = getMenuActions(actions).filter((action) => action !== 'delete' || onDelete);
+	const disabledTooltipTitle =
+		entity === 'companies'
+			? Translation.TOOLTIP_COMPANY_DISABLED_INFO
+			: Translation.TOOLTIP_COLLECTION_DISABLED_INFO;
 
 	const disabledTooltip = {
 		color: 'red' as const,
-		text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO),
+		text: t(disabledTooltipTitle),
 	};
 
 	const menuItems = menuActions.flatMap((action): PopoverMenuItem[] => {
@@ -67,7 +71,13 @@ export const TableActions = ({
 		if (action === 'delete' && onDelete) {
 			return [
 				{
-					renderComponent: () => <DeleteButton onDelete={onDelete} disabled={disabled} />,
+					renderComponent: () => (
+						<DeleteButton
+							onDelete={onDelete}
+							disabled={disabled}
+							tooltipTitle={disabledTooltipTitle}
+						/>
+					),
 				},
 			];
 		}
@@ -107,7 +117,9 @@ export const TableActions = ({
 			return null;
 		}
 
-		return <DeleteButton onDelete={onDelete} disabled={disabled} />;
+		return (
+			<DeleteButton onDelete={onDelete} disabled={disabled} tooltipTitle={disabledTooltipTitle} />
+		);
 	};
 
 	const renderMenu = () => {

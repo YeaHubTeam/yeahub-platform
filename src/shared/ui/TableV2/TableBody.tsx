@@ -71,7 +71,7 @@ export const TableBody = <T,>({
 									<TableActions
 										entity={entity}
 										actions={actions}
-										onDelete={() => onDelete?.(rowId)}
+										onDelete={onDelete ? () => onDelete(rowId) : undefined}
 										id={rowId}
 										disabled={disabled}
 									/>
