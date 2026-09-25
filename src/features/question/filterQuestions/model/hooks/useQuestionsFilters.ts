@@ -75,12 +75,14 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		onFilterChange({ isMy, page: 1, authorId: undefined });
 	};
 
-	const onChangeOrder = (order: QuestionsFilterParams['order']) => {
-		onFilterChange({ order, page: 1 });
-	};
-
-	const onChangeOrderBy = (orderBy: QuestionsFilterParams['orderBy']) => {
-		onFilterChange({ orderBy, page: 1 });
+	const onChangeSorting = ({
+		orderBy,
+		order,
+	}: {
+		orderBy?: QuestionsFilterParams['orderBy'];
+		order?: QuestionsFilterParams['order'];
+	}) => {
+		onFilterChange({ orderBy, order, page: 1 });
 	};
 
 	return {
@@ -97,7 +99,6 @@ export const useQuestionsFilters = (initialParams: QuestionsFilterParams) => {
 		onChangeRate,
 		onChangeStatus,
 		onChangeIsMy,
-		onChangeOrder,
-		onChangeOrderBy,
+		onChangeSorting,
 	};
 };

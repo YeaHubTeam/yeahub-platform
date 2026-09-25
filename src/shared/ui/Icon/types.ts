@@ -6,6 +6,7 @@ export type IconName =
 	| 'arrowsCounterClockwise'
 	| 'arrowUpSquare'
 	| 'arrowDownSquare'
+	| 'squareSortVertical'
 	| 'clock'
 	| 'calendar'
 	| 'calendarNoDots'
