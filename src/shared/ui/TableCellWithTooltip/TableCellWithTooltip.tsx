@@ -16,7 +16,7 @@ export const TableCellWithTooltip = ({ children, title }: TableCellWithTooltipPr
 
 	return (
 		<Tooltip shouldShowTooltip={isTruncated} title={title}>
-			<Text variant="body3-accent" ref={ref} maxRows={2}>
+			<Text variant="body3-accent" ref={ref} maxRows={2} isBreakLongWord>
 				{children}
 			</Text>
 		</Tooltip>
