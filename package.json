@@ -168,5 +168,10 @@
 		"eslint-plugin-jsx-a11y": {
 			"eslint": "$eslint"
 		}
+	},
+	"msw": {
+		"workerDirectory": [
+			"public"
+		]
 	}
 }
