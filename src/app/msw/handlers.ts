@@ -28,6 +28,7 @@ import { createCompanyHandlers } from '@/features/company/createCompany';
 import { deleteCompanyHandlers } from '@/features/company/deleteCompany';
 import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureFlag';
 import { featureFlagDeleteHandlers } from '@/features/featureFlag/deleteFeatureFlag';
+import { createProfileHandlers } from '@/features/profile/createProfile';
 import { setActiveProfileHandlers } from '@/features/profile/setActiveProfile';
 import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
@@ -99,4 +100,5 @@ export const handlers = [
 	...taskCreateHandlers,
 	...deleteTaskHandlers,
 	...setActiveProfileHandlers,
+	...createProfileHandlers,
 ];
