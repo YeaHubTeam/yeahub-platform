@@ -12,25 +12,14 @@ import { ReferralLinkCreateFormCard } from '../ReferralLinkCreateFormCard/Referr
 
 import styles from './ReferralLinkCreateFormWithHeader.module.css';
 
-interface ReferralLinkCreateFormWithHeaderProps {
-	onSuccess: () => void;
-}
-
-export const ReferralLinkCreateFormWithHeader = ({
-	onSuccess,
-}: ReferralLinkCreateFormWithHeaderProps) => {
+export const ReferralLinkCreateFormWithHeader = () => {
 	const [createReferralLinkMutation, { isLoading }] = useCreateReferralLinkMutation();
 
 	const { handleSubmit } = useFormContext<CreateRefferalLinkFormValues>();
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	const onCreateReferralLink = async (data: CreateRefferalLinkFormValues) => {
-		try {
-			await createReferralLinkMutation({ ...data }).unwrap();
-			onSuccess();
-		} catch {
-			return;
-		}
+	const onCreateReferralLink = (data: CreateRefferalLinkFormValues) => {
+		createReferralLinkMutation({ ...data }).unwrap();
 	};
 
 	return (

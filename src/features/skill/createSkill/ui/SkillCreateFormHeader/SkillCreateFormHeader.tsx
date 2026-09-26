@@ -9,22 +9,13 @@ import { Flex } from '@/shared/ui/Flex';
 import { useCreateSkillMutation } from '../../api/createSkillApi';
 import { CreateSkillFormValues } from '../../model/types/skillCreateTypes';
 
-interface SkillCreateFormHeaderProps {
-	onSuccess: () => void;
-}
-
-export const SkillCreateFormHeader = ({ onSuccess }: SkillCreateFormHeaderProps) => {
+export const SkillCreateFormHeader = () => {
 	const [createSkillMutation, { isLoading }] = useCreateSkillMutation();
 	const { handleSubmit } = useFormContext<CreateSkillFormValues>();
 	const { t } = useTranslation(['skill', 'translation']);
 
 	const onCreateSkill = async (data: CreateSkillFormValues) => {
-		try {
-			await createSkillMutation(data).unwrap();
-			onSuccess();
-		} catch {
-			return;
-		}
+		await createSkillMutation(data);
 	};
 
 	return (

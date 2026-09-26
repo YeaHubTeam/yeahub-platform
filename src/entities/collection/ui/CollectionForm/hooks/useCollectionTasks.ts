@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { useLazyGetTaskByIdQuery } from '@/entities/task/@x/collection';
-
 import { useGetCollectionTasksQuery } from '../../../api/collectionApi';
 
 export const useCollectionTasks = (
@@ -14,8 +12,6 @@ export const useCollectionTasks = (
 	const [selectedTasks, setSelectedTasks] = useState<{ title: string; id: string }[]>([]);
 
 	const watchCollectionTasks = watch('taskIds', []);
-	const [getTaskById] = useLazyGetTaskByIdQuery();
-	const taskIdsKey = watchCollectionTasks.join(',');
 
 	const { data: collectionTasks } = useGetCollectionTasksQuery(
 		{
@@ -24,42 +20,6 @@ export const useCollectionTasks = (
 		},
 		{ skip: !isEdit || collectionId === undefined },
 	);
-
-	useEffect(() => {
-		const taskIds = taskIdsKey ? taskIdsKey.split(',') : [];
-
-		if (collectionId || taskIds.length === 0) {
-			return;
-		}
-
-		let isActive = true;
-
-		const restoreSelectedTasks = async () => {
-			const restoredTasks = await Promise.all(
-				taskIds.map(async (taskId: string) => {
-					try {
-						const task = await getTaskById(taskId, true).unwrap();
-
-						return { id: String(task.id), title: task.name };
-					} catch {
-						return null;
-					}
-				}),
-			);
-
-			if (isActive) {
-				setSelectedTasks(
-					restoredTasks.filter((task): task is { id: string; title: string } => task !== null),
-				);
-			}
-		};
-
-		void restoreSelectedTasks();
-
-		return () => {
-			isActive = false;
-		};
-	}, [collectionId, getTaskById, taskIdsKey]);
 
 	useEffect(() => {
 		if (collectionTasks) {

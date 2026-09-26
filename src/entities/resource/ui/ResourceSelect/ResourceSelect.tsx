@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Marketplace } from '@/shared/config';
@@ -38,9 +38,8 @@ export const ResourcesSelect = ({
 		title: t(`resourceTypes.${item.code}`, item.code),
 	}));
 
-	const selectedResources = useMemo(
-		() => (Array.isArray(value) ? value : value !== undefined ? [value] : []),
-		[value],
+	const [selectedResources, setSelectedResources] = useState<string[]>(
+		Array.isArray(value) ? value : value !== undefined ? [value] : [],
 	);
 
 	const handleChange = (newValue: string | undefined) => {
@@ -49,8 +48,10 @@ export const ResourcesSelect = ({
 
 		if (hasMultiple) {
 			const updates = [...selectedResources, strValue];
+			setSelectedResources(updates);
 			onChange(updates);
 		} else {
+			setSelectedResources([strValue]);
 			onChange(strValue);
 		}
 	};
@@ -58,6 +59,7 @@ export const ResourcesSelect = ({
 	const handleDeleteResource = (id: string) => () => {
 		if (disabled) return;
 		const updates = selectedResources.filter((resourceId) => resourceId !== id);
+		setSelectedResources(updates);
 		onChange(updates);
 	};
 
@@ -77,7 +79,7 @@ export const ResourcesSelect = ({
 				limit: 100,
 			}));
 		}
-	}, [hasMultiple, selectedResources, resourceTypes]);
+	}, [selectedResources, resourceTypes]);
 
 	const resourcesDictionary = useMemo(() => {
 		const emptyResource: ResourceType = {
@@ -91,7 +93,7 @@ export const ResourcesSelect = ({
 			},
 			{ [EMPTY_RESOURCE_ID]: emptyResource } as Record<string, ResourceType>,
 		);
-	}, [resourceTypes, t]);
+	}, [resourceTypes]);
 
 	if (!hasMultiple) {
 		return (

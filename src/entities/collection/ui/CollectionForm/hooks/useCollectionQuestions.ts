@@ -2,13 +2,11 @@ import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 
-import { getJSONFromLS, useAppSelector } from '@/shared/libs';
+import { getJSONFromLS } from '@/shared/libs';
 
-import { getProfileId } from '@/entities/profile/@x/collection';
 import {
 	GENERATED_QUESTIONS_LS_KEY,
 	GeneratedQuestionDto,
-	useLazyGetQuestionByIdQuery,
 } from '@/entities/question/@x/collection';
 
 import { useGetCollectionQuestionsQuery } from '../../../api/collectionApi';
@@ -20,9 +18,6 @@ export const useCollectionQuestions = (collectionId?: string | number, questions
 
 	const [selectedQuestions, setSelectedQuestions] = useState<{ title: string; id: number }[]>([]);
 	const watchCollectionQuestions = watch('questions', []);
-	const profileId = useAppSelector(getProfileId);
-	const [getQuestionById] = useLazyGetQuestionByIdQuery();
-	const questionIdsKey = watchCollectionQuestions.join(',');
 
 	const { data: collectionQuestions } = useGetCollectionQuestionsQuery(
 		{
@@ -31,47 +26,6 @@ export const useCollectionQuestions = (collectionId?: string | number, questions
 		},
 		{ skip: questionsCount === undefined || !collectionId },
 	);
-
-	useEffect(() => {
-		const questionIds = questionIdsKey ? questionIdsKey.split(',').map(Number) : [];
-
-		if (collectionId || questionIds.length === 0) {
-			return;
-		}
-
-		let isActive = true;
-
-		const restoreSelectedQuestions = async () => {
-			const restoredQuestions = await Promise.all(
-				questionIds.map(async (questionId: number) => {
-					try {
-						const question = await getQuestionById(
-							{ questionId: String(questionId), profileId },
-							true,
-						).unwrap();
-
-						return { id: question.id, title: question.title };
-					} catch {
-						return null;
-					}
-				}),
-			);
-
-			if (isActive) {
-				setSelectedQuestions(
-					restoredQuestions.filter(
-						(question): question is { id: number; title: string } => question !== null,
-					),
-				);
-			}
-		};
-
-		void restoreSelectedQuestions();
-
-		return () => {
-			isActive = false;
-		};
-	}, [collectionId, getQuestionById, profileId, questionIdsKey]);
 
 	useEffect(() => {
 		if (collectionQuestions) {

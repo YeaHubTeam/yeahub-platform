@@ -9,11 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { useCreateCompanyMutation } from '../../api/createCompanyApi';
 import { CreateCompanyFormValues } from '../../model/types/companyCreateTypes';
 
-interface CompanyCreateFormHeaderProps {
-	onSuccess: () => void;
-}
-
-export const CompanyCreateFormHeader = ({ onSuccess }: CompanyCreateFormHeaderProps) => {
+export const CompanyCreateFormHeader = () => {
 	const [createCompanyMutation, { isLoading }] = useCreateCompanyMutation();
 	const { handleSubmit } = useFormContext<CreateCompanyFormValues>();
 	const { t } = useTranslation(i18Namespace.translation);
@@ -21,7 +17,6 @@ export const CompanyCreateFormHeader = ({ onSuccess }: CompanyCreateFormHeaderPr
 	const onCreateCompany = async (data: CreateCompanyFormValues) => {
 		try {
 			await createCompanyMutation(data).unwrap();
-			onSuccess();
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.log('Mutation error:', error);

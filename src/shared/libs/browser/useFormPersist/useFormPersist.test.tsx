@@ -144,19 +144,20 @@ describe('useFormPersist', () => {
 		expect(localStorage.getItem(LS_ADMIN_FORMS_KEY)).toBeNull();
 	});
 
-	it.each(['/admin/questions/create-multiple', '/admin/questions/1/edit', '/resources/create'])(
-		'does not persist values on %s',
-		(pathname) => {
-			const { result } = renderPersistHook(pathname);
+	it.each([
+		'/admin/questions/create-multiple',
+		'/admin/specializations/1/edit',
+		'/specializations/create',
+	])('does not persist values on %s', (pathname) => {
+		const { result } = renderPersistHook(pathname);
 
-			act(() => {
-				result.current.methods.setValue('title', 'Ignored');
-				jest.advanceTimersByTime(500);
-			});
+		act(() => {
+			result.current.methods.setValue('title', 'Ignored');
+			jest.advanceTimersByTime(500);
+		});
 
-			expect(localStorage.getItem(LS_ADMIN_FORMS_KEY)).toBeNull();
-		},
-	);
+		expect(localStorage.getItem(LS_ADMIN_FORMS_KEY)).toBeNull();
+	});
 
 	it('clears only the current draft and blocks an already scheduled save', () => {
 		localStorage.setItem(

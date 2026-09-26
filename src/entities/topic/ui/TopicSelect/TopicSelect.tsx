@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Topics } from '@/shared/config';
@@ -41,23 +41,25 @@ export const TopicSelect = ({
 		{ skip: !hasSkills },
 	);
 
-	const selectedTopics = useMemo(
-		() => (Array.isArray(value) ? value : value !== undefined ? [value] : []),
-		[value],
+	const [selectedTopics, setSelectedTopics] = useState<number[]>(
+		Array.isArray(value) ? value : value !== undefined ? [value] : [],
 	);
 
 	const handleChange = (newValue: string | undefined) => {
 		if (!newValue) return;
 		if (hasMultiple) {
 			const updates = [...(selectedTopics || []), +newValue];
+			setSelectedTopics(updates);
 			onChange(updates);
 		} else {
+			setSelectedTopics([+newValue]);
 			onChange([+newValue]);
 		}
 	};
 
 	const handleDeleteTopic = (id: number) => () => {
 		const updates = selectedTopics.filter((topicId) => topicId !== id);
+		setSelectedTopics(updates);
 		onChange(updates);
 	};
 
@@ -75,7 +77,7 @@ export const TopicSelect = ({
 				value: topic.id.toString(),
 			}));
 		}
-	}, [hasMultiple, topics?.data, selectedTopics]);
+	}, [topics?.data, selectedTopics]);
 
 	const topicsDictionary = useMemo(() => {
 		return topics?.data?.reduce(

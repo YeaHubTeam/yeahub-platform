@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo } from 'react';
+import { ComponentProps, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Specializations } from '@/shared/config';
@@ -29,9 +29,8 @@ export const SpecializationSelect = ({
 	const { t } = useTranslation(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({ limit: 100 });
 
-	const selectedSpecializations = useMemo(
-		() => (Array.isArray(value) ? value : value !== undefined ? [value] : []),
-		[value],
+	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(
+		Array.isArray(value) ? value : value !== undefined ? [value] : [],
 	);
 
 	const handleChange = (newValue: string | undefined) => {
@@ -40,8 +39,10 @@ export const SpecializationSelect = ({
 
 		if (hasMultiple) {
 			const updates = [...selectedSpecializations, numValue];
+			setSelectedSpecializations(updates);
 			onChange(updates);
 		} else {
+			setSelectedSpecializations([numValue]);
 			onChange([numValue]);
 		}
 	};
@@ -49,6 +50,7 @@ export const SpecializationSelect = ({
 	const handleDeleteSpecialization = (id: number) => () => {
 		if (disabled) return;
 		const updates = selectedSpecializations.filter((specializationId) => specializationId !== id);
+		setSelectedSpecializations(updates);
 		onChange(updates);
 	};
 
@@ -68,7 +70,7 @@ export const SpecializationSelect = ({
 				limit: 100,
 			}));
 		}
-	}, [hasMultiple, selectedSpecializations, specializations]);
+	}, [selectedSpecializations, specializations]);
 
 	const specializationsDictionary = useMemo(() => {
 		const emptySpecialization = {
@@ -82,7 +84,7 @@ export const SpecializationSelect = ({
 			},
 			{ 0: emptySpecialization } as Record<number, Pick<Specialization, 'id' | 'title'>>,
 		);
-	}, [specializations, t]);
+	}, [specializations]);
 
 	if (!hasMultiple) {
 		return (

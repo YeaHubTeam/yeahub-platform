@@ -14,11 +14,7 @@ import { IconButton } from '@/shared/ui/IconButton';
 import { useCreateFeatureFlagMutation } from '../../api/createFeatureFlagApi';
 import { CreateFeatureFlagFormValues } from '../../model/types/featureFlagCreateTypes';
 
-interface FeatureFlagCreateFormHeaderProps {
-	onSuccess: () => void;
-}
-
-export const FeatureFlagCreateFormHeader = ({ onSuccess }: FeatureFlagCreateFormHeaderProps) => {
+export const FeatureFlagCreateFormHeader = () => {
 	const [createFeatureFlagMutation, { isLoading }] = useCreateFeatureFlagMutation();
 	const navigate = useNavigate();
 
@@ -45,12 +41,7 @@ export const FeatureFlagCreateFormHeader = ({ onSuccess }: FeatureFlagCreateForm
 	};
 
 	const onCreateFeatureFlag = async (data: CreateFeatureFlagFormValues) => {
-		try {
-			await createFeatureFlagMutation(data).unwrap();
-			onSuccess();
-		} catch {
-			return;
-		}
+		await createFeatureFlagMutation(data);
 	};
 
 	return (

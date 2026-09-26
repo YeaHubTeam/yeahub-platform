@@ -9,22 +9,13 @@ import { Flex } from '@/shared/ui/Flex';
 import { useCreateQuestionMutation } from '../../api/createQuestionApi';
 import { CreateQuestionFormValues } from '../../model/types/questionCreateTypes';
 
-interface QuestionCreateFormHeaderProps {
-	onSuccess: () => void;
-}
-
-export const QuestionCreateFormHeader = ({ onSuccess }: QuestionCreateFormHeaderProps) => {
+export const QuestionCreateFormHeader = () => {
 	const [createQuestionMutation, { isLoading }] = useCreateQuestionMutation();
 	const { handleSubmit } = useFormContext<CreateQuestionFormValues>();
 	const { t } = useTranslation(i18Namespace.translation);
 
 	const onCreateQuestion = async (data: CreateQuestionFormValues) => {
-		try {
-			await createQuestionMutation(data).unwrap();
-			onSuccess();
-		} catch {
-			return;
-		}
+		await createQuestionMutation(data);
 	};
 
 	return (

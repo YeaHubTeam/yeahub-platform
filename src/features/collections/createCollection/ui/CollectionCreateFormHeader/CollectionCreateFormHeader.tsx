@@ -9,11 +9,11 @@ import { Flex } from '@/shared/ui/Flex';
 import { useCreateCollectionMutation } from '../../api/createCollectionApi';
 import { CollectionCreateFormValues } from '../../model/types/collectionCreateTypes';
 
-interface CollectionCreateFormHeaderProps {
-	onSuccess: () => void;
+export interface CollectionCreateFormHeaderProps {
+	children?: React.ReactNode;
 }
 
-const CollectionCreateFormHeader = ({ onSuccess }: CollectionCreateFormHeaderProps) => {
+const CollectionCreateFormHeader: React.FC<CollectionCreateFormHeaderProps> = () => {
 	const [createCollectionMutation, { isLoading }] = useCreateCollectionMutation();
 	const { t } = useTranslation([i18Namespace.collection, i18Namespace.translation]);
 	const { handleSubmit } = useFormContext<CollectionCreateFormValues>();
@@ -21,7 +21,6 @@ const CollectionCreateFormHeader = ({ onSuccess }: CollectionCreateFormHeaderPro
 	const onCreateCollection = async (data: CollectionCreateFormValues) => {
 		try {
 			await createCollectionMutation({ ...data }).unwrap();
-			onSuccess();
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.error(error);

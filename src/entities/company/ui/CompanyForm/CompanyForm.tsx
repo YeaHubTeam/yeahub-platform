@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Companies } from '@/shared/config';
-import { addBase64Data, removeBase64Data } from '@/shared/libs';
+import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
@@ -20,18 +21,19 @@ interface CompanyFormProps {
 export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 	const { t } = useTranslation([i18Namespace.companies]);
 
-	const { control, setValue, watch } = useFormContext();
-	const companyImage = watch('companyImage');
+	const { control, setValue } = useFormContext();
 
-	const previewImg = addBase64Data(companyImage) || imageSrc || null;
+	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
+		setPreviewImg(imageBase64);
 		setValue('companyImage', image);
 	};
 
 	const removeImage = () => {
+		setPreviewImg(null);
 		setValue('companyImage', null);
 		setValue('imageSrc', null);
 	};

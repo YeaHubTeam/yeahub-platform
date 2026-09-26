@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Marketplace } from '@/shared/config';
-import { addBase64Data, removeBase64Data } from '@/shared/libs';
+import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
@@ -31,15 +32,17 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 
 	const selectedSpecializations = watch('specializations');
 	const iconBase64 = watch('iconBase64');
-	const previewImg = addBase64Data(iconBase64);
+	const [previewImg, setPreviewImg] = useState<string | null>(iconBase64 ?? null);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
+		setPreviewImg(imageBase64);
 		setValue('iconBase64', image);
 	};
 
 	const removeImage = () => {
+		setPreviewImg(null);
 		setValue('iconBase64', null);
 	};
 

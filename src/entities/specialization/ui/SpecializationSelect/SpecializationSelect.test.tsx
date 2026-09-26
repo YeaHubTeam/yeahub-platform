@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { useState } from 'react';
 
 import { specializationsMock } from '../../api/__mocks__/data';
 
@@ -214,23 +213,7 @@ describe('SpecializationSelect component', () => {
 	});
 
 	test('correctly removes the last specialization', async () => {
-		const ControlledSpecializationSelect = () => {
-			const [value, setValue] = useState<number[]>([1]);
-
-			return (
-				<SpecializationSelect
-					value={value}
-					onChange={(newValue) => {
-						const nextValue = Array.isArray(newValue) ? newValue : [newValue];
-						setValue(nextValue);
-						onChangeMock(newValue);
-					}}
-					hasMultiple={true}
-				/>
-			);
-		};
-
-		render(<ControlledSpecializationSelect />);
+		render(<SpecializationSelect value={[1]} onChange={onChangeMock} hasMultiple={true} />);
 		const chipToDelete = screen.getByTestId('chip');
 		const deleteButton = chipToDelete.querySelector('.chip-delete-icon');
 
@@ -239,16 +222,6 @@ describe('SpecializationSelect component', () => {
 			expect(screen.queryByTestId('chip')).toBeNull();
 			expect(onChangeMock).toHaveBeenCalledWith([]);
 		});
-	});
-
-	test('updates selected specializations when value changes externally', () => {
-		const { rerender } = render(
-			<SpecializationSelect value={[]} onChange={onChangeMock} hasMultiple={true} />,
-		);
-
-		rerender(<SpecializationSelect value={[1]} onChange={onChangeMock} hasMultiple={true} />);
-
-		expect(screen.getByTestId('chip')).toBeInTheDocument();
 	});
 
 	test('does not delete if disabled', async () => {

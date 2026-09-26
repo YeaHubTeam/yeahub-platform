@@ -1,7 +1,7 @@
 export { useDebounce } from './useDebounce';
 export { useModal } from './useModal';
 export { useCopy } from './useCopy';
-export { addBase64Data, removeBase64Data } from './removeBase64Data';
+export { removeBase64Data } from './removeBase64Data';
 export { formatTime } from './formatTime';
 export { formatDate } from './formatDate';
 export { getTimeDifference } from './getTimeDifference';

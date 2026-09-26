@@ -9,22 +9,13 @@ import { Flex } from '@/shared/ui/Flex';
 import { useCreateTaskMutation } from '../../api/createTaskApi';
 import { CreateTaskFormValues } from '../../model/types/taskCreateTypes';
 
-interface TaskCreateFormHeaderProps {
-	onSuccess: () => void;
-}
-
-export const TaskCreateFormHeader = ({ onSuccess }: TaskCreateFormHeaderProps) => {
+export const TaskCreateFormHeader = () => {
 	const [createTaskMutation, { isLoading }] = useCreateTaskMutation();
 	const { handleSubmit } = useFormContext<CreateTaskFormValues>();
 	const { t } = useTranslation(i18Namespace.translation);
 
 	const onCreateTask = async (data: CreateTaskFormValues) => {
-		try {
-			await createTaskMutation(data).unwrap();
-			onSuccess();
-		} catch {
-			return;
-		}
+		await createTaskMutation(data);
 	};
 
 	return (
