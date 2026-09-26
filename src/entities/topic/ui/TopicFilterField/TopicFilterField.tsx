@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Questions, Translation } from '@/shared/config';
+import { i18Namespace, Questions } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
-import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { ToggleShowAllButton } from '@/shared/ui/ToggleShowAllButton';
 
 import { useGetTopicsListQuery } from '../../api/topicApi';
 import { MAX_SHOWN_LIMIT_TOPICS } from '../../model/constants/topicConstants';
@@ -70,11 +70,7 @@ export const TopicFilterField = ({
 				onClick={handleTopicClick}
 			/>
 			{!isMobile && topicsData && topicsData.total > MAX_SHOWN_LIMIT_TOPICS && (
-				<Button variant="link" onClick={onToggleShowAll}>
-					{!showAll
-						? t(Translation.SHOW_ALL, { ns: i18Namespace.translation })
-						: t(Translation.HIDE, { ns: i18Namespace.translation })}
-				</Button>
+				<ToggleShowAllButton isToggled={showAll} onToggle={onToggleShowAll} />
 			)}
 		</Flex>
 	);
