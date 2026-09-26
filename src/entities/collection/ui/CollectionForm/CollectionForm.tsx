@@ -5,6 +5,7 @@ import { i18Namespace, Collections } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
+import { FormInputElements } from '@/shared/ui/FormInputElements';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
@@ -14,9 +15,9 @@ import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
 import { CompanySelect } from '@/entities/company/@x/collection';
-import { ChooseQuestionsDrawer } from '@/entities/question/@x/collection';
+import { QuestionsSearchList } from '@/entities/question/@x/collection';
 import { SpecializationSelect } from '@/entities/specialization/@x/collection';
-import { ChooseTasksDrawer } from '@/entities/task/@x/collection';
+import { TasksSearchList } from '@/entities/task/@x/collection';
 
 import { useGetCollectionKeywordsQuery } from '../../api/collectionApi';
 
@@ -155,22 +156,44 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 
 				<FormControl name="questions" control={control}>
 					{() => (
-						<ChooseQuestionsDrawer
-							selectedQuestions={selectedQuestions}
-							handleSelectQuestion={handleSelectQuestion}
-							handleUnselectQuestion={handleUnselectQuestion}
-							specializations={specializations}
-						/>
+						<FormInputElements
+							shortText={t(Collections.QUESTIONS_SHORT, { ns: i18Namespace.collection })}
+							labelText={t(Collections.QUESTIONS_LABEL, { ns: i18Namespace.collection })}
+							selectedCountText={t(Collections.QUESTIONS_SELECTED, {
+								count: selectedQuestions.length,
+								ns: i18Namespace.collection,
+							})}
+							selectedItems={selectedQuestions}
+							handleUnselectItem={handleUnselectQuestion}
+						>
+							<QuestionsSearchList
+								handleSelectQuestion={handleSelectQuestion}
+								handleUnselectQuestion={handleUnselectQuestion}
+								selectedQuestions={selectedQuestions}
+								specializations={specializations}
+							/>
+						</FormInputElements>
 					)}
 				</FormControl>
 
 				<FormControl name="taskIds" control={control}>
 					{() => (
-						<ChooseTasksDrawer
-							selectedTasks={selectedTasks}
-							handleSelectTask={handleSelectTask}
-							handleUnselectTask={handleUnselectTask}
-						/>
+						<FormInputElements
+							shortText={t('tasks.short', { ns: i18Namespace.collection })}
+							labelText={t('tasks.label', { ns: i18Namespace.collection })}
+							selectedCountText={t('tasks.selected', {
+								count: selectedTasks.length,
+								ns: i18Namespace.collection,
+							})}
+							selectedItems={selectedTasks}
+							handleUnselectItem={handleUnselectTask}
+						>
+							<TasksSearchList
+								handleSelectTask={handleSelectTask}
+								handleUnselectTask={handleUnselectTask}
+								selectedTasks={selectedTasks}
+							/>
+						</FormInputElements>
 					)}
 				</FormControl>
 			</Flex>
