@@ -10,6 +10,16 @@ import { ReferralLink } from '@/entities/referralLink';
 
 import { useDeleteReferralLinkMutation } from '@/features/referralLinks/deleteReferralLink';
 
+interface ReferralLinksTableRow {
+	id: string;
+	refCode: string;
+	url: string;
+	ownerUsername: string;
+	linkedCount: number;
+	amountSum: number;
+	createdAt: string;
+}
+
 interface ReferralLinksTableProps {
 	referralLinks: ReferralLink[];
 	selectedReferralLinks?: SelectedAdminEntities<string>;
@@ -24,7 +34,18 @@ export const ReferralLinksTable = ({
 	const { t } = useTranslation(i18Namespace.referralLink);
 	const [deleteReferralLink] = useDeleteReferralLinkMutation();
 
-	const columns: TableColumn<ReferralLink>[] = [
+	const tableData: ReferralLinksTableRow[] =
+		referralLinks?.map((referralLink) => ({
+			id: referralLink.id,
+			ownerUsername: referralLink.ownerUsername,
+			refCode: referralLink.refCode,
+			url: referralLink.url,
+			linkedCount: referralLink.linkedCount,
+			amountSum: referralLink.amountSum,
+			createdAt: new Date(referralLink.createdAt).toLocaleDateString(),
+		})) ?? [];
+
+	const columns: TableColumn<ReferralLinksTableRow>[] = [
 		{
 			id: 'refCode',
 			header: t(ReferralLinks.REF_CODE),
@@ -55,7 +76,6 @@ export const ReferralLinksTable = ({
 		{
 			id: 'createdAt',
 			header: t(ReferralLinks.CREATED_AT),
-			cell: ({ row }) => new Date(row.createdAt).toLocaleDateString(),
 		},
 	];
 
@@ -93,7 +113,7 @@ export const ReferralLinksTable = ({
 
 	return (
 		<TableV2
-			data={referralLinks}
+			data={tableData}
 			columns={columns}
 			selectedRowIds={selectedRowIds}
 			onSelectedRowIdsChange={onSelectedRowIdsChange}
