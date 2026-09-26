@@ -149,13 +149,13 @@ describe('Stepper Component', () => {
 			expect(defaultProps.setActiveStep).toHaveBeenCalledWith(mockSteps[0]);
 		});
 
-		test('allows activation of any previous step', () => {
+		test('ignores clicks on previous steps', () => {
 			render(<Stepper {...defaultProps} activeStep={mockSteps[2]} />);
 
 			const step1Item = screen.getByTestId(stepperTestIds.item('step-1'));
 
 			fireEvent.click(step1Item);
-			expect(defaultProps.setActiveStep).toHaveBeenCalledWith(mockSteps[0]);
+			expect(defaultProps.setActiveStep).not.toHaveBeenCalled();
 		});
 
 		test('allows activation of step when Stepper has one step', () => {

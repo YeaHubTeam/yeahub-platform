@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { PieSegment } from '../types';
 import { calculateArcLength, calculateStrokeDasharray, calculateStrokeDashoffset } from '../utils';
 

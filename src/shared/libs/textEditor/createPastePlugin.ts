@@ -1,5 +1,5 @@
+import { Plugin } from '@tiptap/pm/state';
 import { Editor } from '@tiptap/react';
-import { Plugin } from 'prosemirror-state';
 
 import { convertSpacesToTabs } from './convertSpacesToTabs';
 

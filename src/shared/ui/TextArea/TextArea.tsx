@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { forwardRef } from 'react';
+import { forwardRef, type JSX } from 'react';
 
 import { textAreaClassName } from './constants';
 import styles from './TextArea.module.css';
