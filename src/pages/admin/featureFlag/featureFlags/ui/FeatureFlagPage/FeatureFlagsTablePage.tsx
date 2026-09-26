@@ -18,13 +18,13 @@ interface FeatureFlagsTableRow {
 	flag: string;
 	description: string;
 	roles: FeatureFlagApiItem['roles'];
-	clientType: string;
+	clientType: FeatureFlagApiItem['clientType'];
 	enabled: boolean;
 	createdAt: string;
 }
 
 interface FeatureFlagsTableProps {
-	featureFlags?: FeatureFlagApiItem[];
+	featureFlags: FeatureFlagApiItem[];
 	selectedItems?: SelectedEntities<string>;
 	onSelectItems?: (ids: SelectedEntities<string>) => void;
 }
@@ -37,16 +37,15 @@ export const FeatureFlagsTable = ({
 	const { t } = useTranslation([i18Namespace.featureFlags]);
 	const [deleteFeatureFlag] = useDeleteFeatureFlagMutation();
 
-	const tableData: FeatureFlagsTableRow[] =
-		featureFlags?.map((featureFlag) => ({
-			id: featureFlag.id,
-			flag: featureFlag.flag,
-			description: featureFlag.description,
-			roles: featureFlag.roles,
-			clientType: featureFlag.clientType,
-			enabled: featureFlag.enabled,
-			createdAt: featureFlag.createdAt,
-		})) ?? [];
+	const tableData: FeatureFlagsTableRow[] = featureFlags.map((featureFlag) => ({
+		id: featureFlag.id,
+		flag: featureFlag.flag,
+		description: featureFlag.description,
+		roles: featureFlag.roles,
+		clientType: featureFlag.clientType,
+		enabled: featureFlag.enabled,
+		createdAt: new Date(featureFlag.createdAt).toLocaleDateString(),
+	}));
 
 	const columns: TableColumn<FeatureFlagsTableRow>[] = [
 		{
@@ -68,7 +67,7 @@ export const FeatureFlagsTable = ({
 		{
 			id: 'roles',
 			header: t(FeatureFlags.TABLE_ROLES),
-			width: '15%',
+			width: '250px',
 			cell: ({ row }) =>
 				row.roles?.length ? (
 					<UserRolesList userRoles={row.roles} />
@@ -79,22 +78,18 @@ export const FeatureFlagsTable = ({
 		{
 			id: 'clientType',
 			header: t(FeatureFlags.TABLE_CLIENT_TYPE),
-			width: '15%',
-			cell: ({ value }) => <Text variant="body3-accent">{String(value)}</Text>,
+			width: '150px',
 		},
 		{
 			id: 'enabled',
 			header: t(FeatureFlags.TABLE_ENABLED),
-			width: '15%',
+			width: '100px',
 			cell: ({ row }) => <ToggleActiveFeatureFlagSwitch id={row.id} enabled={row.enabled} />,
 		},
 		{
 			id: 'createdAt',
 			header: t(FeatureFlags.TABLE_CREATED_AT),
-			width: '15%',
-			cell: ({ value }) => (
-				<Text variant="body3-accent">{new Date(String(value)).toLocaleDateString()}</Text>
-			),
+			width: '150px',
 		},
 	];
 
@@ -129,10 +124,6 @@ export const FeatureFlagsTable = ({
 		},
 		[onSelectItems, selectedById],
 	);
-
-	if (!featureFlags) {
-		return null;
-	}
 
 	return (
 		<TableV2
