@@ -68,7 +68,7 @@ export const Text = forwardRef(
 			isLimitSize,
 			isNoWrap,
 			dataTestId,
-			isBreakLongWord,
+			isBreakLongWord = true,
 		}: TextProps,
 		ref,
 	) => {
