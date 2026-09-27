@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import React from 'react';
 
 import { Button } from '@/shared/ui/Button';
@@ -26,7 +26,7 @@ const meta = {
 		},
 		children: {
 			control: {
-				disable: 'true',
+				disable: true,
 			},
 		},
 		ariaLabel: {

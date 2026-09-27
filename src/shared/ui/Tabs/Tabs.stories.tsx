@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { useState } from 'react';
 
 import { Tabs } from './Tabs';
 import type { Tab } from './types';
@@ -50,7 +50,7 @@ const meta: Meta<typeof Tabs> = {
 			control: { type: 'object' },
 			table: {
 				type: { summary: 'Tab' },
-				defaultValue: { summary: tabs[0] },
+				defaultValue: { summary: 'tabs[0]' },
 			},
 		},
 		setActiveTab: {

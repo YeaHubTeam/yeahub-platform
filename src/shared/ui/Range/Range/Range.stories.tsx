@@ -1,5 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-webpack5';
 import React from 'react';
+import { fn } from 'storybook/test';
 
 import { Icon } from '../../Icon';
 import { RangeProps } from '../types';
@@ -10,6 +11,9 @@ const meta = {
 	title: 'shared/Range',
 	component: Range,
 	tags: ['autodocs'],
+	args: {
+		onChange: fn(),
+	},
 	argTypes: {},
 } satisfies Meta<typeof Range>;
 

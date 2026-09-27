@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useState, useRef, useEffect, ChangeEvent } from 'react';
+import { useState, useRef, useEffect, FormEvent } from 'react';
 
 import { RangeContext } from '../rangeContext';
 import { RangeLabel } from '../RangeLabel/RangeLabel';
@@ -56,9 +56,9 @@ export const Range = (props: RangeProps) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleInput = (e: FormEvent<HTMLInputElement>) => {
 		setIsDraggable(true);
-		getLabelPosition(+e.target.value);
+		getLabelPosition(+e.currentTarget.value);
 	};
 
 	const handleBlur = () => {

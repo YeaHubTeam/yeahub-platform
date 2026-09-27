@@ -1,6 +1,9 @@
-import path from 'path';
+import path from 'node:path';
 
-import { Configuration, RuleSetRule, DefinePlugin } from 'webpack';
+import webpack from 'webpack';
+import type { Configuration, RuleSetRule } from 'webpack';
+
+const srcDir = path.resolve(import.meta.dirname, '..', '..', 'src');
 
 export const storybookWebpack = ({ config }: { config: Configuration }) => {
 	config.resolve = config.resolve || {};
@@ -12,12 +15,12 @@ export const storybookWebpack = ({ config }: { config: Configuration }) => {
 		(rule): rule is RuleSetRule => typeof rule === 'object' && rule !== null && 'test' in rule,
 	);
 
-	config.resolve.modules.push(path.resolve(__dirname, '..', '..', 'src'));
+	config.resolve.modules.push(srcDir);
 
 	config.resolve.extensions.push('.ts', '.tsx');
 	config.resolve.alias = {
 		...config.resolve.alias,
-		'@': path.resolve(__dirname, '..', '..', 'src'),
+		'@': srcDir,
 	};
 
 	config.module.rules = rules.map((rule: RuleSetRule) => {
@@ -39,7 +42,7 @@ export const storybookWebpack = ({ config }: { config: Configuration }) => {
 
 	config.plugins = config.plugins || [];
 	config.plugins.push(
-		new DefinePlugin({
+		new webpack.DefinePlugin({
 			__IS_DEV__: JSON.stringify(true),
 		}),
 	);

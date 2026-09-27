@@ -1,16 +1,83 @@
+.scroll {
+  overflow-x: auto;
+  border-radius: 16px;
+}
+
 .table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   color: var(--color-black-900);
+}
+
+.canvas {
+  position: relative;
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+}
+
+.canvas .table {
+  flex: 1 0 auto;
+  width: max-content;
+}
+
+.sentinel-left,
+.sentinel-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  pointer-events: none;
+}
+
+.sentinel-left {
+  left: 0;
+}
+
+.sentinel-right {
+  right: 0;
+}
+
+.shadow-left,
+.shadow-right {
+  position: sticky;
+  z-index: 3;
+  flex: 0 0 16px;
+  align-self: stretch;
+  width: 16px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.shadow-left {
+  margin-right: -16px;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-black-900) 16%, transparent),
+    transparent
+  );
+}
+
+.shadow-right {
+  margin-left: -16px;
+  background: linear-gradient(
+    to left,
+    color-mix(in srgb, var(--color-black-900) 16%, transparent),
+    transparent
+  );
 }
 
 .head {
   height: 48px;
-  clip-path: inset(0 round 16px 16px 0 0);
   background-color: var(--color-purple-700);
   color: var(--color-white-900);
   line-height: 130%;
   font-weight: inherit;
+}
+
+.head th {
+  background-color: var(--color-purple-700);
 }
 
 .cell {
@@ -28,20 +95,21 @@
 .row {
   width: auto;
   height: 48px;
+}
+
+.row td {
   background-color: var(--color-black-30);
 }
 
-.row:last-child {
-  clip-path: inset(0 round 0 0 16px 16px);
-}
-
-.row:hover {
+.row:hover td {
   background-color: var(--color-purple-100);
 }
 
 .selection-column {
   padding: 0 6px;
   width: 32px;
+  min-width: 32px;
+  max-width: 32px;
 
   span {
     position: relative;
@@ -51,5 +119,55 @@
 
 .actions-column {
   padding: 0;
-  width: auto;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.pinned {
+  position: sticky;
+}
+
+.pinned-left {
+  left: 0;
+  z-index: 2;
+}
+
+.pinned-right {
+  right: 0;
+  z-index: 1;
+}
+
+.head .pinned-left {
+  z-index: 4;
+}
+
+.head .pinned-right {
+  z-index: 3;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.sort-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.sort-button svg {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.sort-button svg path {
+  fill: currentcolor;
 }

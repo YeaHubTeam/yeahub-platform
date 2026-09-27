@@ -1,27 +1,18 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-webpack5';
 
 import i18n from '../../src/shared/config/i18n/i18n';
 import { RouteDecorator, StyleDecorator } from '../../src/shared/config/storybook';
 
 const preview: Preview = {
-	globals: {
-		locale: 'en',
-		locales: {
-			en: 'English',
-			ru: 'Русский',
-		},
-	},
 	parameters: {
 		backgrounds: {
-			default: 'light',
-			values: [
-				{
+			options: {
+				light: {
 					name: 'light',
 					value: '#F4F4F4',
 				},
-			],
+			},
 		},
-		actions: { argTypesRegex: '^on[A-Z].*' },
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,
@@ -31,6 +22,16 @@ const preview: Preview = {
 		i18n,
 	},
 	decorators: [RouteDecorator, StyleDecorator],
+	initialGlobals: {
+		locale: 'en',
+		locales: {
+			en: 'English',
+			ru: 'Русский',
+		},
+		backgrounds: {
+			value: 'light',
+		},
+	},
 };
 
 export default preview;

@@ -78,7 +78,9 @@ export const CollectionSelect = ({ value, onChange, disabled }: CollectionSelect
 				onSelect={(val) => {
 					const selected = options.find((opt) => opt.value === val);
 					handleChange(!val ? '' : String(val));
-					!selected?.label ? handleSearchChange('') : '';
+					if (!selected?.label) {
+						handleSearchChange('');
+					}
 					setSearchValue(selected?.label ?? '');
 				}}
 			>

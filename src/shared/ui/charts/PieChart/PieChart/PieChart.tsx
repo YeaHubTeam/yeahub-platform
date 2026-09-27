@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Flex } from '@/shared/ui/Flex';
 import { AttemptInfo } from '@/shared/ui/PercentsInfoPie/types';
 

@@ -46,48 +46,66 @@ export function initSentry() {
 					}
 				}
 
-				const cookies = event.request?.cookies;
-				if (cookies && typeof cookies === 'object') {
-					Object.keys(cookies).forEach((key) => {
-						cookies[key] = '[Filtered]';
-					});
-				}
-
-				if (event.request && event.request.headers) {
-					const sensitiveHeaders = ['authorization', 'cookie', 'x-csrf-token'];
-					sensitiveHeaders.forEach((header) => {
-						if (event.request!.headers![header]) {
-							event.request!.headers![header] = '[Filtered]';
-						}
-					});
-				}
-
-				if (event.request?.query_string) {
-					event.request.query_string = '[Filtered]';
-				}
-
-				if (event.request?.data) {
-					if (typeof event.request.data === 'string') {
-						event.request.data = '[Filtered]';
-					} else if (typeof event.request.data === 'object' && event.request.data !== null) {
-						Object.keys(event.request.data).forEach((key) => {
-							event.request!.data[key] = '[Filtered]';
-						});
-					}
-				}
-
-				const extra = event.extra;
-				if (extra && typeof extra === 'object') {
-					const sensitiveFields = ['password', 'token', 'newPassword', 'confirmPassword'];
-					Object.keys(extra).forEach((key) => {
-						if (sensitiveFields.includes(key.toLowerCase())) {
-							extra[key] = '[Filtered]';
-						}
-					});
-				}
-
 				if (event.level === 'info') return null;
-				return event;
+
+				const sensitiveHeaders = ['authorization', 'cookie', 'x-csrf-token'];
+				const sensitiveExtraFields = ['password', 'token', 'newPassword', 'confirmPassword'];
+
+				const cookies =
+					event.request?.cookies && typeof event.request.cookies === 'object'
+						? Object.fromEntries(
+								Object.keys(event.request.cookies).map((key) => [key, '[Filtered]']),
+							)
+						: event.request?.cookies;
+
+				const headers = event.request?.headers
+					? {
+							...event.request.headers,
+							...Object.fromEntries(
+								sensitiveHeaders
+									.filter((header) => event.request?.headers?.[header])
+									.map((header) => [header, '[Filtered]']),
+							),
+						}
+					: event.request?.headers;
+
+				const data = event.request?.data
+					? typeof event.request.data === 'string'
+						? '[Filtered]'
+						: typeof event.request.data === 'object' && event.request.data !== null
+							? Object.fromEntries(
+									Object.keys(event.request.data).map((key) => [key, '[Filtered]']),
+								)
+							: event.request.data
+					: event.request?.data;
+
+				const extra =
+					event.extra && typeof event.extra === 'object'
+						? {
+								...event.extra,
+								...Object.fromEntries(
+									Object.keys(event.extra)
+										.filter((key) => sensitiveExtraFields.includes(key.toLowerCase()))
+										.map((key) => [key, '[Filtered]']),
+								),
+							}
+						: event.extra;
+
+				return {
+					...event,
+					request: event.request
+						? {
+								...event.request,
+								cookies,
+								headers,
+								data,
+								query_string: event.request.query_string
+									? '[Filtered]'
+									: event.request.query_string,
+							}
+						: event.request,
+					extra,
+				};
 			},
 		});
 

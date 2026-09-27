@@ -146,3 +146,4 @@ export { default as refresh } from './refresh.svg';
 export { default as referralsIcon } from './referralsIcon.svg';
 export { default as x } from './x.svg';
 export { default as arrowsCounterClockwise } from './arrowsCounterClockwise.svg';
+export { default as squareSortVertical } from './squareSortVertical.svg';
