@@ -1,4 +1,4 @@
-import { CollectionEditFormSkeleton } from '@/features/collections/editCollection/ui/CollectionEditForm/CollectionEditForm.skeleton';
+import { CollectionEditFormSkeleton } from '@/features/collections/editCollection';
 
 export const CollectionEditPageSkeleton = () => {
 	return <CollectionEditFormSkeleton />;
