@@ -6,6 +6,7 @@ import { Loader } from '@/shared/ui/Loader';
 import { CollectionCreateFormSkeleton } from '@/features/collections/createCollection';
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
+import { QuestionEditFormSkeleton } from '@/features/question/editQuestion';
 import { SpecializationCreateFormSkeleton } from '@/features/specialization/createSpecialization';
 
 import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
@@ -46,6 +47,7 @@ const SkeletonGenerator = () => {
 	const location = useLocation();
 
 	const isInterviewResultPage = matchPath(ROUTES.interview.history.result.page, location.pathname);
+	const isAdminQuestionEditPage = matchPath(ROUTES.admin.questions.edit.page, location.pathname);
 	const isAdminQuestionDetailsPage =
 		matchPath(ROUTES.admin.questions.details.page, location.pathname) &&
 		!matchPath(ROUTES.admin.questions.details.page, ROUTES.admin.questions.create.page);
@@ -63,6 +65,10 @@ const SkeletonGenerator = () => {
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
+	}
+
+	if (isAdminQuestionEditPage) {
+		return <QuestionEditFormSkeleton />;
 	}
 
 	if (isAdminQuestionDetailsPage) {
