@@ -1,9 +1,9 @@
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputRangeSkeleton } from '@/shared/ui/form';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { InputSkeleton } from '@/shared/ui/Input';
 import { RadioSkeleton } from '@/shared/ui/Radio';
-import { RangeSkeleton } from '@/shared/ui/Range';
 import { TextSkeleton } from '@/shared/ui/Text';
 import { TextEditorSkeleton } from '@/shared/ui/TextEditor';
 
@@ -43,11 +43,7 @@ export const TaskFormSkeleton = () => {
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
-				<FormFieldSkeleton>
-					<FormControlSkeleton className={styles.difficulty}>
-						<RangeSkeleton />
-					</FormControlSkeleton>
-				</FormFieldSkeleton>
+				<FormInputRangeSkeleton />
 
 				<FormFieldSkeleton direction="column">
 					<FormControlSkeleton>

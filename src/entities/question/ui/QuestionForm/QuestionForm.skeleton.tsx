@@ -1,5 +1,6 @@
 import { DropdownSkeleton } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputRangeSkeleton } from '@/shared/ui/form';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { KeywordInputSkeleton } from '@/shared/ui/KeywordInput';
@@ -26,17 +27,9 @@ export const QuestionFormSkeleton = () => {
 				</FormControlSkeleton>
 			</FormFieldSkeleton>
 
-			<FormFieldSkeleton>
-				<FormControlSkeleton>
-					<Skeleton width={360} height="100%" />
-				</FormControlSkeleton>
-			</FormFieldSkeleton>
+			<FormInputRangeSkeleton />
 
-			<FormFieldSkeleton>
-				<FormControlSkeleton>
-					<Skeleton width={360} height="100%" />
-				</FormControlSkeleton>
-			</FormFieldSkeleton>
+			<FormInputRangeSkeleton />
 
 			<FormFieldSkeleton>
 				<FormControlSkeleton>
