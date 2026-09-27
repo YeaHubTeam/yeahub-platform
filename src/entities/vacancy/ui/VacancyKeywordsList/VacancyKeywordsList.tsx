@@ -5,6 +5,11 @@ import { Text } from '@/shared/ui/Text';
 
 import styles from './VacancyKeywordsList.module.css';
 
+export const VacancyKeywordsListTestIds = {
+	wrapper: 'VacancyKeywordsListWrapper',
+	keyword: 'VacancyKeywordsListKeyword',
+};
+
 export type VacancyKeywordsListColor = 'purple';
 
 export interface VacancyKeywordsListProps {
@@ -19,13 +24,20 @@ export const VacancyKeywordsList = ({
 	color = 'purple',
 }: VacancyKeywordsListProps) => {
 	return (
-		<Flex align="end" gap="12" wrap="wrap" className={styles[color]}>
+		<Flex
+			align="end"
+			gap="12"
+			wrap="wrap"
+			className={styles[color]}
+			dataTestId={VacancyKeywordsListTestIds.wrapper}
+		>
 			{keywords.map((keyword, index) => {
 				const isAccent = index + 1 <= topCount;
 
 				return (
 					<div
 						key={`${keyword}-${index}`}
+						data-testid={VacancyKeywordsListTestIds.keyword}
 						className={classNames(styles.keyword, {
 							[styles.accent]: isAccent,
 						})}
