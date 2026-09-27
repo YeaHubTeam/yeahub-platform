@@ -1,19 +1,24 @@
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, ReferralLinks, ROUTES, Translation } from '@/shared/config';
-import { route, SelectedAdminEntities } from '@/shared/libs';
-import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
-import { Popover, PopoverChildrenProps, PopoverMenuItem } from '@/shared/ui/Popover';
-import { Table } from '@/shared/ui/Table';
+import { i18Namespace, ReferralLinks, ROUTES } from '@/shared/config';
+import { route, SelectedAdminEntities, SelectedAdminEntity } from '@/shared/libs';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
-import { Text } from '@/shared/ui/Text';
+import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
 
 import { ReferralLink } from '@/entities/referralLink';
 
-import { DeleteReferralLinkButton } from '@/features/referralLinks/deleteReferralLink';
+import { useDeleteReferralLinkMutation } from '@/features/referralLinks/deleteReferralLink';
+
+interface ReferralLinksTableRow {
+	id: string;
+	refCode: string;
+	url: string;
+	ownerUsername: string;
+	linkedCount: number;
+	amountSum: number;
+	createdAt: string;
+}
 
 interface ReferralLinksTableProps {
 	referralLinks: ReferralLink[];
@@ -26,84 +31,95 @@ export const ReferralLinksTable = ({
 	selectedReferralLinks,
 	onSelectReferralLinks,
 }: ReferralLinksTableProps) => {
-	const { t } = useTranslation([i18Namespace.referralLink, i18Namespace.translation]);
-	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.referralLink);
+	const [deleteReferralLink] = useDeleteReferralLinkMutation();
 
-	const renderTableHeader = () => {
-		const columns = {
-			refCode: t(ReferralLinks.REF_CODE),
-			url: t(ReferralLinks.URL),
-			ownerUsername: t(ReferralLinks.OWNER_USERNAME),
-			linkedCount: t(ReferralLinks.LINKED_COUNT),
-			amountSum: t(ReferralLinks.AMOUNT_SUM),
-			createdAt: t(ReferralLinks.CREATED_AT),
-		};
+	const tableData: ReferralLinksTableRow[] =
+		referralLinks?.map((referralLink) => ({
+			id: referralLink.id,
+			ownerUsername: referralLink.ownerUsername,
+			refCode: referralLink.refCode,
+			url: referralLink.url,
+			linkedCount: referralLink.linkedCount,
+			amountSum: referralLink.amountSum,
+			createdAt: new Date(referralLink.createdAt).toLocaleDateString(),
+		})) ?? [];
 
-		return Object.entries(columns).map(([k, v]) => <td key={k}>{v}</td>);
-	};
-
-	const renderTableBody = (ref: ReferralLink) => {
-		const columns = {
-			refCode: (
+	const columns: TableColumn<ReferralLinksTableRow>[] = [
+		{
+			id: 'refCode',
+			header: t(ReferralLinks.REF_CODE),
+			cell: ({ row }) => (
 				<TableCellLink
-					to={route(ROUTES.admin.referralLinks.details.page, ref.id)}
-					text={ref.refCode}
+					to={route(ROUTES.admin.referralLinks.details.page, row.id)}
+					text={row.refCode}
 				/>
 			),
-			url: <TableCellLink to={ref.url} text={ref.url} />,
-			ownerUsername: <Text variant="body3-accent">{ref.ownerUsername}</Text>,
-			linkedCount: <Text variant="body3-accent">{ref.linkedCount}</Text>,
-			amountSum: <Text variant="body3-accent">{ref.amountSum}</Text>,
-			createdAt: <Text variant="body3-accent">{new Date(ref.createdAt).toLocaleDateString()}</Text>,
-		};
+		},
+		{
+			id: 'url',
+			header: t(ReferralLinks.URL),
+			cell: ({ row }) => <TableCellLink to={row.url} text={row.url} />,
+		},
+		{
+			id: 'ownerUsername',
+			header: t(ReferralLinks.OWNER_USERNAME),
+		},
+		{
+			id: 'linkedCount',
+			header: t(ReferralLinks.LINKED_COUNT),
+		},
+		{
+			id: 'amountSum',
+			header: t(ReferralLinks.AMOUNT_SUM),
+		},
+		{
+			id: 'createdAt',
+			header: t(ReferralLinks.CREATED_AT),
+		},
+	];
 
-		return Object.entries(columns).map(([k, v]) => <td key={k}>{v}</td>);
-	};
+	const selectedRowIds = selectedReferralLinks?.map((referralLink) => referralLink.id);
 
-	const renderActions = (ref: ReferralLink) => {
-		const menuItems: PopoverMenuItem[] = [
-			{
-				icon: <Icon icon="eye" size={24} />,
-				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				onClick: () => navigate(route(ROUTES.admin.referralLinks.details.page, ref.id)),
-			},
-			{
-				icon: <Icon icon="pen" size={24} />,
-				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				onClick: () => navigate(route(ROUTES.admin.referralLinks.edit.page, ref.id)),
-			},
-			{
-				renderComponent: () => <DeleteReferralLinkButton referralId={ref.id} />,
-			},
-		];
+	const selectedById = useMemo(() => {
+		const byId = new Map<string, SelectedAdminEntity<string>>();
 
-		return (
-			<Flex gap="4">
-				<Popover menuItems={menuItems}>
-					{({ onToggle }: PopoverChildrenProps) => (
-						<IconButton
-							aria-label="open actions"
-							form="square"
-							icon={<Icon icon="dotsThreeVertical" size={20} />}
-							size="medium"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					)}
-				</Popover>
-			</Flex>
-		);
-	};
+		selectedReferralLinks?.forEach((referralLink) => {
+			byId.set(referralLink.id, referralLink);
+		});
+
+		referralLinks.forEach((referralLink) => {
+			byId.set(referralLink.id, {
+				id: referralLink.id,
+			});
+		});
+
+		return byId;
+	}, [referralLinks, selectedReferralLinks]);
+
+	const onSelectedRowIdsChange = useCallback(
+		(ids: TableRowId[]) => {
+			onSelectReferralLinks?.(
+				ids.map(
+					(id) =>
+						selectedById.get(id as string) ?? {
+							id: id as string,
+						},
+				),
+			);
+		},
+		[onSelectReferralLinks, selectedById],
+	);
 
 	return (
-		<Table
-			items={referralLinks}
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			renderActions={renderActions}
-			selectedItems={selectedReferralLinks}
-			onSelectItems={onSelectReferralLinks}
-			hasCopyButton
+		<TableV2
+			data={tableData}
+			columns={columns}
+			selectedRowIds={selectedRowIds}
+			onSelectedRowIdsChange={onSelectedRowIdsChange}
+			actions={['detail', 'edit', 'delete', 'copy']}
+			entity="referralLinks"
+			onDelete={(id) => deleteReferralLink(id as string)}
 		/>
 	);
 };
