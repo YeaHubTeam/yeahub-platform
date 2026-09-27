@@ -40,6 +40,7 @@ export const webpackPlugins = ({
 		plugins.push(new ReactRefreshWebpackPlugin());
 		plugins.push(
 			new CircularDependencyPlugin({
+				exclude: /node_modules/,
 				failOnError: true,
 			}),
 		);
