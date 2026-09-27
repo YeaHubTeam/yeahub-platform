@@ -1,7 +1,7 @@
-import { act, renderHook } from '@testing-library/react';
-import type { PropsWithChildren } from 'react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { useForm } from 'react-hook-form';
-import { MemoryRouter } from 'react-router-dom';
+
+import { renderComponent } from '@/shared/libs';
 
 import { LS_ADMIN_FORMS_KEY } from '../constants';
 
@@ -17,29 +17,40 @@ const defaultValues: TestFormValues = {
 	description: 'Default description',
 };
 
-const createWrapper = (pathname: string) => {
-	const RouterWrapper = ({ children }: PropsWithChildren) => (
-		<MemoryRouter initialEntries={[pathname]}>{children}</MemoryRouter>
-	);
+const TestForm = () => {
+	const {
+		formState: { isDirty },
+		register,
+		reset,
+		watch,
+	} = useForm<TestFormValues>({ defaultValues });
+	const { clearFormDraft } = useFormPersist<TestFormValues>({
+		watch,
+		reset,
+		defaultValues,
+	});
 
-	return RouterWrapper;
+	return (
+		<>
+			<input aria-label="title" {...register('title')} />
+			<input aria-label="description" {...register('description')} />
+			<span data-testid="is-dirty">{String(isDirty)}</span>
+			<button type="button" onClick={() => reset()}>
+				Reset
+			</button>
+			<button type="button" onClick={clearFormDraft}>
+				Clear draft
+			</button>
+		</>
+	);
 };
 
-const renderPersistHook = (pathname = '/admin/specializations/create') => {
-	return renderHook(
-		() => {
-			const methods = useForm<TestFormValues>({ defaultValues });
-			const persist = useFormPersist<TestFormValues>({
-				watch: methods.watch,
-				reset: methods.reset,
-				defaultValues,
-			});
-
-			return { methods, ...persist };
-		},
-		{ wrapper: createWrapper(pathname) },
-	);
+const renderPersistComponent = (pathname = '/admin/specializations/create') => {
+	return renderComponent(<TestForm />, { route: pathname });
 };
+
+const getTitleInput = () => screen.getByRole('textbox', { name: 'title' });
+const getDescriptionInput = () => screen.getByRole('textbox', { name: 'description' });
 
 describe('useFormPersist', () => {
 	beforeEach(() => {
@@ -53,29 +64,35 @@ describe('useFormPersist', () => {
 		localStorage.clear();
 	});
 
-	it('restores the entity draft and keeps missing default values', () => {
+	it('restores the entity draft, keeps missing default values and preserves initial defaults', () => {
 		localStorage.setItem(
 			LS_ADMIN_FORMS_KEY,
 			JSON.stringify({ specializations: { title: 'Frontend' } }),
 		);
 
-		const { result } = renderPersistHook();
+		renderPersistComponent();
 
-		expect(result.current.methods.getValues()).toEqual({
-			title: 'Frontend',
-			description: 'Default description',
-		});
+		expect(getTitleInput()).toHaveValue('Frontend');
+		expect(getDescriptionInput()).toHaveValue('Default description');
+		expect(screen.getByTestId('is-dirty')).toHaveTextContent('true');
+
+		fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
+
+		expect(getTitleInput()).toHaveValue('');
+		expect(getDescriptionInput()).toHaveValue('Default description');
+		expect(screen.getByTestId('is-dirty')).toHaveTextContent('false');
 	});
 
-	it('removes an empty stored draft when the page is opened', () => {
+	it('keeps an empty stored draft when the page is opened', () => {
 		localStorage.setItem(
 			LS_ADMIN_FORMS_KEY,
 			JSON.stringify({ specializations: {}, skills: { title: 'React' } }),
 		);
 
-		renderPersistHook();
+		renderPersistComponent();
 
 		expect(JSON.parse(localStorage.getItem(LS_ADMIN_FORMS_KEY) ?? '{}')).toEqual({
+			specializations: {},
 			skills: { title: 'React' },
 		});
 	});
@@ -83,11 +100,9 @@ describe('useFormPersist', () => {
 	it('saves changed values after debounce and preserves other entity drafts', () => {
 		localStorage.setItem(LS_ADMIN_FORMS_KEY, JSON.stringify({ skills: { title: 'React' } }));
 
-		const { result } = renderPersistHook();
+		renderPersistComponent();
 
-		act(() => {
-			result.current.methods.setValue('title', 'Backend');
-		});
+		fireEvent.change(getTitleInput(), { target: { value: 'Backend' } });
 
 		expect(JSON.parse(localStorage.getItem(LS_ADMIN_FORMS_KEY) ?? '{}')).toEqual({
 			skills: { title: 'React' },
@@ -106,7 +121,7 @@ describe('useFormPersist', () => {
 		});
 	});
 
-	it('removes the current draft when all form fields are cleared', () => {
+	it('saves the current draft when all form fields are cleared', () => {
 		localStorage.setItem(
 			LS_ADMIN_FORMS_KEY,
 			JSON.stringify({
@@ -115,33 +130,40 @@ describe('useFormPersist', () => {
 			}),
 		);
 
-		const { result } = renderPersistHook();
+		renderPersistComponent();
+
+		fireEvent.change(getTitleInput(), { target: { value: '' } });
+		fireEvent.change(getDescriptionInput(), { target: { value: '' } });
 
 		act(() => {
-			result.current.methods.setValue('title', '');
-			result.current.methods.setValue('description', '');
 			jest.advanceTimersByTime(500);
 		});
 
 		expect(JSON.parse(localStorage.getItem(LS_ADMIN_FORMS_KEY) ?? '{}')).toEqual({
 			skills: { title: 'React' },
+			specializations: { title: '', description: '' },
 		});
 	});
 
-	it('removes the current draft when values return to defaults', () => {
+	it('saves the current draft when values return to defaults', () => {
 		localStorage.setItem(
 			LS_ADMIN_FORMS_KEY,
 			JSON.stringify({ specializations: { title: 'Backend' } }),
 		);
 
-		const { result } = renderPersistHook();
+		renderPersistComponent();
 
+		fireEvent.change(getTitleInput(), { target: { value: '' } });
 		act(() => {
-			result.current.methods.setValue('title', '');
 			jest.advanceTimersByTime(500);
 		});
 
-		expect(localStorage.getItem(LS_ADMIN_FORMS_KEY)).toBeNull();
+		expect(JSON.parse(localStorage.getItem(LS_ADMIN_FORMS_KEY) ?? '{}')).toEqual({
+			specializations: {
+				title: '',
+				description: 'Default description',
+			},
+		});
 	});
 
 	it.each([
@@ -149,10 +171,10 @@ describe('useFormPersist', () => {
 		'/admin/specializations/1/edit',
 		'/specializations/create',
 	])('does not persist values on %s', (pathname) => {
-		const { result } = renderPersistHook(pathname);
+		renderPersistComponent(pathname);
 
+		fireEvent.change(getTitleInput(), { target: { value: 'Ignored' } });
 		act(() => {
-			result.current.methods.setValue('title', 'Ignored');
 			jest.advanceTimersByTime(500);
 		});
 
@@ -168,11 +190,12 @@ describe('useFormPersist', () => {
 			}),
 		);
 
-		const { result } = renderPersistHook();
+		renderPersistComponent();
+
+		fireEvent.change(getTitleInput(), { target: { value: 'New value' } });
+		fireEvent.click(screen.getByRole('button', { name: 'Clear draft' }));
 
 		act(() => {
-			result.current.methods.setValue('title', 'New value');
-			result.current.clearFormDraft();
 			jest.advanceTimersByTime(500);
 		});
 
@@ -184,8 +207,9 @@ describe('useFormPersist', () => {
 	it('uses default values when localStorage contains invalid JSON', () => {
 		localStorage.setItem(LS_ADMIN_FORMS_KEY, '{invalid json');
 
-		const { result } = renderPersistHook();
+		renderPersistComponent();
 
-		expect(result.current.methods.getValues()).toEqual(defaultValues);
+		expect(getTitleInput()).toHaveValue(defaultValues.title);
+		expect(getDescriptionInput()).toHaveValue(defaultValues.description);
 	});
 });

@@ -14,10 +14,10 @@ import { SpecializationCreateFormHeader } from '../SpecializationCreateFormHeade
 
 import styles from './SpecializationCreateForm.module.css';
 
-const defaultValues = {
+const defaultValues: DefaultValues<CreateSpecializationFormValues> = {
 	title: '',
 	description: '',
-} satisfies DefaultValues<CreateSpecializationFormValues>;
+};
 
 export const SpecializationCreateForm = () => {
 	const methods = useForm<CreateSpecializationFormValues>({
@@ -26,13 +26,17 @@ export const SpecializationCreateForm = () => {
 		defaultValues,
 	});
 
+	const {
+		formState: { isDirty, isSubmitted, isSubmitting },
+		reset,
+		watch,
+	} = methods;
+
 	const { clearFormDraft } = useFormPersist<CreateSpecializationFormValues>({
-		watch: methods.watch,
-		reset: methods.reset,
+		watch,
+		reset,
 		defaultValues,
 	});
-
-	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
 	return (
 		<FormProvider {...methods}>

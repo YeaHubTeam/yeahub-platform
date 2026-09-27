@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { useDebounce } from '../../fp';
 import { LS_ADMIN_FORMS_KEY } from '../constants';
+import { getJSONFromLS, removeFromLS, setToLS } from '../manageLocalStorage';
 
 const FORM_PERSIST_DELAY = 500;
 
@@ -20,103 +21,23 @@ const isObject = (value: unknown): value is Record<string, unknown> => {
 	return typeof value === 'object' && value !== null && !Array.isArray(value);
 };
 
-const isEmptyFormValue = (value: unknown): boolean => {
-	if (value === undefined || value === null || value === '') {
-		return true;
-	}
-
-	if (Array.isArray(value)) {
-		return value.length === 0 || value.every(isEmptyFormValue);
-	}
-
-	if (isObject(value)) {
-		return Object.values(value).every(isEmptyFormValue);
-	}
-
-	return false;
-};
-
-const areFormValuesEqual = (left: unknown, right: unknown): boolean => {
-	if (Object.is(left, right)) {
-		return true;
-	}
-
-	if (Array.isArray(left) || Array.isArray(right)) {
-		return (
-			Array.isArray(left) &&
-			Array.isArray(right) &&
-			left.length === right.length &&
-			left.every((item, index) => areFormValuesEqual(item, right[index]))
-		);
-	}
-
-	if (isObject(left) && isObject(right)) {
-		const keys = new Set([...Object.keys(left), ...Object.keys(right)]);
-
-		return [...keys].every((key) => areFormValuesEqual(left[key], right[key]));
-	}
-
-	return false;
-};
-
-const readStoredForms = (): StoredForms => {
-	try {
-		const storedValue = localStorage.getItem(LS_ADMIN_FORMS_KEY);
-
-		if (!storedValue) {
-			return {};
-		}
-
-		const parsedValue: unknown = JSON.parse(storedValue);
-
-		if (!isObject(parsedValue)) {
-			return {};
-		}
-
-		return parsedValue as StoredForms;
-	} catch {
-		return {};
-	}
-};
-
-const writeStoredForms = (forms: StoredForms): boolean => {
-	try {
-		localStorage.setItem(LS_ADMIN_FORMS_KEY, JSON.stringify(forms));
-
-		return true;
-	} catch {
-		return false;
-	}
-};
-
-const removeStoredForms = (): boolean => {
-	try {
-		localStorage.removeItem(LS_ADMIN_FORMS_KEY);
-
-		return true;
-	} catch {
-		return false;
-	}
-};
-
 const removeStoredForm = (forms: StoredForms, entity: string) => {
 	delete forms[entity];
 
 	if (Object.keys(forms).length === 0) {
-		removeStoredForms();
+		removeFromLS(LS_ADMIN_FORMS_KEY);
 		return;
 	}
 
-	writeStoredForms(forms);
+	setToLS(LS_ADMIN_FORMS_KEY, forms);
 };
 
 const getEntityFromPathname = (pathname: string): string | null => {
-	const segments = pathname.split('/').filter(Boolean);
+	const [project, entity, action] = pathname.split('/').filter(Boolean);
 
-	const isAdminCreatePage =
-		segments.length === 3 && segments[0] === 'admin' && segments[2] === 'create';
+	const isAdminCreatePage = project === 'admin' && action === 'create';
 
-	return isAdminCreatePage ? segments[1] : null;
+	return isAdminCreatePage ? entity : null;
 };
 
 export const useFormPersist = <T extends FieldValues>({
@@ -139,7 +60,7 @@ export const useFormPersist = <T extends FieldValues>({
 			return;
 		}
 
-		const storedForms = readStoredForms();
+		const storedForms: StoredForms = getJSONFromLS(LS_ADMIN_FORMS_KEY) ?? {};
 		const storedForm = storedForms[entity];
 
 		if (!isObject(storedForm)) {
@@ -151,12 +72,7 @@ export const useFormPersist = <T extends FieldValues>({
 			...storedForm,
 		} as unknown as T;
 
-		if (isEmptyFormValue(storedForm) || areFormValuesEqual(restoredValues, defaultValues)) {
-			removeStoredForm(storedForms, entity);
-			return;
-		}
-
-		reset(restoredValues);
+		reset(restoredValues, { keepDefaultValues: true });
 	}, [defaultValues, entity, reset]);
 
 	const persistForm = useCallback(
@@ -165,19 +81,14 @@ export const useFormPersist = <T extends FieldValues>({
 				return;
 			}
 
-			const storedForms = readStoredForms();
+			const storedForms: StoredForms = getJSONFromLS(LS_ADMIN_FORMS_KEY) ?? {};
 
-			if (isEmptyFormValue(values) || areFormValuesEqual(values, defaultValues)) {
-				removeStoredForm(storedForms, entity);
-				return;
-			}
-
-			writeStoredForms({
+			setToLS(LS_ADMIN_FORMS_KEY, {
 				...storedForms,
 				[entity]: values,
 			});
 		},
-		[defaultValues, entity],
+		[entity],
 	);
 
 	const debouncedPersistForm = useDebounce(persistForm, FORM_PERSIST_DELAY);
@@ -203,7 +114,7 @@ export const useFormPersist = <T extends FieldValues>({
 
 		skipPersistRef.current = true;
 
-		const storedForms = readStoredForms();
+		const storedForms: StoredForms = getJSONFromLS(LS_ADMIN_FORMS_KEY) ?? {};
 
 		removeStoredForm(storedForms, entity);
 	}, [entity]);
