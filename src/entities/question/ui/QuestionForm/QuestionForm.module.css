@@ -36,6 +36,14 @@
   border-radius: 16px;
 }
 
+.description.description { 
+	display: block; 
+	width: 100%; 
+	height: 200px; 
+	resize: vertical; 
+	border-radius: 16px; 
+}
+
 .main-title {
   margin-bottom: 32px;
 }

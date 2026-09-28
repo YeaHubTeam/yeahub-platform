@@ -70,10 +70,10 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 
 				<FormInputDescription
 					name="description"
-					control={control}
 					label={t(Questions.DESCRIPTION_TITLE)}
 					description={t(Questions.DESCRIPTION_LABEL)}
 					placeholder={t(Questions.DESCRIPTION_PLACEHOLDER)}
+					direction="column"
 				/>
 
 				<FormField label={t(Questions.RATE_TITLE)} description={t(Questions.RATE_LABEL)}>

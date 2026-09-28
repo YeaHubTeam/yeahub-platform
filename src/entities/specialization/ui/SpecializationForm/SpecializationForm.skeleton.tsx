@@ -1,9 +1,9 @@
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescriptionSkeleton } from '@/shared/ui/form';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { InputSkeleton } from '@/shared/ui/Input';
 import { TextSkeleton } from '@/shared/ui/Text';
-import { TextAreaSkeleton } from '@/shared/ui/TextArea';
 
 import styles from './SpecializationForm.module.css';
 
@@ -19,11 +19,11 @@ export const SpecializationFormSkeleton = () => {
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
-				<FormFieldSkeleton direction="column">
-					<FormControlSkeleton className={styles['input-form']}>
-						<TextAreaSkeleton className={styles['text-area']} />
-					</FormControlSkeleton>
-				</FormFieldSkeleton>
+				<FormInputDescriptionSkeleton
+					controlClassName={styles['input-form']}
+					textAreaClassName={styles['text-area']}
+					direction="column"
+				/>
 			</Flex>
 		</Flex>
 	);

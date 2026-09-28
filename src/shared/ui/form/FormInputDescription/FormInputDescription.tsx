@@ -1,4 +1,4 @@
-import { Control, FieldValues, Path } from 'react-hook-form';
+import { FieldValues, Path, useFormContext } from 'react-hook-form';
 
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
@@ -8,25 +8,26 @@ import styles from './FormInputDescription.module.css';
 
 export interface FormInputDescriptionProps<T extends FieldValues> {
 	name: Path<T>;
-	control: Control<T>;
 	label: string;
 	description?: string;
 	placeholder?: string;
 	limit?: number;
 	className?: string;
+	direction?: 'row' | 'column';
 }
 
 export const FormInputDescription = <T extends FieldValues>({
 	name,
-	control,
 	label,
 	description,
 	placeholder,
 	limit = 1000,
 	className,
+	direction,
 }: FormInputDescriptionProps<T>) => {
+	const { control } = useFormContext<T>();
 	return (
-		<FormField label={label} description={description} direction="column">
+		<FormField label={label} description={description} direction={direction}>
 			<FormControl name={name} control={control}>
 				{(field, hasError) => (
 					<TextArea

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Collections } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescription } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
@@ -11,7 +12,6 @@ import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Radio } from '@/shared/ui/Radio';
 import { Text } from '@/shared/ui/Text';
-import { TextArea } from '@/shared/ui/TextArea';
 
 import { CompanySelect } from '@/entities/company/@x/collection';
 import { ChooseQuestionsDrawer } from '@/entities/question/@x/collection';
@@ -68,23 +68,14 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 					</FormControl>
 				</FormField>
 
-				<FormField
+				<FormInputDescription
+					name="description"
 					label={t(Collections.DESCRIPTION_FULL)}
 					description={t(Collections.DESCRIPTION_LABEL)}
+					placeholder={t(Collections.DESCRIPTION_PLACEHOLDER)}
+					className={styles.textarea}
 					direction="column"
-				>
-					<FormControl name="description" control={control}>
-						{(field, hasError) => (
-							<TextArea
-								id="description"
-								className={styles.textarea}
-								placeholder={t(Collections.DESCRIPTION_PLACEHOLDER)}
-								state={hasError ? 'error' : 'default'}
-								{...field}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+				/>
 
 				<FormField label={t(Collections.ICON_TITLE)} description={t(Collections.ICON_LABEL)}>
 					<ImageLoaderWithoutCropper

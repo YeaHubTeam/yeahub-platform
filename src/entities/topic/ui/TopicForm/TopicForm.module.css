@@ -30,7 +30,7 @@
   font-weight: var(--font-weight-400);
 }
 
-.input-form textarea::placeholder {
+.text-area::placeholder {
   color: var(--text-color-more-lightest);
   font-weight: var(--font-weight-500);
 }

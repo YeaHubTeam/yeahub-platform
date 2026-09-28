@@ -1,4 +1,5 @@
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescriptionSkeleton } from '@/shared/ui/form';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropperSkeleton } from '@/shared/ui/ImageLoaderWithoutCropper';
@@ -7,7 +8,6 @@ import { KeywordInputSkeleton } from '@/shared/ui/KeywordInput';
 import { KeywordSelectSkeleton } from '@/shared/ui/KeywordSelect';
 import { RadioSkeleton } from '@/shared/ui/Radio';
 import { TextSkeleton } from '@/shared/ui/Text';
-import { TextAreaSkeleton } from '@/shared/ui/TextArea';
 
 import { CompanySelectSkeleton } from '@/entities/company/@x/collection';
 import { ChooseQuestionsDrawerSkeleton } from '@/entities/question/@x/collection';
@@ -31,11 +31,7 @@ export const CollectionFormSkeleton = () => {
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
-				<FormFieldSkeleton direction="column">
-					<FormControlSkeleton>
-						<TextAreaSkeleton />
-					</FormControlSkeleton>
-				</FormFieldSkeleton>
+				<FormInputDescriptionSkeleton direction="column" />
 
 				<FormFieldSkeleton>
 					<ImageLoaderWithoutCropperSkeleton />

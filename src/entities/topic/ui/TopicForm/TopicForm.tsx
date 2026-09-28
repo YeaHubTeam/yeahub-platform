@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Marketplace, Topics } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescription } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
-import { TextArea } from '@/shared/ui/TextArea';
 
 import { SkillSelect } from '@/entities/skill/@x/topic';
 
@@ -61,22 +61,14 @@ export const TopicForm = ({ isEdit }: TopicFormProps) => {
 						}}
 					</FormControl>
 				</FormField>
-				<FormField
+				<FormInputDescription
+					name="description"
 					label={t(Topics.DESCRIPTION_FULL)}
 					description={t(Topics.DESCRIPTION_LABEL)}
+					placeholder={t(Topics.DESCRIPTION_PLACEHOLDER)}
+					className={styles['text-area']}
 					direction="column"
-				>
-					<FormControl name="description" control={control} className={styles['input-form']}>
-						{(register, hasError) => (
-							<TextArea
-								className={styles['text-area']}
-								state={hasError ? 'error' : 'default'}
-								placeholder={t(Topics.DESCRIPTION_PLACEHOLDER)}
-								{...register}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+				/>
 			</Flex>
 		</Flex>
 	);
