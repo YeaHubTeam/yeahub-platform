@@ -10,7 +10,11 @@ import { SpecializationSelectSkeleton } from '@/entities/specialization/@x/skill
 
 import styles from './SkillForm.module.css';
 
-export const SkillFormSkeleton = () => {
+interface SkillFormSkeletonProps {
+	mode: 'edit' | 'create';
+}
+
+export const SkillFormSkeleton = ({ mode }: SkillFormSkeletonProps) => {
 	return (
 		<>
 			<TextSkeleton variant="body5-strong" width={260} className={styles['main-title']} />
@@ -28,7 +32,15 @@ export const SkillFormSkeleton = () => {
 
 				<FormFieldSkeleton>
 					<FormControlSkeleton className={styles.select}>
-						<SpecializationSelectSkeleton />
+						<Flex direction="column" gap="16">
+							<SpecializationSelectSkeleton />
+							{mode === 'edit' && (
+								<>
+									<TextSkeleton variant="body5" width={240} />
+									<SpecializationSelectSkeleton />
+								</>
+							)}
+						</Flex>
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 

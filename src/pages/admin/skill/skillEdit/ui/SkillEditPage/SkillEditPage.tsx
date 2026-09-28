@@ -10,6 +10,8 @@ import { SkillEditForm } from '@/features/skill/editSkill';
 import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { SkillEditPageSkeleton } from '@/pages/admin/skill/skillEdit/ui/SkillEditPage/SkillEditPage.skeleton';
+
 const SkillEditPage = () => {
 	const { t } = useTranslation(i18Namespace.skill);
 	const { skillId } = useParams<{ skillId: string }>();
@@ -35,16 +37,19 @@ const SkillEditPage = () => {
 	) : null;
 
 	return (
-		<PageWrapper
-			isLoading={isLoading}
-			hasError={isError}
-			hasData={!!skill}
-			roles={['admin', 'author']}
-			stubs={stubs}
-			content={content}
-		>
-			{({ content }) => content}
-		</PageWrapper>
+		<>
+			<PageWrapper
+				isLoading={isLoading}
+				hasError={isError}
+				hasData={!!skill}
+				roles={['admin', 'author']}
+				stubs={stubs}
+				skeleton={<SkillEditPageSkeleton />}
+				content={content}
+			>
+				{({ content }) => content}
+			</PageWrapper>
+		</>
 	);
 };
 
