@@ -10,7 +10,23 @@ import { ResumeRecommendations } from '../ResumeRecommendations/ResumeRecommenda
 import { UploadResumeForm } from '../UploadResumeForm/UploadResumeForm';
 
 const ResumeAnalyzerPage = () => {
-	const [uploadResume, { data, isLoading, reset }] = useResumeAnalyzeMutation();
+	const [uploadResume, { data, isLoading, isError, reset }] = useResumeAnalyzeMutation();
+
+	const handleSubmit = async (formData: { specializationId: number; file: FormData }) => {
+		try {
+			await uploadResume(formData).unwrap();
+		} catch (error) {
+			console.error('Ошибка анализа:', error);
+		}
+	};
+
+	const handleComplete = () => {
+		// Анализ завершен, данные уже в data
+	};
+
+	const handleReset = () => {
+		reset();
+	};
 
 	const content = (
 		<Card withOutsideShadow>
@@ -20,7 +36,7 @@ const ResumeAnalyzerPage = () => {
 						Рекомендации по резюме
 					</Text>
 					{data ? (
-						<Button variant="primary" onClick={reset}>
+						<Button variant="primary" onClick={handleReset}>
 							Проверить ещё
 						</Button>
 					) : null}
@@ -28,7 +44,13 @@ const ResumeAnalyzerPage = () => {
 				{data ? (
 					<ResumeRecommendations resumeInfo={data} />
 				) : (
-					<UploadResumeForm onSubmit={uploadResume} isLoading={isLoading} />
+					<UploadResumeForm
+						onSubmit={handleSubmit}
+						isLoading={isLoading}
+						isError={isError}
+						resetError={reset}
+						onComplete={handleComplete}
+					/>
 				)}
 			</Flex>
 		</Card>
