@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import ArticlesIcon from '@/shared/assets/icons/articles.svg';
 import Books from '@/shared/assets/icons/books.svg';
 import Cards from '@/shared/assets/icons/cards.svg';
 import CareerIcon from '@/shared/assets/icons/career.svg';
@@ -30,6 +31,7 @@ import { listAdminRoles, RoleName } from '@/entities/auth';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
+import { ArticlesTablePage } from '@/pages/admin/article/articles';
 import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate';
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/collection/collectionDetail';
 import { CollectionEditPage } from '@/pages/admin/collection/collectionEdit';
@@ -272,6 +274,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
+		route: ROUTES.admin.articles.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_ARTICLES),
+		icon: ArticlesIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
 		route: ROUTES.admin.users.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
@@ -421,6 +430,16 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.skills.details.route,
 						element: <SkillDetailPage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.articles.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <ArticlesTablePage />,
 					},
 				],
 			},
