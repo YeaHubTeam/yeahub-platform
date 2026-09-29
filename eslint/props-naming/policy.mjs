@@ -9,12 +9,13 @@ export function classifyFile(filename) {
 
 	const componentMatch = base.match(COMPONENT_FILE);
 	if (componentMatch) {
-		const exportName = `${componentMatch[1]}${componentMatch[2] ? 'Skeleton' : ''}`;
+		const componentName = componentMatch[1];
+		const exportName = `${componentName}${componentMatch[2] ? 'Skeleton' : ''}`;
 
 		return {
 			kind: 'component',
 			exportName,
-			propsName: `${exportName}Props`,
+			propsName: `${componentName}Props`,
 		};
 	}
 
