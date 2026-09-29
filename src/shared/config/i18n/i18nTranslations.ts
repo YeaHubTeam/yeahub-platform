@@ -1695,6 +1695,21 @@ export enum Vacancies {
 	ENGLISH_LEVEL = 'englishLevel',
 }
 
+export enum TestQuestions {
+	ANSWERS_TITLE = 'answers.title',
+	ANSWERS_EMPTY = 'answers.empty',
+	ANSWERS_UNAVAILABLE = 'answers.unavailable',
+	SPECIALIZATIONS = 'specializations',
+	SKILLS = 'skills',
+	COMPLEXITY = 'complexity',
+	RATE = 'rate',
+	CREATED_AT = 'created.at',
+	UPDATED_AT = 'updated.at',
+	KEYWORDS = 'keywords',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+}
+
 export enum VacanciesMarket {
 	TITLE = 'title',
 	DESCRIPTION = 'description',

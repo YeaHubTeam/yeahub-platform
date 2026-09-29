@@ -2,6 +2,14 @@ export const ROUTES = {
 	appRoute: '/',
 	adminRoute: '/admin',
 	admin: {
+		testQuestions: {
+			route: 'articles',
+			page: '/admin/articles',
+			details: {
+				route: ':articleId',
+				page: '/admin/articles/:articleId',
+			},
+		},
 		questions: {
 			route: 'questions',
 			page: '/admin/questions',

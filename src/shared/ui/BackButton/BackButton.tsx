@@ -12,6 +12,8 @@ import styles from './BackButton.module.css';
  * Button to return to the previous page
  */
 
+//TODO Проверить в макете размер
+
 export const BackButton = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation(i18Namespace.translation);
