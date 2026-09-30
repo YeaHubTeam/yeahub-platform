@@ -30,7 +30,17 @@ export const TableV2 = <
 	onDelete,
 }: TableV2Props<T, TSortingColumnId>) => {
 	const resolveRowId = getRowId ?? getDefaultRowId;
-	const hasRowActions = actions.length > 0 && Boolean(entity);
+	const hasRowActions = actions.some((action) => {
+		if (action === 'copy') {
+			return true;
+		}
+
+		if (action === 'delete') {
+			return Boolean(onDelete);
+		}
+
+		return Boolean(entity);
+	});
 
 	const {
 		selectionEnabled,
