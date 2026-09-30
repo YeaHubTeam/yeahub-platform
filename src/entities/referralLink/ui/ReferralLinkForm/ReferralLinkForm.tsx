@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, ReferralLinks } from '@/shared/config';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
-import { FormInputText } from '@/shared/ui/Form/FormInputText';
+import { FormInputText } from '@/shared/ui/Form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 

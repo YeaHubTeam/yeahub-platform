@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { FeatureFlags, i18Namespace } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
-import { FormInputText } from '@/shared/ui/Form/FormInputText';
+import { FormInputText } from '@/shared/ui/Form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Switch } from '@/shared/ui/Switch';

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Companies } from '@/shared/config';
 import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
-import { FormInputText } from '@/shared/ui/Form/FormInputText';
+import { FormInputText } from '@/shared/ui/Form';
 import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Text } from '@/shared/ui/Text';

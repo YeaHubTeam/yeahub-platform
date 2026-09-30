@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Specializations } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
-import { FormInputText } from '@/shared/ui/Form/FormInputText';
+import { FormInputText } from '@/shared/ui/Form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Text } from '@/shared/ui/Text';
