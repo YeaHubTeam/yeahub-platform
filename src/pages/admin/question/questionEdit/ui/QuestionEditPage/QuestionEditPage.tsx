@@ -7,7 +7,7 @@ import { useAppSelector } from '@/shared/libs';
 import { getProfileId } from '@/entities/profile';
 import { useGetQuestionByIdQuery } from '@/entities/question';
 
-import { QuestionEditForm } from '@/features/question/editQuestion';
+import { QuestionEditForm, QuestionEditFormSkeleton } from '@/features/question/editQuestion';
 
 import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, type PageWrapperStubs } from '@/widgets/PageWrapper';
@@ -55,6 +55,7 @@ const QuestionEditPage = () => {
 			stubs={stubs}
 			roles={['admin', 'author']}
 			content={content}
+			skeleton={<QuestionEditFormSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>
