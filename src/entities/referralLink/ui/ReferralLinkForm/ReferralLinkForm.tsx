@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, ReferralLinks } from '@/shared/config';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputText } from '@/shared/ui/Form/FormInputText';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
-import { Input } from '@/shared/ui/Input';
 
 import { UserSelect } from '@/entities/user/@x/referralLink';
 
@@ -41,37 +41,23 @@ export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps
 
 	return (
 		<Flex direction="column" gap="60" className={styles.wrapper}>
-			<FormField
+			<FormInputText
 				label={t(ReferralLinks.REF_CODE_SHORT)}
 				description={t(ReferralLinks.REF_CODE_PLACEHOLDER)}
-			>
-				<FormControl name="refCode" control={control}>
-					{(field, hasError) => (
-						<Input
-							{...field}
-							placeholder={t(ReferralLinks.REF_CODE_PLACEHOLDER)}
-							error={hasError}
-							onChange={(e) => {
-								field.onChange(e);
-								handleRefCodeChange(e);
-							}}
-							maxLength={50}
-						/>
-					)}
-				</FormControl>
-			</FormField>
-			<FormField label={t(ReferralLinks.URL_SHORT)} description={t(ReferralLinks.URL_LABEL)}>
-				<FormControl name="url" control={control}>
-					{(field, hasError) => (
-						<Input
-							{...field}
-							placeholder={refCode ? '' : t(ReferralLinks.URL_PLACEHOLDER)}
-							error={hasError}
-							disabled
-						/>
-					)}
-				</FormControl>
-			</FormField>
+				name="refCode"
+				control={control}
+				placeholder={t(ReferralLinks.REF_CODE_PLACEHOLDER)}
+				maxLength={50}
+				onChange={handleRefCodeChange}
+			/>
+			<FormInputText
+				label={t(ReferralLinks.URL_SHORT)}
+				description={t(ReferralLinks.URL_LABEL)}
+				name="url"
+				control={control}
+				placeholder={refCode ? '' : t(ReferralLinks.URL_PLACEHOLDER)}
+				disabled
+			/>
 			<FormField
 				label={t(ReferralLinks.OWNER_USERNAME_SHORT)}
 				description={t(ReferralLinks.OWNER_USERNAME_LABEL)}

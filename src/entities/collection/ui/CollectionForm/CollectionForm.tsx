@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Collections } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputText } from '@/shared/ui/Form/FormInputText';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
-import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Radio } from '@/shared/ui/Radio';
@@ -56,11 +56,12 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<FormField label={t(Collections.TITLE_FULL)} description={t(Collections.TITLE_LABEL)}>
-					<FormControl name="title" control={control}>
-						{(register, hasError) => <Input {...register} error={hasError} />}
-					</FormControl>
-				</FormField>
+				<FormInputText
+					label={t(Collections.TITLE_FULL)}
+					description={t(Collections.TITLE_LABEL)}
+					name="title"
+					control={control}
+				/>
 
 				<FormField label={t(Collections.COMPANY_TITLE)} description={t(Collections.COMPANY_LABEL)}>
 					<FormControl name="companyId" control={control}>

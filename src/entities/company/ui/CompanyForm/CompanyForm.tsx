@@ -5,10 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Companies } from '@/shared/config';
 import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
-import { FormControl } from '@/shared/ui/FormControl';
+import { FormInputText } from '@/shared/ui/Form/FormInputText';
 import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
-import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './CompanyForm.module.css';
@@ -44,11 +43,13 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 				{isEdit ? t(Companies.EDIT_PAGE_TITLE) : t(Companies.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60" className={`${styles['form-container']}`}>
-				<FormField label={t(Companies.TITLE_FULL)} description={t(Companies.TITLE_LABEL)}>
-					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
-						{(register, hasError) => <Input {...register} error={hasError} />}
-					</FormControl>
-				</FormField>
+				<FormInputText
+					label={t(Companies.TITLE_FULL)}
+					description={t(Companies.TITLE_LABEL)}
+					name="title"
+					control={control}
+					formControlClassName={`${styles['input-form']}`}
+				/>
 				<FormField label={t(Companies.ICON_TITLE)} description={t(Companies.ICON_LABEL)}>
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}

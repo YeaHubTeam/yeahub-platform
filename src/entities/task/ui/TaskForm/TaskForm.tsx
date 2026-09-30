@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Tasks } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputText } from '@/shared/ui/Form/FormInputText';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
-import { Input } from '@/shared/ui/Input';
 import { Radio } from '@/shared/ui/Radio';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
@@ -32,11 +32,13 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 				{isEdit ? t(Tasks.EDIT_PAGE_TITLE) : t(Tasks.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<FormField description={t(Tasks.NAME_SUBTITLE)} label={t(Tasks.NAME_TITLE)}>
-					<FormControl name="name" control={control} className={`${styles['input-form']}`}>
-						{(register, hasError) => <Input {...register} error={hasError} />}
-					</FormControl>
-				</FormField>
+				<FormInputText
+					label={t(Tasks.NAME_SUBTITLE)}
+					description={t(Tasks.NAME_TITLE)}
+					name="name"
+					control={control}
+					formControlClassName={styles['input-form']}
+				/>
 				<FormField
 					direction="column"
 					description={t(Tasks.DESCRIPTION_SUBTITLE)}

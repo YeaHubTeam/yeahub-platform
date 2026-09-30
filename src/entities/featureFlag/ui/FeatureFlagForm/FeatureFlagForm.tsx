@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 
 import { FeatureFlags, i18Namespace } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputText } from '@/shared/ui/Form/FormInputText';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
-import { Input } from '@/shared/ui/Input';
 import { Switch } from '@/shared/ui/Switch';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
@@ -35,20 +35,14 @@ export const FeatureFlagForm = ({ isEdit }: FeatureFlagFormProps) => {
 			</Text>
 
 			<Flex direction="column" gap="60">
-				<FormField
-					description={t(FeatureFlags.FORM_FLAG_SUBTITLE)}
+				<FormInputText
 					label={t(FeatureFlags.FORM_FLAG_TITLE)}
-				>
-					<FormControl name="flag" control={control} className={`${styles['input-form']}`}>
-						{(field, hasError) => (
-							<Input
-								{...field}
-								error={hasError}
-								placeholder={t(FeatureFlags.FORM_FLAG_PLACEHOLDER)}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+					description={t(FeatureFlags.FORM_FLAG_SUBTITLE)}
+					name="flag"
+					control={control}
+					formControlClassName={styles['input-form']}
+					placeholder={t(FeatureFlags.FORM_FLAG_PLACEHOLDER)}
+				/>
 
 				<FormField
 					direction="column"
