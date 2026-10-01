@@ -1,6 +1,10 @@
 export const setToLS = (key: string, value: unknown) => {
-	const transformedValue = typeof value === 'string' ? value : JSON.stringify(value);
-	localStorage.setItem(key, transformedValue);
+	try {
+		const transformedValue = typeof value === 'string' ? value : JSON.stringify(value);
+		localStorage.setItem(key, transformedValue);
+	} catch {
+		return;
+	}
 };
 
 export const getFromLS = (key: string) => {
@@ -8,10 +12,18 @@ export const getFromLS = (key: string) => {
 };
 
 export const getJSONFromLS = (key: string) => {
-	const item = localStorage.getItem(key);
-	return item ? JSON.parse(item) : null;
+	try {
+		const item = localStorage.getItem(key);
+		return item ? JSON.parse(item) : null;
+	} catch {
+		return null;
+	}
 };
 
 export const removeFromLS = (key: string) => {
-	localStorage.removeItem(key);
+	try {
+		localStorage.removeItem(key);
+	} catch {
+		return;
+	}
 };
