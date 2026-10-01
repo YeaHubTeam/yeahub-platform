@@ -56,6 +56,7 @@ export enum Translation {
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
 	SIDEBAR_MENU_RESOURCES = 'sidebar.menu.resources',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
+	SIDEBAR_MENU_ARTICLES = 'sidebar.menu.articles',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
@@ -1085,6 +1086,25 @@ export enum Skills {
 	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
 	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
 	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
+}
+
+export enum Articles {
+	TITLE_SHORT = 'title.short',
+	ICON_TITLE_SHORT = 'icon.title-short',
+	SPECIALIZATIONS_TITLE = 'specializations.title',
+	SKILLS_TITLE = 'skills.title',
+	TOPIC_TITLE = 'topics.title',
+	FORMAT = 'format',
+	CONTENT_TYPE = 'content-type',
+	AUTHOR = 'author',
+	CREATED_AT = 'created-at',
+	STUB_EMPTY_ARTICLES_TITLE = 'stub.empty.articles.title',
+	STUB_EMPTY_ARTICLES_SUBTITLE = 'stub.empty.articles.subtitle',
+
+	STATUS_INTERVIEW = 'status.interview',
+	STATUS_SYSTEM_DESIGN = 'status.system-design',
+	STATUS_BASICS = 'status.basics',
+	STATUS_ADVANCED = 'status.advanced',
 }
 
 export enum ReferralLinks {

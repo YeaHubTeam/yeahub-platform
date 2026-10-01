@@ -1,0 +1,35 @@
+{
+	"title": {
+		"short": "Название"
+	},
+	"icon": {
+		"title-short": "Картинка"
+	},
+	"specializations": {
+		"title": "Специализации"
+	},
+	"skills": {
+		"title": "Навыки"
+	},
+	"topics": {
+		"title": "Темы"
+	},
+	"format": "Формат",
+	"content-type": "Тип",
+	"created-at": "Дата создания",
+	"author": "Автор",
+	"stub": {
+		"empty": {
+			"articles": {
+				"title": "Похоже здесь пока нет статей",
+				"subtitle": "Статьи периодически добавляются, стоит только немного подождать"
+			}
+		}
+	},
+	"status": {
+		"interview": "Интервью",
+		"system-design": "Системный дизайн",
+		"basics": "Основы",
+		"advanced": "Продвинутый"
+	}
+}
