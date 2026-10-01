@@ -20,6 +20,8 @@ import {
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { UserEditPageSkeleton } from './UserEditPage.skeleton';
+
 const UserEditPage = () => {
 	const { userId = '' } = useParams<{ userId: string }>();
 	const { data: user, isLoading, isError, refetch } = useGetUserByIdQuery(String(userId));
@@ -90,6 +92,7 @@ const UserEditPage = () => {
 
 	return (
 		<PageWrapper
+			skeleton={<UserEditPageSkeleton />}
 			hasData={hasUser}
 			isLoading={isLoading || false}
 			hasFilters={false}
