@@ -39,7 +39,7 @@ export const ArticleForm = () => {
 
 	return (
 		<>
-			<Text variant="body6" className={styles['main-title']}>
+			<Text variant="body5-strong" className={styles['main-title']}>
 				{t(Articles.CREATE_PAGE_TITLE)}
 			</Text>
 
