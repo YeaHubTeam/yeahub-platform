@@ -1,0 +1,43 @@
+{
+	"create": {
+		"title": "Create test"
+	},
+	"title": {
+		"label": "Test question",
+		"description": "Enter the test question",
+		"placeholder": "Enter the test question"
+	},
+	"description": {
+		"label": "Test description",
+		"description": "Enter the test description",
+		"placeholder": "Enter the test description"
+	},
+	"settings": {
+		"title": "Test settings"
+	},
+	"rate": {
+		"label": "Rating",
+		"description": "Select the test rating"
+	},
+	"complexity": {
+		"label": "Difficulty",
+		"description": "Select the test difficulty"
+	},
+	"keywords": {
+		"label": "Keywords",
+		"description": "Select test keywords",
+		"add": "Add keyword"
+	},
+	"answerVariants": {
+		"title": "Answer options",
+		"description": "Add 2 to 6 options and mark the correct answers"
+	},
+	"specializations": {
+		"label": "Specializations",
+		"description": "Select test specializations"
+	},
+	"skills": {
+		"label": "Skills",
+		"description": "Select test skills"
+	}
+}
