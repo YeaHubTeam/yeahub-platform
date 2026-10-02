@@ -1,9 +1,9 @@
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescriptionSkeleton } from '@/shared/ui/form';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { InputSkeleton } from '@/shared/ui/Input';
 import { TextSkeleton } from '@/shared/ui/Text';
-import { TextAreaSkeleton } from '@/shared/ui/TextArea';
 
 import { SkillSelectSkeleton } from '@/entities/skill/@x/topic';
 
@@ -28,14 +28,18 @@ export const TopicFormSkeleton = () => {
 						<SkillSelectSkeleton />
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
+
 				<Flex direction="column" gap="20">
 					<Flex direction="column" gap="8">
 						<TextSkeleton variant="body4" width="100%" />
 						<TextSkeleton variant="body2" width="100%" />
 					</Flex>
-					<FormControlSkeleton className={styles['input-form']}>
-						<TextAreaSkeleton className={styles['text-area']} />
-					</FormControlSkeleton>
+
+					<FormInputDescriptionSkeleton
+						controlClassName={styles['input-form']}
+						textAreaClassName={styles['text-area']}
+						direction="column"
+					/>
 				</Flex>
 			</Flex>
 		</Flex>
