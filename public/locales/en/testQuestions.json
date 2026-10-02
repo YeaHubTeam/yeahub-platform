@@ -1,0 +1,14 @@
+{
+	"table": {
+		"title": "Title",
+		"description": "Description",
+		"specializations": "Specializations",
+		"skills": "Skills",
+		"answers": "Answers",
+		"correctAnswers": "Correct answers",
+		"complexity": "Complexity",
+		"rate": "Rating",
+		"author": "Author",
+		"createdAt": "Created at"
+	}
+}

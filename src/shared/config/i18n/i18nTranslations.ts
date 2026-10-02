@@ -54,6 +54,7 @@ export enum Translation {
 	SIDEBAR_MENU_VACANCY_MARKET = 'sidebar.menu.career.vacancyMarket',
 	SIDEBAR_MENU_VACANCIES = 'sidebar.menu.vacancies',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
+	SIDEBAR_MENU_TESTS = 'sidebar.menu.tests',
 	SIDEBAR_MENU_RESOURCES = 'sidebar.menu.resources',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
@@ -982,6 +983,19 @@ export enum Questions {
 	STUDY_STATUS_LEARNED = 'study.status.learned',
 	STUDY_STATUS_IN_PROGRESS = 'study.status.in.progress',
 	STUDY_STATUS_NOT_LEARNED = 'study.status.not.learned',
+}
+
+export enum TestQuestions {
+	TITLE = 'table.title',
+	DESCRIPTION = 'table.description',
+	SPECIALIZATIONS = 'table.specializations',
+	SKILLS = 'table.skills',
+	ANSWERS = 'table.answers',
+	CORRECT_ANSWERS = 'table.correctAnswers',
+	COMPLEXITY = 'table.complexity',
+	RATE = 'table.rate',
+	AUTHOR = 'table.author',
+	CREATED_AT = 'table.createdAt',
 }
 
 export enum InterviewHistory {

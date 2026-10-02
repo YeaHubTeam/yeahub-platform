@@ -54,6 +54,10 @@ export const ROUTES = {
 				page: '/admin/skills/:skillId',
 			},
 		},
+		testQuestions: {
+			route: 'test-questions',
+			page: '/admin/test-questions',
+		},
 		users: {
 			route: 'users',
 			page: '/admin/users',
