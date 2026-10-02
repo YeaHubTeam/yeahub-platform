@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider, useForm } from 'react-hook-form';
+import { type DefaultValues, FormProvider, useForm } from 'react-hook-form';
 
+import { useFormPersist } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -13,23 +14,35 @@ import { TopicCreateFormHeader } from '../TopicCreateFormHeader/TopicCreateFormH
 
 import styles from './TopicCreateForm.module.css';
 
+const defaultValues: DefaultValues<CreateTopicFormValues> = {
+	title: '',
+	description: '',
+};
+
 export const TopicCreateForm = () => {
 	const methods = useForm<CreateTopicFormValues>({
 		resolver: yupResolver(topicCreateSchema),
 		mode: 'onTouched',
-		defaultValues: {
-			title: '',
-			description: '',
-		},
+		defaultValues,
 	});
 
-	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
+	const {
+		formState: { isDirty, isSubmitted, isSubmitting },
+		reset,
+		watch,
+	} = methods;
+
+	const { clearFormDraft } = useFormPersist<CreateTopicFormValues>({
+		watch,
+		reset,
+		defaultValues,
+	});
 
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<TopicCreateFormHeader />
+					<TopicCreateFormHeader onSuccess={clearFormDraft} />
 					<Card className={styles.content}>
 						<TopicForm />
 					</Card>
