@@ -1,5 +1,6 @@
 export const i18Namespace = {
 	analytics: 'analytics',
+	article: 'article',
 	auth: 'auth',
 	docs: 'docs',
 	interviewHistory: 'interviewHistory',
