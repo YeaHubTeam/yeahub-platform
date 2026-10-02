@@ -984,6 +984,30 @@ export enum Questions {
 	STUDY_STATUS_NOT_LEARNED = 'study.status.not.learned',
 }
 
+export enum TestQuestions {
+	CREATE_TITLE = 'create.title',
+	TITLE_LABEL = 'title.label',
+	TITLE_DESCRIPTION = 'title.description',
+	TITLE_PLACEHOLDER = 'title.placeholder',
+	DESCRIPTION_LABEL = 'description.label',
+	DESCRIPTION_DESCRIPTION = 'description.description',
+	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
+	SETTINGS_TITLE = 'settings.title',
+	RATE_LABEL = 'rate.label',
+	RATE_DESCRIPTION = 'rate.description',
+	COMPLEXITY_LABEL = 'complexity.label',
+	COMPLEXITY_DESCRIPTION = 'complexity.description',
+	KEYWORDS_LABEL = 'keywords.label',
+	KEYWORDS_DESCRIPTION = 'keywords.description',
+	KEYWORDS_ADD = 'keywords.add',
+	ANSWER_VARIANTS_TITLE = 'answerVariants.title',
+	ANSWER_VARIANTS_DESCRIPTION = 'answerVariants.description',
+	SPECIALIZATIONS_LABEL = 'specializations.label',
+	SPECIALIZATIONS_DESCRIPTION = 'specializations.description',
+	SKILLS_LABEL = 'skills.label',
+	SKILLS_DESCRIPTION = 'skills.description',
+}
+
 export enum InterviewHistory {
 	TITLE = 'title',
 	QUIZ_TITLE = 'quiz.title',
