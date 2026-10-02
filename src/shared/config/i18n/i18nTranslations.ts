@@ -1699,6 +1699,7 @@ export enum Vacancies {
 	VACANCY_PROFILE_UPDATED_AT = 'vacancy_profile.updated_at',
 	VACANCY_PROFILE_ALL_INDUSTRIES = 'vacancy_profile.all_industries',
 	VACANCY_PROFILE_DAILY_UPDATE = 'vacancy_profile.daily_update',
+	VACANCY_PROFILE_DAILY_UPDATE_SHORT = 'vacancy_profile.daily_update_short',
 	VACANCY_PROFILE_ANALYZED_VACANCIES = 'vacancy_profile.analyzed_vacancies',
 	VACANCY_PROFILE_TOP_SKILLS = 'vacancy_profile.top_skills',
 	VACANCY_PROFILE_FREQUENT_TASKS = 'vacancy_profile.frequent_tasks',

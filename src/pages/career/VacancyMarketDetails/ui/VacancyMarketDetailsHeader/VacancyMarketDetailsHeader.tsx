@@ -19,20 +19,20 @@ export const VacancyMarketDetailsHeader = ({
 }: VacancyMarketHeaderProps) => {
 	return (
 		<Flex direction="column" gap="12" className={styles.header}>
-			<Text variant="head2" isMainTitle className={styles.title}>
+			<Text variant="head3" isMainTitle className={styles.title}>
 				{title}
 			</Text>
 
 			<Text variant="body6">{vacancyName}</Text>
 
-			<Text variant="body3-accent" className={styles.description}>
+			<Text variant="body3" className={styles.description}>
 				{description}
 			</Text>
 
 			<Flex align="center" gap="6">
 				<Icon icon="calendarNoDots" size={20} color="purple-700" aria-hidden />
 
-				<Text variant="body1" color="black-500">
+				<Text variant="body3" color="black-500">
 					{updatedAtText}
 				</Text>
 			</Flex>

@@ -107,6 +107,12 @@
 
 .body6 {
   line-height:120%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-h-s);
+}
+
+.body6-accent {
+  line-height:120%;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-h-s);
 }

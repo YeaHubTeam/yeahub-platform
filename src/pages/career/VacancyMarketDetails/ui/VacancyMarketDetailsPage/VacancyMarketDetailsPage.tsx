@@ -32,7 +32,7 @@ export const VacancyMarketDetailsPage = () => {
 	}
 
 	return (
-		<Flex componentType="section" direction="column" gap="24" className={styles.container}>
+		<Flex componentType="section" direction="column" gap="22" className={styles.container}>
 			<VacancyMarketDetailsHeader
 				title={t(Vacancies.VACANCY_PROFILE_TITLE)}
 				vacancyName={vacancy.name}
@@ -46,6 +46,7 @@ export const VacancyMarketDetailsPage = () => {
 				title={t(Vacancies.VACANCY_PROFILE_ANALYZED_VACANCIES)}
 				total={vacancy.analyzedVacancyCount}
 				note={t(Vacancies.VACANCY_PROFILE_DAILY_UPDATE)}
+				shortNote={t(Vacancies.VACANCY_PROFILE_DAILY_UPDATE_SHORT)}
 			/>
 
 			<VacancyMarketDetailsBody

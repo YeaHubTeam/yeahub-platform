@@ -49,7 +49,7 @@ export const VacancyMarketDetailsBody = ({
 	const keywords = showAllKeywords ? topKeywords : topKeywords.slice(0, 18);
 
 	return (
-		<Flex justify="between" gap="24" className={styles.header} wrap="wrap" align="start">
+		<Flex gap="24" className={styles.header} wrap="wrap" align="start">
 			<Flex direction="column" gap="20" className={styles.skills}>
 				<Text variant="body6">{titleSkills}</Text>
 
