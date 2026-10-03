@@ -1,4 +1,3 @@
-// eslint-disable-next-line @conarti/feature-sliced/public-api
 import { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';

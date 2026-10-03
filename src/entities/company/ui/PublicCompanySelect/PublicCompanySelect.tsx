@@ -78,7 +78,9 @@ export const PublicCompanySelect = ({ value, onChange, disabled }: PublicCompany
 				onSelect={(val) => {
 					const selected = options.find((opt) => opt.value === val);
 					handleChange(!val ? undefined : String(val));
-					!selected?.label ? handleSearchChange('') : '';
+					if (!selected?.label) {
+						handleSearchChange('');
+					}
 					setSearchValue(selected?.label ?? '');
 				}}
 			>

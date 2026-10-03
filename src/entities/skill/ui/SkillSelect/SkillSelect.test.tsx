@@ -15,7 +15,7 @@ import { SkillSelect, SkillSelectProps } from './SkillSelect';
 
 type OverrideProps = Partial<SkillSelectProps>;
 
-type RequiredSkillSelectProps = Pick<SkillSelectProps, 'value' | 'onChange'>;
+type RequiredSkillSelectProps = Pick<SkillSelectProps, 'value' | 'onChange' | 'withSpecialization'>;
 
 const server = setupMockServer([skillListMock]);
 
@@ -27,6 +27,7 @@ const render = (props: OverrideProps = {}) => {
 	const defaultProps: RequiredSkillSelectProps = {
 		value: [],
 		onChange,
+		withSpecialization: false,
 	};
 	renderComponent(<SkillSelect {...defaultProps} {...props} />);
 };

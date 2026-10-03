@@ -65,7 +65,9 @@ export function getSavedTheme(): Themes | null {
  */
 export const applyTheme = (theme: Themes, persist: boolean = false): void => {
 	document.documentElement.setAttribute('theme', theme);
-	persist && setToLS(LS_THEME_KEY, theme);
+	if (persist) {
+		setToLS(LS_THEME_KEY, theme);
+	}
 };
 
 /**

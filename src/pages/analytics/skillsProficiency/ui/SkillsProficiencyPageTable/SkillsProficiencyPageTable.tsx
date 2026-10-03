@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Analytics } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChip } from '@/shared/ui/StatusChip';
-import { Table } from '@/shared/ui/Table';
+import { TableV2 } from '@/shared/ui/TableV2';
+import { TableColumn } from '@/shared/ui/TableV2';
 import { Text } from '@/shared/ui/Text';
 
 import { LearnedQuestion } from '@/entities/question';
@@ -12,68 +13,62 @@ type SkillsProficiencyPageTableProps = {
 	learnedQuestions: LearnedQuestion[];
 };
 
+interface SkillsProficiencyTableRow {
+	id: number;
+	rowNumber: number;
+	questions: {
+		title: string;
+		total: string;
+	};
+	learnedPercentage: number;
+}
+
 export const SkillsProficiencyPageTable = ({
 	learnedQuestions,
 }: SkillsProficiencyPageTableProps) => {
 	const { t } = useTranslation(i18Namespace.analytics);
 
-	const renderTableHeader = () => {
-		const columns = {
-			index: t(Analytics.SKILL_PROFICIENCY_TABLE_INDEX),
-			questions: t(Analytics.SKILL_PROFICIENCY_TABLE_QUESTIONS),
-			learnedPercentage: t(Analytics.SKILL_PROFICIENCY_TABLE_LEARNED_PERCENTAGE),
-		};
+	const tableData: SkillsProficiencyTableRow[] = learnedQuestions.map((question) => ({
+		id: question.id,
+		rowNumber: question.rowNumber,
+		questions: {
+			title: `${question.specialization.title} - ${question.skill.title}`,
+			total: t(Analytics.SKILL_PROFICIENCY_BADGE, { count: question.total }),
+		},
+		learnedPercentage: question.learnedPercentage,
+	}));
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
+	const columns: TableColumn<SkillsProficiencyTableRow>[] = [
+		{
+			id: 'rowNumber',
+			header: t(Analytics.SKILL_PROFICIENCY_TABLE_INDEX),
+			width: '50px',
+		},
+		{
+			id: 'questions',
+			header: t(Analytics.SKILL_PROFICIENCY_TABLE_QUESTIONS),
+			cell: ({ row }) => (
+				<Flex direction="column" gap="4">
+					<Text variant="body3-accent">{row.questions.title}</Text>
+					<Flex>
+						<StatusChip
+							status={{
+								text: row.questions.total,
+								variant: 'green',
+							}}
+						/>
+					</Flex>
+				</Flex>
+			),
+			width: 'auto',
+		},
+		{
+			id: 'learnedPercentage',
+			header: t(Analytics.SKILL_PROFICIENCY_TABLE_LEARNED_PERCENTAGE),
+			cell: ({ row }) => `${row.learnedPercentage}%`,
+			width: '120px',
+		},
+	];
 
-	const renderTableBody = (learnedQuestion: LearnedQuestion) => {
-		const columns = {
-			index: learnedQuestion.rowNumber,
-			questions: {
-				title: `${learnedQuestion.specialization.title} - ${learnedQuestion.skill.title}`,
-				total: t(Analytics.SKILL_PROFICIENCY_BADGE, { count: learnedQuestion.total }),
-			},
-			learnedPercentage: `${learnedQuestion.learnedPercentage}%`,
-		};
-		return Object.entries(columns)?.map(([k, v]) => {
-			if (k === 'questions') {
-				const questionData = v as { title: string; total: string };
-				return (
-					<td key={k}>
-						<Flex direction="column" gap="4">
-							<Text variant="body3-accent">{questionData.title}</Text>
-							<Flex>
-								<StatusChip status={{ text: questionData.total, variant: 'green' }} />
-							</Flex>
-						</Flex>
-					</td>
-				);
-			}
-			return (
-				<td key={k}>
-					<Text variant="body3-accent">{v as string}</Text>
-				</td>
-			);
-		});
-	};
-
-	const renderTableColumnWidths = () => {
-		const columnWidths = {
-			index: '50px',
-			questions: 'auto',
-			learnedPercentage: '120px',
-		};
-
-		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
-	};
-
-	return (
-		<Table
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			items={learnedQuestions}
-			renderTableColumnWidths={renderTableColumnWidths}
-		/>
-	);
+	return <TableV2 data={tableData} columns={columns} />;
 };

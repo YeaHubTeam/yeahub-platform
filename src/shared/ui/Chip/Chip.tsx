@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type JSX } from 'react';
 
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';

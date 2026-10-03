@@ -6,6 +6,8 @@ declare module '*.module.css' {
 	export = classNames;
 }
 
+declare module '*.css';
+
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
@@ -16,6 +18,8 @@ declare module '*.svg' {
 	export default SVG;
 }
 declare module '*.avif';
+
+declare module '@testing-library/user-event';
 
 type DeepPartial<T> = T extends object
 	? {

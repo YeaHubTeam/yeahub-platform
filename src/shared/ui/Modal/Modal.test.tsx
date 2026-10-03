@@ -94,7 +94,7 @@ describe('Modal', () => {
 				buttonOutlineText: 'Outline Text',
 			});
 
-			expect(screen.getByTestId(modalTestIds.modal)).toHaveClass(`${variant}-modal`);
+			expect(screen.getByTestId(modalTestIds.modal)).toHaveClass(`variant-${variant}-modal`);
 
 			expect(screen.getByTestId(modalTestIds.modalTitle)).toHaveClass(
 				`text-${titleColors[variant]}`,

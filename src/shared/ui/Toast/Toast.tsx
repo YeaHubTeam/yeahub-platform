@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import type { JSX } from 'react';
 import t, { Toast as ToastType } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 

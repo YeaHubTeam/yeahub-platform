@@ -15,7 +15,7 @@ export type TableActionsEntity = {
 
 export interface TableActionsProps {
 	actions?: TableAction[];
-	entity: TableActionsEntity;
+	entity?: TableActionsEntity;
 	id: string | number;
 	disabled?: boolean;
 	onDelete?: () => void;
