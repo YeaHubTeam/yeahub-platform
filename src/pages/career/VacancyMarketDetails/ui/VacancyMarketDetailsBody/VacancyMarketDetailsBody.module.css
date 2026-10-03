@@ -1,0 +1,37 @@
+.header {
+  flex-direction: row;
+  width: 100%;
+  min-width: 0;
+}
+
+.container {
+  width: 50%;
+	
+}
+
+.skills {
+  flex: 1 1 calc(50% - 12px); /* 12px = gap / 2 */
+  padding: 30px 20px;
+  width: 48%;
+  min-width: 0;
+  box-shadow: 0 4px 10px 0 rgb(106 99 118 / 10%);
+  border-radius: 20px;
+  background-color: var(--color-white-900);
+}
+
+.button {
+  margin-right: auto;
+  line-height: 130%;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-p-m);
+}
+
+@media screen and (width < 768px) {
+  .skills {
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+}

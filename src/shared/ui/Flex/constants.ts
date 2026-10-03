@@ -38,6 +38,7 @@ export const gapClasses: Record<FlexGap, string> = {
 	'14': styles.gap14,
 	'16': styles.gap16,
 	'20': styles.gap20,
+	'22': styles.gap22,
 	'24': styles.gap24,
 	'26': styles.gap26,
 	'28': styles.gap28,

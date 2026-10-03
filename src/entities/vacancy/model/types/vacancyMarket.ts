@@ -4,6 +4,10 @@ export interface VacancyMarketTopItem {
 	percent: number;
 }
 
+export interface VacancyMarketMatchedSkill extends VacancyMarketTopItem {
+	skillId: number;
+}
+
 export interface VacancyMarketSpecialization {
 	specializationId: number;
 	name: string;
@@ -19,4 +23,14 @@ export interface VacancyMarketOverview {
 	industry: string;
 	availableIndustries: string[];
 	totalAnalyzedVacancyCount: number;
+}
+
+export interface VacancyMarketSpecializationById extends VacancyMarketSpecialization {
+	industry: string;
+	updatedAt: string;
+	availableIndustries: string[];
+	skillsVacancyCount: number;
+	topMatchedSkills: VacancyMarketMatchedSkill[];
+	topTasks: VacancyMarketTopItem[];
+	priority: VacancyMarketTopItem[];
 }

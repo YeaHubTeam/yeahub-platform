@@ -1,7 +1,10 @@
 import { ApiTags, baseApi } from '@/shared/config';
 
 import { vacancyMarketApiUrls } from '../model/constants/vacancyMarket';
-import { VacancyMarketOverview } from '../model/types/vacancyMarket';
+import {
+	VacancyMarketOverview,
+	VacancyMarketSpecializationById,
+} from '../model/types/vacancyMarket';
 
 const vacancyMarketApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -12,7 +15,13 @@ const vacancyMarketApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.VACANCIES_MARKET],
 		}),
+		getVacancyMarketById: build.query<VacancyMarketSpecializationById, string>({
+			query: (id) => ({
+				url: vacancyMarketApiUrls.getVacancyMarketById(id),
+				method: 'GET',
+			}),
+		}),
 	}),
 });
 
-export const { useGetVacancyMarketOverviewQuery } = vacancyMarketApi;
+export const { useGetVacancyMarketOverviewQuery, useGetVacancyMarketByIdQuery } = vacancyMarketApi;

@@ -9,3 +9,4 @@ export * from './jest';
 export * from './math';
 export * from './visual';
 export * from './date';
+export { formatUpdatedAt } from './date/formatUpdateAt';
