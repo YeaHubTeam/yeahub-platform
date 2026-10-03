@@ -22,3 +22,10 @@ p.description {
     font-size: var(--font-size-large-34);
   }
 }
+
+@media screen and (width < 360px) {
+  h1.title {
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-h-xs);
+  }
+}

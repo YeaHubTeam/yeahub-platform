@@ -1,6 +1,8 @@
 div.summary {
   padding: 0;
-  width: 98%;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   height: 74px;
   overflow: hidden;
   border-radius: 20px;
@@ -39,8 +41,9 @@ div.content {
 }
 
 .summary-total {
+  flex-shrink: 1;
   padding: 10px 18px;
-  min-width: 350px;
+  min-width: 0;
   border-radius: 16px 0 0 16px;
   background-color: var(--background-block);
 }
@@ -53,8 +56,10 @@ div.content {
 }
 
 .summary-note {
+  flex-shrink: 1;
   padding: 10px 24px;
-  border-bottom-right-radius: 16px 0 0 16px;
+  min-width: 0;
+  border-bottom-right-radius: 16px;
   background-color: var(--color-black-40);
 }
 
@@ -86,12 +91,21 @@ div.content {
   flex-shrink: 0;
 }
 
-@media screen and (width < 1024px) and (width >= 768px) {
-  div.summary {
-    align-self: center;
-    width: min(var(--container-width-md), 100%);
-  }
 
+@media screen and (width < 567px) {
+  .summary-total {
+    border-radius: 16px 16px 0 0;
+    background-color: var(--background-block);
+  }
+	
+  .summary-note {
+    border-radius: 0 0 16px 16px;
+    background-color: var(--color-white-900);
+  }
+}
+
+
+@media screen and (width < 1024px) and (width >= 768px) {
   .main {
     flex: 1 1 50%;
   }
@@ -181,3 +195,5 @@ div.content {
     flex: 1 1 auto;
   }
 }
+
+
