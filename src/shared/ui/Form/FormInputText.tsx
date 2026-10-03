@@ -5,8 +5,10 @@ import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { InputProps } from '@/shared/ui/Input/Input';
 
-interface FormInputTextProps<T extends FieldValues>
-	extends Omit<InputProps, 'error' | 'label' | 'className'> {
+interface FormInputTextProps<T extends FieldValues> extends Omit<
+	InputProps,
+	'error' | 'label' | 'className'
+> {
 	name: Path<T>;
 	control: Control<T>;
 
