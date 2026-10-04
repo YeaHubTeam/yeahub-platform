@@ -78,21 +78,7 @@ jobs:
           fi
 
       - name: Prettier
-        run: |
-          echo "=== Node version ==="
-          node -v
-          echo "=== Prettier version ==="
-          npx prettier --version
-          echo "=== Does .editorconfig exist? ==="
-          ls -la .editorconfig || echo "NO .editorconfig"
-          echo "=== Content of .editorconfig ==="
-          cat .editorconfig || true
-          echo "=== First 30 lines of the file (with cat -vte) ==="
-          cat -vte src/shared/ui/Form/FormInputText.tsx | head -30
-          echo "=== Running prettier --check on the single file ==="
-          npx prettier --check src/shared/ui/Form/FormInputText.tsx
-          echo "=== Full check ==="
-          npx prettier --check "**/*.{ts,tsx,json}"
+        run: npx prettier --check "**/*.{ts,tsx,json}"
 
       - name: ESLint
         run: npm run lint:ts
