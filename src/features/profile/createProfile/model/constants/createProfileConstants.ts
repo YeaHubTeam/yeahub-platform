@@ -1,3 +1,3 @@
 export const createProfileApiUrls = {
-	createProfile: '/profiles',
+	createProfile: 'profiles',
 };
