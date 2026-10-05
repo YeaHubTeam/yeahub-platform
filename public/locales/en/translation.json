@@ -266,6 +266,12 @@
 				}
 			}
 		},
+		"article": {
+			"create": {
+				"success": "Article created successfully",
+				"failed": "Failed to create article"
+			}
+		},
 		"tasks": {
 			"create": {
 				"success": "Task created successfully",
