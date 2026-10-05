@@ -30,11 +30,21 @@ export const TableActions = ({
 		return null;
 	}
 
-	const entityRoutes = ROUTES.admin[entity];
-	const detailPath = route(entityRoutes.details.route, id);
-	const editPath = route(entityRoutes.edit.route, id);
+	const entityRoutes = entity ? ROUTES.admin[entity] : undefined;
+	const detailPath = entityRoutes ? route(entityRoutes.details.route, id) : undefined;
+	const editPath = entityRoutes ? route(entityRoutes.edit.route, id) : undefined;
 	const hasCopy = actions.includes('copy');
-	const menuActions = getMenuActions(actions).filter((action) => action !== 'delete' || onDelete);
+	const menuActions = getMenuActions(actions).filter((action) => {
+		if (action === 'detail') {
+			return Boolean(detailPath);
+		}
+
+		if (action === 'edit') {
+			return Boolean(editPath);
+		}
+
+		return Boolean(onDelete);
+	});
 
 	const disabledTooltip = {
 		color: 'red' as const,
@@ -42,7 +52,7 @@ export const TableActions = ({
 	};
 
 	const menuItems = menuActions.flatMap((action): PopoverMenuItem[] => {
-		if (action === 'detail') {
+		if (action === 'detail' && detailPath) {
 			return [
 				{
 					icon: <Icon icon="eye" size={24} />,
@@ -52,7 +62,7 @@ export const TableActions = ({
 			];
 		}
 
-		if (action === 'edit') {
+		if (action === 'edit' && editPath) {
 			return [
 				{
 					icon: <Icon icon="pen" size={24} />,
@@ -77,6 +87,10 @@ export const TableActions = ({
 
 	const renderSingleMenuAction = (action: Exclude<TableAction, 'copy'>) => {
 		if (action === 'detail') {
+			if (!detailPath) {
+				return null;
+			}
+
 			return (
 				<IconButton
 					aria-label={t(Translation.SHOW)}
@@ -90,6 +104,10 @@ export const TableActions = ({
 		}
 
 		if (action === 'edit') {
+			if (!editPath) {
+				return null;
+			}
+
 			return (
 				<IconButton
 					aria-label={t(Translation.EDIT)}
