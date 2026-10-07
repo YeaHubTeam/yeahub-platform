@@ -1,8 +1,11 @@
 import { DefaultBodyType, http, HttpResponse } from 'msw';
 
-import { favoriteQuestionApiUrls } from '@/features/question/favoriteQuestion/model/constants/favoriteQuestionConstants';
-
 import { userQuestionsFavoriteMock } from './data/userQuestiosFavoriteMock';
+
+const favoriteQuestionApiUrls = {
+	addFavoriteQuestion: 'questions/favorites/:profileId/:questionId',
+	resetFavoriteQuestion: 'questions/favorites/:profileId/:questionId',
+};
 
 export const addFavoriteQuestionMock = http.post<
 	{
@@ -31,7 +34,7 @@ export const addFavoriteQuestionMock = http.post<
 	return new HttpResponse(null, { status: 200 });
 });
 
-export const resetFavoriteQuestionMock = http.delete<
+export const deleteFavoriteQuestionMock = http.delete<
 	{
 		profileId: string;
 		questionId: string;
