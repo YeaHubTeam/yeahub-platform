@@ -1,20 +1,16 @@
-import { DefaultBodyType, http, HttpResponse } from 'msw';
+import { http, HttpResponse } from 'msw';
 
-import { userQuestionsFavoriteMock } from './data/userQuestiosFavoriteMock';
+import { userQuestionsFavoriteMock } from './data/userQuestionsFavoriteMock';
 
 const favoriteQuestionApiUrls = {
 	addFavoriteQuestion: 'questions/favorites/:profileId/:questionId',
 	resetFavoriteQuestion: 'questions/favorites/:profileId/:questionId',
 };
 
-export const addFavoriteQuestionMock = http.post<
-	{
-		profileId: string;
-		questionId: string;
-	},
-	DefaultBodyType,
-	DefaultBodyType
->(process.env.API_URL + favoriteQuestionApiUrls.addFavoriteQuestion, ({ params }) => {
+export const addFavoriteQuestionMock = http.post<{
+	profileId: string;
+	questionId: string;
+}>(process.env.API_URL + favoriteQuestionApiUrls.addFavoriteQuestion, ({ params }) => {
 	const { profileId, questionId } = params;
 
 	const profile = userQuestionsFavoriteMock[profileId];
@@ -34,14 +30,10 @@ export const addFavoriteQuestionMock = http.post<
 	return new HttpResponse(null, { status: 200 });
 });
 
-export const deleteFavoriteQuestionMock = http.delete<
-	{
-		profileId: string;
-		questionId: string;
-	},
-	DefaultBodyType,
-	DefaultBodyType
->(process.env.API_URL + favoriteQuestionApiUrls.resetFavoriteQuestion, ({ params }) => {
+export const deleteFavoriteQuestionMock = http.delete<{
+	profileId: string;
+	questionId: string;
+}>(process.env.API_URL + favoriteQuestionApiUrls.resetFavoriteQuestion, ({ params }) => {
 	const { profileId, questionId } = params;
 
 	const profile = userQuestionsFavoriteMock[profileId];
