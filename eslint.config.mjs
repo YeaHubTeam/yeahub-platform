@@ -11,6 +11,8 @@ import tseslint from 'typescript-eslint';
 
 // eslint-disable-next-line import/no-internal-modules
 import propsNaming from './eslint/props-naming/rule.mjs';
+// eslint-disable-next-line import/no-internal-modules
+import relativeModuleImports from './eslint/relative-module-imports/rule.mjs';
 
 /**
  * FSD eslint plugins (`@feature-sliced/eslint-config`, `@conarti/eslint-plugin-feature-sliced`)
@@ -43,6 +45,7 @@ export default defineConfig(
 			yeahub: {
 				rules: {
 					'props-naming': propsNaming,
+					'relative-module-imports': relativeModuleImports,
 				},
 			},
 		},
@@ -151,6 +154,7 @@ export default defineConfig(
 			'react-hooks/globals': 'warn',
 			'react-hooks/use-memo': 'warn',
 			'yeahub/props-naming': 'warn',
+			'yeahub/relative-module-imports': 'warn',
 		},
 	},
 	...storybook.configs['flat/recommended'],
