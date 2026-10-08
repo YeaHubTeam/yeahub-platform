@@ -7,7 +7,7 @@ const learnQuestionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
 		learnQuestion: build.mutation<LearnQuestionResponse, LearnQuestionParams>({
 			query: (body) => ({
-				url: `/interview-preparation`,
+				url: `interview-preparation`,
 				method: 'PUT',
 				body,
 			}),
