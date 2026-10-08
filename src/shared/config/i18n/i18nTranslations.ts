@@ -1710,3 +1710,10 @@ export enum VacanciesMarket {
 	STUB_EMPTY_TITLE = 'stub.empty.title',
 	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
 }
+
+export enum TestCreate {
+	TITLE = 'title',
+	CREATE_BUTTON = 'create.button',
+	CREATE_SUCCESS = 'create.success',
+	CREATE_ERROR = 'create.error',
+}

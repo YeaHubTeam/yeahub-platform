@@ -1,0 +1,28 @@
+.skills-selection {
+  flex-basis: 60%;
+}
+
+.wrapper {
+  margin-bottom: 48px;
+}
+
+.additional-wrapper {
+  flex-basis: 40%;
+}
+
+@media (width <=768px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (width <=480px) {
+  .additional-wrapper {
+    row-gap: 16px;
+  }
+
+  .wrapper {
+    margin-bottom: 24px;
+  }
+}

@@ -302,7 +302,10 @@ export const ROUTES = {
 			page: '/interview/new',
 		},
 	},
-
+	test: {
+		route: 'test',
+		page: '/test',
+	},
 	tasks: {
 		route: 'tasks',
 		page: '/tasks',

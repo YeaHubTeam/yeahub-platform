@@ -28,6 +28,7 @@ export const i18Namespace = {
 	media: 'media',
 	topic: 'topic',
 	task: 'task',
+	testCreate: 'testCreate',
 	programmingLanguage: 'programmingLanguage',
 	featureFlags: 'featureFlags',
 	vacancies: 'vacancies',

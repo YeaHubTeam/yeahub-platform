@@ -1,0 +1,6 @@
+{
+	"title": "Test setup",
+	"create.button": "Start test",
+	"create.success": "Test created successfully",
+	"create.error": "Failed to create test"
+}
