@@ -3,13 +3,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { Specialization, SpecializationForm } from '@/entities/specialization';
 
+import { useEditSpecializationMutation } from '../../api/editSpecializationApi';
 import { specializationEditSchema } from '../../lib/validation/specializationEditSchema';
 import { EditSpecializationFormValues } from '../../model/types/specializationEditPageTypes';
-import { SpecializationEditFormHeader } from '../SpecializationEditFormHeader/SpecializationEditFormHeader';
 
 import styles from './SpecializationEditForm.module.css';
 
@@ -26,11 +27,20 @@ export const SpecializationEditForm = ({ specialization }: SpecializationEditFor
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
+	const [editSpecializationMutation, { isLoading }] = useEditSpecializationMutation();
+
+	const onEditSpecialization = async (data: EditSpecializationFormValues) => {
+		await editSpecializationMutation(data);
+	};
+
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<SpecializationEditFormHeader />
+					<FormHeader<EditSpecializationFormValues>
+						onSubmit={onEditSpecialization}
+						isLoading={isLoading}
+					/>
 					<Card className={styles.content}>
 						<SpecializationForm isEdit={true} />
 					</Card>

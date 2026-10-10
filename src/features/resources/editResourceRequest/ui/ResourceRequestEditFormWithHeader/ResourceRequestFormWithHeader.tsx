@@ -6,13 +6,10 @@ import { useCurrentProject } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { Text } from '@/shared/ui/Text';
 
-import {
-	ResourceEditFormHeader,
-	ResourceForm,
-	ResourceRequestStatusChip,
-} from '@/entities/resource';
+import { ResourceForm, ResourceRequestStatusChip } from '@/entities/resource';
 
 import type { EditResourceRequestFormValues } from '../../model/types/resourceRequestEditTypes';
 
@@ -20,9 +17,13 @@ import styles from './ResourceRequestFormWithHeader.module.css';
 
 interface ResourceRequestFormWithHeaderProps {
 	onSubmit: (formData: EditResourceRequestFormValues) => Promise<void>;
+	isLoading?: boolean;
 }
 
-export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormWithHeaderProps) => {
+export const ResourceRequestFormWithHeader = ({
+	onSubmit,
+	isLoading,
+}: ResourceRequestFormWithHeaderProps) => {
 	const {
 		watch,
 		handleSubmit,
@@ -37,10 +38,10 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 	return (
 		<Flex componentType="main" className={styles.wrapper}>
 			{project === 'admin' ? (
-				<ResourceEditFormHeader
+				<FormHeader<EditResourceRequestFormValues>
 					onSubmit={onSubmit}
+					isLoading={isLoading}
 					className={styles.header}
-					btnVariant="destructive-secondary"
 				/>
 			) : (
 				<Flex align="center" className={styles.buttons}>

@@ -5,10 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Resources } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 import { Text } from '@/shared/ui/Text';
 
-import { Resource, ResourceEditFormHeader, ResourceForm } from '@/entities/resource';
+import { Resource, ResourceForm } from '@/entities/resource';
 import { Skill } from '@/entities/skill';
 import { Specialization } from '@/entities/specialization';
 
@@ -45,16 +46,17 @@ export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
-	const [editResourceMutation] = useEditResourceMutation();
+	const [editResourceMutation, { isLoading }] = useEditResourceMutation();
 
 	const onEditResource = async (data: EditResourceFormValues) => {
-		editResourceMutation(data);
+		await editResourceMutation(data);
 	};
+
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<ResourceEditFormHeader onSubmit={onEditResource} />
+					<FormHeader<EditResourceFormValues> onSubmit={onEditResource} isLoading={isLoading} />
 					<Card className={styles.content}>
 						<Text variant="body6" color="black-900" className={styles['main-title']}>
 							{t(Resources.EDIT_RESOURCE_TITLE)}

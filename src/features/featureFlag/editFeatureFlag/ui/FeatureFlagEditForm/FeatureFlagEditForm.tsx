@@ -4,6 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import {
@@ -15,7 +16,6 @@ import { useGetUserRolesListQuery } from '@/entities/user/@x/featureFlag';
 
 import { useEditFeatureFlagMutation } from '../../api/editFeatureFlagApi';
 import { featureFlagEditSchema } from '../../lib/validation/featureFlagEditSchema';
-import { FeatureFlagEditFormHeader } from '../FeatureFlagEditFormHeader/FeatureFlagEditFormHeader';
 
 import styles from './FeatureFlagEditForm.module.css';
 
@@ -61,17 +61,20 @@ export const FeatureFlagEditForm = ({ featureFlag }: FeatureFlagEditFormProps) =
 
 	const { isDirty, isSubmitting, isSubmitted } = methods.formState;
 
-	const [editTopicMutation] = useEditFeatureFlagMutation();
+	const [editFeatureFlagMutation, { isLoading }] = useEditFeatureFlagMutation();
 
-	const onEditTopic = async (data: CreateOrEditFeatureFlagFormValues) => {
-		await editTopicMutation(data);
+	const onEditFeatureFlag = async (data: CreateOrEditFeatureFlagFormValues) => {
+		await editFeatureFlagMutation(data);
 	};
 
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<FeatureFlagEditFormHeader onSubmit={onEditTopic} />
+					<FormHeader<CreateOrEditFeatureFlagFormValues>
+						onSubmit={onEditFeatureFlag}
+						isLoading={isLoading}
+					/>
 					<Card className={styles.content}>
 						<FeatureFlagForm isEdit />
 					</Card>

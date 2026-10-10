@@ -6,15 +6,16 @@ import { i18Namespace, ReferralLinks } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 import { Text } from '@/shared/ui/Text';
 
 import { getUserId } from '@/entities/profile';
 import { ReferralLinkForm, type ReferralLink } from '@/entities/referralLink';
 
+import { useEditReferralLinkMutation } from '../../api/editReferralLinkApi';
 import { referralLinkEditSchema } from '../../lib/validation/referralLinkEditSchema';
 import { EditReferralLinkFormValues } from '../../model/types/referralEditPageTypes';
-import { ReferralLinkEditFormHeader } from '../ReferralLinkEditFormHeader/ReferralLinkEditFormHeader';
 
 import styles from './ReferralLinkEditForm.module.css';
 
@@ -41,11 +42,23 @@ export const ReferralLinkEditForm = ({ referralLink }: ReferralLinkEditFormProps
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
+	const [editReferralLinkMutation, { isLoading }] = useEditReferralLinkMutation();
+
+	const onEditReferralLink = async (data: EditReferralLinkFormValues) => {
+		await editReferralLinkMutation({
+			...referralLink,
+			...data,
+		});
+	};
+
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
-				<Flex componentType="main" direction="column">
-					<ReferralLinkEditFormHeader />
+				<Flex componentType="main" direction="column" gap="24">
+					<FormHeader<EditReferralLinkFormValues>
+						onSubmit={onEditReferralLink}
+						isLoading={isLoading}
+					/>
 					<Card className={styles.content}>
 						<Flex direction="column" gap="28">
 							<Text variant="body5-strong" color="black-900">

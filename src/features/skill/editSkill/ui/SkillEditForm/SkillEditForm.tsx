@@ -4,13 +4,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormHeader } from '@/shared/ui/FormHeader';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
 
 import { Skill, SkillForm } from '@/entities/skill';
 
+import { useEditSkillMutation } from '../../api/editSkillApi';
 import { skillEditSchema } from '../../lib/validation/skillEditSchema';
 import { EditSkillFormValues } from '../../model/types/skillEditPageTypes';
-import { SkillEditFormHeader } from '../SkillEditFormHeader/SkillEditFormHeader';
 
 import styles from './SkillEditForm.module.css';
 
@@ -32,11 +33,17 @@ export const SkillEditForm = ({ skill }: SkillEditFormProps) => {
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
 
+	const [editSkillMutation, { isLoading }] = useEditSkillMutation();
+
+	const onEditSkill = async (data: EditSkillFormValues) => {
+		await editSkillMutation(data);
+	};
+
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<SkillEditFormHeader />
+					<FormHeader<EditSkillFormValues> onSubmit={onEditSkill} isLoading={isLoading} />
 					<Card className={styles.content}>
 						<SkillForm isEdit imageSrc={skill.imageSrc} />
 					</Card>
