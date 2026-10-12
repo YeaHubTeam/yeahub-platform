@@ -10,13 +10,22 @@ import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 import { useCreateTopicMutation } from '../../api/createTopicApi';
 import { CreateTopicFormValues } from '../../model/types/topicCreateTypes';
 
-export const TopicCreateFormHeader = () => {
+interface TopicCreateFormHeaderProps {
+	onSuccess: () => void;
+}
+
+export const TopicCreateFormHeader = ({ onSuccess }: TopicCreateFormHeaderProps) => {
 	const [createTopicMutation, { isLoading }] = useCreateTopicMutation();
 	const { handleSubmit } = useFormContext<CreateTopicFormValues>();
 	const { t } = useTranslation([i18Namespace.specialization, i18Namespace.translation]);
 
 	const onCreateTopic = async (data: CreateTopicFormValues) => {
-		await createTopicMutation(data);
+		try {
+			await createTopicMutation(data).unwrap();
+			onSuccess();
+		} catch {
+			return;
+		}
 	};
 
 	return (
