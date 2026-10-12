@@ -1,0 +1,99 @@
+{
+	"create.page.title": "Создание статьи",
+
+	"title": {
+		"main": "Статья",
+		"short": "Название",
+		"full": "Заголовок статьи",
+		"label": "Добавьте заголовок статьи"
+	},
+
+	"content": {
+		"title": "Контент",
+		"full": "Контент статьи",
+		"label": "Время чтения - автоматически",
+		"placeholder": "Добавьте текст статьи"
+	},
+
+	"seo.title": {
+		"title": "SEO Title",
+		"label": "Заголовок для поисковой выдачи",
+		"placeholder": "Автоматически из заголовка статьи"
+	},
+
+	"seo.description": {
+		"title": "SEO Description",
+		"label": "Описание для поисковой выдачи",
+		"placeholder": "Автоматически из описания статьи"
+	},
+
+	"url": {
+		"title": "URL статьи (slug)",
+		"label": "Создайте ссылку",
+		"placeholder": "Введите slug",
+		"hint": "URL сформируется автоматически. Вы можете изменить его"
+	},
+
+	"og.title": {
+		"title": "Open Graph Title",
+		"label": "Заголовок при шеринге в соцсетях",
+		"placeholder": "Автоматически на основе SEO Title"
+	},
+
+	"og.description": {
+		"title": "Open Graph Description",
+		"label": "Описание при шеринге в соцсетях",
+		"placeholder": "Автоматически на основе SEO Description"
+	},
+
+	"specializations": {
+		"title": "Специализация",
+		"label": "Выбрать специализацию",
+		"placeholder": "Выбери специализацию из списка"
+	},
+
+	"skills": {
+		"title": "Навыки",
+		"label": "Выберите связанные навыки",
+		"placeholder": "Выбери навык из списка"
+	},
+
+	"topics": {
+		"title": "Темы",
+		"label": "Выбрать тему",
+		"placeholder": " Выберите тему из списка",
+		"type": {
+			"interview": "Интервью",
+			"system-design": "Системный дизайн",
+			"basics": "Основы",
+			"advanced": "Продвинутый"
+		},
+		"empty": "Все темы выбраны"
+	},
+
+	"format": {
+		"title": "Формат",
+		"label": "Выберите формат материала",
+		"placeholder": "Выберите формат",
+		"type": {
+			"guide": "Руководство",
+			"breakdown": "Разбор",
+			"qa": "Вопросы и ответы",
+			"interview_prep": "Подготовка к интервью"
+		}
+	},
+
+	"content-type": {
+		"title": "Тип",
+		"full": "Тип контента",
+		"label": "Выберите тип контента",
+		"placeholder": "Выберите тип",
+		"type": {
+			"theory": "Теория",
+			"practice": "Практика",
+			"interview": "Интервью",
+			"roadmap": "Дорожная карта",
+			"case_study": "Разбор кейса"
+		}
+	}
+}

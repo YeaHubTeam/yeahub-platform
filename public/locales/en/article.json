@@ -1,0 +1,98 @@
+{
+	"create.page.title": "Create article",
+	"title": {
+		"main": "Article",
+		"short": "Title",
+		"full": "Article title",
+		"label": "Add an article title"
+	},
+
+	"content": {
+		"title": "Content",
+		"full": "Article content",
+		"label": "Reading time – automatic",
+		"placeholder": "Add the article text"
+	},
+
+	"seo.title": {
+		"title": "SEO Title",
+		"label": "Title shown in search results",
+		"placeholder": "Automatically generated from the article title"
+	},
+
+	"seo.description": {
+		"title": "SEO Description",
+		"label": "Description shown in search results",
+		"placeholder": "Automatically generated from the article description"
+	},
+
+	"url": {
+		"title": "URL of the article (slug)",
+		"label": "Create a link",
+		"placeholder": "Enter slug",
+		"hint": "The URL will be generated automatically. You can change it"
+	},
+
+	"og.title": {
+		"title": "Open Graph Title",
+		"label": "Title shown when shared on social media",
+		"placeholder": "Automatically based on the SEO title"
+	},
+
+	"og.description": {
+		"title": "Open Graph Description",
+		"label": "Description shown when shared on social media",
+		"placeholder": "Automatically based on the SEO description"
+	},
+
+	"icon": {
+		"title-short": "Icon"
+	},
+
+	"specializations": {
+		"title": "Specializations",
+		"label": "Choose a specialization",
+		"placeholder": "Select a specialization"
+	},
+	"skills": {
+		"title": "Skills",
+		"label": "Choose related skills",
+		"placeholder": "Select a skill"
+	},
+	"topics": {
+		"title": "Topics",
+		"label": "Select a topic",
+		"placeholder": "Choose a topic",
+		"type": {
+			"interview": "Interview",
+			"system-design": "System design",
+			"basics": "Fundamentals",
+			"advanced": "Advanced"
+		},
+		"empty": "All topics selected"
+	},
+	"format": {
+		"title": "Format",
+		"label": "Choose an article format",
+		"placeholder": "Select a format",
+		"type": {
+			"guide": "Guide",
+			"breakdown": "Breakdown",
+			"qa": "Q&A",
+			"interview_prep": "Interview preparation"
+		}
+	},
+	"content-type": {
+		"title": "Type",
+		"full": "Content type",
+		"label": "Choose a content type",
+		"placeholder": "Select a type",
+		"type": {
+			"theory": "Theory",
+			"practice": "Practice",
+			"interview": "Interview",
+			"roadmap": "Roadmap",
+			"case_study": "Case study"
+		}
+	}
+}

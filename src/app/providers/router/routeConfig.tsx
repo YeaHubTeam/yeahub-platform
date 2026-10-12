@@ -30,6 +30,7 @@ import { listAdminRoles, RoleName } from '@/entities/auth';
 
 import { MenuItem } from '@/widgets/Sidebar';
 
+import { ArticleCreatePage } from '@/pages/admin/article/articleCreate';
 import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate';
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/collection/collectionDetail';
 import { CollectionEditPage } from '@/pages/admin/collection/collectionEdit';
@@ -566,6 +567,10 @@ export const router = createBrowserRouter([
 						element: <ReferralLinkEditPage />,
 					},
 				],
+			},
+			{
+				path: ROUTES.admin.articles.create.page,
+				element: <ArticleCreatePage />,
 			},
 			{
 				path: '*',
