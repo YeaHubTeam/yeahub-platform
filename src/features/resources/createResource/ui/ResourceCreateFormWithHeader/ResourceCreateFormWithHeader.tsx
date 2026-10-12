@@ -6,6 +6,7 @@ import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 import { Text } from '@/shared/ui/Text';
 
 import { listAdminRoles, useProfileQuery } from '@/entities/auth';
@@ -16,7 +17,11 @@ import { CreateResourceFormValues } from '../../model/types/resourceCreateTypes'
 
 import styles from './ResourceCreateFormWithHeader.module.css';
 
-export const ResourceCreateFormWithHeader = () => {
+interface ResourceCreateFormWithHeaderProps {
+	onSuccess: () => void;
+}
+
+export const ResourceCreateFormWithHeader = ({ onSuccess }: ResourceCreateFormWithHeaderProps) => {
 	const [createResourceMutation, { isLoading }] = useCreateResourceMutation();
 
 	const { handleSubmit } = useFormContext<CreateResourceFormValues>();
@@ -28,7 +33,12 @@ export const ResourceCreateFormWithHeader = () => {
 	);
 
 	const onCreateResource = async (data: CreateResourceFormValues) => {
-		await createResourceMutation({ resource: data, isAdmin: isAdminRole }).unwrap();
+		try {
+			await createResourceMutation({ resource: data, isAdmin: isAdminRole }).unwrap();
+			onSuccess();
+		} catch {
+			return;
+		}
 	};
 
 	return (
@@ -36,7 +46,8 @@ export const ResourceCreateFormWithHeader = () => {
 			<div className={styles.back}>
 				<BackButton />
 			</div>
-			<Flex gap="20" align="center" className={styles.buttons}>
+			<Flex gap="10" align="center" className={styles.buttons}>
+				<FormCancelButton disabled={isLoading} size="medium" />
 				<Button
 					disabled={isLoading}
 					className={styles['submit-button']}
