@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Companies } from '@/shared/config';
@@ -25,19 +25,34 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 
+	const companyImagePreview = useWatch({
+		control,
+		name: 'companyImagePreview',
+		defaultValue: '',
+	});
+
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
-		setPreviewImg(imageBase64);
-		setValue('companyImage', image);
+		setValue('companyImage', image, { shouldDirty: true });
+
+		if (isEdit) {
+			setPreviewImg(imageBase64);
+		} else {
+			setValue('companyImagePreview', imageBase64, { shouldDirty: true });
+		}
 	};
 
 	const removeImage = () => {
-		setPreviewImg(null);
-		setValue('companyImage', null);
-		setValue('imageSrc', null);
+		if (isEdit) {
+			setPreviewImg(null);
+			setValue('companyImage', null, { shouldDirty: true });
+			setValue('imageSrc', null, { shouldDirty: true });
+		} else {
+			setValue('companyImage', '', { shouldDirty: true });
+			setValue('companyImagePreview', '', { shouldDirty: true });
+		}
 	};
-
 	return (
 		<>
 			<Text variant="body6" className={styles['main-title']}>
@@ -53,7 +68,7 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
-						initialSrc={previewImg}
+						initialSrc={isEdit ? previewImg : companyImagePreview || null}
 					/>
 				</FormField>
 			</Flex>
