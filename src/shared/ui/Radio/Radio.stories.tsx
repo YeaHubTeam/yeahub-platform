@@ -1,5 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-webpack5';
 import { useState, useEffect } from 'react';
+import { fn } from 'storybook/test';
 
 import { Radio } from './Radio';
 import { RadioProps } from './types';
@@ -11,6 +12,9 @@ const meta = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	args: {
+		onChange: fn(),
+	},
 	argTypes: {},
 } satisfies Meta<typeof Radio>;
 

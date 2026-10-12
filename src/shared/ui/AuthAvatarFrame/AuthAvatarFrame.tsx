@@ -1,4 +1,3 @@
-/* eslint-disable import/no-internal-modules */
 import { AvatarWithoutPhoto } from '@/shared/ui/AvatarWithoutPhoto';
 
 import styles from './AuthAvatarFrame.module.css';

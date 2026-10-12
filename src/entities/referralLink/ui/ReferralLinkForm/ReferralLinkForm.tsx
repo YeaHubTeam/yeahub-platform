@@ -85,7 +85,7 @@ export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps
 									key={isOwnerChecked ? 'owner' : 'select'}
 									value={displayValue}
 									onChange={(userId) => field.onChange(userId)}
-									disabled={false || isOwnerChecked}
+									disabled={isOwnerChecked}
 									showLabel={false}
 								/>
 							);

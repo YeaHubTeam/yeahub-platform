@@ -13,7 +13,7 @@ import { CheckboxProps } from './types';
  */
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-	({ label, className, isIntermediate = false, ...props }, ref) => {
+	({ label, className, isIntermediate = false, onToggle, ...props }, ref) => {
 		const internalRef = useRef<HTMLInputElement>(null);
 
 		useImperativeHandle(ref, () => internalRef.current!);

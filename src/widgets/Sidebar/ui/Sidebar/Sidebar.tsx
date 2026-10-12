@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import ChatIcon from '@/shared/assets/icons/chat.svg';
@@ -56,7 +56,9 @@ export const Sidebar = ({
 
 	useEffect(() => {
 		if (!isMobileSidebar) {
-			!isDesktop && setIsOpenNavSidebar(true);
+			if (!isDesktop) {
+				setIsOpenNavSidebar(true);
+			}
 		}
 	}, [isMobile, isTablet, isLaptop, isMobileSidebar]);
 

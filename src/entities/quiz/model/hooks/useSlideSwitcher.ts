@@ -20,23 +20,25 @@ export const useSlideSwitcher = (questions: Answers[], initialSlideIndex?: numbe
 	const isAuthRoute = !!matchPath('/interview/new', location.pathname);
 
 	const changeAnswer = (answer: QuizQuestionAnswerType) => {
-		hasPremium
-			? dispatch(
-					changeQuestionAnswer({
-						questionId: questions[currentQuestion].questionId,
-						answer,
-						shouldSaveToLS: isAuthRoute,
-						profileId,
-					}),
-				)
-			: dispatch(
-					changeMockQuestionAnswer({
-						questionId: questions[currentQuestion].questionId,
-						answer,
-						shouldSaveToLS: isAuthRoute,
-						profileId,
-					}),
-				);
+		if (hasPremium) {
+			dispatch(
+				changeQuestionAnswer({
+					questionId: questions[currentQuestion].questionId,
+					answer,
+					shouldSaveToLS: isAuthRoute,
+					profileId,
+				}),
+			);
+		} else {
+			dispatch(
+				changeMockQuestionAnswer({
+					questionId: questions[currentQuestion].questionId,
+					answer,
+					shouldSaveToLS: isAuthRoute,
+					profileId,
+				}),
+			);
+		}
 	};
 
 	const goToNextSlide = () => {

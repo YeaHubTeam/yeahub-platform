@@ -1,19 +1,18 @@
-import CharacterCount from '@tiptap/extension-character-count';
-import Code from '@tiptap/extension-code';
-import Strike from '@tiptap/extension-strike';
 import TextAlign from '@tiptap/extension-text-align';
-import Underline from '@tiptap/extension-underline';
-import { useEditor, EditorContent, Editor } from '@tiptap/react';
+import { CharacterCount } from '@tiptap/extensions';
+import { TextSelection } from '@tiptap/pm/state';
+import { Editor, EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import classNames from 'classnames';
-import { TextSelection } from 'prosemirror-state';
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
 import 'highlight.js/styles/atom-one-dark.css';
 import { createCustomCodeBlock, normalizeHtmlContent, createPastePlugin } from '@/shared/libs';
 import { BubbleMenuEditor } from '@/shared/ui/BubbleMenuEditor';
 
 import styles from './TextEditor.module.css';
+
+const PARSE_OPTIONS = { preserveWhitespace: 'full' as const };
 
 export interface TextEditorProps {
 	isInline?: boolean;
@@ -43,10 +42,27 @@ export const TextEditor = ({
 	onFocus,
 	onReady,
 }: TextEditorProps) => {
-	const editor = useEditor({
-		extensions: [
+	const onChangeRef = useRef(onChange);
+	const onBlurRef = useRef(onBlur);
+	const onFocusRef = useRef(onFocus);
+	const lastEmittedHtml = useRef<string | null>(null);
+
+	onChangeRef.current = onChange;
+	onBlurRef.current = onBlur;
+	onFocusRef.current = onFocus;
+
+	const initialContent = useRef(normalizeHtmlContent(data));
+
+	const extensions = useMemo(
+		() => [
 			StarterKit.configure({
 				codeBlock: false,
+				link: false,
+				code: {
+					HTMLAttributes: {
+						class: styles['inline-code'],
+					},
+				},
 				heading: {
 					levels: [1, 2, 3, 4, 5, 6],
 					HTMLAttributes: {
@@ -74,50 +90,48 @@ export const TextEditor = ({
 					},
 				},
 			}),
-			Code.configure({
-				HTMLAttributes: {
-					class: styles['inline-code'],
-				},
-			}),
 			createCustomCodeBlock(styles).configure({
 				HTMLAttributes: {
 					class: styles['code-block'],
 				},
 				defaultLanguage: 'plaintext',
 			}),
-			Underline,
 			TextAlign.configure({
 				types: ['heading', 'paragraph'],
 			}),
-			Strike,
 			...(limit ? [CharacterCount.configure({ limit })] : []),
 		],
-		editorProps: {
+		[limit],
+	);
+
+	const editorProps = useMemo(
+		() => ({
 			attributes: {
 				class: styles['prose-mirror'],
 			},
-		},
-		content: normalizeHtmlContent(data),
+		}),
+		[],
+	);
+
+	const editor = useEditor({
+		shouldRerenderOnTransaction: true,
+		extensions,
+		editorProps,
+		content: initialContent.current,
 		editable: !disabled,
 		autofocus,
-		parseOptions: {
-			preserveWhitespace: 'full',
-		},
+		parseOptions: PARSE_OPTIONS,
 		onUpdate: ({ editor }: { editor: Editor }) => {
-			onChange?.(editor.getHTML());
+			const html = editor.getHTML();
+			lastEmittedHtml.current = html;
+			onChangeRef.current?.(html);
 		},
-		onBlur: useCallback(
-			({ editor }: { editor: Editor }) => {
-				onBlur?.(editor.getHTML());
-			},
-			[onBlur],
-		),
-		onFocus: useCallback(
-			({ editor }: { editor: Editor }) => {
-				onFocus?.(editor.getHTML());
-			},
-			[onFocus],
-		),
+		onBlur: ({ editor }: { editor: Editor }) => {
+			onBlurRef.current?.(editor.getHTML());
+		},
+		onFocus: ({ editor }: { editor: Editor }) => {
+			onFocusRef.current?.(editor.getHTML());
+		},
 		onCreate({ editor }) {
 			editor.registerPlugin(createPastePlugin(editor));
 
@@ -138,6 +152,21 @@ export const TextEditor = ({
 			onReady(editor);
 		}
 	}, [editor, onReady]);
+
+	useEffect(() => {
+		if (!editor || editor.isDestroyed) return;
+
+		editor.setEditable(!disabled, false);
+	}, [disabled, editor]);
+
+	useEffect(() => {
+		if (!editor || editor.isDestroyed) return;
+
+		const next = normalizeHtmlContent(data);
+		if (next === lastEmittedHtml.current || next === editor.getHTML()) return;
+
+		editor.commands.setContent(next, { emitUpdate: false });
+	}, [data, editor]);
 
 	useEffect(() => {
 		if (!editorContentRef.current) return;

@@ -77,9 +77,15 @@ export const UsersRatingPage = () => {
 	const stubs: PageWrapperStubs = {
 		error: {
 			onClick: () => {
-				isRatingDataError && ratingDataRefetch();
-				isStatsDataError && statsDataRefetch();
-				isCurrentUserRatingError && currentUserRatingRefetch();
+				if (isRatingDataError) {
+					ratingDataRefetch();
+				}
+				if (isStatsDataError) {
+					statsDataRefetch();
+				}
+				if (isCurrentUserRatingError) {
+					currentUserRatingRefetch();
+				}
 			},
 		},
 		empty: {

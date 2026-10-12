@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type JSX } from 'react';
 
 import styles from './Button.module.css';
 import { getTagName } from './helpers';

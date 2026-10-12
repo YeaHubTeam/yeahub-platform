@@ -11,8 +11,10 @@ import { Collection } from '@/entities/collection';
 
 import styles from './CollectionHeader.module.css';
 
-interface CollectionHeaderProps
-	extends Pick<Collection, 'title' | 'description' | 'imageSrc' | 'company'> {
+interface CollectionHeaderProps extends Pick<
+	Collection,
+	'title' | 'description' | 'imageSrc' | 'company'
+> {
 	renderDrawer: () => ReactNode;
 }
 

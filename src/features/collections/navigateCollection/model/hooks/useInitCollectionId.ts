@@ -5,8 +5,8 @@ import { getFromLS, removeFromLS, setToLS } from '@/shared/libs';
 import { Collection, LS_INIT_COLLECTION_ID } from '@/entities/collection';
 
 export const useInitCollectionId = (collectionId: number, collections: Collection[]) => {
-	const [initCollectionId, setInitCollectionId] = useState<number>(
-		() => Number(getFromLS(LS_INIT_COLLECTION_ID)) ?? 0,
+	const [initCollectionId, setInitCollectionId] = useState<number>(() =>
+		Number(getFromLS(LS_INIT_COLLECTION_ID)),
 	);
 
 	const currentIndex = collections.findIndex((item) => item.id === collectionId);

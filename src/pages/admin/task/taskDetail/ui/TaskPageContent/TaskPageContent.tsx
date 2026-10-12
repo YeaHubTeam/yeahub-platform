@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ROUTES } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { BackHeader } from '@/shared/ui/BackHeader';

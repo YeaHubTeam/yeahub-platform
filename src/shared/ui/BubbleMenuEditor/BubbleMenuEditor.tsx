@@ -1,13 +1,17 @@
-import { Level } from '@tiptap/extension-heading';
-import { BubbleMenu as TiptapBubbleMenu, Editor } from '@tiptap/react';
-import { DOMSerializer } from 'prosemirror-model';
-import React, { useState } from 'react';
+import { DOMSerializer } from '@tiptap/pm/model';
+import { Editor } from '@tiptap/react';
+import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react/menus';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { TextEditor } from '@/shared/config';
 import { convertSpacesToTabs } from '@/shared/libs';
 
 import styles from './BubbleMenuEditor.module.css';
+
+type Level = 1 | 2 | 3 | 4 | 5 | 6;
+
+const BUBBLE_MENU_OPTIONS = { offset: 6, placement: 'top' as const };
 
 interface BubbleMenuProps {
 	editor: Editor | null;
@@ -22,7 +26,7 @@ const BubbleMenuEditor = ({ editor }: BubbleMenuProps) => {
 	return (
 		<TiptapBubbleMenu
 			className={styles['bubble-menu']}
-			tippyOptions={{ duration: 100 }}
+			options={BUBBLE_MENU_OPTIONS}
 			editor={editor}
 		>
 			<div className={styles['bubble-menu-group']}>

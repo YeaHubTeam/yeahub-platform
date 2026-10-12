@@ -9,9 +9,10 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
+import { type SortingState } from '@/shared/ui/TableV2';
 
 import { getIsAuthor, getUserId } from '@/entities/profile';
-import { useGetQuestionsListQuery } from '@/entities/question';
+import { type QuestionFilterOrderBy, useGetQuestionsListQuery } from '@/entities/question';
 
 import { DeleteQuestionsButton } from '@/features/question/deleteQuestions';
 import { QuestionsFilters, useQuestionsFilters } from '@/features/question/filterQuestions';
@@ -46,17 +47,29 @@ const QuestionsPage = () => {
 		onChangeSpecialization,
 		onChangeRate,
 		onChangeIsMy,
-		onChangeOrder,
-		onChangeOrderBy,
+		onChangeSorting,
 		onChangeTopics,
 		onChangeAuthorId,
 	} = useQuestionsFilters({
 		page: 1,
 	});
 
+	const sorting: SortingState<QuestionFilterOrderBy> =
+		filters.orderBy && filters.order
+			? { columnId: filters.orderBy, direction: filters.order }
+			: null;
+
+	const onSortingChange = (next: SortingState<QuestionFilterOrderBy>) => {
+		onChangeSorting({
+			orderBy: next?.columnId,
+			order: next?.direction,
+		});
+	};
+
 	const {
 		data: allQuestions,
 		isLoading: isLoadingAllQuestions,
+		isFetching: isFetchingAllQuestions,
 		isError: isErrorAllQuestions,
 		refetch: refetchAllQuestions,
 	} = useGetQuestionsListQuery({
@@ -156,6 +169,9 @@ const QuestionsPage = () => {
 					questions={questionsList}
 					selectedQuestions={selectedQuestions}
 					onSelectQuestions={onSelectQuestions}
+					sorting={sorting}
+					onSortingChange={onSortingChange}
+					tableState={{ isFetching: isFetchingAllQuestions }}
 				/>
 			}
 			paginationOptions={{
@@ -183,9 +199,7 @@ const QuestionsPage = () => {
 								onChangeSkills={onChangeSkills}
 								onChangeSpecialization={onChangeSpecialization}
 								onChangeRate={onChangeRate}
-								onChangeOrder={onChangeOrder}
 								onChangeIsMy={onChangeIsMy}
-								onChangeOrderBy={onChangeOrderBy}
 								onChangeTopics={onChangeTopics}
 								onChangeAuthorId={onChangeAuthorId}
 							/>

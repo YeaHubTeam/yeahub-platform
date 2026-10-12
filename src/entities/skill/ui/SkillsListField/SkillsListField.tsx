@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Skills, Translation } from '@/shared/config';
+import { i18Namespace, Skills } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
-import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { ToggleShowAllButton } from '@/shared/ui/ToggleShowAllButton';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
 import { MAX_SHOW_LIMIT_SKILLS } from '../../model/constants/skillConstants';
@@ -35,7 +35,7 @@ export const SkillsListField = ({
 	});
 
 	const onToggleShowAll = () => {
-		setShowAll(!showAll);
+		setShowAll((prev) => !prev);
 	};
 
 	useEffect(() => {
@@ -75,11 +75,7 @@ export const SkillsListField = ({
 			/>
 
 			{!isMobile && showAllLabel && (
-				<Button variant="link" onClick={onToggleShowAll}>
-					{!showAll
-						? t(Translation.SHOW_ALL, { ns: i18Namespace.translation })
-						: t(Translation.HIDE, { ns: i18Namespace.translation })}
-				</Button>
+				<ToggleShowAllButton isToggled={showAll} onToggle={onToggleShowAll} />
 			)}
 		</Flex>
 	);

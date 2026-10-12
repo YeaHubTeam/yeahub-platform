@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useScreenSize } from '@/shared/libs';
 import { BackHeaderSkeleton } from '@/shared/ui/BackHeader';
 import { ButtonSkeleton } from '@/shared/ui/Button';

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { Dispatch, Key, SetStateAction } from 'react';
+import { Dispatch, Key, SetStateAction } from 'react';
 
 import { Icon } from '@/shared/ui/Icon';
 

@@ -36,8 +36,9 @@ export const activeQuizSlice = createSlice({
 			state.questions = updateQuestionAnswer(state.questions, action.payload);
 			if (shouldSaveToLS && profileId) {
 				const { quizzes } = getValidActiveQuizzesFromLS();
-				quizzes &&
+				if (quizzes) {
 					setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}), [profileId]: state.questions });
+				}
 			}
 		},
 		changeMockQuestionAnswer: (state, action: PayloadAction<ChangeQuestionAnswerParams>) => {
@@ -45,14 +46,17 @@ export const activeQuizSlice = createSlice({
 			state.questions = updateQuestionAnswer(state.questions, action.payload);
 			if (shouldSaveToLS && profileId) {
 				const { quizzes } = getValidActiveMockQuizFromLS();
-				quizzes &&
+				if (quizzes) {
 					setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { ...(quizzes || {}), [profileId]: state.questions });
+				}
 			}
 		},
 		clearActiveQuizState: (state, action: PayloadAction<string>) => {
 			state.questions = [];
 			const { quizzes } = getValidActiveQuizzesFromLS();
-			quizzes && delete quizzes[action.payload];
+			if (quizzes) {
+				delete quizzes[action.payload];
+			}
 			setToLS(LS_ACTIVE_QUIZZES_KEY, { ...(quizzes || {}) });
 		},
 		clearActiveMockQuizState: (
@@ -63,7 +67,9 @@ export const activeQuizSlice = createSlice({
 			state.questions = [];
 			if (shouldClearLS && profileId) {
 				const { quizzes } = getValidActiveMockQuizFromLS();
-				quizzes && delete quizzes[profileId];
+				if (quizzes) {
+					delete quizzes[profileId];
+				}
 				setToLS(LS_ACTIVE_MOCK_QUIZ_KEY, { ...(quizzes || {}) });
 			}
 		},

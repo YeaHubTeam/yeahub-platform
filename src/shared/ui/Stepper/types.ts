@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { type IconName } from '@/shared/ui/Icon';
 
 export interface Step<T> {

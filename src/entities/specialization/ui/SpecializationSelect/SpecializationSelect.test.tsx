@@ -30,7 +30,12 @@ jest.mock('react-i18next', () => ({
 jest.mock('../../api/specializationApi', () => {
 	return {
 		useGetSpecializationsListQuery: jest.fn(() => ({
-			data: mockSpecializations,
+			data: {
+				data: mockSpecializations,
+				page: 1,
+				limit: 100,
+				total: mockSpecializations.length,
+			},
 			isLoading: false,
 			isSuccess: true,
 		})),

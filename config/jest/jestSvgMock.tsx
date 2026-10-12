@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import { SVGProps } from 'react';
 
 interface SvgMockProps extends SVGProps<SVGSVGElement> {
 	dataTestId?: string;

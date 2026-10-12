@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
+import type { JSX, ReactElement } from 'react';
 import t from 'react-hot-toast';
 
 import { renderComponent } from '@/shared/libs';
@@ -33,7 +34,7 @@ const callAndRender = (
 	const renderFn = custom.mock.calls[0][0] as (ct: {
 		id: string;
 		visible: boolean;
-	}) => React.ReactElement;
+	}) => ReactElement;
 	return renderComponent(renderFn(ct));
 };
 

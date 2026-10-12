@@ -5,9 +5,15 @@ import { Questions, i18Namespace, ROUTES } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
-import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
+import {
+	TableV2,
+	type SortingState,
+	type TableColumn,
+	type TableRowId,
+	type TableState,
+} from '@/shared/ui/TableV2';
 
-import { Question } from '@/entities/question';
+import { Question, type QuestionFilterOrderBy } from '@/entities/question';
 
 import { useDeleteQuestionMutation } from '@/features/question/deleteQuestion';
 
@@ -31,12 +37,18 @@ interface QuestionsTableProps {
 	questions: Question[];
 	selectedQuestions: SelectedAdminEntities | [];
 	onSelectQuestions: (ids: SelectedAdminEntities) => void;
+	sorting?: SortingState<QuestionFilterOrderBy>;
+	onSortingChange?: (sorting: SortingState<QuestionFilterOrderBy>) => void;
+	tableState?: TableState;
 }
 
 export const QuestionsTable = ({
 	questions,
 	selectedQuestions,
 	onSelectQuestions,
+	sorting,
+	onSortingChange,
+	tableState,
 }: QuestionsTableProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
 	const [deleteQuestion] = useDeleteQuestionMutation();
@@ -54,11 +66,12 @@ export const QuestionsTable = ({
 			disabled: question.disabled,
 		})) ?? [];
 
-	const columns: TableColumn<QuestionTableRow>[] = [
+	const columns: TableColumn<QuestionTableRow, QuestionFilterOrderBy>[] = [
 		{
 			id: 'title',
 			header: t(Questions.TITLE_SHORT),
-			width: 'auto',
+			width: '500px',
+			enableSorting: true,
 			cell: ({ row, value }) => (
 				<TableCellLink
 					to={route(ROUTES.admin.questions.details.route, row.id)}
@@ -69,7 +82,7 @@ export const QuestionsTable = ({
 		{
 			id: 'specializations',
 			header: t(Questions.SPECIALIZATION_TITLE),
-			width: '20%',
+			width: '300px',
 			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
@@ -81,7 +94,7 @@ export const QuestionsTable = ({
 		{
 			id: 'skills',
 			header: t(Questions.SKILLS_TITLE),
-			width: '15%',
+			width: '200px',
 			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.skills.details.page}
@@ -93,7 +106,7 @@ export const QuestionsTable = ({
 		{
 			id: 'topics',
 			header: t(Questions.TOPIC_TITLE),
-			width: '15%',
+			width: '200px',
 			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.topics.details.page}
@@ -105,17 +118,19 @@ export const QuestionsTable = ({
 		{
 			id: 'rate',
 			header: t(Questions.RATE_TITLE_SHORT),
-			width: '5%',
+			width: '150px',
+			enableSorting: true,
 		},
 		{
 			id: 'complexity',
 			header: t(Questions.COMPLEXITY_TITLE_SHORT),
-			width: '5%',
+			width: '150px',
+			enableSorting: true,
 		},
 		{
 			id: 'author',
 			header: t(Questions.AUTHOR),
-			width: '10%',
+			width: '200px',
 		},
 	];
 
@@ -143,6 +158,9 @@ export const QuestionsTable = ({
 		<TableV2
 			data={tableData}
 			columns={columns}
+			sorting={sorting}
+			onSortingChange={onSortingChange}
+			tableState={tableState}
 			selectedRowIds={selectedRowIds}
 			onSelectedRowIdsChange={onSelectedRowIdsChange}
 			actions={['detail', 'edit', 'delete', 'copy']}

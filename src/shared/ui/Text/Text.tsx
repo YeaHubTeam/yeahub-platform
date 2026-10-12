@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import classNames from 'classnames';
-import { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode, type JSX } from 'react';
 
 import { Pallete } from '@/shared/libs';
 
