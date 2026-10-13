@@ -25,6 +25,14 @@ describe('AuthLayout SkeletonGenerator', () => {
 		expect(screen.getByTestId('LoginPageSkeleton')).toBeInTheDocument();
 	});
 
+	test('should render RegistrationPageSkeleton when isRegistrationPage is true', () => {
+		mockUseMatch.mockImplementation((route) => (route === '/auth/register' ? true : null));
+
+		renderComponent(<SkeletonGenerator />);
+
+		expect(screen.getByTestId('RegistrationPageSkeleton')).toBeInTheDocument();
+	});
+
 	test('should render Loader when no route matches', () => {
 		mockUseMatch.mockReturnValue(null);
 
