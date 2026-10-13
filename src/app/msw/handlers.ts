@@ -25,6 +25,7 @@ import { vacancyHandlers } from '@/entities/vacancy';
 
 import { createCollectionHandlers } from '@/features/collections/createCollection';
 import { collectionDeleteHandlers } from '@/features/collections/deleteCollection';
+import { collectionEditHandlers } from '@/features/collections/editCollection';
 import { createCompanyHandlers } from '@/features/company/createCompany';
 import { deleteCompanyHandlers } from '@/features/company/deleteCompany';
 import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureFlag';
@@ -58,6 +59,7 @@ export const handlers = [
 	...interviewHandlers,
 	...questionHandlers,
 	...collectionHandlers,
+	...collectionEditHandlers,
 	...collectionDeleteHandlers,
 	...specializationHandlers,
 	...featureFlagHandlers,
