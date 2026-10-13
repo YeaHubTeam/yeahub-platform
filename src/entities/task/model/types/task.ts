@@ -94,6 +94,8 @@ export interface TaskCategory {
 
 export type GetTaskCategoriesResponse = TaskCategory[];
 
+export type TaskFilterOrderBy = 'name' | 'difficulty' | 'createdAt' | 'updatedAt';
+
 export interface GetTasksListParams {
 	page?: number;
 	limit?: number;
@@ -105,7 +107,7 @@ export interface GetTasksListParams {
 	langIds?: number[];
 	isActive?: boolean;
 	search?: string;
-	sortBy?: 'name' | 'difficulty' | 'createdAt' | 'updatedAt';
+	sortBy?: TaskFilterOrderBy;
 	sortOrder?: SortOrder;
 	canSolve?: boolean;
 	collectionId?: number;
