@@ -38,6 +38,7 @@ import { InterviewQuizResultPageSkeleton } from '@/pages/interview/interviewQuiz
 import { InterviewStatisticsPageSkeleton } from '@/pages/interview/interviewStatistics';
 import { MainPageSkeleton } from '@/pages/interview/main';
 import { ProfilePageSkeleton } from '@/pages/profile/profileInfo';
+import { SettingsProfilePageSkeleton } from '@/pages/profile/settings';
 import { UserProfilePageSkeleton } from '@/pages/profile/userProfile';
 import { TaskPageContentSkeleton } from '@/pages/tasks/task';
 import { QuestionsPageSkeleton } from '@/pages/wiki/question/questions';
@@ -110,6 +111,8 @@ const SkeletonGenerator = () => {
 			return <QuestionsPageSkeleton />;
 		case ROUTES.profile.page:
 			return <ProfilePageSkeleton />;
+		case ROUTES.settings.page:
+			return <SettingsProfilePageSkeleton />;
 		case ROUTES.profile.edit.page:
 			return <EditProfileFormSkeleton />;
 		case ROUTES.admin.questions.create.page:
