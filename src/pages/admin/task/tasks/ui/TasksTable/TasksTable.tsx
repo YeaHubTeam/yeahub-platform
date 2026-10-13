@@ -1,19 +1,24 @@
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, ROUTES, Tasks, Translation } from '@/shared/config';
+import { i18Namespace, ROUTES, Tasks } from '@/shared/config';
 import { route, type SelectedAdminEntities } from '@/shared/libs';
-import { Flex } from '@/shared/ui/Flex';
-import { Icon } from '@/shared/ui/Icon';
-import { IconButton } from '@/shared/ui/IconButton';
-import { Popover, PopoverMenuItem } from '@/shared/ui/Popover';
-import { Table } from '@/shared/ui/Table';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
+import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2';
 
 import { Task, taskCategories } from '@/entities/task';
 
-import { DeleteTaskButton } from '@/features/task/deleteTask';
+import { useDeleteTaskMutation } from '@/features/task/deleteTask';
+
+interface TaskTableRow {
+	id: string;
+	title: string;
+	categories: Task['categories'];
+	difficulty: Task['difficulty'];
+	supportedLanguages: Task['supportedLanguages'];
+	companies: Task['companies'];
+}
 
 interface TasksTableProps {
 	tasks: Task[];
@@ -22,111 +27,86 @@ interface TasksTableProps {
 }
 
 export const TasksTable = ({ tasks, selectedTasks, onSelectTasks }: TasksTableProps) => {
-	const navigate = useNavigate();
+	const { t } = useTranslation(i18Namespace.task);
+	const [deleteTask] = useDeleteTaskMutation();
 
-	const { t } = useTranslation([i18Namespace.task, i18Namespace.translation]);
+	const tableData: TaskTableRow[] = tasks.map((task) => ({
+		id: task.id,
+		title: task.name,
+		categories: task.categories,
+		difficulty: task.difficulty,
+		supportedLanguages: task.supportedLanguages,
+		companies: task.companies,
+	}));
 
-	const tasksWithTitle = tasks.map((task) => ({ ...task, title: task.name }));
-
-	const renderTableColumnWidths = () => {
-		const columnWidths = {
-			title: 'auto',
-			category: '20%',
-			difficulty: '10%',
-			languages: '20%',
-			companies: '20%',
-		};
-
-		return Object.values(columnWidths)?.map((width, idx) => <col key={idx} style={{ width }} />);
-	};
-
-	const renderTableHeader = () => {
-		const columns = {
-			title: t(Tasks.TABLE_TASK),
-			category: t(Tasks.CATEGORY_TITLE),
-			difficulty: t(Tasks.TABLE_DIFFICULTY),
-			languages: t(Tasks.LANGUAGES_TITLE),
-			companies: t(Tasks.COMPANIES_TITLE),
-		};
-
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
-
-	const renderTableBody = (task: Task) => {
-		const columns = {
-			title: (
-				<TableCellLink to={route(ROUTES.admin.tasks.details.route, task.id)} text={task.name} />
+	const columns: TableColumn<TaskTableRow>[] = [
+		{
+			id: 'title',
+			header: t(Tasks.TABLE_TASK),
+			width: 'auto',
+			cell: ({ row, value }) => (
+				<TableCellLink to={route(ROUTES.admin.tasks.details.route, row.id)} text={String(value)} />
 			),
-			category: task.categories.map((category) => t(taskCategories[category])).join(', '),
-			difficulty: task.difficulty,
-			languages: task.supportedLanguages.map((language) => language.name).join(', '),
-			companies: (
+		},
+		{
+			id: 'categories',
+			header: t(Tasks.CATEGORY_TITLE),
+			width: '20%',
+			cell: ({ value }) =>
+				(value as Task['categories']).map((category) => t(taskCategories[category])).join(', '),
+		},
+		{
+			id: 'difficulty',
+			header: t(Tasks.TABLE_DIFFICULTY),
+			width: '10%',
+		},
+		{
+			id: 'supportedLanguages',
+			header: t(Tasks.LANGUAGES_TITLE),
+			width: '20%',
+			cell: ({ row }) => row.supportedLanguages.map((language) => language.name).join(', '),
+		},
+		{
+			id: 'companies',
+			header: t(Tasks.COMPANIES_TITLE),
+			width: '20%',
+			cell: ({ row }) => (
 				<TableCellEntityList
 					url={ROUTES.admin.specializations.details.page}
-					items={task.companies}
+					items={row.companies}
 					showCount={3}
 				/>
 			),
-		};
+		},
+	];
 
-		return Object.entries(columns)?.map(([k, v]) => {
-			return <td key={k}>{v}</td>;
-		});
-	};
+	const selectedRowIds = selectedTasks?.map((task) => task.id);
 
-	const renderActions = (task: Task) => {
-		const menuItems: PopoverMenuItem[] = [
-			{
-				icon: <Icon icon="eye" size={24} />,
-				title: t(Translation.SHOW, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.tasks.details.route, task.id));
-				},
-			},
-			{
-				icon: <Icon icon="pen" size={24} />,
-				title: t(Translation.EDIT, { ns: i18Namespace.translation }),
-				onClick: () => {
-					navigate(route(ROUTES.admin.tasks.edit.route, task.id));
-				},
-				tooltip: {
-					color: 'red',
-					text: t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO, { ns: i18Namespace.translation }),
-				},
-			},
-			{
-				renderComponent: () => <DeleteTaskButton taskId={task.id} />,
-			},
-		];
+	const selectedById = useMemo(() => {
+		const byId = new Map<string, { id: string; title?: string }>();
 
-		return (
-			<Flex gap="4">
-				<Popover menuItems={menuItems}>
-					{({ onToggle }) => (
-						<IconButton
-							aria-label="go to details"
-							form="square"
-							icon={<Icon icon="dotsThreeVertical" size={20} />}
-							size="medium"
-							variant="tertiary"
-							onClick={onToggle}
-						/>
-					)}
-				</Popover>
-			</Flex>
-		);
-	};
+		selectedTasks?.forEach((task) => byId.set(task.id, task));
+		tasks.forEach((task) => byId.set(task.id, { id: task.id, title: task.name }));
+
+		return byId;
+	}, [selectedTasks, tasks]);
+
+	const onSelectedRowIdsChange = useCallback(
+		(ids: TableRowId[]) => {
+			onSelectTasks?.(ids.map((id) => selectedById.get(String(id)) ?? { id: String(id) }));
+		},
+		[onSelectTasks, selectedById],
+	);
 
 	return (
-		<Table
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			items={tasksWithTitle}
-			selectedItems={selectedTasks}
-			onSelectItems={onSelectTasks}
-			renderTableColumnWidths={renderTableColumnWidths}
-			renderActions={renderActions}
-			hasCopyButton
+		<TableV2
+			data={tableData}
+			columns={columns}
+			selectedRowIds={selectedRowIds}
+			onSelectedRowIdsChange={onSelectedRowIdsChange}
+			actions={['detail', 'edit', 'delete', 'copy']}
+			entity="tasks"
+			onDelete={(id) => deleteTask(String(id))}
 		/>
 	);
 };
