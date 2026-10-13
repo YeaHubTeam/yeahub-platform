@@ -5,6 +5,7 @@ import { useGetReferralLinkByIdQuery } from '@/entities/referralLink';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { ReferralLinkDetailPageContent } from './ReferralLinkDetailPageContent';
+import { ReferralLinkDetailPageContentSkeleton } from './ReferralLinkDetailPageContent.skeleton';
 
 const ReferralLinkDetailPage = () => {
 	const { referralLinkId = '' } = useParams<{ referralLinkId: string }>();
@@ -28,6 +29,7 @@ const ReferralLinkDetailPage = () => {
 	return (
 		<PageWrapper
 			isLoading={isLoading}
+			skeleton={<ReferralLinkDetailPageContentSkeleton />}
 			hasError={isError}
 			hasData={hasData}
 			roles={['admin']}
