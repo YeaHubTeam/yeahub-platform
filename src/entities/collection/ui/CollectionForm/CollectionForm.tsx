@@ -52,7 +52,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 
 	return (
 		<>
-			<Text variant="body5-strong">
+			<Text variant="body6-strong" className={styles['main-title']}>
 				{isEdit ? t(Collections.EDIT_PAGE_TITLE) : t(Collections.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
