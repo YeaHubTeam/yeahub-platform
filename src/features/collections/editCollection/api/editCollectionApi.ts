@@ -1,7 +1,8 @@
 import { ApiTags, baseApi, ROUTES, i18n, Translation, ExtraArgument } from '@/shared/config';
-import { route } from '@/shared/libs';
+import { handleApiError, route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
+import { getEditCollectionsApiErrorMessage } from '../lib/utils/getEditCollectionsApiErrorMessage';
 import { editCollectionApiUrls } from '../model/constants/editCollectionConstants';
 import {
 	EditCollectionBodyRequest,
@@ -23,7 +24,7 @@ const editCollectionApi = baseApi.injectEndpoints({
 					typedExtra.navigate(ROUTES.admin.collections.page);
 					toast.success(i18n.t(Translation.TOAST_COLLECTION_EDIT_SUCCESS));
 				} catch (error) {
-					toast.error(i18n.t(Translation.TOAST_COLLECTION_EDIT_FAILED));
+					toast.error(i18n.t(handleApiError(error, getEditCollectionsApiErrorMessage)));
 					// eslint-disable-next-line no-console
 					console.error(error);
 				}
