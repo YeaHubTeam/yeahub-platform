@@ -55,7 +55,7 @@ export const CollectionActions = ({
 						variant={buttonVariant}
 						preffix={<Icon icon="watch" size={24} />}
 						onClick={(): void => {
-							window.location.href = ROUTES.public.avos.page;
+							window.open(ROUTES.public.avos.page, '_blank', 'noopener,noreferrer');
 						}}
 					>
 						{t(Collections.BANNER_INTERVIEW_WATCH_BUTTON)}
