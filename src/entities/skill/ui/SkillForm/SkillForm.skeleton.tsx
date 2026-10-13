@@ -1,10 +1,10 @@
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescriptionSkeleton } from '@/shared/ui/form';
 import { FormControlSkeleton } from '@/shared/ui/FormControl';
 import { FormFieldSkeleton } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropperSkeleton } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { InputSkeleton } from '@/shared/ui/Input';
 import { TextSkeleton } from '@/shared/ui/Text';
-import { TextAreaSkeleton } from '@/shared/ui/TextArea';
 
 import { SpecializationSelectSkeleton } from '@/entities/specialization/@x/skill';
 
@@ -32,11 +32,10 @@ export const SkillFormSkeleton = () => {
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
-				<FormFieldSkeleton>
-					<FormControlSkeleton className={styles['input-form']}>
-						<TextAreaSkeleton className={styles.textarea} />
-					</FormControlSkeleton>
-				</FormFieldSkeleton>
+				<FormInputDescriptionSkeleton
+					controlClassName={styles['input-form']}
+					textAreaClassName={styles.textarea}
+				/>
 			</Flex>
 		</>
 	);

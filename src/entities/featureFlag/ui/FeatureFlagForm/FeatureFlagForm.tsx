@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 
 import { FeatureFlags, i18Namespace } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescription } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { Switch } from '@/shared/ui/Switch';
 import { Text } from '@/shared/ui/Text';
-import { TextArea } from '@/shared/ui/TextArea';
 
 import { RoleSelect, useGetUserRolesListQuery } from '@/entities/user/@x/featureFlag';
 
@@ -50,23 +50,14 @@ export const FeatureFlagForm = ({ isEdit }: FeatureFlagFormProps) => {
 					</FormControl>
 				</FormField>
 
-				<FormField
-					direction="column"
-					description={t(FeatureFlags.FORM_DESCRIPTION_SUBTITLE)}
+				<FormInputDescription
+					name="description"
 					label={t(FeatureFlags.FORM_DESCRIPTION_TITLE)}
-				>
-					<FormControl name="description" control={control}>
-						{(field, hasError) => (
-							<TextArea
-								id="description"
-								className={styles.textarea}
-								state={hasError ? 'error' : 'default'}
-								limit={1000}
-								{...field}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+					description={t(FeatureFlags.FORM_DESCRIPTION_SUBTITLE)}
+					limit={1000}
+					className={styles.textarea}
+					direction="column"
+				/>
 
 				<FormField
 					description={t(FeatureFlags.FORM_ROLES_SUBTITLE)}
