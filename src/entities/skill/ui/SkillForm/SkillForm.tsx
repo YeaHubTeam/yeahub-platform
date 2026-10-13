@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Questions, Skills } from '@/shared/config';
 import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputText } from '@/shared/ui/Form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
-import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
@@ -46,11 +46,13 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 				{isEdit ? t(Skills.EDIT_PAGE_TITLE) : t(Skills.CREATE_PAGE_TITLE)}
 			</Text>
 			<Flex direction="column" gap="60">
-				<FormField label={t(Skills.TITLE_FULL)} description={t(Skills.TITLE_LABEL)}>
-					<FormControl name="title" control={control} className={`${styles['input-form']}`}>
-						{(register, hasError) => <Input {...register} error={hasError} />}
-					</FormControl>
-				</FormField>
+				<FormInputText
+					label={t(Skills.TITLE_FULL)}
+					description={t(Skills.TITLE_LABEL)}
+					name="title"
+					control={control}
+					formControlClassName={styles['input-form']}
+				/>
 
 				<FormField label={t(Skills.ICON_TITLE)} description={t(Skills.ICON_LABEL)}>
 					<ImageLoaderWithoutCropper
