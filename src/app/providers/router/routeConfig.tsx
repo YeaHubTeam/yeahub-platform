@@ -93,6 +93,7 @@ import { ResumeAnalyzerPage } from '@/pages/career/resumeAnalyzer';
 import { VacanciesPage } from '@/pages/career/vacancy/vacancies';
 import { VacancyMarketPage } from '@/pages/career/vacancyMarket';
 import { Error404Page } from '@/pages/error404';
+import { HhAnalyticsPage } from '@/pages/HhAnalyticsPage';
 import { CreateQuizPage } from '@/pages/interview/createQuiz';
 import { InterviewPage } from '@/pages/interview/interview';
 import { InterviewHistoryPage } from '@/pages/interview/interviewHistory';
@@ -891,6 +892,10 @@ export const router = createBrowserRouter([
 				element: <Error404Page />,
 			},
 		],
+	},
+	{
+		path: ROUTES.hhAnalytics.page,
+		element: <HhAnalyticsPage />,
 	},
 	{
 		path: ROUTES.auth.route,
