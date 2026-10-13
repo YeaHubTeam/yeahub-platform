@@ -13,6 +13,7 @@ import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 import { CompanyCreatePageSkeleton } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
+import { CompanyEditPageSkeleton } from '@/pages/admin/company/companyEdit';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
@@ -60,6 +61,7 @@ const SkeletonGenerator = () => {
 	);
 	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
 	const isAdminTopicsEditPage = matchPath(ROUTES.admin.topics.edit.page, location.pathname);
+	const isCompanyEditPage = matchPath(ROUTES.admin.companies.edit.page, location.pathname);
 
 	if (isInterviewResultPage) {
 		return <InterviewQuizResultPageSkeleton />;
@@ -75,6 +77,10 @@ const SkeletonGenerator = () => {
 
 	if (isCollectionDetailPage) {
 		return <CollectionPageSkeleton />;
+	}
+
+	if (isCompanyEditPage) {
+		return <CompanyEditPageSkeleton />;
 	}
 
 	if (isCompanyDetailsPage) {
