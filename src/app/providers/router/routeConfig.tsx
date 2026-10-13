@@ -69,6 +69,7 @@ import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
 import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
+import { TestQuestionPage } from '@/pages/admin/testQuestion/testQuestionDetail';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
 import { TopicEditPage } from '@/pages/admin/topic/topicEdit';
@@ -340,6 +341,15 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <AdminMainPage />,
+			},
+			{
+				path: ROUTES.admin.testQuestions.route,
+				children: [
+					{
+						path: ROUTES.admin.testQuestions.details.route,
+						element: <TestQuestionPage />,
+					},
+				],
 			},
 			{
 				path: ROUTES.admin.questions.route,

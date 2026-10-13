@@ -1,0 +1,14 @@
+{
+	"answers.title": "Answer options",
+	"answers.empty": "No answer options provided",
+	"answers.unavailable": "Correct answers are not specified",
+	"specializations": "Specializations:",
+	"skills": "Skills:",
+	"complexity": "Difficulty:",
+	"rate": "Rating:",
+	"created.at": "Created:",
+	"updated.at": "Updated:",
+	"keywords": "Keywords:",
+	"stub.empty.title": "Test question not found",
+	"stub.empty.subtitle": "Check the page address. The question may have been deleted."
+}
