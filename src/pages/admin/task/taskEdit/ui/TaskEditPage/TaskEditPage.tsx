@@ -6,6 +6,8 @@ import { TaskEditForm } from '@/features/task/editTask';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { TaskEditPageSkeleton } from './TaskEditPage.skeleton';
+
 const TaskEditPage = () => {
 	const { taskId = '' } = useParams<{ taskId: string }>();
 
@@ -27,6 +29,7 @@ const TaskEditPage = () => {
 			hasError={isError}
 			hasData={hasTask}
 			stubs={stubs}
+			skeleton={<TaskEditPageSkeleton />}
 			content={content}
 			roles={['admin', 'author']}
 		>
