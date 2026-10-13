@@ -5,6 +5,7 @@ import { useGetFeatureFlagByIdQuery } from '@/entities/featureFlag';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { FeatureFlagDetailsPageContent } from '../FeatureFlagDetailsPageContent/FeatureFlagDetailsPageContent';
+import { FeatureFlagDetailsPageContentSkeleton } from '../FeatureFlagDetailsPageContent/FeatureFlagDetailsPageContent.skeleton';
 
 const FeatureFlagDetailsPage = () => {
 	const { flagId = '' } = useParams<{ flagId: string }>();
@@ -26,6 +27,7 @@ const FeatureFlagDetailsPage = () => {
 			hasData={hasData}
 			stubs={stubs}
 			content={content}
+			skeleton={<FeatureFlagDetailsPageContentSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>

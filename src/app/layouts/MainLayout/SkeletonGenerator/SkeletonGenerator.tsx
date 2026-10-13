@@ -13,6 +13,7 @@ import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 import { CompanyCreatePageSkeleton } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
+import { FeatureFlagDetailsPageContentSkeleton } from '@/pages/admin/featureFlag/featureFlagDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
@@ -50,6 +51,10 @@ const SkeletonGenerator = () => {
 		matchPath(ROUTES.admin.questions.details.page, location.pathname) &&
 		!matchPath(ROUTES.admin.questions.details.page, ROUTES.admin.questions.create.page);
 	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
+	const isFeatureFlagDetailsPage = matchPath(
+		ROUTES.admin.featureFlags.details.page,
+		location.pathname,
+	);
 	const isCompanyDetailsPage =
 		location.pathname !== ROUTES.admin.companies.create.page &&
 		matchPath(ROUTES.admin.companies.details.page, location.pathname);
@@ -79,6 +84,10 @@ const SkeletonGenerator = () => {
 
 	if (isCompanyDetailsPage) {
 		return <CompanyDetailPageSkeleton />;
+	}
+
+	if (isFeatureFlagDetailsPage) {
+		return <FeatureFlagDetailsPageContentSkeleton />;
 	}
 
 	if (isUserDetailPage) {
