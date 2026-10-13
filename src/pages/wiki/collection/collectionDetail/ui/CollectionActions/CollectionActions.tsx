@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Collections, ROUTES } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
@@ -34,7 +33,6 @@ export const CollectionActions = ({
 	onMoveNext,
 	isDisabled,
 }: CollectionActionsProps) => {
-	const navigate = useNavigate();
 	const { t } = useTranslation(i18Namespace.collection);
 	const { isMobile } = useScreenSize();
 
@@ -57,7 +55,7 @@ export const CollectionActions = ({
 						variant={buttonVariant}
 						preffix={<Icon icon="watch" size={24} />}
 						onClick={(): void => {
-							navigate(ROUTES.public.avos.page);
+							window.location.href = ROUTES.public.avos.page;
 						}}
 					>
 						{t(Collections.BANNER_INTERVIEW_WATCH_BUTTON)}
