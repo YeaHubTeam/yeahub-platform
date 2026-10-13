@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Questions } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputEditor } from '@/shared/ui/Form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
@@ -11,7 +12,6 @@ import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
-import { TextEditor } from '@/shared/ui/TextEditor';
 
 import { SkillSelect } from '@/entities/skill/@x/question';
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
@@ -200,44 +200,40 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 						}}
 					</FormControl>
 				</FormField>
-
-				<FormField
-					label={t(Questions.SHORT_ANSWER_TITLE)}
-					description={t(Questions.SHORT_ANSWER_LABEL)}
-					direction="column"
-				>
-					<FormControl name="shortAnswer" control={control}>
-						{(field) => (
-							<TextEditor
-								id="shortAnswer"
-								isInline
-								className={styles.input}
-								data={field.value}
-								limit={5000}
-								{...field}
-							/>
-						)}
-					</FormControl>
-				</FormField>
-
-				<FormField
-					label={t(Questions.LONG_ANSWER_TITLE)}
-					description={t(Questions.LONG_ANSWER_LABEL)}
-					direction="column"
-				>
-					<FormControl name="longAnswer" control={control}>
-						{(field) => (
-							<TextEditor
-								id="longAnswer"
-								isInline
-								className={styles.input}
-								data={field.value}
-								limit={10000}
-								{...field}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+				<FormInputEditor
+					fieldProps={{
+						label: t(Questions.SHORT_ANSWER_TITLE),
+						description: t(Questions.SHORT_ANSWER_LABEL),
+						direction: 'column',
+					}}
+					controlProps={{
+						name: 'shortAnswer',
+						control,
+					}}
+					textEditorProps={{
+						id: 'shortAnswer',
+						isInline: true,
+						className: styles.input,
+						limit: 5000,
+					}}
+				/>
+				<FormInputEditor
+					fieldProps={{
+						label: t(Questions.LONG_ANSWER_TITLE),
+						description: t(Questions.LONG_ANSWER_LABEL),
+						direction: 'column',
+					}}
+					controlProps={{
+						name: 'longAnswer',
+						control,
+					}}
+					textEditorProps={{
+						id: 'longAnswer',
+						isInline: true,
+						className: styles.input,
+						limit: 10000,
+					}}
+				/>
 			</Flex>
 		</>
 	);
