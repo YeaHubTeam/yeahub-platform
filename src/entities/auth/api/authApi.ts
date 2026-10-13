@@ -1,4 +1,12 @@
-import { i18n, ApiTags, baseApi, ROUTES, clearStore, ExtraArgument } from '@/shared/config';
+import {
+	i18n,
+	Translation,
+	ApiTags,
+	baseApi,
+	ROUTES,
+	clearStore,
+	ExtraArgument,
+} from '@/shared/config';
 import { LS_ACCESS_TOKEN_KEY, removeFromLS, setToLS } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
@@ -37,7 +45,8 @@ export const authApi = baseApi.injectEndpoints({
 				} catch (error) {
 					if (error && typeof error === 'object' && 'error' in error) {
 						const errObj = error as { error: { data: { message: string } } };
-						toast.error(i18n.t('toast.' + errObj.error.data.message));
+						const message = errObj.error?.data?.message;
+						toast.error(i18n.t(message ? 'toast.' + message : Translation.ERROR));
 					}
 					// eslint-disable-next-line no-console
 					console.error(error);
@@ -84,7 +93,8 @@ export const authApi = baseApi.injectEndpoints({
 				} catch (error) {
 					if (error && typeof error === 'object' && 'error' in error) {
 						const errObj = error as { error: { data: { message: string } } };
-						toast.error(i18n.t('toast.' + errObj.error.data.message));
+						const message = errObj.error?.data?.message;
+						toast.error(i18n.t(message ? 'toast.' + message : Translation.ERROR));
 					}
 					// eslint-disable-next-line no-console
 					console.error(error);
