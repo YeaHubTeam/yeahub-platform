@@ -8,6 +8,7 @@ import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
 import { SpecializationCreateFormSkeleton } from '@/features/specialization/createSpecialization';
 
+import { ArticlesTablePageSkeleton } from '@/pages/admin/article/articles/ui/ArticlesTablePage/ArticlesTablePage.skeleton';
 import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
@@ -126,6 +127,8 @@ const SkeletonGenerator = () => {
 			return <SkillsPageSkeleton />;
 		case ROUTES.admin.skills.create.page:
 			return <SkillCreatePageSkeleton />;
+		case ROUTES.admin.articles.page:
+			return <ArticlesTablePageSkeleton />;
 		case ROUTES.admin.users.page:
 			return <UsersTablePageSkeleton />;
 		case ROUTES.admin.collections.page:

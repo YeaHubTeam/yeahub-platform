@@ -1,0 +1,35 @@
+{
+	"title": {
+		"short": "Title"
+	},
+	"icon": {
+		"title-short": "Icon"
+	},
+	"specializations": {
+		"title": "Specializations"
+	},
+	"skills": {
+		"title": "Skills"
+	},
+	"topics": {
+		"title": "Topics"
+	},
+	"format": "Format",
+	"content-type": "Content type",
+	"created-at": "Creation date",
+	"author": "Author",
+	"stub": {
+		"empty": {
+			"articles": {
+				"title": "No articles found yet",
+				"subtitle": "Articles are added periodically, just wait a bit"
+			}
+		}
+	},
+	"status": {
+		"interview": "Interview",
+		"system-design": "System design",
+		"basics": "Basics",
+		"advanced": "Advanced"
+	}
+}
