@@ -9,25 +9,25 @@ interface QuestionStudyStatusProps {
 	status: StudyStatus;
 }
 
+const variantMap: Record<StudyStatus, StatusChipVariant> = {
+	learned: 'green',
+	'in-progress': 'yellow',
+	'not-learned': 'red',
+};
+
+const labels: Record<StudyStatus, string> = {
+	learned: Questions.STUDY_STATUS_LEARNED,
+	'in-progress': Questions.STUDY_STATUS_IN_PROGRESS,
+	'not-learned': Questions.STUDY_STATUS_NOT_LEARNED,
+};
+
 export const QuestionStudyStatus = ({ status }: QuestionStudyStatusProps) => {
 	const { t } = useTranslation(i18Namespace.questions);
-
-	const variantMap: Record<StudyStatus, StatusChipVariant> = {
-		learned: 'green',
-		'in-progress': 'yellow',
-		'not-learned': 'red',
-	};
-
-	const labels = {
-		learned: t(Questions.STUDY_STATUS_LEARNED),
-		'in-progress': t(Questions.STUDY_STATUS_IN_PROGRESS),
-		'not-learned': t(Questions.STUDY_STATUS_NOT_LEARNED),
-	};
 
 	return (
 		<StatusChip
 			status={{
-				text: labels[status],
+				text: t(labels[status]),
 				variant: variantMap[status],
 			}}
 			size="small"
