@@ -18,11 +18,6 @@ export const editTopicMock = http.patch<
 
 	const profileMockResponse = getMockAuthProfile(request);
 
-	const isAdmin = profileMockResponse?.userRoles.some((role) => role.name === 'admin') ?? false;
-	const isAuthor = profileMockResponse?.userRoles.some((role) => role.name === 'author') ?? false;
-	const isAuthorOfThisTopic =
-		topicsMocks.data[topicIndex].createdBy?.id === profileMockResponse?.id;
-
 	if (!profileMockResponse) {
 		return HttpResponse.json(
 			{
@@ -44,6 +39,17 @@ export const editTopicMock = http.patch<
 			{ status: 403 },
 		);
 	}
+
+	if (topicIndex === -1) {
+		return HttpResponse.json(
+			{ message: 'topic.topic.not_found', statusCode: 404, description: 'Topic not found' },
+			{ status: 404 },
+		);
+	}
+
+	const isAdmin = profileMockResponse.userRoles.some((role) => role.name === 'admin');
+	const isAuthor = profileMockResponse.userRoles.some((role) => role.name === 'author');
+	const isAuthorOfThisTopic = topicsMocks.data[topicIndex].createdBy?.id === profileMockResponse.id;
 
 	if (!isAdmin && !(isAuthor && isAuthorOfThisTopic)) {
 		return HttpResponse.json(
@@ -77,12 +83,5 @@ export const editTopicMock = http.patch<
 		topicsMocks.data[topicIndex] = updateTopic;
 
 		return HttpResponse.json(updateTopic);
-	}
-
-	if (topicIndex === -1) {
-		return HttpResponse.json(
-			{ message: 'topic.topic.not_found', statusCode: 404, description: 'Topic not found' },
-			{ status: 404 },
-		);
 	}
 });
