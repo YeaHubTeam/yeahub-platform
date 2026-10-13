@@ -4,6 +4,7 @@ import { ROUTES } from '@/shared/config';
 import { Loader } from '@/shared/ui/Loader';
 
 import { CollectionCreateFormSkeleton } from '@/features/collections/createCollection';
+import { FeatureFlagCreateFormSkeleton } from '@/features/featureFlag/createFeatureFlag';
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
 import { SpecializationCreateFormSkeleton } from '@/features/specialization/createSpecialization';
@@ -118,6 +119,8 @@ const SkeletonGenerator = () => {
 			return <CollectionCreateFormSkeleton />;
 		case ROUTES.admin.specializations.create.page:
 			return <SpecializationCreateFormSkeleton />;
+		case ROUTES.admin.featureFlags.create.page:
+			return <FeatureFlagCreateFormSkeleton />;
 		case ROUTES.admin.questions.page:
 			return <QuestionsTablePageSkeleton />;
 		case ROUTES.admin.specializations.page:
