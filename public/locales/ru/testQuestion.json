@@ -4,11 +4,13 @@
 		"description": "Описание",
 		"specializations": "Специализации",
 		"skills": "Навыки",
-		"answers": "Ответы",
-		"correctAnswers": "Правильные ответы",
+		"answers": {
+			"all": "Ответы",
+			"correct": "Правильные ответы"
+		},
 		"complexity": "Сложность",
 		"rate": "Рейтинг",
 		"author": "Автор",
-		"createdAt": "Дата создания"
+		"created.at": "Дата создания"
 	}
 }

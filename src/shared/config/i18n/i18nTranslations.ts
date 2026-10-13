@@ -986,16 +986,16 @@ export enum Questions {
 }
 
 export enum TestQuestions {
-	TITLE = 'table.title',
-	DESCRIPTION = 'table.description',
-	SPECIALIZATIONS = 'table.specializations',
-	SKILLS = 'table.skills',
-	ANSWERS = 'table.answers',
-	CORRECT_ANSWERS = 'table.correctAnswers',
-	COMPLEXITY = 'table.complexity',
-	RATE = 'table.rate',
-	AUTHOR = 'table.author',
-	CREATED_AT = 'table.createdAt',
+	TABLE_TITLE = 'table.title',
+	TABLE_DESCRIPTION = 'table.description',
+	TABLE_SPECIALIZATIONS = 'table.specializations',
+	TABLE_SKILLS = 'table.skills',
+	TABLE_ANSWERS_ALL = 'table.answers.all',
+	TABLE_ANSWERS_CORRECT = 'table.answers.correct',
+	TABLE_COMPLEXITY = 'table.complexity',
+	TABLE_RATE = 'table.rate',
+	TABLE_AUTHOR = 'table.author',
+	TABLE_CREATED_AT = 'table.created.at',
 }
 
 export enum InterviewHistory {

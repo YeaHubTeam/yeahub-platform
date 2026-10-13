@@ -1,16 +1,10 @@
-import type { Response } from '@/shared/libs';
+import type { Response, SortOrder } from '@/shared/libs';
+import { Author } from '@/shared/ui/AuthorInfo';
+
+import { Skill } from '@/entities/skill/@x/testQuestion';
+import { Specialization } from '@/entities/specialization/@x/testQuestion';
 
 export type TestQuestionStatus = 'public' | 'draft';
-
-export interface TestQuestionAuthor {
-	id: string;
-	username: string;
-}
-
-export interface TestQuestionRelatedEntity {
-	id: number;
-	title: string;
-}
 
 export interface TestQuestion {
 	id: number;
@@ -27,16 +21,16 @@ export interface TestQuestion {
 	updatedAt: string;
 	createdById: string;
 	updatedById: string | null;
-	createdBy: TestQuestionAuthor;
-	updatedBy: TestQuestionAuthor | null;
-	questionSpecializations: TestQuestionRelatedEntity[];
-	questionSkills: TestQuestionRelatedEntity[];
+	createdBy: Author;
+	updatedBy: Author | null;
+	questionSpecializations: Specialization[];
+	questionSkills: Skill[];
 }
 
 export interface GetTestQuestionsParamsRequest {
 	page?: number;
 	limit?: number;
-	order?: 'ASC' | 'DESC';
+	order?: SortOrder;
 }
 
 export type GetTestQuestionsResponse = Response<TestQuestion[]>;

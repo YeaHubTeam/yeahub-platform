@@ -29,36 +29,38 @@ const SPECIALIZATIONS_SHOW_COUNT = 2;
 const SKILLS_SHOW_COUNT = 2;
 
 export const TestQuestionsTable = ({ testQuestions }: TestQuestionsTableProps) => {
-	const { t } = useTranslation(i18Namespace.testQuestions);
+	const { t } = useTranslation(i18Namespace.testQuestion);
 
-	const tableData: TestQuestionTableRow[] = testQuestions.map((question) => ({
-		id: question.id,
-		title: question.title,
-		description: question.description,
-		specializations: question.questionSpecializations,
-		skills: question.questionSkills,
-		answersCount: Object.keys(question.variants).length,
-		correctAnswersCount: question.successVariants.length,
-		complexity: question.complexity,
-		rate: question.rate,
-		author: question.createdBy?.username ?? '',
-		createdAt: question.createdAt ? formatDate(new Date(question.createdAt), 'dd.MM.yyyy') : '',
+	const tableData: TestQuestionTableRow[] = testQuestions.map((testQuestion) => ({
+		id: testQuestion.id,
+		title: testQuestion.title,
+		description: testQuestion.description,
+		specializations: testQuestion.questionSpecializations,
+		skills: testQuestion.questionSkills,
+		answersCount: Object.keys(testQuestion.variants).length,
+		correctAnswersCount: testQuestion.successVariants.length,
+		complexity: testQuestion.complexity,
+		rate: testQuestion.rate,
+		author: testQuestion.createdBy?.username ?? '',
+		createdAt: testQuestion.createdAt
+			? formatDate(new Date(testQuestion.createdAt), 'dd.MM.yyyy')
+			: '',
 	}));
 
 	const columns: TableColumn<TestQuestionTableRow>[] = [
 		{
 			id: 'title',
-			header: t(TestQuestions.TITLE),
+			header: t(TestQuestions.TABLE_TITLE),
 			width: '240px',
 		},
 		{
 			id: 'description',
-			header: t(TestQuestions.DESCRIPTION),
+			header: t(TestQuestions.TABLE_DESCRIPTION),
 			width: '240px',
 		},
 		{
 			id: 'specializations',
-			header: t(TestQuestions.SPECIALIZATIONS),
+			header: t(TestQuestions.TABLE_SPECIALIZATIONS),
 			width: '260px',
 			cell: ({ row }) => (
 				<TableCellEntityList items={row.specializations} showCount={SPECIALIZATIONS_SHOW_COUNT} />
@@ -66,38 +68,38 @@ export const TestQuestionsTable = ({ testQuestions }: TestQuestionsTableProps) =
 		},
 		{
 			id: 'skills',
-			header: t(TestQuestions.SKILLS),
+			header: t(TestQuestions.TABLE_SKILLS),
 			width: '260px',
 			cell: ({ row }) => <TableCellEntityList items={row.skills} showCount={SKILLS_SHOW_COUNT} />,
 		},
 		{
 			id: 'answersCount',
-			header: t(TestQuestions.ANSWERS),
+			header: t(TestQuestions.TABLE_ANSWERS_ALL),
 			width: '100px',
 		},
 		{
 			id: 'correctAnswersCount',
-			header: t(TestQuestions.CORRECT_ANSWERS),
+			header: t(TestQuestions.TABLE_ANSWERS_CORRECT),
 			width: '170px',
 		},
 		{
 			id: 'complexity',
-			header: t(TestQuestions.COMPLEXITY),
+			header: t(TestQuestions.TABLE_COMPLEXITY),
 			width: '120px',
 		},
 		{
 			id: 'rate',
-			header: t(TestQuestions.RATE),
+			header: t(TestQuestions.TABLE_RATE),
 			width: '100px',
 		},
 		{
 			id: 'author',
-			header: t(TestQuestions.AUTHOR),
+			header: t(TestQuestions.TABLE_AUTHOR),
 			width: '200px',
 		},
 		{
 			id: 'createdAt',
-			header: t(TestQuestions.CREATED_AT),
+			header: t(TestQuestions.TABLE_CREATED_AT),
 			width: '150px',
 		},
 	];
