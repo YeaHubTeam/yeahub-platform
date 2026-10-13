@@ -1,0 +1,6 @@
+.form-control-wrapper {
+  position: relative;
+  top: -15px;
+  width: 100%;
+  max-width: 360px;
+}
