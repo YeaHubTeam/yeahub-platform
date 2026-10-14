@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useState } from 'react';
+import { ComponentProps, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Specializations } from '@/shared/config';
@@ -29,9 +29,7 @@ export const SpecializationSelect = ({
 	const { t } = useTranslation(i18Namespace.specialization);
 	const { data: specializations } = useGetSpecializationsListQuery({ limit: 100 });
 
-	const [selectedSpecializations, setSelectedSpecializations] = useState<number[]>(
-		Array.isArray(value) ? value : value !== undefined ? [value] : [],
-	);
+	const selectedSpecializations = Array.isArray(value) ? value : value !== undefined ? [value] : [];
 
 	const handleChange = (newValue: string | undefined) => {
 		if (disabled || !newValue) return;
@@ -39,10 +37,8 @@ export const SpecializationSelect = ({
 
 		if (hasMultiple) {
 			const updates = [...selectedSpecializations, numValue];
-			setSelectedSpecializations(updates);
 			onChange(updates);
 		} else {
-			setSelectedSpecializations([numValue]);
 			onChange([numValue]);
 		}
 	};
@@ -50,7 +46,6 @@ export const SpecializationSelect = ({
 	const handleDeleteSpecialization = (id: number) => () => {
 		if (disabled) return;
 		const updates = selectedSpecializations.filter((specializationId) => specializationId !== id);
-		setSelectedSpecializations(updates);
 		onChange(updates);
 	};
 
