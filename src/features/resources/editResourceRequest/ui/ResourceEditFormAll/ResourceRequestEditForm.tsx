@@ -63,7 +63,7 @@ export const ResourceRequestEditForm = ({ request }: ResourceEditFormAllProps) =
 			onToggle();
 			if (project === 'admin') {
 				toast.success(i18n.t(Translation.TOAST_RESOURCE_EDIT_SUCCESS));
-				navigate(route(ROUTES.admin.resources.requests.view.page, resourceId));
+				navigate(route(ROUTES.admin.resourceRequests.details.page, resourceId));
 			}
 		} catch (_) {
 			toast.error(i18n.t(Translation.TOAST_RESOURCE_EDIT_FAILED));
