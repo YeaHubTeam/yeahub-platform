@@ -8,14 +8,26 @@ import { toast } from '@/shared/ui/Toast';
 
 import { SpecializationSelect } from '@/entities/specialization';
 
+import { AnalysisProgress } from '../AnalysisProgress/AnalysisProgress';
+
 interface UploadResumeFormProps {
 	onSubmit: (data: { specializationId: number; file: FormData }) => void;
 	isLoading: boolean;
+	isError?: boolean;
+	resetError?: () => void;
+	onComplete?: () => void;
 }
 
-export const UploadResumeForm = ({ onSubmit, isLoading }: UploadResumeFormProps) => {
+export const UploadResumeForm = ({
+	onSubmit,
+	isLoading,
+	isError,
+	resetError,
+	onComplete,
+}: UploadResumeFormProps) => {
 	const [specialization, setSpecialization] = useState<number | null>(null);
 	const [file, setFile] = useState<FormData | null>(null);
+	const [showProgress, setShowProgress] = useState(false);
 
 	const handleUpload = ([file]: File[]) => {
 		const formData = new FormData();
@@ -34,8 +46,62 @@ export const UploadResumeForm = ({ onSubmit, isLoading }: UploadResumeFormProps)
 	};
 
 	const onUploadResume = () => {
-		if (specialization && file) onSubmit({ specializationId: specialization, file: file });
+		if (specialization && file) {
+			setShowProgress(true);
+			resetError?.();
+			onSubmit({ specializationId: specialization, file: file });
+		}
 	};
+
+	const handleComplete = () => {
+		setShowProgress(false);
+		onComplete?.();
+	};
+
+	const handleError = () => {
+		setShowProgress(false);
+		resetError?.();
+	};
+
+	if (isError && !isLoading && !showProgress) {
+		return (
+			<Flex direction="column" gap="20">
+				<FormField label="Выберите специализацию">
+					<SpecializationSelect value={specialization || 0} onChange={onChangeSpecialization} />
+				</FormField>
+				<FormField label="Загрузите резюме">
+					<FileLoader
+						disabled={!specialization || isLoading}
+						accept={Accept.MS_WORD}
+						fileTypeText="своё резюме"
+						extensionsText={Extension.MS_WORD}
+						onChange={handleUpload}
+					/>
+				</FormField>
+				<Button
+					variant="primary"
+					disabled={!specialization || !file || isLoading}
+					onClick={onUploadResume}
+				>
+					Проверить резюме
+				</Button>
+				<span style={{ color: 'var(--error-color)', fontSize: '14px' }}>
+					Ошибка при анализе резюме. Попробуйте еще раз.
+				</span>
+			</Flex>
+		);
+	}
+
+	if (showProgress || isLoading) {
+		return (
+			<AnalysisProgress
+				onComplete={handleComplete}
+				onError={handleError}
+				isError={!!isError}
+				isLoading={isLoading}
+			/>
+		);
+	}
 
 	return (
 		<Flex direction="column" gap="20">
