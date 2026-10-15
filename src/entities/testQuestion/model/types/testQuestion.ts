@@ -1,12 +1,18 @@
-import { Response } from '@/shared/libs';
+import type { Response, SortOrder } from '@/shared/libs';
+import { Author } from '@/shared/ui/AuthorInfo';
+
+import { Skill } from '@/entities/skill/@x/testQuestion';
+import { Specialization } from '@/entities/specialization/@x/testQuestion';
+
+export type TestQuestionStatus = 'public' | 'draft';
 
 export interface TestQuestion {
 	id: number;
 	title: string;
 	description: string;
-	imageSrc: string;
+	imageSrc: string | null;
 	keywords: string[];
-	status: 'draft' | 'public';
+	status: TestQuestionStatus;
 	rate: number;
 	complexity: number;
 	variants: Record<string, string>;
@@ -14,22 +20,20 @@ export interface TestQuestion {
 	createdAt: string;
 	updatedAt: string;
 	createdById: string;
-	updatedById: string;
-	createdBy: unknown;
-	updatedBy: unknown;
-	questionSpecializations: TestQuestionSpecialization[];
-	questionSkills: TestQuestionSkill[];
+	updatedById: string | null;
+	createdBy: Author;
+	updatedBy: Author | null;
+	questionSpecializations: Specialization[];
+	questionSkills: Skill[];
 }
 
-export interface TestQuestionSpecialization {
-	id: number;
-	name: string;
+export interface GetTestQuestionsParamsRequest {
+	page?: number;
+	limit?: number;
+	order?: SortOrder;
 }
 
-export interface TestQuestionSkill {
-	id: number;
-	name: string;
-}
+export type GetTestQuestionsResponse = Response<TestQuestion[]>;
 
 export type GetTestQuestionKeywordsParamsRequest = {
 	page?: number;

@@ -1,4 +1,18 @@
 {
+	"table": {
+		"title": "Название",
+		"description": "Описание",
+		"specializations": "Специализации",
+		"skills": "Навыки",
+		"answers": {
+			"all": "Ответы",
+			"correct": "Правильные ответы"
+		},
+		"complexity": "Сложность",
+		"rate": "Рейтинг",
+		"author": "Автор",
+		"created.at": "Дата создания"
+	},
 	"title": {
 		"label": "Вопрос теста",
 		"description": "Введите вопрос теста",

@@ -54,6 +54,7 @@ export enum Translation {
 	SIDEBAR_MENU_VACANCY_MARKET = 'sidebar.menu.career.vacancyMarket',
 	SIDEBAR_MENU_VACANCIES = 'sidebar.menu.vacancies',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
+	SIDEBAR_MENU_TESTS = 'sidebar.menu.tests',
 	SIDEBAR_MENU_RESOURCES = 'sidebar.menu.resources',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
@@ -985,6 +986,16 @@ export enum Questions {
 }
 
 export enum TestQuestions {
+	TABLE_TITLE = 'table.title',
+	TABLE_DESCRIPTION = 'table.description',
+	TABLE_SPECIALIZATIONS = 'table.specializations',
+	TABLE_SKILLS = 'table.skills',
+	TABLE_ANSWERS_ALL = 'table.answers.all',
+	TABLE_ANSWERS_CORRECT = 'table.answers.correct',
+	TABLE_COMPLEXITY = 'table.complexity',
+	TABLE_RATE = 'table.rate',
+	TABLE_AUTHOR = 'table.author',
+	TABLE_CREATED_AT = 'table.created.at',
 	CREATE_TITLE = 'create.title',
 	TITLE_LABEL = 'title.label',
 	TITLE_DESCRIPTION = 'title.description',

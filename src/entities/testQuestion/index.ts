@@ -1,7 +1,9 @@
+export { useGetTestQuestionsListQuery } from './api/testQuestionApi';
+
 export type {
 	TestQuestion,
-	TestQuestionSpecialization,
-	TestQuestionSkill,
+	GetTestQuestionsParamsRequest,
+	GetTestQuestionsResponse,
 } from './model/types/testQuestion';
 
 export { TestQuestionForm } from './ui/TestQuestionForm/TestQuestionForm';
