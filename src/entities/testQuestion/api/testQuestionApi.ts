@@ -1,11 +1,12 @@
-import { baseApi } from '@/shared/config';
-
-import type {
-	GetTestQuestionsParamsRequest,
-	GetTestQuestionsResponse,
-} from '@/entities/testQuestion';
+import { ApiTags, baseApi } from '@/shared/config';
 
 import { testQuestionApiUrls } from '../model/constants/testQuestion';
+import {
+	GetTestQuestionKeywordsParamsRequest,
+	GetTestQuestionKeywordsResponse,
+	GetTestQuestionsParamsRequest,
+	GetTestQuestionsResponse,
+} from '../model/types/testQuestion';
 
 const testQuestionApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -19,8 +20,19 @@ const testQuestionApi = baseApi.injectEndpoints({
 					...params,
 				},
 			}),
+			providesTags: [ApiTags.TEST_QUESTIONS],
+		}),
+		getTestQuestionKeywords: build.query<
+			GetTestQuestionKeywordsResponse,
+			GetTestQuestionKeywordsParamsRequest
+		>({
+			query: (params) => ({
+				url: testQuestionApiUrls.getTestQuestionKeywords,
+				params,
+			}),
+			providesTags: [ApiTags.TEST_QUESTIONS],
 		}),
 	}),
 });
 
-export const { useGetTestQuestionsListQuery } = testQuestionApi;
+export const { useGetTestQuestionsListQuery, useGetTestQuestionKeywordsQuery } = testQuestionApi;

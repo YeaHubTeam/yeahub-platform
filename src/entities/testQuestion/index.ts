@@ -5,3 +5,6 @@ export type {
 	GetTestQuestionsParamsRequest,
 	GetTestQuestionsResponse,
 } from './model/types/testQuestion';
+
+export { TestQuestionForm } from './ui/TestQuestionForm/TestQuestionForm';
+export { useGetTestQuestionKeywordsQuery } from './api/testQuestionApi';

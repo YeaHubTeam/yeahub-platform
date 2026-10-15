@@ -34,3 +34,11 @@ export interface GetTestQuestionsParamsRequest {
 }
 
 export type GetTestQuestionsResponse = Response<TestQuestion[]>;
+
+export type GetTestQuestionKeywordsParamsRequest = {
+	page?: number;
+	limit?: number;
+	title?: string;
+};
+
+export type GetTestQuestionKeywordsResponse = Response<string[]>;

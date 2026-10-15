@@ -54,10 +54,6 @@ export const ROUTES = {
 				page: '/admin/skills/:skillId',
 			},
 		},
-		testQuestions: {
-			route: 'test-questions',
-			page: '/admin/test-questions',
-		},
 		users: {
 			route: 'users',
 			page: '/admin/users',
@@ -192,6 +188,18 @@ export const ROUTES = {
 			details: {
 				route: ':flagId',
 				page: '/admin/featureFlags/:flagId',
+			},
+		},
+		testQuestions: {
+			route: 'test-questions',
+			page: '/admin/test-questions',
+			create: {
+				route: 'create',
+				page: '/admin/test-questions/create',
+			},
+			details: {
+				route: ':testQuestionId',
+				page: '/admin/test-questions/:testQuestionId',
 			},
 		},
 	},
