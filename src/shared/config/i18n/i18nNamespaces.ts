@@ -33,5 +33,4 @@ export const i18Namespace = {
 	featureFlags: 'featureFlags',
 	vacancies: 'vacancies',
 	vacanciesMarket: 'vacanciesMarket',
-	testQuestion: 'testQuestion',
 };

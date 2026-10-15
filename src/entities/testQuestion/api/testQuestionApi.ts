@@ -27,7 +27,7 @@ const testQuestionApi = baseApi.injectEndpoints({
 			GetTestQuestionKeywordsParamsRequest
 		>({
 			query: (params) => ({
-				url: route(testQuestionApiUrls.getTestQuestionKeywords),
+				url: testQuestionApiUrls.getTestQuestionKeywords,
 				params,
 			}),
 			providesTags: [ApiTags.TEST_QUESTIONS],
