@@ -1,5 +1,6 @@
 import { fireEvent, screen, waitFor, within } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
+import { useState } from 'react';
 
 import { Tasks } from '@/shared/config';
 import { renderComponent } from '@/shared/libs';
@@ -159,7 +160,20 @@ describe('TaskCategorySelect', () => {
 		});
 
 		test('should delete chip and update onChange when delete button is clicked', async () => {
-			render({ hasMultiple: true });
+			const TestWrapper = () => {
+				const [value, setValue] = useState<string | string[]>([]);
+				return (
+					<TaskCategorySelect
+						hasMultiple={true}
+						value={value}
+						onChange={(newValue) => {
+							setValue(newValue);
+							onChange(newValue);
+						}}
+					/>
+				);
+			};
+			renderComponent(<TestWrapper />);
 
 			await waitFor(() => {
 				expect(screen.getByText(Tasks.SELECT_CHOOSE)).toBeInTheDocument();
