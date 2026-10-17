@@ -374,4 +374,8 @@ export const ROUTES = {
 			page: `${process.env.LANDING_URL}mentor`,
 		},
 	},
+	testing: {
+		route: 'testing',
+		page: '/testing',
+	},
 } as const;
