@@ -46,3 +46,5 @@ export { ChooseEnglishLevel } from './ui/ChooseEnglishLevel/ChooseEnglishLevel';
 export { ChooseEnglishLevelSkeleton } from './ui/ChooseEnglishLevel/ChooseEnglishLevel.skeleton';
 
 export { VacancyKeywordsList } from './ui/VacancyKeywordsList/VacancyKeywordsList';
+
+export { vacancyHandlers } from './api/__mocks__';
