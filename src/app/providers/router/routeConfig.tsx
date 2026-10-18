@@ -71,6 +71,7 @@ import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
 import { TestQuestionCreatePage } from '@/pages/admin/testQuestion/testQuestionCreate';
+import { TestQuestionEditPage } from '@/pages/admin/testQuestion/testQuestionEdit';
 import { TestQuestionsPage } from '@/pages/admin/testQuestion/testQuestions';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
@@ -364,10 +365,6 @@ export const router = createBrowserRouter([
 				element: <QuestionCreatePage />,
 			},
 			{
-				path: ROUTES.admin.testQuestions.create.page,
-				element: <TestQuestionCreatePage />,
-			},
-			{
 				path: ROUTES.admin.questions.createMultiple.page,
 				element: <QuestionCreateMultiplePage />,
 			},
@@ -440,7 +437,21 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.admin.testQuestions.route,
-				element: <TestQuestionsPage />,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <TestQuestionsPage />,
+					},
+					{
+						path: ROUTES.admin.testQuestions.create.route,
+						element: <TestQuestionCreatePage />,
+					},
+					{
+						path: ROUTES.admin.testQuestions.edit.route,
+						element: <TestQuestionEditPage />,
+					},
+				],
 			},
 			{
 				path: ROUTES.admin.users.route,

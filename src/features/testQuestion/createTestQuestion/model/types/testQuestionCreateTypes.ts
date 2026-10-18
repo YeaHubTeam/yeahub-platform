@@ -1,16 +1,6 @@
-import { TestQuestion } from '@/entities/testQuestion';
+import { CreateOrEditTestQuestionFormValues, TestQuestion } from '@/entities/testQuestion';
 
-export interface CreateTestQuestionFormValues {
-	title: string;
-	description: string;
-	rate: number;
-	complexity: number;
-	keywords: string[];
-	variants: Record<string, string>;
-	successVariants: string[];
-	specializations: number[];
-	skills: number[];
-}
+export type CreateTestQuestionFormValues = Omit<CreateOrEditTestQuestionFormValues, 'id'>;
 
 export type CreateTestQuestionBodyRequest = CreateTestQuestionFormValues;
 

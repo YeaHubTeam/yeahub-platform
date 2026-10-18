@@ -16,6 +16,9 @@
 	"create": {
 		"title": "Create test"
 	},
+	"edit": {
+		"title": "Edit test"
+	},
 	"title": {
 		"label": "Test question",
 		"description": "Enter the test question",
@@ -53,5 +56,12 @@
 	"skills": {
 		"label": "Skills",
 		"description": "Select test skills"
+	},
+	"stub": {
+		"edit.access": {
+			"title": "No access to edit test",
+			"subtitle": "You are not the creator of this test, so editing is not available",
+			"submit": "Return to the tests table"
+		}
 	}
 }

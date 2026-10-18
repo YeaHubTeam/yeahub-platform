@@ -463,6 +463,16 @@
 				}
 			}
 		},
+		"testQuestion": {
+			"create": {
+				"success": "Test successfully created",
+				"failed": "Test could not be created"
+			},
+			"edit": {
+				"success": "Test successfully changed",
+				"failed": "Test could not be changed"
+			}
+		},
 		"specializations": {
 			"create": {
 				"success": "Specialization successfully created",

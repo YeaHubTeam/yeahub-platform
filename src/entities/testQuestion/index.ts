@@ -4,7 +4,11 @@ export type {
 	TestQuestion,
 	GetTestQuestionsParamsRequest,
 	GetTestQuestionsResponse,
+	CreateOrEditTestQuestionFormValues,
 } from './model/types/testQuestion';
 
 export { TestQuestionForm } from './ui/TestQuestionForm/TestQuestionForm';
-export { useGetTestQuestionKeywordsQuery } from './api/testQuestionApi';
+export {
+	useGetTestQuestionKeywordsQuery,
+	useGetTestQuestionByIdQuery,
+} from './api/testQuestionApi';

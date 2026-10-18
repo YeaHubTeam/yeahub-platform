@@ -434,6 +434,10 @@ export enum Translation {
 	TOAST_FEATURE_FLAG_UPDATE_AUTH_USER_VERIFIED = 'toast.featureFlags.update.auth.user.verified',
 	TOAST_FEATURE_FLAG_UPDATE_SINGLE_NOTFOUND = 'toast.featureFlags.update.single.not_found',
 	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ALREADY_EXISTS = 'toast.featureFlags.update.single.already_exists',
+	TOAST_TEST_QUESTION_EDIT_SUCCESS = 'toast.testQuestion.edit.success',
+	TOAST_TEST_QUESTION_EDIT_FAILED = 'toast.testQuestion.edit.failed',
+	TOAST_TEST_QUESTION_CREATE_SUCCESS = 'toast.testQuestion.create.success',
+	TOAST_TEST_QUESTION_CREATE_FAILED = 'toast.testQuestion.create.failed',
 
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
@@ -997,6 +1001,7 @@ export enum TestQuestions {
 	TABLE_AUTHOR = 'table.author',
 	TABLE_CREATED_AT = 'table.created.at',
 	CREATE_TITLE = 'create.title',
+	EDIT_TITLE = 'edit.title',
 	TITLE_LABEL = 'title.label',
 	TITLE_DESCRIPTION = 'title.description',
 	TITLE_PLACEHOLDER = 'title.placeholder',
@@ -1017,6 +1022,9 @@ export enum TestQuestions {
 	SPECIALIZATIONS_DESCRIPTION = 'specializations.description',
 	SKILLS_LABEL = 'skills.label',
 	SKILLS_DESCRIPTION = 'skills.description',
+	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
+	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
+	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
 }
 
 export enum InterviewHistory {

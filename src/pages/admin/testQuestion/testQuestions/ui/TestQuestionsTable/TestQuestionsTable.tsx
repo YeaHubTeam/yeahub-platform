@@ -104,5 +104,7 @@ export const TestQuestionsTable = ({ testQuestions }: TestQuestionsTableProps) =
 		},
 	];
 
-	return <TableV2 data={tableData} columns={columns} actions={['copy']} />;
+	return (
+		<TableV2 data={tableData} columns={columns} actions={['edit', 'copy']} entity="testQuestions" />
+	);
 };

@@ -27,6 +27,19 @@ export interface TestQuestion {
 	questionSkills: Skill[];
 }
 
+export interface CreateOrEditTestQuestionFormValues {
+	id: number;
+	title: string;
+	description: string;
+	rate: number;
+	complexity: number;
+	keywords: string[];
+	variants: Record<string, string>;
+	successVariants: string[];
+	specializations: number[];
+	skills: number[];
+}
+
 export interface GetTestQuestionsParamsRequest {
 	page?: number;
 	limit?: number;
@@ -34,6 +47,13 @@ export interface GetTestQuestionsParamsRequest {
 }
 
 export type GetTestQuestionsResponse = Response<TestQuestion[]>;
+
+export type GetTestQuestionByIdParamsRequest = {
+	testQuestionId?: string;
+	profileId?: string;
+};
+
+export type GetTestQuestionByIdResponse = TestQuestion;
 
 export type GetTestQuestionKeywordsParamsRequest = {
 	page?: number;
