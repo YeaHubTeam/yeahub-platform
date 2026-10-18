@@ -26,6 +26,7 @@ export interface FavoriteQuestionProps {
 	isFavorite?: boolean;
 	size?: 'small' | 'medium';
 	isQuiz?: boolean;
+	isDisabled?: boolean;
 }
 
 export const FavoriteQuestionButton = ({
@@ -37,6 +38,7 @@ export const FavoriteQuestionButton = ({
 	isFavorite,
 	size = 'medium',
 	isQuiz = false,
+	isDisabled = false,
 }: FavoriteQuestionProps) => {
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsVerified);
@@ -82,7 +84,7 @@ export const FavoriteQuestionButton = ({
 				}
 				variant={variant}
 				onClick={onToggleFavoriteQuestion}
-				disabled={resetState.isLoading || favoriteState.isLoading || !isEmailVerified}
+				disabled={isDisabled || resetState.isLoading || favoriteState.isLoading || !isEmailVerified}
 			>
 				{size === 'medium' && t(Questions.FAVORITE)}
 			</Button>

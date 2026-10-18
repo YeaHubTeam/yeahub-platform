@@ -117,7 +117,7 @@ import { RequestResourceCreatePage } from '@/pages/wiki/resource/requestResource
 import { RequestResourceEditPage } from '@/pages/wiki/resource/requestResourceEdit';
 import { RequestInfoPage } from '@/pages/wiki/resource/resourceRequestDetail';
 import { ResourcesPage } from '@/pages/wiki/resource/resources';
-import { TestQuestionsPage as WikiTestQuestionsPage } from '@/pages/wiki/testQuestion/testQuestions';
+import { TestQuestionsPage as WikiTestQuestionsPage } from '@/pages/wiki/testQuestion/TestQuestions';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';

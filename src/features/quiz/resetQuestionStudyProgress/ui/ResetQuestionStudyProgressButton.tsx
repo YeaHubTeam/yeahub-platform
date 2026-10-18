@@ -22,6 +22,7 @@ export interface ResetQuestionStudyProgressProps {
 	checksCount: number;
 	placementTooltip?: Placement;
 	offsetTooltip?: number;
+	isDisabled?: boolean;
 }
 
 export const ResetQuestionStudyProgressButton = ({
@@ -31,6 +32,7 @@ export const ResetQuestionStudyProgressButton = ({
 	checksCount,
 	placementTooltip = 'top',
 	offsetTooltip = 10,
+	isDisabled = false,
 }: ResetQuestionStudyProgressProps) => {
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsVerified);
@@ -52,7 +54,9 @@ export const ResetQuestionStudyProgressButton = ({
 
 	const iconSize = isPopover ? 20 : 24;
 	const shouldShowTooltip = !isEmailVerified || !hasPremium || notQuestionMaxProgress;
-	const isButtonDisabled = !isEmailVerified || !hasPremium || notQuestionMaxProgress || isLoading;
+
+	const isButtonDisabled =
+		isDisabled || !isEmailVerified || !hasPremium || notQuestionMaxProgress || isLoading;
 
 	return (
 		<Tooltip

@@ -1,4 +1,5 @@
 export enum Translation {
+	TEST_QUESTIONS_LIST_TITLE = 'testQuestionsList.title',
 	BANNER_NY_TEXT = 'banner.ny.text',
 	BANNER_NY_BUTTON = 'banner.ny.button',
 	MODAL_NY_TITLE = 'modal.ny.title',
