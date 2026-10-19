@@ -19,6 +19,7 @@ import ReferralsIcon from '@/shared/assets/icons/referralsIcon.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
+import TestingIcon from '@/shared/assets/icons/testing.svg';
 import TestQuestionsIcon from '@/shared/assets/icons/testQuestions.svg';
 import User from '@/shared/assets/icons/user.svg';
 import VacanciesIcon from '@/shared/assets/icons/vacancies.svg';
@@ -108,6 +109,7 @@ import { SettingsProfilePage } from '@/pages/profile/settings';
 import { UserProfilePage } from '@/pages/profile/userProfile';
 import { TaskPage } from '@/pages/tasks/task';
 import { TasksPage } from '@/pages/tasks/tasks';
+import { TestingPage } from '@/pages/testing/testing';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -123,6 +125,7 @@ import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from './AuthRoute';
 import { InterviewRoute } from './InterviewRoute';
+import { TestingRoute } from './TestingRoute';
 import { UnAuthRoute } from './UnAuthRoute';
 
 import '../../styles/App.css';
@@ -177,6 +180,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				route: ROUTES.interview.route,
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
+			},
+			{
+				route: ROUTES.testing.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_TESTS),
+				icon: TestingIcon,
 			},
 			{
 				route: ROUTES.tasks.route,
@@ -770,6 +778,18 @@ export const router = createBrowserRouter([
 						},
 					},
 				],
+			},
+			{
+				path: ROUTES.testing.route,
+				element: (
+					<TestingRoute>
+						<Outlet />
+					</TestingRoute>
+				),
+				handle: {
+					crumb: Translation.CRUMBS_TESTING,
+				},
+				children: [{ index: true, element: <TestingPage /> }],
 			},
 			{
 				path: ROUTES.wiki.route,

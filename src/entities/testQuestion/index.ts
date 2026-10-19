@@ -8,3 +8,5 @@ export type {
 
 export { TestQuestionForm } from './ui/TestQuestionForm/TestQuestionForm';
 export { useGetTestQuestionKeywordsQuery } from './api/testQuestionApi';
+
+export { PreviewTestQuestionsItem } from './ui/PreviewTestQuestionsItem/PreviewTestQuestionsItem';

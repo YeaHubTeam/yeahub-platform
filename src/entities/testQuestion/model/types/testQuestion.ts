@@ -31,6 +31,8 @@ export interface GetTestQuestionsParamsRequest {
 	page?: number;
 	limit?: number;
 	order?: SortOrder;
+	random?: boolean;
+	specializationId?: number | number[];
 }
 
 export type GetTestQuestionsResponse = Response<TestQuestion[]>;
