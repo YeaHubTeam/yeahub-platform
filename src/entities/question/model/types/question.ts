@@ -7,6 +7,11 @@ import { Topic } from '@/entities/topic/@x/question';
 
 export type QuestionStatus = 'public' | 'draft';
 
+export interface QuestionData {
+	id: number;
+	title: string;
+}
+
 export interface Question {
 	id: number;
 	title: string;
