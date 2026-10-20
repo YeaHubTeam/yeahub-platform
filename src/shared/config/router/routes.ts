@@ -209,6 +209,10 @@ export const ROUTES = {
 				route: 'create',
 				page: '/admin/test-questions/create',
 			},
+			edit: {
+				route: ':testQuestionId/edit',
+				page: '/admin/test-questions/:testQuestionId/edit',
+			},
 			details: {
 				route: ':testQuestionId',
 				page: '/admin/test-questions/:testQuestionId',

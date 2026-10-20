@@ -1,4 +1,5 @@
 import { ApiTags, baseApi } from '@/shared/config';
+import { route } from '@/shared/libs';
 
 import { testQuestionApiUrls } from '../model/constants/testQuestion';
 import {
@@ -6,6 +7,8 @@ import {
 	GetTestQuestionKeywordsResponse,
 	GetTestQuestionsParamsRequest,
 	GetTestQuestionsResponse,
+	GetTestQuestionByIdResponse,
+	GetTestQuestionByIdParamsRequest,
 } from '../model/types/testQuestion';
 
 const testQuestionApi = baseApi.injectEndpoints({
@@ -32,7 +35,22 @@ const testQuestionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.TEST_QUESTIONS],
 		}),
+		getTestQuestionById: build.query<GetTestQuestionByIdResponse, GetTestQuestionByIdParamsRequest>(
+			{
+				query: ({ testQuestionId, profileId }) => ({
+					url: route(testQuestionApiUrls.getTestQuestionById, testQuestionId || ''),
+					params: {
+						profileId,
+					},
+				}),
+				providesTags: [ApiTags.TEST_QUESTION_DETAIL],
+			},
+		),
 	}),
 });
 
-export const { useGetTestQuestionsListQuery, useGetTestQuestionKeywordsQuery } = testQuestionApi;
+export const {
+	useGetTestQuestionsListQuery,
+	useGetTestQuestionKeywordsQuery,
+	useGetTestQuestionByIdQuery,
+} = testQuestionApi;

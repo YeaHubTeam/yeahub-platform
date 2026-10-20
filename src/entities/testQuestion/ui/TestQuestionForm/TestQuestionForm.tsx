@@ -20,7 +20,11 @@ import { TestQuestionVariants } from '../TestQuestionVariants/TestQuestionVarian
 
 import styles from './TestQuestionForm.module.css';
 
-export const TestQuestionForm = () => {
+export interface TestQuestionFormProps {
+	isEdit?: boolean;
+}
+
+export const TestQuestionForm = ({ isEdit }: TestQuestionFormProps) => {
 	const { control, watch } = useFormContext();
 	const { t } = useTranslation(i18Namespace.testQuestion);
 
@@ -29,7 +33,7 @@ export const TestQuestionForm = () => {
 	return (
 		<>
 			<Text variant="body5-strong" className={styles['main-title']}>
-				{t(TestQuestions.CREATE_TITLE)}
+				{isEdit ? t(TestQuestions.EDIT_TITLE) : t(TestQuestions.CREATE_TITLE)}
 			</Text>
 
 			<Flex direction="column" gap="40">
