@@ -67,15 +67,13 @@ export const TableBody = <T,>({
 						))}
 						{hasRowActions && (
 							<td className={actionsCellClassName} onClick={(event) => event.stopPropagation()}>
-								{entity && (
-									<TableActions
-										entity={entity}
-										actions={actions}
-										onDelete={() => onDelete?.(rowId)}
-										id={rowId}
-										disabled={disabled}
-									/>
-								)}
+								<TableActions
+									entity={entity}
+									actions={actions}
+									onDelete={() => onDelete?.(rowId)}
+									id={rowId}
+									disabled={disabled}
+								/>
 							</td>
 						)}
 					</tr>
