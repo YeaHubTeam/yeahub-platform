@@ -982,6 +982,29 @@
 				"alreadyExists": "Feature flag with this key already exists for selected client type.",
 				"not_found": "Feature flag not found"
 			}
+		},
+		"testQuestions": {
+			"delete": {
+				"single": {
+					"success": "The test was successfully deleted",
+					"failed": "The test could not be deleted"
+				},
+				"auth": {
+					"unauthorized": "The user is not authorized",
+					"user": {
+						"verified": "Access only for verified users"
+					},
+					"roles": {
+						"author.can.change.only.own": "Author can change only own data"
+					}
+				},
+				"testQuestion": {
+					"not.found": "Test not found"
+				},
+				"collection": {
+					"in.collection": "Test is in collection and cannot be deleted"
+				}
+			}
 		}
 	},
 	"tooltip": {

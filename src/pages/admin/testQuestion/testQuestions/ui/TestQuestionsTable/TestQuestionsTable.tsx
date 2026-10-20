@@ -7,6 +7,8 @@ import { TableV2, type TableColumn } from '@/shared/ui/TableV2';
 
 import type { TestQuestion } from '@/entities/testQuestion';
 
+import { useDeleteTestQuestionMutation } from '@/features/testQuestion/deleteTestQuestion';
+
 interface TestQuestionTableRow {
 	id: number;
 	title: string;
@@ -30,6 +32,7 @@ const SKILLS_SHOW_COUNT = 2;
 
 export const TestQuestionsTable = ({ testQuestions }: TestQuestionsTableProps) => {
 	const { t } = useTranslation(i18Namespace.testQuestion);
+	const [deleteTestQuestion] = useDeleteTestQuestionMutation();
 
 	const tableData: TestQuestionTableRow[] = testQuestions.map((testQuestion) => ({
 		id: testQuestion.id,
@@ -104,5 +107,12 @@ export const TestQuestionsTable = ({ testQuestions }: TestQuestionsTableProps) =
 		},
 	];
 
-	return <TableV2 data={tableData} columns={columns} actions={['copy']} />;
+	return (
+		<TableV2
+			data={tableData}
+			columns={columns}
+			actions={['delete', 'copy']}
+			onDelete={(id) => deleteTestQuestion(Number(id))}
+		/>
+	);
 };

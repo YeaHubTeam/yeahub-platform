@@ -435,6 +435,13 @@ export enum Translation {
 	TOAST_FEATURE_FLAG_UPDATE_AUTH_USER_VERIFIED = 'toast.featureFlags.update.auth.user.verified',
 	TOAST_FEATURE_FLAG_UPDATE_SINGLE_NOTFOUND = 'toast.featureFlags.update.single.not_found',
 	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ALREADY_EXISTS = 'toast.featureFlags.update.single.already_exists',
+	TOAST_TEST_QUESTIONS_DELETE_SINGLE_SUCCESS = 'toast.testQuestions.delete.single.success',
+	TOAST_TEST_QUESTIONS_DELETE_SINGLE_FAILED = 'toast.testQuestions.delete.single.failed',
+	TOAST_TEST_QUESTIONS_DELETE_AUTH_UNAUTHORIZED = 'toast.testQuestions.delete.auth.unauthorized',
+	TOAST_TEST_QUESTIONS_DELETE_AUTH_USER_VERIFIED = 'toast.testQuestions.delete.auth.user.verified',
+	TOAST_TEST_QUESTIONS_DELETE_AUTH_ROLES_AUTHOR_CAN_CHANGE_ONLY_OWN = 'toast.testQuestions.delete.auth.roles.author.can.change.only.own',
+	TOAST_TEST_QUESTIONS_DELETE_TEST_QUESTION_NOT_FOUND = 'toast.testQuestions.delete.testQuestion.not.found',
+	TOAST_TEST_QUESTIONS_DELETE_COLLECTION_IN_COLLECTION = 'toast.testQuestions.delete.collection.in.collection',
 
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',
