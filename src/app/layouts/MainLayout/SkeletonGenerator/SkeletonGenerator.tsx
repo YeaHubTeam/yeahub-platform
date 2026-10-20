@@ -8,7 +8,7 @@ import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
 import { SpecializationCreateFormSkeleton } from '@/features/specialization/createSpecialization';
 
-import { ArticlesTablePageSkeleton } from '@/pages/admin/article/articles/ui/ArticlesTablePage/ArticlesTablePage.skeleton';
+import { ArticlesTablePageSkeleton } from '@/pages/admin/article/articles';
 import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
