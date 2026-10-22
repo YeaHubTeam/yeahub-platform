@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider, useForm } from 'react-hook-form';
+import { type DefaultValues, FormProvider, useForm } from 'react-hook-form';
 
+import { useFormPersist } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -13,24 +14,44 @@ import { QuestionCreateFormHeader } from '../QuestionCreateFormHeader/QuestionCr
 
 import styles from './QuestionCreateForm.module.css';
 
+const defaultValues: DefaultValues<CreateQuestionFormValues> = {
+	status: 'public',
+	rate: 5,
+	complexity: 1,
+	title: '',
+	description: '',
+	specializations: [],
+	skills: [],
+	topics: [],
+	keywords: [],
+	shortAnswer: '',
+	longAnswer: '',
+};
+
 export const QuestionCreateForm = () => {
 	const methods = useForm<CreateQuestionFormValues>({
-		defaultValues: {
-			status: 'public',
-			rate: 5,
-			complexity: 1,
-		},
 		resolver: yupResolver(questionCreateSchema),
 		mode: 'onTouched',
+		defaultValues,
 	});
 
-	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
+	const {
+		formState: { isDirty, isSubmitted, isSubmitting },
+		reset,
+		watch,
+	} = methods;
+
+	const { clearFormDraft } = useFormPersist<CreateQuestionFormValues>({
+		watch,
+		reset,
+		defaultValues,
+	});
 
 	return (
 		<FormProvider {...methods}>
 			<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 				<Flex componentType="main" direction="column" gap="24">
-					<QuestionCreateFormHeader />
+					<QuestionCreateFormHeader onSuccess={clearFormDraft} />
 					<Card className={styles.content}>
 						<QuestionForm />
 					</Card>
