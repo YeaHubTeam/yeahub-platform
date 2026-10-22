@@ -4,16 +4,16 @@ import { Articles, i18Namespace } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { StatusChip, StatusChipItem } from '@/shared/ui/StatusChip';
 
-import { ArticleTopic } from '../../model/types/article';
+import { ArticleTopics } from '../../model/types/article';
 
 interface ArticleTopicsCellProps {
-	items: ArticleTopic[];
+	items: ArticleTopics[];
 }
 
 export const ArticleTopicsCell = ({ items }: ArticleTopicsCellProps) => {
 	const { t } = useTranslation(i18Namespace.article);
 
-	const topicStatuses: Record<ArticleTopic, StatusChipItem> = {
+	const topicStatuses: Record<ArticleTopics, StatusChipItem> = {
 		interview: {
 			variant: 'purple',
 			text: t(Articles.STATUS_INTERVIEW),

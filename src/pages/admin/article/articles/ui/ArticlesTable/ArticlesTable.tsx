@@ -6,7 +6,7 @@ import { ImageWithWrapper } from '@/shared/ui/ImageWithWrapper';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
 import { TableColumn, TableState, TableV2 } from '@/shared/ui/TableV2';
 
-import { Article, ArticleTopic, ArticleTopicsCell } from '@/entities/article';
+import { Article, ArticleTopics, ArticleTopicsCell } from '@/entities/article';
 
 import styles from './ArticlesTable.module.css';
 
@@ -19,7 +19,7 @@ interface ArticleTableRow {
 	title: string;
 	specializations: Article['articleSpecializations'];
 	skills: Article['articleSkills'];
-	topics: ArticleTopic[];
+	topics: ArticleTopics[];
 	format: string;
 	contentType: string;
 	author: string;
@@ -92,13 +92,13 @@ export const ArticlesTable = ({ articles, tableState }: ArticlesTableProps) => {
 		},
 		{
 			id: 'topics',
-			header: t(Articles.TOPIC_TITLE),
+			header: t(Articles.TOPICS_TITLE),
 			width: '200px',
 			cell: ({ row }) => <ArticleTopicsCell items={row.topics} />,
 		},
 		{
 			id: 'format',
-			header: t(Articles.FORMAT),
+			header: t(Articles.FORMAT_TITLE),
 			width: '150px',
 		},
 		{

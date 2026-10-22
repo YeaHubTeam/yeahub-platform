@@ -109,5 +109,6 @@
 		"system-design": "Системный дизайн",
 		"basics": "Основы",
 		"advanced": "Продвинутый"
-	}
+	},
+	"icon.title-short": "Картинка"
 }

@@ -16,7 +16,6 @@ export enum ApiTags {
 	RESOURCE_REQUESTS = 'resource_requests',
 	RESOURCE_REQUEST = 'resource_request',
 	SKILLS = 'skills',
-	ARTICLES = 'articles',
 	REFERRALS = 'referrals',
 	USERS = 'users',
 	USER_DETAIL = 'user_detail',

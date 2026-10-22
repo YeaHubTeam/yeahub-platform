@@ -57,6 +57,10 @@ export const ROUTES = {
 		articles: {
 			route: 'articles',
 			page: '/admin/articles',
+			create: {
+				route: 'create',
+				page: '/admin/articles/create',
+			},
 			details: {
 				route: ':articleId',
 				page: '/admin/articles/:articleId',

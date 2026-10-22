@@ -1044,8 +1044,6 @@ export enum Articles {
 	OG_DESCRIPTION_LABEL = 'og.description.label',
 	OG_DESCRIPTION_PLACEHOLDER = 'og.description.placeholder',
 	ICON_TITLE_SHORT = 'icon.title-short',
-	FORMAT = 'format',
-	CONTENT_TYPE = 'content-type',
 	AUTHOR = 'author',
 	CREATED_AT = 'created-at',
 	STUB_EMPTY_ARTICLES_TITLE = 'stub.empty.articles.title',

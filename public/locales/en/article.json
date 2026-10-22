@@ -44,11 +44,6 @@
 		"label": "Description shown when shared on social media",
 		"placeholder": "Automatically based on the SEO description"
 	},
-
-	"icon": {
-		"title-short": "Icon"
-	},
-
 	"specializations": {
 		"title": "Specializations",
 		"label": "Choose a specialization",
@@ -94,25 +89,6 @@
 			"roadmap": "Roadmap",
 			"case_study": "Case study"
 		}
-		"title": "Topics"
-	},
-	"format": "Format",
-	"content-type": "Content type",
-	"created-at": "Creation date",
-	"author": "Author",
-	"stub": {
-		"empty": {
-			"articles": {
-				"title": "No articles found yet",
-				"subtitle": "Articles are added periodically, just wait a bit"
-			}
-		}
-	},
-	"status": {
-		"interview": "Interview",
-		"system-design": "System design",
-		"basics": "Basics",
-		"advanced": "Advanced"
 	},
 	"created-at": "Creation date",
 	"author": "Author",
@@ -129,5 +105,6 @@
 		"system-design": "System design",
 		"basics": "Basics",
 		"advanced": "Advanced"
-	}
+	},
+	"icon.title-sort": "Картинка"
 }

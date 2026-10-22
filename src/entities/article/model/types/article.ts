@@ -73,4 +73,3 @@ export interface GetArticlesListParamsRequest {
 }
 
 export type GetArticlesListResponse = Response<Article[]>;
-
