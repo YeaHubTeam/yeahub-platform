@@ -1086,6 +1086,7 @@ export enum TestQuestions {
 	SPECIALIZATIONS_DESCRIPTION = 'specializations.description',
 	SKILLS_LABEL = 'skills.label',
 	SKILLS_DESCRIPTION = 'skills.description',
+	STATS_TITLE = 'stats.title',
 }
 
 export enum InterviewHistory {

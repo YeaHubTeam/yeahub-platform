@@ -1,0 +1,11 @@
+.statistics {
+  width: 370px;
+  min-height: 480px;
+}
+
+@media (width < 1440px) {
+  .statistics {
+    width: 100%;
+    min-height: auto;
+  }
+}

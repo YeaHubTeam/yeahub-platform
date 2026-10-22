@@ -42,3 +42,33 @@ export type GetTestQuestionKeywordsParamsRequest = {
 };
 
 export type GetTestQuestionKeywordsResponse = Response<string[]>;
+
+export interface TestsStat {
+	testsCount: number;
+	maxTestResult: number;
+	minTestResult: number;
+	avgTestResult: number;
+}
+
+export interface QuestionsStat {
+	uniqueQuestionsCount: number;
+	learnedQuestionsCount: number;
+	inProgressQuestionsCount: number;
+	unlearnedQuestionsCount: number;
+}
+
+export interface SkillStatItem {
+	skill: string;
+	count: number;
+}
+
+export interface SkillsStat {
+	fullSkillsQuestionsMap: SkillStatItem[];
+	learnedSkillsQuestionsMap: SkillStatItem[];
+}
+
+export interface getProfileStatisticResponse {
+	testsStat: TestsStat;
+	questionsStat: QuestionsStat;
+	skillsStat: SkillsStat;
+}
