@@ -1,5 +1,6 @@
 export const i18Namespace = {
 	analytics: 'analytics',
+	article: 'article',
 	auth: 'auth',
 	docs: 'docs',
 	interviewHistory: 'interviewHistory',
@@ -15,7 +16,6 @@ export const i18Namespace = {
 	resources: 'resources',
 	resourceRequests: 'resourceRequests',
 	skill: 'skill',
-	article: 'article',
 	referralLink: 'referralLink',
 	specialization: 'specialization',
 	subscription: 'subscription',
