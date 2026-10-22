@@ -54,6 +54,18 @@ export const ROUTES = {
 				page: '/admin/skills/:skillId',
 			},
 		},
+		articles: {
+			route: 'articles',
+			page: '/admin/articles',
+			details: {
+				route: ':articleId',
+				page: '/admin/articles/:articleId',
+			},
+			edit: {
+				route: ':articleId/edit',
+				page: '/admin/articles/:articleId/edit',
+			},
+		},
 		users: {
 			route: 'users',
 			page: '/admin/users',
@@ -190,16 +202,16 @@ export const ROUTES = {
 				page: '/admin/featureFlags/:flagId',
 			},
 		},
-		articles: {
-			route: 'articles',
-			page: '/admin/articles',
+		testQuestions: {
+			route: 'test-questions',
+			page: '/admin/test-questions',
 			create: {
 				route: 'create',
-				page: '/admin/articles/create',
+				page: '/admin/test-questions/create',
 			},
 			details: {
-				route: ':articleId',
-				page: '/admin/articles/:articleId',
+				route: ':testQuestionId',
+				page: '/admin/test-questions/:testQuestionId',
 			},
 		},
 	},

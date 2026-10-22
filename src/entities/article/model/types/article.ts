@@ -1,3 +1,4 @@
+import { Response } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 
 import { Skill } from '@/entities/skill/@x/article';
@@ -56,3 +57,20 @@ export type ArticleFormValues = Pick<
 	specializations: number[];
 	skills: number[];
 };
+
+export interface GetArticlesListParamsRequest {
+	page?: number;
+	limit?: number;
+	search?: string;
+	status?: string;
+	specializations?: number | number[];
+	topics?: string | string[];
+	contentType?: string;
+	format?: string;
+	skills?: number | number[];
+	moderationStatus?: string;
+	origin?: string;
+}
+
+export type GetArticlesListResponse = Response<Article[]>;
+

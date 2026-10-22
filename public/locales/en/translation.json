@@ -68,8 +68,10 @@
 				"vacancyMarket": "Market analytics"
 			},
 			"questions": "Questions",
+			"tests": "Tests",
 			"featureFlags": "Feature flags",
 			"skills": "Skills",
+			"articles": "Articles",
 			"companies": "Companies",
 			"vacancies": "Vacancies",
 			"analytics": "Analytics",

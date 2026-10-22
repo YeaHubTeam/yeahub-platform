@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
+import ArticlesIcon from '@/shared/assets/icons/articles.svg';
 import Books from '@/shared/assets/icons/books.svg';
 import Cards from '@/shared/assets/icons/cards.svg';
 import CareerIcon from '@/shared/assets/icons/career.svg';
@@ -19,6 +20,7 @@ import ReferralsIcon from '@/shared/assets/icons/referralsIcon.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
+import TestQuestionsIcon from '@/shared/assets/icons/testQuestions.svg';
 import User from '@/shared/assets/icons/user.svg';
 import VacanciesIcon from '@/shared/assets/icons/vacancies.svg';
 import VacancyMarketIcon from '@/shared/assets/icons/vacancyMarket.svg';
@@ -31,6 +33,7 @@ import { listAdminRoles, RoleName } from '@/entities/auth';
 import { MenuItem } from '@/widgets/Sidebar';
 
 import { ArticleCreatePage } from '@/pages/admin/article/articleCreate';
+import { ArticlesTablePage } from '@/pages/admin/article/articles';
 import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate';
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/collection/collectionDetail';
 import { CollectionEditPage } from '@/pages/admin/collection/collectionEdit';
@@ -70,6 +73,8 @@ import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
 import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
+import { TestQuestionCreatePage } from '@/pages/admin/testQuestion/testQuestionCreate';
+import { TestQuestionsPage } from '@/pages/admin/testQuestion/testQuestions';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
 import { TopicEditPage } from '@/pages/admin/topic/topicEdit';
@@ -273,6 +278,20 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
+		route: ROUTES.admin.testQuestions.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TESTS),
+		icon: TestQuestionsIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.articles.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_ARTICLES),
+		icon: ArticlesIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
 		route: ROUTES.admin.users.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
@@ -355,6 +374,10 @@ export const router = createBrowserRouter([
 				element: <QuestionCreatePage />,
 			},
 			{
+				path: ROUTES.admin.testQuestions.create.page,
+				element: <TestQuestionCreatePage />,
+			},
+			{
 				path: ROUTES.admin.questions.createMultiple.page,
 				element: <QuestionCreateMultiplePage />,
 			},
@@ -424,6 +447,20 @@ export const router = createBrowserRouter([
 						element: <SkillDetailPage />,
 					},
 				],
+			},
+			{
+				path: ROUTES.admin.articles.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <ArticlesTablePage />,
+					},
+				],
+			},
+			{
+				path: ROUTES.admin.testQuestions.route,
+				element: <TestQuestionsPage />,
 			},
 			{
 				path: ROUTES.admin.users.route,
