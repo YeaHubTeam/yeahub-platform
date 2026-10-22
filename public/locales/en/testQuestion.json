@@ -1,4 +1,9 @@
 {
+	"filters": {
+		"my": "My test questions",
+		"author": "Test question author",
+		"author.placeholder": "Select an author"
+	},
 	"table": {
 		"title": "Title",
 		"description": "Description",
