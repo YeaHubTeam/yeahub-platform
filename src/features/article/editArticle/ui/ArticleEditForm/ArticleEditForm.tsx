@@ -20,13 +20,36 @@ const formatToFormField = <T extends { id: number }[]>(arg?: T) => {
 };
 
 export const ArticleEditForm = ({ article }: ArticleEditFormProps) => {
-	const { articleSkills, articleSpecializations, topics, ...formattedArticle } = article;
+	const {
+		id,
+		title,
+		bodyHtml,
+		format,
+		metaTitle,
+		metaDescription,
+		ogTitle,
+		ogDescription,
+		slug,
+		contentType,
+		topics,
+		articleSkills,
+		articleSpecializations,
+	} = article;
 
 	const methods = useForm<EditArticleFormValues>({
 		resolver: yupResolver(articleEditSchema),
 		mode: 'onTouched',
 		defaultValues: {
-			...formattedArticle,
+			id,
+			title,
+			bodyHtml,
+			format,
+			metaTitle,
+			metaDescription,
+			ogTitle,
+			ogDescription,
+			slug,
+			contentType,
 			topics: topics ?? [],
 			skills: formatToFormField(articleSkills),
 			specializations: formatToFormField(articleSpecializations),

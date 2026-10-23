@@ -4,16 +4,27 @@ import { toast } from '@/shared/ui/Toast';
 
 import { getEditArticleApiErrorMessage } from '../lib/utils/getEditArticleApiErrorMessge';
 import { editArticleApiUrls } from '../model/constants/editArticleApiUrls';
-import { EditArticleBodyRequest, EditArticleResponse } from '../model/types/articleEditTypes';
+import {
+	EditArticleBodyRequest,
+	EditArticleFormValues,
+	EditArticleResponse,
+} from '../model/types/articleEditTypes';
 
 export const editArticleApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		editArticle: build.mutation<EditArticleResponse, EditArticleBodyRequest>({
-			query: (article) => ({
-				url: route(editArticleApiUrls.edit, article.id),
-				method: 'PUT',
-				body: article,
-			}),
+		editArticle: build.mutation<EditArticleResponse, EditArticleFormValues>({
+			query: (article) => {
+				const payload: EditArticleBodyRequest = {
+					...article,
+					status: 'published',
+				};
+
+				return {
+					url: route(editArticleApiUrls.edit, article.id),
+					method: 'PUT',
+					body: payload,
+				};
+			},
 
 			async onQueryStarted(_, { queryFulfilled, extra }) {
 				try {

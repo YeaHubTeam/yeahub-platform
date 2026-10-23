@@ -1,6 +1,6 @@
 export type {
 	Article,
-	ArticleFormValues,
+	CreateOrEditArticleFormValues,
 	ArticleTopics,
 	ArticleFormat,
 	ArticleContentType,
