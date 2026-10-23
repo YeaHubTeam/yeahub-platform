@@ -330,7 +330,10 @@ export const ROUTES = {
 			page: '/interview/new',
 		},
 	},
-
+	testing: {
+		route: 'testing',
+		page: '/testing',
+	},
 	tasks: {
 		route: 'tasks',
 		page: '/tasks',
@@ -348,6 +351,14 @@ export const ROUTES = {
 			detail: {
 				route: ':questionId',
 				page: '/wiki/questions/:questionId',
+			},
+		},
+		testQuestions: {
+			route: 'test-questions',
+			page: '/wiki/test-questions',
+			detail: {
+				route: ':testQuestionId',
+				page: '/wiki/test-questions/:testQuestionId',
 			},
 		},
 		collections: {

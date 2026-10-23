@@ -37,6 +37,17 @@
 		"label": "Difficulty",
 		"description": "Select the test difficulty"
 	},
+	"preview": {
+		"title": "Tests list",
+		"link": "Study",
+		"empty": {
+			"specialization": "Tests for the selected specialization will appear soon",
+			"collection": "Tests for this collection will appear soon"
+		},
+		"locked": {
+			"collection": "Community members will have a list of tests."
+		}
+	},
 	"keywords": {
 		"label": "Keywords",
 		"description": "Select test keywords",
