@@ -120,6 +120,7 @@ import { RequestResourceCreatePage } from '@/pages/wiki/resource/requestResource
 import { RequestResourceEditPage } from '@/pages/wiki/resource/requestResourceEdit';
 import { RequestInfoPage } from '@/pages/wiki/resource/resourceRequestDetail';
 import { ResourcesPage } from '@/pages/wiki/resource/resources';
+import { TestQuestionsPage as WikiTestQuestionsPage } from '@/pages/wiki/testQuestion/TestQuestions';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
@@ -203,6 +204,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				route: `${ROUTES.wiki.route}/${ROUTES.wiki.questions.route}`,
 				title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
 				icon: QuestionsIcon,
+			},
+			{
+				route: `${ROUTES.wiki.route}/${ROUTES.wiki.testQuestions.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_TESTS),
+				icon: TestQuestionsIcon,
 			},
 			{
 				route: `${ROUTES.wiki.route}/${ROUTES.wiki.collections.route}`,
@@ -868,6 +874,10 @@ export const router = createBrowserRouter([
 								},
 							},
 						],
+					},
+					{
+						path: ROUTES.wiki.testQuestions.route,
+						element: <WikiTestQuestionsPage />,
 					},
 					{
 						path: ROUTES.wiki.collections.route,
