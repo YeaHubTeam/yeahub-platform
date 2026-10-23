@@ -268,10 +268,52 @@
 				}
 			}
 		},
-		"article": {
+		"articles": {
 			"create": {
 				"success": "Article created successfully",
 				"failed": "Failed to create article"
+			},
+			"edit": {
+				"success": "Article successfully updated",
+				"failed": "Failed to update article",
+				"body": {
+					"empty": "Article body cannot be empty"
+				},
+				"relations": {
+					"required": "At least one relation is required for the article"
+				},
+				"image": {
+					"invalid_format": "Invalid image format",
+					"too_large": "Image file is too large"
+				},
+				"auth": {
+					"unauthorized": "User is not authenticated",
+					"user": {
+						"verified": "Only verified users can access this resource"
+					},
+					"roles": {
+						"admin_or_author_required": "Only admins or authors can perform this action",
+						"author_can_change_only_own": "Authors can modify only their own data"
+					}
+				},
+				"article": {
+					"not_found": "Article not found",
+					"specialization": {
+						"not_found": "Specialization not found"
+					},
+					"skill": {
+						"not_found": "Skill not found"
+					},
+					"question": {
+						"not_found": "Question not found"
+					},
+					"test_question": {
+						"not_found": "Test question not found"
+					},
+					"task": {
+						"not_found": "Task not found"
+					}
+				}
 			}
 		},
 		"tasks": {
