@@ -437,6 +437,8 @@ export enum Translation {
 	TOAST_FEATURE_FLAG_UPDATE_SINGLE_ALREADY_EXISTS = 'toast.featureFlags.update.single.already_exists',
 	TOAST_ARTICLE_CREATE_SUCCESS = 'toast.article.create.success',
 	TOAST_ARTICLE_CREATE_FAILED = 'toast.article.create.failed',
+	TOAST_ARTICLE_DELETE_SUCCESS = 'toast.article.delete.success',
+	TOAST_ARTICLE_DELETE_FAILED = 'toast.article.delete.failed',
 
 	/* Live Coding */
 	TASKS_TITLE = 'tasks.title',

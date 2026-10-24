@@ -272,6 +272,10 @@
 			"create": {
 				"success": "Article created successfully",
 				"failed": "Failed to create article"
+			},
+			"delete": {
+				"success": "Article deleted successfully.",
+				"failed": "Failed to delete article."
 			}
 		},
 		"tasks": {
