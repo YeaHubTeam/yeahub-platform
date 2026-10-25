@@ -63,11 +63,11 @@ export interface GetArticlesListParamsRequest {
 	limit?: number;
 	search?: string;
 	status?: string;
-	specializations?: number | number[];
-	topics?: string | string[];
-	contentType?: string;
-	format?: string;
-	skills?: number | number[];
+	specializations?: number[];
+	topics?: ArticleTopics[];
+	contentType?: ArticleContentType;
+	format?: ArticleFormat;
+	skills?: number[];
 	moderationStatus?: string;
 	origin?: string;
 }
