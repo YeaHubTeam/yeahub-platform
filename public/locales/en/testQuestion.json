@@ -17,6 +17,7 @@
 		"title": "Create test"
 	},
 	"title": {
+		"short": "Tests list",
 		"label": "Test question",
 		"description": "Enter the test question",
 		"placeholder": "Enter the test question"
@@ -53,5 +54,15 @@
 	"skills": {
 		"label": "Skills",
 		"description": "Select test skills"
+	},
+	"stub": {
+		"empty": {
+			"testQuestions": {
+				"public": {
+					"title": "No tests found yet",
+					"subtitle": "Tests are added periodically, just wait a bit"
+				}
+			}
+		}
 	}
 }

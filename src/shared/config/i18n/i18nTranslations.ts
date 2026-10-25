@@ -114,6 +114,8 @@ export enum Translation {
 	CRUMBS_INTERVIEW_STATISTIC = 'crumbs.interview.statistic',
 	CRUMBS_QUESTIONS_LIST = 'crumbs.questions.list',
 	CRUMBS_QUESTION_DETAIL = 'crumbs.question.detail',
+	CRUMBS_TEST_LIST = 'crumbs.testQuestion.list',
+	CRUMBS_TEST_DETAIL = 'crumbs.testQuestion.detail',
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
 	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
@@ -1066,6 +1068,7 @@ export enum TestQuestions {
 	TABLE_AUTHOR = 'table.author',
 	TABLE_CREATED_AT = 'table.created.at',
 	CREATE_TITLE = 'create.title',
+	TITLE_SHORT = 'title.short',
 	TITLE_LABEL = 'title.label',
 	TITLE_DESCRIPTION = 'title.description',
 	TITLE_PLACEHOLDER = 'title.placeholder',
@@ -1086,6 +1089,8 @@ export enum TestQuestions {
 	SPECIALIZATIONS_DESCRIPTION = 'specializations.description',
 	SKILLS_LABEL = 'skills.label',
 	SKILLS_DESCRIPTION = 'skills.description',
+	STUB_EMPTY_TEST_QUESTIONS_PUBLIC_TITLE = 'stub.empty.testQuestions.public.title',
+	STUB_EMPTY_TEST_QUESTIONS_PUBLIC_SUBTITLE = 'stub.empty.testQuestions.public.subtitle',
 }
 
 export enum InterviewHistory {

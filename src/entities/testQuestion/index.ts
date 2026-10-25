@@ -1,4 +1,8 @@
-export { useGetTestQuestionsListQuery } from './api/testQuestionApi';
+export {
+	useGetTestQuestionsListQuery,
+	useGetTestQuestionsPublicListQuery,
+	useGetTestQuestionKeywordsQuery,
+} from './api/testQuestionApi';
 
 export type {
 	TestQuestion,
@@ -7,4 +11,5 @@ export type {
 } from './model/types/testQuestion';
 
 export { TestQuestionForm } from './ui/TestQuestionForm/TestQuestionForm';
-export { useGetTestQuestionKeywordsQuery } from './api/testQuestionApi';
+
+export { getTestQuestionRoute } from './lib/getTestQuestionRoute';

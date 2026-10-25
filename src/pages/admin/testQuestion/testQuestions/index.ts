@@ -1,1 +1,1 @@
-export { TestQuestionsPage } from './ui/TestQuestionsPage/TestQuestionsPage.lazy';
+export { TestQuestionsTablePage } from './ui/TestQuestionsTablePage/TestQuestionsTablePage.lazy';

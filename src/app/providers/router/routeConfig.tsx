@@ -74,7 +74,7 @@ import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
 import { TestQuestionCreatePage } from '@/pages/admin/testQuestion/testQuestionCreate';
-import { TestQuestionsPage } from '@/pages/admin/testQuestion/testQuestions';
+import { TestQuestionsTablePage } from '@/pages/admin/testQuestion/testQuestions';
 import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
 import { TopicEditPage } from '@/pages/admin/topic/topicEdit';
@@ -120,6 +120,7 @@ import { RequestResourceCreatePage } from '@/pages/wiki/resource/requestResource
 import { RequestResourceEditPage } from '@/pages/wiki/resource/requestResourceEdit';
 import { RequestInfoPage } from '@/pages/wiki/resource/resourceRequestDetail';
 import { ResourcesPage } from '@/pages/wiki/resource/resources';
+import { TestQuestionsPage } from '@/pages/wiki/test-questions/test-questions';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';
 import { MainLayout } from '@/app/layouts/MainLayout';
@@ -202,6 +203,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 			{
 				route: `${ROUTES.wiki.route}/${ROUTES.wiki.questions.route}`,
 				title: i18n.t(Translation.SIDEBAR_MENU_QUESTIONS),
+				icon: QuestionsIcon,
+			},
+			{
+				route: `${ROUTES.wiki.route}/${ROUTES.wiki.testQuestions.route}`,
+				title: i18n.t(Translation.SIDEBAR_MENU_TESTS),
 				icon: QuestionsIcon,
 			},
 			{
@@ -460,7 +466,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.admin.testQuestions.route,
-				element: <TestQuestionsPage />,
+				element: <TestQuestionsTablePage />,
 			},
 			{
 				path: ROUTES.admin.users.route,
@@ -866,6 +872,19 @@ export const router = createBrowserRouter([
 								handle: {
 									crumb: Translation.CRUMBS_QUESTION_DETAIL,
 								},
+							},
+						],
+					},
+					{
+						path: ROUTES.wiki.testQuestions.route,
+						element: <Outlet />,
+						handle: {
+							crumb: Translation.CRUMBS_TEST_LIST,
+						},
+						children: [
+							{
+								index: true,
+								element: <TestQuestionsPage />,
 							},
 						],
 					},

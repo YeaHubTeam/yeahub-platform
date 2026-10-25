@@ -9,7 +9,7 @@ import { PageWrapper } from '@/widgets/PageWrapper';
 
 import { TestQuestionsTable } from '../TestQuestionsTable/TestQuestionsTable';
 
-export const TestQuestionsPage = () => {
+export const TestQuestionsTablePage = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const pageParam = Number(searchParams.get('page') ?? 1);
@@ -55,4 +55,4 @@ export const TestQuestionsPage = () => {
 	);
 };
 
-export default TestQuestionsPage;
+export default TestQuestionsTablePage;

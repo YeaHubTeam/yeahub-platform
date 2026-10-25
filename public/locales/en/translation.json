@@ -202,6 +202,8 @@
 		"interview.statistic": "Interview statistics",
 		"questions.list": "List of questions",
 		"question.detail": "More details",
+		"testQuestion.list": "List of tests",
+		"testQuestion.detail": "More details",
 		"collections.list": "Collections",
 		"collection.detail": "Question List",
 		"quiz": "Interview",

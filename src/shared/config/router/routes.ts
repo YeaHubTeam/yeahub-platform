@@ -350,6 +350,14 @@ export const ROUTES = {
 				page: '/wiki/questions/:questionId',
 			},
 		},
+		testQuestions: {
+			route: 'test-questions',
+			page: '/wiki/test-questions',
+			detail: {
+				route: ':testQuestionId',
+				page: '/wiki/test-questions/:testQuestionId',
+			},
+		},
 		collections: {
 			route: 'collections',
 			page: '/wiki/collections',

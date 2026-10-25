@@ -22,6 +22,21 @@ const testQuestionApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.TEST_QUESTIONS],
 		}),
+		getTestQuestionsPublicList: build.query<
+			GetTestQuestionsResponse,
+			GetTestQuestionsParamsRequest
+		>({
+			query: (params) => ({
+				url: testQuestionApiUrls.getTestQuestionsPublicList,
+				params: {
+					page: 1,
+					limit: 10,
+					order: 'ASC',
+					...params,
+				},
+			}),
+			providesTags: [ApiTags.TEST_QUESTIONS],
+		}),
 		getTestQuestionKeywords: build.query<
 			GetTestQuestionKeywordsResponse,
 			GetTestQuestionKeywordsParamsRequest
@@ -35,4 +50,8 @@ const testQuestionApi = baseApi.injectEndpoints({
 	}),
 });
 
-export const { useGetTestQuestionsListQuery, useGetTestQuestionKeywordsQuery } = testQuestionApi;
+export const {
+	useGetTestQuestionsListQuery,
+	useGetTestQuestionsPublicListQuery,
+	useGetTestQuestionKeywordsQuery,
+} = testQuestionApi;

@@ -27,10 +27,29 @@ export interface TestQuestion {
 	questionSkills: Skill[];
 }
 
+type SkillFilterMode = 'ALL' | 'ANY';
+
+type OrderBy = 'createdAt' | 'title' | 'rate' | 'complexity' | 'createdById';
+
 export interface GetTestQuestionsParamsRequest {
 	page?: number;
 	limit?: number;
+	title?: string;
+	titleOrDescription?: string;
+	skills?: number[];
+	skillFilterMode?: SkillFilterMode;
+	complexity?: number[];
+	rate?: number[];
+	keywords?: string[];
+	collection?: number;
+	specializationId?: number;
+	specializationSlug?: string;
+	article?: number;
+	createdAtFrom?: string;
+	createdAtTo?: string;
 	order?: SortOrder;
+	orderBy?: OrderBy;
+	random?: boolean;
 }
 
 export type GetTestQuestionsResponse = Response<TestQuestion[]>;
