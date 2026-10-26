@@ -379,6 +379,10 @@ export const ROUTES = {
 			},
 		},
 	},
+	articles: {
+		route: 'articles/:articleId',
+		page: '/articles/:articleId',
+	},
 	public: {
 		docs: {
 			page: `${process.env.LANDING_URL}docs`,

@@ -89,6 +89,7 @@ import { PopularSkillsPage } from '@/pages/analytics/popularSkills';
 import { ProgressSpecializationsPage } from '@/pages/analytics/progressSpecializations';
 import { SkillsProficiencyPage } from '@/pages/analytics/skillsProficiency';
 import { UsersRatingPage } from '@/pages/analytics/usersRating';
+import { ArticleDetailPage } from '@/pages/article/articleDetail';
 import { ForgotPasswordPage } from '@/pages/auth/forgotPassword';
 import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
@@ -910,6 +911,10 @@ export const router = createBrowserRouter([
 						},
 					},
 				],
+			},
+			{
+				path: ROUTES.articles.route,
+				element: <ArticleDetailPage />,
 			},
 			{
 				path: ROUTES.users.route,

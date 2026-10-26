@@ -73,3 +73,9 @@ export interface GetArticlesListParamsRequest {
 }
 
 export type GetArticlesListResponse = Response<Article[]>;
+
+export type GetArticleByIdParamsRequest = {
+	articleId: string;
+};
+
+export type GetArticleIdResponse = Article;
