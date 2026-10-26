@@ -11,6 +11,7 @@ export const companyCreateSchema: yup.ObjectSchema<CreateCompanyFormValues> = yu
 	description: yup.string().optional(),
 	imageSrc: yup.string().optional(),
 	companyImage: yup.string().optional(),
+	companyImagePreview: yup.string().strip(),
 	inn: yup.string().optional(),
 	kpp: yup.string().optional(),
 	createdBy: yup.mixed().strip(true).optional(),
