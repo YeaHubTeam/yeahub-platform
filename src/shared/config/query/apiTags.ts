@@ -1,4 +1,5 @@
 export enum ApiTags {
+	ARTICLES = 'articles',
 	PROFILE_DETAIL = 'profile_detail',
 	PROFILE = 'profile',
 	QUESTION_DETAIL = 'question_detail',

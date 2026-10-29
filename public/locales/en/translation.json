@@ -71,6 +71,7 @@
 			"tests": "Tests",
 			"featureFlags": "Feature flags",
 			"skills": "Skills",
+			"articles": "Articles",
 			"companies": "Companies",
 			"vacancies": "Vacancies",
 			"analytics": "Analytics",
@@ -265,6 +266,12 @@
 						"user.not.found": "User not found."
 					}
 				}
+			}
+		},
+		"article": {
+			"create": {
+				"success": "Article created successfully",
+				"failed": "Failed to create article"
 			}
 		},
 		"tasks": {

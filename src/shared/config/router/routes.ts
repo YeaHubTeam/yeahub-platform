@@ -54,6 +54,22 @@ export const ROUTES = {
 				page: '/admin/skills/:skillId',
 			},
 		},
+		articles: {
+			route: 'articles',
+			page: '/admin/articles',
+			create: {
+				route: 'create',
+				page: '/admin/articles/create',
+			},
+			details: {
+				route: ':articleId',
+				page: '/admin/articles/:articleId',
+			},
+			edit: {
+				route: ':articleId/edit',
+				page: '/admin/articles/:articleId/edit',
+			},
+		},
 		users: {
 			route: 'users',
 			page: '/admin/users',
