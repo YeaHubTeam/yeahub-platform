@@ -1,0 +1,21 @@
+.content-column {
+    width: 100%;
+    max-width: 740px;
+}
+
+.cover-image {
+    aspect-ratio: 16 / 9;
+    width: 100% !important;
+    height: 360px !important;
+    overflow: hidden;
+    border-radius: 16px !important;
+}
+
+.article-content {
+    font-family: var(--font-family);
+}
+
+.right-panel{
+    width: 100%;
+    max-width: 360px;  
+}
