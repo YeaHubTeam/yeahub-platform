@@ -1,5 +1,7 @@
 {
 	"create.page.title": "Create article",
+	"edit.page.title": "Editing article",
+
 	"title": {
 		"main": "Article",
 		"short": "Title",
@@ -98,6 +100,11 @@
 				"title": "No articles found yet",
 				"subtitle": "Articles are added periodically, just wait a bit"
 			}
+		},
+		"edit.access": {
+			"title": "No access to edit the article",
+			"subtitle": "You are not the creator of this article, so editing is not available",
+			"submit": "Return to the articles table"
 		}
 	},
 	"status": {
@@ -106,5 +113,5 @@
 		"basics": "Basics",
 		"advanced": "Advanced"
 	},
-	"icon.title-sort": "Картинка"
+	"icon.title-short": "Image"
 }

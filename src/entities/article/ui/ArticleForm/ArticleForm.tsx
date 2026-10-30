@@ -22,7 +22,11 @@ import { ArticleTopicSelect } from '../ArticleTopicSelect/ArticleTopicSelect';
 
 import styles from './ArticleForm.module.css';
 
-export const ArticleForm = () => {
+export interface ArticleFormProps {
+	isEdit?: boolean;
+}
+
+export const ArticleForm = ({ isEdit }: ArticleFormProps) => {
 	const { t } = useTranslation([i18Namespace.article, i18Namespace.translation]);
 
 	const { control, watch } = useFormContext();
@@ -40,7 +44,7 @@ export const ArticleForm = () => {
 	return (
 		<>
 			<Text variant="body5-strong" className={styles['main-title']}>
-				{t(Articles.CREATE_PAGE_TITLE)}
+				{isEdit ? t(Articles.EDIT_PAGE_TITLE) : t(Articles.CREATE_PAGE_TITLE)}
 			</Text>
 
 			<Flex direction="column" gap="40">
@@ -110,13 +114,11 @@ export const ArticleForm = () => {
 						<FormField label={t(Articles.SKILLS_TITLE)} description={t(Articles.SKILLS_LABEL)}>
 							<FormControl className={styles.field} name="skills" control={control}>
 								{({ onChange, value }) => (
-									<div className={styles.select}>
-										<SkillSelect
-											onChange={onChange}
-											value={value}
-											selectedSpecializations={selectedSpecializations}
-										/>
-									</div>
+									<SkillSelect
+										onChange={onChange}
+										value={value}
+										selectedSpecializations={selectedSpecializations}
+									/>
 								)}
 							</FormControl>
 						</FormField>
