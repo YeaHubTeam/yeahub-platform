@@ -330,6 +330,10 @@ export const ROUTES = {
 			page: '/interview/new',
 		},
 	},
+	testing: {
+		route: 'testing',
+		page: '/testing',
+	},
 	test: {
 		route: 'test',
 		page: '/test',
