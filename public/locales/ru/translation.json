@@ -196,6 +196,7 @@
 		"no.uppercase": "Только строчные буквы"
 	},
 	"crumbs": {
+		"articles.list": "Статьи",
 		"profile": "Профиль",
 		"profile.editing": "Редактирование профиля",
 		"interview": "Обучение",

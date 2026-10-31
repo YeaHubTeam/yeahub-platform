@@ -112,6 +112,7 @@ import { UserProfilePage } from '@/pages/profile/userProfile';
 import { TaskPage } from '@/pages/tasks/task';
 import { TasksPage } from '@/pages/tasks/tasks';
 import { CreateTestPage } from '@/pages/test/createTest';
+import { ArticlesPage } from '@/pages/wiki/article/articles';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -209,6 +210,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				route: `${ROUTES.wiki.route}/${ROUTES.wiki.collections.route}`,
 				title: i18n.t(Translation.SIDEBAR_MENU_COLLECTIONS),
 				icon: Collection,
+			},
+			{
+				route: ROUTES.articles.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_ARTICLES),
+				icon: ArticlesIcon,
 			},
 		],
 		roles: allRoles,
@@ -627,6 +633,22 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <MainPage />,
+			},
+			{
+				element: <Outlet />,
+				handle: {
+					crumb: Translation.CRUMBS_WIKI,
+					crumbPath: ROUTES.wiki.page,
+				},
+				children: [
+					{
+						path: ROUTES.articles.route,
+						element: <ArticlesPage />,
+						handle: {
+							crumb: Translation.CRUMBS_ARTICLES_LIST,
+						},
+					},
+				],
 			},
 			{
 				path: ROUTES.career.route,
