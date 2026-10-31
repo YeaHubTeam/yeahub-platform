@@ -77,6 +77,26 @@ describe('Breadcrumbs', () => {
 		expect(screen.getByText('Profile')).toBeInTheDocument();
 	});
 
+	test('should link a pathless parent to its explicit breadcrumb path', () => {
+		mockUseMatches.mockReturnValue([
+			{
+				handle: { crumb: 'Knowledge base', crumbPath: '/wiki' },
+				pathname: '/',
+			},
+			{
+				handle: { crumb: 'Articles' },
+				pathname: '/articles',
+			},
+		]);
+		mockUseLocation.mockReturnValue({ pathname: '/articles' });
+
+		renderComponent(<Breadcrumbs />);
+
+		expect(screen.getByRole('link', { name: 'Knowledge base' })).toHaveAttribute('href', '/wiki');
+		expect(screen.getByText('Articles').tagName).toBe('SPAN');
+		expect(screen.queryByRole('link', { name: 'Articles' })).not.toBeInTheDocument();
+	});
+
 	test('should render separator icon between crumbs on desktop', () => {
 		mockUseMatches.mockReturnValue([
 			{

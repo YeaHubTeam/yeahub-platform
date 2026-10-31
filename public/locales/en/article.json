@@ -1,4 +1,7 @@
 {
+	"articles.title": "Articles",
+	"reading-time": "{{count}} min read",
+	"image.alt": "Cover for “{{title}}”",
 	"create.page.title": "Create article",
 	"title": {
 		"main": "Article",

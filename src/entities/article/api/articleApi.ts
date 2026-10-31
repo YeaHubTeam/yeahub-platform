@@ -1,7 +1,12 @@
 import { ApiTags, baseApi } from '@/shared/config';
 
 import { articleApiUrls } from '../model/constants/article';
-import { GetArticlesListParamsRequest, GetArticlesListResponse } from '../model/types/article';
+import {
+	GetArticlesListParamsRequest,
+	GetArticlesListResponse,
+	GetPublicArticlesListParamsRequest,
+	GetPublicArticlesListResponse,
+} from '../model/types/article';
 
 const articleApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -12,7 +17,18 @@ const articleApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.ARTICLES],
 		}),
+
+		getPublicArticlesList: build.query<
+			GetPublicArticlesListResponse,
+			GetPublicArticlesListParamsRequest
+		>({
+			query: (params) => ({
+				url: articleApiUrls.getPublicArticlesList,
+				params: { page: 1, limit: 10, ...params },
+			}),
+			providesTags: [ApiTags.ARTICLES],
+		}),
 	}),
 });
 
-export const { useGetArticlesListQuery } = articleApi;
+export const { useGetArticlesListQuery, useGetPublicArticlesListQuery } = articleApi;
