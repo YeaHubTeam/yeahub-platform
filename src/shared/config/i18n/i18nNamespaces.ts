@@ -30,6 +30,7 @@ export const i18Namespace = {
 	topic: 'topic',
 	task: 'task',
 	testQuestion: 'testQuestion',
+	testCreate: 'testCreate',
 	programmingLanguage: 'programmingLanguage',
 	featureFlags: 'featureFlags',
 	vacancies: 'vacancies',
