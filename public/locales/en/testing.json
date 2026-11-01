@@ -1,0 +1,12 @@
+{
+  "title": "Testing",
+  "preview": {
+    "title": "Testing preparation"
+  },
+  "continue": {
+    "test": "Continue test"
+  },
+  "create": {
+    "test": "Generate test"
+  }
+}

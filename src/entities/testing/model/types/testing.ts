@@ -1,23 +1,27 @@
 import type { Response } from '@/shared/libs';
 
-import { Question } from '../../@x/question';
-
 export interface TestingAnswer {
 	questionId: number;
 	questionTitle: string;
-	answer: 'KNOWN' | 'UNKNOWN';
+	answer: unknown[];
 }
 
 export interface ActiveTest {
 	id: string;
 	profileId: string;
-	quizNumber: number;
+	testNumber: number;
 	fullCount: number;
 	skills: string[];
 	response: {
 		answers: TestingAnswer[];
-		questions: Question[];
 	};
+	questions: ActiveTestQuestion[];
+}
+
+export interface ActiveTestQuestion {
+	id: number;
+	title: string;
+	imageSrc: string | null;
 }
 
 export type GetActiveTestResponse = Response<ActiveTest[]>;

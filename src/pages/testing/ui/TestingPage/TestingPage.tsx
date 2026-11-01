@@ -1,9 +1,12 @@
 import { useAppSelector } from '@/shared/libs';
+import { Flex } from '@/shared/ui/Flex';
 
 import { getProfiles } from '@/entities/profile';
 import { useGetActiveTestQuery } from '@/entities/testing';
 
-const TestingPage = () => {
+import { TestingPreparation } from '@/widgets/testing/TestingPreparation';
+
+export const TestingPage = () => {
 	const profiles = useAppSelector(getProfiles);
 	const activeProfile = profiles?.find((profile) => profile.isActive);
 	const profileId = activeProfile?.id ?? '';
@@ -13,9 +16,16 @@ const TestingPage = () => {
 		{ skip: !profileId },
 	);
 
-	console.log({ data, isLoading, isError });
+	if (isLoading) {
+		return null;
+	}
+	if (isError) {
+		return null;
+	}
 
-	return <div>Testing</div>;
+	return (
+		<Flex wrap="wrap" justify="between" gap="20">
+			<TestingPreparation activeTest={data} />
+		</Flex>
+	);
 };
-
-export default TestingPage;

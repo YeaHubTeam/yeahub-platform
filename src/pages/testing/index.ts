@@ -1,1 +1,1 @@
-export { default as TestingPage } from './ui/TestingPage/TestingPage';
+export { TestingPage } from './ui/TestingPage/TestingPage';
