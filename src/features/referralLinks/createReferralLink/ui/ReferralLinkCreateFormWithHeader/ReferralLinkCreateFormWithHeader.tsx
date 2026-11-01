@@ -5,6 +5,7 @@ import { i18Namespace, Translation } from '@/shared/config';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 
 import { useCreateReferralLinkMutation } from '../../api/createReferralLinkApi';
 import { CreateRefferalLinkFormValues } from '../../model/types/refferalLinkCreateTypes';
@@ -12,14 +13,25 @@ import { ReferralLinkCreateFormCard } from '../ReferralLinkCreateFormCard/Referr
 
 import styles from './ReferralLinkCreateFormWithHeader.module.css';
 
-export const ReferralLinkCreateFormWithHeader = () => {
+interface ReferralLinkCreateFormWithHeaderProps {
+	onSuccess: () => void;
+}
+
+export const ReferralLinkCreateFormWithHeader = ({
+	onSuccess,
+}: ReferralLinkCreateFormWithHeaderProps) => {
 	const [createReferralLinkMutation, { isLoading }] = useCreateReferralLinkMutation();
 
 	const { handleSubmit } = useFormContext<CreateRefferalLinkFormValues>();
 	const { t } = useTranslation(i18Namespace.marketplace);
 
-	const onCreateReferralLink = (data: CreateRefferalLinkFormValues) => {
-		createReferralLinkMutation({ ...data }).unwrap();
+	const onCreateReferralLink = async (data: CreateRefferalLinkFormValues) => {
+		try {
+			await createReferralLinkMutation({ ...data }).unwrap();
+			onSuccess();
+		} catch {
+			return;
+		}
 	};
 
 	return (
@@ -28,6 +40,7 @@ export const ReferralLinkCreateFormWithHeader = () => {
 				<BackButton />
 			</div>
 			<Flex gap="20" align="center" className={styles.buttons}>
+				<FormCancelButton disabled={isLoading} />
 				<Button
 					disabled={isLoading}
 					className={styles['submit-button']}
