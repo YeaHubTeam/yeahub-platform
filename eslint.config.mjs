@@ -1,13 +1,18 @@
 import js from '@eslint/js';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import { defineConfig } from 'eslint/config';
 import importX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import storybook from 'eslint-plugin-storybook';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import { defineConfig } from 'eslint/config';
+
+// eslint-disable-next-line import/no-internal-modules
+import propsNaming from './eslint/props-naming/rule.mjs';
+// eslint-disable-next-line import/no-internal-modules
+import relativeModuleImports from './eslint/relative-module-imports/rule.mjs';
 
 /**
  * FSD eslint plugins (`@feature-sliced/eslint-config`, `@conarti/eslint-plugin-feature-sliced`)
@@ -37,6 +42,12 @@ export default defineConfig(
 	{
 		plugins: {
 			import: importX,
+			yeahub: {
+				rules: {
+					'props-naming': propsNaming,
+					'relative-module-imports': relativeModuleImports,
+				},
+			},
 		},
 		languageOptions: {
 			parser: tseslint.parser,
@@ -142,6 +153,8 @@ export default defineConfig(
 			'react-hooks/error-boundaries': 'warn',
 			'react-hooks/globals': 'warn',
 			'react-hooks/use-memo': 'warn',
+			'yeahub/props-naming': 'warn',
+			'yeahub/relative-module-imports': 'warn',
 		},
 	},
 	...storybook.configs['flat/recommended'],
