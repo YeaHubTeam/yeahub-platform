@@ -22,6 +22,7 @@ export interface LearnQuestionButtonProps {
 	checksCount: number;
 	placementTooltip?: Placement;
 	offsetTooltip?: number;
+	isDisabled?: boolean;
 }
 
 export const LearnQuestionButton = ({
@@ -31,6 +32,7 @@ export const LearnQuestionButton = ({
 	checksCount,
 	placementTooltip = 'top',
 	offsetTooltip = 10,
+	isDisabled = false,
 }: LearnQuestionButtonProps) => {
 	const profileId = useAppSelector(getProfileId);
 	const isEmailVerified = useAppSelector(getIsVerified);
@@ -55,7 +57,8 @@ export const LearnQuestionButton = ({
 
 	const iconSize = isPopover ? 20 : 24;
 	const shouldShowTooltip = !isEmailVerified || !hasPremium || hasQuestionMaxProgress;
-	const isButtonDisabled = isLoading || !isEmailVerified || hasQuestionMaxProgress || !hasPremium;
+	const isButtonDisabled =
+		isDisabled || isLoading || !isEmailVerified || hasQuestionMaxProgress || !hasPremium;
 
 	return (
 		<Tooltip
