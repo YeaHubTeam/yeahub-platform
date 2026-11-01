@@ -62,8 +62,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 119,
@@ -126,8 +124,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 123,
@@ -188,8 +184,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 126,
@@ -250,8 +244,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 82,
@@ -299,8 +291,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 83,
@@ -348,8 +338,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 84,
@@ -397,8 +385,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 85,
@@ -446,8 +432,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 86,
@@ -495,8 +479,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 87,
@@ -544,8 +526,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 129,
@@ -609,8 +589,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 130,
@@ -674,8 +652,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 131,
@@ -736,8 +712,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 134,
@@ -798,8 +772,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 136,
@@ -860,8 +832,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 137,
@@ -922,8 +892,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 138,
@@ -984,8 +952,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 139,
@@ -1046,8 +1012,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 140,
@@ -1108,8 +1072,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 144,
@@ -1181,8 +1143,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 153,
@@ -1231,8 +1191,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 154,
@@ -1281,8 +1239,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 155,
@@ -1334,8 +1290,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 156,
@@ -1384,8 +1338,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 157,
@@ -1435,8 +1387,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 158,
@@ -1485,8 +1435,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 159,
@@ -1535,8 +1483,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 160,
@@ -1585,8 +1531,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 161,
@@ -1635,8 +1579,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 		{
 			id: 162,
@@ -1685,8 +1627,6 @@ export const questionsMock: Response<Question[]> = {
 					createdBy: author,
 				},
 			],
-			checksCount: 0,
-			isLearned: false,
 		},
 	],
 	page: 1,
