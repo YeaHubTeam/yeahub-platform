@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider, useForm } from 'react-hook-form';
+import { type DefaultValues, FormProvider, useForm } from 'react-hook-form';
 
+import { useFormPersist } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -13,20 +14,37 @@ import { SkillCreateFormHeader } from '../SkillCreateFormHeader/SkillCreateFormH
 
 import styles from './SkillCreateForm.module.css';
 
+const defaultValues: DefaultValues<CreateSkillFormValues> = {
+	title: '',
+	specializations: [],
+	description: '',
+};
+
 export const SkillCreateForm = () => {
 	const skillMethods = useForm<CreateSkillFormValues>({
 		resolver: yupResolver(skillCreateSchema),
 		mode: 'onTouched',
+		defaultValues,
 	});
 
-	const { isDirty, isSubmitting, isSubmitted } = skillMethods.formState;
+	const {
+		formState: { isDirty, isSubmitted, isSubmitting },
+		reset,
+		watch,
+	} = skillMethods;
+
+	const { clearFormDraft } = useFormPersist<CreateSkillFormValues>({
+		watch,
+		reset,
+		defaultValues,
+	});
 
 	return (
 		<>
 			<FormProvider {...skillMethods}>
 				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 					<Flex componentType="main" direction="column" gap="24">
-						<SkillCreateFormHeader />
+						<SkillCreateFormHeader onSuccess={clearFormDraft} />
 						<Card className={styles.content}>
 							<SkillForm />
 						</Card>

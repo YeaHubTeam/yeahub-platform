@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { useState } from 'react';
 
 import { specializationsMock } from '../../api/__mocks__/data';
 
@@ -213,7 +214,21 @@ describe('SpecializationSelect component', () => {
 	});
 
 	test('correctly removes the last specialization', async () => {
-		render(<SpecializationSelect value={[1]} onChange={onChangeMock} hasMultiple={true} />);
+		const TestWrapper = () => {
+			const [value, setValue] = useState<number[]>([1]);
+			return (
+				<SpecializationSelect
+					value={value}
+					onChange={(newValue) => {
+						onChangeMock(newValue);
+						setValue(newValue);
+					}}
+					hasMultiple
+				/>
+			);
+		};
+		render(<TestWrapper />);
+
 		const chipToDelete = screen.getByTestId('chip');
 		const deleteButton = chipToDelete.querySelector('.chip-delete-icon');
 
