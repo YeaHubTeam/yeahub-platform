@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Tasks } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputRadioGroup } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
-import { Radio } from '@/shared/ui/Radio';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextEditor } from '@/shared/ui/TextEditor';
@@ -61,27 +61,17 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 						)}
 					</FormControl>
 				</FormField>
-				<FormField
+				<FormInputRadioGroup
+					name="subscriptionLevel"
+					control={control}
 					description={t(Tasks.SUBSCRIPTION_LEVEL_SUBTITLE)}
 					label={t(Tasks.SUBSCRIPTION_LEVEL_TITLE)}
-				>
-					<FormControl className={styles.select} name="subscriptionLevel" control={control}>
-						{({ onChange, value }) => (
-							<Flex gap="60">
-								<Radio
-									label={t(Tasks.SUBSCRIPTION_LEVEL_FREE)}
-									checked={value === 'free'}
-									onChange={() => onChange('free')}
-								/>
-								<Radio
-									label={t(Tasks.SUBSCRIPTION_LEVEL_PREMIUM)}
-									checked={value === 'premium'}
-									onChange={() => onChange('premium')}
-								/>
-							</Flex>
-						)}
-					</FormControl>
-				</FormField>
+					className={styles.select}
+					options={[
+						{ label: t(Tasks.SUBSCRIPTION_LEVEL_FREE), value: 'free' },
+						{ label: t(Tasks.SUBSCRIPTION_LEVEL_PREMIUM), value: 'premium' },
+					]}
+				/>
 				<FormField
 					description={t(Tasks.DESCRIPTION_SUBTITLE)}
 					label={t(Tasks.DIFFICULTY_TITLE_SHORT)}

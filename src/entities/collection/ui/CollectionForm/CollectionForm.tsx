@@ -1,15 +1,15 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Collections } from '@/shared/config';
+import { Collections, i18Namespace } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputRadioGroup } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { KeywordSelect } from '@/shared/ui/KeywordSelect';
-import { Radio } from '@/shared/ui/Radio';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
@@ -33,10 +33,9 @@ export interface CollectionFormProps {
 
 export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: CollectionFormProps) => {
 	const { t } = useTranslation([i18Namespace.collection]);
-	const { control, watch, setValue } = useFormContext();
+	const { control, watch } = useFormContext();
 
 	const collectionId = watch('id');
-	const isFree = watch('isFree', true);
 	const specializations = watch('specializations');
 
 	const { previewImg, changeImage, removeImage } = useCollectionImage();
@@ -94,22 +93,24 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 					/>
 				</FormField>
 
-				<FormField label={t(Collections.TARIFF_CHOOSE)} description={t(Collections.TARIFF_LABEL)}>
-					<Flex gap="60">
-						<Radio
-							label={t(Collections.TARIFF_PAID)}
-							labelClassName={styles['paid-label']}
-							checked={!isFree}
-							onChange={() => setValue('isFree', false)}
-						/>
-						<Radio
-							label={t(Collections.TARIFF_FREE)}
-							labelClassName={styles['paid-label']}
-							checked={isFree}
-							onChange={() => setValue('isFree', true)}
-						/>
-					</Flex>
-				</FormField>
+				<FormInputRadioGroup
+					name="isFree"
+					control={control}
+					label={t(Collections.TARIFF_CHOOSE)}
+					description={t(Collections.TARIFF_LABEL)}
+					options={[
+						{
+							label: t(Collections.TARIFF_PAID),
+							value: false,
+							labelClassName: styles['paid-label'],
+						},
+						{
+							label: t(Collections.TARIFF_FREE),
+							value: true,
+							labelClassName: styles['paid-label'],
+						},
+					]}
+				/>
 
 				<FormField
 					label={t(Collections.SPECIALIZATION_TITLE)}
