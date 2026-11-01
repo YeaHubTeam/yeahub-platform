@@ -10,10 +10,10 @@ import { Input } from '@/shared/ui/Input';
 import { TablePagination } from '@/shared/ui/TablePagination';
 import { Text } from '@/shared/ui/Text';
 
-import { TaskData } from '../..';
 import { useGetTasksListQuery } from '../../api/taskApi';
+import { TaskData } from '../../model/types/task';
 
-import styles from './ChooseTasksDrawer.module.css';
+import styles from './TasksSearchList.module.css';
 
 const COLLECTION_TASKS_LIMIT = 10;
 
@@ -46,11 +46,11 @@ export const TasksSearchList = ({
 		setTaskSearch(e.target.value);
 	};
 
-	const handleTaskClick = (question: { title: string; id: string }, isActive: boolean) => {
+	const handleTaskClick = (task: { title: string; id: string }, isActive: boolean) => {
 		if (isActive) {
-			handleUnselectTask(question.id);
+			handleUnselectTask(task.id);
 		} else {
-			handleSelectTask(question);
+			handleSelectTask(task);
 		}
 	};
 
@@ -88,12 +88,12 @@ export const TasksSearchList = ({
 							<button
 								key={task.id}
 								onClick={() => handleTaskClick({ title: taskName, id: task.id }, isActive)}
-								className={styles['question-button']}
+								className={styles['task-button']}
 							>
 								<Card
 									withOutsideShadow
 									className={classNames(
-										styles['question-card'],
+										styles['task-card'],
 										isActive && styles['task-card-active'],
 									)}
 								>

@@ -1,0 +1,20 @@
+.input {
+  width: 100%;
+}
+
+.task-button {
+  padding: 0;
+  width: 100%;
+  border: none;
+  background-color: inherit;
+  text-align: left;
+}
+
+.task-card {
+  cursor: pointer;
+  padding: 16px;
+}
+
+.task-card-active {
+  background-color: var(--color-purple-300);
+}

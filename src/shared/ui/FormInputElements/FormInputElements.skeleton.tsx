@@ -2,9 +2,9 @@ import { ButtonSkeleton } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 import { TextSkeleton } from '@/shared/ui/Text';
 
-import styles from './ChooseTasksDrawer.module.css';
+import styles from './FormInputElements.module.css';
 
-export const ChooseTasksDrawerSkeleton = () => {
+export const FormInputElementsSkeleton = () => {
 	return (
 		<Flex justify="between">
 			<Flex gap="120">
