@@ -8,6 +8,8 @@ import { TableColumn, TableState, TableV2 } from '@/shared/ui/TableV2';
 
 import { Article, ArticleTopics, ArticleTopicsCell } from '@/entities/article';
 
+import { useDeleteArticleMutation } from '@/features/article/deleteArticle';
+
 import styles from './ArticlesTable.module.css';
 
 const SKILL_SHOW_COUNT = 4;
@@ -33,6 +35,8 @@ interface ArticlesTableProps {
 
 export const ArticlesTable = ({ articles, tableState }: ArticlesTableProps) => {
 	const { t } = useTranslation(i18Namespace.article);
+
+	const [deleteArticle] = useDeleteArticleMutation();
 
 	const tableData: ArticleTableRow[] =
 		articles?.map((article) => ({
@@ -117,7 +121,8 @@ export const ArticlesTable = ({ articles, tableState }: ArticlesTableProps) => {
 		<TableV2
 			data={tableData}
 			columns={columns}
-			actions={['copy']}
+			actions={['copy', 'delete']}
+			onDelete={(id) => deleteArticle(Number(id))}
 			entity="articles"
 			tableState={tableState}
 		/>
