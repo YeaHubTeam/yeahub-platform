@@ -42,21 +42,21 @@
   .preparation-empty {
     padding: 16px;
   }
-	
+
   .preparation-noactiveimage {
     height: 351px;
   }
 }
 
 @media (width <= 768px) {
-  .inactive-description{
+  .inactive-description {
     min-width: auto;
     max-width: none;
   }
 }
 
-@media (width <= 480px) {  
-  .preparation-empty{
+@media (width <= 480px) {
+  .preparation-empty {
     padding: 0;
   }
 }

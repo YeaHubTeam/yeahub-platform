@@ -112,6 +112,7 @@ import { UserProfilePage } from '@/pages/profile/userProfile';
 import { TaskPage } from '@/pages/tasks/task';
 import { TasksPage } from '@/pages/tasks/tasks';
 import { CreateTestPage } from '@/pages/test/createTest';
+import { TestingPage } from '@/pages/testing';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -799,6 +800,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.test.route,
 				element: <CreateTestPage />,
+			},
+			{
+				path: ROUTES.testing.route,
+				element: <TestingPage />,
 			},
 			{
 				path: ROUTES.wiki.route,

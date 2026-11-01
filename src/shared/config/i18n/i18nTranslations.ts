@@ -771,6 +771,13 @@ export enum InterviewQuiz {
 	MODAL_CLONE_QUIZ_CONFIRM_ACTIONS_CANCEL = 'modal.clone.quiz.confirm.cancel',
 }
 
+export enum Testing {
+	TITLE = 'title',
+	PREVIEW_TITLE = 'preview.title',
+	CONTINUE_TEST = 'continue.test',
+	CREATE_TEST = 'create.test',
+}
+
 export enum InterviewQuizCreate {
 	TITLE = 'title',
 	CREATE_BUTTON = 'create.button',

@@ -330,9 +330,17 @@ export const ROUTES = {
 			page: '/interview/new',
 		},
 	},
+	testing: {
+		route: 'testing',
+		page: '/testing',
+	},
 	test: {
 		route: 'test',
 		page: '/test',
+		new: {
+			route: 'new',
+			page: '/test/new',
+		},
 	},
 	tasks: {
 		route: 'tasks',
