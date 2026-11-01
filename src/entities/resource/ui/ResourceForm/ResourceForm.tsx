@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Marketplace } from '@/shared/config';
+import { FeatureFlags, i18Namespace, Marketplace } from '@/shared/config';
 import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputText } from '@/shared/ui/Form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
-import { Input } from '@/shared/ui/Input';
 import { KeywordInput } from '@/shared/ui/KeywordInput';
 import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Text } from '@/shared/ui/Text';
@@ -167,18 +167,14 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 					}}
 				</FormControl>
 			</FormField>
-			<FormField label={t(Marketplace.URL_SHORT)} description={t(Marketplace.URL_LABEL)}>
-				<FormControl name="url" control={control}>
-					{(field, hasError) => (
-						<Input
-							{...field}
-							placeholder={t(Marketplace.URL_PLACEHOLDER)}
-							error={hasError}
-							disabled={readonly}
-						/>
-					)}
-				</FormControl>
-			</FormField>
+			<FormInputText
+				label={t(Marketplace.URL_SHORT)}
+				description={t(Marketplace.URL_LABEL)}
+				name="url"
+				control={control}
+				placeholder={t(FeatureFlags.FORM_FLAG_PLACEHOLDER)}
+				disabled={readonly}
+			/>
 		</Flex>
 	);
 };
