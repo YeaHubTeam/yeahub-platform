@@ -6,6 +6,8 @@ import { FeatureFlagEditForm } from '@/features/featureFlag/editFeatureFlag';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import FeatureFlagEditPageSkeleton from './FeatureFlagEditPage.skeleton';
+
 const FeatureFlagEditPage = () => {
 	const { flagId = '' } = useParams<{ flagId: string }>();
 
@@ -29,6 +31,7 @@ const FeatureFlagEditPage = () => {
 			stubs={stubs}
 			content={content}
 			roles={['admin']}
+			skeleton={<FeatureFlagEditPageSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>

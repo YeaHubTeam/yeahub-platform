@@ -14,6 +14,7 @@ import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 import { CompanyCreatePageSkeleton } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
+import FeatureFlagEditPageSkeleton from '@/pages/admin/featureFlag/featureFlagEdit/ui/FeatureFlagEditPage.skeleton';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
@@ -59,6 +60,7 @@ const SkeletonGenerator = () => {
 		ROUTES.admin.collections.details.page,
 		location.pathname,
 	);
+	const isFeatureFlagEditPage = matchPath(ROUTES.admin.featureFlags.edit.page, location.pathname);
 	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
 	const isAdminTopicsEditPage = matchPath(ROUTES.admin.topics.edit.page, location.pathname);
 
@@ -76,6 +78,10 @@ const SkeletonGenerator = () => {
 
 	if (isCollectionDetailPage) {
 		return <CollectionPageSkeleton />;
+	}
+
+	if (isFeatureFlagEditPage) {
+		return <FeatureFlagEditPageSkeleton />;
 	}
 
 	if (isCompanyDetailsPage) {
