@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormProvider, useForm } from 'react-hook-form';
+import { type DefaultValues, FormProvider, useForm } from 'react-hook-form';
 
+import { useFormPersist } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 import { LeavingPageBlocker } from '@/shared/ui/LeavingPageBlocker';
@@ -13,23 +14,37 @@ import { CompanyCreateFormHeader } from '../CompanyCreateFormHeader/CompanyCreat
 
 import styles from './CompanyCreateForm.module.css';
 
+const defaultValues: DefaultValues<CreateCompanyFormValues> = {
+	title: '',
+	companyImage: '',
+	companyImagePreview: '',
+};
+
 export const CompanyCreateForm = () => {
 	const companyMethods = useForm<CreateCompanyFormValues>({
 		resolver: yupResolver(companyCreateSchema),
 		mode: 'onTouched',
-		defaultValues: {
-			title: '',
-		},
+		defaultValues,
 	});
 
-	const { isDirty, isSubmitting, isSubmitted } = companyMethods.formState;
+	const {
+		formState: { isDirty, isSubmitting, isSubmitted },
+		watch,
+		reset,
+	} = companyMethods;
+
+	const { clearFormDraft } = useFormPersist<CreateCompanyFormValues>({
+		watch,
+		reset,
+		defaultValues,
+	});
 
 	return (
 		<>
 			<FormProvider {...companyMethods}>
 				<LeavingPageBlocker isBlocked={isDirty && !isSubmitted && !isSubmitting}>
 					<Flex componentType="main" direction="column" gap="24">
-						<CompanyCreateFormHeader />
+						<CompanyCreateFormHeader onSuccess={clearFormDraft} />
 						<Card className={styles.content}>
 							<CompanyForm />
 						</Card>
