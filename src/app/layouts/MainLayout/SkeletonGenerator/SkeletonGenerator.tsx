@@ -10,6 +10,7 @@ import { SpecializationCreateFormSkeleton } from '@/features/specialization/crea
 
 import { ArticlesTablePageSkeleton } from '@/pages/admin/article/articles';
 import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
+import { CollectionEditPageSkeleton } from '@/pages/admin/collection/collectionEdit/ui/CollectionEditPage/CollectionEditPage.skeleton';
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
 import { CompanyCreatePageSkeleton } from '@/pages/admin/company/companyCreate';
@@ -59,6 +60,7 @@ const SkeletonGenerator = () => {
 		ROUTES.admin.collections.details.page,
 		location.pathname,
 	);
+	const isCollectionEditPage = matchPath(ROUTES.admin.collections.edit.page, location.pathname);
 	const isUserProfilePage = matchPath(ROUTES.users.page, location.pathname);
 	const isAdminTopicsEditPage = matchPath(ROUTES.admin.topics.edit.page, location.pathname);
 
@@ -76,6 +78,10 @@ const SkeletonGenerator = () => {
 
 	if (isCollectionDetailPage) {
 		return <CollectionPageSkeleton />;
+	}
+
+	if (isCollectionEditPage) {
+		return <CollectionEditPageSkeleton />;
 	}
 
 	if (isCompanyDetailsPage) {
