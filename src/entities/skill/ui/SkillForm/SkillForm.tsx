@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Questions, Skills } from '@/shared/config';
 import { removeBase64Data } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescription } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { ImageLoaderWithoutCropper } from '@/shared/ui/ImageLoaderWithoutCropper';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
-import { TextArea } from '@/shared/ui/TextArea';
 
 import { SpecializationSelect } from '@/entities/specialization/@x/skill';
 
@@ -71,19 +71,13 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 					</FormControl>
 				</FormField>
 
-				<FormField label={t(Skills.DESCRIPTION_FULL)} description={t(Skills.DESCRIPTION_LABEL)}>
-					<FormControl name="description" control={control}>
-						{(field, hasError) => (
-							<TextArea
-								id="description"
-								className={styles.textarea}
-								placeholder={t(Skills.DESCRIPTION_PLACEHOLDER)}
-								state={hasError ? 'error' : 'default'}
-								{...field}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+				<FormInputDescription
+					name="description"
+					label={t(Skills.DESCRIPTION_FULL)}
+					description={t(Skills.DESCRIPTION_LABEL)}
+					placeholder={t(Skills.DESCRIPTION_PLACEHOLDER)}
+					className={styles.textarea}
+				/>
 			</Flex>
 		</>
 	);

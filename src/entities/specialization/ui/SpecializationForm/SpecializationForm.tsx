@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Specializations } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputDescription } from '@/shared/ui/form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
-import { TextArea } from '@/shared/ui/TextArea';
 
 import { CreateOrEditSpecializationFormValues } from '../../model/types/specialization';
 
@@ -43,22 +43,14 @@ export const SpecializationForm = ({ isEdit }: SpecializationFormProps) => {
 						)}
 					</FormControl>
 				</FormField>
-				<FormField
+				<FormInputDescription
+					name="description"
 					label={t(Specializations.DESCRIPTION_FULL)}
 					description={t(Specializations.DESCRIPTION_LABEL)}
+					placeholder={t(Specializations.DESCRIPTION_PLACEHOLDER)}
+					className={styles['text-area']}
 					direction="column"
-				>
-					<FormControl name="description" control={control} className={styles['input-form']}>
-						{(register, hasError) => (
-							<TextArea
-								className={styles['text-area']}
-								state={hasError ? 'error' : 'default'}
-								placeholder={t(Specializations.DESCRIPTION_PLACEHOLDER)}
-								{...register}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+				/>
 			</Flex>
 		</Flex>
 	);
