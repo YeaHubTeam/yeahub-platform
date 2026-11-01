@@ -40,6 +40,7 @@ export { ChooseQuestionsDrawerSkeleton } from './ui/ChooseQuestionsDrawer/Choose
 export { ProgressBlock } from './ui/ProgressBlock/ProgressBlock';
 export { ProgressBlockSkeleton } from './ui/ProgressBlock/ProgressBlock.skeleton';
 export { questionsMock } from './api/__mocks__/data';
+export { userQuestionProgressMock } from './api/__mocks__/data';
 
 export { quizHandlers, questionHandlers } from './api/__mocks__/index';
 
