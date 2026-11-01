@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Tasks } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
+import { FormInputEditor } from '@/shared/ui/Form';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
 import { Input } from '@/shared/ui/Input';
 import { Radio } from '@/shared/ui/Radio';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
-import { TextEditor } from '@/shared/ui/TextEditor';
 
 import { CreateOrEditTaskFormValues } from '../../model/types/task';
 import { TaskCategorySelect } from '../TaskCategorySelect/TaskCategorySelect';
@@ -37,23 +37,21 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 						{(register, hasError) => <Input {...register} error={hasError} />}
 					</FormControl>
 				</FormField>
-				<FormField
-					direction="column"
-					description={t(Tasks.DESCRIPTION_SUBTITLE)}
-					label={t(Tasks.DESCRIPTION_TITLE)}
-				>
-					<FormControl name="description" control={control}>
-						{(field) => (
-							<TextEditor
-								id="description"
-								isInline
-								// className={styles.input}
-								data={field.value}
-								{...field}
-							/>
-						)}
-					</FormControl>
-				</FormField>
+				<FormInputEditor
+					fieldProps={{
+						label: t(Tasks.DESCRIPTION_TITLE),
+						description: t(Tasks.DESCRIPTION_SUBTITLE),
+						direction: 'column',
+					}}
+					controlProps={{
+						name: 'description',
+						control,
+					}}
+					textEditorProps={{
+						id: 'description',
+						isInline: true,
+					}}
+				/>
 				<FormField description={t(Tasks.CATEGORY_SUBTITLE)} label={t(Tasks.CATEGORY_TITLE)}>
 					<FormControl className={styles.select} name="categoryCodes" control={control}>
 						{({ onChange, value }) => (
