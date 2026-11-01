@@ -10,6 +10,8 @@ import { CompanyEditForm } from '@/features/company/editCompany';
 import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { CompanyEditPageSkeleton } from './CompanyEditPage.skeleton';
+
 const CompanyEditPage = () => {
 	const { t } = useTranslation(i18Namespace.companies);
 	const { companyId = '' } = useParams<{ companyId: string }>();
@@ -44,6 +46,7 @@ const CompanyEditPage = () => {
 			stubs={stubs}
 			roles={['admin', 'author']}
 			content={content}
+			skeleton={<CompanyEditPageSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>
