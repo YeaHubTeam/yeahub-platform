@@ -1,0 +1,21 @@
+ .variant {
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+
+.neutral {
+    background-color: var(--color-black-10, #fafafa);
+}
+
+
+.success {
+    background-color: var(--color-green-100, #eefbf4);
+    color: var(--color-green-850, #EDF7EF);
+}
+
+   
+.error {
+    background-color: var(--color-red-50, #fff4f9);
+    color: var(--color-red-800, #FDD8E1);
+}

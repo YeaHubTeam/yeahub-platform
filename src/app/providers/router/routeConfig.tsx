@@ -112,6 +112,7 @@ import { UserProfilePage } from '@/pages/profile/userProfile';
 import { TaskPage } from '@/pages/tasks/task';
 import { TasksPage } from '@/pages/tasks/tasks';
 import { CreateTestPage } from '@/pages/test/createTest';
+import { TestResultPage } from '@/pages/testing/testResult';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -793,6 +794,22 @@ export const router = createBrowserRouter([
 						handle: {
 							crumb: Translation.CRUMBS_QUIZ,
 						},
+					},
+				],
+			},
+			{
+				path: ROUTES.testing.route,
+				element: <Outlet />,
+				children: [
+					{
+						path: ROUTES.testing.history.route,
+						element: <Outlet />,
+						children: [
+							{
+								path: ROUTES.testing.history.result.route,
+								element: <TestResultPage />,
+							},
+						],
 					},
 				],
 			},
