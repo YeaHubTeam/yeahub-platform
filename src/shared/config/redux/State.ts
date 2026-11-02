@@ -15,11 +15,13 @@ import { SpecializationsPageState } from '@/pages/admin/specialization/specializ
 import { TasksTablePageState } from '@/pages/admin/task/tasks';
 import { TopicsPageState } from '@/pages/admin/topic/topics';
 import { InterviewHistoryState } from '@/pages/interview/interviewHistory';
+import { TestHistoryState } from '@/pages/test/testHistory';
 
 export interface State {
 	activeQuiz: ActiveQuizState;
 	activeSubscription: ActiveSubscriptionState;
 	interviewHistoryPage: InterviewHistoryState;
+	testHistoryPage: TestHistoryState;
 	[baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
 	questionsTablePage: QuestionsTablePageState;
 	companiesTablePage: CompaniesTablePageState;

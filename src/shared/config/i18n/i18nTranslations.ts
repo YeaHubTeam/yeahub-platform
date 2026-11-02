@@ -112,6 +112,8 @@ export enum Translation {
 	CRUMBS_INTERVIEW_HISTORY = 'crumbs.interview.history',
 	CRUMBS_INTERVIEW_RESULT = 'crumbs.interview.result',
 	CRUMBS_INTERVIEW_STATISTIC = 'crumbs.interview.statistic',
+	CRUMBS_TESTING = 'crumbs.testing',
+	CRUMBS_TESTING_HISTORY = 'crumbs.testing.history',
 	CRUMBS_QUESTIONS_LIST = 'crumbs.questions.list',
 	CRUMBS_QUESTION_DETAIL = 'crumbs.question.detail',
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
@@ -1820,4 +1822,19 @@ export enum TestCreate {
 	CREATE_BUTTON = 'create.button',
 	CREATE_SUCCESS = 'create.success',
 	CREATE_ERROR = 'create.error',
+}
+
+export enum TestHistory {
+	TITLE = 'title',
+	TEST_TITLE = 'test.title',
+	START_DATE = 'start.date',
+	TOTAL_TESTS = 'total.tests',
+	RESULT = 'result',
+	LINK = 'link',
+	EMPTY = 'empty',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_BUTTON = 'stub.empty.button',
+	UNVERIFIED = 'unverified',
+	NO_PREMIUM = 'no.premium',
 }

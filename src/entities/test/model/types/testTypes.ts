@@ -1,3 +1,5 @@
+import { Response } from '@/shared/libs';
+
 export type TestMode = 'REPEAT' | 'NEW' | 'RANDOM';
 
 export interface CreateTestFilterParams {
@@ -82,3 +84,34 @@ export interface CreateNewTestResponse {
 }
 
 export type ActiveTests = Record<string, TestAnswer[]>;
+
+export interface TestHistoryAnswer extends TestAnswer {
+	isCorrect: boolean;
+}
+
+export interface TestHistoryItem {
+	id: string;
+	profileId: string;
+	testNumber: number;
+	startDate: string;
+	endDate: string;
+	fullCount: number;
+	successCount: number;
+	skills: string[];
+	response: {
+		answers: TestHistoryAnswer[];
+	};
+}
+
+export interface GetTestHistoryParamsRequest {
+	profileId: string;
+	page?: number;
+	limit?: number;
+	startAfter?: string;
+	startBefore?: string;
+	fullCount?: number;
+	successCount?: number;
+	skills?: string[];
+}
+
+export type GetTestHistoryResponse = Response<TestHistoryItem[]>;

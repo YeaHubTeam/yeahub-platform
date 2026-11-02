@@ -1,0 +1,16 @@
+.param {
+    margin-bottom: 32px;
+  }
+  
+  @media (width < 1024px) {
+    .param {
+      gap: 16px;
+    }
+  }
+  
+  @media (width < 768px) {
+    .param {
+      margin-top: 20px;
+      margin-bottom: 24px;
+    }
+  }

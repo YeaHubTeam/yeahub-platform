@@ -52,4 +52,5 @@ export enum ApiTags {
 	VACANCIES = 'vacancies',
 	VACANCIES_MARKET = 'vacancies_market',
 	TEST_QUESTIONS = 'test_questions',
+	HISTORY_TEST = 'historyTest',
 }
