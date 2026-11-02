@@ -4,7 +4,11 @@ import { toast } from '@/shared/ui/Toast';
 
 import { testApiUrls } from '../model/constants/testConstants';
 import { saveActiveTest } from '../model/helpers/saveActiveTest';
-import { CreateNewTestParamsRequest, CreateNewTestResponse } from '../model/types/testTypes';
+import {
+	CreateNewTestParamsRequest,
+	CreateNewTestResponse,
+	GetFinishedTestDataResponse,
+} from '../model/types/testTypes';
 
 const testApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -26,8 +30,16 @@ const testApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
+		getFinishedTestData: build.query<
+			GetFinishedTestDataResponse,
+			{ profileId: string; testId: string }
+		>({
+			query: ({ profileId, testId }) => ({
+				url: route(testApiUrls.getFinishedTestData, profileId, testId),
+			}),
+		}),
 	}),
 	overrideExisting: true,
 });
 
-export const { useLazyCreateNewTestQuery } = testApi;
+export const { useLazyCreateNewTestQuery, useGetFinishedTestDataQuery } = testApi;

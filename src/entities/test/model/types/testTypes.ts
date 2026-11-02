@@ -80,5 +80,39 @@ export interface CreateNewTestResponse {
 	successCount: number | null;
 	id: string;
 }
+export interface FinishedTestAnswer extends TestAnswer {
+	isCorrect: boolean;
+}
+
+export interface FinishedTestQuestion extends Omit<TestQuestion, 'createdBy' | 'updatedBy'> {
+	successVariants: string[];
+	passedCount?: number;
+	isLearned?: boolean;
+	lastUpdate?: string;
+	profileId?: string;
+	questionId?: number;
+	createdBy?: TestAuthor | string | null;
+	updatedBy?: TestAuthor | string | null;
+}
+
+export interface GetFinishedTestDataParamsRequest {
+	profileId: string;
+	testId: string;
+}
+
+export interface GetFinishedTestDataResponse {
+	id: string;
+	profileId: string;
+	testNumber: number;
+	startDate: string;
+	endDate: string;
+	fullCount: number;
+	successCount: number;
+	skills: string[];
+	response: {
+		answers: FinishedTestAnswer[];
+	};
+	questions: FinishedTestQuestion[];
+}
 
 export type ActiveTests = Record<string, TestAnswer[]>;

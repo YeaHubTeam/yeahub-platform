@@ -1,5 +1,4 @@
-export { useLazyCreateNewTestQuery } from './api/testApi';
-
+export { useLazyCreateNewTestQuery, useGetFinishedTestDataQuery } from './api/testApi';
 export { LS_ACTIVE_TESTS_KEY } from './model/constants/testConstants';
 export { saveActiveTest } from './model/helpers/saveActiveTest';
 export { useCreateTestFilters } from './model/hooks/useCreateTestFilters';
@@ -12,4 +11,7 @@ export type {
 	TestAnswer,
 	TestMode,
 	TestQuestion,
+	FinishedTestAnswer,
+	FinishedTestQuestion,
+	GetFinishedTestDataResponse,
 } from './model/types/testTypes';
