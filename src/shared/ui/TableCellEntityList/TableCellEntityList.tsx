@@ -34,13 +34,17 @@ export const TableCellEntityList = <T extends { id: number | string; title: stri
 	const itemsToShow = isOpen ? items : items.slice(0, showCount);
 
 	return (
-		<Flex direction="column" gap="8" align="start">
-			<div>
+		<Flex direction="column" gap="8" align="start" data-testid="table-cell-entity-list">
+			<div data-testid="table-cell-entity-list-items">
 				{url ? (
 					<>
 						{itemsToShow.map((item) => (
 							<Fragment key={item.id}>
-								<Link to={route(url, item.id)} className={styles.link}>
+								<Link
+									to={route(url, item.id)}
+									className={styles.link}
+									data-testid="table-cell-entity-list-link"
+								>
 									<Text variant="body3-accent">{item.title}</Text>
 								</Link>
 								{itemsToShow.indexOf(item) < itemsToShow.length - 1 && <span>, </span>}
@@ -56,6 +60,7 @@ export const TableCellEntityList = <T extends { id: number | string; title: stri
 					variant="link-gray"
 					onClick={toggleOpen}
 					className={styles.button}
+					data-testid="table-cell-entity-list-button"
 					suffix={
 						<Icon
 							icon="arrowShortDown"
@@ -63,10 +68,16 @@ export const TableCellEntityList = <T extends { id: number | string; title: stri
 							className={classNames(styles.icon, {
 								[styles['opened']]: isOpen,
 							})}
+							data-testid="table-cell-entity-list-icon"
 						/>
 					}
 				>
-					<Text variant="body1" color="black-200" className={styles.link}>
+					<Text
+						variant="body1"
+						color="black-200"
+						className={styles.link}
+						data-testid="table-cell-entity-list-button-text"
+					>
 						{!isOpen ? t(Translation.EXPAND) : t(Translation.COLLAPSE)}
 					</Text>
 				</Button>
