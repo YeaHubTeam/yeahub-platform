@@ -31,7 +31,6 @@ import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureF
 import { featureFlagDeleteHandlers } from '@/features/featureFlag/deleteFeatureFlag';
 import { setActiveProfileHandlers } from '@/features/profile/setActiveProfile';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
-import { questionEditHandlers } from '@/features/question/editQuestion';
 import { learnQuestionHandlers } from '@/features/quiz/learnQuestion';
 import { resetQuestionHandlers } from '@/features/quiz/resetQuestionStudyProgress';
 import { referralLinkDeleteHandlers } from '@/features/referralLinks/deleteReferralLink';
@@ -59,9 +58,7 @@ export const handlers = [
 	...specializationHandlers,
 	...featureFlagHandlers,
 	...questionDeleteHandlers,
-	...questionEditHandlers,
 	...skillHandlers,
-	...questionEditHandlers,
 	...specializationDeleteHandlers,
 	...specializationCreateHandlers,
 	...specializationEditHandlers,
