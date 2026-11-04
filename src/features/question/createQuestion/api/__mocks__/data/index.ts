@@ -1,1 +1,0 @@
-export { newQuestionMock } from './newQuestionMock';

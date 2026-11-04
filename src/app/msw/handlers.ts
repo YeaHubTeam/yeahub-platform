@@ -30,7 +30,6 @@ import { deleteCompanyHandlers } from '@/features/company/deleteCompany';
 import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureFlag';
 import { featureFlagDeleteHandlers } from '@/features/featureFlag/deleteFeatureFlag';
 import { setActiveProfileHandlers } from '@/features/profile/setActiveProfile';
-import { questionCreateHandlers } from '@/features/question/createQuestion';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { questionEditHandlers } from '@/features/question/editQuestion';
 import { learnQuestionHandlers } from '@/features/quiz/learnQuestion';
@@ -59,7 +58,6 @@ export const handlers = [
 	...collectionDeleteHandlers,
 	...specializationHandlers,
 	...featureFlagHandlers,
-	...questionCreateHandlers,
 	...questionDeleteHandlers,
 	...questionEditHandlers,
 	...skillHandlers,
