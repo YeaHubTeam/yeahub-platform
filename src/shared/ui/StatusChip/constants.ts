@@ -7,8 +7,3 @@ export const statusChipVariants: Record<StatusChipVariant, Pallete> = {
 	green: 'green-900',
 	purple: 'purple-800',
 };
-
-export const statusChipTestIds = {
-	statusChip: 'StatusChip',
-	statusChipText: 'StatusChip_Text',
-};
