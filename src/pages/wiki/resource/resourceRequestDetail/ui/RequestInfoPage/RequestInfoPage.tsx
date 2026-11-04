@@ -16,8 +16,6 @@ import {
 	ResourceAdditionalInfo,
 } from '@/entities/resource';
 
-import { DeleteMyResourceRequestButton } from '@/features/resources/deleteMyResourceRequest';
-
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
 
@@ -90,7 +88,6 @@ export const RequestInfoPage = () => {
 							>
 								{t(Translation.EDIT, { ns: i18Namespace.translation })}
 							</Button>
-							<DeleteMyResourceRequestButton requestId={requestId || ''} />
 						</Flex>
 					)}
 				</Flex>
