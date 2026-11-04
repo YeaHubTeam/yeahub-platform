@@ -10,7 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import type { StubType } from '@/shared/ui/Stub/types';
 import { Text } from '@/shared/ui/Text';
 
-import { stubTestIds, titleByType, subtitleByType, buttonTextByType, imgByType } from './constants';
+import { titleByType, subtitleByType, buttonTextByType, imgByType } from './constants';
 import styles from './Stub.module.css';
 
 type StubProps = {
@@ -38,17 +38,9 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 				<img src={imgByType[type]} alt="" loading="lazy" className={styles.img} />
 
 				{(resolvedTitle || resolvedSubtitle) && (
-					<Flex dataTestId={stubTestIds.container} gap="6" align="center" direction="column">
-						{Boolean(resolvedTitle) && (
-							<Text dataTestId={stubTestIds.title} variant={titleVariant}>
-								{resolvedTitle}
-							</Text>
-						)}
-						{Boolean(resolvedSubtitle) && (
-							<Text dataTestId={stubTestIds.subtitle} variant="body3">
-								{resolvedSubtitle}
-							</Text>
-						)}
+					<Flex gap="6" align="center" direction="column">
+						{Boolean(resolvedTitle) && <Text variant={titleVariant}>{resolvedTitle}</Text>}
+						{Boolean(resolvedSubtitle) && <Text variant="body3">{resolvedSubtitle}</Text>}
 					</Flex>
 				)}
 
@@ -59,7 +51,6 @@ export const Stub = ({ type, title, subtitle, buttonText, onClick, className }: 
 						onClick={onClick}
 						disabled={!onClick}
 						className={styles.button}
-						dataTestId={stubTestIds.button}
 					>
 						{resolvedButtonText}
 					</Button>
