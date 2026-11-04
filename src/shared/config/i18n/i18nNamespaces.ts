@@ -31,6 +31,7 @@ export const i18Namespace = {
 	task: 'task',
 	testQuestion: 'testQuestion',
 	testCreate: 'testCreate',
+	testHistory: 'testHistory',
 	programmingLanguage: 'programmingLanguage',
 	featureFlags: 'featureFlags',
 	vacancies: 'vacancies',
