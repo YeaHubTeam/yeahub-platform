@@ -37,7 +37,6 @@ import { learnQuestionHandlers } from '@/features/quiz/learnQuestion';
 import { resetQuestionHandlers } from '@/features/quiz/resetQuestionStudyProgress';
 import { referralLinkDeleteHandlers } from '@/features/referralLinks/deleteReferralLink';
 import { referralLinkEditHandlers } from '@/features/referralLinks/editReferralLink';
-import { skillCreateHandlers } from '@/features/skill/createSkill';
 import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
@@ -64,7 +63,6 @@ export const handlers = [
 	...questionDeleteHandlers,
 	...questionEditHandlers,
 	...skillHandlers,
-	...skillCreateHandlers,
 	...questionEditHandlers,
 	...specializationDeleteHandlers,
 	...specializationCreateHandlers,
