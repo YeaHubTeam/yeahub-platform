@@ -1,0 +1,25 @@
+.card {
+  gap: 24px;
+}
+
+.list {
+  list-style: none;
+}
+
+.no-history {
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+}
+
+@media (width < 1024px) {
+  .list {
+    padding: 16px;
+  }
+}
+
+@media (width < 768px) {
+  .list {
+    padding: 0;
+  }
+}

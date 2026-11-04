@@ -1,0 +1,9 @@
+.history {
+  width: calc(50% - 10px);
+}
+
+@media (width < 1280px) {
+  .history {
+    width: 100%;
+  }
+}

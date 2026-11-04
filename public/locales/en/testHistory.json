@@ -1,0 +1,11 @@
+{
+	"title": "Test history",
+	"test.title": "Test № {{number}}",
+	"result": "Result:",
+	"link": "Details",
+	"empty": "Your test history will appear here soon",
+	"unverified": "Your test history will appear after email confirmation",
+	"no.premium": "Test history is only available to community members",
+	"error": "Unable to load test history",
+	"retry": "Try again"
+}
