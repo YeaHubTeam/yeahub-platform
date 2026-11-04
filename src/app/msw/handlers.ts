@@ -39,7 +39,6 @@ import { referralLinkDeleteHandlers } from '@/features/referralLinks/deleteRefer
 import { referralLinkEditHandlers } from '@/features/referralLinks/editReferralLink';
 import { skillCreateHandlers } from '@/features/skill/createSkill';
 import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
-import { skillEditHandlers } from '@/features/skill/editSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
 import { specializationDeleteHandlers } from '@/features/specialization/deleteSpecialization';
 import { specializationEditHandlers } from '@/features/specialization/editSpecialization';
@@ -66,7 +65,6 @@ export const handlers = [
 	...questionEditHandlers,
 	...skillHandlers,
 	...skillCreateHandlers,
-	...skillEditHandlers,
 	...questionEditHandlers,
 	...specializationDeleteHandlers,
 	...specializationCreateHandlers,
