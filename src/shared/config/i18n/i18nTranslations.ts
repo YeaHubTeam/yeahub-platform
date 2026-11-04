@@ -336,8 +336,6 @@ export enum Translation {
 	TOAST_RESOURCE_CREATE_TYPE_NOT_FOUND = 'toast.resources.create.type.not.found',
 	TOAST_RESOURCE_CREATE_IMAGE_COMPRESS_FAILED = 'toast.resources.create.image.compress.failed',
 	TOAST_RESOURCE_CREATE_IMAGE_RESIZE_FAILED = 'toast.resources.create.image.resize.failed',
-	TOAST_RESOURCE_DELETE_SINGLE_SUCCESS = 'toast.resources.delete.single.success',
-	TOAST_RESOURCE_DELETE_SINGLE_FAILED = 'toast.resources.delete.single.failed',
 	TOAST_RESOURCE_EDIT_SUCCESS = 'toast.resources.edit.success',
 	TOAST_RESOURCE_EDIT_FAILED = 'toast.resources.edit.failed',
 	TOAST_SUBSCRIPTIONS_TRIAL_SUCCESS = 'toast.subscriptions.trial.success',

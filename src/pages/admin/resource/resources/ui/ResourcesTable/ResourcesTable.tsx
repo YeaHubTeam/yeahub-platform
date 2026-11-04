@@ -14,8 +14,6 @@ import { Text } from '@/shared/ui/Text';
 
 import { Resource } from '@/entities/resource';
 
-import { DeleteResourceButton } from '@/features/resources/deleteResource';
-
 const SPECIALIZATION_SHOW_COUNT = 2;
 
 interface UIResource extends Resource {
@@ -98,11 +96,6 @@ export const ResourcesTable = ({ resources }: ResourcesTableProps) => {
 				onClick: () => {
 					navigate(route(ROUTES.admin.resources.edit.route, resource.id));
 				},
-			},
-			{
-				renderComponent: () => (
-					<DeleteResourceButton resourceId={resource.id} disabled={resource.disabled} />
-				),
 			},
 		];
 
