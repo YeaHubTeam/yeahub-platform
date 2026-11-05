@@ -1,9 +1,13 @@
 import { getJSONFromLS, setToLS } from '@/shared/libs';
 
 import { LS_ACTIVE_TESTS_KEY } from '../constants/testConstants';
-import { ActiveTests, TestAnswer } from '../types/testTypes';
+import { ActiveTests, CreateNewTestResponse, TestAnswer } from '../types/testTypes';
 
-export const saveActiveTest = (profileId: string, answers: TestAnswer[]) => {
+export const saveActiveTest = (
+	profileId: string,
+	answers: TestAnswer[],
+	test?: Pick<CreateNewTestResponse, 'id' | 'questions'>,
+) => {
 	const activeTestsFromLS = getJSONFromLS(LS_ACTIVE_TESTS_KEY);
 	const activeTests: ActiveTests =
 		activeTestsFromLS && typeof activeTestsFromLS === 'object' && !Array.isArray(activeTestsFromLS)
@@ -12,6 +16,14 @@ export const saveActiveTest = (profileId: string, answers: TestAnswer[]) => {
 
 	setToLS(LS_ACTIVE_TESTS_KEY, {
 		...activeTests,
-		[profileId]: answers,
+		[profileId]: test
+			? test.questions.map((question) => ({
+					testId: test.id,
+					questionId: question.id,
+					questionTitle: question.title,
+					variants: question.variants,
+					answer: answers.find((answer) => answer.questionId === question.id)?.answer ?? [],
+				}))
+			: answers,
 	});
 };

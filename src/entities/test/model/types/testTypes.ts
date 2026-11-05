@@ -1,3 +1,5 @@
+import type { Response } from '@/shared/libs';
+
 export type TestMode = 'REPEAT' | 'NEW' | 'RANDOM';
 
 export interface CreateTestFilterParams {
@@ -82,3 +84,16 @@ export interface CreateNewTestResponse {
 }
 
 export type ActiveTests = Record<string, TestAnswer[]>;
+
+export interface GetActiveTestsParamsRequest {
+	profileId: string;
+	page?: number;
+	limit?: number;
+}
+
+export type GetActiveTestsResponse = Response<CreateNewTestResponse[]>;
+
+export interface StoredTestAnswer extends TestAnswer {
+	testId: string;
+	variants: TestQuestion['variants'];
+}
