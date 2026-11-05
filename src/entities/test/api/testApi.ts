@@ -4,7 +4,12 @@ import { toast } from '@/shared/ui/Toast';
 
 import { testApiUrls } from '../model/constants/testConstants';
 import { saveActiveTest } from '../model/helpers/saveActiveTest';
-import { CreateNewTestParamsRequest, CreateNewTestResponse } from '../model/types/testTypes';
+import {
+	CreateNewTestParamsRequest,
+	CreateNewTestResponse,
+	GetActiveTestsParamsRequest,
+	GetActiveTestsResponse,
+} from '../model/types/testTypes';
 
 const testApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -17,7 +22,7 @@ const testApi = baseApi.injectEndpoints({
 				try {
 					const { data } = await queryFulfilled;
 
-					saveActiveTest(profileId, data.response.answers);
+					saveActiveTest(profileId, data.response.answers, data);
 					toast.success(i18n.t(TestCreate.CREATE_SUCCESS, { ns: i18Namespace.testCreate }));
 				} catch (error) {
 					toast.error(i18n.t(TestCreate.CREATE_ERROR, { ns: i18Namespace.testCreate }));
@@ -26,8 +31,14 @@ const testApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
+		getActiveTests: build.query<GetActiveTestsResponse, GetActiveTestsParamsRequest>({
+			query: ({ profileId, ...params }) => ({
+				url: route(testApiUrls.getActiveTests, profileId),
+				params,
+			}),
+		}),
 	}),
 	overrideExisting: true,
 });
 
-export const { useLazyCreateNewTestQuery } = testApi;
+export const { useLazyCreateNewTestQuery, useGetActiveTestsQuery } = testApi;

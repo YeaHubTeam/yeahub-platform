@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, TestCreate } from '@/shared/config';
+import { i18Namespace, ROUTES, TestCreate } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
@@ -27,6 +28,7 @@ const INITIAL_FILTERS: CreateTestFilterParams = {
 
 const CreateTestPage = () => {
 	const { t } = useTranslation(i18Namespace.testCreate);
+	const navigate = useNavigate();
 	const profileId = useAppSelector(getProfileId);
 	const { filters, onChangeMode, onChangeSkills, onChangeComplexity, onChangeCount } =
 		useCreateTestFilters(INITIAL_FILTERS);
@@ -41,6 +43,8 @@ const CreateTestPage = () => {
 			complexity: filters.complexity,
 			limit: filters.count ?? INITIAL_FILTERS.count ?? 10,
 			mode: filters.mode ?? INITIAL_FILTERS.mode ?? 'RANDOM',
+		}).then(({ isSuccess }) => {
+			if (isSuccess) navigate(ROUTES.test.new.page);
 		});
 	};
 
