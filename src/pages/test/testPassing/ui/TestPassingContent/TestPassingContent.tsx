@@ -52,10 +52,10 @@ export const TestPassingContent = ({ test, profileId }: TestPassingContentProps)
 	};
 
 	return (
-		<Flex direction="column" gap="24" className={styles.container}>
+		<Flex direction="column" gap="20" className={styles.container}>
 			<Card withOutsideShadow>
 				<div className={styles.progress}>
-					<Text isMainTitle variant="body6">
+					<Text isMainTitle variant="body5">
 						{t(TestPassing.TITLE)}
 						{test.skills.length > 0 && ` · ${test.skills.join(', ')}`}
 					</Text>
@@ -70,26 +70,32 @@ export const TestPassingContent = ({ test, profileId }: TestPassingContentProps)
 					/>
 				</div>
 			</Card>
-			<Card withOutsideShadow>
-				<Flex direction="column" gap="32">
-					<Flex justify="between" gap="16">
-						<Button
-							variant="outline"
-							preffix={<Icon icon="altArrowLeft" size={20} />}
-							disabled={currentIndex === 0}
-							onClick={() => setQuestionIndex(currentIndex - 1)}
-						>
-							{t(TestPassing.PREVIOUS)}
-						</Button>
-						<Button
-							variant="outline"
-							suffix={<Icon icon="altArrowRight" size={20} />}
-							disabled={currentIndex === totalCount - 1}
-							onClick={() => setQuestionIndex(currentIndex + 1)}
-						>
-							{t(TestPassing.NEXT)}
-						</Button>
-					</Flex>
+			<Card withOutsideShadow className={styles['question-card']}>
+				<Flex direction="column" gap="24">
+					{totalCount > 1 && (
+						<Flex justify="between" gap="16">
+							{currentIndex > 0 && (
+								<Button
+									className={styles['navigation-button']}
+									variant="tertiary"
+									preffix={<Icon icon="altArrowLeft" size={20} />}
+									onClick={() => setQuestionIndex(currentIndex - 1)}
+								>
+									{t(TestPassing.PREVIOUS)}
+								</Button>
+							)}
+							{currentIndex < totalCount - 1 && (
+								<Button
+									className={classNames(styles['navigation-button'], styles['next-button'])}
+									variant="tertiary"
+									suffix={<Icon icon="altArrowRight" size={20} />}
+									onClick={() => setQuestionIndex(currentIndex + 1)}
+								>
+									{t(TestPassing.NEXT)}
+								</Button>
+							)}
+						</Flex>
+					)}
 					<fieldset className={styles.question}>
 						<legend className={styles.title}>{question.questionTitle}</legend>
 						{questionDetails.description && (
@@ -113,7 +119,7 @@ export const TestPassingContent = ({ test, profileId }: TestPassingContentProps)
 						</Flex>
 					</fieldset>
 					<Flex justify="end" className={styles.footer}>
-						<Button variant="destructive" disabled>
+						<Button className={styles['finish-button']} size="large" variant="destructive" disabled>
 							{t(TestPassing.FINISH)}
 						</Button>
 					</Flex>
