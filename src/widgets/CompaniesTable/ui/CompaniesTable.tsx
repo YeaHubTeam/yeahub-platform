@@ -13,8 +13,6 @@ import { Text } from '@/shared/ui/Text';
 
 import { Company } from '@/entities/company';
 
-import { DeleteCompanyButton } from '@/features/company/deleteCompany';
-
 import styles from './CompaniesTable.module.css';
 
 interface UICompany extends Company {
@@ -97,11 +95,6 @@ export const CompaniesTable = ({
 				onClick: () => {
 					navigate(route(ROUTES.admin.companies.edit.route, company.id));
 				},
-			},
-			{
-				renderComponent: () => (
-					<DeleteCompanyButton companyId={company.id} disabled={company.disabled} />
-				),
 			},
 		];
 

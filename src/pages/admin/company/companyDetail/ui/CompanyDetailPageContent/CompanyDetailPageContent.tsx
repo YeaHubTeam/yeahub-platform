@@ -9,8 +9,6 @@ import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { type Company, CompanyCard } from '@/entities/company';
 
-import { DeleteCompanyButton } from '@/features/company/deleteCompany';
-
 interface CompanyDetailPageContentProps {
 	company: Company;
 	isDisabled: boolean;
@@ -22,7 +20,6 @@ const CompanyDetailPageContent = ({ company, isDisabled }: CompanyDetailPageCont
 	return (
 		<>
 			<BackHeader>
-				<DeleteCompanyButton companyId={company.id} isDetailPage disabled={isDisabled} />
 				<Tooltip
 					title={t(Translation.TOOLTIP_COLLECTION_DISABLED_INFO)}
 					color="red"

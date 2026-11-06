@@ -25,7 +25,6 @@ import { vacancyHandlers } from '@/entities/vacancy';
 
 import { collectionDeleteHandlers } from '@/features/collections/deleteCollection';
 import { createCompanyHandlers } from '@/features/company/createCompany';
-import { deleteCompanyHandlers } from '@/features/company/deleteCompany';
 import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureFlag';
 import { setActiveProfileHandlers } from '@/features/profile/setActiveProfile';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
@@ -45,7 +44,6 @@ import { topicEditHandlers } from '@/features/topics/editTopic';
 export const handlers = [
 	...authHandlers,
 	...companyHandlers,
-	...deleteCompanyHandlers,
 	...paymentHandlers,
 	...interviewHandlers,
 	...questionHandlers,
