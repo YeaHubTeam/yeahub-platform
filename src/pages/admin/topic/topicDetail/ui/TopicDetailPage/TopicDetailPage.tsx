@@ -9,8 +9,6 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetTopicByIdQuery, TopicAdditionalInfo, TopicCard } from '@/entities/topic';
 
-import { DeleteTopicButton } from '@/features/topics/deleteTopic';
-
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
 import { TopicDetailPageSkeleton } from './TopicDetailPage.skeleton';
@@ -26,7 +24,6 @@ const TopicDetailPage = () => {
 		<>
 			<Flex align="center" justify="between" gap="8" style={{ marginBottom: 34 }}>
 				<BackHeader>
-					<DeleteTopicButton topicId={topic.id} isDetailPage />
 					<NavLink
 						style={{ marginLeft: 'auto' }}
 						to={route(ROUTES.admin.topics.edit.page, topic.id)}

@@ -13,8 +13,6 @@ import { Text } from '@/shared/ui/Text';
 
 import { Topic } from '@/entities/topic';
 
-import { DeleteTopicButton } from '@/features/topics/deleteTopic';
-
 import styles from './TopicsTable.module.css';
 
 interface TopicsTableProps {
@@ -107,9 +105,6 @@ export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTa
 				onClick: () => {
 					navigate(route(ROUTES.admin.topics.edit.page, topic.id));
 				},
-			},
-			{
-				renderComponent: () => <DeleteTopicButton topicId={topic.id} disabled={topic.disabled} />,
 			},
 		];
 
