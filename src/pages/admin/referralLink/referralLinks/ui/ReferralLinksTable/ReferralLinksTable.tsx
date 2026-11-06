@@ -8,8 +8,6 @@ import { TableV2, type TableColumn, type TableRowId } from '@/shared/ui/TableV2'
 
 import { ReferralLink } from '@/entities/referralLink';
 
-import { useDeleteReferralLinkMutation } from '@/features/referralLinks/deleteReferralLink';
-
 interface ReferralLinksTableRow {
 	id: string;
 	refCode: string;
@@ -32,7 +30,6 @@ export const ReferralLinksTable = ({
 	onSelectReferralLinks,
 }: ReferralLinksTableProps) => {
 	const { t } = useTranslation(i18Namespace.referralLink);
-	const [deleteReferralLink] = useDeleteReferralLinkMutation();
 
 	const tableData: ReferralLinksTableRow[] =
 		referralLinks?.map((referralLink) => ({
@@ -117,9 +114,8 @@ export const ReferralLinksTable = ({
 			columns={columns}
 			selectedRowIds={selectedRowIds}
 			onSelectedRowIdsChange={onSelectedRowIdsChange}
-			actions={['detail', 'edit', 'delete', 'copy']}
+			actions={['detail', 'edit', 'copy']}
 			entity="referralLinks"
-			onDelete={(id) => deleteReferralLink(id as string)}
 		/>
 	);
 };

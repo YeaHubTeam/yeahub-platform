@@ -9,8 +9,6 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { type ReferralLink, ReferralLinkCard } from '@/entities/referralLink';
 
-import { DeleteReferralLinkButton } from '@/features/referralLinks/deleteReferralLink';
-
 import { ReferralLinkAdditionalInfo } from '@/widgets/referralLink/ReferralLinkAdditionalInfo';
 
 interface ReferralLinkDetailPageContentProps {
@@ -24,7 +22,6 @@ export const ReferralLinkDetailPageContent = ({
 	return (
 		<>
 			<BackHeader>
-				<DeleteReferralLinkButton referralId={referralLink.id} isDetailPage={true} />
 				<NavLink
 					style={{ marginLeft: 'auto' }}
 					to={route(ROUTES.admin.referralLinks.edit.page, referralLink.id)}

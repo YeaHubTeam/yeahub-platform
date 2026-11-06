@@ -31,7 +31,6 @@ import { setActiveProfileHandlers } from '@/features/profile/setActiveProfile';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { learnQuestionHandlers } from '@/features/quiz/learnQuestion';
 import { resetQuestionHandlers } from '@/features/quiz/resetQuestionStudyProgress';
-import { referralLinkDeleteHandlers } from '@/features/referralLinks/deleteReferralLink';
 import { referralLinkEditHandlers } from '@/features/referralLinks/editReferralLink';
 import { skillDeleteHandlers } from '@/features/skill/deleteSkill';
 import { specializationCreateHandlers } from '@/features/specialization/createSpecialization';
@@ -81,7 +80,6 @@ export const handlers = [
 	...createFeatureFlagHandlers,
 	...programmingLanguageHandlers,
 	...referralLinksHandlers,
-	...referralLinkDeleteHandlers,
 	...referralLinkEditHandlers,
 	...taskHandlers,
 	...taskCreateHandlers,
