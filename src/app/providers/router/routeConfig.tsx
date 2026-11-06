@@ -36,8 +36,6 @@ import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/collectio
 import { CompaniesTablePage } from '@/pages/admin/company/companies';
 import { CompanyCreatePage } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPage } from '@/pages/admin/company/companyDetail';
-import { FeatureFlagDetailsPage } from '@/pages/admin/featureFlag/featureFlagDetail';
-import { FeatureFlagsPage } from '@/pages/admin/featureFlag/featureFlags';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreateMultiple';
@@ -301,13 +299,6 @@ const adminLayoutMenuItems: MenuItem[] = [
 		icon: TasksIcon,
 		roles: listAdminRoles,
 	},
-	{
-		type: 'single',
-		route: ROUTES.admin.featureFlags.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_FEATURE_FLAGS),
-		icon: Crown,
-		roles: ['admin'],
-	},
 ];
 
 export const router = createBrowserRouter([
@@ -494,17 +485,6 @@ export const router = createBrowserRouter([
 						path: ROUTES.admin.tasks.details.route,
 						element: <AdminTaskPage />,
 					},
-				],
-			},
-			{
-				path: ROUTES.admin.featureFlags.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <FeatureFlagsPage />,
-					},
-					{ path: ROUTES.admin.featureFlags.details.route, element: <FeatureFlagDetailsPage /> },
 				],
 			},
 			{
