@@ -82,34 +82,6 @@ export const ROUTES = {
 				page: '/admin/collections/:collectionId/edit',
 			},
 		},
-		resources: {
-			route: 'resources',
-			page: '/admin/resources',
-			create: {
-				route: 'create',
-				page: '/admin/resources/create',
-			},
-			details: {
-				route: ':resourceId',
-				page: '/admin/resources/:resourceId',
-			},
-			edit: {
-				route: ':resourceId/edit',
-				page: '/admin/resources/:resourceId/edit',
-			},
-			requests: {
-				route: 'requests',
-				page: '/admin/resources/requests',
-				view: {
-					route: 'requests/:resourceId',
-					page: '/admin/resources/requests/:resourceId',
-				},
-				edit: {
-					route: 'requests/:resourceId/edit',
-					page: '/admin/resources/requests/:resourceId/edit',
-				},
-			},
-		},
 		companies: {
 			route: 'companies',
 			page: '/admin/companies',

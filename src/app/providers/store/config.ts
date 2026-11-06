@@ -11,10 +11,6 @@ import { activeSubscriptionSlice } from '@/entities/subscription';
 import { collectionsPageReducer } from '@/pages/admin/collection/collections';
 import { companiesTablePageReducer } from '@/pages/admin/company/companies';
 import { questionsTablePageReducer } from '@/pages/admin/question/questions';
-import {
-	resourcesAllTabReducer,
-	resourcesRequestsTabReducer,
-} from '@/pages/admin/resource/resources';
 import { skillsPageReducer } from '@/pages/admin/skill/skills';
 import { specializationsPageReducer } from '@/pages/admin/specialization/specializations';
 import { tasksTablePageReducer } from '@/pages/admin/task/tasks';
@@ -28,14 +24,12 @@ export const reducers = {
 	activeQuiz: activeQuizSlice.reducer,
 	activeSubscription: activeSubscriptionSlice.reducer,
 	[baseApi.reducerPath]: baseApi.reducer,
-	resourcesAllTab: resourcesAllTabReducer,
 	interviewHistoryPage: interviewHistoryPageReducer,
 	questionsTablePage: questionsTablePageReducer,
 	companiesTablePage: companiesTablePageReducer,
 	specializationsPage: specializationsPageReducer,
 	profile: profileReducer,
 	collectionsPage: collectionsPageReducer,
-	resourcesRequestsTab: resourcesRequestsTabReducer,
 	topicsPage: topicsPageReducer,
 	tasksTablePage: tasksTablePageReducer,
 	featureFlag: featureFlagReducer,

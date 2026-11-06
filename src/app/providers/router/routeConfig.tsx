@@ -1,6 +1,5 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
-import Books from '@/shared/assets/icons/books.svg';
 import Cards from '@/shared/assets/icons/cards.svg';
 import CareerIcon from '@/shared/assets/icons/career.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
@@ -42,9 +41,6 @@ import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreat
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
-import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
-import { ResourceRequestViewPage } from '@/pages/admin/resource/resourceRequestDetail';
-import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/resource/resources';
 import { SkillCreatePage } from '@/pages/admin/skill/skillCreate';
 import { SkillDetailPage } from '@/pages/admin/skill/skillDetail';
 import { SkillEditPage } from '@/pages/admin/skill/skillEdit';
@@ -279,13 +275,6 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.admin.resources.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_RESOURCES),
-		icon: Books,
-		roles: listAdminRoles,
-	},
-	{
-		type: 'single',
 		route: ROUTES.admin.topics.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
 		icon: Cards,
@@ -332,18 +321,6 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.questions.edit.page,
 				element: <QuestionEditPage />,
-			},
-			{
-				path: ROUTES.admin.resources.page,
-				element: <AdminResourcesPage />,
-			},
-			{
-				path: ROUTES.admin.resources.details.page,
-				element: <ResourcePage />,
-			},
-			{
-				path: ROUTES.admin.resources.requests.view.page,
-				element: <ResourceRequestViewPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,

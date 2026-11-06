@@ -6,7 +6,6 @@ export * from './api/resourceApi';
 
 export type { Resource, ResourceCreateError } from './model/types/resource';
 
-export { isResourceDisabled } from './model/helpers/isResourceDisabled';
 export { KeywordsListSection } from './ui/KeywordsListSection/KeywordsListSection';
 export { ResourceForm } from './ui/ResourceForm/ResourceForm';
 export { ResourcesTypesFilterSection } from './ui/ResourcesTypesFilterSection/ResourcesTypesFilterSection';

@@ -93,12 +93,7 @@ export const RequestInfoPage = () => {
 				</Flex>
 			</Card>
 			{!isMobile && !isTablet && (
-				<ResourceAdditionalInfo
-					keywords={requestPayload.keywords || []}
-					resourceSkills={skills}
-					specializations={specializations}
-					route={ROUTES.wiki.resources.my.page}
-				/>
+				<ResourceAdditionalInfo resourceSkills={skills} specializations={specializations} />
 			)}
 		</Flex>
 	);

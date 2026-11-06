@@ -54,7 +54,7 @@ export const TaskAdditionalInfoDrawer = ({
 					languages={languages}
 					categories={categories}
 					companies={companies}
-					route={ROUTES.admin.resources.page}
+					route={ROUTES.admin.tasks.page}
 				/>
 			</Drawer>
 		</>

@@ -68,8 +68,6 @@
 				"vacancyMarket": "Market analytics"
 			},
 			"questions": "Questions",
-			"tests": "Tests",
-			"featureFlags": "Feature flags",
 			"skills": "Skills",
 			"companies": "Companies",
 			"vacancies": "Vacancies",
@@ -142,11 +140,6 @@
 		},
 		"cancel": {
 			"changes": "Are you sure you want to undo the changes?"
-		},
-		"featureFlag": {
-			"delete": {
-				"description": "Do you really want to delete this feature flag?"
-			}
 		}
 	},
 	"file.loader": {
@@ -684,90 +677,6 @@
 				"failed": "Collection could not be changed"
 			}
 		},
-		"resources": {
-			"create": {
-				"success": "Resource successfully created",
-				"failed": "Resource could not be created",
-				"unauthorized": "You have to be authorized to create a resource",
-				"unverified": "You have to be verified to create a resource",
-				"skill": {
-					"not.found": "One or more skills not found"
-				},
-				"specialization": {
-					"not.found": "One or more specializations not found"
-				},
-				"type": {
-					"not.found": "One or more resource types not found"
-				},
-				"image": {
-					"compress.failed": "Failed to compress image",
-					"resize.failed": "Failed to resize image"
-				}
-			},
-			"delete": {
-				"single": {
-					"success": "Resource deleted successfully",
-					"failed": "Failed to delete resource"
-				}
-			},
-			"edit": {
-				"success": "Resource successfully changed",
-				"failed": "Resource could not be changed"
-			},
-			"approve": {
-				"success": "Заявка на ресурс успешно одобрена",
-				"failed": "Не удалось одобрить заявку на ресурс"
-			}
-		},
-		"resource.request": {
-			"create": {
-				"success": "The resource request has been successfully created",
-				"failed": "Failed to create the resource request",
-				"unauthorized": "You have to be authorized to create a resource request",
-				"unverified": "You have to be verified to create a resource request",
-				"skill": {
-					"not.found": "One or more skills not found"
-				},
-				"specialization": {
-					"not.found": "One or more specializations not found"
-				},
-				"type": {
-					"not.found": "One or more resource types not found"
-				}
-			},
-			"reject": {
-				"success": "The resource request has been successfully rejected",
-				"failed": "Failed to reject the resource request"
-			}
-		},
-		"referralLink": {
-			"delete": {
-				"success": "Referral link has been successfully deleted",
-				"failed": "Failed to delete referral link",
-				"unauthorized": "You have to be authorized to delete a referral link",
-				"unverified": "You have to be verified to delete a referral link",
-				"not_owner": "User must be an owner of link or admin",
-				"not_found": "Referral link not found"
-			},
-			"edit": {
-				"success": "Referral link successfully updated",
-				"failed": "Failed to update referral link",
-				"auth": {
-					"unauthorized": "Authentication failed",
-					"user": {
-						"verified": "Available only for verified users"
-					}
-				},
-				"referral": {
-					"user": {
-						"not.owner": "User is not the owner of this referral link"
-					},
-					"link": {
-						"not.find": "Referral link not found"
-					}
-				}
-			}
-		},
 		"profile": {
 			"update": {
 				"success": "Profile has been successfully changed",
@@ -923,75 +832,12 @@
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
 			}
-		},
-		"featureFlags": {
-			"create": {
-				"success": "The function flag has been successfully created.",
-				"failed": "Failed to create the flag feature.",
-				"auth": {
-					"unauthorized": "Authentication failed.",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"alreadyExists": "Feature flag with this key already exists for selected client type."
-			},
-			"delete": {
-				"single": {
-					"success": "Feature flag successfully deleted",
-					"failed": "Feature flag could not be deleted",
-					"not_found": "Feature flag not found"
-				},
-				"auth": {
-					"unauthorized": "The user is not authorized",
-					"user": {
-						"verified": "Access only for verified users"
-					}
-				}
-			},
-			"update": {
-				"single": {
-					"enabled": {
-						"success": "Feature flag successfully enabled",
-						"failed": "Couldn't enable feature flag"
-					},
-					"disabled": {
-						"success": "Feature flag successfully disabled",
-						"failed": "Couldn't disable feature flag"
-					},
-					"not_found": "Feature flag not found",
-					"already_exists": "Feature flag with this key already exists for selected client type"
-				},
-				"auth": {
-					"unauthorized": "The user is not authorized",
-					"user": {
-						"verified": "Access only for verified users"
-					}
-				}
-			},
-			"edit": {
-				"success": "The flag feature is changing successfully.",
-				"failed": "Failed to change feature flag",
-				"auth": {
-					"unauthorized": "Authentication failed.",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"alreadyExists": "Feature flag with this key already exists for selected client type.",
-				"not_found": "Feature flag not found"
-			}
 		}
 	},
 	"tooltip": {
 		"collections": {
 			"disabled": {
 				"info": "You don't have access to this feature"
-			}
-		},
-		"featureFlags": {
-			"disabled": {
-				"info": "You can't delete enabled feature flag"
 			}
 		}
 	},
