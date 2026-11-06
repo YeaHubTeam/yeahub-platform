@@ -158,22 +158,6 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
-		referralLinks: {
-			route: 'referralLinks',
-			page: '/admin/referralLinks',
-			create: {
-				route: 'create',
-				page: '/admin/referralLinks/create',
-			},
-			edit: {
-				route: ':referralLinkId/edit',
-				page: '/admin/referralLinks/:referralLinkId/edit',
-			},
-			details: {
-				route: ':referralLinkId',
-				page: '/admin/referralLinks/:referralLinkId',
-			},
-		},
 		featureFlags: {
 			route: 'featureFlags',
 			page: '/admin/featureFlags',

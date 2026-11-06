@@ -1,1 +1,0 @@
-export { referralLinksMock } from './referralLinksMock';

@@ -15,7 +15,6 @@ import MainIcon from '@/shared/assets/icons/main.svg';
 import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
-import ReferralsIcon from '@/shared/assets/icons/referralsIcon.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
@@ -46,8 +45,6 @@ import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreat
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
-import { ReferralLinkDetailPage } from '@/pages/admin/referralLink/ReferalLinkDetail';
-import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
 import { ResourceRequestViewPage } from '@/pages/admin/resource/resourceRequestDetail';
@@ -312,13 +309,6 @@ const adminLayoutMenuItems: MenuItem[] = [
 		icon: Crown,
 		roles: ['admin'],
 	},
-	{
-		type: 'single',
-		route: ROUTES.admin.referralLinks.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_REFERRALS),
-		icon: ReferralsIcon,
-		roles: ['admin'],
-	},
 ];
 
 export const router = createBrowserRouter([
@@ -520,20 +510,6 @@ export const router = createBrowserRouter([
 						element: <FeatureFlagCreatePage />,
 					},
 					{ path: ROUTES.admin.featureFlags.details.route, element: <FeatureFlagDetailsPage /> },
-				],
-			},
-			{
-				path: ROUTES.admin.referralLinks.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <ReferralLinksPage />,
-					},
-					{
-						path: ROUTES.admin.referralLinks.details.route,
-						element: <ReferralLinkDetailPage />,
-					},
 				],
 			},
 			{

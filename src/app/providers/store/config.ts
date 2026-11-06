@@ -11,7 +11,6 @@ import { activeSubscriptionSlice } from '@/entities/subscription';
 import { collectionsPageReducer } from '@/pages/admin/collection/collections';
 import { companiesTablePageReducer } from '@/pages/admin/company/companies';
 import { questionsTablePageReducer } from '@/pages/admin/question/questions';
-import { referralLinksPageReducer } from '@/pages/admin/referralLink/referralLinks';
 import {
 	resourcesAllTabReducer,
 	resourcesRequestsTabReducer,
@@ -39,7 +38,6 @@ export const reducers = {
 	resourcesRequestsTab: resourcesRequestsTabReducer,
 	topicsPage: topicsPageReducer,
 	tasksTablePage: tasksTablePageReducer,
-	referralLinksPage: referralLinksPageReducer,
 	featureFlag: featureFlagReducer,
 };
 

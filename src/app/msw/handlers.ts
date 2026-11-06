@@ -12,7 +12,6 @@ import {
 	quizHandlers,
 } from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
-import { referralLinksHandlers } from '@/entities/referralLink';
 import { resourcesHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
 import { specializationHandlers, specializationsProgressHandlers } from '@/entities/specialization';
@@ -72,7 +71,6 @@ export const handlers = [
 	...paymentsIdHandlers,
 	...createFeatureFlagHandlers,
 	...programmingLanguageHandlers,
-	...referralLinksHandlers,
 	...taskHandlers,
 	...taskCreateHandlers,
 	...deleteTaskHandlers,
