@@ -18,7 +18,6 @@ import { SkillCreatePageSkeleton } from '@/pages/admin/skill/skillCreate';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
 import { TaskCreatePageSkeleton } from '@/pages/admin/task/taskCreate';
-import { TopicCreatePageSkeleton } from '@/pages/admin/topic/topicCreate';
 import { UserDetailPageSkeleton } from '@/pages/admin/user/userDetail';
 import { UsersTablePageSkeleton } from '@/pages/admin/user/users';
 import { AnalyticsPageSkeleton } from '@/pages/analytics/analytics';
@@ -126,8 +125,6 @@ const SkeletonGenerator = () => {
 			return <CompaniesTablePageSkeleton />;
 		case ROUTES.analytics.page:
 			return <AnalyticsPageSkeleton />;
-		case ROUTES.admin.topics.create.page:
-			return <TopicCreatePageSkeleton />;
 		case ROUTES.admin.tasks.create.page:
 			return <TaskCreatePageSkeleton />;
 		case ROUTES.analytics['skills-proficiency'].page:

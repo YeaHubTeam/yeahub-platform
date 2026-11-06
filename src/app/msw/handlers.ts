@@ -34,7 +34,6 @@ import { specializationEditHandlers } from '@/features/specialization/editSpecia
 import { paymentsIdHandlers } from '@/features/subscriptions/subscribe';
 import { taskCreateHandlers } from '@/features/task/createTask';
 import { deleteTaskHandlers } from '@/features/task/deleteTask';
-import { createTopicHandlers } from '@/features/topics/createTopics';
 
 export const handlers = [
 	...authHandlers,
@@ -64,7 +63,6 @@ export const handlers = [
 	...usersRatingHandlers,
 	...topicHandlers,
 	...hhAnalyticsHandlers,
-	...createTopicHandlers,
 	...paymentsIdHandlers,
 	...programmingLanguageHandlers,
 	...taskHandlers,
