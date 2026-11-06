@@ -33,7 +33,6 @@ import { CollectionPage as AdminCollectionPage } from '@/pages/admin/collection/
 import { CollectionEditPage } from '@/pages/admin/collection/collectionEdit';
 import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/collection/collections';
 import { CompaniesTablePage } from '@/pages/admin/company/companies';
-import { CompanyCreatePage } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPage } from '@/pages/admin/company/companyDetail';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
@@ -408,10 +407,6 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <CompaniesTablePage />,
-					},
-					{
-						path: ROUTES.admin.companies.create.route,
-						element: <CompanyCreatePage />,
 					},
 					{
 						path: ROUTES.admin.companies.details.route,

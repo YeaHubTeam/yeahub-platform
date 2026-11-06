@@ -12,8 +12,6 @@ export {
 	useGetPublicCompaniesListQuery,
 } from './api/companyApi';
 export type { Company, CreateOrEditCompanyFormValues } from './model/types/companyTypes';
-export { CompanyForm } from './ui/CompanyForm/CompanyForm';
-export { CompanyFormSkeleton } from './ui/CompanyForm/CompanyForm.skeleton';
 
 export { companyHandlers } from './api/__mocks__';
 export { companiesMock } from './api/__mocks__/data';

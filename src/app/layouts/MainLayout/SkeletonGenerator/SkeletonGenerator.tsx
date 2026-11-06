@@ -11,7 +11,6 @@ import { SpecializationCreateFormSkeleton } from '@/features/specialization/crea
 import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
 import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
-import { CompanyCreatePageSkeleton } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
@@ -123,8 +122,6 @@ const SkeletonGenerator = () => {
 			return <UsersTablePageSkeleton />;
 		case ROUTES.admin.collections.page:
 			return <CollectionsPageSkeleton />;
-		case ROUTES.admin.companies.create.page:
-			return <CompanyCreatePageSkeleton />;
 		case ROUTES.admin.companies.page:
 			return <CompaniesTablePageSkeleton />;
 		case ROUTES.analytics.page:
