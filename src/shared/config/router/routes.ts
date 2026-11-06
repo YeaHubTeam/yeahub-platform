@@ -190,18 +190,6 @@ export const ROUTES = {
 				page: '/admin/featureFlags/:flagId',
 			},
 		},
-		testQuestions: {
-			route: 'test-questions',
-			page: '/admin/test-questions',
-			create: {
-				route: 'create',
-				page: '/admin/test-questions/create',
-			},
-			details: {
-				route: ':testQuestionId',
-				page: '/admin/test-questions/:testQuestionId',
-			},
-		},
 	},
 	auth: {
 		route: 'auth',
