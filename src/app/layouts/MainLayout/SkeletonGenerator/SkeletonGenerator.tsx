@@ -15,7 +15,6 @@ import { CompanyCreatePageSkeleton } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
-import { ReferralLinkCreatePageSkeleton } from '@/pages/admin/referralLink/ReferralLinkCreate';
 import { SkillCreatePageSkeleton } from '@/pages/admin/skill/skillCreate';
 import { SkillsPageSkeleton } from '@/pages/admin/skill/skills';
 import { SpecializationsPageSkeleton } from '@/pages/admin/specialization/specializations';
@@ -128,8 +127,6 @@ const SkeletonGenerator = () => {
 			return <CompanyCreatePageSkeleton />;
 		case ROUTES.admin.companies.page:
 			return <CompaniesTablePageSkeleton />;
-		case ROUTES.admin.referralLinks.create.page:
-			return <ReferralLinkCreatePageSkeleton />;
 		case ROUTES.analytics.page:
 			return <AnalyticsPageSkeleton />;
 		case ROUTES.admin.topics.create.page:

@@ -16,8 +16,6 @@ export { ReferralLinkSum } from './ui/ReferralLinkSum/ReferralLinkSum';
 export { ReferralLinkCount } from './ui/ReferralLinkCount/ReferralLinkCount';
 export { ReferralLinkDate } from './ui/ReferralLinkDate/ReferralLinkDate';
 export { ReferralLinkOwner } from './ui/ReferralLinkOwner/ReferralLinkOwner';
-export { ReferralLinkForm } from './ui/ReferralLinkForm/ReferralLinkForm';
 
 export { referralLinksHandlers } from './api/__mocks__';
 export { referralLinksMock } from './api/__mocks__/data';
-export { ReferralLinkFormSkeleton } from './ui/ReferralLinkForm/ReferralLinkForm.skeleton';
