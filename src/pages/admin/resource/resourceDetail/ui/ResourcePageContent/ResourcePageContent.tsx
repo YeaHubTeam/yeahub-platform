@@ -1,12 +1,9 @@
 import { ROUTES } from '@/shared/config';
-import { BackHeader } from '@/shared/ui/BackHeader';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
 import { type Resource } from '@/entities/resource';
 import { ResourceAdditionalInfo } from '@/entities/resource';
-
-import { ResourceEditButton } from '@/features/resources/editResource';
 
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
@@ -20,12 +17,7 @@ interface ResourcePageContentProps {
 	isTablet: boolean;
 }
 
-export const ResourcePageContent = ({
-	resource,
-	isMobile,
-	isTablet,
-	isDisabled,
-}: ResourcePageContentProps) => {
+export const ResourcePageContent = ({ resource, isMobile, isTablet }: ResourcePageContentProps) => {
 	const { createdBy, keywords, skills, specializations, name, description, type, url, createdAt } =
 		resource;
 
@@ -33,9 +25,6 @@ export const ResourcePageContent = ({
 		<Flex gap="20" align="start">
 			<Card withOutsideShadow className={styles.main}>
 				<Flex direction="column" gap="20">
-					<BackHeader>
-						<ResourceEditButton resourceId={resource.id} isDisabled={isDisabled} />
-					</BackHeader>
 					<ResourceHeader
 						name={name}
 						description={description}

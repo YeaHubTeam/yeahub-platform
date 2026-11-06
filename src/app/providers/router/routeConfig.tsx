@@ -54,9 +54,7 @@ import { ReferralLinkEditPage } from '@/pages/admin/referralLink/referralLinkEdi
 import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
 import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
-import { ResourceEditPage } from '@/pages/admin/resource/resourceEdit';
 import { ResourceRequestViewPage } from '@/pages/admin/resource/resourceRequestDetail';
-import { ResourceRequestEditPage } from '@/pages/admin/resource/resourceRequestEdit';
 import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/resource/resources';
 import { SkillCreatePage } from '@/pages/admin/skill/skillCreate';
 import { SkillDetailPage } from '@/pages/admin/skill/skillDetail';
@@ -114,7 +112,6 @@ import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/que
 import { QuestionsPage } from '@/pages/wiki/question/questions';
 import { MyResourcesPage } from '@/pages/wiki/resource/myResources';
 import { RequestResourceCreatePage } from '@/pages/wiki/resource/requestResourceCreate';
-import { RequestResourceEditPage } from '@/pages/wiki/resource/requestResourceEdit';
 import { RequestInfoPage } from '@/pages/wiki/resource/resourceRequestDetail';
 import { ResourcesPage } from '@/pages/wiki/resource/resources';
 
@@ -388,16 +385,8 @@ export const router = createBrowserRouter([
 				element: <ResourceCreatePage />,
 			},
 			{
-				path: ROUTES.admin.resources.edit.page,
-				element: <ResourceEditPage />,
-			},
-			{
 				path: ROUTES.admin.resources.requests.view.page,
 				element: <ResourceRequestViewPage />,
-			},
-			{
-				path: ROUTES.admin.resources.requests.edit.page,
-				element: <ResourceRequestEditPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,
@@ -812,13 +801,6 @@ export const router = createBrowserRouter([
 										element: <RequestInfoPage />,
 										handle: {
 											crumb: Translation.CRUMBS_RESOURCES_MY_REQUEST,
-										},
-									},
-									{
-										path: ROUTES.wiki.resources.my.edit.route,
-										element: <RequestResourceEditPage />,
-										handle: {
-											crumb: Translation.CRUMBS_EDIT_REQUEST,
 										},
 									},
 								],
