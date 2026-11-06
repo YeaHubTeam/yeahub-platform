@@ -1,14 +1,8 @@
 export { TopicFilterField } from './ui/TopicFilterField/TopicFilterField';
 
-export type { Topic, CreateOrEditTopicFormValues } from './model/types/topic';
+export type { Topic } from './model/types/topic';
 
-export { useGetTopicsListQuery, useGetTopicByIdQuery } from './api/topicApi';
-
-export { TopicAdditionalInfo } from './ui/TopicAdditionalInfo/TopicAdditionalInfo';
-export { TopicAdditionalInfoSkeleton } from './ui/TopicAdditionalInfo/TopicAdditionalInfo.skeleton';
-
-export { TopicCard } from './ui/TopicCard/TopicCard';
-export { TopicCardSkeleton } from './ui/TopicCard/TopicCard.skeleton';
+export { useGetTopicsListQuery } from './api/topicApi';
 
 export { topicHandlers } from './api/__mock__';
 

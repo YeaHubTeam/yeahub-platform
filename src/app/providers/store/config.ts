@@ -14,7 +14,6 @@ import { questionsTablePageReducer } from '@/pages/admin/question/questions';
 import { skillsPageReducer } from '@/pages/admin/skill/skills';
 import { specializationsPageReducer } from '@/pages/admin/specialization/specializations';
 import { tasksTablePageReducer } from '@/pages/admin/task/tasks';
-import { topicsPageReducer } from '@/pages/admin/topic/topics';
 import { interviewHistoryPageReducer } from '@/pages/interview/interviewHistory';
 
 import { router } from '../router';
@@ -30,7 +29,6 @@ export const reducers = {
 	specializationsPage: specializationsPageReducer,
 	profile: profileReducer,
 	collectionsPage: collectionsPageReducer,
-	topicsPage: topicsPageReducer,
 	tasksTablePage: tasksTablePageReducer,
 	featureFlag: featureFlagReducer,
 };

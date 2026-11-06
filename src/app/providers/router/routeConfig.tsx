@@ -1,6 +1,5 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
-import Cards from '@/shared/assets/icons/cards.svg';
 import CareerIcon from '@/shared/assets/icons/career.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
 import Companies from '@/shared/assets/icons/companies.svg';
@@ -52,8 +51,6 @@ import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
 import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
-import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
-import { TopicsPage } from '@/pages/admin/topic/topics';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
 import { UsersTablePage } from '@/pages/admin/user/users';
@@ -273,13 +270,6 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.admin.topics.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
-		icon: Cards,
-		roles: listAdminRoles,
-	},
-	{
-		type: 'single',
 		route: ROUTES.admin.tasks.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
 		icon: TasksIcon,
@@ -410,20 +400,6 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.companies.details.route,
 						element: <CompanyDetailPage />,
-					},
-				],
-			},
-			{
-				path: ROUTES.admin.topics.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <TopicsPage />,
-					},
-					{
-						path: ROUTES.admin.topics.details.route,
-						element: <TopicDetailPage />,
 					},
 				],
 			},
