@@ -10,7 +10,6 @@ import { Text } from '@/shared/ui/Text';
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
 
-import { useDeleteFeatureFlagMutation } from '@/features/featureFlag/deleteFeatureFlag';
 import { ToggleActiveFeatureFlagSwitch } from '@/features/featureFlag/toggleActiveFeatureFlag';
 
 interface FeatureFlagsTableRow {
@@ -35,7 +34,6 @@ export const FeatureFlagsTable = ({
 	onSelectItems,
 }: FeatureFlagsTableProps) => {
 	const { t } = useTranslation([i18Namespace.featureFlags]);
-	const [deleteFeatureFlag] = useDeleteFeatureFlagMutation();
 
 	const tableData: FeatureFlagsTableRow[] = featureFlags.map((featureFlag) => ({
 		id: featureFlag.id,
@@ -132,8 +130,7 @@ export const FeatureFlagsTable = ({
 			selectedRowIds={selectedRowIds}
 			onSelectedRowIdsChange={onSelectedRowIdsChange}
 			entity="featureFlags"
-			actions={['detail', 'edit', 'copy', 'delete']}
-			onDelete={(id) => deleteFeatureFlag(String(id))}
+			actions={['detail', 'edit', 'copy']}
 		/>
 	);
 };

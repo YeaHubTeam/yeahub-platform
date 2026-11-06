@@ -13,7 +13,6 @@ import { Text } from '@/shared/ui/Text';
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
 
-import { DeleteFeatureFlagButton } from '@/features/featureFlag/deleteFeatureFlag';
 import { ToggleActiveFeatureFlagSwitch } from '@/features/featureFlag/toggleActiveFeatureFlag';
 
 import styles from './FeatureFlagDetailsPageContent.module.css';
@@ -31,7 +30,6 @@ export const FeatureFlagDetailsPageContent = ({
 	return (
 		<>
 			<BackHeader>
-				<DeleteFeatureFlagButton isDetailPage featureFlagId={featureFlag.id} />
 				<NavLink to={route(ROUTES.admin.featureFlags.edit.page, featureFlag.id)}>
 					<Button>{tTranslate(Translation.EDIT)}</Button>
 				</NavLink>

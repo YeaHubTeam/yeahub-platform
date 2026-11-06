@@ -27,7 +27,6 @@ import { collectionDeleteHandlers } from '@/features/collections/deleteCollectio
 import { createCompanyHandlers } from '@/features/company/createCompany';
 import { deleteCompanyHandlers } from '@/features/company/deleteCompany';
 import { createFeatureFlagHandlers } from '@/features/featureFlag/createFeatureFlag';
-import { featureFlagDeleteHandlers } from '@/features/featureFlag/deleteFeatureFlag';
 import { setActiveProfileHandlers } from '@/features/profile/setActiveProfile';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { learnQuestionHandlers } from '@/features/quiz/learnQuestion';
@@ -78,7 +77,6 @@ export const handlers = [
 	...createTopicHandlers,
 	...topicEditHandlers,
 	...createCompanyHandlers,
-	...featureFlagDeleteHandlers,
 	...paymentsIdHandlers,
 	...createFeatureFlagHandlers,
 	...programmingLanguageHandlers,
