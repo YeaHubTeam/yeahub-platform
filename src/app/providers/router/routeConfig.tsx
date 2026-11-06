@@ -42,7 +42,6 @@ import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreat
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
-import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
 import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
 import { ResourceRequestViewPage } from '@/pages/admin/resource/resourceRequestDetail';
 import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/resource/resources';
@@ -341,10 +340,6 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.details.page,
 				element: <ResourcePage />,
-			},
-			{
-				path: ROUTES.admin.resources.create.page,
-				element: <ResourceCreatePage />,
 			},
 			{
 				path: ROUTES.admin.resources.requests.view.page,
