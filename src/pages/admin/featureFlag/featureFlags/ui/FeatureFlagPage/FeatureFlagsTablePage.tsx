@@ -10,8 +10,6 @@ import { Text } from '@/shared/ui/Text';
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
 
-import { ToggleActiveFeatureFlagSwitch } from '@/features/featureFlag/toggleActiveFeatureFlag';
-
 interface FeatureFlagsTableRow {
 	id: string;
 	flag: string;
@@ -77,12 +75,6 @@ export const FeatureFlagsTable = ({
 			id: 'clientType',
 			header: t(FeatureFlags.TABLE_CLIENT_TYPE),
 			width: '150px',
-		},
-		{
-			id: 'enabled',
-			header: t(FeatureFlags.TABLE_ENABLED),
-			width: '100px',
-			cell: ({ row }) => <ToggleActiveFeatureFlagSwitch id={row.id} enabled={row.enabled} />,
 		},
 		{
 			id: 'createdAt',

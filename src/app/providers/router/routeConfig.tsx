@@ -36,7 +36,6 @@ import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/collectio
 import { CompaniesTablePage } from '@/pages/admin/company/companies';
 import { CompanyCreatePage } from '@/pages/admin/company/companyCreate';
 import { CompanyDetailPage } from '@/pages/admin/company/companyDetail';
-import { FeatureFlagCreatePage } from '@/pages/admin/featureFlag/featureFlagCreate';
 import { FeatureFlagDetailsPage } from '@/pages/admin/featureFlag/featureFlagDetail';
 import { FeatureFlagsPage } from '@/pages/admin/featureFlag/featureFlags';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
@@ -504,10 +503,6 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <FeatureFlagsPage />,
-					},
-					{
-						path: ROUTES.admin.featureFlags.create.route,
-						element: <FeatureFlagCreatePage />,
 					},
 					{ path: ROUTES.admin.featureFlags.details.route, element: <FeatureFlagDetailsPage /> },
 				],

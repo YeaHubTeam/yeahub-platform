@@ -13,8 +13,6 @@ import { Text } from '@/shared/ui/Text';
 import { FeatureFlagApiItem } from '@/entities/featureFlag';
 import { UserRolesList } from '@/entities/user';
 
-import { ToggleActiveFeatureFlagSwitch } from '@/features/featureFlag/toggleActiveFeatureFlag';
-
 import styles from './FeatureFlagDetailsPageContent.module.css';
 
 interface FeatureFlagDetailsPageContentProps {
@@ -57,13 +55,6 @@ export const FeatureFlagDetailsPageContent = ({
 								{t(FeatureFlags.DETAILS_CLIENT_TYPE)}
 							</Text>
 							<Chip label={featureFlag.clientType}></Chip>
-						</Flex>
-
-						<Flex align="start" direction="column" gap="16">
-							<Text variant="body1" color="black-700">
-								{t(FeatureFlags.DETAILS_ACTIVITY)}
-							</Text>
-							<ToggleActiveFeatureFlagSwitch id={featureFlag.id} enabled={featureFlag.enabled} />
 						</Flex>
 
 						<Flex align="start" direction="column" gap="16">
