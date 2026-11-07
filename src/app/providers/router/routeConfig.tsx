@@ -2,7 +2,6 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 
 import CareerIcon from '@/shared/assets/icons/career.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
-import Companies from '@/shared/assets/icons/companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
@@ -31,8 +30,6 @@ import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate'
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/collection/collectionDetail';
 import { CollectionEditPage } from '@/pages/admin/collection/collectionEdit';
 import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/collection/collections';
-import { CompaniesTablePage } from '@/pages/admin/company/companies';
-import { CompanyDetailPage } from '@/pages/admin/company/companyDetail';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreateMultiple';
@@ -263,13 +260,6 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.admin.companies.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
-		icon: Companies,
-		roles: listAdminRoles,
-	},
-	{
-		type: 'single',
 		route: ROUTES.admin.tasks.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
 		icon: TasksIcon,
@@ -386,20 +376,6 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.collections.details.route,
 						element: <AdminCollectionPage />,
-					},
-				],
-			},
-			{
-				path: ROUTES.admin.companies.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <CompaniesTablePage />,
-					},
-					{
-						path: ROUTES.admin.companies.details.route,
-						element: <CompanyDetailPage />,
 					},
 				],
 			},

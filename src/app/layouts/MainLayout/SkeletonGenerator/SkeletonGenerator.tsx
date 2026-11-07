@@ -10,8 +10,6 @@ import { SpecializationCreateFormSkeleton } from '@/features/specialization/crea
 
 import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
-import { CompaniesTablePageSkeleton } from '@/pages/admin/company/companies';
-import { CompanyDetailPageSkeleton } from '@/pages/admin/company/companyDetail';
 import { QuestionPageContentSkeleton } from '@/pages/admin/question/questionDetail';
 import { QuestionsTablePageSkeleton } from '@/pages/admin/question/questions';
 import { SkillCreatePageSkeleton } from '@/pages/admin/skill/skillCreate';
@@ -46,9 +44,6 @@ const SkeletonGenerator = () => {
 		matchPath(ROUTES.admin.questions.details.page, location.pathname) &&
 		!matchPath(ROUTES.admin.questions.details.page, ROUTES.admin.questions.create.page);
 	const isTaskDetailsPage = matchPath(ROUTES.tasks.detail.page, location.pathname);
-	const isCompanyDetailsPage =
-		location.pathname !== ROUTES.admin.companies.create.page &&
-		matchPath(ROUTES.admin.companies.details.page, location.pathname);
 	const isUserDetailPage = matchPath(ROUTES.admin.users.detail.page, location.pathname);
 	const isCollectionDetailPage = matchPath(
 		ROUTES.admin.collections.details.page,
@@ -70,10 +65,6 @@ const SkeletonGenerator = () => {
 
 	if (isCollectionDetailPage) {
 		return <CollectionPageSkeleton />;
-	}
-
-	if (isCompanyDetailsPage) {
-		return <CompanyDetailPageSkeleton />;
 	}
 
 	if (isUserDetailPage) {
@@ -121,8 +112,6 @@ const SkeletonGenerator = () => {
 			return <UsersTablePageSkeleton />;
 		case ROUTES.admin.collections.page:
 			return <CollectionsPageSkeleton />;
-		case ROUTES.admin.companies.page:
-			return <CompaniesTablePageSkeleton />;
 		case ROUTES.analytics.page:
 			return <AnalyticsPageSkeleton />;
 		case ROUTES.admin.tasks.create.page:

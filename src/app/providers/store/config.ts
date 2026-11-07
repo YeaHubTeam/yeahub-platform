@@ -9,7 +9,6 @@ import { activeQuizSlice } from '@/entities/quiz';
 import { activeSubscriptionSlice } from '@/entities/subscription';
 
 import { collectionsPageReducer } from '@/pages/admin/collection/collections';
-import { companiesTablePageReducer } from '@/pages/admin/company/companies';
 import { questionsTablePageReducer } from '@/pages/admin/question/questions';
 import { skillsPageReducer } from '@/pages/admin/skill/skills';
 import { specializationsPageReducer } from '@/pages/admin/specialization/specializations';
@@ -25,7 +24,6 @@ export const reducers = {
 	[baseApi.reducerPath]: baseApi.reducer,
 	interviewHistoryPage: interviewHistoryPageReducer,
 	questionsTablePage: questionsTablePageReducer,
-	companiesTablePage: companiesTablePageReducer,
 	specializationsPage: specializationsPageReducer,
 	profile: profileReducer,
 	collectionsPage: collectionsPageReducer,

@@ -12,7 +12,6 @@ export { ResourcesTypesFilterSection } from './ui/ResourcesTypesFilterSection/Re
 export { ResourcesTypesFilterSectionSkeleton } from './ui/ResourcesTypesFilterSection/ResourcesTypesFilterSection.skeleton';
 export { ResourceCard } from './ui/ResourceCard/ResourceCard';
 export { ResourceCardSkeleton } from './ui/ResourceCard/ResourceCard.skeleton';
-export { ResourceRequestStatusChip } from './ui/ResourceRequestStatus/ResourceRequestStatus';
 export { ResourcesSelect } from './ui/ResourceSelect/ResourceSelect';
 export { ResourcesStatusBlock } from './ui/ResourcesStatusBlock/ResourcesStatusBlock';
 export { ResourceAdditionalInfo } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo';
