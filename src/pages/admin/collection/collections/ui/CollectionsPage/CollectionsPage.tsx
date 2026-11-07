@@ -40,7 +40,6 @@ const CollectionsPage = () => {
 	const {
 		filters,
 		hasFilters,
-		onResetFilters,
 		onChangeTitle,
 		onChangePage,
 		onChangeIsFree,
@@ -53,7 +52,6 @@ const CollectionsPage = () => {
 
 	const onResetAll = () => {
 		dispatch(collectionsPageActions.resetFilters());
-		onResetFilters();
 	};
 
 	const {
