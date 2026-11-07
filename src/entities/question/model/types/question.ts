@@ -132,45 +132,6 @@ export interface GetQuestionsBySpecializationCountResponse {
 	skillsQuestions: SkillQuestion[];
 }
 
-export interface MostDifficultQuestion {
-	questionId: number;
-	title: string;
-	answersCount: number;
-	stat: number;
-}
-
-export interface MostDifficultQuestionSpecialization {
-	id: number;
-	specialization: Specialization;
-	calculatedAt: string;
-	topStat: MostDifficultQuestion[];
-}
-
-export type MostDifficultQuestionsResponse = Response<MostDifficultQuestionSpecialization>;
-
-export interface MostDifficultQuestionsRequestParams {
-	specId: number;
-	page?: number;
-	limit?: number;
-}
-
-export interface PopularQuestionStat {
-	id: number;
-	title: string;
-	imageSrc: string;
-	questionId: number;
-	frequencyStat: number;
-}
-
-export interface PopularQuestionsSpecialization {
-	specializationId: number;
-	specializationTitle: string;
-	calculatedAt: string;
-	topStat: PopularQuestionStat[];
-}
-
-export type GetPopularQuestionsResponse = PopularQuestionsSpecialization[];
-
 export type GetQuestionKeywordsResponse = Response<string[]>;
 
 export interface GetQuestionKeywordsParamsRequest {

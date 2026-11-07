@@ -82,38 +82,6 @@ export const ROUTES = {
 				page: '/admin/collections/:collectionId/edit',
 			},
 		},
-		companies: {
-			route: 'companies',
-			page: '/admin/companies',
-			create: {
-				route: 'create',
-				page: '/admin/companies/create',
-			},
-			edit: {
-				route: ':companyId/edit',
-				page: '/admin/companies/:companyId/edit',
-			},
-			details: {
-				route: ':companyId',
-				page: '/admin/companies/:companyId',
-			},
-		},
-		topics: {
-			route: 'topics',
-			page: '/admin/topics',
-			create: {
-				route: 'create',
-				page: '/admin/topics/create',
-			},
-			edit: {
-				route: ':topicId/edit',
-				page: '/admin/topics/:topicId/edit',
-			},
-			details: {
-				route: ':topicId',
-				page: '/admin/topics/:topicId',
-			},
-		},
 		tasks: {
 			route: 'tasks',
 			page: '/admin/tasks',
@@ -128,22 +96,6 @@ export const ROUTES = {
 			details: {
 				route: ':taskId',
 				page: '/admin/tasks/:taskId',
-			},
-		},
-		featureFlags: {
-			route: 'featureFlags',
-			page: '/admin/featureFlags',
-			create: {
-				route: 'create',
-				page: '/admin/featureFlags/create',
-			},
-			edit: {
-				route: ':flagId/edit',
-				page: '/admin/featureFlags/:flagId/edit',
-			},
-			details: {
-				route: ':flagId',
-				page: '/admin/featureFlags/:flagId',
 			},
 		},
 	},
@@ -205,30 +157,6 @@ export const ROUTES = {
 	analytics: {
 		route: 'analytics',
 		page: '/analytics',
-		progressSpecializations: {
-			route: 'progress-specializations',
-			page: '/analytics/progress-specializations',
-		},
-		'popular-skills': {
-			route: 'popular-skills',
-			page: '/analytics/popular-skills',
-		},
-		'skills-proficiency': {
-			route: 'skills',
-			page: '/analytics/skills',
-		},
-		'difficult-questions': {
-			route: 'difficultQuestions',
-			page: '/analytics/difficultQuestions',
-		},
-		'popular-questions': {
-			route: 'popular-questions',
-			page: '/analytics/popular-questions',
-		},
-		'users-rating': {
-			route: 'users-rating',
-			page: '/analytics/users-rating',
-		},
 	},
 	interview: {
 		route: 'interview',

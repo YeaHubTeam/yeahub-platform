@@ -24,19 +24,7 @@ export { UserRolesListSkeleton } from './ui/UserRolesList/UserRolesList.skeleton
 export { UserSelect } from './ui/UserSelect/UserSelect';
 export { UserSelectSkeleton } from './ui/UserSelect/UserSelect.skeleton';
 export { convertRoleNameToEnumKey } from './model/utils/convertRoleNameToEnumKey/convertRoleNameToEnumKey';
-export {
-	useGetUsersRatingQuery,
-	useGetUserProfilePositionQuery,
-	useGetUsersRatingStatsQuery,
-} from './api/usersRatingApi';
-export type {
-	UserRating,
-	UsersRatingBySpecialization,
-	GetUsersRatingRequest,
-	GetUsersRatingResponse,
-	GetUsersRatingStatsResponse,
-} from './model/types/usersRating';
 
-export { usersRatingHandlers, userHandlers, userRolesMock } from './__mocks__';
+export { userHandlers, userRolesMock } from './__mocks__';
 export { UserRolesListField } from './ui/UserRolesListField/UserRolesListField';
 export { UserRolesListFieldSkeleton } from './ui/UserRolesListField/UserRolesListField.skeleton';

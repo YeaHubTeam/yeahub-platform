@@ -5,21 +5,15 @@ import { featureFlagHandlers } from '@/entities/featureFlag';
 import { hhAnalyticsHandlers } from '@/entities/hh';
 import { paymentHandlers } from '@/entities/payment';
 import { programmingLanguageHandlers } from '@/entities/programmingLanguage';
-import {
-	difficultQuestionsHandler,
-	learnedQuestionHandlers,
-	questionHandlers,
-	quizHandlers,
-} from '@/entities/question';
+import { questionHandlers, quizHandlers } from '@/entities/question';
 import { interviewHandlers } from '@/entities/quiz';
 import { resourcesHandlers } from '@/entities/resource';
 import { skillHandlers } from '@/entities/skill';
-import { specializationHandlers, specializationsProgressHandlers } from '@/entities/specialization';
+import { specializationHandlers } from '@/entities/specialization';
 import { subscriptionHandlers } from '@/entities/subscription';
 import { taskHandlers } from '@/entities/task';
 import { topicHandlers } from '@/entities/topic';
 import { userHandlers } from '@/entities/user';
-import { usersRatingHandlers } from '@/entities/user';
 import { vacancyHandlers } from '@/entities/vacancy';
 
 import { collectionDeleteHandlers } from '@/features/collections/deleteCollection';
@@ -55,12 +49,8 @@ export const handlers = [
 	...learnQuestionHandlers,
 	...resetQuestionHandlers,
 	...quizHandlers,
-	...difficultQuestionsHandler,
-	...learnedQuestionHandlers,
-	...specializationsProgressHandlers,
 	...resourcesHandlers,
 	...userHandlers,
-	...usersRatingHandlers,
 	...topicHandlers,
 	...hhAnalyticsHandlers,
 	...paymentsIdHandlers,

@@ -107,13 +107,7 @@ export const QuestionsTable = ({
 			id: 'topics',
 			header: t(Questions.TOPIC_TITLE),
 			width: '200px',
-			cell: ({ row }) => (
-				<TableCellEntityList
-					url={ROUTES.admin.topics.details.page}
-					items={row.topics}
-					showCount={TOPIC_SHOW_COUNT}
-				/>
-			),
+			cell: ({ row }) => <TableCellEntityList items={row.topics} showCount={TOPIC_SHOW_COUNT} />,
 		},
 		{
 			id: 'rate',

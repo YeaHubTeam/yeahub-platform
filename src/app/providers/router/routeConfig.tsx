@@ -52,12 +52,6 @@ import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
 import { UsersTablePage } from '@/pages/admin/user/users';
 import { AnalyticsPage } from '@/pages/analytics/analytics';
-import { DifficultQuestionsPage } from '@/pages/analytics/difficultQuestions';
-import { PopularQuestionsPage } from '@/pages/analytics/popularQuestions';
-import { PopularSkillsPage } from '@/pages/analytics/popularSkills';
-import { ProgressSpecializationsPage } from '@/pages/analytics/progressSpecializations';
-import { SkillsProficiencyPage } from '@/pages/analytics/skillsProficiency';
-import { UsersRatingPage } from '@/pages/analytics/usersRating';
 import { ForgotPasswordPage } from '@/pages/auth/forgotPassword';
 import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
@@ -456,48 +450,6 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <AnalyticsPage />,
-					},
-					{
-						path: ROUTES.analytics.progressSpecializations.route,
-						element: <ProgressSpecializationsPage />,
-						handle: {
-							crumb: Translation.CRUMBS_PROGRESS_SPECIALIZATIONS,
-						},
-					},
-					{
-						path: ROUTES.analytics['popular-skills'].route,
-						element: <PopularSkillsPage />,
-						handle: {
-							crumb: Translation.CRUMBS_POPULAR_SKILLS,
-						},
-					},
-					{
-						path: ROUTES.analytics['skills-proficiency'].route,
-						element: <SkillsProficiencyPage />,
-						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,
-						},
-					},
-					{
-						path: ROUTES.analytics['difficult-questions'].route,
-						element: <DifficultQuestionsPage />,
-						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
-						},
-					},
-					{
-						path: ROUTES.analytics['popular-questions'].route,
-						element: <PopularQuestionsPage />,
-						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_POPULAR_QUESTIONS,
-						},
-					},
-					{
-						path: ROUTES.analytics['users-rating'].route,
-						element: <UsersRatingPage />,
-						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_USERS_RATING,
-						},
 					},
 				],
 			},

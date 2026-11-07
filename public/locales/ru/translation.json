@@ -217,12 +217,6 @@
 		"vacancies": "Вакансии",
 		"vacancyMarket": "Аналитика рынка",
 		"analytics": "Аналитика",
-		"progress.specializations": "Прогресс по специальности",
-		"popular.skills": "Популярные навыки",
-		"analytics.skillsProficiency": "Средний процент изученности навыка",
-		"analytics.difficultQuestions": "Самые сложные вопросы",
-		"analytics.popularQuestions": "Самые частые вопросы в подборках",
-		"analytics.usersRating": "Рейтинг пользователей",
 		"tasks.list": "Список задач",
 		"task.detail": "Подробнее о задаче"
 	},

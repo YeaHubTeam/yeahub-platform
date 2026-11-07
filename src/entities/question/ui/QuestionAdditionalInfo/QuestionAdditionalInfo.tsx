@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { i18Namespace, Questions, ROUTES } from '@/shared/config';
+import { i18Namespace, Questions } from '@/shared/config';
 import { route, useCurrentProject, useScreenSize } from '@/shared/libs';
 import { Author, AuthorInfo } from '@/shared/ui/AuthorInfo';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
@@ -62,9 +62,6 @@ export const QuestionAdditionalInfo = ({
 		navigate(`${baseRoute}?page=1&status=all&skills=` + encodeURIComponent(skillId));
 	};
 
-	const onMoveToTopicPage = (topicId: number) => {
-		navigate(route(ROUTES.admin.topics.details.page, topicId));
-	};
 	const project = useCurrentProject();
 	return (
 		<>
@@ -91,12 +88,7 @@ export const QuestionAdditionalInfo = ({
 						isAllActive
 					/>
 					{project === 'admin' && questionTopics && questionTopics.length > 0 && (
-						<BaseFilterSection
-							title={t(Questions.TOPIC_TITLE)}
-							data={questionTopics}
-							onClick={onMoveToTopicPage}
-							isAllActive
-						/>
+						<BaseFilterSection title={t(Questions.TOPIC_TITLE)} data={questionTopics} isAllActive />
 					)}
 					<Flex direction="column" gap="8">
 						<Text variant="body2" color="black-700">
