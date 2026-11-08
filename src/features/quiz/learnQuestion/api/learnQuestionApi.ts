@@ -1,4 +1,4 @@
-import { i18n, Translation, ApiTags, baseApi } from '@/shared/config';
+import { i18n, Translation, baseApi } from '@/shared/config';
 import { toast } from '@/shared/ui/Toast';
 
 import { LearnQuestionParams, LearnQuestionResponse } from '../model/types/learnQuestionTypes';
@@ -11,12 +11,6 @@ const learnQuestionApi = baseApi.injectEndpoints({
 				method: 'PUT',
 				body,
 			}),
-			invalidatesTags: [
-				ApiTags.QUESTIONS,
-				ApiTags.QUESTION_DETAIL,
-				ApiTags.QUESTIONS_LEARN,
-				ApiTags.INTERVIEW_STATISTICS,
-			],
 			async onQueryStarted() {
 				try {
 					toast.success(i18n.t(Translation.TOAST_QUESTIONS_LEARNED_SUCCESS));
