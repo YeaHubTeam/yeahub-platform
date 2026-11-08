@@ -4,13 +4,6 @@ import LoadError from '@/shared/assets/images/loadError.png';
 import SearchImg from '@/shared/assets/images/searchPage.png';
 import type { StubType } from '@/shared/ui/Stub/types';
 
-export const stubTestIds = {
-	container: 'container',
-	title: 'title',
-	subtitle: 'subtitle',
-	button: 'button',
-};
-
 export const titleByType: Record<StubType, string> = {
 	empty: 'stub.empty.title',
 	'filter-empty': 'stub.filter.title',

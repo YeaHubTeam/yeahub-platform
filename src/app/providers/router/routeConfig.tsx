@@ -1,10 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 
-import Books from '@/shared/assets/icons/books.svg';
-import Cards from '@/shared/assets/icons/cards.svg';
 import CareerIcon from '@/shared/assets/icons/career.svg';
 import Collection from '@/shared/assets/icons/collection.svg';
-import Companies from '@/shared/assets/icons/companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
@@ -15,11 +12,9 @@ import MainIcon from '@/shared/assets/icons/main.svg';
 import AnalyticsIcon from '@/shared/assets/icons/pieChart.svg';
 import ProfileIcon from '@/shared/assets/icons/profile.svg';
 import QuestionsIcon from '@/shared/assets/icons/questions.svg';
-import ReferralsIcon from '@/shared/assets/icons/referralsIcon.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
-import TestQuestionsIcon from '@/shared/assets/icons/testQuestions.svg';
 import User from '@/shared/assets/icons/user.svg';
 import VacanciesIcon from '@/shared/assets/icons/vacancies.svg';
 import VacancyMarketIcon from '@/shared/assets/icons/vacancyMarket.svg';
@@ -35,29 +30,12 @@ import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate'
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/collection/collectionDetail';
 import { CollectionEditPage } from '@/pages/admin/collection/collectionEdit';
 import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/collection/collections';
-import { CompaniesTablePage } from '@/pages/admin/company/companies';
-import { CompanyCreatePage } from '@/pages/admin/company/companyCreate';
-import { CompanyDetailPage } from '@/pages/admin/company/companyDetail';
-import { CompanyEditPage } from '@/pages/admin/company/companyEdit';
-import { FeatureFlagCreatePage } from '@/pages/admin/featureFlag/featureFlagCreate';
-import { FeatureFlagDetailsPage } from '@/pages/admin/featureFlag/featureFlagDetail';
-import { FeatureFlagsPage } from '@/pages/admin/featureFlag/featureFlags';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreateMultiple';
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
-import { ReferralLinkDetailPage } from '@/pages/admin/referralLink/ReferalLinkDetail';
-import { ReferralLinkCreatePage } from '@/pages/admin/referralLink/ReferralLinkCreate';
-import { ReferralLinkEditPage } from '@/pages/admin/referralLink/referralLinkEdit';
-import { ReferralLinksPage } from '@/pages/admin/referralLink/referralLinks';
-import { ResourceCreatePage } from '@/pages/admin/resource/resourceCreate';
-import { ResourcePage } from '@/pages/admin/resource/resourceDetail';
-import { ResourceEditPage } from '@/pages/admin/resource/resourceEdit';
-import { ResourceRequestViewPage } from '@/pages/admin/resource/resourceRequestDetail';
-import { ResourceRequestEditPage } from '@/pages/admin/resource/resourceRequestEdit';
-import { ResourcesPage as AdminResourcesPage } from '@/pages/admin/resource/resources';
 import { SkillCreatePage } from '@/pages/admin/skill/skillCreate';
 import { SkillDetailPage } from '@/pages/admin/skill/skillDetail';
 import { SkillEditPage } from '@/pages/admin/skill/skillEdit';
@@ -70,22 +48,10 @@ import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
 import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
-import { TestQuestionCreatePage } from '@/pages/admin/testQuestion/testQuestionCreate';
-import { TestQuestionsPage } from '@/pages/admin/testQuestion/testQuestions';
-import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
-import { TopicDetailPage } from '@/pages/admin/topic/topicDetail';
-import { TopicEditPage } from '@/pages/admin/topic/topicEdit';
-import { TopicsPage } from '@/pages/admin/topic/topics';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
 import { UsersTablePage } from '@/pages/admin/user/users';
 import { AnalyticsPage } from '@/pages/analytics/analytics';
-import { DifficultQuestionsPage } from '@/pages/analytics/difficultQuestions';
-import { PopularQuestionsPage } from '@/pages/analytics/popularQuestions';
-import { PopularSkillsPage } from '@/pages/analytics/popularSkills';
-import { ProgressSpecializationsPage } from '@/pages/analytics/progressSpecializations';
-import { SkillsProficiencyPage } from '@/pages/analytics/skillsProficiency';
-import { UsersRatingPage } from '@/pages/analytics/usersRating';
 import { ForgotPasswordPage } from '@/pages/auth/forgotPassword';
 import { LoginPage } from '@/pages/auth/login';
 import { PasswordRecoveryPage } from '@/pages/auth/passwordRecovery';
@@ -114,7 +80,6 @@ import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/que
 import { QuestionsPage } from '@/pages/wiki/question/questions';
 import { MyResourcesPage } from '@/pages/wiki/resource/myResources';
 import { RequestResourceCreatePage } from '@/pages/wiki/resource/requestResourceCreate';
-import { RequestResourceEditPage } from '@/pages/wiki/resource/requestResourceEdit';
 import { RequestInfoPage } from '@/pages/wiki/resource/resourceRequestDetail';
 import { ResourcesPage } from '@/pages/wiki/resource/resources';
 
@@ -275,13 +240,6 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.admin.testQuestions.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_TESTS),
-		icon: TestQuestionsIcon,
-		roles: listAdminRoles,
-	},
-	{
-		type: 'single',
 		route: ROUTES.admin.users.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
@@ -296,45 +254,10 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
-		route: ROUTES.admin.companies.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_COMPANIES),
-		icon: Companies,
-		roles: listAdminRoles,
-	},
-	{
-		type: 'single',
-		route: ROUTES.admin.resources.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_RESOURCES),
-		icon: Books,
-		roles: listAdminRoles,
-	},
-	{
-		type: 'single',
-		route: ROUTES.admin.topics.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
-		icon: Cards,
-		roles: listAdminRoles,
-	},
-	{
-		type: 'single',
 		route: ROUTES.admin.tasks.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_TASKS),
 		icon: TasksIcon,
 		roles: listAdminRoles,
-	},
-	{
-		type: 'single',
-		route: ROUTES.admin.featureFlags.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_FEATURE_FLAGS),
-		icon: Crown,
-		roles: ['admin'],
-	},
-	{
-		type: 'single',
-		route: ROUTES.admin.referralLinks.route,
-		title: i18n.t(Translation.SIDEBAR_MENU_REFERRALS),
-		icon: ReferralsIcon,
-		roles: ['admin'],
 	},
 ];
 
@@ -364,40 +287,12 @@ export const router = createBrowserRouter([
 				element: <QuestionCreatePage />,
 			},
 			{
-				path: ROUTES.admin.testQuestions.create.page,
-				element: <TestQuestionCreatePage />,
-			},
-			{
 				path: ROUTES.admin.questions.createMultiple.page,
 				element: <QuestionCreateMultiplePage />,
 			},
 			{
 				path: ROUTES.admin.questions.edit.page,
 				element: <QuestionEditPage />,
-			},
-			{
-				path: ROUTES.admin.resources.page,
-				element: <AdminResourcesPage />,
-			},
-			{
-				path: ROUTES.admin.resources.details.page,
-				element: <ResourcePage />,
-			},
-			{
-				path: ROUTES.admin.resources.create.page,
-				element: <ResourceCreatePage />,
-			},
-			{
-				path: ROUTES.admin.resources.edit.page,
-				element: <ResourceEditPage />,
-			},
-			{
-				path: ROUTES.admin.resources.requests.view.page,
-				element: <ResourceRequestViewPage />,
-			},
-			{
-				path: ROUTES.admin.resources.requests.edit.page,
-				element: <ResourceRequestEditPage />,
 			},
 			{
 				path: ROUTES.admin.specializations.page,
@@ -437,10 +332,6 @@ export const router = createBrowserRouter([
 						element: <SkillDetailPage />,
 					},
 				],
-			},
-			{
-				path: ROUTES.admin.testQuestions.route,
-				element: <TestQuestionsPage />,
 			},
 			{
 				path: ROUTES.admin.users.route,
@@ -483,50 +374,6 @@ export const router = createBrowserRouter([
 				],
 			},
 			{
-				path: ROUTES.admin.companies.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <CompaniesTablePage />,
-					},
-					{
-						path: ROUTES.admin.companies.create.route,
-						element: <CompanyCreatePage />,
-					},
-					{
-						path: ROUTES.admin.companies.edit.route,
-						element: <CompanyEditPage />,
-					},
-					{
-						path: ROUTES.admin.companies.details.route,
-						element: <CompanyDetailPage />,
-					},
-				],
-			},
-			{
-				path: ROUTES.admin.topics.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <TopicsPage />,
-					},
-					{
-						path: ROUTES.admin.topics.create.route,
-						element: <TopicCreatePage />,
-					},
-					{
-						path: ROUTES.admin.topics.details.route,
-						element: <TopicDetailPage />,
-					},
-					{
-						path: ROUTES.admin.topics.edit.route,
-						element: <TopicEditPage />,
-					},
-				],
-			},
-			{
 				path: ROUTES.admin.tasks.route,
 				element: <Outlet />,
 				children: [
@@ -545,43 +392,6 @@ export const router = createBrowserRouter([
 					{
 						path: ROUTES.admin.tasks.details.route,
 						element: <AdminTaskPage />,
-					},
-				],
-			},
-			{
-				path: ROUTES.admin.featureFlags.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <FeatureFlagsPage />,
-					},
-					{
-						path: ROUTES.admin.featureFlags.create.route,
-						element: <FeatureFlagCreatePage />,
-					},
-					{ path: ROUTES.admin.featureFlags.details.route, element: <FeatureFlagDetailsPage /> },
-				],
-			},
-			{
-				path: ROUTES.admin.referralLinks.route,
-				element: <Outlet />,
-				children: [
-					{
-						index: true,
-						element: <ReferralLinksPage />,
-					},
-					{
-						path: ROUTES.admin.referralLinks.create.route,
-						element: <ReferralLinkCreatePage />,
-					},
-					{
-						path: ROUTES.admin.referralLinks.details.route,
-						element: <ReferralLinkDetailPage />,
-					},
-					{
-						path: ROUTES.admin.referralLinks.edit.route,
-						element: <ReferralLinkEditPage />,
 					},
 				],
 			},
@@ -640,48 +450,6 @@ export const router = createBrowserRouter([
 					{
 						index: true,
 						element: <AnalyticsPage />,
-					},
-					{
-						path: ROUTES.analytics.progressSpecializations.route,
-						element: <ProgressSpecializationsPage />,
-						handle: {
-							crumb: Translation.CRUMBS_PROGRESS_SPECIALIZATIONS,
-						},
-					},
-					{
-						path: ROUTES.analytics['popular-skills'].route,
-						element: <PopularSkillsPage />,
-						handle: {
-							crumb: Translation.CRUMBS_POPULAR_SKILLS,
-						},
-					},
-					{
-						path: ROUTES.analytics['skills-proficiency'].route,
-						element: <SkillsProficiencyPage />,
-						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_SKILLSPROFICIENCY,
-						},
-					},
-					{
-						path: ROUTES.analytics['difficult-questions'].route,
-						element: <DifficultQuestionsPage />,
-						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_DIFFICULTQUESTIONS,
-						},
-					},
-					{
-						path: ROUTES.analytics['popular-questions'].route,
-						element: <PopularQuestionsPage />,
-						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_POPULAR_QUESTIONS,
-						},
-					},
-					{
-						path: ROUTES.analytics['users-rating'].route,
-						element: <UsersRatingPage />,
-						handle: {
-							crumb: Translation.CRUMBS_ANALYTICS_USERS_RATING,
-						},
 					},
 				],
 			},
@@ -812,13 +580,6 @@ export const router = createBrowserRouter([
 										element: <RequestInfoPage />,
 										handle: {
 											crumb: Translation.CRUMBS_RESOURCES_MY_REQUEST,
-										},
-									},
-									{
-										path: ROUTES.wiki.resources.my.edit.route,
-										element: <RequestResourceEditPage />,
-										handle: {
-											crumb: Translation.CRUMBS_EDIT_REQUEST,
 										},
 									},
 								],

@@ -68,8 +68,6 @@
 				"vacancyMarket": "Market analytics"
 			},
 			"questions": "Questions",
-			"tests": "Tests",
-			"featureFlags": "Feature flags",
 			"skills": "Skills",
 			"companies": "Companies",
 			"vacancies": "Vacancies",
@@ -142,11 +140,6 @@
 		},
 		"cancel": {
 			"changes": "Are you sure you want to undo the changes?"
-		},
-		"featureFlag": {
-			"delete": {
-				"description": "Do you really want to delete this feature flag?"
-			}
 		}
 	},
 	"file.loader": {
@@ -221,11 +214,6 @@
 		"vacancies": "Vacancies",
 		"vacancyMarket": "Market analytics",
 		"analytics": "Analytics",
-		"progress.specializations": "Progress in the specialty",
-		"popular.skills": "Popular skills",
-		"analytics.skillsProficiency": "Average percentage of skill mastered",
-		"analytics.difficultQuestions": "The most difficult questions",
-		"analytics.usersRating": "Users rating",
 		"tasks.list": "Tasks",
 		"task.detail": "More details"
 	},
@@ -540,87 +528,6 @@
 				}
 			}
 		},
-		"topics": {
-			"create": {
-				"success": "Topic successfully created",
-				"failed": "Topic could not be created",
-				"auth": {
-					"unauthorized": "Authentication failed",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"rightsAcsses": {
-					"conflict": "Admin or author required"
-				},
-				"topic": {
-					"skill": {
-						"not_found": "Skill not found"
-					},
-					"title": {
-						"conflict": "A topic with the same title already exists for this skill"
-					}
-				},
-				"tinify": {
-					"compress": {
-						"failed": "Failed to compress image with TinyPNG"
-					},
-					"resize": {
-						"failed": "Failed to resize image"
-					}
-				}
-			},
-			"edit": {
-				"success": "Topic successfully changed",
-				"failed": "Topic could not be changed",
-				"auth": {
-					"unauthorized": "Authentication failed",
-					"user": {
-						"verified": "Route is available for verified users only"
-					},
-					"roles": {
-						"author_can_change_only_own": "Author can change only own data"
-					}
-				},
-				"topic": {
-					"not_found": "Topic not found",
-					"title": {
-						"conflict": "A topic with the same title already exists for this skill"
-					}
-				},
-				"tinify": {
-					"compress": {
-						"failed": "Failed to compress image with TinyPNG"
-					},
-					"resize": {
-						"failed": "Failed to resize image"
-					}
-				}
-			},
-			"delete": {
-				"single": {
-					"success": "Topic successfully deleted",
-					"failed": "The topic could not be deleted",
-					"not_found": "Topic not found",
-					"image": {
-						"url_invalid": "Image url can not be empty",
-						"not_found": "There is no such image in storage"
-					}
-				},
-				"auth": {
-					"unauthorized": "Authentication failed",
-					"user": {
-						"verified": "Route is available for verified users!"
-					},
-					"roles": {
-						"author.can.change.only.own": "Author can change only own data"
-					}
-				},
-				"constraint": {
-					"foreign_key_violation": "Cannot delete topic because it is referenced by other entities"
-				}
-			}
-		},
 		"collections": {
 			"create": {
 				"success": "Collection successfully created",
@@ -682,90 +589,6 @@
 			"edit": {
 				"success": "Collection successfully changed",
 				"failed": "Collection could not be changed"
-			}
-		},
-		"resources": {
-			"create": {
-				"success": "Resource successfully created",
-				"failed": "Resource could not be created",
-				"unauthorized": "You have to be authorized to create a resource",
-				"unverified": "You have to be verified to create a resource",
-				"skill": {
-					"not.found": "One or more skills not found"
-				},
-				"specialization": {
-					"not.found": "One or more specializations not found"
-				},
-				"type": {
-					"not.found": "One or more resource types not found"
-				},
-				"image": {
-					"compress.failed": "Failed to compress image",
-					"resize.failed": "Failed to resize image"
-				}
-			},
-			"delete": {
-				"single": {
-					"success": "Resource deleted successfully",
-					"failed": "Failed to delete resource"
-				}
-			},
-			"edit": {
-				"success": "Resource successfully changed",
-				"failed": "Resource could not be changed"
-			},
-			"approve": {
-				"success": "Заявка на ресурс успешно одобрена",
-				"failed": "Не удалось одобрить заявку на ресурс"
-			}
-		},
-		"resource.request": {
-			"create": {
-				"success": "The resource request has been successfully created",
-				"failed": "Failed to create the resource request",
-				"unauthorized": "You have to be authorized to create a resource request",
-				"unverified": "You have to be verified to create a resource request",
-				"skill": {
-					"not.found": "One or more skills not found"
-				},
-				"specialization": {
-					"not.found": "One or more specializations not found"
-				},
-				"type": {
-					"not.found": "One or more resource types not found"
-				}
-			},
-			"reject": {
-				"success": "The resource request has been successfully rejected",
-				"failed": "Failed to reject the resource request"
-			}
-		},
-		"referralLink": {
-			"delete": {
-				"success": "Referral link has been successfully deleted",
-				"failed": "Failed to delete referral link",
-				"unauthorized": "You have to be authorized to delete a referral link",
-				"unverified": "You have to be verified to delete a referral link",
-				"not_owner": "User must be an owner of link or admin",
-				"not_found": "Referral link not found"
-			},
-			"edit": {
-				"success": "Referral link successfully updated",
-				"failed": "Failed to update referral link",
-				"auth": {
-					"unauthorized": "Authentication failed",
-					"user": {
-						"verified": "Available only for verified users"
-					}
-				},
-				"referral": {
-					"user": {
-						"not.owner": "User is not the owner of this referral link"
-					},
-					"link": {
-						"not.find": "Referral link not found"
-					}
-				}
 			}
 		},
 		"profile": {
@@ -855,62 +678,6 @@
 				}
 			}
 		},
-		"companies": {
-			"auth": {
-				"unauthorized": "Authentication failed",
-				"user": {
-					"verified": "Route is available for verified users!"
-				}
-			},
-			"edit": {
-				"success": "Company successfully changed",
-				"failed": "Company could not be changed"
-			},
-			"delete": {
-				"single": {
-					"success": "Company successfully deleted",
-					"failed": "Company could not be deleted",
-					"not_found": "Company not found",
-					"image": {
-						"url_invalid": "image url can not be empty",
-						"not_found": "there is no such image in storage"
-					},
-					"key_violation": {
-						"collection": "Cannot delete company: it is referenced by some collection",
-						"company": "Cannot delete company due to a conflict with existing data"
-					}
-				},
-				"multiple": {
-					"success": "Successfully deleted companies:",
-					"failed": "Could not delete company:"
-				}
-			},
-			"create": {
-				"success": "Company successfully created",
-				"failed": "Company could not be created",
-				"auth": {
-					"unauthorized": "Authentication failed",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"user": {
-					"not_found": "User not found"
-				},
-				"conflict": "Such a company already exists",
-				"tinify": {
-					"compress": {
-						"failed": "Failed to compress image with TinyPNG"
-					},
-					"resize": {
-						"failed": "Failed to resize image"
-					}
-				}
-			},
-			"filter": {
-				"not.found": "Company is not found"
-			}
-		},
 		"subscriptions": {
 			"unsubscribe": {
 				"success": "Subscription disabled",
@@ -923,75 +690,12 @@
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
 			}
-		},
-		"featureFlags": {
-			"create": {
-				"success": "The function flag has been successfully created.",
-				"failed": "Failed to create the flag feature.",
-				"auth": {
-					"unauthorized": "Authentication failed.",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"alreadyExists": "Feature flag with this key already exists for selected client type."
-			},
-			"delete": {
-				"single": {
-					"success": "Feature flag successfully deleted",
-					"failed": "Feature flag could not be deleted",
-					"not_found": "Feature flag not found"
-				},
-				"auth": {
-					"unauthorized": "The user is not authorized",
-					"user": {
-						"verified": "Access only for verified users"
-					}
-				}
-			},
-			"update": {
-				"single": {
-					"enabled": {
-						"success": "Feature flag successfully enabled",
-						"failed": "Couldn't enable feature flag"
-					},
-					"disabled": {
-						"success": "Feature flag successfully disabled",
-						"failed": "Couldn't disable feature flag"
-					},
-					"not_found": "Feature flag not found",
-					"already_exists": "Feature flag with this key already exists for selected client type"
-				},
-				"auth": {
-					"unauthorized": "The user is not authorized",
-					"user": {
-						"verified": "Access only for verified users"
-					}
-				}
-			},
-			"edit": {
-				"success": "The flag feature is changing successfully.",
-				"failed": "Failed to change feature flag",
-				"auth": {
-					"unauthorized": "Authentication failed.",
-					"user": {
-						"verified": "Route is available for verified users!"
-					}
-				},
-				"alreadyExists": "Feature flag with this key already exists for selected client type.",
-				"not_found": "Feature flag not found"
-			}
 		}
 	},
 	"tooltip": {
 		"collections": {
 			"disabled": {
 				"info": "You don't have access to this feature"
-			}
-		},
-		"featureFlags": {
-			"disabled": {
-				"info": "You can't delete enabled feature flag"
 			}
 		}
 	},

@@ -5,7 +5,6 @@ import { IconSkeleton } from '@/shared/ui/Icon';
 import { TextSkeleton } from '@/shared/ui/Text';
 
 import styles from './Chip.module.css';
-import { chipTestIDs } from './constants';
 import { ChipProps } from './types';
 
 export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
@@ -39,7 +38,6 @@ export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
 				)}
 				aria-hidden={disabled}
 				aria-disabled={disabled}
-				data-testid={chipTestIDs.skeleton}
 				role="button"
 				tabIndex={0}
 				ref={ref}
@@ -58,12 +56,7 @@ export const ChipSkeleton = forwardRef<HTMLDivElement, ChipProps>(
 				)}
 
 				{onDelete && (
-					<button
-						type="button"
-						className={styles['chip-delete-button']}
-						onClick={onDelete}
-						disabled={disabled}
-					>
+					<button type="button" onClick={onDelete} disabled={disabled}>
 						<IconSkeleton
 							className={styles['chip-delete-icon']}
 							icon="closeCircle"

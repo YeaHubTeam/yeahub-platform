@@ -14,14 +14,6 @@ export interface Company {
 	createdBy: Author;
 }
 
-export type GetCompanyByIdResponse = Company;
-
-export type GetCompanyByIdRequest = {
-	companyId: string;
-};
-
-export type CreateOrEditCompanyFormValues = Omit<Company, 'createdAt' | 'updatedAt' | 'createdBy'>;
-
 export type GetCompaniesListResponse = Response<Company[]>;
 
 export interface GetCompaniesListParamsRequest {

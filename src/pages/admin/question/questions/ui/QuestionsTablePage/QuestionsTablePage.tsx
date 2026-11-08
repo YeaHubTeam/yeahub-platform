@@ -74,7 +74,6 @@ const QuestionsPage = () => {
 		refetch: refetchAllQuestions,
 	} = useGetQuestionsListQuery({
 		skills: filters.skills,
-		page: filters.page,
 		specializationId: filters.specialization,
 		title: filters.title,
 		complexity: filters.complexity,

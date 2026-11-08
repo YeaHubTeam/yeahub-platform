@@ -22,8 +22,6 @@ export type ClientType = 'WEB' | 'IOS' | 'ANDROID';
 
 export type GetFeatureFlagsListResponse = Response<FeatureFlagApiItem[]>;
 
-export type GetFeatureFlagByIdResponse = FeatureFlagApiItem;
-
 export type Flag = string;
 
 export interface FeatureFlagApiItem {

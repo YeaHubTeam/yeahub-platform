@@ -1,13 +1,10 @@
 {
-	"author": "Author",
 	"date": "Date",
 	"description": {
-		"title": "Description",
 		"label": "Add descrioption",
 		"placeholder": "Add description"
 	},
 	"keywords": {
-		"additional": "Keywords",
 		"title": "Keywords",
 		"short": "Keywords",
 		"label": "Add keywords to improve search",
@@ -31,7 +28,6 @@
 	},
 	"type": "Resource type",
 	"title": {
-		"short": "Name",
 		"label": "Add resource",
 		"placeholder": "Deatiled resource description"
 	},
@@ -39,10 +35,7 @@
 		"aria.label": "Go to additional info"
 	},
 	"status": {
-		"title": "Status",
-		"approved": "Approved",
-		"review": "Review",
-		"rejected": "Rejected"
+		"title": "Status"
 	},
 	"modal": {
 		"resource.create": {
@@ -50,41 +43,9 @@
 				"title": "The resource has been sent for moderation",
 				"message": "The resource has been successfully submitted for moderation. Track its status in the list of resource requests"
 			}
-		},
-		"resource.edit": {
-			"moderation": {
-				"title": "The resource has been successfully edited",
-				"message": "The resource has been updated and submitted for moderation. Track its status in the list of resource requests"
-			}
-		},
-		"resource.approve.request": {
-			"title": "Confirmation",
-			"message": "Do you really want to approve the resource request?",
-			"button.ok": "Yes",
-			"button.cancel": "No"
-		},
-		"resource.reject.request": {
-			"title": "Reject resource request",
-			"message": "Are you sure you want to reject the resource request?",
-			"button.ok": "Yes",
-			"button.cancel": "No"
-		}
-	},
-	"withdraw": {
-		"button": "Withdraw request",
-		"title": "Do you really want to withdraw the request?"
-	},
-	"admin": {
-		"tabs": {
-			"all": "All resources",
-			"requests": "Requests"
 		}
 	},
 	"requests": {
-		"title": {
-			"view": "Request form overview",
-			"edit": "Review request form"
-		},
 		"reject": "Reject",
 		"approve": "Approve",
 		"my": "My requests"
@@ -95,26 +56,7 @@
 				"title": "It seems that there are no resources here yet",
 				"subtitle": "Create your first useful resource and start adding content to the knowledge base",
 				"submit": "Add resource"
-			},
-			"resource.detail": {
-				"title": "It looks like resource data is missing",
-				"subtitle": "Try refreshing the page or retry the request",
-				"submit": "Retry"
-			},
-			"resource.requests": {
-				"title": "It looks like there are no resoruce requests yet",
-				"subtitle": "Once the first requests is created, it will appear here"
-			},
-			"resource.request.detail": {
-				"title": "It seems the resource requests data is missing",
-				"subtitle": "Try refreshing the page or retry the requests",
-				"submit": "Retry"
 			}
-		},
-		"edit.access": {
-			"title": "No access to edit the resource",
-			"subtitle": "You are not the creator of this resource, so editing is not available",
-			"submit": "Return to the resource table"
 		}
 	},
 	"sort": {

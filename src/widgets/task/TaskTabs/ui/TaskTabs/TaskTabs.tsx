@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Tasks } from '@/shared/config';
+import { Tasks } from '@/shared/config';
 import { Card } from '@/shared/ui/Card';
 import { Tabs, Tab } from '@/shared/ui/Tabs';
 
@@ -22,7 +22,7 @@ interface TaskTabsProps {
 }
 
 export const TaskTabs = ({ task, result }: TaskTabsProps) => {
-	const { t } = useTranslation(i18Namespace.task);
+	const { t } = useTranslation();
 
 	const testCases: TaskTestCaseResult = useMemo(() => {
 		if (!result) {

@@ -1,1 +1,1 @@
-export { skillsMock, popularSkillsMock } from './skillsMock';
+export { skillsMock } from './skillsMock';

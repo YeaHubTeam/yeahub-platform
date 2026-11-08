@@ -17,9 +17,7 @@
 	},
 	"tariff": {
 		"chooseCollections": "Collections",
-		"label": "Choose a variant",
-		"paid": "For members",
-		"free": "For all"
+		"label": "Choose a variant"
 	},
 	"select": {
 		"choose": "Choose collection name",

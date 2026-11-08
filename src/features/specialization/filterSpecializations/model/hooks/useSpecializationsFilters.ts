@@ -24,7 +24,7 @@ export const useSpecializationsFilters = (initialParams: SpecializationsFilterPa
 	};
 
 	const onChangeAuthor = (author?: SpecializationsFilterParams['author']) => {
-		onFilterChange({ author, isMy: false, page: 1 });
+		onFilterChange({ author, page: 1 });
 	};
 
 	const onChangeIsMy = (isMy?: SpecializationsFilterParams['isMy']) => {

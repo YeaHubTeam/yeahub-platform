@@ -4,10 +4,9 @@ import { questionApiUrls } from '../../model/constants/question';
 import {
 	GetQuestionsListResponse,
 	GetQuestionsListParamsRequest,
-	MostDifficultQuestionsResponse,
 } from '../../model/types/question';
 
-import { mostDifficultQuestions, questionsMock } from './data';
+import { questionsMock } from './data';
 
 export const questionListMock = http.get<
 	Record<keyof GetQuestionsListParamsRequest, string>,
@@ -62,12 +61,4 @@ export const questionListMock = http.get<
 		total: questionsMock.total,
 		limit: questionsMock.limit,
 	});
-});
-
-export const mostDifficultQuestionsMock = http.get<
-	never,
-	undefined,
-	MostDifficultQuestionsResponse
->(process.env.API_URL + questionApiUrls.getMostDifficultQuestionsBySpecializationId, () => {
-	return HttpResponse.json<MostDifficultQuestionsResponse>(mostDifficultQuestions);
 });

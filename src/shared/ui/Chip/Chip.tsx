@@ -5,7 +5,6 @@ import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './Chip.module.css';
-import { chipTestIDs } from './constants';
 import { ChipProps } from './types';
 
 export const Chip = forwardRef<HTMLDivElement, ChipProps>(
@@ -22,7 +21,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 			prefix,
 			onClick,
 			onDelete,
-			dataTestId = chipTestIDs.chip,
+			dataTestId = 'Chip',
 			...props
 		},
 		ref,
@@ -60,20 +59,10 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 				ref={ref}
 			>
 				{prefix && (
-					<div
-						className={classNames(styles['chip-prefix'], { [styles.gap]: label })}
-						data-testid={chipTestIDs.prefix}
-					>
-						{prefix}
-					</div>
+					<div className={classNames(styles['chip-prefix'], { [styles.gap]: label })}>{prefix}</div>
 				)}
 				{label && (
-					<Text
-						variant={labelVariant}
-						color="black-800"
-						className={styles['chip-label']}
-						dataTestId={chipTestIDs.labelText}
-					>
+					<Text variant={labelVariant} color="black-800" className={styles['chip-label']}>
 						{label}
 					</Text>
 				)}{' '}
@@ -85,7 +74,6 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
 						size={20}
 						color={disabled ? 'black-100' : 'red-600'}
 						onClick={onDelete}
-						dataTestId={chipTestIDs.icon}
 					/>
 				)}
 			</div>
