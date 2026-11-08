@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Questions } from '@/shared/config';
-import { useAppSelector, useCurrentProject } from '@/shared/libs';
+import { useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
-import { getSpecializationId } from '@/entities/profile';
 import { ChooseQuestionComplexity, QuestionsFilterParams } from '@/entities/question';
 import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
@@ -43,7 +42,6 @@ export const QuestionsFilters = ({
 	const { skills, rate, complexity, status, title, specialization, isMy, topics, authorId } =
 		filters;
 	const { t } = useTranslation(i18Namespace.questions);
-	const specializationId = useAppSelector(getSpecializationId);
 	const project = useCurrentProject();
 
 	return (
@@ -88,7 +86,7 @@ export const QuestionsFilters = ({
 			<SkillsListField
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				selectedSpecialization={specialization || specializationId}
+				selectedSpecialization={specialization}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
