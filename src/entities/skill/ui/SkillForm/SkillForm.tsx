@@ -22,7 +22,7 @@ interface SkillFormProps {
 }
 
 export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
-	const { t } = useTranslation([i18Namespace.skill, i18Namespace.questions]);
+	const { t } = useTranslation(i18Namespace.skill);
 
 	const { control, setValue } = useFormContext();
 
@@ -61,8 +61,8 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 				</FormField>
 
 				<FormField
-					label={t(Questions.SPECIALIZATION_TITLE, { ns: i18Namespace.questions })}
-					description={t(Questions.SPECIALIZATION_LABEL, { ns: i18Namespace.questions })}
+					label={t(Questions.SPECIALIZATION_TITLE)}
+					description={t(Questions.SPECIALIZATION_LABEL)}
 				>
 					<FormControl className={styles.select} name="specializations" control={control}>
 						{({ onChange, value }) => (
