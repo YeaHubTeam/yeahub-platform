@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Marketplace, Resources, ROUTES } from '@/shared/config';
@@ -11,7 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import { getIsVerified, getSpecializationId } from '@/entities/profile';
+import { getIsVerified } from '@/entities/profile';
 import {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourcesListQuery,
@@ -28,7 +27,6 @@ import { ResourcesPageSkeleton } from './ResourcesPage.skeleton';
 const ResourcesPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
-	const specializationId = useSelector(getSpecializationId);
 	const isEmailVerified = useAppSelector(getIsVerified);
 
 	const {
@@ -49,7 +47,6 @@ const ResourcesPage = () => {
 	} = useGetResourcesListQuery({
 		page: filters.page ?? 1,
 		name: filters.title,
-		specializations: specializationId,
 		skills: filters.skills,
 		types: filters.types,
 	});
