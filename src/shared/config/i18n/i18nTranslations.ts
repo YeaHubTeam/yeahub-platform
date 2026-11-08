@@ -466,7 +466,7 @@ export enum Specializations {
 	DESCRIPTION_LABEL = 'description.label',
 	DESCRIPTION_PLACEHOLDER = 'description.placeholder',
 	AUTHOR = 'author',
-	CREATED_AT = 'created-at',
+	CREATED_AT = 'created.at',
 	IMAGE_SRC = 'image.src',
 	IMAGE_ALT = 'image.alt',
 	CREATE_PAGE_TITLE = 'create.page.title',
