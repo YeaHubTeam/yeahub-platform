@@ -2,17 +2,19 @@ import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Specializations, i18Namespace, ROUTES } from '@/shared/config';
-import { formatDate, route, SelectedAdminEntities } from '@/shared/libs';
+import { formatDate, route, SelectedAdminEntities, useAppSelector } from '@/shared/libs';
 import { TableCellLink } from '@/shared/ui/TableCellLink';
 import { TableCellWithTooltip } from '@/shared/ui/TableCellWithTooltip';
 import { TableColumn, TableRowId, TableV2 } from '@/shared/ui/TableV2';
 
+import { getIsAuthor, getUserId } from '@/entities/profile';
 import { Specialization } from '@/entities/specialization';
 
 import { useDeleteSpecializationMutation } from '@/features/specialization/deleteSpecialization';
 
 interface SpecializationTableRow {
 	id: number;
+	disabled?: boolean;
 	title: string;
 	description: string;
 	createdBy: string;
@@ -33,6 +35,9 @@ export const SpecializationsTable = ({
 	const { t } = useTranslation(i18Namespace.specialization);
 	const [deleteSpecialization] = useDeleteSpecializationMutation();
 
+	const userId = useAppSelector(getUserId);
+	const isAuthor = useAppSelector(getIsAuthor);
+
 	const tableData: SpecializationTableRow[] =
 		specializations?.map((specialization) => ({
 			id: specialization.id,
@@ -42,6 +47,7 @@ export const SpecializationsTable = ({
 			createdAt: specialization.createdAt
 				? formatDate(new Date(specialization.createdAt), 'dd.MM.yyyy')
 				: '-',
+			disabled: isAuthor && specialization.createdBy?.id !== userId,
 		})) ?? [];
 
 	const columns: TableColumn<SpecializationTableRow>[] = [
