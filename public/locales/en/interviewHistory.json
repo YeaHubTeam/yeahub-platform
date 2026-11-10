@@ -1,6 +1,6 @@
 {
 	"title": "Interview history",
-	"quiz.title": "Interview №",
+	"quiz.title": "Interview № {{number}}",
 	"start.date": "Date: ",
 	"total.questions": "Questions amount: ",
 	"result": "Result: ",
