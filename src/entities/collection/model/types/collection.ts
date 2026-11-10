@@ -23,10 +23,10 @@ export interface Collection {
 	specializations: Specialization[];
 	tariff: CollectionTariff;
 	isFree?: boolean;
-	company: Company;
+	company: Company | null;
 	companyId?: string;
 	createdById?: string;
-	createdBy: Author;
+	createdBy: Author | null;
 	disabled?: boolean;
 }
 
