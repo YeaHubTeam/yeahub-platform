@@ -105,12 +105,14 @@ export const AdditionalInfo = ({
 						data={specializations}
 						onClick={onMoveToCollectionsWithSpecialization}
 					/>
-					<BaseFilterSection
-						title={t(Collections.COMPANY_TITLE)}
-						data={[company]}
-						onClick={onMoveToCollectionsWithCompany}
-						imageSize={36}
-					/>
+					{company && (
+						<BaseFilterSection
+							title={t(Collections.COMPANY_TITLE)}
+							data={[company]}
+							onClick={onMoveToCollectionsWithCompany}
+							imageSize={36}
+						/>
+					)}
 					<BaseFilterSection
 						title={t(Collections.ADDITIONAL_INFO_ACCESS)}
 						data={collectionAccess}
