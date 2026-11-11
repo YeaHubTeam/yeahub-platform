@@ -10,7 +10,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 
-import { getIsVerified } from '@/entities/profile';
+import { getIsVerified, getSpecializationId } from '@/entities/profile';
 import {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourcesListQuery,
@@ -28,6 +28,7 @@ const ResourcesPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
 	const isEmailVerified = useAppSelector(getIsVerified);
+	const specializationId = useAppSelector(getSpecializationId);
 
 	const {
 		onChangeTitle,
@@ -49,6 +50,7 @@ const ResourcesPage = () => {
 		name: filters.title,
 		skills: filters.skills,
 		types: filters.types,
+		specializations: specializationId,
 	});
 	const { data: myResourceRequestsReviewCount = 0 } = useGetMyRequestsResourcesReviewCountQuery({});
 
