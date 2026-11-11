@@ -612,6 +612,7 @@ export enum Specializations {
 	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
 	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
 	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
+	SELECT_REQUIRED = 'select.required',
 }
 
 export enum FeatureFlags {
@@ -677,6 +678,7 @@ export enum Topics {
 	STUB_EDIT_ACCESS_TITLE = 'stub.edit.access.title',
 	STUB_EDIT_ACCESS_SUBTITLE = 'stub.edit.access.subtitle',
 	STUB_EDIT_ACCESS_SUBMIT = 'stub.edit.access.submit',
+	SELECT_SPECIALIZATION_AND_SKILL_REQUIRED = 'select.specialization.and.skill.required',
 }
 
 export enum Analytics {

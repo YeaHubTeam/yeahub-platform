@@ -26,9 +26,16 @@
 	},
 
 	"select": {
-		"choose": "Выберите тему из списка",
-		"empty": "Нет доступных опций",
-		"selected": "Выбранная тема"
+		"choose": "Choose a topic from the list",
+		"empty": "No available options",
+		"selected": "Selected topic",
+		"specialization": {
+			"and": {
+				"skill": {
+					"required": "Выберите специализацию и навык"
+				}
+			}
+		}
 	},
 
 	"create.page.title": "Создание темы",
