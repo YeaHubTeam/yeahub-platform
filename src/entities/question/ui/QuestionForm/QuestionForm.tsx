@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Questions } from '@/shared/config';
+import { i18Namespace, Questions, Specializations, Topics } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
@@ -12,6 +12,7 @@ import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 import { TextEditor } from '@/shared/ui/TextEditor';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { SkillSelect } from '@/entities/skill/@x/question';
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
@@ -27,7 +28,12 @@ export interface QuestionFormProps {
 }
 
 export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
-	const { t } = useTranslation([i18Namespace.questions, i18Namespace.skill, i18Namespace.topic]);
+	const { t } = useTranslation([
+		i18Namespace.questions,
+		i18Namespace.skill,
+		i18Namespace.topic,
+		i18Namespace.specialization,
+	]);
 
 	const { control, watch } = useFormContext();
 	const selectedSpecializations = watch('specializations');
@@ -132,41 +138,57 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 					</FormControl>
 				</FormField>
 
-				{selectedSpecializations?.length ? (
-					<>
-						<FormField label={t(Questions.SKILLS_TITLE)} description={t(Questions.SKILLS_LABEL)}>
-							<FormControl name="skills" control={control}>
-								{({ onChange, value }) => (
-									<div className={styles.select}>
+				<FormField label={t(Questions.SKILLS_TITLE)} description={t(Questions.SKILLS_LABEL)}>
+					<FormControl name="skills" control={control}>
+						{({ onChange, value }) => {
+							const isDisabled = !selectedSpecializations?.length;
+
+							return (
+								<div className={styles.select}>
+									<Tooltip
+										title={t(Specializations.SELECT_REQUIRED, {
+											ns: i18Namespace.specialization,
+										})}
+										shouldShowTooltip={isDisabled}
+									>
 										<SkillSelect
 											onChange={onChange}
 											value={value}
 											selectedSpecializations={selectedSpecializations}
+											disabled={isDisabled}
 										/>
-									</div>
-								)}
-							</FormControl>
-						</FormField>
-					</>
-				) : null}
+									</Tooltip>
+								</div>
+							);
+						}}
+					</FormControl>
+				</FormField>
 
-				{selectedSkills?.length ? (
-					<>
-						<FormField label={t(Questions.TOPIC_TITLE)} description={t(Questions.TOPIC_LABEL)}>
-							<FormControl name="topics" control={control}>
-								{({ onChange, value }) => (
-									<div className={styles.select}>
+				<FormField label={t(Questions.TOPIC_TITLE)} description={t(Questions.TOPIC_LABEL)}>
+					<FormControl name="topics" control={control}>
+						{({ onChange, value }) => {
+							const isDisabled = !selectedSpecializations?.length || !selectedSkills?.length;
+
+							return (
+								<div className={styles.select}>
+									<Tooltip
+										title={t(Topics.SELECT_SPECIALIZATION_AND_SKILL_REQUIRED, {
+											ns: i18Namespace.topic,
+										})}
+										shouldShowTooltip={isDisabled}
+									>
 										<TopicSelect
 											onChange={onChange}
 											value={value}
 											selectedSkills={selectedSkills}
+											disabled={isDisabled}
 										/>
-									</div>
-								)}
-							</FormControl>
-						</FormField>
-					</>
-				) : null}
+									</Tooltip>
+								</div>
+							);
+						}}
+					</FormControl>
+				</FormField>
 
 				<FormField label={t(Questions.KEYWORDS_TITLE)} description={t(Questions.KEYWORDS_LABEL)}>
 					<FormControl name="keywords" control={control}>

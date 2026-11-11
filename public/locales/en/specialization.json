@@ -20,7 +20,8 @@
 	"select": {
 		"choose": "Select specialization from the list",
 		"empty": "No options available",
-		"selected": "Selected specializations"
+		"selected": "Selected specializations",
+		"required": "Select a specialization"
 	},
 	"empty": {
 		"list": {
