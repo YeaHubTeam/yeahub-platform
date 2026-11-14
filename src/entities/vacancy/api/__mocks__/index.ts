@@ -1,2 +1,3 @@
 import { vacancyListMock } from './vacancyListMock';
-export const vacancyHandlers = [vacancyListMock];
+import { vacancyMarketMock } from './vacancyMarketMock';
+export const vacancyHandlers = [vacancyListMock, vacancyMarketMock];
