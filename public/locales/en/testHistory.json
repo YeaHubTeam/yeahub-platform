@@ -1,0 +1,18 @@
+{
+	"title": "Testing history",
+	"test.title": "Test № {{number}}",
+	"start.date": "Date: ",
+	"total.tests": "Tests: ",
+	"result": "Result: ",
+	"link": "Details",
+	"empty": "Your testing history will appear here soon",
+	"stub": {
+		"empty": {
+			"title": "It looks like there is no testing history yet",
+			"subtitle": "Complete your first test to see the history here",
+			"button": "Go to testing"
+		}
+	},
+	"unverified": "Your testing history is prepared after email confirmation",
+	"no.premium": "The testing history is only available to community members"
+}

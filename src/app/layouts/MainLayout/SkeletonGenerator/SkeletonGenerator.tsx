@@ -41,6 +41,7 @@ import { MainPageSkeleton } from '@/pages/interview/main';
 import { ProfilePageSkeleton } from '@/pages/profile/profileInfo';
 import { UserProfilePageSkeleton } from '@/pages/profile/userProfile';
 import { TaskPageContentSkeleton } from '@/pages/tasks/task';
+import { TestHistoryPageSkeleton } from '@/pages/test/testHistory';
 import { QuestionsPageSkeleton } from '@/pages/wiki/question/questions';
 
 const SkeletonGenerator = () => {
@@ -107,6 +108,8 @@ const SkeletonGenerator = () => {
 			return <InterviewStatisticsPageSkeleton />;
 		case ROUTES.interview.quiz.page:
 			return <CreateQuizPageSkeleton />;
+		case ROUTES.testing.history.page:
+			return <TestHistoryPageSkeleton />;
 		case ROUTES.wiki.questions.page:
 			return <QuestionsPageSkeleton />;
 		case ROUTES.profile.page:

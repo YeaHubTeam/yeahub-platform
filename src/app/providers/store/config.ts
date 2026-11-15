@@ -21,6 +21,7 @@ import { specializationsPageReducer } from '@/pages/admin/specialization/special
 import { tasksTablePageReducer } from '@/pages/admin/task/tasks';
 import { topicsPageReducer } from '@/pages/admin/topic/topics';
 import { interviewHistoryPageReducer } from '@/pages/interview/interviewHistory';
+import { testHistoryPageReducer } from '@/pages/test/testHistory';
 
 import { router } from '../router';
 
@@ -31,6 +32,7 @@ export const reducers = {
 	[baseApi.reducerPath]: baseApi.reducer,
 	resourcesAllTab: resourcesAllTabReducer,
 	interviewHistoryPage: interviewHistoryPageReducer,
+	testHistoryPage: testHistoryPageReducer,
 	questionsTablePage: questionsTablePageReducer,
 	companiesTablePage: companiesTablePageReducer,
 	specializationsPage: specializationsPageReducer,

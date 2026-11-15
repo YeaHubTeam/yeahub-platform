@@ -1,10 +1,15 @@
-import { i18n, i18Namespace, TestCreate, baseApi } from '@/shared/config';
+import { i18n, i18Namespace, TestCreate, baseApi, ApiTags } from '@/shared/config';
 import { route } from '@/shared/libs';
 import { toast } from '@/shared/ui/Toast';
 
 import { testApiUrls } from '../model/constants/testConstants';
 import { saveActiveTest } from '../model/helpers/saveActiveTest';
-import { CreateNewTestParamsRequest, CreateNewTestResponse } from '../model/types/testTypes';
+import {
+	CreateNewTestParamsRequest,
+	CreateNewTestResponse,
+	GetTestHistoryParamsRequest,
+	GetTestHistoryResponse,
+} from '../model/types/testTypes';
 
 const testApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
@@ -26,8 +31,33 @@ const testApi = baseApi.injectEndpoints({
 				}
 			},
 		}),
+		getHistoryTest: build.query<
+			GetTestHistoryResponse,
+			GetTestHistoryParamsRequest & { uniqueKey: string }
+		>({
+			query: ({ profileId, ...params }) => ({
+				url: route(testApiUrls.getHistoryTest, profileId),
+				params,
+			}),
+			serializeQueryArgs: ({ endpointName, queryArgs }) => {
+				return endpointName + queryArgs.uniqueKey;
+			},
+			merge: (currentCache, newItems) => {
+				return {
+					...currentCache,
+					data: [...(currentCache.data ?? []), ...newItems.data],
+				};
+			},
+			forceRefetch({ currentArg, previousArg }) {
+				return (
+					currentArg?.uniqueKey !== previousArg?.uniqueKey ||
+					JSON.stringify(currentArg) !== JSON.stringify(previousArg)
+				);
+			},
+			providesTags: [ApiTags.HISTORY_TEST],
+		}),
 	}),
 	overrideExisting: true,
 });
 
-export const { useLazyCreateNewTestQuery } = testApi;
+export const { useLazyCreateNewTestQuery, useGetHistoryTestQuery } = testApi;
