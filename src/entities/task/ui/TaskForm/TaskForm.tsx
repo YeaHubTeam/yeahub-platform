@@ -17,6 +17,9 @@ import { TaskStructuresField } from '../TaskStructuresField/TaskStructuresField'
 
 import styles from './TaskForm.module.css';
 
+const isEmptyHtml = (html: string) => html.replace(/<[^>]*>/g, '').trim() === '';
+const normalizeEmptyHtmlValue = (html: string): string => (isEmptyHtml(html) ? '' : html);
+
 interface TaskFormProps {
 	isEdit?: boolean;
 }
@@ -50,6 +53,7 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 								// className={styles.input}
 								data={field.value}
 								{...field}
+								onChange={(html) => field.onChange(normalizeEmptyHtmlValue(html))}
 							/>
 						)}
 					</FormControl>
