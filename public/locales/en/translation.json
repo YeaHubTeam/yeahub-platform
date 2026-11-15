@@ -193,6 +193,7 @@
 		"no.uppercase": "No uppercase letters"
 	},
 	"crumbs": {
+		"testing": "Testing",
 		"profile": "Profile",
 		"profile.editing": "Profile editing",
 		"interview": "Training",
