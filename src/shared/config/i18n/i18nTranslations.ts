@@ -1016,6 +1016,7 @@ export enum Articles {
 	TOPICS_TYPE_ADVANCED = 'topics.type.advanced',
 	TOPICS_EMPTY = 'topics.empty',
 	FORMAT_TITLE = 'format.title',
+	FORMAT_FULL = 'format.full',
 	FORMAT_LABEL = 'format.label',
 	FORMAT_PLACEHOLDER = 'format.placeholder',
 	FORMAT_TYPE_GUIDE = 'format.type.guide',

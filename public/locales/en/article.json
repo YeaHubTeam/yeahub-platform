@@ -68,6 +68,7 @@
 	},
 	"format": {
 		"title": "Format",
+		"full": "Article format",
 		"label": "Choose an article format",
 		"placeholder": "Select a format",
 		"type": {

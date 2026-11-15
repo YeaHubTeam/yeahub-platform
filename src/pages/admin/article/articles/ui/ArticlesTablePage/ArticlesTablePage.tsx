@@ -6,9 +6,10 @@ import { Flex } from '@/shared/ui/Flex';
 
 import { useGetArticlesListQuery } from '@/entities/article';
 
-import { useArticlesFilters } from '@/features/article/filterArticles';
+import { ArticlesFilters, useArticlesFilters } from '@/features/article/filterArticles';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
+import { SearchSection } from '@/widgets/SearchSection';
 
 import { ArticlesTable } from '../ArticlesTable/ArticlesTable';
 
@@ -17,7 +18,18 @@ import styles from './ArticlesTablePage.module.css';
 const ArticlesPage = () => {
 	const { t } = useTranslation(i18Namespace.article);
 
-	const { filters, onChangePage } = useArticlesFilters({
+	const {
+		filters,
+		hasFilters,
+		onResetFilters,
+		onChangePage,
+		onChangeTitle,
+		onChangeSpecializations,
+		onChangeSkills,
+		onChangeTopics,
+		onChangeContentType,
+		onChangeFormat,
+	} = useArticlesFilters({
 		page: 1,
 	});
 
@@ -27,7 +39,15 @@ const ArticlesPage = () => {
 		isFetching: isFetchingArticles,
 		isError: isErrorArticles,
 		refetch: refetchArticles,
-	} = useGetArticlesListQuery({ page: filters.page });
+	} = useGetArticlesListQuery({
+		page: filters.page,
+		search: filters.title,
+		specializations: filters.specializations,
+		skills: filters.skills,
+		topics: filters.topics,
+		contentType: filters.contentType,
+		format: filters.format,
+	});
 
 	const articles = allArticles?.data ?? [];
 	const hasArticles = articles.length > 0;
@@ -40,6 +60,9 @@ const ArticlesPage = () => {
 		error: {
 			onClick: refetchArticles,
 		},
+		'filter-empty': {
+			onClick: onResetFilters,
+		},
 	};
 
 	return (
@@ -47,6 +70,7 @@ const ArticlesPage = () => {
 			isLoading={isLoadingArticles}
 			hasError={isErrorArticles}
 			hasData={hasArticles}
+			hasFilters={hasFilters}
 			stubs={stubs}
 			content={
 				<ArticlesTable articles={articles} tableState={{ isFetching: isFetchingArticles }} />
@@ -61,6 +85,23 @@ const ArticlesPage = () => {
 		>
 			{({ content, pagination }) => (
 				<Flex componentType="main" direction="column" gap="24">
+					<SearchSection
+						searchValue={filters.title}
+						onSearch={onChangeTitle}
+						hasFilters={hasFilters}
+						showResetFilterButton={hasFilters}
+						onResetFilters={onResetFilters}
+						renderFilter={() => (
+							<ArticlesFilters
+								filters={filters}
+								onChangeSpecializations={onChangeSpecializations}
+								onChangeSkills={onChangeSkills}
+								onChangeTopics={onChangeTopics}
+								onChangeContentType={onChangeContentType}
+								onChangeFormat={onChangeFormat}
+							/>
+						)}
+					/>
 					<Card className={styles.content}>
 						<>
 							{content}

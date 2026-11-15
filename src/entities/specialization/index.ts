@@ -16,6 +16,7 @@ export { SpecializationSelect } from './ui/SpecializationSelect/SpecializationSe
 export { SpecializationSelectSkeleton } from './ui/SpecializationSelect/SpecializationSelect.skeleton';
 export { SpecializationsListField } from './ui/SpecializationsListField/SpecializationsListField';
 export { SpecializationsListFieldSkeleton } from './ui/SpecializationsListField/SpecializationsListField.skeleton';
+export { SpecializationsMultiListField } from './ui/SpecializationsMultiListField/SpecializationsMultiListField';
 export { SpecializationProgressTable } from './ui/SpecializationProgressTable/SpecializationProgressTable';
 export { specializationHandlers, specializationsProgressHandlers } from './api/__mocks__';
 
