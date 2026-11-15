@@ -33,7 +33,7 @@ export const DeleteMultiplyEntitiesButton = <T extends string | number>({
 	return (
 		<>
 			<Button onClick={onOpen} variant="destructive-outline" size="large">
-				{t(Translation.REMOVE_SELECTED)}
+				{t(Translation.REMOVE_SELECTED)} ({toRemove.length})
 			</Button>
 
 			{isOpen && (
