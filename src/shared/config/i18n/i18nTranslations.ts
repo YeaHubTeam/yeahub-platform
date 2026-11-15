@@ -115,6 +115,7 @@ export enum Translation {
 	CRUMBS_QUESTIONS_LIST = 'crumbs.questions.list',
 	CRUMBS_QUESTION_DETAIL = 'crumbs.question.detail',
 	CRUMBS_COLLECTIONS_LIST = 'crumbs.collections.list',
+	CRUMBS_ARTICLES_LIST = 'crumbs.articles.list',
 	CRUMBS_COLLECTIONS_DETAIL = 'crumbs.collection.detail',
 	CRUMBS_QUIZ = 'crumbs.quiz',
 	CRUMBS_LIVE_CODING = 'crumbs.liveCoding',
@@ -989,6 +990,9 @@ export enum Questions {
 }
 
 export enum Articles {
+	ARTICLES_TITLE = 'articles.title',
+	READING_TIME = 'reading-time',
+	IMAGE_ALT = 'image.alt',
 	CREATE_PAGE_TITLE = 'create.page.title',
 	TITLE_MAIN = 'title.main',
 	TITLE_SHORT = 'title.short',

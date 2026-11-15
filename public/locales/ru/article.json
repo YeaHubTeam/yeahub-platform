@@ -1,4 +1,7 @@
 {
+	"articles.title": "Статьи",
+	"reading-time": "{{count}} мин чтения",
+	"image.alt": "Обложка статьи «{{title}}»",
 	"create.page.title": "Создание статьи",
 
 	"title": {

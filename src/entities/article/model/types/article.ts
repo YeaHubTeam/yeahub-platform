@@ -41,6 +41,13 @@ export interface Article {
 	taskIds?: Array<string>;
 }
 
+export type PublicArticle = Pick<
+	Article,
+	'id' | 'title' | 'slug' | 'excerpt' | 'imageSrc' | 'publishedAt' | 'contentType'
+> & {
+	readingTimeMinutes: number;
+};
+
 export type ArticleFormValues = Pick<
 	Article,
 	| 'title'
@@ -72,4 +79,11 @@ export interface GetArticlesListParamsRequest {
 	origin?: string;
 }
 
+export type GetPublicArticlesListParamsRequest = Pick<
+	GetArticlesListParamsRequest,
+	'page' | 'limit'
+>;
+
 export type GetArticlesListResponse = Response<Article[]>;
+
+export type GetPublicArticlesListResponse = Response<PublicArticle[]>;

@@ -1,6 +1,10 @@
 export const ROUTES = {
 	appRoute: '/',
 	adminRoute: '/admin',
+	articles: {
+		route: 'articles',
+		page: '/articles',
+	},
 	admin: {
 		questions: {
 			route: 'questions',

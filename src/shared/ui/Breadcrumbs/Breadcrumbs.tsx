@@ -8,6 +8,11 @@ import { BreadcrumbItem } from '../BreadcrumbItem';
 
 import styles from './Breadcrumbs.module.css';
 
+interface BreadcrumbHandle {
+	crumb: string;
+	crumbPath?: string;
+}
+
 export const Breadcrumbs = () => {
 	const matches = useMatches();
 	const { pathname } = useLocation();
@@ -15,10 +20,10 @@ export const Breadcrumbs = () => {
 	const { isMobile } = useScreenSize();
 
 	const crumbs = matches
-		.filter((match) => Boolean(match.handle as { crumb: string }))
+		.filter((match) => Boolean((match.handle as BreadcrumbHandle | undefined)?.crumb))
 		.map((match) => ({
-			crumb: t((match.handle as { crumb: string }).crumb),
-			pathname: match.pathname,
+			crumb: t((match.handle as BreadcrumbHandle).crumb),
+			pathname: (match.handle as BreadcrumbHandle).crumbPath ?? match.pathname,
 		}));
 
 	return (

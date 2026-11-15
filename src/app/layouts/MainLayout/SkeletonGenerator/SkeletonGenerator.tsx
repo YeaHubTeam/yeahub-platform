@@ -41,6 +41,7 @@ import { MainPageSkeleton } from '@/pages/interview/main';
 import { ProfilePageSkeleton } from '@/pages/profile/profileInfo';
 import { UserProfilePageSkeleton } from '@/pages/profile/userProfile';
 import { TaskPageContentSkeleton } from '@/pages/tasks/task';
+import { ArticlesPageSkeleton } from '@/pages/wiki/article/articles';
 import { QuestionsPageSkeleton } from '@/pages/wiki/question/questions';
 
 const SkeletonGenerator = () => {
@@ -97,6 +98,8 @@ const SkeletonGenerator = () => {
 	switch (location.pathname) {
 		case ROUTES.appRoute:
 			return <MainPageSkeleton />;
+		case ROUTES.articles.page:
+			return <ArticlesPageSkeleton />;
 		case ROUTES.interview.page:
 			return <InterviewPageSkeleton />;
 		case ROUTES.interview.new.page:
