@@ -98,7 +98,7 @@ export const TopicSelect = ({
 
 	if (!hasMultiple) {
 		return (
-			<Tooltip title={tooltipText} shouldShowTooltip={!!disabled && !!tooltipText}>
+			<Tooltip title={tooltipText} shouldShowTooltip={disabled && Boolean(tooltipText)}>
 				<Dropdown
 					label={options.length ? t(Topics.SELECT_CHOOSE) : t(Topics.SELECT_EMPTY)}
 					disabled={disabled}
@@ -115,7 +115,7 @@ export const TopicSelect = ({
 	}
 
 	return (
-		<Tooltip title={tooltipText} shouldShowTooltip={!!disabled && !!tooltipText}>
+		<Tooltip title={tooltipText} shouldShowTooltip={disabled && Boolean(tooltipText)}>
 			<SelectWithChips
 				disabled={disabled}
 				title={t(Topics.SELECT_SELECTED)}
