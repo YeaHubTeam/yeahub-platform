@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { i18Namespace, Marketplace, Resources, ROUTES } from '@/shared/config';
@@ -28,8 +27,8 @@ import { ResourcesPageSkeleton } from './ResourcesPage.skeleton';
 const ResourcesPage = () => {
 	const { isMobile, isTablet } = useScreenSize();
 	const navigate = useNavigate();
-	const specializationId = useSelector(getSpecializationId);
 	const isEmailVerified = useAppSelector(getIsVerified);
+	const specializationId = useAppSelector(getSpecializationId);
 
 	const {
 		onChangeTitle,
@@ -49,9 +48,9 @@ const ResourcesPage = () => {
 	} = useGetResourcesListQuery({
 		page: filters.page ?? 1,
 		name: filters.title,
-		specializations: specializationId,
 		skills: filters.skills,
 		types: filters.types,
+		specializations: specializationId,
 	});
 	const { data: myResourceRequestsReviewCount = 0 } = useGetMyRequestsResourcesReviewCountQuery({});
 

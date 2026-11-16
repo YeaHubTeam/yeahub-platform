@@ -3,9 +3,6 @@ export type {
 	QuestionStatus,
 	CreateOrEditQuestionFormValues,
 	GetQuestionsBySpecializationCountResponse,
-	PopularQuestionStat,
-	PopularQuestionsSpecialization,
-	GetPopularQuestionsResponse,
 	GeneratedQuestionDto,
 } from './model/types/question';
 export {
@@ -15,8 +12,6 @@ export {
 	useGetPublicQuestionsListQuery,
 	useGetPublicQuestionByIdQuery,
 	useGetQuestionsSpecializationByIdCountQuery,
-	useGetLearnedQuestionsQuery,
-	useGetPopularQuestionsQuery,
 } from './api/questionApi';
 export { LS_INIT_QUESTION_ID } from './model/constants/question';
 export { getQuestionRoute } from '@/entities/question/lib/getQuestionRoute';
@@ -26,6 +21,7 @@ export { QuestionFormSkeleton } from './ui/QuestionForm/QuestionForm.skeleton';
 export { ChooseQuestionComplexity } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity';
 export { ChooseQuestionComplexitySkeleton } from './ui/ChooseQuestionComplexity/ChooseQuestionComplexity.skeleton';
 export { ChooseQuestionCount } from './ui/ChooseQuestionCount/ChooseQuestionCount';
+export { ChooseQuestionCountSkeleton } from './ui/ChooseQuestionCount/ChooseQuestionCount.skeleton';
 export { ChooseQuestionsDrawer } from './ui/ChooseQuestionsDrawer/ChooseQuestionsDrawer';
 export { QuestionStatusChip } from './ui/QuestionStatusChip/QuestionStatusChip';
 export { QuestionStatusChipSkeleton } from './ui/QuestionStatusChip/QuestionStatusChip.skeleton';
@@ -42,13 +38,7 @@ export { questionsMock } from './api/__mocks__/data';
 
 export { quizHandlers, questionHandlers } from './api/__mocks__/index';
 
-export { difficultQuestionsHandler } from './api/__mocks__/index';
-export { useGetMostDifficultQuestionsBySpecializationIdQuery } from './api/questionApi';
-
-export { learnedQuestionHandlers } from './api/__mocks__';
-export type { LearnedQuestion, GetLearnedQuestionsResponse } from './model/types/learnedQuestion';
-
-export type { MostDifficultQuestion, GetQuestionsListParamsRequest } from './model/types/question';
+export type { GetQuestionsListParamsRequest } from './model/types/question';
 export type {
 	QuestionsFilterParams,
 	QuestionFilterStatus,

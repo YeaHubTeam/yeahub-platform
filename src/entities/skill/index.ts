@@ -6,13 +6,8 @@ export { SkillFormSkeleton } from './ui/SkillForm/SkillForm.skeleton';
 export { SkillCard } from './ui/SkillCard/SkillCard';
 export { SkillsListField } from './ui/SkillsListField/SkillsListField';
 export { SkillsListFieldSkeleton } from './ui/SkillsListField/SkillsListField.skeleton';
-export {
-	useGetSkillsListQuery,
-	useGetSkillByIdQuery,
-	useGetPopularSkillsQuery,
-} from './api/skillApi';
+export { useGetSkillsListQuery, useGetSkillByIdQuery } from './api/skillApi';
 export type { ProfileSkill } from '../skill/model/types/profileSkill';
-export type { PopularSkill } from './model/types/skill';
 
 export { skillHandlers } from './api/__mocks__/index';
 

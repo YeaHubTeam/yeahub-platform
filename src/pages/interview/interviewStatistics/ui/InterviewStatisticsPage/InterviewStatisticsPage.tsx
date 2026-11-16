@@ -4,7 +4,7 @@ import { i18Namespace, InterviewStatistics } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 
-import { getHasPremiumAccess, getIsVerified, getProfileId } from '@/entities/profile';
+import { getIsVerified, getProfileId } from '@/entities/profile';
 import { useGetProfileQuizStatsQuery } from '@/entities/quiz';
 
 import { CategoryProgressList } from '@/widgets/interview/CategoryProgressList';
@@ -19,7 +19,6 @@ import { InterviewStatisticsPageSkeleton } from './InterviewStatisticsPage.skele
 const InterviewStatisticsPage = () => {
 	const { t } = useTranslation(i18Namespace.interviewStatistics);
 	const profileId = useAppSelector(getProfileId);
-	const hasPremium = useAppSelector(getHasPremiumAccess);
 	const isVerified = useAppSelector(getIsVerified);
 
 	const {
@@ -28,13 +27,12 @@ const InterviewStatisticsPage = () => {
 		refetch,
 		isError,
 	} = useGetProfileQuizStatsQuery(profileId, {
-		skip: !(hasPremium && isVerified),
+		skip: !isVerified,
 	});
 
 	return (
 		<PageWrapper
 			shouldVerify
-			shouldPremium
 			isLoading={isLoading}
 			skeleton={<InterviewStatisticsPageSkeleton />}
 			stubs={{ error: { onClick: refetch } }}

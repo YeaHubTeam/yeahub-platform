@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
 import classNames from 'classnames';
 import { DragEvent, RefObject, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -37,7 +35,7 @@ export const FileLoader = ({
 	isDragDropEnabled = true,
 	disabled,
 }: FileLoaderProps) => {
-	const uploaderRef: RefObject<HTMLInputElement> = useRef(null);
+	const uploaderRef: RefObject<HTMLInputElement | null> = useRef(null);
 
 	const [files, setFiles] = useState<globalThis.File[]>([]);
 

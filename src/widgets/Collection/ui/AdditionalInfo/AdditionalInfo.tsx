@@ -16,17 +16,16 @@ import { Media, MediaLinksBanner } from '@/entities/socialMedia';
 
 import styles from './AdditionalInfo.module.css';
 
-interface AdditionalInfoProps
-	extends Pick<
-		Collection,
-		| 'specializations'
-		| 'isFree'
-		| 'company'
-		| 'questionsCount'
-		| 'createdBy'
-		| 'tasksCount'
-		| 'keywords'
-	> {
+interface AdditionalInfoProps extends Pick<
+	Collection,
+	| 'specializations'
+	| 'isFree'
+	| 'company'
+	| 'questionsCount'
+	| 'createdBy'
+	| 'tasksCount'
+	| 'keywords'
+> {
 	showAuthor?: boolean;
 	className?: string;
 	media?: Media | undefined;
@@ -106,12 +105,14 @@ export const AdditionalInfo = ({
 						data={specializations}
 						onClick={onMoveToCollectionsWithSpecialization}
 					/>
-					<BaseFilterSection
-						title={t(Collections.COMPANY_TITLE)}
-						data={[company]}
-						onClick={onMoveToCollectionsWithCompany}
-						imageSize={36}
-					/>
+					{company && (
+						<BaseFilterSection
+							title={t(Collections.COMPANY_TITLE)}
+							data={[company]}
+							onClick={onMoveToCollectionsWithCompany}
+							imageSize={36}
+						/>
+					)}
 					<BaseFilterSection
 						title={t(Collections.ADDITIONAL_INFO_ACCESS)}
 						data={collectionAccess}

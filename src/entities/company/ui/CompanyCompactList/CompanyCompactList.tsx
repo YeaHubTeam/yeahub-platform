@@ -10,10 +10,8 @@ interface CompanyCompactListProps {
 }
 
 export const CompanyCompactList = ({ companies }: CompanyCompactListProps) => {
-	const companiesTitles = companies.map((company) => company.title).join(', ');
-
 	return (
-		<Tooltip title={companiesTitles}>
+		<Tooltip title={String(companies)}>
 			<Flex align="center" justify="center" gap="10" className={styles.list}>
 				{companies.map((company) => (
 					<img

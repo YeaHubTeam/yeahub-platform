@@ -1,13 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Questions } from '@/shared/config';
-import { useAppSelector, useCurrentProject } from '@/shared/libs';
+import { useCurrentProject } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
-import { OrderFilter } from '@/shared/ui/OrderFilter';
 import { SearchInput } from '@/shared/ui/SearchInput';
 import { Switch } from '@/shared/ui/Switch';
 
-import { getSpecializationId } from '@/entities/profile';
 import { ChooseQuestionComplexity, QuestionsFilterParams } from '@/entities/question';
 import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
@@ -15,7 +13,6 @@ import { TopicFilterField } from '@/entities/topic';
 import { UserSelect } from '@/entities/user';
 
 import { QuestionRateFilter } from '../QuestionRateFilter/QuestionRateFilter';
-import { QuestionSortByFieldFilter } from '../QuestionSortByFieldFilter/QuestionSortByFieldFilter';
 import { QuestionStatusFilter } from '../QuestionStatusFilter/QuestionStatusFilter';
 
 interface QuestionsFiltersProps {
@@ -27,8 +24,6 @@ interface QuestionsFiltersProps {
 	onChangeRate: (rate?: QuestionsFilterParams['rate']) => void;
 	onChangeStatus?: (status?: QuestionsFilterParams['status']) => void;
 	onChangeIsMy?: (isMy?: QuestionsFilterParams['isMy']) => void;
-	onChangeOrder?: (order?: QuestionsFilterParams['order']) => void;
-	onChangeOrderBy?: (orderBy?: QuestionsFilterParams['orderBy']) => void;
 	onChangeTopics?: (topics?: QuestionsFilterParams['topics']) => void;
 	onChangeAuthorId?: (authorId?: QuestionsFilterParams['authorId']) => void;
 }
@@ -41,26 +36,12 @@ export const QuestionsFilters = ({
 	onChangeRate,
 	onChangeStatus,
 	onChangeIsMy,
-	onChangeOrder,
-	onChangeOrderBy,
 	onChangeTopics,
 	onChangeAuthorId,
 }: QuestionsFiltersProps) => {
-	const {
-		skills,
-		rate,
-		complexity,
-		status,
-		title,
-		specialization,
-		isMy,
-		order,
-		orderBy,
-		topics,
-		authorId,
-	} = filters;
+	const { skills, rate, complexity, status, title, specialization, isMy, topics, authorId } =
+		filters;
 	const { t } = useTranslation(i18Namespace.questions);
-	const specializationId = useAppSelector(getSpecializationId);
 	const project = useCurrentProject();
 
 	return (
@@ -105,7 +86,7 @@ export const QuestionsFilters = ({
 			<SkillsListField
 				selectedSkills={skills}
 				onChangeSkills={onChangeSkills}
-				selectedSpecialization={specialization || specializationId}
+				selectedSpecialization={specialization}
 			/>
 			<ChooseQuestionComplexity
 				onChangeComplexity={onChangeComplexity}
@@ -114,12 +95,6 @@ export const QuestionsFilters = ({
 			<QuestionRateFilter onChangeRate={onChangeRate} selectedRate={rate} />
 			{project === 'platform' && onChangeStatus && (
 				<QuestionStatusFilter onChangeStatus={onChangeStatus} selectedStatus={status} />
-			)}
-			{project === 'admin' && onChangeOrderBy && (
-				<QuestionSortByFieldFilter onChangeOrderBy={onChangeOrderBy} selectedOrderBy={orderBy} />
-			)}
-			{project === 'admin' && onChangeOrder && (
-				<OrderFilter changeOrder={onChangeOrder} selectedOrder={order} />
 			)}
 		</Flex>
 	);

@@ -1,4 +1,4 @@
-import { MutableRefObject, LegacyRef } from 'react';
+import { RefObject } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ import styles from './FullPassedQuizzesItem.module.css';
 
 interface FullInterviewHistoryItemProps {
 	interview: QuizWithoutQuestions;
-	itemRef: MutableRefObject<HTMLElement> | null;
+	itemRef: RefObject<HTMLLIElement | null> | null;
 }
 
 export const FullPassedQuizzesItem = ({ interview, itemRef }: FullInterviewHistoryItemProps) => {
@@ -25,7 +25,7 @@ export const FullPassedQuizzesItem = ({ interview, itemRef }: FullInterviewHisto
 	const notEmptySkills = skills.length > 0;
 
 	return (
-		<li ref={itemRef as LegacyRef<HTMLLIElement> | undefined}>
+		<li ref={itemRef}>
 			<Link to={route(ROUTES.interview.history.result.page, id)}>
 				<Card
 					className={styles.container}

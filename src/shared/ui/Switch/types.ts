@@ -4,7 +4,7 @@ export interface SwitchProps extends Omit<ComponentPropsWithoutRef<'div'>, 'onCh
 	checked: boolean;
 	disabled?: boolean;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-	inputRef?: RefObject<HTMLInputElement>;
+	inputRef?: RefObject<HTMLInputElement | null>;
 	inputProps?: InputHTMLAttributes<HTMLInputElement>;
 	label?: string;
 	labelClassName?: string;

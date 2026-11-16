@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { useAppSelector, useScreenSize } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';

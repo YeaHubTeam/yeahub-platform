@@ -1,30 +1,34 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { I18nextProvider } from 'react-i18next';
+import { fireEvent, screen } from '@testing-library/react';
 
-import { Translation, i18n } from '@/shared/config';
+import { i18nForJest } from '@/shared/config';
+import { renderComponent } from '@/shared/libs';
 
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 describe('LanguageSwitcher', () => {
-	beforeEach(() => {
-		render(
-			<I18nextProvider i18n={i18n}>
-				<LanguageSwitcher />
-			</I18nextProvider>,
-		);
+	beforeEach(async () => {
+		await i18nForJest.changeLanguage('ru');
+		renderComponent(<LanguageSwitcher />);
 	});
 
 	test('render', () => {
-		expect(screen.getByText(Translation.LANGUAGE)).toBeInTheDocument();
+		const toggle = screen.getByRole('switch');
+
+		expect(toggle).toBeInTheDocument();
+		expect(toggle).not.toBeChecked();
 	});
 
 	test('changeLanguage', () => {
-		const toggleBtn = screen.getByTestId('LanguageSwitcher_Button');
-		expect(toggleBtn).toBeInTheDocument();
-		expect(i18n.language).toBe('ru');
-		fireEvent.click(toggleBtn);
-		expect(i18n.language).toBe('en');
-		fireEvent.click(toggleBtn);
-		expect(i18n.language).toBe('ru');
+		const toggle = screen.getByRole('switch');
+
+		expect(i18nForJest.language).toBe('ru');
+
+		fireEvent.click(toggle);
+		expect(i18nForJest.language).toBe('en');
+		expect(toggle).toBeChecked();
+
+		fireEvent.click(toggle);
+		expect(i18nForJest.language).toBe('ru');
+		expect(toggle).not.toBeChecked();
 	});
 });

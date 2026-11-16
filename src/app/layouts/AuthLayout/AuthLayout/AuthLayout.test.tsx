@@ -16,12 +16,12 @@ describe('AuthLayoutSkeleton', () => {
 	});
 
 	test('renders aside skeleton', () => {
-		const aside = screen.getByTestId('AuthLayoutSkeleton_Aside');
+		const aside = screen.getByRole('complementary');
 		expect(aside).toBeInTheDocument();
 	});
 
 	test('renders main content area', () => {
-		const main = screen.getByTestId('AuthLayoutSkeleton_Main');
+		const main = screen.getByTestId('Loader_Wrapper');
 		expect(main).toBeInTheDocument();
 	});
 });

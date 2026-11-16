@@ -5,8 +5,8 @@ import type { Specialization } from '@/entities/specialization/@x/vacancy';
 
 export type VacancySource = 'hh' | 'habr' | 'telegram' | 'company_site' | 'hr' | 'anonymous';
 export type VacancyEmploymentForm = 'Fulltime' | 'Parttime' | 'Project' | 'Shift';
-export type VacancyGrade = 'Trainee' | 'Junior' | 'Middle' | 'Senior' | 'Lead' | 'Head';
-export type VacancyEnglishLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+export type VacancyGrade = 'Trainee' | 'Junior' | 'Middle' | 'Senior' | 'Lead' | 'Head' | null;
+export type VacancyEnglishLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | null;
 export type VacancyWorkFormat = 'Office' | 'Remote' | 'Hybrid';
 export type VacancyIndustry =
 	| 'AI'
@@ -52,7 +52,7 @@ export interface Vacancy {
 	source: VacancySource;
 	title: string;
 	area: string;
-	publishedAt: string;
+	sourcePublishedAt: string;
 	employmentForm: VacancyEmploymentForm;
 	internship: boolean;
 	grade: VacancyGrade;
@@ -60,7 +60,7 @@ export interface Vacancy {
 	workFormat: VacancyWorkFormat[];
 	company: VacancyCompany;
 	salary: VacancySalary;
-	specialization: VacancySpecialization;
+	specialization?: VacancySpecialization;
 	skills: VacancySkill[];
 	preparation: VacancyPreparation;
 }

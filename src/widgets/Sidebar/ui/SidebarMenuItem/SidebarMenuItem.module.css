@@ -98,12 +98,12 @@
   background-color: var(--background-light-hover);
 }
 
-.fullwidth.category:hover {
-  background-color: transparent;
-}
-
 .category.fullwidth {
   padding: 0;
+}
+
+.fullwidth.category:hover {
+  background-color: transparent;
 }
 
 .expanded .container {

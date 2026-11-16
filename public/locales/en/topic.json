@@ -1,41 +1,7 @@
 {
-	"title": {
-		"full": "Topic title",
-		"label": "Add topic title"
-	},
-	"skills": {
-		"short": "Skill",
-		"label": "Skill of the relevant topic"
-	},
-	"description": {
-		"full": "Topic description",
-		"label": "Add topic description",
-		"placeholder": "Topic description"
-	},
 	"select": {
 		"choose": "Choose a topic from the list",
 		"empty": "No available options",
 		"selected": "Selected topic"
-	},
-	"create.page.title": "Creating new topic",
-	"edit.page.title": "Edit topic",
-	"stub": {
-		"empty": {
-			"topics": {
-				"title": "No topics found yet",
-				"subtitle": "Create your first one — and start adding content to the knowledge base",
-				"submit": "Add a topic"
-			},
-			"topic": {
-				"title": "No topic data available",
-				"subtitle": "Please refresh the page or try the request again",
-				"submit": "Retry"
-			}
-		},
-		"edit.access": {
-			"title": "Network access for topic editing",
-			"subtitle": "You are not the creator of this topic, so editing is unavailable",
-			"submit": "Return to the topic list"
-		}
 	}
 }

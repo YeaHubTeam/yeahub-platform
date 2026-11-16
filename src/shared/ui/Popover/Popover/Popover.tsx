@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { isValidElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import { isValidElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';

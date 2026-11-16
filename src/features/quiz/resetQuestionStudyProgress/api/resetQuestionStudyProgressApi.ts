@@ -21,7 +21,6 @@ const resetQuestionProgressApi = baseApi.injectEndpoints({
 				ApiTags.QUESTION_DETAIL,
 				ApiTags.QUESTIONS_LEARN,
 				ApiTags.INTERVIEW_STATISTICS,
-				ApiTags.QUESTIONS_LEARNED,
 			],
 			async onQueryStarted() {
 				try {

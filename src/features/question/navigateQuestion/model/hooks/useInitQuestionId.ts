@@ -5,8 +5,8 @@ import { getFromLS, removeFromLS, setToLS } from '@/shared/libs';
 import { LS_INIT_QUESTION_ID, Question } from '@/entities/question';
 
 export const useInitQuestionId = (questionId: number, questions: Question[]) => {
-	const [initQuestionId, setInitQuestionId] = useState<number>(
-		() => Number(getFromLS(LS_INIT_QUESTION_ID)) ?? 0,
+	const [initQuestionId, setInitQuestionId] = useState<number>(() =>
+		Number(getFromLS(LS_INIT_QUESTION_ID)),
 	);
 
 	const currentIndex = questions.findIndex((item) => item.id === questionId);

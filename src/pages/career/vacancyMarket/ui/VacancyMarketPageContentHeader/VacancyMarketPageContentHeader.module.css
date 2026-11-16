@@ -1,0 +1,13 @@
+.title {
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 502px;
+}
+
+.updated {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

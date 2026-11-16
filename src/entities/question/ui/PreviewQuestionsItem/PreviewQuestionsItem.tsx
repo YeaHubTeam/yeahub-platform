@@ -16,7 +16,6 @@ interface PreviewQuestionsItemProps {
 	questionId: number;
 	rate?: number;
 	complexity?: number;
-	frequency?: number;
 	imageSrc?: string;
 }
 
@@ -25,7 +24,6 @@ export const PreviewQuestionsItem = ({
 	questionId,
 	rate,
 	complexity,
-	frequency,
 	imageSrc,
 }: PreviewQuestionsItemProps) => {
 	const { isMobileS } = useScreenSize();
@@ -45,7 +43,6 @@ export const PreviewQuestionsItem = ({
 							rate={rate}
 							complexity={complexity}
 							className={styles.params}
-							frequency={frequency}
 							size="small"
 						/>
 					</Flex>

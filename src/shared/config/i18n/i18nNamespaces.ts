@@ -15,7 +15,6 @@ export const i18Namespace = {
 	resources: 'resources',
 	resourceRequests: 'resourceRequests',
 	skill: 'skill',
-	referralLink: 'referralLink',
 	specialization: 'specialization',
 	subscription: 'subscription',
 	translation: 'translation',
@@ -31,4 +30,5 @@ export const i18Namespace = {
 	programmingLanguage: 'programmingLanguage',
 	featureFlags: 'featureFlags',
 	vacancies: 'vacancies',
+	vacanciesMarket: 'vacanciesMarket',
 };

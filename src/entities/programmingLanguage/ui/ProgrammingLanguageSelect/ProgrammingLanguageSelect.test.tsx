@@ -58,23 +58,21 @@ describe('ProgrammingLanguageSelect', () => {
 			});
 		});
 
-		test('should initialize with array when value is array', () => {
-			async () => {
-				server.use(
-					http.get(programmingLanguagesApiUrls.getProgrammingLanguagesList, () => {
-						return HttpResponse.json([programmingLanguagesMock.go, programmingLanguagesMock.java]);
-					}),
-				);
+		test('should initialize with array when value is array', async () => {
+			server.use(
+				http.get(programmingLanguagesApiUrls.getProgrammingLanguagesList, () => {
+					return HttpResponse.json([programmingLanguagesMock.go, programmingLanguagesMock.java]);
+				}),
+			);
 
-				render({ value: ['60', '62'], hasMultiple: true });
+			render({ value: ['60', '62'], hasMultiple: true });
 
-				await waitFor(() => {
-					expect(screen.getAllByTestId('chip')).toHaveLength(2);
-				});
+			await waitFor(() => {
+				expect(screen.getAllByTestId('chip')).toHaveLength(2);
+			});
 
-				expect(screen.getByText(programmingLanguagesMock.go.name)).toBeInTheDocument();
-				expect(screen.getByText(programmingLanguagesMock.java.name)).toBeInTheDocument();
-			};
+			expect(screen.getByText(programmingLanguagesMock.go.name)).toBeInTheDocument();
+			expect(screen.getByText(programmingLanguagesMock.java.name)).toBeInTheDocument();
 		});
 
 		test('should initialize with empty array when value is undefined', async () => {

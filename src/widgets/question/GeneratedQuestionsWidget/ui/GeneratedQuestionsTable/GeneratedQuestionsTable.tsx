@@ -114,7 +114,7 @@ export const GeneratedQuestionsTable = ({
 				</td>
 				<td>
 					<TableCellEntityList
-						url={ROUTES.admin.skills.detail.page}
+						url={ROUTES.admin.skills.details.page}
 						items={question.skills}
 						showCount={SKILL_SHOW_COUNT}
 					/>

@@ -35,7 +35,7 @@ export const SpecializationsFilters = ({
 					label={t(Specializations.FILTER_IS_MY_TITLE)}
 				/>
 			)}
-			<UserSelect onChange={onChangeAuthor} value={author} disabled={!!isMy} />
+			<UserSelect onChange={onChangeAuthor} value={author} />
 		</Flex>
 	);
 };

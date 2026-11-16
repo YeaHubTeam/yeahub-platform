@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { fn } from 'storybook/test';
 
 import { Stub } from './Stub';
 
@@ -6,6 +7,9 @@ const meta = {
 	title: 'shared/Stub',
 	component: Stub,
 	tags: ['autodocs'],
+	args: {
+		onClick: fn(),
+	},
 	argTypes: {
 		type: {
 			description: 'Defines appearance of the stub',
@@ -30,7 +34,6 @@ const meta = {
 		},
 		onClick: {
 			description: 'Callback for action button',
-			action: 'click',
 			control: false,
 		},
 	},

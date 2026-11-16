@@ -24,6 +24,9 @@ i18n
 		backend: {
 			loadPath: '/locales/{{lng}}/{{ns}}.json',
 		},
+		react: {
+			bindI18n: 'languageChanged languageChanging',
+		},
 	});
 
 export default i18n;

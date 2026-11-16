@@ -3,10 +3,6 @@ import { route } from '@/shared/libs';
 
 import { questionApiUrls } from '../model/constants/question';
 import {
-	GetLearnedQuestionsParamsRequest,
-	GetLearnedQuestionsResponse,
-} from '../model/types/learnedQuestion';
-import {
 	GetQuestionsForLearnParamsRequest,
 	GetQuestionsForLearnResponse,
 	GetQuestionByIdParamsRequest,
@@ -16,9 +12,6 @@ import {
 	GetPublicQuestionByIdResponse,
 	GetPublicQuestionByIdParamsRequest,
 	GetQuestionsBySpecializationCountResponse,
-	MostDifficultQuestionsResponse,
-	GetPopularQuestionsResponse,
-	MostDifficultQuestionsRequestParams,
 	GetQuestionKeywordsResponse,
 	GetQuestionKeywordsParamsRequest,
 } from '../model/types/question';
@@ -75,30 +68,6 @@ const questionApi = baseApi.injectEndpoints({
 				route(questionApiUrls.getStatisticsQuestionsSpecializationById, specializationId),
 			providesTags: [ApiTags.QUESTION_STATISTICS],
 		}),
-		getLearnedQuestions: build.query<GetLearnedQuestionsResponse, GetLearnedQuestionsParamsRequest>(
-			{
-				query: (params) => ({
-					url: questionApiUrls.getLearnedQuestions,
-					params,
-				}),
-				providesTags: [ApiTags.QUESTIONS_LEARNED],
-			},
-		),
-		getMostDifficultQuestionsBySpecializationId: build.query<
-			MostDifficultQuestionsResponse,
-			MostDifficultQuestionsRequestParams
-		>({
-			query: ({ specId, ...params }) => ({
-				url: route(questionApiUrls.getMostDifficultQuestionsBySpecializationId, specId),
-				params,
-			}),
-		}),
-		getPopularQuestions: build.query<GetPopularQuestionsResponse, void>({
-			query: () => ({
-				url: questionApiUrls.popularQuestions,
-			}),
-			providesTags: [ApiTags.POPULAR_QUESTIONS],
-		}),
 		getQuestionsFilterKeywords: build.query<
 			GetQuestionKeywordsResponse,
 			GetQuestionKeywordsParamsRequest
@@ -123,8 +92,5 @@ export const {
 	useGetPublicQuestionsListQuery,
 	useGetPublicQuestionByIdQuery,
 	useGetQuestionsSpecializationByIdCountQuery,
-	useGetLearnedQuestionsQuery,
-	useGetMostDifficultQuestionsBySpecializationIdQuery,
-	useGetPopularQuestionsQuery,
 	useGetQuestionsFilterKeywordsQuery,
 } = questionApi;

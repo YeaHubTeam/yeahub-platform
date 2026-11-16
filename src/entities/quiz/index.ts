@@ -1,4 +1,5 @@
 export { QuizQuestionMode } from './ui/QuizQuestionMode/QuizQuestionMode';
+export { QuizQuestionModeSkeleton } from './ui/QuizQuestionMode/QuizQuestionMode.skeleton';
 export { QuestionNavPanel } from './ui/QuestionNavPanel/QuestionNavPanel';
 export { ResponseButtons } from './ui/ResponseButtons/ResponseButtons';
 

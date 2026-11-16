@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import SlidersHorizontalIcon from '@/shared/assets/icons/slidersHorizontal.svg';
-import { i18Namespace, Resources, ROUTES } from '@/shared/config';
+import { i18Namespace, Resources } from '@/shared/config';
 import { useScreenSize, useModal } from '@/shared/libs';
 import { Author } from '@/shared/ui/AuthorInfo';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -23,7 +23,6 @@ interface ResourceAdditionalInfoDrawerProps {
 
 export const ResourceAdditionalInfoDrawer = ({
 	createdBy,
-	keywords,
 	skills,
 	specializations,
 }: ResourceAdditionalInfoDrawerProps) => {
@@ -53,10 +52,8 @@ export const ResourceAdditionalInfoDrawer = ({
 			>
 				<ResourceAdditionalInfo
 					createdBy={createdBy}
-					keywords={keywords || []}
 					resourceSkills={skills}
 					specializations={specializations}
-					route={ROUTES.admin.resources.page}
 				/>
 			</Drawer>
 		</>

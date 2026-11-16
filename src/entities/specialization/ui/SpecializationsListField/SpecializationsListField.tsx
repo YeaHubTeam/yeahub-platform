@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Specializations, Translation } from '@/shared/config';
+import { i18Namespace, Specializations } from '@/shared/config';
 import { useScreenSize } from '@/shared/libs';
 import { BaseFilterItem, BaseFilterSection } from '@/shared/ui/BaseFilterSection';
-import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { ToggleShowAllButton } from '@/shared/ui/ToggleShowAllButton';
 
 import { useGetSpecializationsListQuery } from '../../api/specializationApi';
 import { MAX_SHOW_LIMIT_SPECIALIZATIONS } from '../../model/constants/specializationConstants';
@@ -30,7 +30,7 @@ export const SpecializationsListField = ({
 	});
 
 	const onToggleShowAll = () => {
-		setShowAll(!showAll);
+		setShowAll((prev) => !prev);
 	};
 
 	useEffect(() => {
@@ -64,13 +64,7 @@ export const SpecializationsListField = ({
 				title={t(Specializations.TITLE_MAIN)}
 				onClick={onChooseSpecialization}
 			/>
-			{!isMobile && (
-				<Button variant="link" onClick={onToggleShowAll}>
-					{!showAll
-						? t(Translation.SHOW_ALL, { ns: i18Namespace.translation })
-						: t(Translation.HIDE, { ns: i18Namespace.translation })}
-				</Button>
-			)}
+			{!isMobile && <ToggleShowAllButton isToggled={showAll} onToggle={onToggleShowAll} />}
 		</Flex>
 	);
 };

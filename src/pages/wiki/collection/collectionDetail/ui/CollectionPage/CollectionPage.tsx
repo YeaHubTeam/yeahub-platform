@@ -49,8 +49,7 @@ export const CollectionPage = () => {
 
 	const questions = response?.data ?? [];
 
-	const isCollectionEmpty =
-		!collection || Object.keys(collection).length === 0 || collection.questionsCount === 0;
+	const isCollectionEmpty = !collection || Object.keys(collection).length === 0;
 
 	const onMovePrev = () => {
 		onQueryNavigate(prevId, prevPage);

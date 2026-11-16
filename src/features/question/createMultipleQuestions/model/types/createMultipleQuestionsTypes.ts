@@ -22,8 +22,7 @@ export interface GeneratedQuestionsWithErrors {
 }
 
 export interface CreateMultipleQuestionsResponseItem
-	extends GeneratedQuestionsSuccess,
-		GeneratedQuestionsWithErrors {}
+	extends GeneratedQuestionsSuccess, GeneratedQuestionsWithErrors {}
 
 export type CreateMultipleQuestionsResponse = CreateMultipleQuestionsResponseItem[];
 

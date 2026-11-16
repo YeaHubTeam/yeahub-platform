@@ -5,12 +5,9 @@ export const questionApiUrls = {
 	getQuestionById: 'questions/:questionId',
 	getQuestionFilterKeywords: 'questions/filter/keywords',
 	getQuestionsForLearn: 'interview-preparation/learn/:profileId',
-	getLearnedQuestions: 'questions-stats/learned-questions',
 	getPublicQuestionsList: 'questions/public-questions',
 	getPublicQuestionById: 'questions/public-questions/:questionId',
 	getStatisticsQuestionsSpecializationById: 'questions/questions-count/:specializationId',
-	getMostDifficultQuestionsBySpecializationId: 'questions-stats/most-difficult/:specId',
-	popularQuestions: 'questions-stats/question-popularity',
 };
 
 export const GENERATED_QUESTIONS_LS_KEY = 'YH:generated.questions.result';

@@ -16,8 +16,6 @@ import {
 	ResourceAdditionalInfo,
 } from '@/entities/resource';
 
-import { DeleteMyResourceRequestButton } from '@/features/resources/deleteMyResourceRequest';
-
 import { ResourceBody } from '@/widgets/resources/ResourceBody';
 import { ResourceHeader } from '@/widgets/resources/ResourceHeader';
 
@@ -90,18 +88,12 @@ export const RequestInfoPage = () => {
 							>
 								{t(Translation.EDIT, { ns: i18Namespace.translation })}
 							</Button>
-							<DeleteMyResourceRequestButton requestId={requestId || ''} />
 						</Flex>
 					)}
 				</Flex>
 			</Card>
 			{!isMobile && !isTablet && (
-				<ResourceAdditionalInfo
-					keywords={requestPayload.keywords || []}
-					resourceSkills={skills}
-					specializations={specializations}
-					route={ROUTES.wiki.resources.my.page}
-				/>
+				<ResourceAdditionalInfo resourceSkills={skills} specializations={specializations} />
 			)}
 		</Flex>
 	);

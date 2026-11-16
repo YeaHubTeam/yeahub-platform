@@ -1,11 +1,8 @@
-import { TFunction } from 'i18next';
 import * as yup from 'yup';
 
 import { createChangePasswordSchema } from '../../lib/validation/changePasswordSchema';
 
-const tempSchema = createChangePasswordSchema(((key: string) => key) as TFunction);
-
-export type ChangePasswordSchema = yup.InferType<typeof tempSchema>;
+export type ChangePasswordSchema = yup.InferType<ReturnType<typeof createChangePasswordSchema>>;
 
 export interface ChangePasswordFormValues {
 	password: string;

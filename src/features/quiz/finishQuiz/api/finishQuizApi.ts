@@ -17,12 +17,7 @@ const finishQuizApi = baseApi.injectEndpoints({
 					body,
 				};
 			},
-			invalidatesTags: [
-				ApiTags.HISTORY_QUIZ,
-				ApiTags.INTERVIEW_QUIZ,
-				ApiTags.INTERVIEW_STATISTICS,
-				ApiTags.QUESTIONS_LEARNED,
-			],
+			invalidatesTags: [ApiTags.HISTORY_QUIZ, ApiTags.INTERVIEW_QUIZ, ApiTags.INTERVIEW_STATISTICS],
 			async onQueryStarted(body, { queryFulfilled, extra, dispatch }) {
 				try {
 					await queryFulfilled;

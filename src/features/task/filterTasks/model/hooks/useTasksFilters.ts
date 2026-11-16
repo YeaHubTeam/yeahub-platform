@@ -26,23 +26,23 @@ export const useTasksFilters = (initialParams: TasksFilterParams) => {
 
 	const onChangeTitle = (title: TasksFilterParams['title']) => {
 		const normalized = title?.trim();
-		onFilterChange({ title: normalized?.length ? normalized : undefined, page: 1 });
+		onFilterChange({ title: normalized?.length ? normalized : undefined });
 	};
 
 	const onChangeDifficulty = (difficulty: TasksFilterParams['difficulty']) => {
-		onFilterChange({ difficulty, page: 1 });
+		onFilterChange({ difficulty });
 	};
 
 	const onChangeCategory = (category: TasksFilterParams['category']) => {
-		onFilterChange({ category, page: 1 });
+		onFilterChange({ category });
 	};
 
 	const onChangeCompanyId = (companyId: TasksFilterParams['companyId']) => {
-		onFilterChange({ companyId, page: 1 });
+		onFilterChange({ companyId });
 	};
 
 	const onChangeLangIds = (langIds?: TasksFilterParams['langIds']) => {
-		onFilterChange({ langIds, page: 1 });
+		onFilterChange({ langIds });
 	};
 
 	return {

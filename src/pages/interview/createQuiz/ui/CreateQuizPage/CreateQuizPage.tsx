@@ -6,6 +6,7 @@ import { useAppSelector } from '@/shared/libs';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Icon } from '@/shared/ui/Icon';
+import { Text } from '@/shared/ui/Text';
 
 import {
 	getHasPremiumAccess,
@@ -100,7 +101,9 @@ const CreateQuizPage = () => {
 			content={
 				<section>
 					<Card className={styles.container}>
-						<h2 className={styles.title}>{t(InterviewQuizCreate.TITLE)}</h2>
+						<Text isMainTitle variant="body6" className={styles.title}>
+							{t(InterviewQuizCreate.TITLE)}
+						</Text>
 						<CreateQuizFilters
 							filters={filters}
 							onChangeMode={onChangeMode}

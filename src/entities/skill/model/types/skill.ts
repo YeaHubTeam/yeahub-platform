@@ -35,19 +35,3 @@ export type CreateOrEditSkillFormValues = Pick<
 	skillImage?: string;
 	specializations?: number[];
 };
-
-export interface PopularSkill {
-	id: number;
-	skill: Skill;
-	specialization: Specialization;
-	calculatedAt: string;
-	frequencyStat: number;
-}
-
-export type PopularSkillsResponse = Response<PopularSkill[]>;
-
-export type PopularSkillsParamsRequest = {
-	page?: number;
-	limit?: number;
-	specializationId?: number;
-};

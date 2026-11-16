@@ -1,0 +1,1 @@
+export { vacancyMock } from './vacancyMock';

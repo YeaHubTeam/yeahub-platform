@@ -7,6 +7,8 @@ export default defineConfig([
 		files: ['./src/**'],
 		rules: {
 			'fsd/insignificant-slice': 'off',
+			// TODO: rename `assets` / `providers` segments; new default-error in plugin 0.7
+			'fsd/segments-by-purpose': 'warn',
 		},
 	},
 	{

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { Flex } from '@/shared/ui/Flex';
-import { statusChipTestIds, statusChipVariants } from '@/shared/ui/StatusChip/constants';
+import { statusChipVariants } from '@/shared/ui/StatusChip/constants';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './StatusChip.module.css';
@@ -25,14 +25,9 @@ export const StatusChip = ({ status, size = 'small' }: StatusChipProps) => {
 		<Flex
 			justify="center"
 			align="center"
-			dataTestId={statusChipTestIds.statusChip}
 			className={classNames(styles.wrapper, styles[`variant-${variant}`], styles[`size-${size}`])}
 		>
-			<Text
-				dataTestId={statusChipTestIds.statusChipText}
-				variant="body1-accent"
-				color={statusChipVariants[variant]}
-			>
+			<Text variant="body1-accent" color={statusChipVariants[variant]}>
 				{text}
 			</Text>
 		</Flex>

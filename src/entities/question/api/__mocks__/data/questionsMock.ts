@@ -1,6 +1,6 @@
 import { author, Response } from '@/shared/libs';
 
-import { MostDifficultQuestionsResponse, Question } from '../../../model/types/question';
+import { Question } from '../../../model/types/question';
 
 export const questionsMock: Response<Question[]> = {
 	data: [
@@ -1692,62 +1692,4 @@ export const questionsMock: Response<Question[]> = {
 	page: 1,
 	limit: 10,
 	total: 30,
-};
-
-export const mostDifficultQuestions: MostDifficultQuestionsResponse = {
-	data: {
-		id: 1,
-		specialization: {
-			id: 1,
-			title: 'React',
-			description: 'React разработчик',
-			imageSrc: 'http://example.com/image.jpg',
-			createdAt: '2024-12-10T10:00:00.000Z',
-			updatedAt: '2024-12-10T10:00:00.000Z',
-			slug: 'slug',
-			createdBy: author,
-		},
-		calculatedAt: '2024-12-10T10:00:00.000Z',
-		topStat: [
-			{
-				questionId: 1,
-				title: 'Что такое Virtual DOM, и как он работает?',
-				answersCount: 82,
-				stat: 1,
-			},
-			{
-				questionId: 1,
-				title: 'Как работает event loop в JavaScript?',
-				answersCount: 72,
-				stat: 1,
-			},
-			{
-				questionId: 1,
-				title: 'Что такое Virtual DOM, и как он работает?',
-				answersCount: 62,
-				stat: 1,
-			},
-			{
-				questionId: 1,
-				title: 'Как работает event loop в JavaScript?',
-				answersCount: 52,
-				stat: 1,
-			},
-			{
-				questionId: 1,
-				title: 'Что такое Virtual DOM, и как он работает?',
-				answersCount: 42,
-				stat: 1,
-			},
-			{
-				questionId: 1,
-				title: 'Как работает event loop в JavaScript?',
-				answersCount: 32,
-				stat: 1,
-			},
-		],
-	},
-	page: 1,
-	limit: 10,
-	total: 6,
 };
