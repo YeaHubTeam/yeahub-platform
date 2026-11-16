@@ -11,7 +11,7 @@ interface CompanyCompactListProps {
 
 export const CompanyCompactList = ({ companies }: CompanyCompactListProps) => {
 	return (
-		<Tooltip title={String(companies)}>
+		<Tooltip title={companies.map((company) => company.title).join(', ')}>
 			<Flex align="center" justify="center" gap="10" className={styles.list}>
 				{companies.map((company) => (
 					<img
