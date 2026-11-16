@@ -15,7 +15,14 @@
 	"select": {
 		"choose": "Choose a topic from the list",
 		"empty": "No available options",
-		"selected": "Selected topic"
+		"selected": "Selected topic",
+		"specialization": {
+			"and": {
+				"skill": {
+					"required": "Select a specialization and a skill"
+				}
+			}
+		}
 	},
 	"create.page.title": "Creating new topic",
 	"edit.page.title": "Edit topic",
