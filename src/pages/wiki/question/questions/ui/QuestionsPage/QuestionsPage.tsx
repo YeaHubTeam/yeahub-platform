@@ -41,6 +41,7 @@ const QuestionsPage = () => {
 	const specializationId = useAppSelector(getSpecializationId);
 	const { isLoading: isLoadingCategories } = useGetSkillsListQuery({
 		limit: MAX_SHOW_LIMIT_SKILLS,
+		specializations: specializationId,
 	});
 	const { handleNavigation } = useQuestionQueryNavigate();
 
@@ -96,6 +97,7 @@ const QuestionsPage = () => {
 				complexity: filters.complexity,
 				status: filters.status,
 				title: filters.title,
+				specialization: specializationId,
 			}}
 		/>
 	);
