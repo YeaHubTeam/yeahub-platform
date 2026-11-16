@@ -1086,6 +1086,9 @@ export enum TestQuestions {
 	SPECIALIZATIONS_DESCRIPTION = 'specializations.description',
 	SKILLS_LABEL = 'skills.label',
 	SKILLS_DESCRIPTION = 'skills.description',
+	FILTER_MY = 'filters.my',
+	FILTER_AUTHOR = 'filters.author',
+	FILTER_AUTHOR_PLACEHOLDER = 'filters.author.placeholder',
 }
 
 export enum InterviewHistory {
