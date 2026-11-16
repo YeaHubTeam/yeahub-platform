@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Skills } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { useGetSkillsListQuery } from '../../api/skillApi';
 import { Skill } from '../../model/types/skill';
 
 import { SkillSelectSkeleton } from './SkillSelect.skeleton';
+
 export type SkillSelectProps = Omit<
 	ComponentProps<typeof Dropdown>,
 	'options' | 'type' | 'value' | 'onChange' | 'children'
@@ -18,6 +20,7 @@ export type SkillSelectProps = Omit<
 	selectedSpecializations?: number[];
 	hasMultiple?: boolean;
 	withSpecialization?: boolean;
+	tooltipText?: string;
 };
 
 export const SkillSelect = ({
@@ -27,6 +30,7 @@ export const SkillSelect = ({
 	hasMultiple = true,
 	withSpecialization = true,
 	disabled,
+	tooltipText,
 }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
 
@@ -114,7 +118,7 @@ export const SkillSelect = ({
 
 	if (!hasMultiple) {
 		return (
-			<>
+			<Tooltip title={tooltipText} shouldShowTooltip={!!disabled && !!tooltipText}>
 				<Dropdown
 					label={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
 					disabled={disabled}
@@ -126,20 +130,22 @@ export const SkillSelect = ({
 						<Option value={option.value} label={option.label} key={option.label} />
 					))}
 				</Dropdown>
-			</>
+			</Tooltip>
 		);
 	}
 
 	return (
-		<SelectWithChips
-			disabled={disabled}
-			title={t(Skills.SELECT_SELECTED)}
-			options={options}
-			onChange={handleChange}
-			placeholder={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
-			selectedItems={selectedSkills}
-			handleDeleteItem={handleDeleteSkill}
-			itemsDictionary={skillsDictionary}
-		/>
+		<Tooltip title={tooltipText} shouldShowTooltip={!!disabled && !!tooltipText}>
+			<SelectWithChips
+				disabled={disabled}
+				title={t(Skills.SELECT_SELECTED)}
+				options={options}
+				onChange={handleChange}
+				placeholder={options.length ? t(Skills.SELECT_CHOOSE) : t(Skills.SELECT_EMPTY)}
+				selectedItems={selectedSkills}
+				handleDeleteItem={handleDeleteSkill}
+				itemsDictionary={skillsDictionary}
+			/>
+		</Tooltip>
 	);
 };

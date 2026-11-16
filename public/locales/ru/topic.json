@@ -26,9 +26,9 @@
 	},
 
 	"select": {
-		"choose": "Choose a topic from the list",
-		"empty": "No available options",
-		"selected": "Selected topic",
+		"choose": "Выберите тему из списка",
+		"empty": "Нет доступных опций",
+		"selected": "Выбранная тема",
 		"specialization": {
 			"and": {
 				"skill": {

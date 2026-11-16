@@ -12,7 +12,6 @@ import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 import { TextEditor } from '@/shared/ui/TextEditor';
-import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { SkillSelect } from '@/entities/skill/@x/question';
 import { SpecializationSelect } from '@/entities/specialization/@x/question';
@@ -145,19 +144,15 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 
 							return (
 								<div className={styles.select}>
-									<Tooltip
-										title={t(Specializations.SELECT_REQUIRED, {
+									<SkillSelect
+										onChange={onChange}
+										value={value}
+										selectedSpecializations={selectedSpecializations}
+										disabled={isDisabled}
+										tooltipText={t(Specializations.SELECT_REQUIRED, {
 											ns: i18Namespace.specialization,
 										})}
-										shouldShowTooltip={isDisabled}
-									>
-										<SkillSelect
-											onChange={onChange}
-											value={value}
-											selectedSpecializations={selectedSpecializations}
-											disabled={isDisabled}
-										/>
-									</Tooltip>
+									/>
 								</div>
 							);
 						}}
@@ -171,19 +166,15 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 
 							return (
 								<div className={styles.select}>
-									<Tooltip
-										title={t(Topics.SELECT_SPECIALIZATION_AND_SKILL_REQUIRED, {
+									<TopicSelect
+										onChange={onChange}
+										value={value}
+										selectedSkills={selectedSkills}
+										disabled={isDisabled}
+										tooltipText={t(Topics.SELECT_SPECIALIZATION_AND_SKILL_REQUIRED, {
 											ns: i18Namespace.topic,
 										})}
-										shouldShowTooltip={isDisabled}
-									>
-										<TopicSelect
-											onChange={onChange}
-											value={value}
-											selectedSkills={selectedSkills}
-											disabled={isDisabled}
-										/>
-									</Tooltip>
+									/>
 								</div>
 							);
 						}}
