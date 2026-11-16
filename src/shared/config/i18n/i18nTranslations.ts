@@ -1821,3 +1821,13 @@ export enum TestCreate {
 	CREATE_SUCCESS = 'create.success',
 	CREATE_ERROR = 'create.error',
 }
+
+export enum TestPassing {
+	TITLE = 'title',
+	PREVIOUS = 'previous',
+	NEXT = 'next',
+	FINISH = 'finish',
+	EMPTY_TITLE = 'empty.title',
+	EMPTY_SUBTITLE = 'empty.subtitle',
+	CREATE = 'create',
+}

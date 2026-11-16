@@ -1,0 +1,9 @@
+{
+	"title": "Testing",
+	"previous": "Previous",
+	"next": "Next",
+	"finish": "Finish",
+	"empty.title": "No active test",
+	"empty.subtitle": "Create a test to start answering questions",
+	"create": "Create a test"
+}

@@ -333,6 +333,10 @@ export const ROUTES = {
 	test: {
 		route: 'test',
 		page: '/test',
+		new: {
+			route: 'new',
+			page: '/test/new',
+		},
 	},
 	tasks: {
 		route: 'tasks',
