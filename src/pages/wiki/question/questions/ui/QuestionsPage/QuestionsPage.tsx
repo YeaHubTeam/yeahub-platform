@@ -97,6 +97,7 @@ const QuestionsPage = () => {
 				complexity: filters.complexity,
 				status: filters.status,
 				title: filters.title,
+				specialization: specializationId,
 			}}
 		/>
 	);
