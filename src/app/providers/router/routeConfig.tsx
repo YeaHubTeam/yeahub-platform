@@ -15,6 +15,7 @@ import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
+import TestQuestionsIcon from '@/shared/assets/icons/testQuestions.svg';
 import User from '@/shared/assets/icons/user.svg';
 import VacanciesIcon from '@/shared/assets/icons/vacancies.svg';
 import VacancyMarketIcon from '@/shared/assets/icons/vacancyMarket.svg';
@@ -48,6 +49,8 @@ import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
 import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
+import { TestQuestionCreatePage } from '@/pages/admin/testQuestion/testQuestionCreate';
+import { TestQuestionsPage } from '@/pages/admin/testQuestion/testQuestions';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
 import { UsersTablePage } from '@/pages/admin/user/users';
@@ -240,6 +243,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
+		route: ROUTES.admin.testQuestions.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TEST_QUESTIONS),
+		icon: TestQuestionsIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
 		route: ROUTES.admin.users.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
@@ -394,6 +404,14 @@ export const router = createBrowserRouter([
 						element: <AdminTaskPage />,
 					},
 				],
+			},
+			{
+				path: ROUTES.admin.testQuestions.route,
+				element: <TestQuestionsPage />,
+			},
+			{
+				path: ROUTES.admin.testQuestions.create.page,
+				element: <TestQuestionCreatePage />,
 			},
 			{
 				path: '*',
