@@ -98,6 +98,14 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
+		testQuestions: {
+			route: 'test-questions',
+			page: '/admin/test-questions',
+			create: {
+				route: 'create',
+				page: '/admin/test-questions/create',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',

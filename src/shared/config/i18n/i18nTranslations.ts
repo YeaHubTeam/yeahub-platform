@@ -54,6 +54,7 @@ export enum Translation {
 	SIDEBAR_MENU_VACANCY_MARKET = 'sidebar.menu.career.vacancyMarket',
 	SIDEBAR_MENU_VACANCIES = 'sidebar.menu.vacancies',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
+	SIDEBAR_MENU_TEST_QUESTIONS = 'sidebar.menu.testQuestions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
