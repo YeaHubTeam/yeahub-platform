@@ -11,7 +11,12 @@ const learnQuestionApi = baseApi.injectEndpoints({
 				method: 'PUT',
 				body,
 			}),
-			invalidatesTags: [ApiTags.QUESTION_DETAIL],
+			invalidatesTags: [
+				ApiTags.QUESTIONS,
+				ApiTags.QUESTION_DETAIL,
+				ApiTags.QUESTIONS_LEARN,
+				ApiTags.INTERVIEW_STATISTICS,
+			],
 			async onQueryStarted() {
 				try {
 					toast.success(i18n.t(Translation.TOAST_QUESTIONS_LEARNED_SUCCESS));
