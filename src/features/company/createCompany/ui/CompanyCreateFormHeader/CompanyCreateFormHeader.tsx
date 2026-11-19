@@ -7,7 +7,10 @@ import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
 import { useCreateCompanyMutation } from '../../api/createCompanyApi';
-import { CreateCompanyFormValues } from '../../model/types/companyCreateTypes';
+import {
+	CreateCompanyBodyRequest,
+	CreateCompanyFormValues,
+} from '../../model/types/companyCreateTypes';
 
 export const CompanyCreateFormHeader = () => {
 	const [createCompanyMutation, { isLoading }] = useCreateCompanyMutation();
@@ -16,7 +19,13 @@ export const CompanyCreateFormHeader = () => {
 
 	const onCreateCompany = async (data: CreateCompanyFormValues) => {
 		try {
-			await createCompanyMutation(data).unwrap();
+			const body: CreateCompanyBodyRequest = {
+				...data,
+				imageSrc: data.imageSrc ?? undefined,
+				companyImage: data.companyImage ?? undefined,
+			};
+
+			await createCompanyMutation(body).unwrap();
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.log('Mutation error:', error);

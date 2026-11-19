@@ -6,7 +6,10 @@ import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 
 import { useEditCompanyMutation } from '../../api/editCompanyApi';
-import { CompanyEditFormValues } from '../../model/types/companyEditPageTypes';
+import {
+	CompanyEditBodyRequest,
+	CompanyEditFormValues,
+} from '../../model/types/companyEditPageTypes';
 
 export const CompanyEditFormHeader = () => {
 	const { t } = useTranslation(i18Namespace.translation);
@@ -15,7 +18,14 @@ export const CompanyEditFormHeader = () => {
 	const [editCompanyMutation, { isLoading: editLoading }] = useEditCompanyMutation();
 
 	const onEditCompany = async (data: CompanyEditFormValues) => {
-		await editCompanyMutation(data);
+		const { imageSrc, companyImage, ...companyData } = data;
+
+		const requestData: CompanyEditBodyRequest = {
+			...companyData,
+			...(companyImage ? { companyImage } : { imageSrc }),
+		};
+
+		await editCompanyMutation(requestData);
 	};
 
 	return (
