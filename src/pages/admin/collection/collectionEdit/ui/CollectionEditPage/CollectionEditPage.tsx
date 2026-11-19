@@ -10,6 +10,8 @@ import { CollectionEditForm } from '@/features/collections/editCollection';
 import { EditAccessGuard } from '@/widgets/EditAccessGuard';
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 
+import { CollectionEditPageSkeleton } from './CollectionEditPage.skeleton';
+
 const CollectionEditPage = () => {
 	const { t } = useTranslation(i18Namespace.collection);
 	const { collectionId } = useParams<{ collectionId: string }>();
@@ -48,6 +50,7 @@ const CollectionEditPage = () => {
 			hasData={!!collection && Object.keys(collection).length > 0}
 			stubs={stubs}
 			content={content}
+			skeleton={<CollectionEditPageSkeleton />}
 		>
 			{({ content }) => content}
 		</PageWrapper>
