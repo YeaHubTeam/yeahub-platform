@@ -17,6 +17,13 @@ export const SkillCreateForm = () => {
 	const skillMethods = useForm<CreateSkillFormValues>({
 		resolver: yupResolver(skillCreateSchema),
 		mode: 'onTouched',
+		defaultValues: {
+			title: '',
+			description: '',
+			skillImage: null,
+			imageSrc: null,
+			specializations: [],
+		},
 	});
 
 	const { isDirty, isSubmitting, isSubmitted } = skillMethods.formState;

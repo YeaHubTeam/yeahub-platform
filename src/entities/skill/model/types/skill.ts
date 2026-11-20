@@ -32,7 +32,7 @@ export type CreateOrEditSkillFormValues = Pick<
 	Skill,
 	'id' | 'title' | 'description' | 'imageSrc'
 > & {
-	skillImage?: string;
+	skillImage?: string | null;
 	specializations?: number[];
 };
 
