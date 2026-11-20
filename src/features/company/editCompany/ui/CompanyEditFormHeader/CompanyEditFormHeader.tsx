@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Translation } from '@/shared/config';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 
 import { useEditCompanyMutation } from '../../api/editCompanyApi';
 import {
@@ -30,6 +31,7 @@ export const CompanyEditFormHeader = () => {
 
 	return (
 		<BackHeader>
+			<FormCancelButton disabled={editLoading} />
 			<Button disabled={editLoading} onClick={handleSubmit(onEditCompany)}>
 				{t(Translation.SAVE)}
 			</Button>
