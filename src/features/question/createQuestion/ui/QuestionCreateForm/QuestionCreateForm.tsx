@@ -15,13 +15,23 @@ import styles from './QuestionCreateForm.module.css';
 
 export const QuestionCreateForm = () => {
 	const methods = useForm<CreateQuestionFormValues>({
+		resolver: yupResolver(questionCreateSchema),
+		mode: 'onTouched',
 		defaultValues: {
+			title: '',
+			description: '',
+			code: null,
+			imageSrc: null,
+			keywords: [],
+			longAnswer: '',
+			shortAnswer: '',
 			status: 'public',
 			rate: 5,
 			complexity: 1,
+			specializations: [],
+			skills: [],
+			topics: [],
 		},
-		resolver: yupResolver(questionCreateSchema),
-		mode: 'onTouched',
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;
