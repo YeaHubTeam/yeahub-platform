@@ -15,6 +15,7 @@ import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
+import TopicsIcon from '@/shared/assets/icons/topics.svg';
 import User from '@/shared/assets/icons/user.svg';
 import VacanciesIcon from '@/shared/assets/icons/vacancies.svg';
 import VacancyMarketIcon from '@/shared/assets/icons/vacancyMarket.svg';
@@ -48,6 +49,7 @@ import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
 import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
+import { TopicsPage } from '@/pages/admin/topic/topics';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
 import { UsersTablePage } from '@/pages/admin/user/users';
@@ -259,6 +261,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 		icon: TasksIcon,
 		roles: listAdminRoles,
 	},
+	{
+		type: 'single',
+		route: ROUTES.admin.topics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
+		icon: TopicsIcon,
+		roles: ['admin', 'author'],
+	},
 ];
 
 export const router = createBrowserRouter([
@@ -310,7 +319,10 @@ export const router = createBrowserRouter([
 				path: ROUTES.admin.specializations.details.page,
 				element: <SpecializationDetailPage />,
 			},
-
+			{
+				path: ROUTES.admin.topics.page,
+				element: <TopicsPage />,
+			},
 			{
 				path: ROUTES.admin.skills.route,
 				element: <Outlet />,

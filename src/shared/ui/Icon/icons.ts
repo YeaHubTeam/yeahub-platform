@@ -79,6 +79,7 @@ import {
 	refresh,
 	referralsIcon,
 	x,
+	topicsIcon,
 	arrowsCounterClockwise,
 } from '../../assets';
 
@@ -165,5 +166,6 @@ export const icons: Record<IconName, IconComponent> = {
 	watch,
 	refresh,
 	referralsIcon,
+	topicsIcon,
 	x,
 };

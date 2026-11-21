@@ -58,6 +58,7 @@ export enum Translation {
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
+	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
 	KEYWORD_LABEL = 'keyword.label',
 	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
 	KEYWORD_NOT_FOUND = 'keyword.not.found',
@@ -499,6 +500,14 @@ export enum Topics {
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
+	TITLE_SHORT = 'title.short',
+	SKILL_TITLE = 'skill.title',
+	CREATED_AT = 'created.at',
+	STUB_EMPTY_TOPICS_TITLE = 'stub.empty.topics.title',
+	STUB_EMPTY_TOPICS_SUBTITLE = 'stub.empty.topics.subtitle',
+	STUB_EMPTY_TOPICS_SUBMIT = 'stub.empty.topics.submit',
+	STUB_EMPTY_TOPIC_TITLE = 'stub.empty.topic.title',
+	STUB_EMPTY_TOPIC_SUBTITLE = 'stub.empty.topic.subtitle',
 }
 
 export enum InterviewQuiz {
