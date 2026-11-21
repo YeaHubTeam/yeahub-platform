@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Collections } from '@/shared/config';
@@ -35,11 +35,18 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 	const { t } = useTranslation([i18Namespace.collection]);
 	const { control, watch, setValue } = useFormContext();
 
+	const { changeImage, removeImage } = useCollectionImage();
+
+	const collectionImage = useWatch({ control, name: 'collectionImage' });
+	const imageSrc = useWatch({ control, name: 'imageSrc' });
+
+	const currentPreview = collectionImage
+		? `data:image/jpeg;base64,${collectionImage}`
+		: (imageSrc ?? null);
+
 	const collectionId = watch('id');
 	const isFree = watch('isFree', true);
 	const specializations = watch('specializations');
-
-	const { previewImg, changeImage, removeImage } = useCollectionImage();
 
 	const { selectedQuestions, handleSelectQuestion, handleUnselectQuestion } =
 		useCollectionQuestions(collectionId, questionsCount);
@@ -90,7 +97,7 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
-						initialSrc={previewImg}
+						initialSrc={currentPreview}
 					/>
 				</FormField>
 

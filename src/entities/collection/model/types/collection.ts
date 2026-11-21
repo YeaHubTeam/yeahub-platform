@@ -39,7 +39,7 @@ export type CreateOrEditCollectionFormValues = Pick<
 	taskIds?: string[];
 	specializations: number[];
 	companyId?: string;
-	collectionImage?: string;
+	collectionImage?: string | null;
 };
 
 export interface GetCollectionsListParamsRequest {

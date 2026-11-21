@@ -21,6 +21,13 @@ export const CollectionCreateForm = () => {
 			title: '',
 			description: '',
 			isFree: false,
+			companyId: '',
+			imageSrc: null,
+			collectionImage: null,
+			specializations: [],
+			keywords: [],
+			questions: [],
+			taskIds: [],
 		},
 	});
 

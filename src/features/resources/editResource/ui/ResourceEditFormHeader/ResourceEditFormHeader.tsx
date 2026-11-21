@@ -6,8 +6,10 @@ import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
 import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 
-import { CreateOrEditOrViewResourceFormValues } from '../../../../../entities/resource/model/types/resource';
-import { ResourceRequestFormValues } from '../../../../../entities/resource/model/types/resourceRequest';
+import {
+	CreateOrEditOrViewResourceFormValues,
+	ResourceRequestFormValues,
+} from '@/entities/resource';
 
 import styles from './ResourceEditFormHeader.module.css';
 
