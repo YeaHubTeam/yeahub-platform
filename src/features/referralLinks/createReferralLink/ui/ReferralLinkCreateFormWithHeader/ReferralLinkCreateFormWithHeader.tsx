@@ -5,6 +5,7 @@ import { i18Namespace, Translation } from '@/shared/config';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 
 import { useCreateReferralLinkMutation } from '../../api/createReferralLinkApi';
 import { CreateRefferalLinkFormValues } from '../../model/types/refferalLinkCreateTypes';
@@ -28,6 +29,7 @@ export const ReferralLinkCreateFormWithHeader = () => {
 				<BackButton />
 			</div>
 			<Flex gap="20" align="center" className={styles.buttons}>
+				<FormCancelButton />
 				<Button
 					disabled={isLoading}
 					className={styles['submit-button']}
