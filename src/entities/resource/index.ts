@@ -16,7 +16,7 @@ export { ResourceCardSkeleton } from './ui/ResourceCard/ResourceCard.skeleton';
 export { ResourceRequestStatusChip } from './ui/ResourceRequestStatus/ResourceRequestStatus';
 export { ResourcesSelect } from './ui/ResourceSelect/ResourceSelect';
 export { ResourcesStatusBlock } from './ui/ResourcesStatusBlock/ResourcesStatusBlock';
-export { ResourceEditFormHeader } from './ui/ResourceEditFormHeader/ResourceEditFormHeader';
+export { ResourceEditFormHeader } from '../../features/resources/editResource/ui/ResourceEditFormHeader/ResourceEditFormHeader';
 export { ResourceAdditionalInfo } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo';
 export { ResourceAdditionalInfoSkeleton } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo.skeleton';
 

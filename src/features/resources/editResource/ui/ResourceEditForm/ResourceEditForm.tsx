@@ -37,6 +37,7 @@ export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
 		defaultValues: {
 			...formattedResources,
 			iconBase64: imageSrc,
+			resourceImage: null,
 			skills: formatToFormField<Skill[]>(skills),
 			specializations: formatToFormField<Specialization[]>(specializations),
 			type: type.code,

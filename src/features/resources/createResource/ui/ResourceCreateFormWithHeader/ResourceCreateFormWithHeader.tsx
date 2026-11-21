@@ -6,6 +6,7 @@ import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 import { Text } from '@/shared/ui/Text';
 
 import { listAdminRoles, useProfileQuery } from '@/entities/auth';
@@ -28,7 +29,15 @@ export const ResourceCreateFormWithHeader = () => {
 	);
 
 	const onCreateResource = async (data: CreateResourceFormValues) => {
-		await createResourceMutation({ resource: data, isAdmin: isAdminRole }).unwrap();
+		const { resourceImage, ...formData } = data;
+
+		await createResourceMutation({
+			resource: {
+				...formData,
+				iconBase64: resourceImage ?? formData.iconBase64,
+			},
+			isAdmin: isAdminRole,
+		}).unwrap();
 	};
 
 	return (
@@ -37,6 +46,7 @@ export const ResourceCreateFormWithHeader = () => {
 				<BackButton />
 			</div>
 			<Flex gap="20" align="center" className={styles.buttons}>
+				<FormCancelButton disabled={isLoading} />
 				<Button
 					disabled={isLoading}
 					className={styles['submit-button']}

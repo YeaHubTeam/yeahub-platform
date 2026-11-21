@@ -29,7 +29,7 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 
-	const currentPreview = companyImage ? previewImg : (formImageSrc ?? null);
+	const currentPreview = companyImage ? previewImg : formImageSrc;
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);

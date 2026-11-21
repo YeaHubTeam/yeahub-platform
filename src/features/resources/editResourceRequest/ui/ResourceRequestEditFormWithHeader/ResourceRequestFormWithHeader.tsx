@@ -37,11 +37,7 @@ export const ResourceRequestFormWithHeader = ({ onSubmit }: ResourceRequestFormW
 	return (
 		<Flex componentType="main" className={styles.wrapper}>
 			{project === 'admin' ? (
-				<ResourceEditFormHeader
-					onSubmit={onSubmit}
-					className={styles.header}
-					btnVariant="destructive-secondary"
-				/>
+				<ResourceEditFormHeader onSubmit={onSubmit} className={styles.header} />
 			) : (
 				<Flex align="center" className={styles.buttons}>
 					<Button
