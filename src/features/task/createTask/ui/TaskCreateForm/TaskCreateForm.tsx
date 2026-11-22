@@ -18,9 +18,18 @@ export const TaskCreateForm = () => {
 		resolver: yupResolver(taskCreateSchema),
 		mode: 'onTouched',
 		defaultValues: {
+			name: '',
+			description: '',
+			categoryCodes: [],
 			constraints: [],
 			taskStructures: [
-				{ languageId: 0, solutionStub: '', testFixture: '', preloadedCode: '', isActive: true },
+				{
+					languageId: 0,
+					solutionStub: '',
+					testFixture: '',
+					preloadedCode: '',
+					isActive: true,
+				},
 			],
 			difficulty: 3,
 			subscriptionLevel: 'free',
