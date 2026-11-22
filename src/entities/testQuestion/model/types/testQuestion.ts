@@ -31,6 +31,11 @@ export interface GetTestQuestionsParamsRequest {
 	page?: number;
 	limit?: number;
 	order?: SortOrder;
+	authorId?: string;
+	specializationId?: number;
+	skills?: number[];
+	complexity?: number[];
+	rate?: number[];
 }
 
 export type GetTestQuestionsResponse = Response<TestQuestion[]>;
