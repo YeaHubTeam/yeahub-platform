@@ -9,6 +9,7 @@ import { activeQuizSlice } from '@/entities/quiz';
 import { activeSubscriptionSlice } from '@/entities/subscription';
 
 import { collectionsPageReducer } from '@/pages/admin/collection/collections';
+import { companiesPageReducer } from '@/pages/admin/company/companies';
 import { questionsTablePageReducer } from '@/pages/admin/question/questions';
 import { skillsPageReducer } from '@/pages/admin/skill/skills';
 import { specializationsPageReducer } from '@/pages/admin/specialization/specializations';
@@ -27,6 +28,7 @@ export const reducers = {
 	specializationsPage: specializationsPageReducer,
 	profile: profileReducer,
 	collectionsPage: collectionsPageReducer,
+	companiesPage: companiesPageReducer,
 	tasksTablePage: tasksTablePageReducer,
 	featureFlag: featureFlagReducer,
 };

@@ -6,6 +6,7 @@ import { ActiveQuizState } from '@/entities/quiz';
 import { ActiveSubscriptionState } from '@/entities/subscription';
 
 import { CollectionsPageState } from '@/pages/admin/collection/collections';
+import { CompaniesPageState } from '@/pages/admin/company/companies';
 import { QuestionsTablePageState } from '@/pages/admin/question/questions';
 import { SkillsPageState } from '@/pages/admin/skill/skills';
 import { SpecializationsPageState } from '@/pages/admin/specialization/specializations';
@@ -22,6 +23,7 @@ export interface State {
 	skillsPage: SkillsPageState;
 	profile: ProfileState;
 	collectionsPage: CollectionsPageState;
+	companiesPage: CompaniesPageState;
 	tasksTablePage: TasksTablePageState;
 	featureFlag: FeatureFlagState;
 }

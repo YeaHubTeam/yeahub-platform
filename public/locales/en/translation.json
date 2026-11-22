@@ -529,6 +529,18 @@
 				}
 			}
 		},
+		"companies": {
+			"delete": {
+				"single": {
+					"success": "Company successfully deleted",
+					"failed": "Company could not be deleted"
+				},
+				"multiple": {
+					"success": "Successfully deleted companies:",
+					"failed": "Could not delete company:"
+				}
+			}
+		},
 		"collections": {
 			"create": {
 				"success": "Collection successfully created",

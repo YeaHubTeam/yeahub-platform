@@ -17,6 +17,7 @@ import { userHandlers } from '@/entities/user';
 import { vacancyHandlers } from '@/entities/vacancy';
 
 import { collectionDeleteHandlers } from '@/features/collections/deleteCollection';
+import { deleteCompanyHandlers } from '@/features/company/deleteCompanies';
 import { setActiveProfileHandlers } from '@/features/profile/setActiveProfile';
 import { questionDeleteHandlers } from '@/features/question/deleteQuestion';
 import { learnQuestionHandlers } from '@/features/quiz/learnQuestion';
@@ -32,6 +33,7 @@ import { deleteTaskHandlers } from '@/features/task/deleteTask';
 export const handlers = [
 	...authHandlers,
 	...companyHandlers,
+	...deleteCompanyHandlers,
 	...paymentHandlers,
 	...interviewHandlers,
 	...questionHandlers,

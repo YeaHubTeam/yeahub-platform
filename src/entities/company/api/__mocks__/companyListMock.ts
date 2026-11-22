@@ -16,16 +16,24 @@ export const companyListMock = http.get<
 	const url = new URL(request.url);
 	const page = Number(url.searchParams.get('page') ?? 1);
 	const limit = Number(url.searchParams.get('limit') ?? 10);
+	const authorId = url.searchParams.get('authorId') ?? '';
 
 	const search = (url.searchParams.get('titleOrLegalNameOrDescriptionSearch') ?? '')
 		.trim()
 		.toLowerCase();
 
-	const filtered = !search
-		? companiesMock.data
-		: companiesMock.data.filter((c) =>
-				[c.title, c.legalName, c.description].join(' ').toLowerCase().includes(search),
-			);
+	const filtered = companiesMock.data.filter((company) => {
+		const matchesSearch =
+			!search ||
+			[company.title, company.legalName, company.description]
+				.join(' ')
+				.toLowerCase()
+				.includes(search);
+
+		const matchesAuthor = !authorId || company.createdBy?.id === authorId;
+
+		return matchesSearch && matchesAuthor;
+	});
 
 	const slice = filtered.slice((page - 1) * limit, page * limit);
 
