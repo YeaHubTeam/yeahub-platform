@@ -1,0 +1,28 @@
+{
+	"table": {
+		"flag": "Flag",
+		"description": "Description",
+		"roles": "Roles",
+		"clientType": "Client Type",
+		"enabled": "Status",
+		"createdAt": "Created At"
+	},
+	"filter": {
+		"roles": "Roles",
+		"clientType": "Client Type",
+		"enabled": "Status",
+		"enabledOn": "Enabled",
+		"enabledOff": "Disabled"
+	},
+	"stub": {
+		"empty": {
+			"title": "Looks like there are no feature flags yet",
+			"subtitle": "Wait for someone to create a feature flag or create one yourself",
+			"submit": "Add"
+		},
+		"filter": {
+			"title": "Unfortunately, no feature flags were found for your search",
+			"subtitle": "Try changing your search parameters or resetting all filters"
+		}
+	}
+}

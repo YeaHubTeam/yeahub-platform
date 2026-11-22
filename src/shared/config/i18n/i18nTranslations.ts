@@ -58,6 +58,7 @@ export enum Translation {
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
+	SIDEBAR_MENU_FEATURE_FLAGS = 'sidebar.menu.featureFlags',
 	KEYWORD_LABEL = 'keyword.label',
 	KEYWORD_PLACEHOLDER = 'keyword.placeholder',
 	KEYWORD_NOT_FOUND = 'keyword.not.found',
@@ -1364,4 +1365,23 @@ export enum VacanciesMarket {
 	CARD_UNKNOWN_SPECIALIZATION = 'card.unknown.specialization',
 	STUB_EMPTY_TITLE = 'stub.empty.title',
 	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+}
+
+export enum FeatureFlagsTranslation {
+	TABLE_FLAG = 'table.flag',
+	TABLE_DESCRIPTION = 'table.description',
+	TABLE_ROLES = 'table.roles',
+	TABLE_CLIENT_TYPE = 'table.clientType',
+	TABLE_ENABLED = 'table.enabled',
+	TABLE_CREATED_AT = 'table.createdAt',
+	FILTER_ROLES = 'filter.roles',
+	FILTER_CLIENT_TYPE = 'filter.clientType',
+	FILTER_ENABLED = 'filter.enabled',
+	FILTER_ENABLED_ON = 'filter.enabledOn',
+	FILTER_ENABLED_OFF = 'filter.enabledOff',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_SUBMIT = 'stub.empty.submit',
+	STUB_FILTER_TITLE = 'stub.filter.title',
+	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
 }
