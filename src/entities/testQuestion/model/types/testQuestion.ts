@@ -1,37 +1,67 @@
-import { Response } from '@/shared/libs';
+import { Response, SortOrder } from '@/shared/libs';
+import { Author } from '@/shared/ui/AuthorInfo';
 
-export interface TestQuestionEntity {
-	id: number;
-	title: string;
-}
+import { Skill } from '@/entities/skill/@x/testQuestion';
+import { Specialization } from '@/entities/specialization/@x/testQuestion';
+import { Topic } from '@/entities/topic/@x/testQuestion';
 
-export interface TestQuestionAuthor {
-	id: string;
-	username: string;
-}
+export type TestQuestionStatus = 'public' | 'draft';
+
+export type TestQuestionSkillFilterMode = 'ALL' | 'ANY';
+
+export type TestQuestionOrderBy = 'createdAt' | 'title' | 'rate' | 'complexity' | 'createdById';
 
 export interface TestQuestion {
 	id: number;
 	title: string;
-	variants: number;
-	successVariants: number;
-	questionSpecializations: TestQuestionEntity[];
-	questionSkills: TestQuestionEntity[];
-	rate: number;
-	complexity: number;
-	createdBy: TestQuestionAuthor;
+	description: string;
+	code?: string | null;
+	imageSrc: string | null;
+	keywords: string[] | null;
+	longAnswer?: string | null;
+	shortAnswer?: string | null;
+	status: TestQuestionStatus;
+	rate: number | null;
+	complexity: number | null;
+	variants: Record<string, string>;
+	successVariants: string[] | null;
 	createdAt: string;
+	updatedAt: string;
+	createdById: string | null;
+	updatedById: string | null;
+	createdBy: Author | null;
+	updatedBy: Author | null;
+	questionSpecializations: Specialization[];
+	questionSkills: Skill[];
+	questionTopics?: Topic[];
+	checksCount?: number;
+	isLearned?: boolean;
+	isFavorite?: boolean;
+	profileId?: string;
+	lastUpdate?: string;
 }
 
 export interface GetTestQuestionsListParamsRequest {
 	page?: number;
 	limit?: number;
-	name?: string;
-	authorId?: string;
-	specializations?: number;
+	title?: string;
+	titleOrDescription?: string;
 	skills?: number[];
-	rate?: number[];
+	skillFilterMode?: TestQuestionSkillFilterMode;
 	complexity?: number[];
+	rate?: number[];
+	keywords?: string[];
+	collection?: number;
+	specializationId?: number;
+	specializationSlug?: string;
+	article?: number;
+	authorId?: string;
+	createdAtFrom?: string;
+	createdAtTo?: string;
+	orderBy?: TestQuestionOrderBy;
+	order?: SortOrder;
+	random?: boolean;
+	profileId?: string;
 }
 
 export type GetTestQuestionsListResponse = Response<TestQuestion[]>;

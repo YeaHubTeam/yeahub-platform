@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
+import { i18Namespace, TestQuestions } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { Switch } from '@/shared/ui/Switch';
 
@@ -29,6 +32,7 @@ export const TestQuestionsFilters = ({
 	onChangeAuthorId,
 }: TestQuestionsFiltersProps) => {
 	const { skills, rate, complexity, specialization, isMy, authorId } = filters;
+	const { t } = useTranslation(i18Namespace.testQuestions);
 
 	return (
 		<Flex direction="column" gap="24">
@@ -38,14 +42,14 @@ export const TestQuestionsFilters = ({
 					onChangeIsMy(e.target.checked);
 					if (e.target.checked) onChangeAuthorId(undefined);
 				}}
-				label="Мои тесты"
+				label={t(TestQuestions.FILTER_MY)}
 			/>
 			<UserSelect
 				onChange={onChangeAuthorId}
 				value={authorId}
 				disabled={!!isMy}
-				title="Автор"
-				placeholder="Выберите автора"
+				title={t(TestQuestions.AUTHOR)}
+				placeholder={t(TestQuestions.AUTHOR_PLACEHOLDER)}
 			/>
 			<SpecializationsListField
 				selectedSpecialization={specialization}

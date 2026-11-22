@@ -727,6 +727,27 @@ export enum Questions {
 	STUDY_STATUS_NOT_LEARNED = 'study.status.not.learned',
 }
 
+export enum TestQuestions {
+	TITLE_SHORT = 'title.short',
+	SPECIALIZATION_TITLE = 'specialization.title',
+	SKILLS_TITLE = 'skills.title',
+	RATE_TITLE = 'rate.title',
+	RATE_TITLE_SHORT = 'rate.title.short',
+	COMPLEXITY_TITLE_SHORT = 'complexity.title.short',
+	AUTHOR = 'author',
+	AUTHOR_PLACEHOLDER = 'author.placeholder',
+	CREATED_AT = 'createdAt',
+	FILTER_MY = 'filter.my',
+	ANSWERS = 'answers',
+	CORRECT_ANSWERS = 'correctAnswers',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_SUBMIT = 'stub.empty.submit',
+	STUB_FILTER_TITLE = 'stub.filter.title',
+	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
+	STUB_FILTER_SUBMIT = 'stub.filter.submit',
+}
+
 export enum InterviewHistory {
 	TITLE = 'title',
 	QUIZ_TITLE = 'quiz.title',

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, Questions } from '@/shared/config';
+import { i18Namespace, TestQuestions } from '@/shared/config';
 import { BaseFilterSection } from '@/shared/ui/BaseFilterSection';
 
 const rate = [
@@ -20,7 +20,7 @@ export const TestQuestionRateFilter = ({
 	onChangeRate,
 	selectedRate,
 }: TestQuestionRateFilterProps) => {
-	const { t } = useTranslation(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.testQuestions);
 
 	const onClick = (rateId: number) => {
 		const isDataExist = selectedRate?.some((item) => item === rateId);
@@ -36,6 +36,6 @@ export const TestQuestionRateFilter = ({
 	}));
 
 	return (
-		<BaseFilterSection data={preparedData} title={t(Questions.RATE_TITLE)} onClick={onClick} />
+		<BaseFilterSection data={preparedData} title={t(TestQuestions.RATE_TITLE)} onClick={onClick} />
 	);
 };

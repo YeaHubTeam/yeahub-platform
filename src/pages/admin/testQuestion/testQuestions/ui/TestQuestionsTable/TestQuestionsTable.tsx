@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Questions, i18Namespace, ROUTES } from '@/shared/config';
+import { i18Namespace, ROUTES, TestQuestions } from '@/shared/config';
 import { formatDate, route, SelectedAdminEntities } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { TableCellEntityList } from '@/shared/ui/TableCellEntityList';
@@ -17,12 +17,12 @@ const SPECIALIZATION_SHOW_COUNT = 2;
 interface TestQuestionTableRow {
 	id: number;
 	title: string;
-	variants: number;
-	successVariants: number;
+	answersCount: number;
+	correctAnswersCount: number;
 	specializations: TestQuestion['questionSpecializations'];
 	skills: TestQuestion['questionSkills'];
-	rate: number;
-	complexity: number;
+	rate: number | null;
+	complexity: number | null;
 	authorId: string;
 	author: string;
 	createdAt: string;
@@ -39,13 +39,13 @@ export const TestQuestionsTable = ({
 	selectedTestQuestions,
 	onSelectTestQuestions,
 }: TestQuestionsTableProps) => {
-	const { t } = useTranslation(i18Namespace.questions);
+	const { t } = useTranslation(i18Namespace.testQuestions);
 
 	const tableData: TestQuestionTableRow[] = testQuestions.map((testQuestion) => ({
 		id: testQuestion.id,
 		title: testQuestion.title,
-		variants: testQuestion.variants,
-		successVariants: testQuestion.successVariants,
+		answersCount: Object.keys(testQuestion.variants ?? {}).length,
+		correctAnswersCount: testQuestion.successVariants?.length ?? 0,
 		specializations: testQuestion.questionSpecializations,
 		skills: testQuestion.questionSkills,
 		rate: testQuestion.rate,
@@ -60,20 +60,27 @@ export const TestQuestionsTable = ({
 	const columns: Array<TableColumn<TestQuestionTableRow>> = [
 		{
 			id: 'title',
-			header: t(Questions.TITLE_SHORT),
+			header: t(TestQuestions.TITLE_SHORT),
 			width: '400px',
-			cell: ({ row }) => (
-				<Flex direction="column" gap="4">
-					<Text variant="body3-accent">{row.title}</Text>
-					<Text variant="body3" color="black-500">
-						{`${row.variants} вариантов • ${row.successVariants} правильных ответов`}
-					</Text>
-				</Flex>
-			),
+			cell: ({ row }) => {
+				const answersLabel = `${t(TestQuestions.ANSWERS, { count: row.answersCount })} · ${t(
+					TestQuestions.CORRECT_ANSWERS,
+					{ count: row.correctAnswersCount },
+				)}`;
+
+				return (
+					<Flex direction="column" gap="4">
+						<Text variant="body5-accent">{row.title}</Text>
+						<Text variant="body1" color="black-200">
+							{answersLabel}
+						</Text>
+					</Flex>
+				);
+			},
 		},
 		{
 			id: 'specializations',
-			header: t(Questions.SPECIALIZATION_TITLE),
+			header: t(TestQuestions.SPECIALIZATION_TITLE),
 			width: '200px',
 			cell: ({ row }) => (
 				<TableCellEntityList
@@ -85,7 +92,7 @@ export const TestQuestionsTable = ({
 		},
 		{
 			id: 'skills',
-			header: t(Questions.SKILLS_TITLE),
+			header: t(TestQuestions.SKILLS_TITLE),
 			width: '200px',
 			cell: ({ row }) => (
 				<TableCellEntityList
@@ -97,17 +104,17 @@ export const TestQuestionsTable = ({
 		},
 		{
 			id: 'rate',
-			header: t(Questions.RATE_TITLE_SHORT),
+			header: t(TestQuestions.RATE_TITLE_SHORT),
 			width: '120px',
 		},
 		{
 			id: 'complexity',
-			header: t(Questions.COMPLEXITY_TITLE_SHORT),
+			header: t(TestQuestions.COMPLEXITY_TITLE_SHORT),
 			width: '120px',
 		},
 		{
 			id: 'author',
-			header: t(Questions.AUTHOR),
+			header: t(TestQuestions.AUTHOR),
 			width: '160px',
 			cell: ({ row }) =>
 				row.authorId ? (
@@ -121,7 +128,7 @@ export const TestQuestionsTable = ({
 		},
 		{
 			id: 'createdAt',
-			header: 'Дата создания',
+			header: t(TestQuestions.CREATED_AT),
 			width: '140px',
 		},
 	];

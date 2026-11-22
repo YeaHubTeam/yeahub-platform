@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { ROUTES } from '@/shared/config';
+import { i18Namespace, ROUTES, TestQuestions } from '@/shared/config';
 import { SelectedAdminEntities, useAppSelector } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
@@ -20,6 +21,7 @@ import { SearchSection } from '@/widgets/SearchSection';
 import { TestQuestionsTable } from '../TestQuestionsTable/TestQuestionsTable';
 
 const TestQuestionsPage = () => {
+	const { t } = useTranslation(i18Namespace.testQuestions);
 	const navigate = useNavigate();
 	const userId = useAppSelector(getUserId);
 	const [selectedTestQuestions, setSelectedTestQuestions] = useState<SelectedAdminEntities>([]);
@@ -48,8 +50,8 @@ const TestQuestionsPage = () => {
 	} = useGetTestQuestionsListQuery({
 		page: filters.page,
 		limit: 10,
-		name: filters.name,
-		specializations: filters.specialization,
+		title: filters.name,
+		specializationId: filters.specialization,
 		skills: filters.skills,
 		complexity: filters.complexity,
 		rate: filters.rate,
@@ -69,15 +71,15 @@ const TestQuestionsPage = () => {
 
 	const stubs: PageWrapperStubs = {
 		empty: {
-			title: 'Похоже здесь пока нет тестовых вопросов',
-			subtitle: 'Создайте первый тестовый вопрос - и начните добавлять материалы в базу знаний',
-			buttonText: 'Добавить',
+			title: t(TestQuestions.STUB_EMPTY_TITLE),
+			subtitle: t(TestQuestions.STUB_EMPTY_SUBTITLE),
+			buttonText: t(TestQuestions.STUB_EMPTY_SUBMIT),
 			onClick: () => navigate(ROUTES.admin.testQuestions.create.page),
 		},
 		'filter-empty': {
-			title: 'К сожалению, по запросу не были найдены тестовые вопросы',
-			subtitle: 'Попробуйте изменить параметры запроса или сбросьте все фильтры',
-			buttonText: 'Сбросить фильтр',
+			title: t(TestQuestions.STUB_FILTER_TITLE),
+			subtitle: t(TestQuestions.STUB_FILTER_SUBTITLE),
+			buttonText: t(TestQuestions.STUB_FILTER_SUBMIT),
 			onClick: onResetFilters,
 		},
 		error: {
