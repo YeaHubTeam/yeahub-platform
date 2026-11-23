@@ -1,25 +1,12 @@
-import { format } from 'date-fns';
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 
 import { i18Namespace, ROUTES, Topics, Translation } from '@/shared/config';
 import { route, SelectedAdminEntities } from '@/shared/libs';
-import { Table } from '@/shared/ui/Table';
-import { Text } from '@/shared/ui/Text';
+import { TableCellLink } from '@/shared/ui/TableCellLink';
+import { type TableColumn, type TableRowId, TableV2 } from '@/shared/ui/TableV2';
 
-export interface TopicsTableItem {
-	id: number;
-	title: string;
-	skill: {
-		id: number;
-		title: string;
-	};
-	author?: {
-		id: string;
-		username: string;
-	};
-	createdAt: string;
-}
+import { TopicsTableItem } from '../lib/mapTopicsToTableItems';
 
 interface TopicsTableProps {
 	topics?: TopicsTableItem[];
@@ -30,62 +17,77 @@ interface TopicsTableProps {
 export const TopicsTable = ({ topics, selectedTopics, onSelectTopics }: TopicsTableProps) => {
 	const { t } = useTranslation([i18Namespace.topic, i18Namespace.translation]);
 
-	const renderTableColumnWidths = () => {
-		const columnWidths = {
-			title: '35%',
-			skill: '25%',
-			author: '25%',
-			createdAt: '140px',
-		};
-		return Object.values(columnWidths).map((width, idx) => <col key={idx} style={{ width }} />);
-	};
-
-	const renderTableHeader = () => {
-		const columns = {
-			title: t(Topics.TITLE_SHORT),
-			skill: t(Topics.SKILL_TITLE),
-			author: t(Translation.AUTHOR, { ns: i18Namespace.translation }),
-			createdAt: t(Topics.CREATED_AT),
-		};
-		return Object.entries(columns).map(([k, v]) => <td key={k}>{v}</td>);
-	};
-
-	const renderTableBody = (topic: TopicsTableItem) => {
-		const columns = {
-			title: <Text variant="body3-accent">{topic.title}</Text>,
-			skill: (
-				<Link to={route(ROUTES.admin.skills.details.page, topic.skill.id)}>
-					<Text variant="body3-accent">{topic.skill.title}</Text>
-				</Link>
+	const columns: Array<TableColumn<TopicsTableItem>> = [
+		{
+			id: 'title',
+			header: t(Topics.TITLE_SHORT),
+			width: '35%',
+		},
+		{
+			id: 'skill',
+			header: t(Topics.SKILL_TITLE),
+			width: '25%',
+			cell: ({ row }) => (
+				<TableCellLink
+					to={route(ROUTES.admin.skills.details.page, row.skill.id)}
+					text={row.skill.title}
+				/>
 			),
-			author: topic.author ? (
-				<Link to={route(ROUTES.admin.users.detail.page, topic.author.id)}>
-					<Text variant="body3-accent">{topic.author.username}</Text>
-				</Link>
-			) : (
-				<Text variant="body3-accent">-</Text>
-			),
-			createdAt: (
-				<Text variant="body3-accent">
-					{topic.createdAt ? format(new Date(topic.createdAt), 'dd.MM.yyyy') : '-'}
-				</Text>
-			),
-		};
+		},
+		{
+			id: 'author',
+			header: t(Translation.AUTHOR, { ns: i18Namespace.translation }),
+			width: '25%',
+			cell: ({ row }) =>
+				row.author ? (
+					<TableCellLink
+						to={route(ROUTES.admin.users.detail.page, row.author.id)}
+						text={row.author.username}
+					/>
+				) : (
+					'-'
+				),
+		},
+		{
+			id: 'createdAt',
+			header: t(Topics.CREATED_AT),
+			width: '140px',
+		},
+	];
 
-		return Object.entries(columns)?.map(([k, v]) => <td key={k}>{v}</td>);
-	};
+	const selectedRowIds = selectedTopics?.map((topic) => topic.id);
+
+	const selectedById = useMemo(() => {
+		const byId = new Map<number, { id: number; title?: string }>();
+
+		selectedTopics?.forEach((topic) => {
+			byId.set(topic.id, topic);
+		});
+
+		topics?.forEach((topic) => {
+			byId.set(topic.id, { id: topic.id, title: topic.title });
+		});
+
+		return byId;
+	}, [topics, selectedTopics]);
+
+	const onSelectedRowIdsChange = useCallback(
+		(ids: TableRowId[]) => {
+			onSelectTopics?.(ids.map((id) => selectedById.get(id as number) ?? { id: id as number }));
+		},
+		[onSelectTopics, selectedById],
+	);
 
 	if (!topics) return null;
 
 	return (
-		<Table
-			renderTableHeader={renderTableHeader}
-			renderTableBody={renderTableBody}
-			items={topics}
-			selectedItems={selectedTopics}
-			onSelectItems={onSelectTopics}
-			renderTableColumnWidths={renderTableColumnWidths}
-			hasCopyButton
+		<TableV2
+			data={topics}
+			columns={columns}
+			selectedRowIds={selectedRowIds}
+			onSelectedRowIdsChange={onSelectedRowIdsChange}
+			actions={['copy']}
+			entity="topics"
 		/>
 	);
 };

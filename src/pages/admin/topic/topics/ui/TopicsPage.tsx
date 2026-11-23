@@ -7,48 +7,32 @@ import { SelectedAdminEntities } from '@/shared/libs';
 import { Card } from '@/shared/ui/Card';
 import { Flex } from '@/shared/ui/Flex';
 
-import { SkillsListField } from '@/entities/skill';
 import { useGetTopicsListQuery } from '@/entities/topic';
+
+import { TopicsFilters, useTopicsFilters } from '@/features/topic/filterTopics';
 
 import { PageWrapper, PageWrapperStubs } from '@/widgets/PageWrapper';
 import { SearchSection } from '@/widgets/SearchSection';
-import { TopicsTable } from '@/widgets/TopicsTable';
-
-import { mapTopicsToTableItems } from '../lib/mapTopicsToTableItems';
+import { mapTopicsToTableItems, TopicsTable } from '@/widgets/TopicsTable';
 
 const TopicsPage = () => {
-	const [seacrhValue, setSearchValue] = useState('');
-	const [page, setPage] = useState(1);
 	const [selectedTopics, setSelectedTopics] = useState<SelectedAdminEntities>([]);
-	const [selectedSkills, setSelectedSkills] = useState<number[] | undefined>(undefined);
 	const { t } = useTranslation([i18Namespace.topic, i18Namespace.translation]);
 	const navigate = useNavigate();
+
+	const { filters, hasFilters, onChangePage, onChangeTitle, onChangeSkills, onResetFilters } =
+		useTopicsFilters({ page: 1 });
 
 	const {
 		data: topicsResponse,
 		isLoading,
 		isError,
 		refetch,
-	} = useGetTopicsListQuery({ page, title: seacrhValue, skillIds: selectedSkills });
-
-	const hasFilters = Boolean(selectedSkills?.length);
-	const showResetFilterButton = hasFilters || Boolean(seacrhValue) || page > 1;
-
-	const onChangeSearch = (value: string) => {
-		setSearchValue(value);
-		setPage(1);
-	};
-
-	const onChangeSkills = (skills: number[] | undefined) => {
-		setSelectedSkills(skills);
-		setPage(1);
-	};
-
-	const onResetFilters = () => {
-		setSelectedSkills(undefined);
-		setSearchValue('');
-		setPage(1);
-	};
+	} = useGetTopicsListQuery({
+		page: filters.page,
+		title: filters.title,
+		skillIds: filters.skillIds,
+	});
 
 	const stubs: PageWrapperStubs = {
 		empty: {
@@ -73,7 +57,7 @@ const TopicsPage = () => {
 				isLoading={isLoading}
 				hasData={Boolean(topicsResponse?.data?.length)}
 				hasError={isError}
-				hasFilters={hasFilters || Boolean(seacrhValue)}
+				hasFilters={hasFilters}
 				stubs={stubs}
 				content={
 					<TopicsTable
@@ -83,23 +67,23 @@ const TopicsPage = () => {
 					/>
 				}
 				paginationOptions={{
-					page,
+					page: filters.page || 1,
 					limit: topicsResponse?.limit || 10,
 					total: topicsResponse?.total || 0,
-					onChangePage: setPage,
+					onChangePage,
 				}}
 			>
 				{({ content, pagination }) => (
 					<Flex direction="column" gap="24">
 						<SearchSection
 							to="create"
-							searchValue={seacrhValue}
-							onSearch={onChangeSearch}
-							hasFilters={hasFilters}
-							showResetFilterButton={showResetFilterButton}
+							searchValue={filters.title}
+							onSearch={onChangeTitle}
+							hasFilters={Boolean(filters.skillIds?.length)}
+							showResetFilterButton={hasFilters}
 							onResetFilters={onResetFilters}
 							renderFilter={() => (
-								<SkillsListField selectedSkills={selectedSkills} onChangeSkills={onChangeSkills} />
+								<TopicsFilters filters={filters} onChangeSkills={onChangeSkills} />
 							)}
 						/>
 						<Card>
