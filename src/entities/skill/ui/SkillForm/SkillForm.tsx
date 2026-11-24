@@ -50,7 +50,7 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 	const removeImage = () => {
 		setPreviewImg(null);
 		setValue('skillImage', null, { shouldDirty: true });
-		setValue('imageSrc', null, { shouldDirty: true });
+		setValue('imageSrc', imageSrc ?? null, { shouldDirty: true });
 	};
 
 	return (
