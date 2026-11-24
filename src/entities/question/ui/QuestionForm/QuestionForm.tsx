@@ -127,7 +127,12 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
 							<div className={styles.select}>
-								<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+								<SpecializationSelect
+									onChange={onChange}
+									value={value}
+									hasMultiple
+									selectedSpecializationItems={selectedSpecializations}
+								/>
 							</div>
 						)}
 					</FormControl>
