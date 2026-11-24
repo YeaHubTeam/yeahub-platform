@@ -89,7 +89,11 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 					</FormControl>
 				</FormField>
 
-				<FormField label={t(Skills.DESCRIPTION_FULL)} description={t(Skills.DESCRIPTION_LABEL)}>
+				<FormField
+					label={t(Skills.DESCRIPTION_FULL)}
+					direction="column"
+					description={t(Skills.DESCRIPTION_LABEL)}
+				>
 					<FormControl name="description" control={control}>
 						{(field, hasError) => (
 							<TextArea
