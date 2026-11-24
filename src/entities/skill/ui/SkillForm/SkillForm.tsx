@@ -30,6 +30,11 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 
 	const formImageSrc = useWatch({ control, name: 'imageSrc' });
 
+	const selectedSpecializations = useWatch({
+		control,
+		name: 'specializations',
+	});
+
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
 
 	const currentPreview = skillImage ? previewImg : (formImageSrc ?? null);
@@ -74,7 +79,12 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 				>
 					<FormControl className={styles.select} name="specializations" control={control}>
 						{({ onChange, value }) => (
-							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+							<SpecializationSelect
+								onChange={onChange}
+								value={value}
+								hasMultiple
+								selectedSpecializationItems={selectedSpecializations ?? []}
+							/>
 						)}
 					</FormControl>
 				</FormField>
