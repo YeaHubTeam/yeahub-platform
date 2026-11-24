@@ -142,6 +142,7 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 											onChange={onChange}
 											value={value}
 											selectedSpecializations={selectedSpecializations}
+											preserveValueWhenOptionsEmpty={isEdit}
 										/>
 									</div>
 								)}

@@ -18,6 +18,7 @@ export type SkillSelectProps = Omit<
 	selectedSpecializations?: number[];
 	hasMultiple?: boolean;
 	withSpecialization?: boolean;
+	preserveValueWhenOptionsEmpty?: boolean;
 };
 
 export const SkillSelect = ({
@@ -27,6 +28,7 @@ export const SkillSelect = ({
 	hasMultiple = true,
 	withSpecialization = true,
 	disabled,
+	preserveValueWhenOptionsEmpty = false,
 }: SkillSelectProps) => {
 	const { t } = useTranslation(i18Namespace.skill);
 
@@ -58,9 +60,15 @@ export const SkillSelect = ({
 
 	useEffect(() => {
 		if (Array.isArray(value) && skills) {
-			const filterdValue = filterValue(value);
-			setSelectedSkills(filterValue(filterdValue));
-			onChange(filterValue(filterdValue));
+			if (preserveValueWhenOptionsEmpty && !skills.data.length) {
+				setSelectedSkills(value);
+				return;
+			}
+
+			const filteredValue = filterValue(value);
+
+			setSelectedSkills(filteredValue);
+			onChange(filteredValue);
 		}
 	}, [skills]);
 
