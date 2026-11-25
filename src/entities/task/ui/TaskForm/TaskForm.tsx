@@ -50,6 +50,7 @@ export const TaskForm = ({ isEdit }: TaskFormProps) => {
 								// className={styles.input}
 								data={field.value}
 								{...field}
+								onChange={(value) => field.onChange(value === '<p></p>' ? '' : value)}
 							/>
 						)}
 					</FormControl>
