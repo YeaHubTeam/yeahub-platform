@@ -22,7 +22,7 @@ interface ReferralLinkFormProps {
 
 export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps) => {
 	const { t } = useTranslation(i18Namespace.referralLink);
-	const { control, setValue } = useFormContext();
+	const { control, setValue, resetField } = useFormContext();
 
 	const [refCode, ownerId] = useWatch({
 		control,
@@ -85,9 +85,17 @@ export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps
 								<UserSelect
 									key={referralLink ? (isOwnerChanged ? 'changed' : 'initial') : undefined}
 									value={displayValue}
-									onChange={(userId) => field.onChange(userId)}
+									onChange={(userId) => {
+										if (!userId && referralLink) {
+											resetField('ownerId');
+											return;
+										}
+
+										field.onChange(userId ?? '');
+									}}
 									disabled={isOwnerChecked}
 									showLabel={false}
+									syncSearchValueWithSelected={Boolean(referralLink)}
 								/>
 							);
 						}}
@@ -97,6 +105,11 @@ export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps
 						className={styles['owner-checkbox']}
 						checked={isOwnerChecked}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => {
+							if (!e.target.checked && referralLink) {
+								resetField('ownerId');
+								return;
+							}
+
 							setValue('ownerId', e.target.checked ? userId : '', {
 								shouldDirty: true,
 							});
