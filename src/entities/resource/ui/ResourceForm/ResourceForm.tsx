@@ -115,6 +115,7 @@ export const ResourceForm = ({ readonly, imageSrc }: ResourceFormProps) => {
 								value={value}
 								hasMultiple
 								disabled={readonly}
+								selectedSpecializationItems={selectedSpecializations ?? []}
 							/>
 						</div>
 					)}
