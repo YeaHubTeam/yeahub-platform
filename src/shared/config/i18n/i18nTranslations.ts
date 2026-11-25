@@ -54,6 +54,7 @@ export enum Translation {
 	SIDEBAR_MENU_VACANCY_MARKET = 'sidebar.menu.career.vacancyMarket',
 	SIDEBAR_MENU_VACANCIES = 'sidebar.menu.vacancies',
 	SIDEBAR_MENU_QUESTIONS = 'sidebar.menu.questions',
+	SIDEBAR_MENU_TEST_QUESTIONS = 'sidebar.menu.testQuestions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
@@ -724,6 +725,27 @@ export enum Questions {
 	STUDY_STATUS_LEARNED = 'study.status.learned',
 	STUDY_STATUS_IN_PROGRESS = 'study.status.in.progress',
 	STUDY_STATUS_NOT_LEARNED = 'study.status.not.learned',
+}
+
+export enum TestQuestions {
+	TITLE_SHORT = 'title.short',
+	SPECIALIZATION_TITLE = 'specialization.title',
+	SKILLS_TITLE = 'skills.title',
+	RATE_TITLE = 'rate.title',
+	RATE_TITLE_SHORT = 'rate.title.short',
+	COMPLEXITY_TITLE_SHORT = 'complexity.title.short',
+	AUTHOR = 'author',
+	AUTHOR_PLACEHOLDER = 'author.placeholder',
+	CREATED_AT = 'createdAt',
+	FILTER_MY = 'filter.my',
+	ANSWERS = 'answers',
+	CORRECT_ANSWERS = 'correctAnswers',
+	STUB_EMPTY_TITLE = 'stub.empty.title',
+	STUB_EMPTY_SUBTITLE = 'stub.empty.subtitle',
+	STUB_EMPTY_SUBMIT = 'stub.empty.submit',
+	STUB_FILTER_TITLE = 'stub.filter.title',
+	STUB_FILTER_SUBTITLE = 'stub.filter.subtitle',
+	STUB_FILTER_SUBMIT = 'stub.filter.submit',
 }
 
 export enum InterviewHistory {
