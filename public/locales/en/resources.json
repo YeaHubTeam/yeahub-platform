@@ -15,7 +15,14 @@
 			"placeholder": "Select existing keyword"
 		}
 	},
+	"error": {
+		"title": "Failed to load data",
+		"submit": "Retry"
+	},
 	"link": "Link",
+	"name": "Name",
+	"author": "Author",
+	"createdAt": "Creation date",
 	"search": {
 		"placeholder": "Enter resource..."
 	},
