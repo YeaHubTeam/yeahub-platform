@@ -334,6 +334,18 @@ export const ROUTES = {
 		route: 'test',
 		page: '/test',
 	},
+	testing: {
+		route: 'testing',
+		page: '/testing',
+		history: {
+			route: 'history',
+			page: '/testing/history',
+			result: {
+				route: ':testingId',
+				page: '/testing/history/:testingId',
+			},
+		},
+	},
 	tasks: {
 		route: 'tasks',
 		page: '/tasks',

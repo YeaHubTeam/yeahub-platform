@@ -112,6 +112,7 @@ import { UserProfilePage } from '@/pages/profile/userProfile';
 import { TaskPage } from '@/pages/tasks/task';
 import { TasksPage } from '@/pages/tasks/tasks';
 import { CreateTestPage } from '@/pages/test/createTest';
+import { TestingPage } from '@/pages/test/testing';
 import { CollectionPage as InterviewCollectionPage } from '@/pages/wiki/collection/collectionDetail';
 import { CollectionsPage as InterviewCollectionsPage } from '@/pages/wiki/collection/collections';
 import { QuestionPage as InterviewQuestionPage } from '@/pages/wiki/question/questionDetail';
@@ -127,6 +128,7 @@ import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from './AuthRoute';
 import { InterviewRoute } from './InterviewRoute';
+import { TestingRoute } from './TestingRoute';
 import { UnAuthRoute } from './UnAuthRoute';
 
 import '../../styles/App.css';
@@ -181,6 +183,11 @@ const mainLayoutMenuItems: MenuItem[] = [
 				route: ROUTES.interview.route,
 				title: i18n.t(Translation.SIDEBAR_MENU_EDUCATION_INTERVIEW),
 				icon: InterviewIcon,
+			},
+			{
+				route: ROUTES.testing.route,
+				title: i18n.t(Translation.SIDEBAR_MENU_TESTS),
+				icon: TestQuestionsIcon,
 			},
 			{
 				route: ROUTES.tasks.route,
@@ -793,6 +800,21 @@ export const router = createBrowserRouter([
 						handle: {
 							crumb: Translation.CRUMBS_QUIZ,
 						},
+					},
+				],
+			},
+			{
+				path: ROUTES.testing.route,
+				element: (
+					<TestingRoute>
+						<Outlet />
+					</TestingRoute>
+				),
+				handle: { crumb: Translation.CRUMBS_TESTING },
+				children: [
+					{
+						index: true,
+						element: <TestingPage />,
 					},
 				],
 			},

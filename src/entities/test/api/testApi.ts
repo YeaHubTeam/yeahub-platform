@@ -4,10 +4,21 @@ import { toast } from '@/shared/ui/Toast';
 
 import { testApiUrls } from '../model/constants/testConstants';
 import { saveActiveTest } from '../model/helpers/saveActiveTest';
-import { CreateNewTestParamsRequest, CreateNewTestResponse } from '../model/types/testTypes';
+import {
+	CreateNewTestParamsRequest,
+	CreateNewTestResponse,
+	GetTestsHistoryParamsRequest,
+	GetTestsHistoryResponse,
+} from '../model/types/testTypes';
 
 const testApi = baseApi.injectEndpoints({
 	endpoints: (build) => ({
+		getTestsHistory: build.query<GetTestsHistoryResponse, GetTestsHistoryParamsRequest>({
+			query: ({ profileId, ...params }) => ({
+				url: route(testApiUrls.getTestsHistory, profileId),
+				params,
+			}),
+		}),
 		createNewTest: build.query<CreateNewTestResponse, CreateNewTestParamsRequest>({
 			query: ({ profileId, ...params }) => ({
 				url: route(testApiUrls.createNewTest, profileId),
@@ -30,4 +41,4 @@ const testApi = baseApi.injectEndpoints({
 	overrideExisting: true,
 });
 
-export const { useLazyCreateNewTestQuery } = testApi;
+export const { useLazyCreateNewTestQuery, useGetTestsHistoryQuery } = testApi;
