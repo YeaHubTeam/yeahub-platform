@@ -15,11 +15,12 @@ export const ResourceCreateForm = () => {
 			name: '',
 			url: '',
 			description: '',
-			iconBase64: '',
+			iconBase64: null,
 			resourceImage: null,
 			skills: [],
 			specializations: [],
 			keywords: [],
+			type: '',
 		},
 	});
 

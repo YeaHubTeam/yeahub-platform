@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -23,9 +24,10 @@ import styles from './ResourceForm.module.css';
 
 interface ResourceFormProps {
 	readonly?: boolean;
+	imageSrc?: string | null;
 }
 
-export const ResourceForm = ({ readonly }: ResourceFormProps) => {
+export const ResourceForm = ({ readonly, imageSrc }: ResourceFormProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
 	const { control, setValue } = useFormContext();
 
@@ -33,16 +35,22 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 	const iconBase64 = useWatch({ control, name: 'iconBase64' });
 	const resourceImage = useWatch({ control, name: 'resourceImage' });
 
-	const currentPreview = resourceImage ?? iconBase64 ?? null;
+	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
+
+	const currentPreview = resourceImage ? previewImg : (iconBase64 ?? null);
 
 	const changeImage = (imageBase64: string) => {
-		setValue('resourceImage', imageBase64, { shouldDirty: true });
-		setValue('iconBase64', removeBase64Data(imageBase64), { shouldDirty: true });
+		const image = removeBase64Data(imageBase64);
+
+		setPreviewImg(imageBase64);
+		setValue('resourceImage', image, { shouldDirty: true });
+		setValue('iconBase64', null, { shouldDirty: true });
 	};
 
 	const removeImage = () => {
+		setPreviewImg(null);
 		setValue('resourceImage', null, { shouldDirty: true });
-		setValue('iconBase64', null, { shouldDirty: true });
+		setValue('iconBase64', imageSrc ?? null, { shouldDirty: true });
 	};
 
 	return (

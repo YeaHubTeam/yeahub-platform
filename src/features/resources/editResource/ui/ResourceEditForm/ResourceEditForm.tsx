@@ -60,7 +60,7 @@ export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
 						<Text variant="body6" color="black-900" className={styles['main-title']}>
 							{t(Resources.EDIT_RESOURCE_TITLE)}
 						</Text>
-						<ResourceForm />
+						<ResourceForm imageSrc={imageSrc} />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>

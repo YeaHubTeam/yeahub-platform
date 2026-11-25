@@ -1,6 +1,7 @@
 import { CreateOrEditOrViewResourceFormValues, Resource } from '@/entities/resource';
 
-export type CreateResourceFormValues = Omit<CreateOrEditOrViewResourceFormValues, 'id'> & {
+export type CreateResourceFormValues = Omit<CreateOrEditOrViewResourceFormValues, 'id' | 'type'> & {
+	type: CreateOrEditOrViewResourceFormValues['type'] | '';
 	resourceImage: string | null;
 };
 
