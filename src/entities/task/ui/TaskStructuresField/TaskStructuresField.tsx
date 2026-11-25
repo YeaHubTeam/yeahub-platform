@@ -1,6 +1,6 @@
 import MonacoEditor from '@monaco-editor/react';
-import { useEffect } from 'react';
-import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
+import { useEffect, useMemo } from 'react';
+import { Controller, useFieldArray, useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Tasks } from '@/shared/config';
@@ -26,7 +26,7 @@ type LanguagePreloadedCode = Record<number, string>;
 
 export const TaskStructuresField = () => {
 	const { t } = useTranslation(i18Namespace.task);
-	const { control, watch, setValue } = useFormContext<CreateOrEditTaskFormValues>();
+	const { control, setValue } = useFormContext<CreateOrEditTaskFormValues>();
 	const {
 		fields: taskStructures,
 		append,
@@ -38,7 +38,10 @@ export const TaskStructuresField = () => {
 
 	const { data } = useGetLanguagesQuery();
 
-	const taskStructuresValues = watch('taskStructures');
+	const taskStructuresValues = useWatch({
+		control,
+		name: 'taskStructures',
+	});
 
 	const languages =
 		data?.reduce((result, language) => {
@@ -46,26 +49,30 @@ export const TaskStructuresField = () => {
 			return result;
 		}, {} as LanguageOptions) || {};
 
-	const languagePreloadedCodes =
-		data?.reduce((result, language) => {
-			result[language.id] = language.defaultPreloadedCode ?? '';
-			return result;
-		}, {} as LanguagePreloadedCode) || ({} as LanguagePreloadedCode);
+	const languagePreloadedCodes = useMemo(
+		() =>
+			data?.reduce((result, language) => {
+				result[language.id] = language.defaultPreloadedCode ?? '';
+				return result;
+			}, {} as LanguagePreloadedCode) ?? {},
+		[data],
+	);
 
 	const selectedLanguages = taskStructuresValues.map(({ languageId }) => Number(languageId));
 
 	useEffect(() => {
 		if (data) {
-			taskStructures.forEach((taskStructure, index) => {
+			taskStructuresValues.forEach((taskStructure, index) => {
 				if (!taskStructure.preloadedCode) {
 					setValue(
 						`taskStructures.${index}.preloadedCode`,
-						languagePreloadedCodes[taskStructure.languageId],
+						languagePreloadedCodes[taskStructure.languageId] ?? '',
+						{ shouldDirty: false },
 					);
 				}
 			});
 		}
-	}, [data]);
+	}, [data, taskStructuresValues, languagePreloadedCodes, setValue]);
 
 	return (
 		<Flex direction="column" gap="16">
@@ -91,7 +98,9 @@ export const TaskStructuresField = () => {
 											field.onChange(value);
 											setValue(
 												`taskStructures.${index}.preloadedCode`,
-												languagePreloadedCodes[Number(Array.isArray(value) ? value[0] : value)],
+												languagePreloadedCodes[Number(Array.isArray(value) ? value[0] : value)] ??
+													'',
+												{ shouldDirty: true },
 											);
 										}}
 									/>
@@ -105,7 +114,7 @@ export const TaskStructuresField = () => {
 								render={({ field }) => (
 									<MonacoEditor
 										className={styles.editor}
-										defaultLanguage={languages[taskStructuresValues[index].languageId]}
+										language={languages[taskStructuresValues[index].languageId]}
 										value={field.value}
 										onChange={field.onChange}
 										theme="vs-light"
@@ -126,7 +135,7 @@ export const TaskStructuresField = () => {
 								render={({ field }) => (
 									<MonacoEditor
 										className={styles.editor}
-										defaultLanguage={languages[taskStructuresValues[index].languageId]}
+										language={languages[taskStructuresValues[index].languageId]}
 										value={field.value}
 										onChange={field.onChange}
 										theme="vs-light"
@@ -147,7 +156,7 @@ export const TaskStructuresField = () => {
 								render={({ field }) => (
 									<MonacoEditor
 										className={styles.editor}
-										defaultLanguage={languages[taskStructuresValues[index].languageId]}
+										language={languages[taskStructuresValues[index].languageId]}
 										value={field.value || ''}
 										onChange={field.onChange}
 										theme="vs-light"
@@ -172,7 +181,15 @@ export const TaskStructuresField = () => {
 			))}
 			<Button
 				className={styles.add}
-				onClick={() => append({ languageId: 0, solutionStub: '', testFixture: '', isActive: true })}
+				onClick={() =>
+					append({
+						languageId: 0,
+						solutionStub: '',
+						testFixture: '',
+						preloadedCode: '',
+						isActive: true,
+					})
+				}
 			>
 				{t(Tasks.TASK_STRUCTURES_ADD_BUTTON)}
 			</Button>

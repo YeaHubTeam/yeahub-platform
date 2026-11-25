@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useState } from 'react';
+import { ComponentProps, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Marketplace, Tasks } from '@/shared/config';
@@ -31,6 +31,8 @@ export const TaskCategorySelect = ({
 }: TaskCategorySelectProps) => {
 	const { t } = useTranslation(i18Namespace.task);
 
+	const selectedCategories = Array.isArray(value) ? value : value !== undefined ? [value] : [];
+
 	const { data } = useGetTaskCategoriesQuery();
 
 	const categories = data?.map((category) => ({
@@ -38,20 +40,14 @@ export const TaskCategorySelect = ({
 		title: t(taskCategories[category.code]),
 	}));
 
-	const [selectedCategories, setSelectedCategories] = useState<string[]>(
-		Array.isArray(value) ? value : value !== undefined ? [value] : [],
-	);
-
 	const handleChangeCategory = (newValue: string | undefined) => {
 		if (disabled || !newValue) return;
 		const strValue = newValue;
 
 		if (hasMultiple) {
 			const updates = [...selectedCategories, strValue];
-			setSelectedCategories(updates);
 			onChange(updates);
 		} else {
-			setSelectedCategories([strValue]);
 			onChange(strValue);
 		}
 	};
@@ -59,7 +55,6 @@ export const TaskCategorySelect = ({
 	const handleDeleteCategory = (id: string) => () => {
 		if (disabled) return;
 		const updates = selectedCategories.filter((categoryId) => categoryId !== id);
-		setSelectedCategories(updates);
 		onChange(updates);
 	};
 

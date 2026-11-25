@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { ChangeEvent } from 'react';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, ReferralLinks } from '@/shared/config';
@@ -22,21 +22,22 @@ interface ReferralLinkFormProps {
 
 export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps) => {
 	const { t } = useTranslation(i18Namespace.referralLink);
-	const { control, watch, setValue } = useFormContext();
+	const { control, setValue, resetField } = useFormContext();
 
-	const refCode = watch('refCode');
-	const [isOwnerChecked, setIsOwnerChecked] = useState(userId === referralLink?.ownerId);
+	const [refCode, ownerId] = useWatch({
+		control,
+		name: ['refCode', 'ownerId'],
+	});
+
+	const isOwnerChecked = Boolean(userId && ownerId === userId);
+	const isOwnerChanged = Boolean(referralLink && ownerId !== referralLink.ownerId);
 
 	const BASE_URL = `${process.env.APP_URL}?ref_id=`;
 
-	const handleRefCodeChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setValue('refCode', e.target.value);
-
-		if (e.target.value) {
-			setValue('url', `${BASE_URL}${e.target.value}`);
-		} else {
-			setValue('url', BASE_URL);
-		}
+	const handleRefCodeChange = (value: string) => {
+		setValue('url', value ? `${BASE_URL}${value}` : BASE_URL, {
+			shouldDirty: true,
+		});
 	};
 
 	return (
@@ -53,7 +54,7 @@ export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps
 							error={hasError}
 							onChange={(e) => {
 								field.onChange(e);
-								handleRefCodeChange(e);
+								handleRefCodeChange(e.target.value);
 							}}
 							maxLength={50}
 						/>
@@ -82,11 +83,19 @@ export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps
 							const displayValue = isOwnerChecked ? undefined : field.value;
 							return (
 								<UserSelect
-									key={isOwnerChecked ? 'owner' : 'select'}
+									key={referralLink ? (isOwnerChanged ? 'changed' : 'initial') : undefined}
 									value={displayValue}
-									onChange={(userId) => field.onChange(userId)}
+									onChange={(userId) => {
+										if (!userId && referralLink) {
+											resetField('ownerId');
+											return;
+										}
+
+										field.onChange(userId ?? '');
+									}}
 									disabled={isOwnerChecked}
 									showLabel={false}
+									syncSearchValueWithSelected={Boolean(referralLink)}
 								/>
 							);
 						}}
@@ -96,8 +105,14 @@ export const ReferralLinkForm = ({ userId, referralLink }: ReferralLinkFormProps
 						className={styles['owner-checkbox']}
 						checked={isOwnerChecked}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => {
-							setIsOwnerChecked(e.target.checked);
-							setValue('ownerId', e.target.checked ? userId : '');
+							if (!e.target.checked && referralLink) {
+								resetField('ownerId');
+								return;
+							}
+
+							setValue('ownerId', e.target.checked ? userId : '', {
+								shouldDirty: true,
+							});
 						}}
 					/>
 				</Flex>

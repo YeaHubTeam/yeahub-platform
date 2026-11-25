@@ -5,9 +5,13 @@ import { i18Namespace, Translation } from '@/shared/config';
 import { BackButton } from '@/shared/ui/BackButton';
 import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 
 import { useCreateCompanyMutation } from '../../api/createCompanyApi';
-import { CreateCompanyFormValues } from '../../model/types/companyCreateTypes';
+import {
+	CreateCompanyBodyRequest,
+	CreateCompanyFormValues,
+} from '../../model/types/companyCreateTypes';
 
 export const CompanyCreateFormHeader = () => {
 	const [createCompanyMutation, { isLoading }] = useCreateCompanyMutation();
@@ -16,7 +20,13 @@ export const CompanyCreateFormHeader = () => {
 
 	const onCreateCompany = async (data: CreateCompanyFormValues) => {
 		try {
-			await createCompanyMutation(data).unwrap();
+			const body: CreateCompanyBodyRequest = {
+				...data,
+				imageSrc: data.imageSrc ?? undefined,
+				companyImage: data.companyImage ?? undefined,
+			};
+
+			await createCompanyMutation(body).unwrap();
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.log('Mutation error:', error);
@@ -26,9 +36,12 @@ export const CompanyCreateFormHeader = () => {
 	return (
 		<Flex align="center" gap="8" justify="between">
 			<BackButton />
-			<Button disabled={isLoading} onClick={handleSubmit(onCreateCompany)}>
-				{t(Translation.SAVE, { ns: 'translation' })}
-			</Button>
+			<Flex gap="10" justify="between">
+				<FormCancelButton disabled={isLoading} />
+				<Button disabled={isLoading} onClick={handleSubmit(onCreateCompany)}>
+					{t(Translation.SAVE, { ns: 'translation' })}
+				</Button>
+			</Flex>
 		</Flex>
 	);
 };

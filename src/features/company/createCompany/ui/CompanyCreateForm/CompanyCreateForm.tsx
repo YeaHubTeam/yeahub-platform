@@ -19,6 +19,8 @@ export const CompanyCreateForm = () => {
 		mode: 'onTouched',
 		defaultValues: {
 			title: '',
+			companyImage: null,
+			imageSrc: null,
 		},
 	});
 

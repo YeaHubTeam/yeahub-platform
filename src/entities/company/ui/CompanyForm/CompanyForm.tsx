@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Companies } from '@/shared/config';
@@ -23,19 +23,26 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 
 	const { control, setValue } = useFormContext();
 
+	const companyImage = useWatch({ control, name: 'companyImage' });
+
+	const formImageSrc = useWatch({ control, name: 'imageSrc' });
+
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
+
+	const currentPreview = companyImage ? previewImg : formImageSrc;
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
 		setPreviewImg(imageBase64);
-		setValue('companyImage', image);
+		setValue('companyImage', image, { shouldDirty: true });
+		setValue('imageSrc', null, { shouldDirty: true });
 	};
 
 	const removeImage = () => {
 		setPreviewImg(null);
-		setValue('companyImage', null);
-		setValue('imageSrc', null);
+		setValue('companyImage', null, { shouldDirty: true });
+		setValue('imageSrc', null, { shouldDirty: true });
 	};
 
 	return (
@@ -53,7 +60,7 @@ export const CompanyForm = ({ isEdit, imageSrc }: CompanyFormProps) => {
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
-						initialSrc={previewImg}
+						initialSrc={currentPreview}
 					/>
 				</FormField>
 			</Flex>

@@ -12,6 +12,7 @@ export const resourceCreateSchema: yup.ObjectSchema<CreateResourceFormValues> = 
 	description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	url: yup.string().trim().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 	iconBase64: yup.string().optional().nullable(),
+	resourceImage: yup.string().nullable().defined(),
 	specializations: yup
 		.array(yup.number().required())
 		.required(i18n.t(Translation.VALIDATION_REQUIRED)),

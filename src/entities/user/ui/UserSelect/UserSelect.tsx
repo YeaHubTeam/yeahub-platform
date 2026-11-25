@@ -19,6 +19,7 @@ export type UserSelectProps = Omit<
 	title?: string;
 	placeholder?: string;
 	showLabel?: boolean;
+	syncSearchValueWithSelected?: boolean;
 };
 
 const USER_ID_NOT_FOUND_KEY = 'toast.user.user.id.not_found';
@@ -30,6 +31,7 @@ export const UserSelect = ({
 	title,
 	placeholder,
 	showLabel = true,
+	syncSearchValueWithSelected = false,
 }: UserSelectProps) => {
 	const { t } = useTranslation([i18Namespace.user, i18Namespace.translation]);
 
@@ -87,6 +89,17 @@ export const UserSelect = ({
 
 		return emptyUser;
 	}, [options, value]);
+
+	useEffect(() => {
+		if (!syncSearchValueWithSelected) return;
+
+		if (!value || selectUser.value === 'all') {
+			setSearchValue('');
+			return;
+		}
+
+		setSearchValue(selectUser.label);
+	}, [syncSearchValueWithSelected, value, selectUser.value, selectUser.label]);
 
 	const showNotFoundMessage = !isFetching && debouncedValue && options.length === 0;
 	const notFoundText = t(USER_ID_NOT_FOUND_KEY, { ns: i18Namespace.translation });

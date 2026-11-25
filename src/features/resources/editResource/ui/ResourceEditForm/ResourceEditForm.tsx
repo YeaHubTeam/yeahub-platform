@@ -37,6 +37,7 @@ export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
 		defaultValues: {
 			...formattedResources,
 			iconBase64: imageSrc,
+			resourceImage: null,
 			skills: formatToFormField<Skill[]>(skills),
 			specializations: formatToFormField<Specialization[]>(specializations),
 			type: type.code,
@@ -59,7 +60,7 @@ export const ResourceEditForm = ({ resource }: ResourceEditFormProps) => {
 						<Text variant="body6" color="black-900" className={styles['main-title']}>
 							{t(Resources.EDIT_RESOURCE_TITLE)}
 						</Text>
-						<ResourceForm />
+						<ResourceForm imageSrc={imageSrc} />
 					</Card>
 				</Flex>
 			</LeavingPageBlocker>

@@ -4,10 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Translation } from '@/shared/config';
 import { BackHeader } from '@/shared/ui/BackHeader';
 import { Button } from '@/shared/ui/Button';
-import { VariantType } from '@/shared/ui/IconButton';
+import { FormCancelButton } from '@/shared/ui/FormCancelButton';
 
-import { CreateOrEditOrViewResourceFormValues } from '../../model/types/resource';
-import { ResourceRequestFormValues } from '../../model/types/resourceRequest';
+import {
+	CreateOrEditOrViewResourceFormValues,
+	ResourceRequestFormValues,
+} from '@/entities/resource';
 
 import styles from './ResourceEditFormHeader.module.css';
 
@@ -16,7 +18,6 @@ interface ResourceEditFormHeaderProps<
 > {
 	onSubmit: (formData: T) => Promise<void>;
 	className?: string;
-	btnVariant?: VariantType;
 }
 
 export const ResourceEditFormHeader = <
@@ -24,21 +25,14 @@ export const ResourceEditFormHeader = <
 >({
 	onSubmit,
 	className,
-	btnVariant = 'secondary',
 }: ResourceEditFormHeaderProps<T>) => {
 	const { t } = useTranslation(i18Namespace.translation);
 
-	const { handleSubmit, reset, formState } = useFormContext<T>();
-
-	const onResetFormValues = () => {
-		reset();
-	};
+	const { handleSubmit, formState } = useFormContext<T>();
 
 	return (
 		<BackHeader className={className}>
-			<Button onClick={onResetFormValues} variant={btnVariant} className={styles.btn}>
-				{t(Translation.CANCEL)}
-			</Button>
+			<FormCancelButton className={styles.btn} />
 			<Button
 				disabled={formState.isSubmitting}
 				onClick={handleSubmit(onSubmit)}

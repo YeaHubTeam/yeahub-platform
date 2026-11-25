@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Marketplace } from '@/shared/config';
@@ -24,26 +24,33 @@ import styles from './ResourceForm.module.css';
 
 interface ResourceFormProps {
 	readonly?: boolean;
+	imageSrc?: string | null;
 }
 
-export const ResourceForm = ({ readonly }: ResourceFormProps) => {
+export const ResourceForm = ({ readonly, imageSrc }: ResourceFormProps) => {
 	const { t } = useTranslation(i18Namespace.marketplace);
-	const { control, watch, setValue } = useFormContext();
+	const { control, setValue } = useFormContext();
 
-	const selectedSpecializations = watch('specializations');
-	const iconBase64 = watch('iconBase64');
-	const [previewImg, setPreviewImg] = useState<string | null>(iconBase64 ?? null);
+	const selectedSpecializations = useWatch({ control, name: 'specializations' });
+	const iconBase64 = useWatch({ control, name: 'iconBase64' });
+	const resourceImage = useWatch({ control, name: 'resourceImage' });
+
+	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
+
+	const currentPreview = resourceImage ? previewImg : (iconBase64 ?? null);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
 		setPreviewImg(imageBase64);
-		setValue('iconBase64', image);
+		setValue('resourceImage', image, { shouldDirty: true });
+		setValue('iconBase64', null, { shouldDirty: true });
 	};
 
 	const removeImage = () => {
 		setPreviewImg(null);
-		setValue('iconBase64', null);
+		setValue('resourceImage', null, { shouldDirty: true });
+		setValue('iconBase64', imageSrc ?? null, { shouldDirty: true });
 	};
 
 	return (
@@ -92,7 +99,7 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 				<ImageLoaderWithoutCropper
 					removeImage={removeImage}
 					changeImage={changeImage}
-					initialSrc={previewImg}
+					initialSrc={currentPreview}
 					disabled={readonly}
 				/>
 			</FormField>
@@ -108,6 +115,7 @@ export const ResourceForm = ({ readonly }: ResourceFormProps) => {
 								value={value}
 								hasMultiple
 								disabled={readonly}
+								selectedSpecializationItems={selectedSpecializations ?? []}
 							/>
 						</div>
 					)}

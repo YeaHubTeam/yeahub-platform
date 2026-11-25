@@ -32,6 +32,8 @@ export const QuestionEditForm = ({ question }: QuestionEditFormProps) => {
 		mode: 'onTouched',
 		defaultValues: {
 			...formattedQuestion,
+			shortAnswer: formattedQuestion.shortAnswer === '<p></p>' ? '' : formattedQuestion.shortAnswer,
+			longAnswer: formattedQuestion.longAnswer === '<p></p>' ? '' : formattedQuestion.longAnswer,
 			skills: formatToFormField<Skill[]>(questionSkills),
 			specializations: formatToFormField<Specialization[]>(questionSpecializations),
 			topics: formatToFormField<Topic[]>(questionTopics),

@@ -27,7 +27,12 @@ export const SkillEditForm = ({ skill }: SkillEditFormProps) => {
 	const methods = useForm<EditSkillFormValues>({
 		resolver: yupResolver(skillEditSchema),
 		mode: 'onTouched',
-		defaultValues: { ...skill, specializations: specializationsIds },
+		defaultValues: {
+			...skill,
+			skillImage: null,
+			imageSrc: skill.imageSrc ?? null,
+			specializations: specializationsIds ?? [],
+		},
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;

@@ -30,6 +30,7 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 	const { t } = useTranslation([i18Namespace.questions, i18Namespace.skill, i18Namespace.topic]);
 
 	const { control, watch } = useFormContext();
+
 	const selectedSpecializations = watch('specializations');
 	const selectedSkills = watch('skills');
 
@@ -126,7 +127,12 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
 							<div className={styles.select}>
-								<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+								<SpecializationSelect
+									onChange={onChange}
+									value={value}
+									hasMultiple
+									selectedSpecializationItems={selectedSpecializations}
+								/>
 							</div>
 						)}
 					</FormControl>
@@ -142,6 +148,7 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 											onChange={onChange}
 											value={value}
 											selectedSpecializations={selectedSpecializations}
+											preserveValueWhenOptionsEmpty={isEdit}
 										/>
 									</div>
 								)}
@@ -215,6 +222,7 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 								data={field.value}
 								limit={5000}
 								{...field}
+								onChange={(value) => field.onChange(value === '<p></p>' ? '' : value)}
 							/>
 						)}
 					</FormControl>
@@ -234,6 +242,7 @@ export const QuestionForm = ({ isEdit }: QuestionFormProps) => {
 								data={field.value}
 								limit={10000}
 								{...field}
+								onChange={(value) => field.onChange(value === '<p></p>' ? '' : value)}
 							/>
 						)}
 					</FormControl>

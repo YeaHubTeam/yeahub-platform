@@ -21,7 +21,11 @@ export const CompanyEditForm = ({ company }: CompanyEditFormProps) => {
 	const methods = useForm<CompanyEditFormValues>({
 		resolver: yupResolver(companyEditSchema),
 		mode: 'onTouched',
-		defaultValues: { ...company },
+		defaultValues: {
+			...company,
+			companyImage: null,
+			imageSrc: company.imageSrc ?? null,
+		},
 	});
 
 	const { isDirty, isSubmitted, isSubmitting } = methods.formState;

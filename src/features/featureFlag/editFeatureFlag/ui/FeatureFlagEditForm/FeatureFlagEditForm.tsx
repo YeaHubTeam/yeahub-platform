@@ -25,7 +25,7 @@ interface FeatureFlagEditFormProps {
 
 export const FeatureFlagEditForm = ({ featureFlag }: FeatureFlagEditFormProps) => {
 	const { description, enabled, flag, clientType, id, roles } = featureFlag;
-	const { data: availableRoles = [] } = useGetUserRolesListQuery();
+	const { data: availableRoles = [], isSuccess: isRolesLoaded } = useGetUserRolesListQuery();
 
 	const roleIds = useMemo(() => {
 		if (!roles || !availableRoles.length) return [];
@@ -51,15 +51,24 @@ export const FeatureFlagEditForm = ({ featureFlag }: FeatureFlagEditFormProps) =
 	});
 
 	useEffect(() => {
-		if (roleIds.length) {
-			methods.reset({
-				...methods.watch(),
-				roleIds,
-			});
-		}
-	}, [methods, roleIds]);
+		if (!isRolesLoaded) return;
 
-	const { isDirty, isSubmitting, isSubmitted } = methods.formState;
+		methods.reset(
+			{
+				flag,
+				description,
+				clientType,
+				enabled,
+				id,
+				roleIds,
+			},
+			{
+				keepDirtyValues: true,
+			},
+		);
+	}, [isRolesLoaded, flag, description, clientType, enabled, id, roleIds, methods]);
+
+	const { isDirty, isSubmitting, isSubmitted, dirtyFields: _dirtyFields } = methods.formState;
 
 	const [editTopicMutation] = useEditFeatureFlagMutation();
 

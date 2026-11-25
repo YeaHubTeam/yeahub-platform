@@ -10,7 +10,7 @@ export const collectionCreateSchema: yup.ObjectSchema<CollectionCreateFormValues
 		title: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 		description: yup.string().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 		imageSrc: yup.string().nullable(),
-		collectionImage: yup.string(),
+		collectionImage: yup.string().nullable(),
 		isFree: yup.boolean().required(i18n.t(Translation.VALIDATION_REQUIRED)),
 		specializations: yup
 			.array(yup.number().required())

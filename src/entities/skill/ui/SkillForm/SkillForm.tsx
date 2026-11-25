@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, Questions, Skills } from '@/shared/config';
@@ -26,18 +26,31 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 
 	const { control, setValue } = useFormContext();
 
+	const skillImage = useWatch({ control, name: 'skillImage' });
+
+	const formImageSrc = useWatch({ control, name: 'imageSrc' });
+
+	const selectedSpecializations = useWatch({
+		control,
+		name: 'specializations',
+	});
+
 	const [previewImg, setPreviewImg] = useState<string | null>(imageSrc || null);
+
+	const currentPreview = skillImage ? previewImg : (formImageSrc ?? null);
 
 	const changeImage = (imageBase64: string) => {
 		const image = removeBase64Data(imageBase64);
 
 		setPreviewImg(imageBase64);
-		setValue('skillImage', image);
+		setValue('skillImage', image, { shouldDirty: true });
+		setValue('imageSrc', null, { shouldDirty: true });
 	};
 
 	const removeImage = () => {
 		setPreviewImg(null);
-		setValue('imageSrc', null);
+		setValue('skillImage', null, { shouldDirty: true });
+		setValue('imageSrc', imageSrc ?? null, { shouldDirty: true });
 	};
 
 	return (
@@ -56,7 +69,7 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 					<ImageLoaderWithoutCropper
 						removeImage={removeImage}
 						changeImage={changeImage}
-						initialSrc={previewImg}
+						initialSrc={currentPreview}
 					/>
 				</FormField>
 
@@ -66,12 +79,21 @@ export const SkillForm = ({ isEdit, imageSrc }: SkillFormProps) => {
 				>
 					<FormControl className={styles.select} name="specializations" control={control}>
 						{({ onChange, value }) => (
-							<SpecializationSelect onChange={onChange} value={value} hasMultiple />
+							<SpecializationSelect
+								onChange={onChange}
+								value={value}
+								hasMultiple
+								selectedSpecializationItems={selectedSpecializations ?? []}
+							/>
 						)}
 					</FormControl>
 				</FormField>
 
-				<FormField label={t(Skills.DESCRIPTION_FULL)} description={t(Skills.DESCRIPTION_LABEL)}>
+				<FormField
+					label={t(Skills.DESCRIPTION_FULL)}
+					direction="column"
+					description={t(Skills.DESCRIPTION_LABEL)}
+				>
 					<FormControl name="description" control={control}>
 						{(field, hasError) => (
 							<TextArea
