@@ -128,6 +128,7 @@ import { MainLayout } from '@/app/layouts/MainLayout';
 
 import { AuthRoute } from './AuthRoute';
 import { InterviewRoute } from './InterviewRoute';
+import { TestingRoute } from './TestingRoute';
 import { UnAuthRoute } from './UnAuthRoute';
 
 import '../../styles/App.css';
@@ -804,8 +805,18 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: ROUTES.testing.route,
-				element: <TestingPage />,
+				element: (
+					<TestingRoute>
+						<Outlet />
+					</TestingRoute>
+				),
 				handle: { crumb: Translation.CRUMBS_TESTING },
+				children: [
+					{
+						index: true,
+						element: <TestingPage />,
+					},
+				],
 			},
 			{
 				path: ROUTES.test.route,

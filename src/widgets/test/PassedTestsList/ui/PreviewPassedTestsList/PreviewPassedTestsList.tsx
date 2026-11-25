@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { i18Namespace, ROUTES, TestHistory, Profile, Subscription } from '@/shared/config';
@@ -13,7 +13,7 @@ import { Flex } from '@/shared/ui/Flex';
 import { Text } from '@/shared/ui/Text';
 
 import { getFullProfile, getHasPremiumAccess, getProfileId } from '@/entities/profile';
-import { useGetTestsHistoryQuery } from '@/entities/test';
+import { useGetTestsHistoryQuery, TestHistoryItem } from '@/entities/test';
 
 import { PreviewPassedTestsItem } from '../PreviewPassedTestsItem/PreviewPassedTestsItem';
 
@@ -24,6 +24,7 @@ interface PreviewPassedTestsListProps {
 }
 
 export const PreviewPassedTestsList = ({ className }: PreviewPassedTestsListProps) => {
+	const [uniqueTests, setUniqueTests] = useState<TestHistoryItem[] | []>([]);
 	const [startBefore] = useState(() => new Date().toISOString());
 	const fullProfile = useAppSelector(getFullProfile);
 	const profileId = useAppSelector(getProfileId);
@@ -34,11 +35,7 @@ export const PreviewPassedTestsList = ({ className }: PreviewPassedTestsListProp
 		i18Namespace.profile,
 		i18Namespace.subscription,
 	]);
-	const {
-		currentData: data,
-		isSuccess,
-		isError,
-	} = useGetTestsHistoryQuery(
+	const { data, isSuccess, isError } = useGetTestsHistoryQuery(
 		{
 			profileId,
 			startAfter: new Date(0).toISOString(),
@@ -46,23 +43,8 @@ export const PreviewPassedTestsList = ({ className }: PreviewPassedTestsListProp
 			page: 1,
 			limit: 3,
 		},
-		{ skip: !profileId || !isVerified || !hasPremium },
+		{ skip: !hasPremium },
 	);
-
-	const uniqueTests = useMemo(() => {
-		const result = [];
-		const seen = new Set<string>();
-		const tests = data?.data ?? [];
-
-		for (const test of tests) {
-			if (seen.has(test.id)) continue;
-
-			seen.add(test.id);
-			result.push(test);
-		}
-
-		return result;
-	}, [data?.data]);
 
 	const isEmptyData = isSuccess && data?.data.length === 0;
 
@@ -77,6 +59,19 @@ export const PreviewPassedTestsList = ({ className }: PreviewPassedTestsListProp
 		: !hasPremium
 			? t(Subscription.CHANGE_TARIFF_PLAN, { ns: i18Namespace.subscription })
 			: t(TestHistory.LINK);
+
+	useEffect(() => {
+		if (data?.data) {
+			const seen = new Set<string>();
+			const filtered = data.data.filter((item) => {
+				if (seen.has(item.id)) return false;
+				seen.add(item.id);
+				return true;
+			});
+
+			setUniqueTests(filtered);
+		}
+	}, [data]);
 
 	return (
 		<Card
