@@ -147,3 +147,4 @@ export { default as referralsIcon } from './referralsIcon.svg';
 export { default as x } from './x.svg';
 export { default as arrowsCounterClockwise } from './arrowsCounterClockwise.svg';
 export { default as squareSortVertical } from './squareSortVertical.svg';
+export { default as topicsIcon } from './topics.svg';

@@ -81,6 +81,7 @@ export type IconName =
 	| 'watch'
 	| 'refresh'
 	| 'x'
-	| 'referralsIcon';
+	| 'referralsIcon'
+	| 'topicsIcon';
 
 export type IconComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;

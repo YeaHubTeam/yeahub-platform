@@ -3,5 +3,27 @@
 		"choose": "Choose a topic from the list",
 		"empty": "No available options",
 		"selected": "Selected topic"
+	},
+	"title": {
+		"short": "Title"
+	},
+	"skill": {
+		"title": "Skill"
+	},
+	"created": {
+		"at": "Created at"
+	},
+	"stub": {
+		"empty": {
+			"topics": {
+				"title": "It looks like there are no topics here yet",
+				"subtitle": "Create your first topic and start adding materials to the knowledge base",
+				"submit": "Add"
+			},
+			"topic": {
+				"title": "Unfortunately, no topics were found for your request",
+				"subtitle": "Try changing your search parameters or reset all filters"
+			}
+		}
 	}
 }
