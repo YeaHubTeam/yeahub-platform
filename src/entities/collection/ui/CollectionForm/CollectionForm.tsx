@@ -124,7 +124,12 @@ export const CollectionForm = ({ isEdit, questionsCount, tasksCount }: Collectio
 				>
 					<FormControl name="specializations" control={control}>
 						{({ onChange, value }) => (
-							<SpecializationSelect onChange={onChange} value={value} hasMultiple={false} />
+							<SpecializationSelect
+								onChange={onChange}
+								value={value}
+								hasMultiple
+								selectedSpecializationItems={specializations ?? []}
+							/>
 						)}
 					</FormControl>
 				</FormField>
