@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { i18Namespace, TestQuestions } from '@/shared/config';
+import { i18Namespace, Specializations, TestQuestions } from '@/shared/config';
 import { Flex } from '@/shared/ui/Flex';
 import { FormControl } from '@/shared/ui/FormControl';
 import { FormField } from '@/shared/ui/FormField';
@@ -11,6 +11,7 @@ import { KeywordSelect } from '@/shared/ui/KeywordSelect';
 import { Range } from '@/shared/ui/Range';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { SkillSelect } from '@/entities/skill/@x/testQuestion';
 import { SpecializationSelect } from '@/entities/specialization/@x/testQuestion';
@@ -155,24 +156,34 @@ export const TestQuestionForm = () => {
 					</FormControl>
 				</FormField>
 
-				{selectedSpecializations?.length ? (
-					<FormField
-						label={t(TestQuestions.SKILLS_LABEL)}
-						description={t(TestQuestions.SKILLS_DESCRIPTION)}
-					>
-						<FormControl name="skills" control={control}>
-							{({ onChange, value }) => (
+				<FormField
+					label={t(TestQuestions.SKILLS_LABEL)}
+					description={t(TestQuestions.SKILLS_DESCRIPTION)}
+				>
+					<FormControl name="skills" control={control}>
+						{({ onChange, value }) => {
+							const isDisabled = !selectedSpecializations?.length;
+
+							return (
 								<div className={styles.select}>
-									<SkillSelect
-										onChange={onChange}
-										value={value}
-										selectedSpecializations={selectedSpecializations}
-									/>
+									<Tooltip
+										title={t(Specializations.SELECT_REQUIRED, {
+											ns: i18Namespace.specialization,
+										})}
+										shouldShowTooltip={isDisabled}
+									>
+										<SkillSelect
+											onChange={onChange}
+											value={value}
+											selectedSpecializations={selectedSpecializations}
+											disabled={isDisabled}
+										/>
+									</Tooltip>
 								</div>
-							)}
-						</FormControl>
-					</FormField>
-				) : null}
+							);
+						}}
+					</FormControl>
+				</FormField>
 			</Flex>
 		</>
 	);

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { i18Namespace, Topics } from '@/shared/config';
 import { Dropdown, Option } from '@/shared/ui/Dropdown';
 import { SelectWithChips } from '@/shared/ui/SelectWithChips';
+import { Tooltip } from '@/shared/ui/Tooltip';
 
 import { useGetTopicsListQuery } from '../../api/topicApi';
 import { Topic } from '../../model/types/topic';
@@ -18,6 +19,7 @@ export type TopicSelectProps = Omit<
 	onChange: (value: number[]) => void;
 	selectedSkills?: number[];
 	hasMultiple?: boolean;
+	tooltipText?: string;
 };
 
 export const TopicSelect = ({
@@ -26,6 +28,7 @@ export const TopicSelect = ({
 	selectedSkills,
 	hasMultiple = true,
 	disabled,
+	tooltipText,
 }: TopicSelectProps) => {
 	const { t } = useTranslation(i18Namespace.topic);
 
@@ -95,7 +98,7 @@ export const TopicSelect = ({
 
 	if (!hasMultiple) {
 		return (
-			<>
+			<Tooltip title={tooltipText} shouldShowTooltip={disabled && Boolean(tooltipText)}>
 				<Dropdown
 					label={options.length ? t(Topics.SELECT_CHOOSE) : t(Topics.SELECT_EMPTY)}
 					disabled={disabled}
@@ -107,20 +110,22 @@ export const TopicSelect = ({
 						<Option value={option.value} label={option.label} key={option.label} />
 					))}
 				</Dropdown>
-			</>
+			</Tooltip>
 		);
 	}
 
 	return (
-		<SelectWithChips
-			disabled={disabled}
-			title={t(Topics.SELECT_SELECTED)}
-			options={options}
-			onChange={handleChange}
-			placeholder={options.length ? t(Topics.SELECT_CHOOSE) : t(Topics.SELECT_EMPTY)}
-			selectedItems={selectedTopics}
-			handleDeleteItem={handleDeleteTopic}
-			itemsDictionary={topicsDictionary}
-		/>
+		<Tooltip title={tooltipText} shouldShowTooltip={disabled && Boolean(tooltipText)}>
+			<SelectWithChips
+				disabled={disabled}
+				title={t(Topics.SELECT_SELECTED)}
+				options={options}
+				onChange={handleChange}
+				placeholder={options.length ? t(Topics.SELECT_CHOOSE) : t(Topics.SELECT_EMPTY)}
+				selectedItems={selectedTopics}
+				handleDeleteItem={handleDeleteTopic}
+				itemsDictionary={topicsDictionary}
+			/>
+		</Tooltip>
 	);
 };
