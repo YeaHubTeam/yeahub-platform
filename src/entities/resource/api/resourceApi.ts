@@ -62,7 +62,7 @@ const resourceApi = baseApi.injectEndpoints({
 				url: resourceApiUrls.getMyRequestsResources,
 				params: { page: 1, limit: 1, status: 'pending', ...params },
 			}),
-			transformResponse: (response: GetMyRequestsResourcesResponse) => response.limit ?? 0,
+			transformResponse: (response: GetMyRequestsResourcesResponse) => response.total ?? 0,
 			providesTags: [ApiTags.RESOURCES_MY_REQUESTS],
 		}),
 		getResourceRequests: build.query<GetResourceRequestsResponse, GetResourceRequestsParams>({

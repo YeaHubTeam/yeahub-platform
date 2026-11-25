@@ -114,6 +114,14 @@ export const ROUTES = {
 				page: '/admin/topics/:topicId/edit',
 			},
 		},
+		testQuestions: {
+			route: 'test-questions',
+			page: '/admin/test-questions',
+			create: {
+				route: 'create',
+				page: '/admin/test-questions/create',
+			},
+		},
 	},
 	auth: {
 		route: 'auth',
