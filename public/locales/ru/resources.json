@@ -71,5 +71,6 @@
 			"title": "Мои ресурсы"
 		}
 	},
-	"add.resource.title": "Создание ресурса"
+	"add.resource.title": "Создание ресурса",
+	"author.placeholder": "Выберите автора"
 }

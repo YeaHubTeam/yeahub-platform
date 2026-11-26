@@ -1,16 +1,13 @@
 import { useScreenSize } from '@/shared/libs';
-import { Button } from '@/shared/ui/Button';
 import { Flex } from '@/shared/ui/Flex';
 
-import type { ResourcesFilterParams } from '@/features/resources/filterResources';
+import { ResourcesFilterParams, ResourcesFilters } from '@/features/resources/filterResources';
 
 import { SearchSection } from '@/widgets/SearchSection';
 
-import { ResourcesAdminFilters } from '@/pages/admin/resource/resources/ui/ResourcesAdminFilters/RecourcesAdminFilters';
-
 interface ResourcesAdminToolbarProps {
 	searchValue?: string;
-	onSearch: (value: string) => void;
+	onChangeTitle: (value: string) => void;
 	onResetFilters: () => void;
 	hasFilters: boolean;
 	hasDrawerFilters: boolean;
@@ -24,7 +21,7 @@ interface ResourcesAdminToolbarProps {
 
 export const ResourcesAdminToolbar = ({
 	searchValue,
-	onSearch,
+	onChangeTitle,
 	onResetFilters,
 	hasFilters,
 	filters,
@@ -32,20 +29,20 @@ export const ResourcesAdminToolbar = ({
 	onChangeSkills,
 	onChangeTypes,
 	onChangeAuthorId,
-	onChangeIsMy,
 	hasDrawerFilters,
+	onChangeIsMy,
 }: ResourcesAdminToolbarProps) => {
 	const { isSmallScreen } = useScreenSize();
 
 	return (
 		<SearchSection
 			searchValue={searchValue}
-			onSearch={onSearch}
+			onSearch={onChangeTitle}
 			showResetFilterButton={hasFilters}
 			onResetFilters={() => onResetFilters()}
 			hasFilters={hasDrawerFilters}
 			renderFilter={() => (
-				<ResourcesAdminFilters
+				<ResourcesFilters
 					filters={filters}
 					onChangeSpecialization={onChangeSpecialization}
 					onChangeSkills={onChangeSkills}
@@ -54,13 +51,7 @@ export const ResourcesAdminToolbar = ({
 					onChangeIsMy={onChangeIsMy}
 				/>
 			)}
-			to={() => (
-				<Flex direction={isSmallScreen ? 'column' : 'row'} gap="10">
-					<Button size="large" variant="destructive-outline">
-						Delete Favourite
-					</Button>
-				</Flex>
-			)}
+			to={() => <Flex direction={isSmallScreen ? 'column' : 'row'} gap="10"></Flex>}
 		/>
 	);
 };
