@@ -106,7 +106,7 @@ export const ROUTES = {
 				page: '/admin/resources/create',
 			},
 		},
-		topics: {
+			topics: {
 			route: 'topics',
 			page: '/admin/topics',
 			create: {
