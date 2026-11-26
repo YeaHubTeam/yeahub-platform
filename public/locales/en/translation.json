@@ -59,6 +59,7 @@
 				"interview": "Interview"
 			},
 			"tasks": "Tasks",
+			"featureFlags": "Feature Flags",
 			"wiki": {
 				"title": "Knowledge base",
 				"resources": "Resources"

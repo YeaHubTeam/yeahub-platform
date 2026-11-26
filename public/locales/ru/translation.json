@@ -59,6 +59,7 @@
 				"interview": "Собеседование"
 			},
 			"tasks": "Задачи",
+			"featureFlags": "Фича флаги",
 			"wiki": {
 				"title": "База знаний",
 				"resources": "Ресурсы"
