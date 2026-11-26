@@ -1,0 +1,44 @@
+{
+	"title": {
+		"short": "Question"
+	},
+	"specialization": {
+		"title": "Specialization"
+	},
+	"skills": {
+		"title": "Skills"
+	},
+	"rate": {
+		"title": "Question rating",
+		"title.short": "Rating"
+	},
+	"complexity": {
+		"title.short": "Complexity"
+	},
+	"author": "Author",
+	"author.placeholder": "Select an author",
+	"createdAt": "Creation date",
+	"filter": {
+		"my": "My tests"
+	},
+	"answers_one": "{{count}} answer",
+	"answers_few": "{{count}} answers",
+	"answers_many": "{{count}} answers",
+	"answers_other": "{{count}} answers",
+	"correctAnswers_one": "{{count}} correct",
+	"correctAnswers_few": "{{count}} correct",
+	"correctAnswers_many": "{{count}} correct",
+	"correctAnswers_other": "{{count}} correct",
+	"stub": {
+		"empty": {
+			"title": "There are no test questions here yet",
+			"subtitle": "Create the first test question and start adding materials to the knowledge base",
+			"submit": "Add"
+		},
+		"filter": {
+			"title": "Unfortunately, no test questions were found for your request",
+			"subtitle": "Try changing the request parameters or reset all filters",
+			"submit": "Reset filter"
+		}
+	}
+}

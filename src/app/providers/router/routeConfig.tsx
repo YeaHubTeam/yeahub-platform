@@ -15,6 +15,8 @@ import QuestionsIcon from '@/shared/assets/icons/questions.svg';
 import SettingsIcon from '@/shared/assets/icons/settings.svg';
 import SkillsIcon from '@/shared/assets/icons/skillsIcon.svg';
 import SpecializationIcon from '@/shared/assets/icons/specialization.svg';
+import TestQuestionsIcon from '@/shared/assets/icons/testQuestions.svg';
+import TopicsIcon from '@/shared/assets/icons/topics.svg';
 import User from '@/shared/assets/icons/user.svg';
 import VacanciesIcon from '@/shared/assets/icons/vacancies.svg';
 import VacancyMarketIcon from '@/shared/assets/icons/vacancyMarket.svg';
@@ -49,6 +51,9 @@ import { TaskCreatePage } from '@/pages/admin/task/taskCreate';
 import { TaskPage as AdminTaskPage } from '@/pages/admin/task/taskDetail';
 import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
+import { TestQuestionCreatePage } from '@/pages/admin/testQuestion/testQuestionCreate';
+import { TestQuestionsPage } from '@/pages/admin/testQuestion/testQuestions';
+import { TopicsPage } from '@/pages/admin/topic/topics';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
 import { UsersTablePage } from '@/pages/admin/user/users';
@@ -241,6 +246,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
+		route: ROUTES.admin.testQuestions.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TEST_QUESTIONS),
+		icon: TestQuestionsIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
 		route: ROUTES.admin.users.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_USERS),
 		icon: User,
@@ -266,6 +278,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 		title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
 		icon: ResourcesIcon,
 		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
+		route: ROUTES.admin.topics.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
+		icon: TopicsIcon,
+		roles: ['admin', 'author'],
 	},
 ];
 
@@ -321,6 +340,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.admin.resources.route,
 				element: <ResourcesAdminPage />,
+			},
+			{
+				path: ROUTES.admin.topics.page,
+				element: <TopicsPage />,
 			},
 
 			{
@@ -406,6 +429,14 @@ export const router = createBrowserRouter([
 						element: <AdminTaskPage />,
 					},
 				],
+			},
+			{
+				path: ROUTES.admin.testQuestions.route,
+				element: <TestQuestionsPage />,
+			},
+			{
+				path: ROUTES.admin.testQuestions.create.page,
+				element: <TestQuestionCreatePage />,
 			},
 			{
 				path: '*',
