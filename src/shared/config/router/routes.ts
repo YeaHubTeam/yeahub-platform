@@ -98,7 +98,7 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
-		featureFlags: {
+    featureFlags: {
 			route: 'feature-flags',
 			page: '/admin/feature-flags',
 			create: { route: 'create', page: '/admin/feature-flags/create' },
@@ -109,6 +109,30 @@ export const ROUTES = {
 			edit: {
 				route: ':featureFlagId/edit',
 				page: '/admin/feature-flags/:featureFlagId/edit',
+			},
+		},
+		topics: {
+			route: 'topics',
+			page: '/admin/topics',
+			create: {
+				route: 'create',
+				page: '/admin/topics/create',
+			},
+			details: {
+				route: ':topicId',
+				page: '/admin/topics/:topicId',
+			},
+			edit: {
+				route: ':topicId/edit',
+				page: '/admin/topics/:topicId/edit',
+			},
+		},
+		testQuestions: {
+			route: 'test-questions',
+			page: '/admin/test-questions',
+			create: {
+				route: 'create',
+				page: '/admin/test-questions/create',
 			},
 		},
 	},

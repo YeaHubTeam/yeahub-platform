@@ -73,6 +73,7 @@ const QuestionsPage = () => {
 		isError: isErrorAllQuestions,
 		refetch: refetchAllQuestions,
 	} = useGetQuestionsListQuery({
+		page: filters.page || 1,
 		skills: filters.skills,
 		specializationId: filters.specialization,
 		title: filters.title,

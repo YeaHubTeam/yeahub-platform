@@ -1,0 +1,44 @@
+{
+	"title": {
+		"short": "Вопрос"
+	},
+	"specialization": {
+		"title": "Специализация"
+	},
+	"skills": {
+		"title": "Навыки"
+	},
+	"rate": {
+		"title": "Рейтинг вопроса",
+		"title.short": "Рейтинг"
+	},
+	"complexity": {
+		"title.short": "Сложность"
+	},
+	"author": "Автор",
+	"author.placeholder": "Выберите автора",
+	"createdAt": "Дата создания",
+	"filter": {
+		"my": "Мои тесты"
+	},
+	"answers_one": "{{count}} ответ",
+	"answers_few": "{{count}} ответа",
+	"answers_many": "{{count}} ответов",
+	"answers_other": "{{count}} ответов",
+	"correctAnswers_one": "{{count}} верный",
+	"correctAnswers_few": "{{count}} верных",
+	"correctAnswers_many": "{{count}} верных",
+	"correctAnswers_other": "{{count}} верных",
+	"stub": {
+		"empty": {
+			"title": "Похоже здесь пока нет тестовых вопросов",
+			"subtitle": "Создайте первый тестовый вопрос — и начните добавлять материалы в базу знаний",
+			"submit": "Добавить"
+		},
+		"filter": {
+			"title": "К сожалению, по запросу не были найдены тестовые вопросы",
+			"subtitle": "Попробуйте изменить параметры запроса или сбросьте все фильтры",
+			"submit": "Сбросить фильтр"
+		}
+	}
+}

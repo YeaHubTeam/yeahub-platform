@@ -12,6 +12,7 @@ export const i18Namespace = {
 	onboarding: 'onboarding',
 	profile: 'profile',
 	questions: 'questions',
+	testQuestions: 'testQuestions',
 	resources: 'resources',
 	resourceRequests: 'resourceRequests',
 	skill: 'skill',
