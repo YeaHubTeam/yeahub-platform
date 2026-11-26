@@ -97,37 +97,37 @@ export const ROUTES = {
 				route: ':taskId',
 				page: '/admin/tasks/:taskId',
 			},
-			resources: {
-				route: 'resources',
-				page: '/admin/resources',
-				create: {
-					route: 'create',
-					page: '/admin/resources/create',
-				},
+		},
+		resources: {
+			route: 'resources',
+			page: '/admin/resources',
+			create: {
+				route: 'create',
+				page: '/admin/resources/create',
 			},
-			topics: {
-				route: 'topics',
-				page: '/admin/topics',
-				create: {
-					route: 'create',
-					page: '/admin/topics/create',
-				},
-				details: {
-					route: ':topicId',
-					page: '/admin/topics/:topicId',
-				},
-				edit: {
-					route: ':topicId/edit',
-					page: '/admin/topics/:topicId/edit',
-				},
+		},
+		topics: {
+			route: 'topics',
+			page: '/admin/topics',
+			create: {
+				route: 'create',
+				page: '/admin/topics/create',
 			},
-			testQuestions: {
-				route: 'test-questions',
-				page: '/admin/test-questions',
-				create: {
-					route: 'create',
-					page: '/admin/test-questions/create',
-				},
+			details: {
+				route: ':topicId',
+				page: '/admin/topics/:topicId',
+			},
+			edit: {
+				route: ':topicId/edit',
+				page: '/admin/topics/:topicId/edit',
+			},
+		},
+		testQuestions: {
+			route: 'test-questions',
+			page: '/admin/test-questions',
+			create: {
+				route: 'create',
+				page: '/admin/test-questions/create',
 			},
 		},
 	},
