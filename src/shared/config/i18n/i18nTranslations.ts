@@ -57,6 +57,7 @@ export enum Translation {
 	SIDEBAR_MENU_TEST_QUESTIONS = 'sidebar.menu.testQuestions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
+	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
@@ -984,12 +985,23 @@ export enum Collections {
 }
 
 export enum Companies {
+	TITLE_SHORT = 'title.short',
+	TITLE_MY = 'title.my',
+	ICON_SHORT = 'icon.short',
+	AUTHOR = 'author',
+	AUTHOR_PLACEHOLDER = 'author.placeholder',
+	CREATED_AT = 'created-at',
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
 	SELECT_FILTER_TITLE = 'select.filter.title',
 	SELECT_FILTER_CHOOSE = 'select.filter.choose',
 	SELECT_FILTER_NOT_FOUND = 'select.filter.not.found',
+	STUB_EMPTY_COMPANIES_TITLE = 'stub.empty.companies.title',
+	STUB_EMPTY_COMPANIES_SUBTITLE = 'stub.empty.companies.subtitle',
+	STUB_FILTER_COMPANIES_TITLE = 'stub.filter.companies.title',
+	STUB_FILTER_COMPANIES_SUBTITLE = 'stub.filter.companies.subtitle',
+	STUB_FILTER_COMPANIES_SUBMIT = 'stub.filter.companies.submit',
 }
 
 export enum Subscription {
