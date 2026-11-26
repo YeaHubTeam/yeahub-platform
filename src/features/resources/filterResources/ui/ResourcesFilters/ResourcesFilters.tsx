@@ -4,21 +4,25 @@ import { i18Namespace, Resources } from '@/shared/config';
 import { useAppSelector } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
 import { SearchInput } from '@/shared/ui/SearchInput';
+import { Switch } from '@/shared/ui/Switch';
 
 import { getSpecializationId } from '@/entities/profile';
 import { ResourcesTypesFilterSection } from '@/entities/resource';
 import { SkillsListField } from '@/entities/skill';
 import { SpecializationsListField } from '@/entities/specialization';
+import { UserSelect } from '@/entities/user';
 
 import { ResourcesFilterParams } from '../../model/types/filters';
 
 interface MarketplaceFiltersPanelProps {
 	filters: ResourcesFilterParams;
-	onChangeTitle: (title: ResourcesFilterParams['title']) => void;
+	onChangeTitle?: (title: ResourcesFilterParams['title']) => void;
 	onChangeSpecialization?: (specialization: ResourcesFilterParams['specialization']) => void;
 	onChangeSkills: (skills?: ResourcesFilterParams['skills']) => void;
 	onChangeTypes: (types?: ResourcesFilterParams['types']) => void;
+	onChangeAuthorId?: (authorId?: ResourcesFilterParams['authorId']) => void;
 	showSpecialization?: boolean;
+	onChangeIsMy?: (isMy?: ResourcesFilterParams['isMy']) => void;
 }
 
 export const ResourcesFilters = ({
@@ -27,6 +31,8 @@ export const ResourcesFilters = ({
 	onChangeSpecialization,
 	onChangeSkills,
 	onChangeTypes,
+	onChangeIsMy,
+	onChangeAuthorId,
 	showSpecialization = true,
 }: MarketplaceFiltersPanelProps) => {
 	const { skills, specialization, types, title } = filters;
@@ -36,11 +42,29 @@ export const ResourcesFilters = ({
 
 	return (
 		<Flex direction="column" justify="start" gap="24">
-			<SearchInput
-				placeholder={t(Resources.SEARCH_PLACEHOLDER)}
-				onSearch={onChangeTitle}
-				currentValue={title}
-			/>
+			{onChangeTitle && (
+				<SearchInput
+					placeholder={t(Resources.SEARCH_PLACEHOLDER)}
+					onSearch={onChangeTitle}
+					currentValue={title}
+				/>
+			)}
+			{onChangeIsMy && (
+				<Switch
+					checked={filters.isMy ?? false}
+					onChange={(e) => onChangeIsMy(e.target.checked)}
+					label={t(Resources.SORT_AUTHOR_TITLE)}
+				/>
+			)}
+			{onChangeAuthorId && (
+				<UserSelect
+					value={filters.authorId}
+					onChange={onChangeAuthorId}
+					title={t(Resources.AUTHOR)}
+					disabled={!!filters.isMy}
+					placeholder={t(Resources.AUTHOR_PLACEHOLDER)}
+				/>
+			)}
 			{showSpecialization && onChangeSpecialization && (
 				<SpecializationsListField
 					selectedSpecialization={specialization}
