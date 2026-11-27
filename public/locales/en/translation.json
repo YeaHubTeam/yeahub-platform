@@ -692,6 +692,15 @@
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
 			}
+		},
+		"featureFlags": {
+			"create": {
+				"success": "Feature flag created successfully",
+				"error": "Failed to create feature flag",
+				"unauthorized": "Authentication failed",
+				"forbidden": "Route is available for verified users!",
+				"alreadyExists": "Feature flag with this key already exists for the selected client type"
+			}
 		}
 	},
 	"tooltip": {

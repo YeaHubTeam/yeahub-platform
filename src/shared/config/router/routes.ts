@@ -98,7 +98,7 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
-    featureFlags: {
+		featureFlags: {
 			route: 'feature-flags',
 			page: '/admin/feature-flags',
 			create: { route: 'create', page: '/admin/feature-flags/create' },

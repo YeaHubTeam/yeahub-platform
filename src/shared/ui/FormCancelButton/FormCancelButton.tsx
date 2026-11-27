@@ -10,12 +10,17 @@ import { Button } from '@/shared/ui/Button';
 
 import styles from './FormCancelButton.module.css';
 
-type FormCancelButtonProps = Pick<ComponentProps<typeof Button>, 'className' | 'disabled' | 'size'>;
-
+type FormCancelButtonProps = Pick<
+	ComponentProps<typeof Button>,
+	'className' | 'disabled' | 'size'
+> & {
+	label?: Translation;
+};
 export const FormCancelButton = ({
 	className,
 	disabled,
 	size = 'large',
+	label = Translation.RESET,
 }: FormCancelButtonProps) => {
 	const { isOpen, onOpen, onClose } = useModal();
 	const {
@@ -40,7 +45,7 @@ export const FormCancelButton = ({
 					variant="destructive-secondary"
 					onClick={onOpen}
 				>
-					{t(Translation.RESET)}
+					{t(label)}
 				</Button>
 			)}
 

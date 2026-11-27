@@ -684,6 +684,15 @@
 				"success": "You have successfully connected a trial subscription",
 				"failed": "Failed to connect trial subscription"
 			}
+		},
+		"featureFlags": {
+			"create": {
+				"success": "Фича флаг успешно создан",
+				"error": "Не удалось создать фича флаг",
+				"unauthorized": "Ошибка авторизации",
+				"forbidden": "Доступно только подтверждённым пользователям",
+				"alreadyExists": "Фича флаг с таким ключом уже существует для выбранного типа клиента"
+			}
 		}
 	},
 	"tooltip": {

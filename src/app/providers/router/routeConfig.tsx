@@ -33,7 +33,7 @@ import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate'
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/collection/collectionDetail';
 import { CollectionEditPage } from '@/pages/admin/collection/collectionEdit';
 import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/collection/collections';
-import { FeatureFlagsPage } from '@/pages/admin/featureFlag';
+import { FeatureFlagCreatePage, FeatureFlagsPage } from '@/pages/admin/featureFlag';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
 import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreateMultiple';
@@ -426,19 +426,22 @@ export const router = createBrowserRouter([
 					},
 				],
 			},
-      {
-        path: ROUTES.admin.featureFlags.route,
-        element: <Outlet />,
-        children: [{ index: true, element: <FeatureFlagsPage /> }],
-      },
-      {
-        path: ROUTES.admin.testQuestions.route,
-        element: <TestQuestionsPage />,
-      },
-      {
-        path: ROUTES.admin.testQuestions.create.page,
-        element: <TestQuestionCreatePage />,
-      },
+			{
+				path: ROUTES.admin.featureFlags.route,
+				element: <Outlet />,
+				children: [
+					{ index: true, element: <FeatureFlagsPage /> },
+					{ path: ROUTES.admin.featureFlags.create.route, element: <FeatureFlagCreatePage /> },
+				],
+			},
+			{
+				path: ROUTES.admin.testQuestions.route,
+				element: <TestQuestionsPage />,
+			},
+			{
+				path: ROUTES.admin.testQuestions.create.page,
+				element: <TestQuestionCreatePage />,
+			},
 			{
 				path: '*',
 				element: <Error404Page />,

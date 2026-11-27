@@ -14,6 +14,31 @@
 		"enabledOn": "Enabled",
 		"enabledOff": "Disabled"
 	},
+	"form": {
+		"title": "Create Feature Flag",
+		"flag": {
+			"label": "Flag",
+			"description": "Add a flag",
+			"placeholder": "Add a flag"
+		},
+		"description": {
+			"label": "Description",
+			"hint": "Add a description",
+			"placeholder": "Add a description"
+		},
+		"roles": {
+			"label": "Select user role",
+			"hint": "Select tags by role"
+		},
+		"clientType": {
+			"label": "Client Type",
+			"hint": "Select the application type for which the flag was created"
+		},
+		"enabled": {
+			"label": "Status",
+			"hint": "Choose whether the feature flag is enabled or disabled"
+		}
+	},
 	"stub": {
 		"empty": {
 			"title": "Looks like there are no feature flags yet",

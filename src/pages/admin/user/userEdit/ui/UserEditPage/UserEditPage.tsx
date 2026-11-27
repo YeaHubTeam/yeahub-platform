@@ -66,7 +66,7 @@ const UserEditPage = () => {
 					<Flex align="center" gap="8" style={{ marginBottom: 24 }}>
 						<BackButton />
 						<Flex style={{ marginLeft: 'auto', gap: '16px' }}>
-							<FormCancelButton />
+							<FormCancelButton label={Translation.CANCEL} />
 							<Button type="submit">{t(Translation.SAVE)}</Button>
 						</Flex>
 					</Flex>
