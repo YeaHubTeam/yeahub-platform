@@ -7,4 +7,5 @@ export const resourceApiUrls = {
 	getResourceRequests: 'external-products/request',
 	getResourceRequestById: 'external-products/request/:requestId',
 	getResourceFilterKeywords: 'external-products/product/filter/keywords',
+	deleteResource: 'external-products/product/:resourceId',
 };

@@ -115,6 +115,10 @@ export interface GetResourceKeywordsParamsRequest {
 	title?: string;
 }
 
+export type DeleteResourceParamsRequest = {
+	resourceId: string;
+};
+
 export type ResourceCreateError =
 	| 'auth.auth.unauthorized'
 	| 'auth.user.verified'

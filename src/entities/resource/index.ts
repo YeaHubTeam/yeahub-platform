@@ -16,6 +16,7 @@ export { ResourcesSelect } from './ui/ResourceSelect/ResourceSelect';
 export { ResourcesStatusBlock } from './ui/ResourcesStatusBlock/ResourcesStatusBlock';
 export { ResourceAdditionalInfo } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo';
 export { ResourceAdditionalInfoSkeleton } from './ui/ResourceAdditionalInfo/ResourceAdditionalInfo.skeleton';
+export { getDeleteResourceApiErrorMessage } from './lib/utils/getDeleteResourceApiErrorMessage';
 
 export type {
 	ResourceRequest,

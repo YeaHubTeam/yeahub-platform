@@ -12,6 +12,7 @@ import {
 	GetMyRequestsResourcesResponse,
 	GetResourceKeywordsResponse,
 	GetResourceKeywordsParamsRequest,
+	DeleteResourceParamsRequest,
 } from '../model/types/resource';
 import {
 	GetResourceRequestsResponse,
@@ -92,6 +93,13 @@ const resourceApi = baseApi.injectEndpoints({
 			}),
 			providesTags: [ApiTags.RESOURCES],
 		}),
+		deleteResource: build.mutation<void, DeleteResourceParamsRequest>({
+			query: ({ resourceId }) => ({
+				url: route(resourceApiUrls.deleteResource, resourceId),
+				method: 'DELETE',
+			}),
+			invalidatesTags: [ApiTags.RESOURCES],
+		}),
 	}),
 });
 
@@ -104,5 +112,6 @@ export const {
 	useGetMyRequestsResourcesReviewCountQuery,
 	useGetResourceRequestByIdQuery,
 	useGetResourceFilterKeywordsQuery,
+	useDeleteResourceMutation,
 } = resourceApi;
 export type { GetResourcesListParamsRequest, GetResourcesListResponse };
