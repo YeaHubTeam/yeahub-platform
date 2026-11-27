@@ -12,12 +12,14 @@ export const useResourcesFilters = (initialParams: ResourcesFilterParams) => {
 		currentParams,
 	);
 
-	const hasFilters =
-		(filters.page || 1) > 1 ||
-		Boolean(filters.title) ||
-		(filters?.types || [])?.length > 0 ||
-		(filters.skills || [])?.length > 0 ||
-		Boolean(filters.specialization);
+	const hasDrawerFilters =
+		Boolean(filters.types?.length) ||
+		Boolean(filters.skills?.length) ||
+		Boolean(filters.specialization) ||
+		Boolean(filters.authorId) ||
+		Boolean(filters.isMy);
+
+	const hasFilters = hasDrawerFilters || Boolean(filters.title) || (filters.page || 1) > 1;
 
 	const onChangeTitle = (title: ResourcesFilterParams['title']) => {
 		onFilterChange({ title, page: 1 });
@@ -25,6 +27,18 @@ export const useResourcesFilters = (initialParams: ResourcesFilterParams) => {
 
 	const onChangeSkills = (skills: ResourcesFilterParams['skills']) => {
 		onFilterChange({ skills, page: 1 });
+	};
+
+	const onChangeAuthorId = (authorId: ResourcesFilterParams['authorId']) => {
+		onFilterChange({ authorId, page: 1 });
+	};
+
+	const onChangeIsMy = (isMy: ResourcesFilterParams['isMy']) => {
+		onFilterChange({
+			isMy,
+			authorId: undefined,
+			page: 1,
+		});
 	};
 
 	const onChangeSpecialization = (specialization: ResourcesFilterParams['specialization']) => {
@@ -52,5 +66,8 @@ export const useResourcesFilters = (initialParams: ResourcesFilterParams) => {
 		onChangeSpecialization,
 		onChangePage,
 		onResetFilters,
+		onChangeAuthorId,
+		onChangeIsMy,
+		hasDrawerFilters,
 	};
 };

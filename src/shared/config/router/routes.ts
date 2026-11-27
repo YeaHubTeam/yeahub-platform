@@ -98,6 +98,7 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
+
 		featureFlags: {
 			route: 'feature-flags',
 			page: '/admin/feature-flags',
@@ -109,6 +110,14 @@ export const ROUTES = {
 			edit: {
 				route: ':featureFlagId/edit',
 				page: '/admin/feature-flags/:featureFlagId/edit',
+			},
+		},
+		resources: {
+			route: 'resources',
+			page: '/admin/resources',
+			create: {
+				route: 'create',
+				page: '/admin/resources/create',
 			},
 		},
 		topics: {

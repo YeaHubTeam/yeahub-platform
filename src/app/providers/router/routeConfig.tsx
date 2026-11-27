@@ -40,6 +40,7 @@ import { QuestionCreateMultiplePage } from '@/pages/admin/question/questionCreat
 import { QuestionPage as AdminQuestionPage } from '@/pages/admin/question/questionDetail';
 import { QuestionEditPage } from '@/pages/admin/question/questionEdit';
 import { QuestionsTablePage } from '@/pages/admin/question/questions';
+import { ResourcesAdminPage } from '@/pages/admin/resource/resources';
 import { SkillCreatePage } from '@/pages/admin/skill/skillCreate';
 import { SkillDetailPage } from '@/pages/admin/skill/skillDetail';
 import { SkillEditPage } from '@/pages/admin/skill/skillEdit';
@@ -275,6 +276,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
+		route: ROUTES.admin.resources.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_WIKI_RESOURCES_TITLE),
+		icon: ResourcesIcon,
+		roles: listAdminRoles,
+	},
+	{
+		type: 'single',
 		route: ROUTES.admin.featureFlags.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_FEATURE_FLAGS),
 		icon: FlagIcon,
@@ -339,9 +347,14 @@ export const router = createBrowserRouter([
 				element: <SpecializationDetailPage />,
 			},
 			{
+				path: ROUTES.admin.resources.route,
+				element: <ResourcesAdminPage />,
+			},
+			{
 				path: ROUTES.admin.topics.page,
 				element: <TopicsPage />,
 			},
+
 			{
 				path: ROUTES.admin.skills.route,
 				element: <Outlet />,
