@@ -716,5 +716,12 @@
 	"date": {
 		"today": "Сегодня",
 		"yesterday": "Вчера"
-	}
+	},
+	"modal.resource.delete.confirmation": "Вы действительно хотите удалить ресурс?",
+	"toast.resources.delete.single.success": "Ресурс успешно удален",
+	"toast.resources.delete.single.failed": "Не удалось удалить ресурс",
+	"toast.resources.delete.auth.unauthorized": "Необходимо авторизоваться",
+	"toast.resources.delete.auth.user.verified": "Необходимо подтвердить аккаунт",
+	"toast.resources.delete.auth.roles.author.can.change.only.own": "Вы можете удалять только свои ресурсы",
+	"toast.resources.delete.catalog.not.found": "Ресурс не найден"
 }

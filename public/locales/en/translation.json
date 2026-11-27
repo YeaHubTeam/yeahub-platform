@@ -719,5 +719,13 @@
 	"editor.redo": "Redo",
 	"editor.bullet.list": "Bullet list",
 	"editor.ordered.list": "Ordered list",
-	"tooltip.premiumonly": "Available to members"
+	"tooltip.premiumonly": "Available to members",
+	"modal.resource.delete.confirmation": "Are you sure you want to delete this resource?",
+	"toast.resources.delete.single.success": "Resource successfully deleted",
+	"toast.resources.delete.single.failed": "Failed to delete the resource",
+	"toast.resources.delete.auth.unauthorized": "You must be logged in",
+	"toast.resources.delete.auth.user.verified": "You must verify your account",
+	"toast.resources.delete.auth.roles.author.can.change.only.own": "You can only delete your own resources",
+	"toast.resources.delete.catalog.not.found": "Resource not found"
 }
+
