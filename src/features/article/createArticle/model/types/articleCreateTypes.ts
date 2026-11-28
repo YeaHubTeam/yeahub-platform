@@ -1,8 +1,6 @@
-import { ArticleFormValues, Article } from '@/entities/article';
+import { Article, CreateOrEditArticleFormValues } from '@/entities/article';
 
-export type CreateArticleFormValues = Omit<ArticleFormValues, 'slug'> & {
-	slug?: string;
-};
+export type CreateArticleFormValues = Omit<CreateOrEditArticleFormValues, 'id'>;
 
 export type CreateArticleBodyRequest = CreateArticleFormValues & {
 	status: 'published';

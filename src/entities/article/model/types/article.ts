@@ -41,11 +41,11 @@ export interface Article {
 	taskIds?: Array<string>;
 }
 
-export type ArticleFormValues = Pick<
+export type CreateOrEditArticleFormValues = Pick<
 	Article,
+	| 'id'
 	| 'title'
 	| 'bodyHtml'
-	| 'slug'
 	| 'format'
 	| 'metaTitle'
 	| 'metaDescription'
@@ -54,6 +54,7 @@ export type ArticleFormValues = Pick<
 	| 'topics'
 	| 'contentType'
 > & {
+	slug?: string;
 	specializations: number[];
 	skills: number[];
 };
@@ -73,3 +74,9 @@ export interface GetArticlesListParamsRequest {
 }
 
 export type GetArticlesListResponse = Response<Article[]>;
+
+export type GetArticleByIdParamsRequest = {
+	articleId?: string;
+};
+
+export type GetArticleByIdResponse = Article;
