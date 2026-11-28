@@ -4,11 +4,21 @@
 		"empty": "No available options",
 		"selected": "Selected topic"
 	},
+	"create.page.title": "Topic",
 	"title": {
-		"short": "Title"
+		"short": "Title",
+		"full": "Topic title",
+		"label": "Add a topic title",
+		"placeholder": "Topic title"
 	},
 	"skill": {
-		"title": "Skill"
+		"title": "Skill",
+		"label": "Skill corresponding to the topic"
+	},
+	"description": {
+		"full": "Topic description",
+		"label": "Add a detailed description for the topic",
+		"placeholder": "Detailed description for the topic"
 	},
 	"created": {
 		"at": "Created at"

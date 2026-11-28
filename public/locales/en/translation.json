@@ -452,6 +452,24 @@
 				}
 			}
 		},
+		"topics": {
+			"create": {
+				"success": "Topic created successfully",
+				"failed": "Failed to create topic",
+				"auth": {
+					"unauthorized": "Authentication failed",
+					"user": {
+						"verified": "Route is available for verified users"
+					},
+					"roles": {
+						"admin.or.author.required": "Admin or author required"
+					}
+				},
+				"topic": {
+					"title.conflict": "A topic with the same title already exists for this skill"
+				}
+			}
+		},
 		"specializations": {
 			"create": {
 				"success": "Specialization successfully created",
