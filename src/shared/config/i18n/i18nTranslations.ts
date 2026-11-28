@@ -57,6 +57,7 @@ export enum Translation {
 	SIDEBAR_MENU_TEST_QUESTIONS = 'sidebar.menu.testQuestions',
 	SIDEBAR_MENU_SKILLS = 'sidebar.menu.skills',
 	SIDEBAR_MENU_COLLECTIONS = 'sidebar.menu.collections',
+	SIDEBAR_MENU_COMPANIES = 'sidebar.menu.companies',
 	SIDEBAR_MENU_ANALYTICS = 'sidebar.menu.analytics',
 	SIDEBAR_MENU_TASKS = 'sidebar.menu.tasks',
 	SIDEBAR_MENU_TOPICS = 'sidebar.menu.topics',
@@ -619,23 +620,29 @@ export enum InterviewStatistics {
 	ATTEMPT_STATS_WORST_MOBILE = 'attempt.stats.worst.mobile',
 	ATTEMPT_STATS_AVG_MOBILE = 'attempt.stats.avg.mobile',
 }
-
 export enum Resources {
 	ADDITIONAL_INFO_ARIA_LABEL = 'additional.aria.label',
 	ADDITIONAL_INFO_SKILLS = 'skills.additional',
 	ADD_RESOURCE_TITLE = 'add.resource.title',
 	DATE = 'date',
 	LINK = 'link',
+	NAME = 'name',
+	SKILLS = 'skills.title',
+	TYPE = 'type',
+	AUTHOR = 'author',
+	CREATED_AT = 'createdAt',
 	SPECIALIZATION_TITLE = 'specialization.title',
 	MODAL_RESOURCE_CREATE_MODERATION_MESSAGE = 'modal.resource.create.moderation.message',
 	MODAL_RESOURCE_CREATE_MODERATION_TITLE = 'modal.resource.create.moderation.title',
-	TYPE = 'type',
 	REQUESTS_MY = 'requests.my',
 	STUB_EMPTY_RESOURCES_TITLE = 'stub.empty.resources.title',
 	STUB_EMPTY_RESOURCES_SUBTITLE = 'stub.empty.resources.subtitle',
 	STUB_EMPTY_RESOURCES_SUBMIT = 'stub.empty.resources.submit',
 	SORT_AUTHOR_TITLE = 'sort.author.title',
 	SEARCH_PLACEHOLDER = 'search.placeholder',
+	AUTHOR_PLACEHOLDER = 'author.placeholder',
+	STUB_ERROR_TITLE = 'error.title',
+	STUB_ERROR_SUBMIT = 'error.submit',
 }
 
 export enum Questions {
@@ -998,12 +1005,23 @@ export enum Collections {
 }
 
 export enum Companies {
+	TITLE_SHORT = 'title.short',
+	TITLE_MY = 'title.my',
+	ICON_SHORT = 'icon.short',
+	AUTHOR = 'author',
+	AUTHOR_PLACEHOLDER = 'author.placeholder',
+	CREATED_AT = 'created-at',
 	SELECT_CHOOSE = 'select.choose',
 	SELECT_EMPTY = 'select.empty',
 	SELECT_SELECTED = 'select.selected',
 	SELECT_FILTER_TITLE = 'select.filter.title',
 	SELECT_FILTER_CHOOSE = 'select.filter.choose',
 	SELECT_FILTER_NOT_FOUND = 'select.filter.not.found',
+	STUB_EMPTY_COMPANIES_TITLE = 'stub.empty.companies.title',
+	STUB_EMPTY_COMPANIES_SUBTITLE = 'stub.empty.companies.subtitle',
+	STUB_FILTER_COMPANIES_TITLE = 'stub.filter.companies.title',
+	STUB_FILTER_COMPANIES_SUBTITLE = 'stub.filter.companies.subtitle',
+	STUB_FILTER_COMPANIES_SUBMIT = 'stub.filter.companies.submit',
 }
 
 export enum Subscription {

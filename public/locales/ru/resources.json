@@ -22,11 +22,18 @@
 	"specialization": {
 		"title": "Специализация"
 	},
+	"error": {
+		"title": "Не удалось загрузить данные",
+		"submit": "Повторить"
+	},
 	"skills": {
 		"additional": "Навыки",
 		"title": "Навыки"
 	},
 	"type": "Тип ресурса",
+	"name": "Название",
+	"author": "Автор",
+	"createdAt": "Дата создания",
 	"title": {
 		"label": "Добавьте вопрос",
 		"placeholder": "Развернутый вопрос по конкретной теме"
@@ -64,5 +71,6 @@
 			"title": "Мои ресурсы"
 		}
 	},
-	"add.resource.title": "Создание ресурса"
+	"add.resource.title": "Создание ресурса",
+	"author.placeholder": "Выберите автора"
 }
