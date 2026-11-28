@@ -9,7 +9,7 @@ import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 import { TextArea } from '@/shared/ui/TextArea';
 
-import { SkillSelect } from '@/entities/skill';
+import { SkillSelect } from '@/entities/skill/@x/topic';
 
 import styles from './TopicForm.module.css';
 

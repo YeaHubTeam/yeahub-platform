@@ -5,8 +5,6 @@ import { InputSkeleton } from '@/shared/ui/Input';
 import { TextSkeleton } from '@/shared/ui/Text';
 import { TextAreaSkeleton } from '@/shared/ui/TextArea';
 
-import { SkillSelectSkeleton } from '@/entities/skill';
-
 import styles from './TopicForm.module.css';
 
 export const TopicFormSkeleton = () => {
@@ -23,7 +21,7 @@ export const TopicFormSkeleton = () => {
 
 				<FormFieldSkeleton>
 					<FormControlSkeleton className={styles.select}>
-						<SkillSelectSkeleton />
+						<InputSkeleton />
 					</FormControlSkeleton>
 				</FormFieldSkeleton>
 
