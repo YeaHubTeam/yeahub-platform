@@ -15,3 +15,5 @@ export { featureFlagsMock } from './api/__mocks__';
 export { clientTypes } from './model/constants/featureFlags';
 export { featureFlagReducer } from './model/slices/featureFlagSlice';
 export type { FeatureFlagState } from './model/slices/featureFlagSlice';
+export { FeatureFlagForm } from './ui/FeatureFlagForm/FeatureFlagForm';
+export { FEATURE_FLAG_DESCRIPTION_LIMIT } from './model/constants/featureFlags';

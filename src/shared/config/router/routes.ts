@@ -102,6 +102,20 @@ export const ROUTES = {
 				page: '/admin/tasks/:taskId',
 			},
 		},
+
+		featureFlags: {
+			route: 'feature-flags',
+			page: '/admin/feature-flags',
+			create: { route: 'create', page: '/admin/feature-flags/create' },
+			details: {
+				route: ':featureFlagId',
+				page: '/admin/feature-flags/:featureFlagId',
+			},
+			edit: {
+				route: ':featureFlagId/edit',
+				page: '/admin/feature-flags/:featureFlagId/edit',
+			},
+		},
 		resources: {
 			route: 'resources',
 			page: '/admin/resources',
@@ -110,7 +124,7 @@ export const ROUTES = {
 				page: '/admin/resources/create',
 			},
 		},
-			topics: {
+		topics: {
 			route: 'topics',
 			page: '/admin/topics',
 			create: {

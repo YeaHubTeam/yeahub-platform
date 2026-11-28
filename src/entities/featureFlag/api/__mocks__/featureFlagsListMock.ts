@@ -32,6 +32,12 @@ export const featureFlagsListMock = http.get<
 		);
 	}
 
+	const clientType = url.searchParams.get('clientType');
+
+	if (clientType) {
+		data = data.filter((flag) => flag.clientType === clientType);
+	}
+
 	const total = data.length;
 	const paged = data.slice((page - 1) * limit, page * limit);
 

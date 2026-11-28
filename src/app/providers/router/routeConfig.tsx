@@ -6,6 +6,7 @@ import Companies from '@/shared/assets/icons/companies.svg';
 import Crown from '@/shared/assets/icons/crown.svg';
 import CursorSquare from '@/shared/assets/icons/cursorSquare.svg';
 import EducationIcon from '@/shared/assets/icons/education.svg';
+import FlagIcon from '@/shared/assets/icons/flag.svg';
 import Home from '@/shared/assets/icons/home.svg';
 import InterviewIcon from '@/shared/assets/icons/interview.svg';
 import TasksIcon from '@/shared/assets/icons/lifeBuoy.svg';
@@ -33,6 +34,7 @@ import { CollectionCreatePage } from '@/pages/admin/collection/collectionCreate'
 import { CollectionPage as AdminCollectionPage } from '@/pages/admin/collection/collectionDetail';
 import { CollectionEditPage } from '@/pages/admin/collection/collectionEdit';
 import { CollectionsPage as AdminCollectionsPage } from '@/pages/admin/collection/collections';
+import { FeatureFlagCreatePage, FeatureFlagsPage } from '@/pages/admin/featureFlag';
 import { CompaniesPage } from '@/pages/admin/company/companies';
 import { MainPage as AdminMainPage } from '@/pages/admin/main';
 import { QuestionCreatePage } from '@/pages/admin/question/questionCreate';
@@ -290,6 +292,13 @@ const adminLayoutMenuItems: MenuItem[] = [
 	},
 	{
 		type: 'single',
+		route: ROUTES.admin.featureFlags.route,
+		title: i18n.t(Translation.SIDEBAR_MENU_FEATURE_FLAGS),
+		icon: FlagIcon,
+		roles: ['admin'],
+	},
+	{
+		type: 'single',
 		route: ROUTES.admin.topics.route,
 		title: i18n.t(Translation.SIDEBAR_MENU_TOPICS),
 		icon: TopicsIcon,
@@ -447,6 +456,14 @@ export const router = createBrowserRouter([
 						path: ROUTES.admin.tasks.details.route,
 						element: <AdminTaskPage />,
 					},
+				],
+			},
+			{
+				path: ROUTES.admin.featureFlags.route,
+				element: <Outlet />,
+				children: [
+					{ index: true, element: <FeatureFlagsPage /> },
+					{ path: ROUTES.admin.featureFlags.create.route, element: <FeatureFlagCreatePage /> },
 				],
 			},
 			{
