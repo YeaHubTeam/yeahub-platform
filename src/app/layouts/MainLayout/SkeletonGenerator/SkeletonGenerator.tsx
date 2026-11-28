@@ -7,6 +7,7 @@ import { CollectionCreateFormSkeleton } from '@/features/collections/createColle
 import { EditProfileFormSkeleton } from '@/features/profile/editProfileForm';
 import { QuestionCreateFormSkeleton } from '@/features/question/createQuestion';
 import { SpecializationCreateFormSkeleton } from '@/features/specialization/createSpecialization';
+import { TopicCreateFormSkeleton } from '@/features/topic/createTopic';
 
 import { CollectionPageSkeleton } from '@/pages/admin/collection/collectionDetail';
 import { CollectionsPageSkeleton } from '@/pages/admin/collection/collections';
@@ -111,6 +112,8 @@ const SkeletonGenerator = () => {
 			return <AnalyticsPageSkeleton />;
 		case ROUTES.admin.tasks.create.page:
 			return <TaskCreatePageSkeleton />;
+		case ROUTES.admin.topics.create.page:
+			return <TopicCreateFormSkeleton />;
 		default:
 			return <Loader />;
 	}

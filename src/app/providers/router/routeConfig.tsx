@@ -52,6 +52,7 @@ import { TaskEditPage } from '@/pages/admin/task/taskEdit';
 import { TasksTablePage } from '@/pages/admin/task/tasks';
 import { TestQuestionCreatePage } from '@/pages/admin/testQuestion/testQuestionCreate';
 import { TestQuestionsPage } from '@/pages/admin/testQuestion/testQuestions';
+import { TopicCreatePage } from '@/pages/admin/topic/topicCreate';
 import { TopicsPage } from '@/pages/admin/topic/topics';
 import { UserDetailPage } from '@/pages/admin/user/userDetail';
 import { UserEditPage } from '@/pages/admin/user/userEdit';
@@ -330,8 +331,18 @@ export const router = createBrowserRouter([
 				element: <SpecializationDetailPage />,
 			},
 			{
-				path: ROUTES.admin.topics.page,
-				element: <TopicsPage />,
+				path: ROUTES.admin.topics.route,
+				element: <Outlet />,
+				children: [
+					{
+						index: true,
+						element: <TopicsPage />,
+					},
+					{
+						path: ROUTES.admin.topics.create.route,
+						element: <TopicCreatePage />,
+					},
+				],
 			},
 			{
 				path: ROUTES.admin.skills.route,
